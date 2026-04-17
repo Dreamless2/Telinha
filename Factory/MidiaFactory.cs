@@ -50,7 +50,7 @@ namespace Telinha.Factory
             item.Tags = hasValidDate ? $"#{tagBase} #{tagBase}{releaseDate.Year}" : $"#{tagBase}";
 
             // 5. INFORMAÇÕES BÁSICAS
-            item.Titulo = json[titleField]?.ToString() ?? "--";
+            item.Nome = json[titleField]?.ToString() ?? "--";
             item.Sinopse = json["overview"]?.ToString() ?? "--";
             item.Original = json[originalTitleField]?.ToString() ?? "--";
 
@@ -59,12 +59,12 @@ namespace Telinha.Factory
                 string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? [])
             );
 
-            item.Estudio = Cleanser.GerarTags(
+            item.Produtora = Cleanser.GerarTags(
                 string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? [])
             );
 
             // 7. CAMPOS ESPECÍFICOS POR CATEGORIA
-            string tituloFormatado = Cleanser.FormatarTitulo(item.Titulo);
+            string tituloFormatado = Cleanser.FormatarTitulo(item.Nome);
 
             if (tipoDetectado == MidiaTipo.Anime)
             {
