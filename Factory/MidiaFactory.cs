@@ -10,8 +10,7 @@ namespace Telinha.Factory
     {
         private static readonly DEEPLContracts deepl = new();
 
-        public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative,
-MidiaTipo tipoBase
+        public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase
 )
         {
             // 1. DETECÇÃO AUTOMÁTICA DE TIPO (Filme vs TV)
