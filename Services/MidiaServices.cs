@@ -80,9 +80,7 @@ namespace Telinha.Services
             if (results == null || results.Length < 2 || results[0] == null)
                 return null;
 
-            var model = await MidiaFactory.ConstruirMidia(
-    results[0],
-    results[1],
+            var model = await MidiaFactory.ConstruirMidia(results[0], results[1],
     results.Length > 2 ? results[2] : null,
     tipo
 );
