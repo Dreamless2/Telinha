@@ -199,17 +199,11 @@ namespace Telinha
             {
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
 
-                if (midia != null)
-                {
-                    label9.Text = midia.Tipo;   // Atualiza com o tipo real
 
-                    PreencherCampos(midia);
-                }
-                else
-                {
-                    MessageBox.Show($"ID {id} não encontrado como Filme nem como Série/Anime.",
-                                    "Não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                label9.Text = midia.Tipo;   // Atualiza com o tipo real
+
+                PreencherCampos(midia);
+
             }
             catch (Exception ex)
             {
