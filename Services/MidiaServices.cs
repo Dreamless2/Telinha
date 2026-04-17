@@ -77,7 +77,14 @@ namespace Telinha.Services
 
             var results = await _tmdb.Many([.. calls]);
 
+            // ❗ VALIDAÇÃO CRÍTICA
             if (results == null || results.Length < 2 || results[0] == null)
+                return null;
+
+            if (results[0]?["success"]?.ToObject<bool>() == false)
+                return null;
+
+            if (results[0]?["status_code"]?.ToObject<int>() == 34)
                 return null;
 
             var model = await MidiaFactory.ConstruirMidia(results[0], results[1], results.Length > 2 ? results[2] : null, tipo);
