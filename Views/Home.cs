@@ -188,51 +188,29 @@ namespace Telinha
 
             if (!int.TryParse(CodigoBox.Text.Trim(), out int id)) return;
 
-            // Tipo inicial baseado no Label
-            MidiaTipo tipoBusca = label9.Text == "Filme" ? MidiaTipo.Filme : MidiaTipo.Serie;
+            // Removemos a trava do label9. Se o usuário digitar algo, tentamos o que estiver no label primeiro,
+            // mas o Service tem permissão para trocar se achar na outra rota.
+            MidiaTipo tipoPartida = label9.Text.Contains("Filme") ? MidiaTipo.Filme : MidiaTipo.Serie;
 
             try
             {
-                var midia = await _midiaService.GetMidia(id, tipoBusca);
+                var midia = await _midiaService.GetMidia(id, tipoPartida);
 
                 if (midia != null)
                 {
-                    // Se o Service achou algo, ele já traz o Tipo certo (Filme, Serie ou Anime)
-                    // Atualizamos o Label para o usuário não ficar confuso
+                    // O segredo está aqui: o label sempre assume o que a Factory descobriu
                     label9.Text = midia.Tipo;
-
-                    if (label9.Text == "Série")
-                    {
-                        label11.Enabled = true;
-                        label12.Enabled = true;
-                        label13.Enabled = true;
-                        label14.Enabled = true;
-                        label16.Enabled = true;
-                        PaisBox.Enabled = true;
-                        IdiomaBox.Enabled = true;
-                        ObraBox.Enabled = true;
-                        AutoresBox.Enabled = true;
-                        CriadoresBox.Enabled = true;
-                    }
-                    else if (label9.Text == "Anime")
-                    {
-                        label10.Enabled = false;
-                        MCUBox.Enabled = false;
-                    }
-
                     PreencherCampos(midia);
                 }
                 else
                 {
-                    MessageBox.Show("ID não encontrado em nenhuma categoria.", "TMDB", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show($"O ID {id} não foi encontrado como Filme ou Série/Anime.", "Não Encontrado");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro crítico: {ex.Message}");
+                MessageBox.Show($"Erro na busca: {ex.Message}");
             }
         }
     }
 }
-
-
