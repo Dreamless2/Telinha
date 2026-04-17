@@ -153,7 +153,7 @@ namespace Telinha
             currentId = item.Id;
 
             CodigoBox.Text = item.Codigo ?? string.Empty;
-            NomeBox.Text = item.Titulo ?? string.Empty;
+            NomeBox.Text = item.Nome ?? string.Empty;
             AudioBox.SelectedItem = item.Audio;
             SinopseBox.Text = item.Sinopse ?? string.Empty;
             OriginalBox.Text = item.Original ?? string.Empty;
