@@ -1,11 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using Telinha.Enums;
+﻿using System.ComponentModel;
 
-namespace Telinha.Entity
+namespace Telinha.Helpers
 {
     public class GenericHelpers
     {
