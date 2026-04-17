@@ -3,7 +3,7 @@
     public enum MidiaTipo
     {
         Filme,
-        Serie,
+        Série,
         Anime
     }
 }
