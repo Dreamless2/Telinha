@@ -203,14 +203,6 @@ namespace Telinha
                 {
                     label9.Text = midia.Tipo;   // Atualiza com o tipo real
 
-                    // Aviso útil quando troca de tipo
-                    if (!string.Equals(midia.Tipo, tipoSolicitado.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        string pedido = tipoSolicitado == MidiaTipo.Filme ? "Filme" : "Série";
-                        MessageBox.Show($"ID {id} não encontrado como {pedido}.\n\nEncontrado como: {midia.Tipo}",
-                                        "Tipo diferente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
                     PreencherCampos(midia);
                 }
                 else
