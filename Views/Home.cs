@@ -262,7 +262,7 @@ namespace Telinha
                 }
                 else if (updated)
                 {
-                    MessageBox.Show("Mídia atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"{item.Tipo} {item.Nome} atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
