@@ -252,12 +252,18 @@ namespace Telinha
 
                 var (inserted, updated) = MidiaController.SaveAsync(item).Result;
 
+                if (inserted)
+                {
+                    MessageBox.Show("Mídia inserida com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
 
 
 
-            }
+
+
+
+                }
             catch { }
 
         }
