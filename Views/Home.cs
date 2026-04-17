@@ -1,5 +1,6 @@
 ﻿using Telinha.Card;
 using Telinha.Enums;
+using Telinha.Helpers;
 using Telinha.Models;
 using Telinha.Services;
 using Telinha.Utils;
@@ -239,7 +240,7 @@ namespace Telinha
             {
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
 
-                label9.Text = midia!.Tipo;
+                label9.Text = GenericHelpers.GetDescription(tipoSolicitado);
 
                 if (Enum.TryParse(midia.Tipo, out MidiaTipo tipoReal))
                 {
