@@ -246,9 +246,11 @@ namespace Telinha
 
                 if (string.IsNullOrEmpty(item.Codigo))
                 {
-                    MessageBox.Show("O código é obrigatório para salvar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Informe um código.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                var (inserted, updated) = MidiaController.SaveAsync(item).Result;
 
 
 
