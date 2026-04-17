@@ -99,8 +99,6 @@ namespace Telinha.Services
             }
 
             return model;
-
-            return model;
         }
     }
 }
