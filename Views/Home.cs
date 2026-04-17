@@ -182,56 +182,39 @@ namespace Telinha
             ProdutoraBox.Text = midia.Estudio ?? string.Empty;
         }
 
-
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
             e.SuppressKeyPress = true;
 
-            if (!int.TryParse(CodigoBox.Text.Trim(), out int id) || id <= 0)
-            {
-                MessageBox.Show("Insira um código válido.");
-                return;
-            }
+            if (!int.TryParse(CodigoBox.Text.Trim(), out int id)) return;
 
-            // Pega o tipo baseado no que está selecionado na UI
+            // Tipo inicial baseado no Label
             MidiaTipo tipoBusca = label9.Text == "Filme" ? MidiaTipo.Filme : MidiaTipo.Serie;
 
             try
             {
                 var midia = await _midiaService.GetMidia(id, tipoBusca);
 
-                if (midia == null)
+                if (midia != null)
                 {
-                    // Se não achou como o tipo selecionado, podemos tentar o outro automaticamente?
-                    // Vamos apenas avisar por enquanto para não confundir o cache.
-                    MessageBox.Show($"ID {id} não encontrado como {label9.Text}. Verifique se a categoria está correta.",
-                                    "Não Encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                // Se a factory mudou de Serie para Anime, atualizamos o label
-                if (midia.Tipo != label9.Text)
-                {
+                    // Se o Service achou algo, ele já traz o Tipo certo (Filme, Serie ou Anime)
+                    // Atualizamos o Label para o usuário não ficar confuso
                     label9.Text = midia.Tipo;
-                }
 
-                PreencherCampos(midia);
-            }
-            catch (Exception ex)
-            {
-                // Se deu erro de NotFound, damos uma mensagem mais amigável
-                if (ex.Message.Contains("NotFound"))
-                {
-                    MessageBox.Show($"O código {id} não existe na categoria {label9.Text}.\n\n" +
-                                    "Dica: Se isso for uma Série, mude a seleção antes de buscar.",
-                                    "Erro de Categoria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    PreencherCampos(midia);
                 }
                 else
                 {
-                    MessageBox.Show($"Erro: {ex.Message}");
+                    MessageBox.Show("ID não encontrado em nenhuma categoria.", "TMDB", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro crítico: {ex.Message}");
             }
         }
     }
 }
+
+
