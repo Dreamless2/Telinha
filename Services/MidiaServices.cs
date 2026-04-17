@@ -20,19 +20,19 @@ namespace Telinha.Services
             }
 
             // 2. DEFINIR ROTAS
-            // Mapeia o enum MidiaTipo para a rota do TMDB
+            // O tipo recebido aqui define se buscamos na rota de 'movie' ou 'tv'
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
 
             var calls = new List<(string, Dictionary<string, string>?)>
-        {
-            ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
-            ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
-        };
+            {
+                ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
+                ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
+            };
 
-            // Somente filmes precisam dos títulos alternativos para buscar o título no BR
+            // Mantemos a busca de títulos alternativos apenas para filmes
             if (tipo == MidiaTipo.Filme)
             {
-                calls.Add(($"/{baseRoute}/{id}/alternative_titles", new() { ["country"] = "BR" }));
+                calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
             }
 
             // 3. REQUISIÇÕES PARALELAS
@@ -45,16 +45,18 @@ namespace Telinha.Services
             }
 
             // 4. CHAMAR A FACTORY UNIFICADA
+            // Note que removemos o parâmetro 'tipo', a factory decide baseada nos resultados
             var model = await MidiaFactory.ConstruirMidia(
-                tipo,
                 results[0],
                 results[1],
                 results.Length > 2 ? results[2] : null
             );
 
-            // 5. GRAVAR NO CACHE (JSON compactado)
+            // 5. GRAVAR NO CACHE
             if (model != null)
             {
+                // Salvaguarda: usamos o tipo detectado pela Factory para salvar no cache correto
+                // ou mantemos o 'tipo' original da chamada, conforme sua preferência de organização.
                 MidiaCache.Save(tipo, id, JsonConvert.SerializeObject(model));
             }
 
