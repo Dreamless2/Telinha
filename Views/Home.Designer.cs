@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            panel5 = new Panel();
+            PanelTopBar = new Panel();
+            PanelTopTitle = new Panel();
+            PanelBottom = new Panel();
+            PanelButtons = new Panel();
             SairButton = new Button();
             ProximoButton = new Button();
             AnteriorButton = new Button();
             SalvarButton = new Button();
             CopiarButton = new Button();
-            panel7 = new Panel();
+            PanelForms = new Panel();
             ResumoBox = new TextBox();
             ProdutoraBox = new TextBox();
             DiretorBox = new TextBox();
@@ -80,49 +80,49 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             label1 = new Label();
-            panel5.SuspendLayout();
-            panel7.SuspendLayout();
+            PanelButtons.SuspendLayout();
+            PanelForms.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // PanelTopBar
             // 
-            panel1.BackColor = Color.FromArgb(4, 52, 72);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1438, 29);
-            panel1.TabIndex = 1;
+            PanelTopBar.BackColor = Color.FromArgb(4, 52, 72);
+            PanelTopBar.Dock = DockStyle.Top;
+            PanelTopBar.Location = new Point(0, 0);
+            PanelTopBar.Name = "PanelTopBar";
+            PanelTopBar.Size = new Size(1438, 29);
+            PanelTopBar.TabIndex = 1;
             // 
-            // panel2
+            // PanelTopTitle
             // 
-            panel2.BackColor = Color.FromArgb(5, 74, 105);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 29);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1438, 58);
-            panel2.TabIndex = 2;
+            PanelTopTitle.BackColor = Color.FromArgb(5, 74, 105);
+            PanelTopTitle.Dock = DockStyle.Top;
+            PanelTopTitle.Location = new Point(0, 29);
+            PanelTopTitle.Name = "PanelTopTitle";
+            PanelTopTitle.Size = new Size(1438, 58);
+            PanelTopTitle.TabIndex = 2;
             // 
-            // panel3
+            // PanelBottom
             // 
-            panel3.BackColor = Color.FromArgb(4, 52, 72);
-            panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 888);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1438, 44);
-            panel3.TabIndex = 3;
+            PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
+            PanelBottom.Dock = DockStyle.Bottom;
+            PanelBottom.Location = new Point(0, 808);
+            PanelBottom.Name = "PanelBottom";
+            PanelBottom.Size = new Size(1438, 44);
+            PanelBottom.TabIndex = 3;
             // 
-            // panel5
+            // PanelButtons
             // 
-            panel5.Controls.Add(SairButton);
-            panel5.Controls.Add(ProximoButton);
-            panel5.Controls.Add(AnteriorButton);
-            panel5.Controls.Add(SalvarButton);
-            panel5.Controls.Add(CopiarButton);
-            panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 803);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1438, 85);
-            panel5.TabIndex = 6;
+            PanelButtons.Controls.Add(SairButton);
+            PanelButtons.Controls.Add(ProximoButton);
+            PanelButtons.Controls.Add(AnteriorButton);
+            PanelButtons.Controls.Add(SalvarButton);
+            PanelButtons.Controls.Add(CopiarButton);
+            PanelButtons.Dock = DockStyle.Bottom;
+            PanelButtons.Location = new Point(0, 723);
+            PanelButtons.Name = "PanelButtons";
+            PanelButtons.Size = new Size(1438, 85);
+            PanelButtons.TabIndex = 6;
             // 
             // SairButton
             // 
@@ -169,54 +169,55 @@
             CopiarButton.Text = "Copiar";
             CopiarButton.UseVisualStyleBackColor = true;
             // 
-            // panel7
+            // PanelForms
             // 
-            panel7.Controls.Add(ResumoBox);
-            panel7.Controls.Add(ProdutoraBox);
-            panel7.Controls.Add(DiretorBox);
-            panel7.Controls.Add(GeneroBox);
-            panel7.Controls.Add(ArtistasBox);
-            panel7.Controls.Add(FranquiaBox);
-            panel7.Controls.Add(CriadoresBox);
-            panel7.Controls.Add(TagsBox);
-            panel7.Controls.Add(TipoBox);
-            panel7.Controls.Add(IdiomaBox);
-            panel7.Controls.Add(ObraBox);
-            panel7.Controls.Add(AutoresBox);
-            panel7.Controls.Add(PaisBox);
-            panel7.Controls.Add(MCUBox);
-            panel7.Controls.Add(AlternativoBox);
-            panel7.Controls.Add(label21);
-            panel7.Controls.Add(label20);
-            panel7.Controls.Add(label19);
-            panel7.Controls.Add(label18);
-            panel7.Controls.Add(label17);
-            panel7.Controls.Add(label16);
-            panel7.Controls.Add(label15);
-            panel7.Controls.Add(label14);
-            panel7.Controls.Add(label13);
-            panel7.Controls.Add(label12);
-            panel7.Controls.Add(label11);
-            panel7.Controls.Add(label10);
-            panel7.Controls.Add(label9);
-            panel7.Controls.Add(label8);
-            panel7.Controls.Add(label7);
-            panel7.Controls.Add(LancamentoBox);
-            panel7.Controls.Add(OriginalBox);
-            panel7.Controls.Add(label6);
-            panel7.Controls.Add(label5);
-            panel7.Controls.Add(label4);
-            panel7.Controls.Add(label3);
-            panel7.Controls.Add(AudioBox);
-            panel7.Controls.Add(SinopseBox);
-            panel7.Controls.Add(label2);
-            panel7.Controls.Add(NomeBox);
-            panel7.Controls.Add(CodigoBox);
-            panel7.Controls.Add(label1);
-            panel7.Location = new Point(12, 116);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(1378, 632);
-            panel7.TabIndex = 7;
+            PanelForms.Controls.Add(ResumoBox);
+            PanelForms.Controls.Add(ProdutoraBox);
+            PanelForms.Controls.Add(DiretorBox);
+            PanelForms.Controls.Add(GeneroBox);
+            PanelForms.Controls.Add(ArtistasBox);
+            PanelForms.Controls.Add(FranquiaBox);
+            PanelForms.Controls.Add(CriadoresBox);
+            PanelForms.Controls.Add(TagsBox);
+            PanelForms.Controls.Add(TipoBox);
+            PanelForms.Controls.Add(IdiomaBox);
+            PanelForms.Controls.Add(ObraBox);
+            PanelForms.Controls.Add(AutoresBox);
+            PanelForms.Controls.Add(PaisBox);
+            PanelForms.Controls.Add(MCUBox);
+            PanelForms.Controls.Add(AlternativoBox);
+            PanelForms.Controls.Add(label21);
+            PanelForms.Controls.Add(label20);
+            PanelForms.Controls.Add(label19);
+            PanelForms.Controls.Add(label18);
+            PanelForms.Controls.Add(label17);
+            PanelForms.Controls.Add(label16);
+            PanelForms.Controls.Add(label15);
+            PanelForms.Controls.Add(label14);
+            PanelForms.Controls.Add(label13);
+            PanelForms.Controls.Add(label12);
+            PanelForms.Controls.Add(label11);
+            PanelForms.Controls.Add(label10);
+            PanelForms.Controls.Add(label9);
+            PanelForms.Controls.Add(label8);
+            PanelForms.Controls.Add(label7);
+            PanelForms.Controls.Add(LancamentoBox);
+            PanelForms.Controls.Add(OriginalBox);
+            PanelForms.Controls.Add(label6);
+            PanelForms.Controls.Add(label5);
+            PanelForms.Controls.Add(label4);
+            PanelForms.Controls.Add(label3);
+            PanelForms.Controls.Add(AudioBox);
+            PanelForms.Controls.Add(SinopseBox);
+            PanelForms.Controls.Add(label2);
+            PanelForms.Controls.Add(NomeBox);
+            PanelForms.Controls.Add(CodigoBox);
+            PanelForms.Controls.Add(label1);
+            PanelForms.Dock = DockStyle.Fill;
+            PanelForms.Location = new Point(0, 87);
+            PanelForms.Name = "PanelForms";
+            PanelForms.Size = new Size(1438, 636);
+            PanelForms.TabIndex = 7;
             // 
             // ResumoBox
             // 
@@ -563,12 +564,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1438, 932);
-            Controls.Add(panel7);
-            Controls.Add(panel5);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            ClientSize = new Size(1438, 852);
+            Controls.Add(PanelForms);
+            Controls.Add(PanelButtons);
+            Controls.Add(PanelBottom);
+            Controls.Add(PanelTopTitle);
+            Controls.Add(PanelTopBar);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(1, 2, 1, 2);
             MaximizeBox = false;
@@ -576,18 +577,18 @@
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
-            panel5.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
+            PanelButtons.ResumeLayout(false);
+            PanelForms.ResumeLayout(false);
+            PanelForms.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion       
-        private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
-        private Panel panel5;
-        private Panel panel7;
+        private Panel PanelTopBar;
+        private Panel PanelTopTitle;
+        private Panel PanelBottom;
+        private Panel PanelButtons;
+        private Panel PanelForms;
         private Label label2;
         private TextBox NomeBox;
         private TextBox CodigoBox;
