@@ -28,6 +28,6 @@ namespace Telinha.Models
         public string? MCU { get; set; }
         public string? Artistas { get; set; }
         public string? Estudio { get; set; }
-        public string? TipoSolicitado { get; set; }   // "Filme" ou "Serie"
+        public string? TipoSolicitado { get; set; }
     }
 }
