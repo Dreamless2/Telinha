@@ -19,9 +19,6 @@ namespace Telinha
             _tmdb = new TMDBServices("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZTBkNmMxNWJmY2Q4MWIzYzE0MDAyM2RhOGRhNjRjOSIsIm5iZiI6MTc1NjYwODYzMC41NTAwMDAyLCJzdWIiOiI2OGIzYjg3NjcwMzc1YzcyZDYzOTdhMzciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.md8gEfeVlGepwG9GuT5I6tcBFZYy7F_A4TewbcEZDjU");
             _midiaService = new MidiaServices(_tmdb);
             SairButton.Click += SairButton_Click!;
-            FilmesButton.Click += FilmesButton_Click!;
-            SeriesButton.Click += SeriesButton_Click!;
-            AnimesButton.Click += AnimesButton_Click!;
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
@@ -119,33 +116,6 @@ namespace Telinha
             ObraBox.Enabled = false;
             AutoresBox.Enabled = false;
             CriadoresBox.Enabled = false;
-        }
-        private void FilmesButton_Click(object sender, EventArgs e)
-        {
-            label9.Text = "Filme";
-            TipoBox.PlaceholderText = "Filme";
-            MCUBox.PlaceholderText = "Fase MCU";
-            MCUBox.Text = string.Empty;
-            PreencherMascara(MidiaTipo.Filme);
-        }
-        private void SeriesButton_Click(object sender, EventArgs e)
-        {
-            Functions.SetCamposEnabled(this, true, typeof(TextBox), typeof(Label), typeof(ComboBox));
-            label9.Text = "Série";
-            TipoBox.PlaceholderText = "Série";
-            MCUBox.PlaceholderText = "Fase MCU";
-            MCUBox.Text = string.Empty;
-            PreencherMascara(MidiaTipo.Serie);
-        }
-        private void AnimesButton_Click(object sender, EventArgs e)
-        {
-            Functions.SetCamposEnabled(this, true, typeof(TextBox), typeof(Label), typeof(ComboBox));
-            label9.Text = "Anime";
-            TipoBox.PlaceholderText = "Anime";
-            label10.Enabled = false;
-            MCUBox.Enabled = false;
-            MCUBox.PlaceholderText = "Fase MCU";
-            MCUBox.Text = string.Empty; PreencherMascara(MidiaTipo.Anime);
         }
         private void AtualizarUI(MidiaTipo tipo)
         {
