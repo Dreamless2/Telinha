@@ -188,14 +188,12 @@ namespace Telinha
 
             if (!int.TryParse(CodigoBox.Text.Trim(), out int id) || id <= 0)
             {
-                MessageBox.Show("Digite um código válido (número positivo).", "Código inválido");
+                MessageBox.Show("Digite um código numérico válido.", "Inválido");
                 return;
             }
 
-            // Define o tipo que o usuário está tentando buscar (baseado no label9)
             MidiaTipo tipoSolicitado = label9.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
-                ? MidiaTipo.Filme
-                : MidiaTipo.Serie;
+                ? MidiaTipo.Filme : MidiaTipo.Serie;
 
             try
             {
@@ -203,38 +201,27 @@ namespace Telinha
 
                 if (midia != null)
                 {
-                    // === MELHORIA IMPORTANTE ===
-                    // Mostra para o usuário qual tipo REAL foi encontrado
-                    label9.Text = midia.Tipo;                    // Ex: "Filme", "Serie" ou "Anime" (se sua factory retornar isso)
+                    label9.Text = midia.Tipo;   // Atualiza com o tipo real
 
-                    // Opcional: avisa quando o tipo encontrado é diferente do solicitado
+                    // Aviso útil quando troca de tipo
                     if (!string.Equals(midia.Tipo, tipoSolicitado.ToString(), StringComparison.OrdinalIgnoreCase))
                     {
-                        string tipoPedido = tipoSolicitado == MidiaTipo.Filme ? "Filme" : "Série/Anime";
-                        MessageBox.Show(
-                            $"O ID {id} não existe como {tipoPedido}.\n\n" +
-                            $"Foi encontrado como **{midia.Tipo}**.",
-                            "Tipo diferente encontrado",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        string pedido = tipoSolicitado == MidiaTipo.Filme ? "Filme" : "Série";
+                        MessageBox.Show($"ID {id} não encontrado como {pedido}.\n\nEncontrado como: {midia.Tipo}",
+                                        "Tipo diferente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     PreencherCampos(midia);
                 }
                 else
                 {
-                    MessageBox.Show($"O ID {id} não foi encontrado como Filme nem como Série/Anime.",
-                                    "Não Encontrado",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Warning);
+                    MessageBox.Show($"ID {id} não encontrado como Filme nem como Série/Anime.",
+                                    "Não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao buscar a mídia:\n{ex.Message}",
-                                "Erro",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao buscar:\n{ex.Message}", "Erro");
             }
         }
     }
