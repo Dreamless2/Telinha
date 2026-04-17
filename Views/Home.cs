@@ -172,18 +172,6 @@ namespace Telinha
             ArtistasBox.Text = midia.Artistas ?? string.Empty;
             ProdutoraBox.Text = midia.Estudio ?? string.Empty;
         }
-
-        private static string TipoToDisplay(MidiaTipo tipo)
-        {
-            return tipo switch
-            {
-                MidiaTipo.Filme => "Filme",
-                MidiaTipo.Serie => "Série",
-                MidiaTipo.Anime => "Anime",
-                _ => tipo.ToString()
-            };
-        }
-
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
