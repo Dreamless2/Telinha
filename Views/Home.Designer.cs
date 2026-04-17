@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel4 = new Panel();
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
