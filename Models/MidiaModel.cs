@@ -8,7 +8,7 @@ namespace Telinha.Models
         [Column(IsPrimary = true, IsIdentity = true)]
         public long Id { get; set; }
         public string? Codigo { get; set; }
-        public string? Titulo { get; set; }
+        public string? Nome { get; set; }
         public string? Audio { get; set; }
         public string? Tipo { get; set; }
         public string? Sinopse { get; set; }
@@ -27,7 +27,7 @@ namespace Telinha.Models
         public string? Diretor { get; set; }
         public string? MCU { get; set; }
         public string? Artistas { get; set; }
-        public string? Estudio { get; set; }
+        public string? Produtora { get; set; }
         public string? TipoSolicitado { get; set; }
     }
 }

@@ -53,7 +53,7 @@ namespace Telinha.Data
 CREATE TABLE IF NOT EXISTS midia (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     codigo TEXT,
-    titulo TEXT,
+    nome TEXT,
     audio TEXT CHECK(audio IN ('Dublado', 'Legendado', 'Nacional', 'Desconhecido')),
     tipo TEXT CHECK(tipo IN ('Filme', 'Serie', 'Anime')),
     sinopse TEXT,

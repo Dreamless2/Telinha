@@ -254,7 +254,8 @@ namespace Telinha
 
                 if (inserted)
                 {
-                    MessageBox.Show("Mídia inserida com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Mídia '{item.no
+                        ' inserida com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (updated)
                 {
