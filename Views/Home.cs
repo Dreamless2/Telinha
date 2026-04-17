@@ -54,11 +54,11 @@ namespace Telinha
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
             {
                 Clipboard.SetText(ResumoBox.Text);
-                MessageBox.Show("Resumo copiado para a área de transferência!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Copiado para a transferência!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Não há resumo para copiar!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nada para ser copiado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void SairButton_Click(object sender, EventArgs e)
