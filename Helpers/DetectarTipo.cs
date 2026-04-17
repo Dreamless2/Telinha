@@ -7,7 +7,7 @@ using Telinha.Enums;
 
 namespace Telinha.Entity
 {
-    public class DetectarTipo
+    public class GenericHelpers
 
     {
 
@@ -18,5 +18,4 @@ namespace Telinha.Entity
             return attr?.Description ?? value.ToString();
         }
     }
-}
 }
