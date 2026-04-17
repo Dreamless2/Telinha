@@ -100,7 +100,7 @@ namespace Telinha.Card
                 _ => "Anime"
             };
 
-            sb.AppendLine($"**{labelTipo}:** {_titulo}");
+            sb.AppendLine($"**{labelTipo}:** __{_titulo}__");
             sb.AppendLine($"**Franquia:** {_franquia}");
 
             // Bloco de Autoria (Só Séries e Animes)
