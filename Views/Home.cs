@@ -185,36 +185,32 @@ namespace Telinha
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Enter)
-                return;
-
+            if (e.KeyCode != Keys.Enter) return;
             e.SuppressKeyPress = true;
 
             if (!int.TryParse(CodigoBox.Text.Trim(), out int id) || id <= 0)
             {
-                MessageBox.Show("Por favor, insira um código válido (número positivo).", "Código Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Insira um código válido.");
                 return;
             }
 
-            // 1. Determina a ROTA inicial (Filme ou TV)
-            // No TMDB, Anime e Série compartilham a rota 'tv'. 
-            // Portanto, se o label for "Anime", pedimos ao Service a rota de Série.
+            // Pega o tipo baseado no que está selecionado na UI
             MidiaTipo tipoBusca = label9.Text == "Filme" ? MidiaTipo.Filme : MidiaTipo.Serie;
 
             try
             {
-                // 2. Busca a mídia
                 var midia = await _midiaService.GetMidia(id, tipoBusca);
 
                 if (midia == null)
                 {
-                    MessageBox.Show("Registro não encontrado na base do TMDB.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Se não achou como o tipo selecionado, podemos tentar o outro automaticamente?
+                    // Vamos apenas avisar por enquanto para não confundir o cache.
+                    MessageBox.Show($"ID {id} não encontrado como {label9.Text}. Verifique se a categoria está correta.",
+                                    "Não Encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                // 3. AUTO-CORREÇÃO DA UI (Opcional, mas recomendado)
-                // Se a factory detectou que é Anime mas o label dizia Série (ou vice-versa), 
-                // você pode atualizar a UI para refletir a realidade.
+                // Se a factory mudou de Serie para Anime, atualizamos o label
                 if (midia.Tipo != label9.Text)
                 {
                     label9.Text = midia.Tipo;
@@ -224,8 +220,17 @@ namespace Telinha
             }
             catch (Exception ex)
             {
-                string mensagem = ex is HttpRequestException ? "Erro de conexão com a API." : ex.Message;
-                MessageBox.Show($"Erro ao buscar mídia:\n{mensagem}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Se deu erro de NotFound, damos uma mensagem mais amigável
+                if (ex.Message.Contains("NotFound"))
+                {
+                    MessageBox.Show($"O código {id} não existe na categoria {label9.Text}.\n\n" +
+                                    "Dica: Se isso for uma Série, mude a seleção antes de buscar.",
+                                    "Erro de Categoria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show($"Erro: {ex.Message}");
+                }
             }
         }
     }
