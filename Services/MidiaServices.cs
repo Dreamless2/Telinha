@@ -89,12 +89,16 @@ namespace Telinha.Services
 
             var model = await MidiaFactory.ConstruirMidia(results[0], results[1], results.Length > 2 ? results[2] : null, tipo);
 
+
             if (model != null)
             {
-                // Salva no cache com o tipo REAL detectado pela factory
-                Enum.TryParse(model.Tipo, out MidiaTipo tipoReal);
-                MidiaCache.Save(tipoReal, id, JsonConvert.SerializeObject(model));
+                if (Enum.TryParse(model.Tipo, out MidiaTipo tipoReal))
+                    MidiaCache.Save(tipoReal, id, JsonConvert.SerializeObject(model));
+                else
+                    MidiaCache.Save(tipo, id, JsonConvert.SerializeObject(model));
             }
+
+            return model;
 
             return model;
         }
