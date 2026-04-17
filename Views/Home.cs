@@ -199,7 +199,6 @@ namespace Telinha
             {
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
 
-
                 label9.Text = midia.Tipo;   // Atualiza com o tipo real
 
                 PreencherCampos(midia);
