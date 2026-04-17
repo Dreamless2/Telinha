@@ -228,7 +228,7 @@ namespace Telinha
             {
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
 
-                label9.Text = midia!.Tipo;   // Atualiza com o tipo real
+                label9.Text = midia!.Tipo;
 
                 if (Enum.TryParse(midia.Tipo, out MidiaTipo tipoReal))
                 {
