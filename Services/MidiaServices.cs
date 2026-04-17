@@ -16,14 +16,15 @@ namespace Telinha.Services
             string? cached = MidiaCache.Get(tipo, id, maxAgeMinutes: 720);
             if (cached != null) return JsonConvert.DeserializeObject<MidiaModel>(cached);
 
+            // 2. TENTAR A ROTA INFORMADA PELO USUÁRIO
             try
             {
-                return await ExecutarBusca(id, tipo);
+                return await ExecutarBusca(id, tipoInicial);
             }
             catch (Exception ex) when (ex.Message.Contains("404") || ex.Message.Contains("NotFound"))
             {
-                // 2. SE DEU ERRO, TENTA A OUTRA ROTA AUTOMATICAMENTE
-                var tipoAlternativo = (tipo == MidiaTipo.Filme) ? MidiaTipo.Serie : MidiaTipo.Filme;
+                // 3. SE NÃO ACHOU, TENTA A OUTRA ROTA IMEDIATAMENTE
+                var tipoAlternativo = (tipoInicial == MidiaTipo.Filme) ? MidiaTipo.Serie : MidiaTipo.Filme;
 
                 try
                 {
@@ -31,7 +32,7 @@ namespace Telinha.Services
                 }
                 catch
                 {
-                    return null; // Se falhar na segunda também, não existe mesmo.
+                    return null; // Não existe em nenhuma das duas
                 }
             }
         }
