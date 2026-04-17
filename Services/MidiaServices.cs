@@ -87,7 +87,6 @@ namespace Telinha.Services
             if (results[0]?["status_code"]?.ToObject<int>() == 34)
                 return null;
 
-
             // ❗ validação de conteúdo real
             if (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString()))
                 return null;
