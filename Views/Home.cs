@@ -230,6 +230,11 @@ namespace Telinha
 
                 label9.Text = midia!.Tipo;   // Atualiza com o tipo real
 
+                if (Enum.TryParse(midia.Tipo, out MidiaTipo tipoReal))
+                {
+                    AtualizarUI(tipoReal);
+                }
+
                 PreencherCampos(midia);
 
             }
