@@ -23,8 +23,10 @@ namespace Telinha
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
+            SalvarButton.Click += SalvarButton_Click,;
             ConectarEventos();
         }
+
         private void PreencherMascara(MidiaTipo tipo)
         {
             var card = new MidiaCard(
@@ -169,7 +171,6 @@ namespace Telinha
             ProdutoraBox.Text = item.Estudio ?? string.Empty;
         }
 
-
         private void Principal_Load(object sender, EventArgs e)
         {
             //PreencherMascara(MidiaTipo.Filme);
@@ -216,6 +217,35 @@ namespace Telinha
                 MessageBox.Show("Nada para ser copiado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void SalvarButton_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                var item = new MidiaModel
+                {
+                    Codigo = CodigoBox.Text.Trim(),
+                    Titulo = NomeBox.Text.Trim(),
+                    Audio = AudioBox.SelectedItem?.ToString(),
+                    Sinopse = SinopseBox.Text.Trim(),
+                    Original = OriginalBox.Text.Trim(),
+                    Lancamento = LancamentoBox.Text.Trim(),
+                    Alternativo = AlternativoBox.Text.Trim(),
+                    Tags = TagsBox.Text.Trim(),
+                    Tipo = TipoBox.Text.Trim(),
+
+
+                };
+            }
+            catch { }
+
+        }
+
+
+
+
+
+
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
