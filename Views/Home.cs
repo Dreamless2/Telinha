@@ -143,10 +143,35 @@ namespace Telinha
         }
 
 
-        private void PreencherCampos()
+        private async Task PreencherCampos()
         {
-            var item = MidiaController.get
+            var item = await MidiaController.GetFirstAsync<MidiaModel>();
+
+            if (item == null) return;
+
+            currentId = item.Id;
+
+            CodigoBox.Text = item.Codigo ?? string.Empty;
+            NomeBox.Text = item.Titulo ?? string.Empty;
+            AudioBox.Text = string.IsNullOrWhiteSpace(item.Audio) ? "Dublado" : item.Audio;
+
+            AudioBox.SelectedItem = audioValue;
+            SinopseBox.Text = item.Sinopse ?? string.Empty;
+            OriginalBox.Text = item.Original ?? string.Empty;
+            LancamentoBox.Text = item.Lancamento ?? string.Empty;
+            AlternativoBox.Text = item.Alternativo ?? string.Empty;
+            TagsBox.Text = item.Tags ?? string.Empty;
+            PaisBox.Text = item.Pais ?? string.Empty;
+            IdiomaBox.Text = item.Idioma ?? string.Empty;
+            AutoresBox.Text = item.Autores ?? string.Empty;
+            FranquiaBox.Text = item.Franquia ?? string.Empty;
+            CriadoresBox.Text = item.Criadores ?? string.Empty;
+            GeneroBox.Text = item.Genero ?? string.Empty;
+            DiretorBox.Text = item.Diretor ?? string.Empty;
+            ArtistasBox.Text = item.Artistas ?? string.Empty;
+            ProdutoraBox.Text = item.Estudio ?? string.Empty;
         }
+
 
         private void Principal_Load(object sender, EventArgs e)
         {
