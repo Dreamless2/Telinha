@@ -142,7 +142,6 @@ namespace Telinha
             ProdutoraBox.Text = midia.Estudio ?? string.Empty;
         }
 
-
         private async Task PreencherCampos()
         {
             var item = await MidiaController.GetFirstAsync<MidiaModel>();
@@ -153,9 +152,7 @@ namespace Telinha
 
             CodigoBox.Text = item.Codigo ?? string.Empty;
             NomeBox.Text = item.Titulo ?? string.Empty;
-            AudioBox.Text = string.IsNullOrWhiteSpace(item.Audio) ? "Dublado" : item.Audio;
-
-            AudioBox.SelectedItem = audioValue;
+            AudioBox.SelectedItem = item.Audio;
             SinopseBox.Text = item.Sinopse ?? string.Empty;
             OriginalBox.Text = item.Original ?? string.Empty;
             LancamentoBox.Text = item.Lancamento ?? string.Empty;
@@ -175,7 +172,7 @@ namespace Telinha
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            PreencherMascara(MidiaTipo.Filme);
+            //PreencherMascara(MidiaTipo.Filme);
             TipoLabel.Text = "Filme";
             TipoBox.PlaceholderText = "Filme";
             PaisLabel.Enabled = false;
@@ -188,7 +185,23 @@ namespace Telinha
             ObraBox.Enabled = false;
             AutoresBox.Enabled = false;
             CriadoresBox.Enabled = false;
-        }
+
+            try
+            {
+                if (MidiaController.Any<MidiaModel>())
+                {
+                    {
+                        PreencherCampos().Wait();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar dados:\n{ex.Message}", "Erro");
+
+
+
+            }
 
         private void CopiarButton_Click(object sender, EventArgs e)
         {
