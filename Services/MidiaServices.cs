@@ -28,8 +28,11 @@ namespace Telinha.Services
             try
             {
                 model = await ExecutarBusca(id, tipoSolicitado);
-                if (model != null)
+
+                // ✔️ só retorna se o tipo bater com o solicitado
+                if (model != null && TipoConfere(model, tipoSolicitado))
                     return model;
+
             }
             catch
             {
