@@ -160,6 +160,7 @@ namespace Telinha
             LancamentoBox.Text = item.Lancamento ?? string.Empty;
             AlternativoBox.Text = item.Alternativo ?? string.Empty;
             TagsBox.Text = item.Tags ?? string.Empty;
+            MCUBox.Text = item.MCU ?? string.Empty;
             PaisBox.Text = item.Pais ?? string.Empty;
             IdiomaBox.Text = item.Idioma ?? string.Empty;
             AutoresBox.Text = item.Autores ?? string.Empty;
@@ -168,7 +169,7 @@ namespace Telinha
             GeneroBox.Text = item.Genero ?? string.Empty;
             DiretorBox.Text = item.Diretor ?? string.Empty;
             ArtistasBox.Text = item.Artistas ?? string.Empty;
-            ProdutoraBox.Text = item.Estudio ?? string.Empty;
+            ProdutoraBox.Text = item.Produtora ?? string.Empty;
         }
 
         private void Principal_Load(object sender, EventArgs e)
