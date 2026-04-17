@@ -57,8 +57,6 @@ namespace Telinha.Services
 
             await Task.WhenAll(filmeTask, serieTask);
 
-            var filme = filmeTask.Result;
-            var serie = serieTask.Result;
 
             // 🔹 3. DECISÃO INTELIGENTE
             if (tipoSolicitado == MidiaTipo.Filme)
