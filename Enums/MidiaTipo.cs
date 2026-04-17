@@ -1,9 +1,12 @@
-﻿namespace Telinha.Enums
+﻿using System.ComponentModel;
+
+namespace Telinha.Enums
 {
     public enum MidiaTipo
     {
         Filme,
-        Série,
+        [Description("Série")]
+        Serie,
         Anime
     }
 }
