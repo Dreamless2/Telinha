@@ -198,10 +198,8 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao carregar dados:\n{ex.Message}", "Erro");
-
-
-
             }
+        }
 
         private void CopiarButton_Click(object sender, EventArgs e)
         {
