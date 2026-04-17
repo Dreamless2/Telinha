@@ -198,7 +198,7 @@ namespace Telinha
             catch (Exception ex)
             {
                 currentId = 0;
-                MessageBox.Show($"Erro ao carregar dados:\n{ex.Message}", "Erro");
+                MessageBox.Show($"Erro: {ex.Message}", "Erro");
 
             }
         }
