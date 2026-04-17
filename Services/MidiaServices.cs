@@ -59,9 +59,6 @@ namespace Telinha.Services
             return model.Tipo.Equals("Serie", StringComparison.OrdinalIgnoreCase)
                 || model.Tipo.Equals("Anime", StringComparison.OrdinalIgnoreCase);
         }
-        turn msg.Contains("404") || msg.Contains("not found");
-        }
-
 
         // Método auxiliar para evitar repetição de código
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
