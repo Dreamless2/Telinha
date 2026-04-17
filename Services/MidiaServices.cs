@@ -97,7 +97,6 @@ namespace Telinha.Services
 
             var model = await MidiaFactory.ConstruirMidia(results[0], results[1], results.Length > 2 ? results[2] : null, tipo);
 
-
             if (model != null)
             {
                 if (Enum.TryParse(model.Tipo, out MidiaTipo tipoReal))
