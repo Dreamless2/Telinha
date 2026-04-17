@@ -10,33 +10,37 @@ namespace Telinha.Services
     {
         private readonly TMDBServices _tmdb = tmdb;
 
-        public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoInicial)
+        public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
-            // 1. TENTAR CACHE LOCAL (Mantemos o tipo original da solicitação)
-            string? cached = MidiaCache.Get(MidiaTipo.Filme, id, 720) ?? MidiaCache.Get(MidiaTipo.Serie, id, 720);
-            if (cached != null) return JsonConvert.DeserializeObject<MidiaModel>(cached);
+            // Tenta cache específico do tipo que o usuário pediu primeiro
+            string? cached = MidiaCache.Get(tipoSolicitado, id, 720);
+            if (cached != null)
+                return JsonConvert.DeserializeObject<MidiaModel>(cached);
 
-            // 2. TENTAR A ROTA INFORMADA PELO USUÁRIO
+            // Se não tem cache do tipo pedido, tenta o tipo alternativo (fallback)
+            var tipoAlternativo = (tipoSolicitado == MidiaTipo.Filme) ? MidiaTipo.Serie : MidiaTipo.Filme;
+            cached = MidiaCache.Get(tipoAlternativo, id, 720);
+            if (cached != null)
+                return JsonConvert.DeserializeObject<MidiaModel>(cached);
+
+            // Nenhum cache encontrado → busca na API
             try
             {
-                return await ExecutarBusca(id, tipoInicial);
+                return await ExecutarBusca(id, tipoSolicitado);
             }
             catch (Exception ex) when (ex.Message.Contains("404") || ex.Message.Contains("NotFound"))
             {
-                // 3. SE NÃO ACHOU, TENTA A OUTRA ROTA IMEDIATAMENTE
-                var tipoAlternativo = (tipoInicial == MidiaTipo.Filme) ? MidiaTipo.Serie : MidiaTipo.Filme;
-
+                // Tenta o tipo alternativo
                 try
                 {
                     return await ExecutarBusca(id, tipoAlternativo);
                 }
                 catch
                 {
-                    return null; // Não existe em nenhuma das duas
+                    return null;
                 }
             }
         }
-
         // Método auxiliar para evitar repetição de código
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
         {
