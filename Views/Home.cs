@@ -190,9 +190,9 @@ namespace Telinha
             {
                 if (MidiaController.Any<MidiaModel>())
                 {
-                    {
-                        PreencherDados().Wait();
-                    }
+
+
+
                 }
             }
             catch (Exception ex)
