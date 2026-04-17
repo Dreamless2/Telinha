@@ -49,22 +49,6 @@ namespace Telinha
             );
             ResumoBox.Text = card.GetFormattedText();
         }
-        private void CopiarButton_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
-            {
-                Clipboard.SetText(ResumoBox.Text);
-                MessageBox.Show("Copiado para a transferência!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Nada para ser copiado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private void SairButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         private void ConectarEventos()
         {
             var controles = new Control[] {
@@ -100,22 +84,6 @@ namespace Telinha
             {
                 PreencherMascara(MidiaTipo.Anime);
             }
-        }
-        private void Principal_Load(object sender, EventArgs e)
-        {
-            PreencherMascara(MidiaTipo.Filme);
-            TipoLabel.Text = "Filme";
-            TipoBox.PlaceholderText = "Filme";
-            PaisLabel.Enabled = false;
-            IdiomaLabel.Enabled = false;
-            ObraLabel.Enabled = false;
-            AutoresLabel.Enabled = false;
-            CriadoresLabel.Enabled = false;
-            PaisBox.Enabled = false;
-            IdiomaBox.Enabled = false;
-            ObraBox.Enabled = false;
-            AutoresBox.Enabled = false;
-            CriadoresBox.Enabled = false;
         }
         private void AtualizarUI(MidiaTipo tipo)
         {
@@ -172,6 +140,44 @@ namespace Telinha
             ArtistasBox.Text = midia.Artistas ?? string.Empty;
             ProdutoraBox.Text = midia.Estudio ?? string.Empty;
         }
+
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            PreencherMascara(MidiaTipo.Filme);
+            TipoLabel.Text = "Filme";
+            TipoBox.PlaceholderText = "Filme";
+            PaisLabel.Enabled = false;
+            IdiomaLabel.Enabled = false;
+            ObraLabel.Enabled = false;
+            AutoresLabel.Enabled = false;
+            CriadoresLabel.Enabled = false;
+            PaisBox.Enabled = false;
+            IdiomaBox.Enabled = false;
+            ObraBox.Enabled = false;
+            AutoresBox.Enabled = false;
+            CriadoresBox.Enabled = false;
+        }
+
+        private void CopiarButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
+            {
+                Clipboard.SetText(ResumoBox.Text);
+                MessageBox.Show("Copiado para a transferência!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Nada para ser copiado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void SairButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
