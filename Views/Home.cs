@@ -133,6 +133,8 @@ namespace Telinha
             LancamentoBox.Text = midia.Lancamento ?? string.Empty;
             AlternativoBox.Text = midia.Alternativo ?? string.Empty;
             TagsBox.Text = midia.Tags ?? string.Empty;
+            TipoBox.Text = midia.Tipo ?? string.Empty;
+            MCUBox.Text = midia.MCU ?? string.Empty;
             PaisBox.Text = midia.Pais ?? string.Empty;
             IdiomaBox.Text = midia.Idioma ?? string.Empty;
             AutoresBox.Text = midia.Autores ?? string.Empty;
@@ -141,7 +143,7 @@ namespace Telinha
             GeneroBox.Text = midia.Genero ?? string.Empty;
             DiretorBox.Text = midia.Diretor ?? string.Empty;
             ArtistasBox.Text = midia.Artistas ?? string.Empty;
-            ProdutoraBox.Text = midia.Estudio ?? string.Empty;
+            ProdutoraBox.Text = midia.Produtora ?? string.Empty;
         }
 
         private async Task PreencherCampos()
