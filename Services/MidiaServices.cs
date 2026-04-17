@@ -32,7 +32,7 @@ namespace Telinha.Services
                 if (model != null)
                     return model;
             }
-            catch (Exception ex) when (IsNotFoundException(ex))
+            catch (Exception ex) when (NotFoundException(ex))
             {
                 // Não encontrou como o tipo solicitado → tenta o alternativo
             }
@@ -46,7 +46,7 @@ namespace Telinha.Services
             {
                 model = await ExecutarBusca(id, tipoAlternativo);
             }
-            catch (Exception ex) when (IsNotFoundException(ex))
+            catch (Exception ex) when (NotFoundException(ex))
             {
                 return null; // Não existe em nenhum dos dois
             }
@@ -58,7 +58,7 @@ namespace Telinha.Services
             return model;
         }
 
-        private bool IsNotFoundException(Exception ex)
+        private static bool NotFoundException(Exception ex)
         {
             if (ex is HttpRequestException httpEx &&
                 httpEx.StatusCode == System.Net.HttpStatusCode.NotFound)
