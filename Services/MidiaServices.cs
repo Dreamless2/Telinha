@@ -51,14 +51,15 @@ namespace Telinha.Services
             return null;
         }
 
-        private static bool NotFoundException(Exception ex)
+        private static bool TipoConfere(MidiaModel model, MidiaTipo solicitado)
         {
-            if (ex is HttpRequestException httpEx &&
-                httpEx.StatusCode == System.Net.HttpStatusCode.NotFound)
-                return true;
+            if (solicitado == MidiaTipo.Filme)
+                return model.Tipo.Equals("Filme", StringComparison.OrdinalIgnoreCase);
 
-            string msg = ex.Message.ToLowerInvariant();
-            return msg.Contains("404") || msg.Contains("not found");
+            return model.Tipo.Equals("Serie", StringComparison.OrdinalIgnoreCase)
+                || model.Tipo.Equals("Anime", StringComparison.OrdinalIgnoreCase);
+        }
+        turn msg.Contains("404") || msg.Contains("not found");
         }
 
 
