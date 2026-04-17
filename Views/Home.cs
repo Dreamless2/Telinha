@@ -188,56 +188,45 @@ namespace Telinha
             if (e.KeyCode != Keys.Enter)
                 return;
 
-            // Impede o som de "ding" e o comportamento padrão do Enter no TextBox
             e.SuppressKeyPress = true;
 
-            // Validação do código
             if (!int.TryParse(CodigoBox.Text.Trim(), out int id) || id <= 0)
             {
                 MessageBox.Show("Por favor, insira um código válido (número positivo).", "Código Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Determina o tipo de mídia a partir do Label
-            MidiaTipo tipo;
+            // 1. Determina a ROTA inicial (Filme ou TV)
+            // No TMDB, Anime e Série compartilham a rota 'tv'. 
+            // Portanto, se o label for "Anime", pedimos ao Service a rota de Série.
+            MidiaTipo tipoBusca = label9.Text == "Filme" ? MidiaTipo.Filme : MidiaTipo.Serie;
+
             try
             {
-                tipo = label9.Text switch
+                // 2. Busca a mídia
+                var midia = await _midiaService.GetMidia(id, tipoBusca);
+
+                if (midia == null)
                 {
-                    "Filme" => MidiaTipo.Filme,
-                    "Série" => MidiaTipo.Serie,
-                    "Anime" => MidiaTipo.Anime,
-                    _ => throw new Exception($"Tipo de mídia desconhecido: {label9.Text}")
-                };
+                    MessageBox.Show("Registro não encontrado na base do TMDB.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // 3. AUTO-CORREÇÃO DA UI (Opcional, mas recomendado)
+                // Se a factory detectou que é Anime mas o label dizia Série (ou vice-versa), 
+                // você pode atualizar a UI para refletir a realidade.
+                if (midia.Tipo != label9.Text)
+                {
+                    label9.Text = midia.Tipo;
+                }
+
+                PreencherCampos(midia);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                // Chama o método assíncrono corretamente com await
-                var midia = await _midiaService.GetMidia(id, tipo);
-
-                // Aqui você preenche os campos com o resultado
-                PreencherCampos(midia!);   // ajuste o nome do método se necessário
-            }
-            catch (Exception ex) when (ex is HttpRequestException || ex.Message.Contains("não encontrado"))
-            {
-                MessageBox.Show("Registro não encontrado na base do TMDB.",
-                                "Erro de API",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao buscar mídia:\n{ex.Message}",
-                                "Erro",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                string mensagem = ex is HttpRequestException ? "Erro de conexão com a API." : ex.Message;
+                MessageBox.Show($"Erro ao buscar mídia:\n{mensagem}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
-}
+    }
