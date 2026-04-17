@@ -7,8 +7,8 @@ namespace Telinha.Controller
     {
         private static IFreeSql DB => Database.DB;
 
-        private static readonly Dictionary<Type, PropertyInfo?> _codigoCache = new();
-        private static readonly Dictionary<Type, PropertyInfo?> _idCache = new();
+        private static readonly Dictionary<Type, PropertyInfo?> _codigoCache = [];
+        private static readonly Dictionary<Type, PropertyInfo?> _idCache = [];
 
         private static PropertyInfo? GetCodigoProp(Type t)
         {
@@ -64,10 +64,14 @@ namespace Telinha.Controller
         }
 
         // --- CONSULTAS ---
-
         public static async Task<T?> GetByIdAsync<T>(long id) where T : class
             => await DB.Select<T>()
                 .WhereDynamic(new { Id = id })
+                .FirstAsync();
+
+        public static async Task<T?> GetFirstAsync<T>() where T : class
+            => await DB.Select<T>()
+                .OrderBy("id")
                 .FirstAsync();
 
         public static T? GetNext<T>(long id) where T : class

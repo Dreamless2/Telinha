@@ -1,4 +1,5 @@
 ﻿using Telinha.Card;
+using Telinha.Controller;
 using Telinha.Enums;
 using Telinha.Helpers;
 using Telinha.Models;
@@ -141,6 +142,11 @@ namespace Telinha
             ProdutoraBox.Text = midia.Estudio ?? string.Empty;
         }
 
+
+        private void PreencherCampos()
+        {
+            var item = MidiaController.get
+        }
 
         private void Principal_Load(object sender, EventArgs e)
         {
