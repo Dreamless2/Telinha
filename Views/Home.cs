@@ -122,21 +122,16 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-            // 🔹 Labels
             PaisLabel.Enabled = !isFilme;
             IdiomaLabel.Enabled = !isFilme;
             ObraLabel.Enabled = !isFilme;
             AutoresLabel.Enabled = !isFilme;
             CriadoresLabel.Enabled = !isFilme;
-
-            // 🔹 Campos
             PaisBox.Enabled = !isFilme;
             IdiomaBox.Enabled = !isFilme;
             ObraBox.Enabled = !isFilme;
             AutoresBox.Enabled = !isFilme;
             CriadoresBox.Enabled = !isFilme;
-
-            // 🔹 MCU (regra especial)
             MCUBox.Enabled = !isFilme && !isAnime;
 
             // 🔹 Placeholder principal
