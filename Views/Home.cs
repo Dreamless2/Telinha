@@ -225,7 +225,7 @@ namespace Telinha
                 var item = new MidiaModel
                 {
                     Codigo = CodigoBox.Text.Trim(),
-                    Titulo = NomeBox.Text.Trim(),
+                    Nome = NomeBox.Text.Trim(),
                     Audio = AudioBox.SelectedItem?.ToString(),
                     Sinopse = SinopseBox.Text.Trim(),
                     Original = OriginalBox.Text.Trim(),
@@ -233,6 +233,7 @@ namespace Telinha
                     Alternativo = AlternativoBox.Text.Trim(),
                     Tags = TagsBox.Text.Trim(),
                     Tipo = TipoBox.Text.Trim(),
+                    MCU = MCUBox.Text.Trim(),
                     Pais = PaisBox.Text.Trim(),
                     Idioma = IdiomaBox.Text.Trim(),
                     Autores = AutoresBox.Text.Trim(),
@@ -258,22 +259,22 @@ namespace Telinha
                         ' inserida com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (updated)
-                {
-                    MessageBox.Show("Mídia atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    {
+                        MessageBox.Show("Mídia atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhuma alteração detectada.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
+
+
+
+
+
+
                 }
-                else
-                {
-                    MessageBox.Show("Nenhuma alteração detectada.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-
-
-
-
-
-
-
-            }
             catch { }
 
         }
