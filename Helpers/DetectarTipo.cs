@@ -8,11 +8,10 @@ using Telinha.Enums;
 namespace Telinha.Entity
 {
     public class DetectarTipo
-    {
-        public void
+
     {
 
-            public static string GetDescription(Enum value)
+        public static string GetDescription(Enum value)
         {
             var field = value.GetType().GetField(value.ToString());
             var attr = (DescriptionAttribute?)Attribute.GetCustomAttribute(field!, typeof(DescriptionAttribute));
