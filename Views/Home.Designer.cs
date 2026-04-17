@@ -53,33 +53,33 @@
             PaisBox = new TextBox();
             MCUBox = new TextBox();
             AlternativoBox = new TextBox();
-            label21 = new Label();
-            label20 = new Label();
-            label19 = new Label();
-            label18 = new Label();
-            label17 = new Label();
-            label16 = new Label();
-            label15 = new Label();
-            label14 = new Label();
-            label13 = new Label();
-            label12 = new Label();
-            label11 = new Label();
-            label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
+            ResumoLabel = new Label();
+            ProdutoraLabel = new Label();
+            ArtistasLabel = new Label();
+            DiretorLabel = new Label();
+            GeneroLabel = new Label();
+            CriadoresLabel = new Label();
+            FranquiaLabel = new Label();
+            AutoresLabel = new Label();
+            ObraLabel = new Label();
+            IdiomaLabel = new Label();
+            PaisLabel = new Label();
+            MCULabel = new Label();
+            TipoLabel = new Label();
+            TagsLabel = new Label();
+            AlternativoLabel = new Label();
             LancamentoBox = new TextBox();
             OriginalBox = new TextBox();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
+            LancamentoLabel = new Label();
+            OriginalLabel = new Label();
+            SinopseLabel = new Label();
+            AudioLabel = new Label();
             AudioBox = new ComboBox();
             SinopseBox = new TextBox();
-            label2 = new Label();
+            NomeLabel = new Label();
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
-            label1 = new Label();
+            CodigoLabel = new Label();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -106,7 +106,7 @@
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 808);
+            PanelBottom.Location = new Point(0, 804);
             PanelBottom.Name = "PanelBottom";
             PanelBottom.Size = new Size(1438, 44);
             PanelBottom.TabIndex = 3;
@@ -119,7 +119,7 @@
             PanelButtons.Controls.Add(SalvarButton);
             PanelButtons.Controls.Add(CopiarButton);
             PanelButtons.Dock = DockStyle.Bottom;
-            PanelButtons.Location = new Point(0, 723);
+            PanelButtons.Location = new Point(0, 719);
             PanelButtons.Name = "PanelButtons";
             PanelButtons.Size = new Size(1438, 85);
             PanelButtons.TabIndex = 6;
@@ -186,37 +186,37 @@
             PanelForms.Controls.Add(PaisBox);
             PanelForms.Controls.Add(MCUBox);
             PanelForms.Controls.Add(AlternativoBox);
-            PanelForms.Controls.Add(label21);
-            PanelForms.Controls.Add(label20);
-            PanelForms.Controls.Add(label19);
-            PanelForms.Controls.Add(label18);
-            PanelForms.Controls.Add(label17);
-            PanelForms.Controls.Add(label16);
-            PanelForms.Controls.Add(label15);
-            PanelForms.Controls.Add(label14);
-            PanelForms.Controls.Add(label13);
-            PanelForms.Controls.Add(label12);
-            PanelForms.Controls.Add(label11);
-            PanelForms.Controls.Add(label10);
-            PanelForms.Controls.Add(label9);
-            PanelForms.Controls.Add(label8);
-            PanelForms.Controls.Add(label7);
+            PanelForms.Controls.Add(ResumoLabel);
+            PanelForms.Controls.Add(ProdutoraLabel);
+            PanelForms.Controls.Add(ArtistasLabel);
+            PanelForms.Controls.Add(DiretorLabel);
+            PanelForms.Controls.Add(GeneroLabel);
+            PanelForms.Controls.Add(CriadoresLabel);
+            PanelForms.Controls.Add(FranquiaLabel);
+            PanelForms.Controls.Add(AutoresLabel);
+            PanelForms.Controls.Add(ObraLabel);
+            PanelForms.Controls.Add(IdiomaLabel);
+            PanelForms.Controls.Add(PaisLabel);
+            PanelForms.Controls.Add(MCULabel);
+            PanelForms.Controls.Add(TipoLabel);
+            PanelForms.Controls.Add(TagsLabel);
+            PanelForms.Controls.Add(AlternativoLabel);
             PanelForms.Controls.Add(LancamentoBox);
             PanelForms.Controls.Add(OriginalBox);
-            PanelForms.Controls.Add(label6);
-            PanelForms.Controls.Add(label5);
-            PanelForms.Controls.Add(label4);
-            PanelForms.Controls.Add(label3);
+            PanelForms.Controls.Add(LancamentoLabel);
+            PanelForms.Controls.Add(OriginalLabel);
+            PanelForms.Controls.Add(SinopseLabel);
+            PanelForms.Controls.Add(AudioLabel);
             PanelForms.Controls.Add(AudioBox);
             PanelForms.Controls.Add(SinopseBox);
-            PanelForms.Controls.Add(label2);
+            PanelForms.Controls.Add(NomeLabel);
             PanelForms.Controls.Add(NomeBox);
             PanelForms.Controls.Add(CodigoBox);
-            PanelForms.Controls.Add(label1);
+            PanelForms.Controls.Add(CodigoLabel);
             PanelForms.Dock = DockStyle.Fill;
             PanelForms.Location = new Point(0, 87);
             PanelForms.Name = "PanelForms";
-            PanelForms.Size = new Size(1438, 636);
+            PanelForms.Size = new Size(1438, 632);
             PanelForms.TabIndex = 7;
             // 
             // ResumoBox
@@ -325,140 +325,140 @@
             AlternativoBox.Size = new Size(594, 23);
             AlternativoBox.TabIndex = 27;
             // 
-            // label21
+            // ResumoLabel
             // 
-            label21.AutoSize = true;
-            label21.Location = new Point(866, 13);
-            label21.Name = "label21";
-            label21.Size = new Size(50, 15);
-            label21.TabIndex = 26;
-            label21.Text = "Resumo";
+            ResumoLabel.AutoSize = true;
+            ResumoLabel.Location = new Point(866, 13);
+            ResumoLabel.Name = "ResumoLabel";
+            ResumoLabel.Size = new Size(50, 15);
+            ResumoLabel.TabIndex = 26;
+            ResumoLabel.Text = "Resumo";
             // 
-            // label20
+            // ProdutoraLabel
             // 
-            label20.AutoSize = true;
-            label20.Location = new Point(12, 574);
-            label20.Name = "label20";
-            label20.Size = new Size(60, 15);
-            label20.TabIndex = 25;
-            label20.Text = "Produtora";
+            ProdutoraLabel.AutoSize = true;
+            ProdutoraLabel.Location = new Point(12, 574);
+            ProdutoraLabel.Name = "ProdutoraLabel";
+            ProdutoraLabel.Size = new Size(60, 15);
+            ProdutoraLabel.TabIndex = 25;
+            ProdutoraLabel.Text = "Produtora";
             // 
-            // label19
+            // ArtistasLabel
             // 
-            label19.AutoSize = true;
-            label19.Location = new Point(12, 530);
-            label19.Name = "label19";
-            label19.Size = new Size(46, 15);
-            label19.TabIndex = 24;
-            label19.Text = "Artistas";
+            ArtistasLabel.AutoSize = true;
+            ArtistasLabel.Location = new Point(12, 530);
+            ArtistasLabel.Name = "ArtistasLabel";
+            ArtistasLabel.Size = new Size(46, 15);
+            ArtistasLabel.TabIndex = 24;
+            ArtistasLabel.Text = "Artistas";
             // 
-            // label18
+            // DiretorLabel
             // 
-            label18.AutoSize = true;
-            label18.Location = new Point(476, 486);
-            label18.Name = "label18";
-            label18.Size = new Size(43, 15);
-            label18.TabIndex = 23;
-            label18.Text = "Diretor";
+            DiretorLabel.AutoSize = true;
+            DiretorLabel.Location = new Point(476, 486);
+            DiretorLabel.Name = "DiretorLabel";
+            DiretorLabel.Size = new Size(43, 15);
+            DiretorLabel.TabIndex = 23;
+            DiretorLabel.Text = "Diretor";
             // 
-            // label17
+            // GeneroLabel
             // 
-            label17.AutoSize = true;
-            label17.Location = new Point(12, 486);
-            label17.Name = "label17";
-            label17.Size = new Size(45, 15);
-            label17.TabIndex = 22;
-            label17.Text = "Gênero";
+            GeneroLabel.AutoSize = true;
+            GeneroLabel.Location = new Point(12, 486);
+            GeneroLabel.Name = "GeneroLabel";
+            GeneroLabel.Size = new Size(45, 15);
+            GeneroLabel.TabIndex = 22;
+            GeneroLabel.Text = "Gênero";
             // 
-            // label16
+            // CriadoresLabel
             // 
-            label16.AutoSize = true;
-            label16.Location = new Point(476, 442);
-            label16.Name = "label16";
-            label16.Size = new Size(57, 15);
-            label16.TabIndex = 21;
-            label16.Text = "Criadores";
+            CriadoresLabel.AutoSize = true;
+            CriadoresLabel.Location = new Point(476, 442);
+            CriadoresLabel.Name = "CriadoresLabel";
+            CriadoresLabel.Size = new Size(57, 15);
+            CriadoresLabel.TabIndex = 21;
+            CriadoresLabel.Text = "Criadores";
             // 
-            // label15
+            // FranquiaLabel
             // 
-            label15.AutoSize = true;
-            label15.Location = new Point(12, 442);
-            label15.Name = "label15";
-            label15.Size = new Size(53, 15);
-            label15.TabIndex = 20;
-            label15.Text = "Franquia";
+            FranquiaLabel.AutoSize = true;
+            FranquiaLabel.Location = new Point(12, 442);
+            FranquiaLabel.Name = "FranquiaLabel";
+            FranquiaLabel.Size = new Size(53, 15);
+            FranquiaLabel.TabIndex = 20;
+            FranquiaLabel.Text = "Franquia";
             // 
-            // label14
+            // AutoresLabel
             // 
-            label14.AutoSize = true;
-            label14.Location = new Point(476, 398);
-            label14.Name = "label14";
-            label14.Size = new Size(48, 15);
-            label14.TabIndex = 19;
-            label14.Text = "Autores";
+            AutoresLabel.AutoSize = true;
+            AutoresLabel.Location = new Point(476, 398);
+            AutoresLabel.Name = "AutoresLabel";
+            AutoresLabel.Size = new Size(48, 15);
+            AutoresLabel.TabIndex = 19;
+            AutoresLabel.Text = "Autores";
             // 
-            // label13
+            // ObraLabel
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(12, 398);
-            label13.Name = "label13";
-            label13.Size = new Size(78, 15);
-            label13.TabIndex = 18;
-            label13.Text = "Obra Original";
+            ObraLabel.AutoSize = true;
+            ObraLabel.Location = new Point(12, 398);
+            ObraLabel.Name = "ObraLabel";
+            ObraLabel.Size = new Size(78, 15);
+            ObraLabel.TabIndex = 18;
+            ObraLabel.Text = "Obra Original";
             // 
-            // label12
+            // IdiomaLabel
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(476, 354);
-            label12.Name = "label12";
-            label12.Size = new Size(89, 15);
-            label12.TabIndex = 17;
-            label12.Text = "Idioma Original";
+            IdiomaLabel.AutoSize = true;
+            IdiomaLabel.Location = new Point(476, 354);
+            IdiomaLabel.Name = "IdiomaLabel";
+            IdiomaLabel.Size = new Size(89, 15);
+            IdiomaLabel.TabIndex = 17;
+            IdiomaLabel.Text = "Idioma Original";
             // 
-            // label11
+            // PaisLabel
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(12, 354);
-            label11.Name = "label11";
-            label11.Size = new Size(87, 15);
-            label11.TabIndex = 16;
-            label11.Text = "País de Origem";
+            PaisLabel.AutoSize = true;
+            PaisLabel.Location = new Point(12, 354);
+            PaisLabel.Name = "PaisLabel";
+            PaisLabel.Size = new Size(87, 15);
+            PaisLabel.TabIndex = 16;
+            PaisLabel.Text = "País de Origem";
             // 
-            // label10
+            // MCULabel
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(739, 310);
-            label10.Name = "label10";
-            label10.Size = new Size(60, 15);
-            label10.TabIndex = 15;
-            label10.Text = "Fase MCU";
+            MCULabel.AutoSize = true;
+            MCULabel.Location = new Point(739, 310);
+            MCULabel.Name = "MCULabel";
+            MCULabel.Size = new Size(60, 15);
+            MCULabel.TabIndex = 15;
+            MCULabel.Text = "Fase MCU";
             // 
-            // label9
+            // TipoLabel
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(12, 309);
-            label9.Name = "label9";
-            label9.Size = new Size(31, 15);
-            label9.TabIndex = 14;
-            label9.Text = "Tipo";
+            TipoLabel.AutoSize = true;
+            TipoLabel.Location = new Point(12, 309);
+            TipoLabel.Name = "TipoLabel";
+            TipoLabel.Size = new Size(31, 15);
+            TipoLabel.TabIndex = 14;
+            TipoLabel.Text = "Tipo";
             // 
-            // label8
+            // TagsLabel
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(612, 265);
-            label8.Name = "label8";
-            label8.Size = new Size(31, 15);
-            label8.TabIndex = 13;
-            label8.Text = "Tags";
+            TagsLabel.AutoSize = true;
+            TagsLabel.Location = new Point(612, 265);
+            TagsLabel.Name = "TagsLabel";
+            TagsLabel.Size = new Size(31, 15);
+            TagsLabel.TabIndex = 13;
+            TagsLabel.Text = "Tags";
             // 
-            // label7
+            // AlternativoLabel
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(12, 265);
-            label7.Name = "label7";
-            label7.Size = new Size(101, 15);
-            label7.TabIndex = 12;
-            label7.Text = "Nome Alternativo";
+            AlternativoLabel.AutoSize = true;
+            AlternativoLabel.Location = new Point(12, 265);
+            AlternativoLabel.Name = "AlternativoLabel";
+            AlternativoLabel.Size = new Size(101, 15);
+            AlternativoLabel.TabIndex = 12;
+            AlternativoLabel.Text = "Nome Alternativo";
             // 
             // LancamentoBox
             // 
@@ -474,41 +474,41 @@
             OriginalBox.Size = new Size(721, 23);
             OriginalBox.TabIndex = 10;
             // 
-            // label6
+            // LancamentoLabel
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(739, 221);
-            label6.Name = "label6";
-            label6.Size = new Size(73, 15);
-            label6.TabIndex = 9;
-            label6.Text = "Lançamento";
+            LancamentoLabel.AutoSize = true;
+            LancamentoLabel.Location = new Point(739, 221);
+            LancamentoLabel.Name = "LancamentoLabel";
+            LancamentoLabel.Size = new Size(73, 15);
+            LancamentoLabel.TabIndex = 9;
+            LancamentoLabel.Text = "Lançamento";
             // 
-            // label5
+            // OriginalLabel
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(12, 221);
-            label5.Name = "label5";
-            label5.Size = new Size(85, 15);
-            label5.TabIndex = 8;
-            label5.Text = "Nome Original";
+            OriginalLabel.AutoSize = true;
+            OriginalLabel.Location = new Point(12, 221);
+            OriginalLabel.Name = "OriginalLabel";
+            OriginalLabel.Size = new Size(85, 15);
+            OriginalLabel.TabIndex = 8;
+            OriginalLabel.Text = "Nome Original";
             // 
-            // label4
+            // SinopseLabel
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(12, 57);
-            label4.Name = "label4";
-            label4.Size = new Size(48, 15);
-            label4.TabIndex = 7;
-            label4.Text = "Sinopse";
+            SinopseLabel.AutoSize = true;
+            SinopseLabel.Location = new Point(12, 57);
+            SinopseLabel.Name = "SinopseLabel";
+            SinopseLabel.Size = new Size(48, 15);
+            SinopseLabel.TabIndex = 7;
+            SinopseLabel.Text = "Sinopse";
             // 
-            // label3
+            // AudioLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(739, 13);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 15);
-            label3.TabIndex = 6;
-            label3.Text = "Áudio";
+            AudioLabel.AutoSize = true;
+            AudioLabel.Location = new Point(739, 13);
+            AudioLabel.Name = "AudioLabel";
+            AudioLabel.Size = new Size(39, 15);
+            AudioLabel.TabIndex = 6;
+            AudioLabel.Text = "Áudio";
             // 
             // AudioBox
             // 
@@ -527,14 +527,14 @@
             SinopseBox.Size = new Size(848, 143);
             SinopseBox.TabIndex = 4;
             // 
-            // label2
+            // NomeLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(129, 13);
-            label2.Name = "label2";
-            label2.Size = new Size(40, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Nome";
+            NomeLabel.AutoSize = true;
+            NomeLabel.Location = new Point(129, 13);
+            NomeLabel.Name = "NomeLabel";
+            NomeLabel.Size = new Size(40, 15);
+            NomeLabel.TabIndex = 3;
+            NomeLabel.Text = "Nome";
             // 
             // NomeBox
             // 
@@ -550,21 +550,21 @@
             CodigoBox.Size = new Size(111, 23);
             CodigoBox.TabIndex = 1;
             // 
-            // label1
+            // CodigoLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 13);
-            label1.Name = "label1";
-            label1.Size = new Size(82, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Código TMDB";
+            CodigoLabel.AutoSize = true;
+            CodigoLabel.Location = new Point(12, 13);
+            CodigoLabel.Name = "CodigoLabel";
+            CodigoLabel.Size = new Size(82, 15);
+            CodigoLabel.TabIndex = 0;
+            CodigoLabel.Text = "Código TMDB";
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1438, 852);
+            ClientSize = new Size(1438, 848);
             Controls.Add(PanelForms);
             Controls.Add(PanelButtons);
             Controls.Add(PanelBottom);
@@ -589,34 +589,34 @@
         private Panel PanelBottom;
         private Panel PanelButtons;
         private Panel PanelForms;
-        private Label label2;
+        private Label NomeLabel;
         private TextBox NomeBox;
         private TextBox CodigoBox;
-        private Label label1;
+        private Label CodigoLabel;
         private TextBox LancamentoBox;
         private TextBox OriginalBox;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Label label3;
+        private Label LancamentoLabel;
+        private Label OriginalLabel;
+        private Label SinopseLabel;
+        private Label AudioLabel;
         private ComboBox AudioBox;
         private TextBox SinopseBox;
-        private Label label7;
+        private Label AlternativoLabel;
         private TextBox AlternativoBox;
-        private Label label21;
-        private Label label20;
-        private Label label19;
-        private Label label18;
-        private Label label17;
-        private Label label16;
-        private Label label15;
-        private Label label14;
-        private Label label13;
-        private Label label12;
-        private Label label11;
-        private Label label10;
-        private Label label9;
-        private Label label8;
+        private Label ResumoLabel;
+        private Label ProdutoraLabel;
+        private Label ArtistasLabel;
+        private Label DiretorLabel;
+        private Label GeneroLabel;
+        private Label CriadoresLabel;
+        private Label FranquiaLabel;
+        private Label AutoresLabel;
+        private Label ObraLabel;
+        private Label IdiomaLabel;
+        private Label PaisLabel;
+        private Label MCULabel;
+        private Label TipoLabel;
+        private Label TagsLabel;
         private TextBox FranquiaBox;
         private TextBox CriadoresBox;
         private TextBox TagsBox;

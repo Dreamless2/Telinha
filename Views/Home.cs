@@ -88,15 +88,15 @@ namespace Telinha
         }
         private void QualquerAlteracao(object sender, EventArgs e)
         {
-            if (label9.Text == "Filme")
+            if (TipoLabel.Text == "Filme")
             {
                 PreencherMascara(MidiaTipo.Filme);
             }
-            else if (label9.Text == "Série")
+            else if (TipoLabel.Text == "Série")
             {
                 PreencherMascara(MidiaTipo.Serie);
             }
-            else if (label9.Text == "Anime")
+            else if (TipoLabel.Text == "Anime")
             {
                 PreencherMascara(MidiaTipo.Anime);
             }
@@ -104,13 +104,13 @@ namespace Telinha
         private void Principal_Load(object sender, EventArgs e)
         {
             PreencherMascara(MidiaTipo.Filme);
-            label9.Text = "Filme";
+            TipoLabel.Text = "Filme";
             TipoBox.PlaceholderText = "Filme";
-            label11.Enabled = false;
-            label12.Enabled = false;
-            label13.Enabled = false;
-            label14.Enabled = false;
-            label16.Enabled = false;
+            PaisLabel.Enabled = false;
+            IdiomaLabel.Enabled = false;
+            ObraLabel.Enabled = false;
+            AutoresLabel.Enabled = false;
+            CriadoresLabel.Enabled = false;
             PaisBox.Enabled = false;
             IdiomaBox.Enabled = false;
             ObraBox.Enabled = false;
@@ -123,11 +123,11 @@ namespace Telinha
             bool isAnime = tipo == MidiaTipo.Anime;
 
             // 🔹 Labels
-            label11.Enabled = !isFilme;
-            label12.Enabled = !isFilme;
-            label13.Enabled = !isFilme;
-            label14.Enabled = !isFilme;
-            label16.Enabled = !isFilme;
+            PaisLabel.Enabled = !isFilme;
+            IdiomaLabel.Enabled = !isFilme;
+            ObraLabel.Enabled = !isFilme;
+            AutoresLabel.Enabled = !isFilme;
+            CriadoresLabel.Enabled = !isFilme;
 
             // 🔹 Campos
             PaisBox.Enabled = !isFilme;
@@ -203,14 +203,14 @@ namespace Telinha
                 return;
             }
 
-            MidiaTipo tipoSolicitado = label9.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
+            MidiaTipo tipoSolicitado = TipoLabel.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
                 ? MidiaTipo.Filme : MidiaTipo.Serie;
 
             try
             {
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
 
-                label9.Text = GenericHelpers.GetDescription(tipoSolicitado);
+                TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
 
                 if (Enum.TryParse(midia!.Tipo, out MidiaTipo tipoReal))
                 {
