@@ -134,7 +134,6 @@ namespace Telinha
             CriadoresBox.Enabled = !isFilme;
             MCUBox.Enabled = !isFilme && !isAnime;
 
-            // 🔹 Placeholder principal
             TipoBox.PlaceholderText = tipo.ToString();
 
             // 🔹 Placeholder específico MCU
