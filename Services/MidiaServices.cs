@@ -13,7 +13,7 @@ namespace Telinha.Services
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoInicial)
         {
             // 1. TENTAR CACHE LOCAL (Mantemos o tipo original da solicitação)
-            string? cached = MidiaCache.Get(MidiaTipo.Filme, id) ?? MidiaCache.Get(MidiaTipo.Serie, id);
+            string? cached = MidiaCache.Get(MidiaTipo.Filme, id, 720) ?? MidiaCache.Get(MidiaTipo.Serie, id, 720);
             if (cached != null) return JsonConvert.DeserializeObject<MidiaModel>(cached);
 
             // 2. TENTAR A ROTA INFORMADA PELO USUÁRIO
