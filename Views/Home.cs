@@ -120,7 +120,7 @@ namespace Telinha
             if (!string.IsNullOrEmpty(midia.Codigo))
                 CodigoBox.Text = midia.Codigo;
 
-            NomeBox.Text = midia.Titulo ?? string.Empty;
+            NomeBox.Text = midia.Nome ?? string.Empty;
             var audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
             if (!AudioBox.Items.Contains(audioValue))
             {
