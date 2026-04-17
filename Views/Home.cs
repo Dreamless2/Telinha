@@ -133,10 +133,8 @@ namespace Telinha
             AutoresBox.Enabled = !isFilme;
             CriadoresBox.Enabled = !isFilme;
             MCUBox.Enabled = !isFilme && !isAnime;
-
             TipoBox.PlaceholderText = tipo.ToString();
 
-            // 🔹 Placeholder específico MCU
             if (isAnime)
                 MCUBox.PlaceholderText = "Fase MCU";
         }
