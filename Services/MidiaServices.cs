@@ -10,10 +10,10 @@ namespace Telinha.Services
     {
         private readonly TMDBServices _tmdb = tmdb;
 
-        public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipo)
+        public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoInicial)
         {
             // 1. TENTAR CACHE LOCAL (Mantemos o tipo original da solicitação)
-            string? cached = MidiaCache.Get(tipo, id, maxAgeMinutes: 720);
+            string? cached = MidiaCache.Get(MidiaTipo.Filme, id) ?? MidiaCache.Get(MidiaTipo.Serie, id);
             if (cached != null) return JsonConvert.DeserializeObject<MidiaModel>(cached);
 
             // 2. TENTAR A ROTA INFORMADA PELO USUÁRIO
