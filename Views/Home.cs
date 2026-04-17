@@ -242,7 +242,7 @@ namespace Telinha
 
                 label9.Text = GenericHelpers.GetDescription(tipoSolicitado);
 
-                if (Enum.TryParse(midia.Tipo, out MidiaTipo tipoReal))
+                if (Enum.TryParse(midia!.Tipo, out MidiaTipo tipoReal))
                 {
                     AtualizarUI(tipoReal);
                 }
