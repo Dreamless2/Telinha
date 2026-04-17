@@ -84,16 +84,6 @@
             panel7.SuspendLayout();
             SuspendLayout();
             // 
-            // panel4
-            // 
-            panel4.BackColor = Color.OrangeRed;
-            panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(10, 50);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(50, 25);
-            panel4.TabIndex = 0;
-            panel4.Tag = "";
-            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(4, 52, 72);
