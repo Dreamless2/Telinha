@@ -63,6 +63,7 @@ namespace Telinha.Services
                    (ex is HttpRequestException httpEx &&
                     httpEx.StatusCode == System.Net.HttpStatusCode.NotFound);
         }
+
         // Método auxiliar para evitar repetição de código
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
         {
@@ -78,9 +79,11 @@ namespace Telinha.Services
 
             var results = await _tmdb.Many([.. calls]);
 
-            if (results == null || results.Length < 2 || results[0] == null) return null;
+            if (results == null || results.Length < 2 || results[0] == null)
+                return null;
 
-            var model = await MidiaFactory.ConstruirMidia(results[0], results[1], results.Length > 2 ? results[2] : null);
+            var model = await MidiaFactory.ConstruirMidia(results[0], results[1],
+                         results.Length > 2 ? results[2] : null);
 
             if (model != null)
             {
