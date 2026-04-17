@@ -26,8 +26,34 @@ namespace Telinha.Services
                 return JsonConvert.DeserializeObject<MidiaModel>(cacheAlternativo);
 
             // 🔹 2. BUSCA PARALELA
-            var filmeTask = ExecutarBusca(id, MidiaTipo.Filme);
-            var serieTask = ExecutarBusca(id, MidiaTipo.Serie);
+            var filmeTask = Task.Run(async () =>
+            {
+                try
+                {
+                    return await ExecutarBusca(id, MidiaTipo.Filme);
+                }
+                catch
+                {
+                    return null;
+                }
+            });
+
+            var serieTask = Task.Run(async () =>
+            {
+                try
+                {
+                    return await ExecutarBusca(id, MidiaTipo.Serie);
+                }
+                catch
+                {
+                    return null;
+                }
+            });
+
+            await Task.WhenAll(filmeTask, serieTask);
+
+            var filme = filmeTask.Result;
+            var serie = serieTask.Result;
 
             await Task.WhenAll(filmeTask, serieTask);
 
