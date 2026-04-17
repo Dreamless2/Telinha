@@ -8,9 +8,7 @@ using Telinha.Enums;
 namespace Telinha.Entity
 {
     public class GenericHelpers
-
     {
-
         public static string GetDescription(Enum value)
         {
             var field = value.GetType().GetField(value.ToString());
