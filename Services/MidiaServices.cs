@@ -40,9 +40,14 @@ namespace Telinha.Services
                 if (filme != null) return filme;
                 if (serie != null) return serie;
             }
-            else
+            else // Série OU Anime
             {
+                // 🔥 prioriza anime se detectado
+                if (serie != null && serie.Tipo!.Equals("Anime", StringComparison.OrdinalIgnoreCase))
+                    return serie;
+
                 if (serie != null) return serie;
+
                 if (filme != null) return filme;
             }
 
