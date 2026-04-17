@@ -14,7 +14,7 @@ namespace Telinha.Factory
         {
             // 1. DETECÇÃO AUTOMÁTICA DE TIPO (Filme vs TV)
             // Se o JSON tem 'title' é filme, se tem 'name' é série/anime.
-            MidiaTipo tipoDetectado = json["title"] != null ? MidiaTipo.Filme : MidiaTipo.Serie;
+            MidiaTipo tipoDetectado = tipoBase;
 
             // 2. REFINAMENTO (Série vs Anime)
             // Se for TV, checamos se é animação asiática para classificar como Anime
@@ -23,7 +23,6 @@ namespace Telinha.Factory
                 var generosIds = json["genres"]?.Select(g => (int)g["id"]!).ToList() ?? [];
                 string lingua = json["original_language"]?.ToString() ?? "";
 
-                // Se possui o gênero 'Animation' (16) E é de origem Japonesa, Chinesa ou Coreana
                 if (generosIds.Contains(16) && (lingua == "ja" || lingua == "zh" || lingua == "ko"))
                 {
                     tipoDetectado = MidiaTipo.Anime;
