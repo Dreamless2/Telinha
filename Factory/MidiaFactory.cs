@@ -10,10 +10,7 @@ namespace Telinha.Factory
     {
         private static readonly DEEPLContracts deepl = new();
 
-        public static async Task<MidiaModel> ConstruirMidia(
-JObject json,
-JObject credits,
-JObject? alternative,
+        public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative,
 MidiaTipo tipoBase
 )
         {
