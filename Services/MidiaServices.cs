@@ -12,34 +12,56 @@ namespace Telinha.Services
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
-            // Tenta cache específico do tipo que o usuário pediu primeiro
+            // 1. Tenta primeiro o cache do tipo que o usuário pediu (prioridade máxima)
             string? cached = MidiaCache.Get(tipoSolicitado, id, 720);
             if (cached != null)
                 return JsonConvert.DeserializeObject<MidiaModel>(cached);
 
-            // Se não tem cache do tipo pedido, tenta o tipo alternativo (fallback)
+            // 2. Só se não existir o tipo pedido, tenta o tipo alternativo
             var tipoAlternativo = (tipoSolicitado == MidiaTipo.Filme) ? MidiaTipo.Serie : MidiaTipo.Filme;
+
             cached = MidiaCache.Get(tipoAlternativo, id, 720);
             if (cached != null)
                 return JsonConvert.DeserializeObject<MidiaModel>(cached);
 
-            // Nenhum cache encontrado → busca na API
+            // 3. Nenhum cache → busca na API começando pelo tipo solicitado
+            MidiaModel? model = null;
+
             try
             {
-                return await ExecutarBusca(id, tipoSolicitado);
+                model = await ExecutarBusca(id, tipoSolicitado);
             }
-            catch (Exception ex) when (ex.Message.Contains("404") || ex.Message.Contains("NotFound"))
+            catch (Exception ex) when (IsNotFoundException(ex))
             {
-                // Tenta o tipo alternativo
+                // Se não encontrou o tipo solicitado, tenta o alternativo
                 try
                 {
-                    return await ExecutarBusca(id, tipoAlternativo);
+                    model = await ExecutarBusca(id, tipoAlternativo);
+                }
+                catch (Exception ex2) when (IsNotFoundException(ex2))
+                {
+                    return null; // Não existe em nenhum dos dois
                 }
                 catch
                 {
                     return null;
                 }
             }
+            catch
+            {
+                return null;
+            }
+
+            return model;
+        }
+
+        // Método auxiliar para melhorar a detecção de 404
+        private bool IsNotFoundException(Exception ex)
+        {
+            return ex.Message.Contains("404") ||
+                   ex.Message.Contains("NotFound") ||
+                   (ex is HttpRequestException httpEx &&
+                    httpEx.StatusCode == System.Net.HttpStatusCode.NotFound);
         }
         // Método auxiliar para evitar repetição de código
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
