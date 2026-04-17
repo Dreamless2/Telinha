@@ -146,6 +146,35 @@ namespace Telinha
             MCUBox.PlaceholderText = "Fase MCU";
             MCUBox.Text = string.Empty; PreencherMascara(MidiaTipo.Anime);
         }
+        private void AtualizarUI(MidiaTipo tipo)
+        {
+            bool isFilme = tipo == MidiaTipo.Filme;
+            bool isAnime = tipo == MidiaTipo.Anime;
+
+            // 🔹 Labels
+            label11.Enabled = !isFilme;
+            label12.Enabled = !isFilme;
+            label13.Enabled = !isFilme;
+            label14.Enabled = !isFilme;
+            label16.Enabled = !isFilme;
+
+            // 🔹 Campos
+            PaisBox.Enabled = !isFilme;
+            IdiomaBox.Enabled = !isFilme;
+            ObraBox.Enabled = !isFilme;
+            AutoresBox.Enabled = !isFilme;
+            CriadoresBox.Enabled = !isFilme;
+
+            // 🔹 MCU (regra especial)
+            MCUBox.Enabled = !isFilme && !isAnime;
+
+            // 🔹 Placeholder principal
+            TipoBox.PlaceholderText = tipo.ToString();
+
+            // 🔹 Placeholder específico MCU
+            if (isAnime)
+                MCUBox.PlaceholderText = "Fase MCU";
+        }
 
         private void PreencherCampos(MidiaModel midia)
         {
