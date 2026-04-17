@@ -233,9 +233,24 @@ namespace Telinha
                     Alternativo = AlternativoBox.Text.Trim(),
                     Tags = TagsBox.Text.Trim(),
                     Tipo = TipoBox.Text.Trim(),
-
-
+                    Pais = PaisBox.Text.Trim(),
+                    Idioma = IdiomaBox.Text.Trim(),
+                    Autores = AutoresBox.Text.Trim(),
+                    Franquia = FranquiaBox.Text.Trim(),
+                    Criadores = CriadoresBox.Text.Trim(),
+                    Genero = GeneroBox.Text.Trim(),
+                    Diretor = DiretorBox.Text.Trim(),
+                    Artistas = ArtistasBox.Text.Trim(),
+                    Produtora = ProdutoraBox.Text.Trim(),
                 };
+
+                if (string.IsNullOrEmpty(item.Codigo))
+
+
+
+
+
+
             }
             catch { }
 
