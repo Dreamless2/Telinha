@@ -43,6 +43,7 @@ namespace Telinha.Services
             try
             {
                 model = await ExecutarBusca(id, tipoAlternativo);
+
                 if (model != null)
                     return model;
             }
