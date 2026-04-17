@@ -191,14 +191,13 @@ namespace Telinha
                 if (MidiaController.Any<MidiaModel>())
                 {
                     {
-                        PreencherCampos().Wait();
+                        PreencherDados().Wait();
                     }
                 }
             }
             catch (Exception ex)
             {
-                currentId = 0;
-                MessageBox.Show($"Erro: {ex.Message}", "Erro");
+
 
             }
         }
