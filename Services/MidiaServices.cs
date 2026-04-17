@@ -6,26 +6,24 @@ using Telinha.Models;
 
 namespace Telinha.Services
 {
-    public class MidiaServices(TMDBServices tmdb, MidiaTipo tipoInicial)
+    public class MidiaServices(TMDBServices tmdb)
     {
         private readonly TMDBServices _tmdb = tmdb;
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipo)
         {
             // 1. TENTAR CACHE LOCAL (Mantemos o tipo original da solicitação)
-            // 1. TENTAR CACHE (Verificamos nas duas pastas de cache possíveis para garantir)
-            string? cached = MidiaCache.Get(MidiaTipo.Filme, id) ?? MidiaCache.Get(MidiaTipo.Serie, id);
+            string? cached = MidiaCache.Get(tipo, id, maxAgeMinutes: 720);
             if (cached != null) return JsonConvert.DeserializeObject<MidiaModel>(cached);
 
-            // 2. TENTAR A ROTA INFORMADA PELO USUÁRIO
             try
             {
-                return await ExecutarBusca(id, tipoInicial);
+                return await ExecutarBusca(id, tipo);
             }
             catch (Exception ex) when (ex.Message.Contains("404") || ex.Message.Contains("NotFound"))
             {
-                // 3. SE NÃO ACHOU, TENTA A OUTRA ROTA IMEDIATAMENTE
-                var tipoAlternativo = (tipoInicial == MidiaTipo.Filme) ? MidiaTipo.Serie : MidiaTipo.Filme;
+                // 2. SE DEU ERRO, TENTA A OUTRA ROTA AUTOMATICAMENTE
+                var tipoAlternativo = (tipo == MidiaTipo.Filme) ? MidiaTipo.Serie : MidiaTipo.Filme;
 
                 try
                 {
@@ -33,7 +31,7 @@ namespace Telinha.Services
                 }
                 catch
                 {
-                    return null; // Não existe em nenhuma das duas
+                    return null; // Se falhar na segunda também, não existe mesmo.
                 }
             }
         }
