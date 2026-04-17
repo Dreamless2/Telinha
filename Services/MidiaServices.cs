@@ -12,59 +12,43 @@ namespace Telinha.Services
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
-            string? cached = MidiaCache.Get(tipoSolicitado, id, 720);
-            if (cached != null)
-                return JsonConvert.DeserializeObject<MidiaModel>(cached);
+            var tipoAlternativo = (tipoSolicitado == MidiaTipo.Filme)
+                ? MidiaTipo.Serie
+                : MidiaTipo.Filme;
 
-            var tipoAlternativo = (tipoSolicitado == MidiaTipo.Filme) ? MidiaTipo.Serie : MidiaTipo.Filme;
+            // 🔹 1. CACHE (tenta ambos)
+            string? cacheSolicitado = MidiaCache.Get(tipoSolicitado, id, 720);
+            if (cacheSolicitado != null)
+                return JsonConvert.DeserializeObject<MidiaModel>(cacheSolicitado);
 
-            cached = MidiaCache.Get(tipoAlternativo, id, 720);
-            if (cached != null)
-                return JsonConvert.DeserializeObject<MidiaModel>(cached);
+            string? cacheAlternativo = MidiaCache.Get(tipoAlternativo, id, 720);
+            if (cacheAlternativo != null)
+                return JsonConvert.DeserializeObject<MidiaModel>(cacheAlternativo);
 
-            MidiaModel? model = null;
+            // 🔹 2. BUSCA PARALELA
+            var filmeTask = ExecutarBusca(id, MidiaTipo.Filme);
+            var serieTask = ExecutarBusca(id, MidiaTipo.Serie);
 
-            // 🔹 Tenta tipo solicitado
-            try
+            await Task.WhenAll(filmeTask, serieTask);
+
+            var filme = filmeTask.Result;
+            var serie = serieTask.Result;
+
+            // 🔹 3. DECISÃO INTELIGENTE
+            if (tipoSolicitado == MidiaTipo.Filme)
             {
-                model = await ExecutarBusca(id, tipoSolicitado);
-
-                // ✔️ só retorna se o tipo bater com o solicitado
-                if (model != null && TipoConfere(model, tipoSolicitado))
-                    return model;
-
+                if (filme != null) return filme;
+                if (serie != null) return serie;
             }
-            catch
+            else
             {
-                // ❗ NÃO retorna aqui — deixa seguir
-            }
-
-            // 🔹 Tenta tipo alternativo
-            try
-            {
-                model = await ExecutarBusca(id, tipoAlternativo);
-
-                if (model != null)
-                    return model;
-            }
-            catch
-            {
-                // ignora também
+                if (serie != null) return serie;
+                if (filme != null) return filme;
             }
 
             return null;
         }
 
-        private static bool TipoConfere(MidiaModel model, MidiaTipo solicitado)
-        {
-            if (solicitado == MidiaTipo.Filme)
-                return model.Tipo.Equals("Filme", StringComparison.OrdinalIgnoreCase);
-
-            return model.Tipo.Equals("Serie", StringComparison.OrdinalIgnoreCase)
-                || model.Tipo.Equals("Anime", StringComparison.OrdinalIgnoreCase);
-        }
-
-        // Método auxiliar para evitar repetição de código
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
         {
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
