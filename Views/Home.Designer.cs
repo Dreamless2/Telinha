@@ -32,10 +32,6 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
-            panel6 = new Panel();
-            AnimesButton = new Button();
-            SeriesButton = new Button();
-            FilmesButton = new Button();
             panel5 = new Panel();
             SairButton = new Button();
             ProximoButton = new Button();
@@ -85,19 +81,19 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             label1 = new Label();
-            panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel7.SuspendLayout();
             SuspendLayout();
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(198, 40, 40);
+            panel4.BackColor = Color.OrangeRed;
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(3, 3);
+            panel4.Location = new Point(10, 50);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1444, 25);
+            panel4.Size = new Size(50, 25);
             panel4.TabIndex = 0;
+            panel4.Tag = "";
             // 
             // panel1
             // 
@@ -105,7 +101,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1378, 29);
+            panel1.Size = new Size(1438, 29);
             panel1.TabIndex = 1;
             // 
             // panel2
@@ -114,7 +110,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 29);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1378, 58);
+            panel2.Size = new Size(1438, 58);
             panel2.TabIndex = 2;
             // 
             // panel3
@@ -123,47 +119,8 @@
             panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Point(0, 888);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1378, 44);
+            panel3.Size = new Size(1438, 44);
             panel3.TabIndex = 3;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.White;
-            panel6.Controls.Add(AnimesButton);
-            panel6.Controls.Add(SeriesButton);
-            panel6.Controls.Add(FilmesButton);
-            panel6.Dock = DockStyle.Top;
-            panel6.Location = new Point(0, 87);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(1378, 84);
-            panel6.TabIndex = 5;
-            // 
-            // AnimesButton
-            // 
-            AnimesButton.Location = new Point(830, 21);
-            AnimesButton.Name = "AnimesButton";
-            AnimesButton.Size = new Size(180, 41);
-            AnimesButton.TabIndex = 2;
-            AnimesButton.Text = "Anime";
-            AnimesButton.UseVisualStyleBackColor = true;
-            // 
-            // SeriesButton
-            // 
-            SeriesButton.Location = new Point(599, 21);
-            SeriesButton.Name = "SeriesButton";
-            SeriesButton.Size = new Size(180, 41);
-            SeriesButton.TabIndex = 1;
-            SeriesButton.Text = "Séries";
-            SeriesButton.UseVisualStyleBackColor = true;
-            // 
-            // FilmesButton
-            // 
-            FilmesButton.Location = new Point(368, 21);
-            FilmesButton.Name = "FilmesButton";
-            FilmesButton.Size = new Size(180, 41);
-            FilmesButton.TabIndex = 0;
-            FilmesButton.Text = "Filmes";
-            FilmesButton.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -175,7 +132,7 @@
             panel5.Dock = DockStyle.Bottom;
             panel5.Location = new Point(0, 803);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1378, 85);
+            panel5.Size = new Size(1438, 85);
             panel5.TabIndex = 6;
             // 
             // SairButton
@@ -267,8 +224,7 @@
             panel7.Controls.Add(NomeBox);
             panel7.Controls.Add(CodigoBox);
             panel7.Controls.Add(label1);
-            panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(0, 171);
+            panel7.Location = new Point(12, 116);
             panel7.Name = "panel7";
             panel7.Size = new Size(1378, 632);
             panel7.TabIndex = 7;
@@ -618,10 +574,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1378, 932);
+            ClientSize = new Size(1438, 932);
             Controls.Add(panel7);
             Controls.Add(panel5);
-            Controls.Add(panel6);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -632,7 +587,6 @@
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
-            panel6.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
@@ -644,7 +598,6 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private Panel panel6;
         private Panel panel5;
         private Panel panel7;
         private Label label2;
@@ -689,9 +642,6 @@
         private TextBox DiretorBox;
         private TextBox GeneroBox;
         private TextBox ArtistasBox;
-        private Button FilmesButton;
-        private Button AnimesButton;
-        private Button SeriesButton;
         private Button SairButton;
         private Button ProximoButton;
         private Button AnteriorButton;
