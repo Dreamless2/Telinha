@@ -6,7 +6,7 @@ using Telinha.Models;
 
 namespace Telinha.Services
 {
-    public class MidiaServices(TMDBServices tmdb)
+    public class MidiaServices(TMDBServices tmdb, MidiaTipo tipoInicial)
     {
         private readonly TMDBServices _tmdb = tmdb;
 
