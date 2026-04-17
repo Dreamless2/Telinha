@@ -190,15 +190,17 @@ namespace Telinha
             {
                 if (MidiaController.Any<MidiaModel>())
                 {
-
-
-
+                    PreencherCampos().Wait();
+                }
+                else
+                {
+                    currentId = 0;
+                    MessageBox.Show("Nenhuma mídia encontrada. Insira um código válido e pressione Enter para buscar.", "Bem-vindo");
                 }
             }
             catch (Exception ex)
             {
-
-
+                MessageBox.Show($"Erro: {ex.Message}.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
