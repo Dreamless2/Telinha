@@ -105,7 +105,6 @@ namespace Telinha
         }
         private void Principal_Load(object sender, EventArgs e)
         {
-            //Functions.SetCamposEnabled(this, false, typeof(TextBox), typeof(Label), typeof(ComboBox));
             PreencherMascara(MidiaTipo.Filme);
             label9.Text = "Filme";
             TipoBox.PlaceholderText = "Filme";
@@ -201,6 +200,25 @@ namespace Telinha
                     // Se o Service achou algo, ele já traz o Tipo certo (Filme, Serie ou Anime)
                     // Atualizamos o Label para o usuário não ficar confuso
                     label9.Text = midia.Tipo;
+
+                    if (label9.Text == "Série")
+                    {
+                        label11.Enabled = true;
+                        label12.Enabled = true;
+                        label13.Enabled = true;
+                        label14.Enabled = true;
+                        label16.Enabled = true;
+                        PaisBox.Enabled = true;
+                        IdiomaBox.Enabled = true;
+                        ObraBox.Enabled = true;
+                        AutoresBox.Enabled = true;
+                        CriadoresBox.Enabled = true;
+                    }
+                    else if (label9.Text == "Anime")
+                    {
+                        label10.Enabled = false;
+                        MCUBox.Enabled = false;
+                    }
 
                     PreencherCampos(midia);
                 }
