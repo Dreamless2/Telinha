@@ -177,11 +177,11 @@ namespace Telinha
             }
 
             // 3. Aplica nos campos
-            ConfigurarCampo(PaisBox, item.Pais);
-            ConfigurarCampo(IdiomaBox, item.Idioma);
-            ConfigurarCampo(ObraBox, item.Obra);
-            ConfigurarCampo(AutoresBox, item.Autores);
-            ConfigurarCampo(CriadoresBox, item.Criadores);
+            ConfigurarCampo(PaisBox, item.Pais!);
+            ConfigurarCampo(IdiomaBox, item.Idioma!);
+            ConfigurarCampo(ObraBox, item.Obra!);
+            ConfigurarCampo(AutoresBox, item.Autores!);
+            ConfigurarCampo(CriadoresBox, item.Criadores!);
 
             // MCU especial
             if (isAnime || !MCUBox.Enabled)
