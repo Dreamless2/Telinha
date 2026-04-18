@@ -153,7 +153,8 @@ namespace Telinha
                 PaisBox.Enabled = false;
                 IdiomaBox.Enabled = false;
                 ObraBox.Enabled = false;
-
+                AutoresBox.Enabled = false;
+                CriadoresBox.Enabled = false;
             }
 
 
