@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace Telinha.Services
@@ -19,7 +17,7 @@ namespace Telinha.Services
         public TokenEncryptionService(byte[] key)
         {
             if (key == null || key.Length != 32)
-                throw new ArgumentException("A chave deve ter exatamente 32 bytes (AES-256).", nameof(key));
+                throw new ArgumentException("A chave deve ter exatamente 32 bytes.", nameof(key));
 
             _key = (byte[])key.Clone();           // cópia para segurança
             _aesGcm = new AesGcm(_key, TagSize);
@@ -31,7 +29,7 @@ namespace Telinha.Services
         public string Encrypt(string plainToken)
         {
             if (string.IsNullOrEmpty(plainToken))
-                throw new ArgumentException("Token não pode ser nulo ou vazio.", nameof(plainToken));
+                throw new ArgumentException("Não pode ser nulo ou vazio.", nameof(plainToken));
 
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainToken);
 
@@ -59,12 +57,12 @@ namespace Telinha.Services
         public string Decrypt(string encryptedTokenBase64)
         {
             if (string.IsNullOrEmpty(encryptedTokenBase64))
-                throw new ArgumentException("Token criptografado não pode ser nulo ou vazio.");
+                throw new ArgumentException("Não pode ser nulo ou vazio.");
 
             byte[] encryptedData = Convert.FromBase64String(encryptedTokenBase64);
 
             if (encryptedData.Length < NonceSize + TagSize)
-                throw new CryptographicException("Dados criptografados inválidos.");
+                throw new CryptographicException("Dados inválidos.");
 
             int cipherLength = encryptedData.Length - NonceSize - TagSize;
 
