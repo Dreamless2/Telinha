@@ -51,10 +51,11 @@ namespace Telinha.Factory
 
             //item.Tags = hasValidDate ? $"#{tagBase} #{tagBase}{releaseDate.Year}" : $"#{tagBase}";
 
-            var tags = new List<string>();
-
-            // sempre adiciona o padrão
-            tags.Add($"#{tagBase}");
+            var tags = new List<string>
+            {
+                // sempre adiciona o padrão
+                $"#{tagBase}"
+            };
 
             if (hasValidDate)
                 tags.Add($"#{tagBase}{releaseDate.Year}");
