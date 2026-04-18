@@ -31,9 +31,8 @@ namespace Telinha
         private void SetupBindings()
         {
             _bs.DataSource = typeof(MidiaModel);
-
             CodigoBox.DataBindings.Add("Text", _bs, "Codigo", false, DataSourceUpdateMode.OnPropertyChanged);
-            NomeBox.DataBindings.Add("Text", _bs, "Titulo", false, DataSourceUpdateMode.OnPropertyChanged);
+            NomeBox.DataBindings.Add("Text", _bs, "Nome", false, DataSourceUpdateMode.OnPropertyChanged);
             AudioBox.DataBindings.Add("Text", _bs, "Audio", false, DataSourceUpdateMode.OnPropertyChanged);
             SinopseBox.DataBindings.Add("Text", _bs, "Sinopse", false, DataSourceUpdateMode.OnPropertyChanged);
             OriginalBox.DataBindings.Add("Text", _bs, "Original", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -52,8 +51,6 @@ namespace Telinha
             DiretorBox.DataBindings.Add("Text", _bs, "Diretor", false, DataSourceUpdateMode.OnPropertyChanged);
             ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
             ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
-
-
         }
 
 
