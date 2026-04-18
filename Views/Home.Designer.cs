@@ -224,6 +224,7 @@
             ResumoBox.Location = new Point(866, 31);
             ResumoBox.Multiline = true;
             ResumoBox.Name = "ResumoBox";
+            ResumoBox.PlaceholderText = "Resumo";
             ResumoBox.Size = new Size(499, 584);
             ResumoBox.TabIndex = 41;
             // 
@@ -231,6 +232,7 @@
             // 
             ProdutoraBox.Location = new Point(12, 592);
             ProdutoraBox.Name = "ProdutoraBox";
+            ProdutoraBox.PlaceholderText = "Produtora";
             ProdutoraBox.Size = new Size(848, 23);
             ProdutoraBox.TabIndex = 40;
             // 
@@ -238,6 +240,7 @@
             // 
             DiretorBox.Location = new Point(476, 504);
             DiretorBox.Name = "DiretorBox";
+            DiretorBox.PlaceholderText = "Diretor";
             DiretorBox.Size = new Size(384, 23);
             DiretorBox.TabIndex = 39;
             // 
@@ -245,6 +248,7 @@
             // 
             GeneroBox.Location = new Point(12, 504);
             GeneroBox.Name = "GeneroBox";
+            GeneroBox.PlaceholderText = "Gênero";
             GeneroBox.Size = new Size(458, 23);
             GeneroBox.TabIndex = 38;
             // 
@@ -252,6 +256,7 @@
             // 
             ArtistasBox.Location = new Point(12, 548);
             ArtistasBox.Name = "ArtistasBox";
+            ArtistasBox.PlaceholderText = "Artistas";
             ArtistasBox.Size = new Size(848, 23);
             ArtistasBox.TabIndex = 37;
             // 
@@ -259,6 +264,7 @@
             // 
             FranquiaBox.Location = new Point(12, 460);
             FranquiaBox.Name = "FranquiaBox";
+            FranquiaBox.PlaceholderText = "Franquia";
             FranquiaBox.Size = new Size(458, 23);
             FranquiaBox.TabIndex = 36;
             // 
@@ -266,6 +272,7 @@
             // 
             CriadoresBox.Location = new Point(476, 460);
             CriadoresBox.Name = "CriadoresBox";
+            CriadoresBox.PlaceholderText = "Criadores";
             CriadoresBox.Size = new Size(384, 23);
             CriadoresBox.TabIndex = 35;
             // 
@@ -289,6 +296,7 @@
             // 
             IdiomaBox.Location = new Point(476, 372);
             IdiomaBox.Name = "IdiomaBox";
+            IdiomaBox.PlaceholderText = "Idioma ";
             IdiomaBox.Size = new Size(384, 23);
             IdiomaBox.TabIndex = 32;
             // 
@@ -296,6 +304,7 @@
             // 
             ObraBox.Location = new Point(12, 416);
             ObraBox.Name = "ObraBox";
+            ObraBox.PlaceholderText = "Obra Original";
             ObraBox.Size = new Size(458, 23);
             ObraBox.TabIndex = 31;
             // 
@@ -303,6 +312,7 @@
             // 
             AutoresBox.Location = new Point(476, 416);
             AutoresBox.Name = "AutoresBox";
+            AutoresBox.PlaceholderText = "Autores";
             AutoresBox.Size = new Size(384, 23);
             AutoresBox.TabIndex = 30;
             // 
@@ -310,6 +320,7 @@
             // 
             PaisBox.Location = new Point(12, 372);
             PaisBox.Name = "PaisBox";
+            PaisBox.PlaceholderText = "País";
             PaisBox.Size = new Size(458, 23);
             PaisBox.TabIndex = 29;
             // 
