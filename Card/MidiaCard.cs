@@ -5,7 +5,6 @@ namespace Telinha.Card
 {
     public class MidiaCard
     {
-        // Campos privados (ou readonly)
         private readonly MidiaTipo _tipo;
         private readonly string _titulo;
         private readonly string _audio;
