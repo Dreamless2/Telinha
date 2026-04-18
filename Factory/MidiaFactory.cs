@@ -54,7 +54,7 @@ namespace Telinha.Factory
             item.Nome = json[titleField]?.ToString() ?? "--";
             item.Sinopse = json["overview"]?.ToString() ?? "--";
             item.Original = json[originalTitleField]?.ToString() ?? "--";
-            item.Tipo = Cleanser.FormatarTitulo(json[titleField]?.ToString() ?? "--");
+            //item.Tipo = Cleanser.FormatarTitulo(json[titleField]?.ToString() ?? "--");
 
             // 6. GÊNEROS E ESTÚDIOS
             item.Genero = Cleanser.NormalizarGeneros(
