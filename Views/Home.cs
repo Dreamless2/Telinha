@@ -254,6 +254,8 @@ namespace Telinha
                     return;
                 }
 
+                Cursor = Cursors.WaitCursor;
+
                 var (inserted, updated) = MidiaController.SaveAsync(item).Result;
 
                 if (inserted)
@@ -272,6 +274,10 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao salvar:\n{ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
             }
         }
 
