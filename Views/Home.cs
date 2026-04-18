@@ -269,14 +269,11 @@ namespace Telinha
                     MessageBox.Show("Nenhuma alteração detectada.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch { }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao salvar:\n{ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-
-
-
-
 
         private void SairButton_Click(object sender, EventArgs e)
         {
