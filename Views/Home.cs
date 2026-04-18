@@ -167,10 +167,8 @@ namespace Telinha
             PaisBox.Text = isFilme ? "--" : item.Pais ?? "--";
             IdiomaBox.Text = isFilme ? "--" : item.Idioma ?? "--";
             ObraBox.Text = isFilme ? "--" : item.Obra ?? "--";
-            //AutoresBox.Text = isFilme ? "--" : item.Autores ?? "--";
-            //CriadoresBox.Text = isFilme ? "--" : item.Criadores ?? "--";
-            AutoresBox.Text = isFilme ? "--" : (string.IsNullOrWhiteSpace(item.Autores) ? "--" : item.Autores);
-            CriadoresBox.Text = isFilme ? "--" : (string.IsNullOrWhiteSpace(item.Criadores) ? "--" : item.Criadores);
+            AutoresBox.Text = isFilme ? "--" : item.Autores ?? "--";
+            CriadoresBox.Text = isFilme ? "--" : item.Criadores ?? "--";
 
             if (isAnime)
                 MCUBox.PlaceholderText = "Fase MCU";
