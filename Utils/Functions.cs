@@ -21,7 +21,7 @@
         {
             label.Enabled = enabled;
             box.Enabled = enabled;
-            box.PlaceholderText = enabled ? placeholderWhenEnabled : "";
+            box.PlaceholderText = enabled ? placeholderWhenEnabled : " ";
         }
 
         public static void OnlyNumbers(object sender, KeyPressEventArgs e)
