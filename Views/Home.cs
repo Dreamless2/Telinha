@@ -268,14 +268,6 @@ namespace Telinha
                 {
                     MessageBox.Show("Nenhuma alteração detectada.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-
-
-
-
-
-
-
             }
             catch { }
 

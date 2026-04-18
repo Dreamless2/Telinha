@@ -19,7 +19,6 @@ namespace Telinha.Models
             return true;
         }
 
-
         [Column(IsPrimary = true, IsIdentity = true)]
         public long Id { get; set; }
 
