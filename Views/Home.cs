@@ -143,7 +143,6 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-
             item.Pais ??= isFilme ? "--" : string.Empty;
             item.Idioma ??= isFilme ? "--" : string.Empty;
             item.Obra ??= isFilme ? "--" : string.Empty;
