@@ -352,8 +352,6 @@ namespace Telinha
             Application.Exit();
         }
 
-
-
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
