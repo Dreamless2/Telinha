@@ -273,6 +273,7 @@
             // 
             TagsBox.Location = new Point(612, 283);
             TagsBox.Name = "TagsBox";
+            TagsBox.PlaceholderText = "Tags";
             TagsBox.Size = new Size(248, 23);
             TagsBox.TabIndex = 34;
             // 
@@ -280,6 +281,7 @@
             // 
             TipoBox.Location = new Point(12, 328);
             TipoBox.Name = "TipoBox";
+            TipoBox.PlaceholderText = "Tipo";
             TipoBox.Size = new Size(721, 23);
             TipoBox.TabIndex = 33;
             // 
@@ -315,6 +317,7 @@
             // 
             MCUBox.Location = new Point(739, 328);
             MCUBox.Name = "MCUBox";
+            MCUBox.PlaceholderText = "Fase MCU";
             MCUBox.Size = new Size(121, 23);
             MCUBox.TabIndex = 28;
             // 
@@ -322,6 +325,7 @@
             // 
             AlternativoBox.Location = new Point(12, 283);
             AlternativoBox.Name = "AlternativoBox";
+            AlternativoBox.PlaceholderText = "Nome Alternativo";
             AlternativoBox.Size = new Size(594, 23);
             AlternativoBox.TabIndex = 27;
             // 
@@ -464,6 +468,7 @@
             // 
             LancamentoBox.Location = new Point(739, 239);
             LancamentoBox.Name = "LancamentoBox";
+            LancamentoBox.PlaceholderText = "Lançamento";
             LancamentoBox.Size = new Size(121, 23);
             LancamentoBox.TabIndex = 11;
             // 
@@ -471,6 +476,7 @@
             // 
             OriginalBox.Location = new Point(12, 239);
             OriginalBox.Name = "OriginalBox";
+            OriginalBox.PlaceholderText = "Nome Original";
             OriginalBox.Size = new Size(721, 23);
             OriginalBox.TabIndex = 10;
             // 
@@ -524,6 +530,7 @@
             SinopseBox.Location = new Point(12, 75);
             SinopseBox.Multiline = true;
             SinopseBox.Name = "SinopseBox";
+            SinopseBox.PlaceholderText = "Sinopse";
             SinopseBox.Size = new Size(848, 143);
             SinopseBox.TabIndex = 4;
             // 
@@ -540,6 +547,7 @@
             // 
             NomeBox.Location = new Point(129, 31);
             NomeBox.Name = "NomeBox";
+            NomeBox.PlaceholderText = "Nome";
             NomeBox.Size = new Size(604, 23);
             NomeBox.TabIndex = 2;
             // 
@@ -547,6 +555,7 @@
             // 
             CodigoBox.Location = new Point(12, 31);
             CodigoBox.Name = "CodigoBox";
+            CodigoBox.PlaceholderText = "Código TMDB";
             CodigoBox.Size = new Size(111, 23);
             CodigoBox.TabIndex = 1;
             // 
