@@ -25,7 +25,7 @@ namespace Telinha
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
-            SalvarButton.Click += SalvarButton_Click;
+            SalvarButton.Click += SalvarButton_ClickAsync;
             ConectarEventos();
         }
 
@@ -277,7 +277,7 @@ namespace Telinha
             }
         }
 
-        private void SalvarButton_Click(object? sender, EventArgs e)
+        private async Task SalvarButton_ClickAsync(object? sender, EventArgs e)
         {
             /*try
             {
@@ -338,7 +338,7 @@ namespace Telinha
 
             try
             {
-                var item = (MidiaModel)_bs.Current;
+                var item = (MidiaModel)_bs.Current!;
 
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
 
