@@ -66,9 +66,19 @@ namespace Telinha
             // UI dinâmica continua funcionando
             if (Enum.TryParse(item.Tipo, true, out MidiaTipo tipoReal))
             {
-                label9.Text = TipoToDisplay(tipoReal);
+                TipoLabel.Text = TipoToDisplay(tipoReal);
                 AtualizarUI(tipoReal);
             }
+        }
+        private static string TipoToDisplay(MidiaTipo tipo)
+        {
+            return tipo switch
+            {
+                MidiaTipo.Filme => "Filme",
+                MidiaTipo.Serie => "Série",
+                MidiaTipo.Anime => "Anime",
+                _ => tipo.ToString()
+            };
         }
 
 
