@@ -142,63 +142,10 @@ namespace Telinha
         {
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
-            bool isDisabled = isFilme;
 
-            // 1. Primeiro define todos os Enabled (isso é importante)
-            PaisBox.Enabled = !isDisabled;
-            IdiomaBox.Enabled = !isDisabled;
-            ObraBox.Enabled = !isDisabled;
-            AutoresBox.Enabled = !isDisabled;
-            CriadoresBox.Enabled = !isDisabled;
+            PaisBox.Text = isFilme ? item.Pais : string.Empty;
 
-            PaisLabel.Enabled = !isDisabled;
-            IdiomaLabel.Enabled = !isDisabled;
-            ObraLabel.Enabled = !isDisabled;
-            AutoresLabel.Enabled = !isDisabled;
-            CriadoresLabel.Enabled = !isDisabled;
 
-            MCUBox.Enabled = !isFilme && !isAnime;
-
-            // 2. Função auxiliar para configurar o campo de forma segura
-            void ConfigurarCampo(TextBoxBase campo, string valorDoItem)
-            {
-                if (!campo.Enabled)
-                {
-                    campo.Text = "--";                    // força o "--"
-                }
-                else
-                {
-                    campo.Text = valorDoItem ?? "";
-                    // campo.PlaceholderText = "";        // opcional
-                }
-
-                // Força atualização visual (muito importante para disabled)
-                campo.Refresh();
-            }
-
-            // 3. Aplica nos campos
-            ConfigurarCampo(PaisBox, item.Pais!);
-            ConfigurarCampo(IdiomaBox, item.Idioma!);
-            ConfigurarCampo(ObraBox, item.Obra!);
-            ConfigurarCampo(AutoresBox, item.Autores!);
-            ConfigurarCampo(CriadoresBox, item.Criadores!);
-
-            // MCU especial
-            if (isAnime || !MCUBox.Enabled)
-            {
-                MCUBox.Text = "--";
-                MCUBox.PlaceholderText = isAnime ? "Fase MCU" : "";
-                MCUBox.Refresh();
-            }
-            else
-            {
-                MCUBox.Text = item.MCU ?? "";   // ajuste o nome da propriedade se for diferente
-                MCUBox.Refresh();
-            }
-
-            // Tipo
-            TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
-            TipoBox.PlaceholderText = TipoLabel.Text;
         }
 
         private void PreencherCampos(MidiaModel midia)
