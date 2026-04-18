@@ -352,7 +352,7 @@ namespace Telinha
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
-
+        }
 
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
