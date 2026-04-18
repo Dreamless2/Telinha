@@ -13,6 +13,7 @@ namespace Telinha
         private readonly TMDBServices _tmdb;
         private readonly MidiaServices _midiaService;
         private long currentId = 0;
+        private BindingSource _bs = new();
         public Home()
         {
             InitializeComponent();
