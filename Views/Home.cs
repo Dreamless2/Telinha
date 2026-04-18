@@ -279,7 +279,7 @@ namespace Telinha
 
         private void SalvarButton_Click(object? sender, EventArgs e)
         {
-            try
+            /*try
             {
                 var item = new MidiaModel
                 {
@@ -334,6 +334,19 @@ namespace Telinha
             finally
             {
                 Cursor = Cursors.Default;
+            }*/
+
+            try
+            {
+                var item = (MidiaModel)_bs.Current;
+
+                var (inserted, updated) = await MidiaController.SaveAsync(item);
+
+                MessageBox.Show(inserted ? "Inserido!" : "Atualizado!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
