@@ -78,7 +78,6 @@ namespace Telinha
             };
         }
 
-
         private void PreencherMascara(MidiaTipo tipo)
         {
             var card = new MidiaCard(
