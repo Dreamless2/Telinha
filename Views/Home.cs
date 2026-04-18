@@ -155,6 +155,11 @@ namespace Telinha
                 ObraBox.Enabled = false;
                 AutoresBox.Enabled = false;
                 CriadoresBox.Enabled = false;
+                PaisBox.Refresh();
+                IdiomaBox.Refresh();
+                ObraBox.Refresh();
+                AutoresBox.Refresh();
+                CriadoresBox.Refresh();
             }
 
 
