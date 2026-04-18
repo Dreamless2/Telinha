@@ -156,7 +156,7 @@ namespace Telinha
             AutoresBox.Enabled = !isFilme;
             CriadoresBox.Enabled = !isFilme;
             MCUBox.Enabled = !isFilme && !isAnime;
-            TipoBox.PlaceholderText = tipo.ToString();
+            TipoBox.PlaceholderText = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
 
             if (isAnime)
                 MCUBox.PlaceholderText = "Fase MCU";
