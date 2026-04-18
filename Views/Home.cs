@@ -145,6 +145,9 @@ namespace Telinha
 
             if (tipo == MidiaTipo.Filme)
             {
+                item.Pais = "";
+                item.Idioma = "";
+
                 // Força o valor vazio ou um traço
                 PaisBox.Text = string.Empty;
                 IdiomaBox.Text = string.Empty;
