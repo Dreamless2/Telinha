@@ -145,11 +145,17 @@ namespace Telinha
 
             if (isFilme)
             {
-                PaisBox.Text = string.Empty;
-                IdiomaBox.Text = string.Empty;
-                FranquiaBox.Text = string.Empty;
+                PaisBox.Text = "";
+                IdiomaBox.Text = "";
+                ObraBox.Text = "";
+                AutoresBox.Text = "";
+                CriadoresBox.Text = "";
+                PaisBox.Enabled = false;
+                IdiomaBox.Enabled = false;
+                ObraBox.Enabled = false;
 
             }
+
 
         }
 
