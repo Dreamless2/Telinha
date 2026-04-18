@@ -143,32 +143,41 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-            if (tipo == MidiaTipo.Filme)
-            {
-                item.Pais = "";
-                item.Idioma = "";
 
-                // Força o valor vazio ou um traço
-                PaisBox.Text = string.Empty;
-                IdiomaBox.Text = string.Empty;
+            item.Pais ??= isFilme ? "--" : string.Empty;
+            item.Idioma ??= isFilme ? "--" : string.Empty;
+            item.Obra ??= isFilme ? "--" : string.Empty;
+            item.Autores ??= isFilme ? "--" : string.Empty;
+            item.Criadores ??= isFilme ? "--" : string.Empty;
 
-                // Desabilita
-                PaisBox.Enabled = false;
-                IdiomaBox.Enabled = false;
+            // Enable / Disable
+            PaisLabel.Enabled = !isFilme;
+            IdiomaLabel.Enabled = !isFilme;
+            ObraLabel.Enabled = !isFilme;
+            AutoresLabel.Enabled = !isFilme;
+            CriadoresLabel.Enabled = !isFilme;
 
-                // Opcional: Mudar a cor de fundo para dar feedback visual de desabilitado
-                PaisBox.BackColor = SystemColors.Control;
-            }
-            else
-            {
-                // Carrega os dados normalmente se não for filme
-                PaisBox.Enabled = true;
-                IdiomaBox.Enabled = true;
-                PaisBox.Text = item.Pais;
-                IdiomaBox.Text = item.Idioma;
-            }
+            PaisBox.Enabled = !isFilme;
+            IdiomaBox.Enabled = !isFilme;
+            ObraBox.Enabled = !isFilme;
+            AutoresBox.Enabled = !isFilme;
+            CriadoresBox.Enabled = !isFilme;
 
+            MCUBox.Enabled = !isFilme && !isAnime;
 
+            // Tipo visual
+            TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
+            TipoBox.PlaceholderText = TipoLabel.Text;
+
+            // 🔥 VALORES CORRETOS
+            PaisBox.Text = isFilme ? "--" : item.Pais ?? "--";
+            IdiomaBox.Text = isFilme ? "--" : item.Idioma ?? "--";
+            ObraBox.Text = isFilme ? "--" : item.Obra ?? "--";
+            AutoresBox.Text = isFilme ? "--" : item.Autores ?? "--";
+            CriadoresBox.Text = isFilme ? "--" : item.Criadores ?? "--";
+
+            if (isAnime)
+                MCUBox.PlaceholderText = "Fase MCU";
         }
 
         private void PreencherCampos(MidiaModel midia)
