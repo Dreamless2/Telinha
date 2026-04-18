@@ -18,7 +18,6 @@ namespace Telinha.Data
 
             long now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
-            // Se expirou, retorna null (o MidiaServices vai buscar no TMDB e dar Save novo)
             if ((now - item.UpdatedAt) > maxAgeMinutes * 60)
             {
                 return null;
@@ -37,8 +36,6 @@ namespace Telinha.Data
                 UpdatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
             };
 
-            // O segredo está aqui: SetSource(item, x => new { x.Type, x.MidiaId })
-            // Isso diz ao FreeSql: "Considere esses dois campos como a chave para decidir se Insere ou Atualiza"
             Database.DB.InsertOrUpdate<CacheModel>()
                 .SetSource(cache, x => new { x.Type, x.MidiaId })
                 .ExecuteAffrows();
