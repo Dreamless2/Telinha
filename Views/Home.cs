@@ -231,7 +231,7 @@ namespace Telinha
         private void Principal_Load(object sender, EventArgs e)
         {
             SetupBindings();
-            Carregar().Wait();
+            //Carregar().Wait();
             try
             {
                 if (MidiaController.Any<MidiaModel>())
