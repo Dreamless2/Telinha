@@ -88,10 +88,8 @@ namespace Telinha.Services
 
             try
             {
-                using (var aes = new AesGcm(_key, TagSize))
-                {
-                    aes.Decrypt(nonce, ciphertext, tag, plaintext, aadBytes);
-                }
+                using var aes = new AesGcm(_key, TagSize);
+                aes.Decrypt(nonce, ciphertext, tag, plaintext, aadBytes);
             }
             catch (CryptographicException)
             {
