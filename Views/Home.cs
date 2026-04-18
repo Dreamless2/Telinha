@@ -64,7 +64,7 @@ namespace Telinha
             if (Enum.TryParse(item?.Tipo, true, out MidiaTipo tipoReal))
             {
                 TipoLabel.Text = TipoToDisplay(tipoReal);
-                AtualizarUI(tipoReal);
+                AtualizarUI(tipoReal, item);
             }
         }
         private static string TipoToDisplay(MidiaTipo tipo)
@@ -376,7 +376,7 @@ namespace Telinha
 
                 if (Enum.TryParse(midia!.Tipo, out MidiaTipo tipoReal))
                 {
-                    AtualizarUI(tipoReal);
+                    AtualizarUI(tipoReal, midia);
                 }
 
                 PreencherCampos(midia);
