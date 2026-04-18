@@ -277,7 +277,7 @@ namespace Telinha
             }
         }
 
-        private async Task SalvarButton_ClickAsync(object? sender, EventArgs e)
+        private async void SalvarButton_ClickAsync(object? sender, EventArgs e)
         {
             /*try
             {
