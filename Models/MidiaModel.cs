@@ -1,6 +1,7 @@
 ﻿using FreeSql.DataAnnotations;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Telinha.Utils;
 
 namespace Telinha.Models
 {
@@ -153,6 +154,18 @@ namespace Telinha.Models
         {
             get => _tipoSolicitado;
             set => SetField(ref _tipoSolicitado, value);
+        }
+
+        public string NomeFormatado
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Nome))
+                    return string.Empty;
+
+                return Cleanser.FormatarTitulo(Nome)
+                               .Replace(" ", ""); // remove espaços → hashtag
+            }
         }
     }
 }
