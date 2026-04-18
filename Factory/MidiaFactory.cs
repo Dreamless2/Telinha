@@ -30,10 +30,7 @@ namespace Telinha.Factory
                 }
             }
 
-            var item = new MidiaModel
-            {
-                Tipo = tipoDetectado.ToString()
-            };
+            var item = new MidiaModel();
 
             // 3. MAPEAMENTO DE CAMPOS DINÂMICO
             bool isTV = tipoDetectado != MidiaTipo.Filme;
