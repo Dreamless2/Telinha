@@ -1,4 +1,5 @@
-﻿using Telinha.Card;
+﻿using System.Reflection.Emit;
+using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
 using Telinha.Helpers;
@@ -51,6 +52,23 @@ namespace Telinha
             DiretorBox.DataBindings.Add("Text", _bs, "Diretor", false, DataSourceUpdateMode.OnPropertyChanged);
             ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
             ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        private async Task Carregar()
+        {
+            var item = await MidiaController.GetFirstAsync<MidiaModel>();
+
+            if (item == null)
+                item = new MidiaModel();
+
+            _bs.DataSource = item;
+
+            // UI dinâmica continua funcionando
+            if (Enum.TryParse(item.Tipo, true, out MidiaTipo tipoReal))
+            {
+                label9.Text = TipoToDisplay(tipoReal);
+                AtualizarUI(tipoReal);
+            }
         }
 
 
