@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Reflection.Metadata.Ecma335;
 using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Models;
@@ -53,6 +54,7 @@ namespace Telinha.Factory
             item.Nome = json[titleField]?.ToString() ?? "--";
             item.Sinopse = json["overview"]?.ToString() ?? "--";
             item.Original = json[originalTitleField]?.ToString() ?? "--";
+            item.Tipo = Cleanser.FormatarTitulo(json[titleField]?.ToString());
 
             // 6. GÊNEROS E ESTÚDIOS
             item.Genero = Cleanser.NormalizarGeneros(
