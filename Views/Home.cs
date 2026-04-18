@@ -14,7 +14,7 @@ namespace Telinha
         private readonly TMDBServices _tmdb;
         private readonly MidiaServices _midiaService;
         private long currentId = 0;
-        private BindingSource _bs = new();
+        private readonly BindingSource _bs = [];
         public Home()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Telinha
 
         private void SetupBindings()
         {
-            _bs.DataSource = typeof(MidiaModel);
+            _bs.DataSource = new MidiaModel();
             CodigoBox.DataBindings.Add("Text", _bs, "Codigo", false, DataSourceUpdateMode.OnPropertyChanged);
             NomeBox.DataBindings.Add("Text", _bs, "Nome", false, DataSourceUpdateMode.OnPropertyChanged);
             AudioBox.DataBindings.Add("Text", _bs, "Audio", false, DataSourceUpdateMode.OnPropertyChanged);
