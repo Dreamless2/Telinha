@@ -145,7 +145,7 @@ namespace Telinha
 
             if (isFilme)
             {
-                PaisBox.Text = "";
+                PaisBox.Clear();
                 IdiomaBox.Text = "";
                 ObraBox.Text = "";
                 AutoresBox.Text = "";
