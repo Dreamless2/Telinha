@@ -40,7 +40,7 @@ namespace Telinha
             LancamentoBox.DataBindings.Add("Text", _bs, "Lancamento", false, DataSourceUpdateMode.OnPropertyChanged);
             AlternativoBox.DataBindings.Add("Text", _bs, "Alternativo", false, DataSourceUpdateMode.OnPropertyChanged);
             TagsBox.DataBindings.Add("Text", _bs, "Tags", false, DataSourceUpdateMode.OnPropertyChanged);
-            TipoBox.DataBindings.Add("Text", _bs, "Tipo", false, DataSourceUpdateMode.OnPropertyChanged);
+            //TipoBox.DataBindings.Add("Text", _bs, "Tipo", false, DataSourceUpdateMode.OnPropertyChanged);
             MCUBox.DataBindings.Add("Text", _bs, "MCU", false, DataSourceUpdateMode.OnPropertyChanged);
             PaisBox.DataBindings.Add("Text", _bs, "Pais", false, DataSourceUpdateMode.OnPropertyChanged);
             IdiomaBox.DataBindings.Add("Text", _bs, "Idioma", false, DataSourceUpdateMode.OnPropertyChanged);
