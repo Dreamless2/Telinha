@@ -48,7 +48,19 @@ namespace Telinha.Factory
             item.Lancamento = hasValidDate ? releaseDate.ToString("dd/MM/yyyy") : "--";
 
             string tagBase = tipoDetectado.ToString();
-            item.Tags = hasValidDate ? $"#{tagBase} #{tagBase}{releaseDate.Year}" : $"#{tagBase}";
+
+            if (tipoDetectado == MidiaTipo.Serie)
+            {
+                item.Tags = hasValidDate
+                    ? $"#{tagBase} #{tagBase}{releaseDate.Year} #Série #Série{releaseDate.Year}"
+                    : $"#{tagBase} #Série";
+            }
+            else
+            {
+                item.Tags = hasValidDate
+                    ? $"#{tagBase} #{tagBase}{releaseDate.Year}"
+                    : $"#{tagBase}";
+            }
 
             // 5. INFORMAÇÕES BÁSICAS
             item.Nome = json[titleField]?.ToString() ?? "--";
