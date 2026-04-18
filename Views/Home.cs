@@ -28,6 +28,35 @@ namespace Telinha
             ConectarEventos();
         }
 
+        private void SetupBindings()
+        {
+            _bs.DataSource = typeof(MidiaModel);
+
+            CodigoBox.DataBindings.Add("Text", _bs, "Codigo", false, DataSourceUpdateMode.OnPropertyChanged);
+            NomeBox.DataBindings.Add("Text", _bs, "Titulo", false, DataSourceUpdateMode.OnPropertyChanged);
+            AudioBox.DataBindings.Add("Text", _bs, "Audio", false, DataSourceUpdateMode.OnPropertyChanged);
+            SinopseBox.DataBindings.Add("Text", _bs, "Sinopse", false, DataSourceUpdateMode.OnPropertyChanged);
+            OriginalBox.DataBindings.Add("Text", _bs, "Original", false, DataSourceUpdateMode.OnPropertyChanged);
+            LancamentoBox.DataBindings.Add("Text", _bs, "Lancamento", false, DataSourceUpdateMode.OnPropertyChanged);
+            AlternativoBox.DataBindings.Add("Text", _bs, "Alternativo", false, DataSourceUpdateMode.OnPropertyChanged);
+            TagsBox.DataBindings.Add("Text", _bs, "Tags", false, DataSourceUpdateMode.OnPropertyChanged);
+            TipoBox.DataBindings.Add("Text", _bs, "Tipo", false, DataSourceUpdateMode.OnPropertyChanged);
+            MCUBox.DataBindings.Add("Text", _bs, "MCU", false, DataSourceUpdateMode.OnPropertyChanged);
+            PaisBox.DataBindings.Add("Text", _bs, "Pais", false, DataSourceUpdateMode.OnPropertyChanged);
+            IdiomaBox.DataBindings.Add("Text", _bs, "Idioma", false, DataSourceUpdateMode.OnPropertyChanged);
+            ObraBox.DataBindings.Add("Text", _bs, "Obra", false, DataSourceUpdateMode.OnPropertyChanged);
+            AutoresBox.DataBindings.Add("Text", _bs, "Autores", false, DataSourceUpdateMode.OnPropertyChanged);
+            FranquiaBox.DataBindings.Add("Text", _bs, "Franquia", false, DataSourceUpdateMode.OnPropertyChanged);
+            CriadoresBox.DataBindings.Add("Text", _bs, "Criadores", false, DataSourceUpdateMode.OnPropertyChanged);
+            GeneroBox.DataBindings.Add("Text", _bs, "Genero", false, DataSourceUpdateMode.OnPropertyChanged);
+            DiretorBox.DataBindings.Add("Text", _bs, "Diretor", false, DataSourceUpdateMode.OnPropertyChanged);
+            ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
+            ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
+
+
+        }
+
+
         private void PreencherMascara(MidiaTipo tipo)
         {
             var card = new MidiaCard(
