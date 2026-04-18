@@ -139,30 +139,36 @@ namespace Telinha
                 PreencherMascara(MidiaTipo.Anime);
             }
         }
-        private void AtualizarUI(MidiaTipo tipo)
+        private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
         {
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
+            // Enable / Disable
             PaisLabel.Enabled = !isFilme;
             IdiomaLabel.Enabled = !isFilme;
             ObraLabel.Enabled = !isFilme;
             AutoresLabel.Enabled = !isFilme;
             CriadoresLabel.Enabled = !isFilme;
+
             PaisBox.Enabled = !isFilme;
             IdiomaBox.Enabled = !isFilme;
             ObraBox.Enabled = !isFilme;
             AutoresBox.Enabled = !isFilme;
             CriadoresBox.Enabled = !isFilme;
-            MCUBox.Enabled = !isFilme && !isAnime;
-            TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
-            TipoBox.PlaceholderText = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
-            PaisBox.Text = isFilme ? "--" : PaisBox.Text;
-            IdiomaBox.Text = isFilme ? "--" : IdiomaBox.Text;
-            ObraBox.Text = isFilme ? "--" : ObraBox.Text;
-            AutoresBox.Text = isFilme ? "--" : AutoresBox.Text;
-            CriadoresBox.Text = isFilme ? "--" : CriadoresBox.Text;
 
+            MCUBox.Enabled = !isFilme && !isAnime;
+
+            // Tipo visual
+            TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
+            TipoBox.PlaceholderText = TipoLabel.Text;
+
+            // 🔥 VALORES CORRETOS
+            PaisBox.Text = isFilme ? "--" : item.Pais ?? "--";
+            IdiomaBox.Text = isFilme ? "--" : item.Idioma ?? "--";
+            ObraBox.Text = isFilme ? "--" : item.Obra ?? "--";
+            AutoresBox.Text = isFilme ? "--" : item.Autores ?? "--";
+            CriadoresBox.Text = isFilme ? "--" : item.Criadores ?? "--";
 
             if (isAnime)
                 MCUBox.PlaceholderText = "Fase MCU";
