@@ -58,13 +58,10 @@ namespace Telinha
         {
             var item = await MidiaController.GetFirstAsync<MidiaModel>();
 
-            if (item == null)
-                item = new MidiaModel();
-
-            _bs.DataSource = item;
+            _bs.DataSource = item ?? new MidiaModel();
 
             // UI dinâmica continua funcionando
-            if (Enum.TryParse(item.Tipo, true, out MidiaTipo tipoReal))
+            if (Enum.TryParse(item?.Tipo, true, out MidiaTipo tipoReal))
             {
                 TipoLabel.Text = TipoToDisplay(tipoReal);
                 AtualizarUI(tipoReal);
