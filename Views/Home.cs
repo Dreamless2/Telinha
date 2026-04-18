@@ -143,23 +143,26 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-            if (isFilme)
+            if (tipo == MidiaTipo.Filme)
             {
-                PaisBox.Clear();
-                IdiomaBox.Text = "";
-                ObraBox.Text = "";
-                AutoresBox.Text = "";
-                CriadoresBox.Text = "";
+                // Força o valor vazio ou um traço
+                PaisBox.Text = string.Empty;
+                IdiomaBox.Text = string.Empty;
+
+                // Desabilita
                 PaisBox.Enabled = false;
                 IdiomaBox.Enabled = false;
-                ObraBox.Enabled = false;
-                AutoresBox.Enabled = false;
-                CriadoresBox.Enabled = false;
-                PaisBox.Refresh();
-                IdiomaBox.Refresh();
-                ObraBox.Refresh();
-                AutoresBox.Refresh();
-                CriadoresBox.Refresh();
+
+                // Opcional: Mudar a cor de fundo para dar feedback visual de desabilitado
+                PaisBox.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                // Carrega os dados normalmente se não for filme
+                PaisBox.Enabled = true;
+                IdiomaBox.Enabled = true;
+                PaisBox.Text = item.Pais;
+                IdiomaBox.Text = item.Idioma;
             }
 
 
