@@ -157,11 +157,11 @@ namespace Telinha
             MCUBox.Enabled = !isFilme && !isAnime;
             TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
             TipoBox.PlaceholderText = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
-            PaisBox.PlaceholderText = isFilme ? "--" : "País de origem";
-            IdiomaBox.PlaceholderText = isFilme ? "--" : "Idioma original";
-            ObraBox.PlaceholderText = isFilme ? "--" : "Obra original";
-            AutoresBox.PlaceholderText = isFilme ? "--" : "Autores";
-            CriadoresBox.PlaceholderText = isFilme ? "--" : "Criadores";
+            PaisBox.Text = isFilme ? "--" : PaisBox.Text;
+            IdiomaBox.Text = isFilme ? "--" : IdiomaBox.Text;
+            ObraBox.Text = isFilme ? "--" : ObraBox.Text;
+            AutoresBox.Text = isFilme ? "--" : AutoresBox.Text;
+
 
             if (isAnime)
                 MCUBox.PlaceholderText = "Fase MCU";
