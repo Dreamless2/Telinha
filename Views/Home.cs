@@ -230,20 +230,6 @@ namespace Telinha
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            //PreencherMascara(MidiaTipo.Filme);
-            TipoLabel.Text = "Filme";
-            TipoBox.PlaceholderText = "Filme";
-            PaisLabel.Enabled = false;
-            IdiomaLabel.Enabled = false;
-            ObraLabel.Enabled = false;
-            AutoresLabel.Enabled = false;
-            CriadoresLabel.Enabled = false;
-            PaisBox.Enabled = false;
-            IdiomaBox.Enabled = false;
-            ObraBox.Enabled = false;
-            AutoresBox.Enabled = false;
-            CriadoresBox.Enabled = false;
-
             try
             {
                 if (MidiaController.Any<MidiaModel>())
