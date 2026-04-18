@@ -49,18 +49,28 @@ namespace Telinha.Factory
 
             string tagBase = tipoDetectado.ToString();
 
+            //item.Tags = hasValidDate ? $"#{tagBase} #{tagBase}{releaseDate.Year}" : $"#{tagBase}";
+
+            var tags = new List<string>();
+
+            // sempre adiciona o padrão
+            tags.Add($"#{tagBase}");
+
+            if (hasValidDate)
+                tags.Add($"#{tagBase}{releaseDate.Year}");
+
+            // 🔥 regra especial para Série
             if (tipoDetectado == MidiaTipo.Serie)
             {
-                item.Tags = hasValidDate
-                    ? $"#{tagBase} #{tagBase}{releaseDate.Year} #Série #Série{releaseDate.Year}"
-                    : $"#{tagBase} #Série";
+                string tagAcento = "Série";
+
+                tags.Add($"#{tagAcento}");
+
+                if (hasValidDate)
+                    tags.Add($"#{tagAcento}{releaseDate.Year}");
             }
-            else
-            {
-                item.Tags = hasValidDate
-                    ? $"#{tagBase} #{tagBase}{releaseDate.Year}"
-                    : $"#{tagBase}";
-            }
+
+            item.Tags = string.Join(" ", tags);
 
             // 5. INFORMAÇÕES BÁSICAS
             item.Nome = json[titleField]?.ToString() ?? "--";
