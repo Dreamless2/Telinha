@@ -162,6 +162,7 @@ namespace Telinha
             LancamentoBox.Text = item.Lancamento ?? string.Empty;
             AlternativoBox.Text = item.Alternativo ?? string.Empty;
             TagsBox.Text = item.Tags ?? string.Empty;
+            TipoBox.Text = item.Tipo ?? string.Empty;
             MCUBox.Text = item.MCU ?? string.Empty;
             PaisBox.Text = item.Pais ?? string.Empty;
             IdiomaBox.Text = item.Idioma ?? string.Empty;
