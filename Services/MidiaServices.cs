@@ -123,7 +123,6 @@ namespace Telinha.Services
             if (invalido)
                 return null;
 
-
             return model;
         }
     }
