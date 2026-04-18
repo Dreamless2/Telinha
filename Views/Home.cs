@@ -28,7 +28,6 @@ namespace Telinha
             SalvarButton.Click += SalvarButton_ClickAsync;
             ConectarEventos();
         }
-
         private void SetupBindings()
         {
             _bs.DataSource = new MidiaModel();
@@ -143,42 +142,64 @@ namespace Telinha
         {
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
-            bool isDisabled = isFilme; // Define a condição de desativação central
+            bool isDisabled = isFilme;
 
-            // 1. Atualizar Estados (Enable/Disable)
+            // 1. Define os estados de habilitado primeiro
             PaisBox.Enabled = !isDisabled;
             IdiomaBox.Enabled = !isDisabled;
             ObraBox.Enabled = !isDisabled;
             AutoresBox.Enabled = !isDisabled;
             CriadoresBox.Enabled = !isDisabled;
 
-            // Labels seguem a mesma lógica
+            // Labels
             PaisLabel.Enabled = !isDisabled;
             IdiomaLabel.Enabled = !isDisabled;
             ObraLabel.Enabled = !isDisabled;
             AutoresLabel.Enabled = !isDisabled;
             CriadoresLabel.Enabled = !isDisabled;
 
-            // MCU tem regra extra: desabilita se for Filme OU Anime
             MCUBox.Enabled = !isFilme && !isAnime;
 
-            // 2. Atualizar Textos (Valores)
-            // Se estiver desabilitado, força "--". Caso contrário, usa o valor do item.
-            PaisBox.Text = !PaisBox.Enabled ? "--" : (item.Pais ?? "");
-            IdiomaBox.Text = !IdiomaBox.Enabled ? "--" : (item.Idioma ?? "");
-            ObraBox.Text = !ObraBox.Enabled ? "--" : (item.Obra ?? "");
-            AutoresBox.Text = !AutoresBox.Enabled ? "--" : (item.Autores ?? "");
-            CriadoresBox.Text = !CriadoresBox.Enabled ? "--" : (item.Criadores ?? "");
+            // 2. Agora define o conteúdo (Text + Placeholder)
+            static void ConfigurarCampo(TextBoxBase campo, string valorItem, string placeholderQuandoDesabilitado = "--")
+            {
+                if (!campo.Enabled)
+                {
+                    campo.Text = placeholderQuandoDesabilitado;   // ou "" se quiser usar só PlaceholderText
+                                                                  // campo.PlaceholderText = placeholderQuandoDesabilitado; // opcional
+                }
+                else
+                {
+                    campo.Text = valorItem ?? "";
+                    // campo.PlaceholderText = ""; // limpa se necessário
+                }
+            }
 
-            // 3. Labels de Tipo e Placeholders
-            TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
-            TipoBox.PlaceholderText = TipoLabel.Text;
+            ConfigurarCampo(PaisBox, item.Pais!);
+            ConfigurarCampo(IdiomaBox, item.Idioma!);
+            ConfigurarCampo(ObraBox, item.Obra!);
+            ConfigurarCampo(AutoresBox, item.Autores!);
+            ConfigurarCampo(CriadoresBox, item.Criadores!);
 
+            // MCU tem regra especial
             if (isAnime)
             {
-                MCUBox.Text = "--"; // Força "--" no campo MCU se for Anime
+                MCUBox.Text = "--";
                 MCUBox.PlaceholderText = "Fase MCU";
+                // MCUBox.Enabled já está false por causa da regra acima
             }
+            else if (!MCUBox.Enabled)
+            {
+                MCUBox.Text = "--";
+            }
+            else
+            {
+                MCUBox.Text = item.MCU ?? ""; // supondo que tem essa propriedade
+            }
+
+            // Tipo
+            TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
+            TipoBox.PlaceholderText = TipoLabel.Text;
         }
 
         private void PreencherCampos(MidiaModel midia)
