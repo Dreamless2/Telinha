@@ -9,7 +9,7 @@ namespace Telinha.Models
         public long Id { get; set; }
 
         /// <summary>
-        /// Nome identificador do token (ex: "SpotifyAccess", "OpenAIKey", "ApiTokenPrincipal")
+        /// Nome identificador do token 
         /// </summary>
         [Column(StringLength = 100)]
         public string KeyName { get; set; } = string.Empty;
