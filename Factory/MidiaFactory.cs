@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System.Reflection.Metadata.Ecma335;
 using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Models;

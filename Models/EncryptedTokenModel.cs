@@ -1,11 +1,8 @@
 ﻿using FreeSql.DataAnnotations;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Telinha.Models
 {
-    [Table(Name = "encryptedtokens")]
+    [Table(Name = "encrypted_tokens")]
     public class EncryptedToken
     {
         [Column(IsPrimary = true, IsIdentity = true)]

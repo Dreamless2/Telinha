@@ -1,5 +1,4 @@
-﻿using System.Reflection.Emit;
-using Telinha.Card;
+﻿using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
 using Telinha.Helpers;
