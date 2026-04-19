@@ -125,7 +125,7 @@ ON encrypted_tokens(key_name);";
         private static void CreateTriggers()
         {
             // 🔹 Atualiza updated_at automaticamente (sem loop)
-            const string updated = @"
+            const string updatedMidia = @"
 CREATE TRIGGER IF NOT EXISTS trg_midia_updated
 AFTER UPDATE ON midia
 FOR EACH ROW
@@ -136,7 +136,7 @@ BEGIN
     WHERE id = OLD.id;
 END;
 ";
-            _db!.Ado.ExecuteNonQuery(updated);
+            _db!.Ado.ExecuteNonQuery(updatedMidia);
 
             // ====================== TRIGGER PARA TOKENS ======================
             const string updatedTokens = @"
