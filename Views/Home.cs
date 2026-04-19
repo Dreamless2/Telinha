@@ -176,10 +176,13 @@ namespace Telinha
             CriadoresBox.Text = item.Criadores;
 
             if (isAnime)
+            {
                 MCUBox.PlaceholderText = "Fase MCU";
+            }
             else
+            {
                 MCUBox.Enabled = true;
-            //MCUBox.PlaceholderText = "Fase MCU";
+            }
         }
 
         private void PreencherCampos(MidiaModel midia)
