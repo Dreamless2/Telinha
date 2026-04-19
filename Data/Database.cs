@@ -102,10 +102,10 @@ ON cache(updated_at);";
             const string sqlTokens = @"
 CREATE TABLE IF NOT EXISTS encrypted_tokens (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    key_name TEXT NOT NULL UNIQUE,                    -- identificador único do token
-    encrypted_data TEXT NOT NULL,                     -- token criptografado em Base64
-    description TEXT,                                 -- descrição opcional
-    is_active BOOLEAN DEFAULT 1,                      -- para desativar sem apagar
+    key_name TEXT NOT NULL UNIQUE,                    
+    encrypted_data TEXT NOT NULL,                    
+    description TEXT,                                 
+    is_active BOOLEAN DEFAULT 1,                     
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT DEFAULT CURRENT_TIMESTAMP
 );";
@@ -137,6 +137,20 @@ BEGIN
 END;
 ";
             _db!.Ado.ExecuteNonQuery(updated);
+
+            // ====================== TRIGGER PARA TOKENS ======================
+            const string updatedTokens = @"
+CREATE TRIGGER IF NOT EXISTS trg_encrypted_tokens_updated
+AFTER UPDATE ON encrypted_tokens
+FOR EACH ROW
+WHEN NEW.updated_at = OLD.updated_at
+BEGIN
+    UPDATE encrypted_tokens 
+    SET updated_at = CURRENT_TIMESTAMP 
+    WHERE id = OLD.id;
+END;";
+
+            _db.Ado.ExecuteNonQuery(updatedTokens);
         }
     }
 }
