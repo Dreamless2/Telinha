@@ -273,9 +273,9 @@ namespace Telinha
 
             try
             {
-                if (await MidiaController.Any<MidiaModel>())   // prefira versão async se existir
+                if (await MidiaController.AnyAsync<MidiaModel>())
                 {
-                    await Carregar();        // ← await direto, sem .Wait()
+                    await Carregar();
                 }
                 else
                 {
