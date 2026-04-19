@@ -251,6 +251,8 @@ namespace Telinha
         private void Principal_Load(object sender, EventArgs e)
         {
             SetupBindings();
+            Carregar().Wait();
+            /*
             try
             {
                 if (MidiaController.Any<MidiaModel>())
@@ -266,7 +268,7 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro: {ex.Message}.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
         private void CopiarButton_Click(object sender, EventArgs e)
@@ -284,73 +286,13 @@ namespace Telinha
 
         private async void SalvarButton_ClickAsync(object? sender, EventArgs e)
         {
-            /*try
-            {
-                var item = new MidiaModel
-                {
-                    Codigo = CodigoBox.Text.Trim(),
-                    Nome = NomeBox.Text.Trim(),
-                    Audio = AudioBox.SelectedItem?.ToString(),
-                    Sinopse = SinopseBox.Text.Trim(),
-                    Original = OriginalBox.Text.Trim(),
-                    Lancamento = LancamentoBox.Text.Trim(),
-                    Alternativo = AlternativoBox.Text.Trim(),
-                    Tags = TagsBox.Text.Trim(),
-                    Tipo = TipoBox.Text.Trim(),
-                    MCU = MCUBox.Text.Trim(),
-                    Pais = PaisBox.Text.Trim(),
-                    Idioma = IdiomaBox.Text.Trim(),
-                    Autores = AutoresBox.Text.Trim(),
-                    Franquia = FranquiaBox.Text.Trim(),
-                    Criadores = CriadoresBox.Text.Trim(),
-                    Genero = GeneroBox.Text.Trim(),
-                    Diretor = DiretorBox.Text.Trim(),
-                    Artistas = ArtistasBox.Text.Trim(),
-                    Produtora = ProdutoraBox.Text.Trim(),
-                };
-
-                if (string.IsNullOrEmpty(item.Codigo))
-                {
-                    MessageBox.Show("Informe um código.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                Cursor = Cursors.WaitCursor;
-
-                var (inserted, updated) = MidiaController.SaveAsync(item).Result;
-
-                if (inserted)
-                {
-                    MessageBox.Show($"{item.Tipo} {item.Nome} inserido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (updated)
-                {
-                    MessageBox.Show($"{item.Tipo} {item.Nome} atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Nenhuma alteração detectada.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao salvar:\n{ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }*/
-
-
             try
             {
                 var item = (MidiaModel)_bs.Current!;
 
-                MessageBox.Show($"ANTES DO SAVE: {item.Tipo}");
-
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
 
-                MessageBox.Show(inserted ? $"{item.Tipo} {item.Nome} inserido com sucesso!" : $"{item.Tipo} {item.Nome} atualizado com sucesso!");
+                MessageBox.Show(inserted ? $"{item.Nome} inserido com sucesso!" : $"{item.Nome} atualizado com sucesso!");
 
                 _bs.EndEdit();
             }
@@ -359,7 +301,6 @@ namespace Telinha
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
