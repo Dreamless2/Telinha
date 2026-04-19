@@ -323,7 +323,6 @@ namespace Telinha
                 ? MidiaTipo.Filme : MidiaTipo.Serie;
 
             if (_buscando) return;
-            _buscando = true; if (_buscando) return;
             _buscando = true;
 
             try
