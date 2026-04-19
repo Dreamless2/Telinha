@@ -343,6 +343,10 @@ namespace Telinha
             {
                 MessageBox.Show($"Erro ao buscar:\n{ex.Message}", "Erro");
             }
+            finally
+            {
+                _buscando = false;
+            }
         }
     }
 }
