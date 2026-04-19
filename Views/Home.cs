@@ -150,7 +150,6 @@ namespace Telinha
             item.Obra = isFilme ? "--" : (item.Obra ?? "");
             item.Autores = isFilme ? "--" : (item.Autores ?? "");
             item.Criadores = isFilme ? "--" : (item.Criadores ?? "");
-            item.MCU = isAnime ? "--" : (item.MCU ?? "");
 
             // 2. ESTADO DOS CONTROLES (ENABLE/DISABLE)
             bool habilitarCamposGerais = !isFilme;
