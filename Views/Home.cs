@@ -15,6 +15,9 @@ namespace Telinha
         private readonly MidiaServices _midiaService;
         private long currentId = 0;
         private readonly BindingSource _bs = [];
+        private bool _buscando;
+
+
         public Home()
         {
             InitializeComponent();
@@ -305,8 +308,6 @@ namespace Telinha
         {
             Application.Exit();
         }
-
-
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
@@ -320,6 +321,10 @@ namespace Telinha
 
             MidiaTipo tipoSolicitado = TipoLabel.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
                 ? MidiaTipo.Filme : MidiaTipo.Serie;
+
+            if (_buscando) return;
+            _buscando = true; if (_buscando) return;
+            _buscando = true;
 
             try
             {
