@@ -341,9 +341,12 @@ namespace Telinha
                 Cursor = Cursors.Default;
             }*/
 
+
             try
             {
                 var item = (MidiaModel)_bs.Current!;
+
+                MessageBox.Show($"ANTES DO SAVE: {item.Tipo}");
 
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
 
