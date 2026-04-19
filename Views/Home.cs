@@ -146,7 +146,7 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-            // 1. TRATAMENTO DOS DADOS (O OBJETO)
+            // 1. TRATAMENTO DOS DADOS
             // Se for filme, força "--". Se não for, só mexe se estiver nulo (coalescência).
             item.Pais = isFilme ? "--" : (item.Pais ?? "");
             item.Idioma = isFilme ? "--" : (item.Idioma ?? "");
@@ -186,7 +186,6 @@ namespace Telinha
                 MCUBox.Enabled = true;
             }
         }
-
         private void PreencherCampos(MidiaModel midia)
         {
             if (midia == null)
@@ -233,6 +232,41 @@ namespace Telinha
                 AudioBox.Items.Add(audioValue);
 
             AudioBox.SelectedItem = audioValue;
+        }
+        private void LimparCampos()
+        {
+            currentId = 0;
+
+            // Dicionário de campos (fácil de adicionar/remover no futuro)
+            var camposTexto = new Dictionary<string, TextBox>
+    {
+        { nameof(CodigoBox),      CodigoBox },
+        { nameof(NomeBox),        NomeBox },
+        { nameof(SinopseBox),     SinopseBox },
+        { nameof(OriginalBox),    OriginalBox },
+        { nameof(LancamentoBox),  LancamentoBox },
+        { nameof(AlternativoBox), AlternativoBox },
+        { nameof(TagsBox),        TagsBox },
+        { nameof(TipoBox),        TipoBox },
+        { nameof(MCUBox),         MCUBox },
+        { nameof(PaisBox),        PaisBox },
+        { nameof(IdiomaBox),      IdiomaBox },
+        { nameof(AutoresBox),     AutoresBox },
+        { nameof(FranquiaBox),    FranquiaBox },
+        { nameof(CriadoresBox),   CriadoresBox },
+        { nameof(GeneroBox),      GeneroBox },
+        { nameof(DiretorBox),     DiretorBox },
+        { nameof(ArtistasBox),    ArtistasBox },
+        { nameof(ProdutoraBox),   ProdutoraBox }
+    };
+
+            foreach (var campo in camposTexto.Values)
+            {
+                campo.Text = string.Empty;
+            }
+
+            // Áudio
+            AudioBox.SelectedIndex = -1;
         }
 
         private async Task PreencherCampos()
