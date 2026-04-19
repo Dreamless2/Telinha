@@ -62,7 +62,6 @@ namespace Telinha
 
             _bs.DataSource = item ?? new MidiaModel();
 
-            // UI dinâmica continua funcionando
             if (Enum.TryParse(item?.Tipo, true, out MidiaTipo tipoReal))
             {
                 TipoLabel.Text = TipoToDisplay(tipoReal);
@@ -267,35 +266,6 @@ namespace Telinha
 
             // Áudio
             AudioBox.SelectedIndex = -1;
-        }
-
-        private async Task PreencherCampos()
-        {
-            var item = await MidiaController.GetFirstAsync<MidiaModel>();
-
-            if (item == null) return;
-
-            currentId = item.Id;
-
-            CodigoBox.Text = item.Codigo ?? string.Empty;
-            NomeBox.Text = item.Nome ?? string.Empty;
-            AudioBox.SelectedItem = item.Audio;
-            SinopseBox.Text = item.Sinopse ?? string.Empty;
-            OriginalBox.Text = item.Original ?? string.Empty;
-            LancamentoBox.Text = item.Lancamento ?? string.Empty;
-            AlternativoBox.Text = item.Alternativo ?? string.Empty;
-            TagsBox.Text = item.Tags ?? string.Empty;
-            TipoBox.Text = item.Tipo ?? string.Empty;
-            MCUBox.Text = item.MCU ?? string.Empty;
-            PaisBox.Text = item.Pais ?? string.Empty;
-            IdiomaBox.Text = item.Idioma ?? string.Empty;
-            AutoresBox.Text = item.Autores ?? string.Empty;
-            FranquiaBox.Text = item.Franquia ?? string.Empty;
-            CriadoresBox.Text = item.Criadores ?? string.Empty;
-            GeneroBox.Text = item.Genero ?? string.Empty;
-            DiretorBox.Text = item.Diretor ?? string.Empty;
-            ArtistasBox.Text = item.Artistas ?? string.Empty;
-            ProdutoraBox.Text = item.Produtora ?? string.Empty;
         }
         private void Principal_Load(object sender, EventArgs e)
         {
