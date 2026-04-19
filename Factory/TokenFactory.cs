@@ -10,7 +10,7 @@ namespace Telinha.Factory
 {
     public class TokenFactory
     {
-        private readonly byte[] _masterKey;   // chave AES protegida por DPAPI
+        private readonly byte[] _masterKey;
         private readonly IFreeSql _fsql;
 
         public TokenFactory()
@@ -59,7 +59,7 @@ namespace Telinha.Factory
             }
             catch
             {
-                return null; // token inválido ou chave mudou
+                return null;
             }
         }
 
