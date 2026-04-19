@@ -3,23 +3,48 @@
 namespace Telinha.Models
 {
     [Table(Name = "encrypted_tokens")]
+    [Index("uk_encrypted_tokens_keyname", nameof(KeyName), true)] // UNIQUE
     public class EncryptedToken
     {
         [Column(IsPrimary = true, IsIdentity = true)]
         public long Id { get; set; }
 
-        [Column(StringLength = 100)]
+        /// <summary>
+        /// Nome identificador do token (UNIQUE)
+        /// </summary>
+        [Column(StringLength = 100, IsNullable = false)]
         public string KeyName { get; set; } = string.Empty;
 
-        [Column(StringLength = -1)]
+        /// <summary>
+        /// Token criptografado em Base64
+        /// </summary>
+        [Column(StringLength = -1, IsNullable = false)]
         public string EncryptedData { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Data de criação
+        /// </summary>
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        [Column(StringLength = 20)]
+        /// <summary>
+        /// Data da última atualização
+        /// </summary>
+        public DateTime? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Versão da criptografia (para rotação de chave)
+        /// </summary>
+        [Column(StringLength = 20, IsNullable = false)]
         public string EncryptionVersion { get; set; } = "1";
 
+        /// <summary>
+        /// Descrição opcional
+        /// </summary>
         public string? Description { get; set; }
+
+        /// <summary>
+        /// Flag de ativação
+        /// </summary>
         public bool IsActive { get; set; } = true;
     }
 }
