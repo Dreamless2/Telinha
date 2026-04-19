@@ -287,7 +287,6 @@ namespace Telinha
             {
                 MessageBox.Show($"Erro: {ex.Message}.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            */
         }
 
         private void CopiarButton_Click(object sender, EventArgs e)
