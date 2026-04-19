@@ -267,25 +267,27 @@ namespace Telinha
             // Áudio
             AudioBox.SelectedIndex = -1;
         }
-        private void Principal_Load(object sender, EventArgs e)
+        private async void Principal_Load(object sender, EventArgs e)
         {
             SetupBindings();
 
             try
             {
-                if (MidiaController.Any<MidiaModel>())
+                if (await MidiaController.Any<MidiaModel>())   // prefira versão async se existir
                 {
-                    Carregar().Wait();
+                    await Carregar();        // ← await direto, sem .Wait()
                 }
                 else
                 {
                     currentId = 0;
-                    MessageBox.Show("Nenhuma mídia encontrada. Insira um código válido e pressione Enter para buscar.", "Bem-vindo");
+                    MessageBox.Show("Nenhuma mídia encontrada. Insira um código válido e pressione Enter para buscar.",
+                                    "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro: {ex.Message}.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao carregar dados: {ex.Message}",
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

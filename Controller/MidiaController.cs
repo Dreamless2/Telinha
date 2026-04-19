@@ -19,7 +19,6 @@ namespace Telinha.Controller
             }
             return prop;
         }
-
         private static PropertyInfo? GetIdProp(Type t)
         {
             if (!_idCache.TryGetValue(t, out var prop))
