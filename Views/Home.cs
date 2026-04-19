@@ -178,7 +178,8 @@ namespace Telinha
             if (isAnime)
                 MCUBox.PlaceholderText = "Fase MCU";
             else
-                MCUBox.PlaceholderText = ""; // Limpa o placeholder se não for anime
+                MCUBox.Enabled = true;
+            MCUBox.PlaceholderText = "Fase MCU";
         }
 
         private void PreencherCampos(MidiaModel midia)
