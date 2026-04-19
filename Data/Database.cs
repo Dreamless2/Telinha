@@ -113,8 +113,6 @@ CREATE TABLE IF NOT EXISTS encrypted_tokens (
 
             _db.Ado.ExecuteNonQuery(sqlTokens);
 
-            _db.Ado.ExecuteNonQuery(sqlTokens);
-
             // Índice para busca rápida por key_name
             const string idxTokens = @"
 CREATE INDEX IF NOT EXISTS idx_encrypted_tokens_key 
