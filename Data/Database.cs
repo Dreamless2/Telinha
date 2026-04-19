@@ -5,7 +5,7 @@ namespace Telinha.Data
     public static class Database
     {
         private static IFreeSql? _db;
-        private static readonly object _lock = new();
+        private static readonly Lock _lock = new();
         private static readonly string DbPath = "telinha.db";
 
         public static IFreeSql DB
@@ -60,7 +60,6 @@ CREATE TABLE IF NOT EXISTS midia (
     original TEXT,
     lancamento TEXT,
     alternativo TEXT,
-    serie TEXT,
     pais TEXT,
     idioma TEXT,
     franquia TEXT,
@@ -114,8 +113,6 @@ BEGIN
 END;
 ";
             _db!.Ado.ExecuteNonQuery(updated);
-
-            // ❌ Removido trigger de created_at (já é DEFAULT)
         }
     }
 }
