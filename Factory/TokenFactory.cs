@@ -37,9 +37,9 @@ namespace Telinha.Factory
             };
 
             await _fsql.InsertOrUpdate<EncryptedToken>()
-                       .SetSource(entity)
-                       .Where(x => x.KeyName == keyName)
-                       .ExecuteAffrowsAsync();
+           .SetSource(entity)
+           .Where<EncryptedToken>(x => x.KeyName == keyName)   // ← Adicione <EncryptedToken>
+           .ExecuteAffrowsAsync();
         }
 
         public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
