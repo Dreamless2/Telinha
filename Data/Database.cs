@@ -95,10 +95,11 @@ CREATE INDEX IF NOT EXISTS idx_cache_updated
 ON cache(updated_at);";
 
             _db.Ado.ExecuteNonQuery(idxCache);
-        }
 
-        // ====================== TABELA TOKENS (NOVA) ======================
-        const string sqlTokens = @"
+
+
+            // ====================== TABELA TOKENS (NOVA) ======================
+            const string sqlTokens = @"
 CREATE TABLE IF NOT EXISTS encrypted_tokens (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     key_name TEXT NOT NULL UNIQUE,                    -- identificador único do token
@@ -109,15 +110,30 @@ CREATE TABLE IF NOT EXISTS encrypted_tokens (
     updated_at TEXT DEFAULT CURRENT_TIMESTAMP
 );";
 
-        _db.Ado.ExecuteNonQuery(sqlTokens);
+            _db.Ado.ExecuteNonQuery(sqlTokens);
 
-        // Índice para busca rápida por key_name
-        const string idxTokens = @"
+            // Índice para busca rápida por key_name
+            const string idxTokens = @"
 CREATE INDEX IF NOT EXISTS idx_encrypted_tokens_key 
 ON encrypted_tokens(key_name);";
 
-        _db.Ado.ExecuteNonQuery(idxTokens);
-    }
+            _db.Ado.ExecuteNonQuery(idxTokens);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
         private static void CreateTriggers()
         {
             // 🔹 Atualiza updated_at automaticamente (sem loop)
