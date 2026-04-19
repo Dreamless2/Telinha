@@ -33,12 +33,12 @@ namespace Telinha.Factory
                 KeyName = keyName.Trim(),
                 EncryptedData = encryptedBase64,
                 Description = description?.Trim(),
+                UpdatedAt = DateTime.UtcNow,
                 IsActive = true
             };
 
             await _fsql.InsertOrUpdate<EncryptedToken>()
                        .SetSource(entity)
-                       .Where((EncryptedToken x) => x.KeyName == keyName)
                        .ExecuteAffrowsAsync();
         }
 
