@@ -177,7 +177,7 @@ namespace Telinha
 
             if (isAnime)
             {
-                MCUBox.PlaceholderText = "Fase MCU";
+                MCUBox.Enabled = false;
             }
             else
             {
