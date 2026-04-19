@@ -327,38 +327,63 @@ namespace Telinha
         }
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Enter) return;
+            if (e.KeyCode != Keys.Enter)
+                return;
+
             e.SuppressKeyPress = true;
 
-            if (!int.TryParse(CodigoBox.Text.Trim(), out int id) || id <= 0)
+            string codigoDigitado = CodigoBox.Text.Trim();
+
+            if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
             {
-                MessageBox.Show("Digite um código numérico válido.", "Inválido");
+                MessageBox.Show("Digite um código numérico válido.", "Código Inválido",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            MidiaTipo tipoSolicitado = TipoLabel.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
-                ? MidiaTipo.Filme : MidiaTipo.Serie;
+            if (_buscando)
+                return;
 
-            if (_buscando) return;
             _buscando = true;
 
             try
             {
+                MidiaTipo tipoSolicitado = TipoLabel.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
+                    ? MidiaTipo.Filme
+                    : MidiaTipo.Serie;
+
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
 
+                if (midia == null)
+                {
+                    MessageBox.Show($"Nenhuma mídia encontrada com o código {id}.",
+                                    "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // ✅ IMPORTANTE: Atualiza o Label primeiro
                 TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
 
-                if (Enum.TryParse(midia!.Tipo, out MidiaTipo tipoReal))
+                // Atualiza a UI de acordo com o tipo real
+                if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
                 {
                     AtualizarUI(tipoReal, midia);
                 }
 
+                // Preenche os campos, mas mantendo o código que o usuário digitou
                 PreencherCampos(midia);
 
+                // Força o código digitado a permanecer no TextBox (solução principal)
+                CodigoBox.Text = codigoDigitado;
+
+                // Coloca o cursor no final do texto (melhor UX)
+                CodigoBox.SelectionStart = CodigoBox.Text.Length;
+                CodigoBox.SelectionLength = 0;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao buscar:\n{ex.Message}", "Erro");
+                MessageBox.Show($"Erro ao buscar a mídia:\n{ex.Message}",
+                                "Erro na Busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
