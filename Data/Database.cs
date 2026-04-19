@@ -102,13 +102,16 @@ ON cache(updated_at);";
             const string sqlTokens = @"
 CREATE TABLE IF NOT EXISTS encrypted_tokens (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    key_name TEXT NOT NULL UNIQUE,                    
-    encrypted_data TEXT NOT NULL,                    
-    description TEXT,                                 
-    is_active BOOLEAN DEFAULT 1,                     
+    key_name TEXT NOT NULL UNIQUE,
+    encrypted_data TEXT NOT NULL,
+    encryption_version TEXT NOT NULL DEFAULT '1',
+    description TEXT,
+    is_active BOOLEAN DEFAULT 1,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT DEFAULT CURRENT_TIMESTAMP
 );";
+
+            _db.Ado.ExecuteNonQuery(sqlTokens);
 
             _db.Ado.ExecuteNonQuery(sqlTokens);
 
@@ -120,8 +123,6 @@ ON encrypted_tokens(key_name);";
             _db.Ado.ExecuteNonQuery(idxTokens);
 
         }
-
-
         private static void CreateTriggers()
         {
             // 🔹 Atualiza updated_at automaticamente (sem loop)
