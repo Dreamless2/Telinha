@@ -190,37 +190,49 @@ namespace Telinha
         private void PreencherCampos(MidiaModel midia)
         {
             if (midia == null)
+            {
+                LimparCampos();
                 return;
+            }
 
             currentId = midia.Id;
 
-            if (!string.IsNullOrEmpty(midia.Codigo))
-                CodigoBox.Text = midia.Codigo;
-
-            NomeBox.Text = midia.Nome ?? string.Empty;
-            var audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
-            if (!AudioBox.Items.Contains(audioValue))
+            // Mapeamento de propriedade → Control
+            var mapeamento = new Dictionary<string, TextBox>
             {
-                AudioBox.Items.Add(audioValue);
+                [nameof(midia.Codigo)] = CodigoBox,
+                [nameof(midia.Nome)] = NomeBox,
+                [nameof(midia.Sinopse)] = SinopseBox,
+                [nameof(midia.Original)] = OriginalBox,
+                [nameof(midia.Lancamento)] = LancamentoBox,
+                [nameof(midia.Alternativo)] = AlternativoBox,
+                [nameof(midia.Tags)] = TagsBox,
+                [nameof(midia.Tipo)] = TipoBox,
+                [nameof(midia.MCU)] = MCUBox,
+                [nameof(midia.Pais)] = PaisBox,
+                [nameof(midia.Idioma)] = IdiomaBox,
+                [nameof(midia.Autores)] = AutoresBox,
+                [nameof(midia.Franquia)] = FranquiaBox,
+                [nameof(midia.Criadores)] = CriadoresBox,
+                [nameof(midia.Genero)] = GeneroBox,
+                [nameof(midia.Diretor)] = DiretorBox,
+                [nameof(midia.Artistas)] = ArtistasBox,
+                [nameof(midia.Produtora)] = ProdutoraBox,
+            };
+
+            foreach (var kvp in mapeamento)
+            {
+                var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
+                kvp.Value.Text = valor ?? string.Empty;
             }
 
+            // Áudio continua com lógica especial
+            string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
+
+            if (!AudioBox.Items.Contains(audioValue))
+                AudioBox.Items.Add(audioValue);
+
             AudioBox.SelectedItem = audioValue;
-            SinopseBox.Text = midia.Sinopse ?? string.Empty;
-            OriginalBox.Text = midia.Original ?? string.Empty;
-            LancamentoBox.Text = midia.Lancamento ?? string.Empty;
-            AlternativoBox.Text = midia.Alternativo ?? string.Empty;
-            TagsBox.Text = midia.Tags ?? string.Empty;
-            TipoBox.Text = midia.Tipo ?? string.Empty;
-            MCUBox.Text = midia.MCU ?? string.Empty;
-            PaisBox.Text = midia.Pais ?? string.Empty;
-            IdiomaBox.Text = midia.Idioma ?? string.Empty;
-            AutoresBox.Text = midia.Autores ?? string.Empty;
-            FranquiaBox.Text = midia.Franquia ?? string.Empty;
-            CriadoresBox.Text = midia.Criadores ?? string.Empty;
-            GeneroBox.Text = midia.Genero ?? string.Empty;
-            DiretorBox.Text = midia.Diretor ?? string.Empty;
-            ArtistasBox.Text = midia.Artistas ?? string.Empty;
-            ProdutoraBox.Text = midia.Produtora ?? string.Empty;
         }
 
         private async Task PreencherCampos()
