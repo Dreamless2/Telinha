@@ -168,7 +168,6 @@ namespace Telinha
             TipoBox.PlaceholderText = TipoLabel.Text;
 
             // 4. EXIBIÇÃO NA UI (VALORES FINAIS)
-            // Aqui a TextBox reflete exatamente o que está no item agora
             PaisBox.Text = item.Pais;
             IdiomaBox.Text = item.Idioma;
             ObraBox.Text = item.Obra;
