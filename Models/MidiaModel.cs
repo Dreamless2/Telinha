@@ -83,12 +83,12 @@ namespace Telinha.Models
             get => _idioma;
             set => SetField(ref _idioma, value);
         }
-        private string? _serie;
+        /*private string? _serie;
         public string? Serie
         {
             get => _serie;
             set => SetField(ref _serie, value);
-        }
+        }*/
         private string? _franquia;
         public string? Franquia
         {
