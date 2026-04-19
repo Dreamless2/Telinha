@@ -66,10 +66,7 @@ namespace Telinha.Factory
         // Método para limpar memória quando a aplicação fechar (opcional)
         public void Dispose()
         {
-            MasterKeyProtection.ZeroMemory(_masterKey);
+            KeyHelper.ZeroMemory(_masterKey);
         }
-}
-Como usar:
-C#
     }
 }
