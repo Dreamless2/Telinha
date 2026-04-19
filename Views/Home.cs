@@ -270,13 +270,12 @@ namespace Telinha
         private void Principal_Load(object sender, EventArgs e)
         {
             SetupBindings();
-            Carregar().Wait();
-            /*
+
             try
             {
                 if (MidiaController.Any<MidiaModel>())
                 {
-                    PreencherCampos().Wait();
+                    Carregar().Wait();
                 }
                 else
                 {
@@ -287,7 +286,8 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro: {ex.Message}.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
+            */
         }
 
         private void CopiarButton_Click(object sender, EventArgs e)
