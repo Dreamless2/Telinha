@@ -31,7 +31,6 @@ namespace Telinha.Models
         [Column(StringLength = 20)]
         public string EncryptionVersion { get; set; } = "1";
 
-        // Campos opcionais úteis
         public string? Description { get; set; }          // Ex: "Token principal da API XYZ"
         public bool IsActive { get; set; } = true;
     }
