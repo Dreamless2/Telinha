@@ -7,7 +7,6 @@ namespace Telinha.Helpers
 {
     public class KeyHelper
     {
-
         private static readonly string KeyFilePath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "Telinha",
