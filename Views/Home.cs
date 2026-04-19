@@ -143,40 +143,42 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-            item.Pais = "--";
-            item.Idioma ??= isFilme ? "--" : "";
-            item.Obra ??= isFilme ? "--" : "";
-            item.Autores ??= isFilme ? "--" : "";
-            item.Criadores ??= isFilme ? "--" : "";
+            // 1. TRATAMENTO DOS DADOS (O OBJETO)
+            // Se for filme, força "--". Se não for, só mexe se estiver nulo (coalescência).
+            item.Pais = isFilme ? "--" : (item.Pais ?? "");
+            item.Idioma = isFilme ? "--" : (item.Idioma ?? "");
+            item.Obra = isFilme ? "--" : (item.Obra ?? "");
+            item.Autores = isFilme ? "--" : (item.Autores ?? "");
+            item.Criadores = isFilme ? "--" : (item.Criadores ?? "");
 
-            // Enable / Disable
-            PaisLabel.Enabled = !isFilme;
-            IdiomaLabel.Enabled = !isFilme;
-            ObraLabel.Enabled = !isFilme;
-            AutoresLabel.Enabled = !isFilme;
-            CriadoresLabel.Enabled = !isFilme;
+            // 2. ESTADO DOS CONTROLES (ENABLE/DISABLE)
+            bool habilitarCamposGerais = !isFilme;
 
-            PaisBox.Enabled = !isFilme;
-            IdiomaBox.Enabled = !isFilme;
-            ObraBox.Enabled = !isFilme;
-            AutoresBox.Enabled = !isFilme;
-            CriadoresBox.Enabled = !isFilme;
+            PaisLabel.Enabled = PaisBox.Enabled = habilitarCamposGerais;
+            IdiomaLabel.Enabled = IdiomaBox.Enabled = habilitarCamposGerais;
+            ObraLabel.Enabled = ObraBox.Enabled = habilitarCamposGerais;
+            AutoresLabel.Enabled = AutoresBox.Enabled = habilitarCamposGerais;
+            CriadoresLabel.Enabled = CriadoresBox.Enabled = habilitarCamposGerais;
 
+            // MCU só habilita se não for Filme nem Anime (ou seja, apenas Série)
             MCUBox.Enabled = !isFilme && !isAnime;
 
-            // Tipo visual
+            // 3. TIPO VISUAL
             TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
             TipoBox.PlaceholderText = TipoLabel.Text;
 
-            // 🔥 VALORES CORRETOS
-            PaisBox.Text = isFilme ? "--" : item.Pais ?? "--";
-            IdiomaBox.Text = isFilme ? "--" : item.Idioma ?? "--";
-            ObraBox.Text = isFilme ? "--" : item.Obra ?? "--";
-            AutoresBox.Text = isFilme ? "--" : item.Autores ?? "--";
-            CriadoresBox.Text = isFilme ? "--" : item.Criadores ?? "--";
+            // 4. EXIBIÇÃO NA UI (VALORES FINAIS)
+            // Aqui a TextBox reflete exatamente o que está no item agora
+            PaisBox.Text = item.Pais;
+            IdiomaBox.Text = item.Idioma;
+            ObraBox.Text = item.Obra;
+            AutoresBox.Text = item.Autores;
+            CriadoresBox.Text = item.Criadores;
 
             if (isAnime)
                 MCUBox.PlaceholderText = "Fase MCU";
+            else
+                MCUBox.PlaceholderText = ""; // Limpa o placeholder se não for anime
         }
 
         private void PreencherCampos(MidiaModel midia)
