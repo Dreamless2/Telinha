@@ -238,26 +238,26 @@ namespace Telinha
 
             // Dicionário de campos (fácil de adicionar/remover no futuro)
             var camposTexto = new Dictionary<string, TextBox>
-    {
-        { nameof(CodigoBox),      CodigoBox },
-        { nameof(NomeBox),        NomeBox },
-        { nameof(SinopseBox),     SinopseBox },
-        { nameof(OriginalBox),    OriginalBox },
-        { nameof(LancamentoBox),  LancamentoBox },
-        { nameof(AlternativoBox), AlternativoBox },
-        { nameof(TagsBox),        TagsBox },
-        { nameof(TipoBox),        TipoBox },
-        { nameof(MCUBox),         MCUBox },
-        { nameof(PaisBox),        PaisBox },
-        { nameof(IdiomaBox),      IdiomaBox },
-        { nameof(AutoresBox),     AutoresBox },
-        { nameof(FranquiaBox),    FranquiaBox },
-        { nameof(CriadoresBox),   CriadoresBox },
-        { nameof(GeneroBox),      GeneroBox },
-        { nameof(DiretorBox),     DiretorBox },
-        { nameof(ArtistasBox),    ArtistasBox },
-        { nameof(ProdutoraBox),   ProdutoraBox }
-    };
+            {
+                { nameof(CodigoBox),      CodigoBox },
+                { nameof(NomeBox),        NomeBox },
+                { nameof(SinopseBox),     SinopseBox },
+                { nameof(OriginalBox),    OriginalBox },
+                { nameof(LancamentoBox),  LancamentoBox },
+                { nameof(AlternativoBox), AlternativoBox },
+                { nameof(TagsBox),        TagsBox },
+                { nameof(TipoBox),        TipoBox },
+                { nameof(MCUBox),         MCUBox },
+                { nameof(PaisBox),        PaisBox },
+                { nameof(IdiomaBox),      IdiomaBox },
+                { nameof(AutoresBox),     AutoresBox },
+                { nameof(FranquiaBox),    FranquiaBox },
+                { nameof(CriadoresBox),   CriadoresBox },
+                { nameof(GeneroBox),      GeneroBox },
+                { nameof(DiretorBox),     DiretorBox },
+                { nameof(ArtistasBox),    ArtistasBox },
+                { nameof(ProdutoraBox),   ProdutoraBox }
+            };
 
             foreach (var campo in camposTexto.Values)
             {
