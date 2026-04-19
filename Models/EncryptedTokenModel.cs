@@ -26,12 +26,12 @@ namespace Telinha.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         /// <summary>
-        /// Versão da criptografia (útil se você mudar o algoritmo no futuro)
+        /// Versão da criptografia
         /// </summary>
         [Column(StringLength = 20)]
         public string EncryptionVersion { get; set; } = "1";
 
-        public string? Description { get; set; }          // Ex: "Token principal da API XYZ"
+        public string? Description { get; set; }
         public bool IsActive { get; set; } = true;
     }
 }
