@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using Telinha.Data;
+using Telinha.Helpers;
 using Telinha.Models;
 using Telinha.Services;
 
 namespace Telinha.Factory
 {
-    internal class TokenFactory
+    public class TokenFactory
     {
         private readonly byte[] _masterKey;   // chave AES protegida por DPAPI
         private readonly IFreeSql _fsql;
 
-        public TokenService()
+        public TokenFactory()
         {
-            _masterKey = MasterKeyProtection.GetOrCreateMasterKey();
+            _masterKey = KeyHelper.GetOrCreateMasterKey();
             _fsql = Database.DB;
         }
 
