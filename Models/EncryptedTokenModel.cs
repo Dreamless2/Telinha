@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Telinha.Models
 {
-    [Table("EncryptedTokens")]
+    [Table(Name = "encryptedtokens")]
     public class EncryptedToken
     {
         [Column(IsPrimary = true, IsIdentity = true)]
@@ -38,3 +38,4 @@ namespace Telinha.Models
         public string? Description { get; set; }          // Ex: "Token principal da API XYZ"
         public bool IsActive { get; set; } = true;
     }
+}
