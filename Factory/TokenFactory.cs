@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Telinha.Data;
+﻿using Telinha.Data;
 using Telinha.Helpers;
 using Telinha.Models;
 using Telinha.Services;
