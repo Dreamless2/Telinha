@@ -42,8 +42,6 @@ namespace Telinha.Models
             set => SetField(ref _audio, value);
         }
         private string? _tipo;
-
-        [Column(IsIgnore = true)]
         public string? Tipo
         {
             get => _tipo;
