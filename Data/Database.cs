@@ -97,6 +97,27 @@ ON cache(updated_at);";
             _db.Ado.ExecuteNonQuery(idxCache);
         }
 
+        // ====================== TABELA TOKENS (NOVA) ======================
+        const string sqlTokens = @"
+CREATE TABLE IF NOT EXISTS encrypted_tokens (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    key_name TEXT NOT NULL UNIQUE,                    -- identificador único do token
+    encrypted_data TEXT NOT NULL,                     -- token criptografado em Base64
+    description TEXT,                                 -- descrição opcional
+    is_active BOOLEAN DEFAULT 1,                      -- para desativar sem apagar
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+);";
+
+        _db.Ado.ExecuteNonQuery(sqlTokens);
+
+        // Índice para busca rápida por key_name
+        const string idxTokens = @"
+CREATE INDEX IF NOT EXISTS idx_encrypted_tokens_key 
+ON encrypted_tokens(key_name);";
+
+        _db.Ado.ExecuteNonQuery(idxTokens);
+    }
         private static void CreateTriggers()
         {
             // 🔹 Atualiza updated_at automaticamente (sem loop)
