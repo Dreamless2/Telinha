@@ -91,7 +91,6 @@ namespace Telinha.Controller
         // anyasync
         public static async Task<bool> AnyAsync<T>() where T : class
             => await DB.Select<T>().AnyAsync();
-
     }
 
 }
