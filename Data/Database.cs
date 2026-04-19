@@ -119,18 +119,6 @@ ON encrypted_tokens(key_name);";
 
             _db.Ado.ExecuteNonQuery(idxTokens);
 
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
 
