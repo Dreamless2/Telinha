@@ -143,11 +143,11 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-            item.Pais ??= isFilme ? "--" : string.Empty;
-            item.Idioma ??= isFilme ? "--" : string.Empty;
-            item.Obra ??= isFilme ? "--" : string.Empty;
-            item.Autores ??= isFilme ? "--" : string.Empty;
-            item.Criadores ??= isFilme ? "--" : string.Empty;
+            item.Pais ??= isFilme ? "--" : "";
+            item.Idioma ??= isFilme ? "--" : "";
+            item.Obra ??= isFilme ? "--" : "";
+            item.Autores ??= isFilme ? "--" : "";
+            item.Criadores ??= isFilme ? "--" : "";
 
             // Enable / Disable
             PaisLabel.Enabled = !isFilme;
