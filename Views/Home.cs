@@ -179,7 +179,7 @@ namespace Telinha
                 MCUBox.PlaceholderText = "Fase MCU";
             else
                 MCUBox.Enabled = true;
-            MCUBox.PlaceholderText = "Fase MCU";
+            //MCUBox.PlaceholderText = "Fase MCU";
         }
 
         private void PreencherCampos(MidiaModel midia)
