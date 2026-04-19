@@ -84,6 +84,8 @@ namespace Telinha.Models
             set => SetField(ref _idioma, value);
         }
         private string? _serie;
+
+        [Column(IsIgnore = true)]
         public string? Serie
         {
             get => _serie;
@@ -150,6 +152,8 @@ namespace Telinha.Models
             set => SetField(ref _produtora, value);
         }
         private string? _tipoSolicitado;
+
+        [Column(IsIgnore = true)]
         public string? TipoSolicitado
         {
             get => _tipoSolicitado;
