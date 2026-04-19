@@ -248,7 +248,6 @@ namespace Telinha
             ArtistasBox.Text = item.Artistas ?? string.Empty;
             ProdutoraBox.Text = item.Produtora ?? string.Empty;
         }
-
         private void Principal_Load(object sender, EventArgs e)
         {
             SetupBindings();
