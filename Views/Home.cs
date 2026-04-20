@@ -1,6 +1,7 @@
 ﻿using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
+using Telinha.Factory;
 using Telinha.Helpers;
 using Telinha.Models;
 using Telinha.Services;
@@ -12,14 +13,15 @@ namespace Telinha
     {
         private readonly TMDBServices _tmdb;
         private readonly MidiaServices _midiaService;
+        private readonly ApiClientFactory _apiClientFactory;
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
-        public Home()
+        public Home(ApiClientFactory apiFactory)
         {
             InitializeComponent();
+            _apiClientFactory = apiFactory;
             Load += Principal_Load!;
-            _tmdb = new TMDBServices("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZTBkNmMxNWJmY2Q4MWIzYzE0MDAyM2RhOGRhNjRjOSIsIm5iZiI6MTc1NjYwODYzMC41NTAwMDAyLCJzdWIiOiI2OGIzYjg3NjcwMzc1YzcyZDYzOTdhMzciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.md8gEfeVlGepwG9GuT5I6tcBFZYy7F_A4TewbcEZDjU");
             _midiaService = new MidiaServices(_tmdb);
             SairButton.Click += SairButton_Click!;
             CopiarButton.Click += CopiarButton_Click!;
