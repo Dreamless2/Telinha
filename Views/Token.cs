@@ -26,9 +26,9 @@ namespace Telinha
             var tmdbDescription = "Token de acesso à API do TMDB";
             var deeplDescription = "Token de acesso à API do DeepL";
             var tokenService = new TokenServices();
-            await tokenService.SalvarTokenAsync("tmdb", "SEU_TOKEN");
-
-            MessageBox.Show("Token salvo com sucesso!");
+            await tokenService.SalvarTokenAsync("TMDB", tmdbToken, tmdbDescription);
+            await tokenService.SalvarTokenAsync("DEEPL", deeplToken, deeplDescription);
+            MessageBox.Show("Tokens salvos com sucesso!");
         }
 
         private void SairButton_Click(object sender, EventArgs e)
