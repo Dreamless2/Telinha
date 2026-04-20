@@ -1,6 +1,4 @@
-﻿using Telinha.Services;
-
-namespace Telinha
+﻿namespace Telinha
 {
     internal static class Program
     {
