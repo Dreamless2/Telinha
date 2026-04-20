@@ -10,6 +10,8 @@ namespace Telinha.Factory
     public class MidiaFactory
     {
         private readonly APIClientFactory _apiFactory;
+        private readonly TokenServices _tokenService;
+
         public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase)
         {
             // 1. DETECÇÃO AUTOMÁTICA DE TIPO (Filme vs TV)
