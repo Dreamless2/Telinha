@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using Telinha.Models;
-using Telinha.Services;
 
 namespace Telinha.Helpers
 {
@@ -16,7 +12,7 @@ namespace Telinha.Helpers
                 Assembly.GetExecutingAssembly().GetName().Name!,
                 $"{Assembly.GetExecutingAssembly().GetName().Name!}.key");
 
-        private const string Entropy = "telinha-app-v1"; // entropy extra (opcional, mas recomendado)
+        private const string Entropy = "telinha-app-v1"; // entropy extra
 
         /// <summary>
         /// Gera ou carrega a chave mestra de 32 bytes protegida por DPAPI

@@ -1,5 +1,4 @@
-﻿using System.Net.Http.Headers;
-using Telinha.Card;
+﻿using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
 using Telinha.Factory;
