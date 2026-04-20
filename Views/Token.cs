@@ -11,6 +11,7 @@ namespace Telinha
 {
     public partial class Token : Form
     {
+        private readonly TokenServices _tokenService = new(); // 🔥 mantém instância única
         public Token()
         {
             InitializeComponent();
@@ -19,15 +20,46 @@ namespace Telinha
         }
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
-            // Lógica para salvar o token
-            var tmdbToken = TokenTMDBBox.Text;
-            var deeplToken = TokenDEEPLBox.Text;
-            var tmdbDescription = "Token de acesso à API do TMDB";
-            var deeplDescription = "Token de acesso à API do DeepL";
-            var tokenService = new TokenServices();
-            await tokenService.SalvarTokenAsync("TMDB", tmdbToken, tmdbDescription);
-            await tokenService.SalvarTokenAsync("DEEPL", deeplToken, deeplDescription);
-            MessageBox.Show("Tokens salvos com sucesso!");
+            try
+            {
+                var tmdbToken = TokenTMDBBox.Text?.Trim();
+                var deeplToken = TokenDEEPLBox.Text?.Trim();
+
+                if (string.IsNullOrWhiteSpace(tmdbToken) && string.IsNullOrWhiteSpace(deeplToken))
+                {
+                    MessageBox.Show("Informe pelo menos um token.");
+                    return;
+                }
+
+                if (!string.IsNullOrWhiteSpace(tmdbToken))
+                {
+                    await _tokenService.SalvarTokenAsync(
+                        "TMDB",
+                        tmdbToken,
+                        "Token de acesso à API do TMDB"
+                    );
+                }
+
+                if (!string.IsNullOrWhiteSpace(deeplToken))
+                {
+                    await _tokenService.SalvarTokenAsync(
+                        "DEEPL",
+                        deeplToken,
+                        "Token de acesso à API do DeepL"
+                    );
+                }
+
+                MessageBox.Show("Tokens salvos com sucesso!");
+
+                Hide();
+
+                using var home = new Home();
+                home.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao salvar tokens:\n{ex.Message}");
+            }
         }
         private void SairButton_Click(object sender, EventArgs e)
         {
