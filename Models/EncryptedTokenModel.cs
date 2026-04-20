@@ -48,6 +48,7 @@ namespace Telinha.Models
         /// <summary>
         /// Flag de ativação
         /// </summary>
+        [Column(Name = "is_active")]
         public bool IsActive { get; set; } = true;
     }
 }
