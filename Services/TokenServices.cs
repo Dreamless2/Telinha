@@ -68,7 +68,7 @@ namespace Telinha.Services
             if (entity == null)
                 return null;
 
-            using var encryptor = new TokenEncryptionService(_masterKey);
+            using var encryptor = new TokenEncryptionServices(_masterKey);
 
             var decrypted = encryptor.Decrypt(entity.EncryptedData, aad);
 
