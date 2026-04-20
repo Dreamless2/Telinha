@@ -274,7 +274,24 @@ namespace Telinha
 
             _midiaService = new MidiaServices(_tmdb);
 
-
+            try
+            {
+                if (await MidiaController.AnyAsync<MidiaModel>())
+                {
+                    await Carregar();
+                }
+                else
+                {
+                    currentId = 0;
+                    MessageBox.Show("Nenhuma mídia encontrada. Insira um código válido e pressione Enter para buscar.",
+                                    "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar dados: {ex.Message}",
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CopiarButton_Click(object sender, EventArgs e)
@@ -337,7 +354,15 @@ namespace Telinha
                     ? MidiaTipo.Filme
                     : MidiaTipo.Serie;
 
-                var midia = await _midiaService!.GetMidia(id, tipoSolicitado);
+
+                if (_midiaService == null)
+                {
+                    MessageBox.Show("Serviço ainda não inicializado.");
+                    return;
+                }
+
+                var midia = await _midiaService.GetMidia(id, tipoSolicitado);
+
 
                 if (midia == null)
                 {
