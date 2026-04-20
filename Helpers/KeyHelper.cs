@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace Telinha.Helpers
     {
         private static readonly string KeyFilePath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "Telinha",
+                Assembly.GetExecutingAssembly().GetName().Name,
                 "master.key");
 
         private const string Entropy = "telinha-app-v1"; // entropy extra (opcional, mas recomendado)
