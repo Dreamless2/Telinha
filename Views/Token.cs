@@ -4,9 +4,10 @@ namespace Telinha
 {
     public partial class Token : Form
     {
-        private readonly TokenServices _tokenService = new(); // 🔥 mantém instância única
-        public Token()
+        private readonly TokenServices _tokenService;
+        public Token(TokenServices tokenService)
         {
+            _tokenService = tokenService;
             InitializeComponent();
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
