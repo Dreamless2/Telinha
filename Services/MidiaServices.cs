@@ -113,7 +113,6 @@ namespace Telinha.Services
 
             var apiFactory = new ApiClientFactory(_tokenService!);
 
-
             var deepl = await apiFactory.GetDeepLAsync();
 
             var model = await MidiaFactory.ConstruirMidia(results[0], results[1], results.Length > 2 ? results[2] : null, tipo, deepl);
