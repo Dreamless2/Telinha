@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -8,6 +9,7 @@ using Telinha.Services;
 
 namespace Telinha.Helpers
 {
+    private readonly ConcurrentDictionary<string, string> _cache = new();
     public class KeyHelper
     {
         private static readonly string KeyFilePath = Path.Combine(
