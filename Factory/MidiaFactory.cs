@@ -9,8 +9,8 @@ namespace Telinha.Factory
 {
     public class MidiaFactory
     {
-        private readonly APIClientFactory _apiFactory;
-        private readonly TokenServices _tokenService;
+        private readonly APIClientFactory? _apiFactory;
+        private readonly TokenServices? _tokenService;
 
         public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase)
         {
@@ -137,7 +137,7 @@ namespace Telinha.Factory
             // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
-            _apiFactory = new APIClientFactory(tokenService);
+            _apiFactory = new APIClientFactory(_tokenService);
 
             Task<DeepL.Model.TextResult>? taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
             Task<DeepL.Model.TextResult>? taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
