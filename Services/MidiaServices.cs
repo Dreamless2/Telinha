@@ -9,6 +9,8 @@ namespace Telinha.Services
     public class MidiaServices(TMDBServices tmdb)
     {
         private readonly TMDBServices _tmdb = tmdb;
+        private readonly TokenServices _tokenService;
+
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
@@ -107,6 +109,13 @@ namespace Telinha.Services
 
             if (tipo != MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()))
                 return null;
+
+
+            var apiFactory = new ApiClientFactory(_tokenService);
+
+            // pega serviços já configurados
+            var tmdb = await apiFactory.GetTMDBAsync();
+            var deepl = await apiFactory.GetDeepLAsync();
 
             var model = await MidiaFactory.ConstruirMidia(results[0], results[1], results.Length > 2 ? results[2] : null, tipo);
 
