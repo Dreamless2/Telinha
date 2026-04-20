@@ -20,11 +20,11 @@ namespace Telinha
 
             if (hasToken)
             {
-                Application.Run(new Token());
+                Application.Run(new Home());
             }
             else
             {
-                Application.Run(new Token());
+                Application.Run(new Token(tokenService));
             }
         }
     }
