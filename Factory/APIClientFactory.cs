@@ -34,6 +34,7 @@ namespace Telinha.Factory
             if (_tmdbClient == null)
             {
                 var token = await _tokenService.ObterTokenAsync("TMDB");
+                MessageBox.Show(token ?? "TOKEN NULL");
 
                 if (string.IsNullOrWhiteSpace(token))
                     throw new InvalidOperationException("Token TMDB não configurado.");
