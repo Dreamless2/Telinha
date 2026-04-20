@@ -17,7 +17,7 @@ namespace Telinha.Helpers
                 Assembly.GetExecutingAssembly().GetName().Name!,
                 $"{Assembly.GetExecutingAssembly().GetName().Name!}.key");
 
-        private const string Entropy = $"{Assembly.GetExecutingAssembly().GetName().Name!}-app-v1"; // entropy extra (opcional, mas recomendado)
+        private const string Entropy = "telinha-app-v1"; // entropy extra (opcional, mas recomendado)
 
         /// <summary>
         /// Gera ou carrega a chave mestra de 32 bytes protegida por DPAPI
@@ -65,25 +65,5 @@ namespace Telinha.Helpers
             CryptographicOperations.ZeroMemory(key);
         }
 
-        public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
-        {
-            if (_cache.TryGetValue(keyName, out var cached))
-                return cached;
-
-            var entity = await _fsql.Select<EncryptedToken>()
-                                    .Where(x => x.KeyName == keyName && x.IsActive)
-                                    .FirstAsync();
-
-            if (entity == null)
-                return null;
-
-            using var encryptor = new TokenEncryptionService(_masterKey);
-
-            var decrypted = encryptor.Decrypt(entity.EncryptedData, aad);
-
-            _cache[keyName] = decrypted;
-
-            return decrypted;
-        }
     }
 }
