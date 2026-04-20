@@ -8,7 +8,6 @@ using Telinha.Services;
 
 namespace Telinha.Helpers
 {
-
     public class KeyHelper
     {
 

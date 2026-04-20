@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Telinha.Services
 {
-    public sealed class TokenEncryptionService : IDisposable
+    public sealed class TokenEncryptionServices : IDisposable
     {
         private readonly byte[] _key;
 
@@ -12,7 +12,7 @@ namespace Telinha.Services
         private const int TagSize = 16;   // 128 bits
         private const byte Version = 1;
 
-        public TokenEncryptionService(byte[] key)
+        public TokenEncryptionServices(byte[] key)
         {
             if (key == null || key.Length != 32)
                 throw new ArgumentException("A chave deve ter exatamente 32 bytes.", nameof(key));

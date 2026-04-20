@@ -21,7 +21,7 @@ namespace Telinha.Factory
             if (string.IsNullOrWhiteSpace(keyName) || string.IsNullOrWhiteSpace(plainToken))
                 throw new ArgumentException("KeyName e Token são obrigatórios.");
 
-            using var encryptor = new TokenEncryptionService(_masterKey);
+            using var encryptor = new TokenEncryptionServices(_masterKey);
 
             string encryptedBase64 = encryptor.Encrypt(plainToken, aad);
 
@@ -48,7 +48,7 @@ namespace Telinha.Factory
             if (entity?.EncryptedData == null)
                 return null;
 
-            using var encryptor = new TokenEncryptionService(_masterKey);
+            using var encryptor = new TokenEncryptionServices(_masterKey);
 
             try
             {

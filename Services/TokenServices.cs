@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Telinha.Services
 {
-    internal class TokenService
+    internal class TokenServices
     {
     }
 }
