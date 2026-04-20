@@ -17,7 +17,6 @@ namespace Telinha
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
         }
-
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             // Lógica para salvar o token
@@ -30,7 +29,6 @@ namespace Telinha
             await tokenService.SalvarTokenAsync("DEEPL", deeplToken, deeplDescription);
             MessageBox.Show("Tokens salvos com sucesso!");
         }
-
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
