@@ -25,11 +25,13 @@ namespace Telinha.Models
         /// <summary>
         /// Data de criação
         /// </summary>
+        [Column(Name = "created_at")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         /// Data da última atualização
         /// </summary>
+        [Column(Name = "updated_at")]
         public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
