@@ -106,6 +106,7 @@ namespace Telinha.Services
         public void Dispose()
         {
             KeyHelper.ZeroMemory(_masterKey);
+            GC.SuppressFinalize(this);
         }
     }
 }
