@@ -14,7 +14,7 @@ namespace Telinha.Factory
         private DeepLClient? _deepLClient;
         private HttpClient? _tmdbClient;
 
-        public ApiClientFactory(TokenService tokenService)
+        public APIClientFactory(TokenServices tokenService)
         {
             _tokenService = tokenService;
         }
