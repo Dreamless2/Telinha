@@ -18,11 +18,10 @@ namespace Telinha
                 return !string.IsNullOrEmpty(tmdb) || !string.IsNullOrEmpty(deepl);
             }).GetAwaiter().GetResult();
 
-
-
-
-
-            Application.Run(new Token());
+            if (hasToken)
+            {
+                Application.Run(new Token());
+            }
         }
     }
 }
