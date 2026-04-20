@@ -10,12 +10,12 @@ namespace Telinha.Factory
 {
     public class ApiClientFactory
     {
-        private readonly TokenService _tokenService;
+        private readonly TokenServices _tokenService;
 
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
 
-        public ApiClientFactory(TokenService tokenService)
+        public ApiClientFactory(TokenServices tokenService)
         {
             _tokenService = tokenService;
         }
