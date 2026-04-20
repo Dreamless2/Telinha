@@ -11,7 +11,7 @@ namespace Telinha
 {
     public partial class Home : Form
     {
-        private readonly TMDBServices _tmdb;
+        private TMDBServices _tmdb;
         private readonly MidiaServices _midiaService;
         private readonly ApiClientFactory _apiClientFactory;
         private long currentId = 0;
@@ -22,7 +22,6 @@ namespace Telinha
             InitializeComponent();
             _apiClientFactory = apiFactory;
             Load += Principal_Load!;
-            _midiaService = new MidiaServices(_tmdb);
             SairButton.Click += SairButton_Click!;
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
