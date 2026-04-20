@@ -11,9 +11,10 @@ namespace Telinha.Helpers
 
     public class KeyHelper
     {
+
         private static readonly string KeyFilePath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                Assembly.GetExecutingAssembly().GetName().Name,
+               Assembly.GetExecutingAssembly().GetName().Name!,
                 "master.key");
 
         private const string Entropy = "telinha-app-v1"; // entropy extra (opcional, mas recomendado)
