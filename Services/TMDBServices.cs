@@ -13,6 +13,9 @@ namespace Telinha.Services
 
             req.AddHeader("accept", "application/json");
 
+            // 🔥 GARANTE o token aqui
+            req.AddHeader("Authorization", $"Bearer {_token}");
+
             if (query != null)
             {
                 foreach (var p in query)
@@ -22,9 +25,7 @@ namespace Telinha.Services
             var resp = await _client.ExecuteAsync(req);
 
             if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
-            {
                 throw new Exception($"TMDB ERROR: {endpoint} {resp.StatusCode}\n{resp.Content}");
-            }
 
             return JObject.Parse(resp.Content!);
         }
