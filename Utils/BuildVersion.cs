@@ -34,3 +34,4 @@ namespace Telinha.Utils
             return epoch.AddSeconds(secondsSince1970).ToLocalTime();
         }
     }
+}
