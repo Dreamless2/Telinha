@@ -64,6 +64,5 @@ namespace Telinha.Helpers
         {
             CryptographicOperations.ZeroMemory(key);
         }
-
     }
 }
