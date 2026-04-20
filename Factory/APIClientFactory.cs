@@ -8,7 +8,7 @@ namespace Telinha.Factory
 {
     public class APIClientFactory
     {
-        private readonly TokenService _tokenService;
+        private readonly TokenServices _tokenService;
 
         // 🔥 cache dos clients (evita recriar toda hora)
         private DeepLClient? _deepLClient;
