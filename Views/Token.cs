@@ -14,8 +14,8 @@ namespace Telinha
         public Token()
         {
             InitializeComponent();
-            SalvarButton.Click += SalvarButton_Click;
-            SairButton.Click += SairButton_Click;
+            SalvarButton.Click += SalvarButton_Click!;
+            SairButton.Click += SairButton_Click!;
         }
 
         private async void SalvarButton_Click(object sender, EventArgs e)
