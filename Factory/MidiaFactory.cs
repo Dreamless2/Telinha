@@ -2,13 +2,16 @@
 using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Models;
+using Telinha.Services;
 using Telinha.Utils;
 
 namespace Telinha.Factory
 {
-    public static class MidiaFactory
+    public class MidiaFactory
     {
         private readonly APIClientFactory _apiFactory;
+
+        _apiFactory = new ApiClientFactory(tokenService);
 
 
 
