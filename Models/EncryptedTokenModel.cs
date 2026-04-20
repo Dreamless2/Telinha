@@ -12,13 +12,14 @@ namespace Telinha.Models
         /// <summary>
         /// Nome identificador do token (UNIQUE)
         /// </summary>
-        [Column(StringLength = 100, IsNullable = false)]
+        [Column(StringLength = 100, IsNullable = false, Name = "key_name")]
         public string KeyName { get; set; } = string.Empty;
 
         /// <summary>
         /// Token criptografado em Base64
         /// </summary>
-        [Column(StringLength = -1, IsNullable = false)]
+        [Column(StringLength = -1, IsNullable = false, Name = "encrypted_data")]
+
         public string EncryptedData { get; set; } = string.Empty;
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace Telinha.Models
         /// <summary>
         /// Versão da criptografia (para rotação de chave)
         /// </summary>
-        [Column(StringLength = 20, IsNullable = false)]
+        [Column(StringLength = 20, IsNullable = false, Name = "encryption_version")]
         public string EncryptionVersion { get; set; } = "1";
 
         /// <summary>

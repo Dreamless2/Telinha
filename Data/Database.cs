@@ -24,7 +24,6 @@ namespace Telinha.Data
                 return _db!;
             }
         }
-
         public static void Initialize()
         {
             if (_db != null)
