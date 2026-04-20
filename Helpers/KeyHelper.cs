@@ -14,8 +14,8 @@ namespace Telinha.Helpers
 
         private static readonly string KeyFilePath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-               Assembly.GetExecutingAssembly().GetName().Name!,
-                "master.key");
+                Assembly.GetExecutingAssembly().GetName().Name!,
+                $"{Assembly.GetExecutingAssembly().GetName().Name!}.key");
 
         private const string Entropy = "telinha-app-v1"; // entropy extra (opcional, mas recomendado)
 
