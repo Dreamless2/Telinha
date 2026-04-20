@@ -1,15 +1,18 @@
 ﻿using DeepL;
 using DeepL.Model;
+using Telinha.Services;
 
 namespace Telinha.Contracts
 {
     public class DEEPLContracts
     {
         private readonly DeepLClient _client;
+        private readonly TokenServices _tokenService;
 
-        public DEEPLContracts()
+        public DEEPLContracts(TokenServices tokenService)
         {
-            var deeplKey = "7feb3eb8-de95-4312-843c-1064aecdab8b:fx";
+            _tokenService = tokenService;
+            var deeplKey = Task.Run(async () => await _tokenService.ObterTokenAsync("DEEPL")).GetAwaiter().GetResult();
 
             if (string.IsNullOrWhiteSpace(deeplKey))
             {
