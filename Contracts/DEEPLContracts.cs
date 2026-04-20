@@ -12,7 +12,13 @@ namespace Telinha.Contracts
             _client = client;
         }
 
-        public async Task<TextResult> Translate(string text) =>
-            await _client.TranslateTextAsync(text, null, LanguageCode.PortugueseBrazilian);
+        public async Task<TextResult> Translate(string text)
+        {
+            return await _client.TranslateTextAsync(
+                text,
+                null,
+                LanguageCode.PortugueseBrazilian
+            );
+        }
     }
 }
