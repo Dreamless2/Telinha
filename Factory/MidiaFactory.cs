@@ -8,7 +8,9 @@ namespace Telinha.Factory
 {
     public static class MidiaFactory
     {
-        private static readonly DEEPLContracts deepl = new();
+        private readonly APIClientFactory _apiFactory;
+
+
 
         public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase)
         {
