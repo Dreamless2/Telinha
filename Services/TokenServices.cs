@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Newtonsoft.Json.Linq;
-using Polly.Caching;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Concurrent;
 using Telinha.Data;
 using Telinha.Helpers;
 using Telinha.Models;
@@ -33,7 +27,7 @@ namespace Telinha.Services
             if (string.IsNullOrWhiteSpace(keyName) || string.IsNullOrWhiteSpace(plainToken))
                 throw new ArgumentException("KeyName e Token são obrigatórios.");
 
-            using var encryptor = new TokenEncryptionService(_masterKey);
+            using var encryptor = new TokenEncryptionServices(_masterKey);
 
             string encryptedBase64 = encryptor.Encrypt(plainToken, aad);
 
