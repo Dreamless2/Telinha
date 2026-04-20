@@ -357,7 +357,7 @@ namespace Telinha
                     ? MidiaTipo.Filme
                     : MidiaTipo.Serie;
 
-                var midia = await _midiaService.GetMidia(id, tipoSolicitado);
+                var midia = await _midiaService!.GetMidia(id, tipoSolicitado);
 
                 if (midia == null)
                 {
