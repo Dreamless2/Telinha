@@ -15,8 +15,6 @@ namespace Telinha
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
-
-
         public Home()
         {
             InitializeComponent();
