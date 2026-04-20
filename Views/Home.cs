@@ -1,4 +1,5 @@
-﻿using Telinha.Card;
+﻿using System.Net.Http.Headers;
+using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
 using Telinha.Factory;
@@ -12,8 +13,8 @@ namespace Telinha
     public partial class Home : Form
     {
         private TMDBServices? _tmdb;
-        private readonly MidiaServices? _midiaService;
-        private readonly ApiClientFactory _apiFactory;
+        private MidiaServices? _midiaService;
+        private ApiClientFactory _apiFactory;
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
@@ -272,6 +273,7 @@ namespace Telinha
 
             _tmdb = await _apiFactory.GetTMDBAsync();
 
+            _midiaService = new MidiaServices(_tmdb);
 
 
             try
