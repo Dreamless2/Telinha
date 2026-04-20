@@ -9,7 +9,7 @@ namespace Telinha.Services
     public class MidiaServices(TMDBServices tmdb)
     {
         private readonly TMDBServices _tmdb = tmdb;
-        private readonly TokenServices _tokenService;
+        private readonly TokenServices? _tokenService;
 
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
@@ -111,7 +111,7 @@ namespace Telinha.Services
                 return null;
 
 
-            var apiFactory = new ApiClientFactory(_tokenService);
+            var apiFactory = new ApiClientFactory(_tokenService!);
 
             // pega serviços já configurados
             var tmdb = await apiFactory.GetTMDBAsync();
