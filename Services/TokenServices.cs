@@ -1,10 +1,117 @@
-﻿using System;
+﻿using AutoMapper;
+using Newtonsoft.Json.Linq;
+using Polly.Caching;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
+using Telinha.Data;
+using Telinha.Helpers;
+using Telinha.Models;
 
 namespace Telinha.Services
 {
-    internal class TokenServices
+    public class TokenServices : IDisposable
     {
+        private readonly IFreeSql _fsql;
+        private readonly byte[] _masterKey;
+
+        // 🔥 Cache em memória
+        private readonly ConcurrentDictionary<string, string> _cache = new();
+
+        public TokenServices()
+        {
+            _fsql = Database.DB;
+            _masterKey = KeyHelper.GetOrCreateMasterKey();
+        }
+
+        // =========================
+        // 🔐 SALVAR TOKEN
+        // =========================
+        public async Task SalvarTokenAsync(string keyName, string plainToken, string? description = null, string? aad = null)
+        {
+            if (string.IsNullOrWhiteSpace(keyName) || string.IsNullOrWhiteSpace(plainToken))
+                throw new ArgumentException("KeyName e Token são obrigatórios.");
+
+            using var encryptor = new TokenEncryptionService(_masterKey);
+
+            string encryptedBase64 = encryptor.Encrypt(plainToken, aad);
+
+            var entity = new EncryptedToken
+            {
+                KeyName = keyName.Trim(),
+                EncryptedData = encryptedBase64,
+                Description = description?.Trim(),
+                UpdatedAt = DateTime.UtcNow,
+                IsActive = true
+            };
+
+            await _fsql.InsertOrUpdate<EncryptedToken>()
+                       .SetSource(entity)
+                       .ExecuteAffrowsAsync();
+
+            // 🔥 Atualiza cache
+            _cache[keyName] = plainToken;
+        }
+
+        // =========================
+        // 🔓 OBTER TOKEN (COM CACHE)
+        // =========================
+        public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
+        {
+            if (string.IsNullOrWhiteSpace(keyName))
+                return null;
+
+            // 🔥 1. tenta cache
+            if (_cache.TryGetValue(keyName, out var cached))
+                return cached;
+
+            // 🔎 2. busca no banco
+            var entity = await _fsql.Select<EncryptedToken>()
+                                    .Where(x => x.KeyName == keyName && x.IsActive)
+                                    .FirstAsync();
+
+            if (entity == null)
+                return null;
+
+            using var encryptor = new TokenEncryptionService(_masterKey);
+
+            var decrypted = encryptor.Decrypt(entity.EncryptedData, aad);
+
+            // 🔥 3. salva no cache
+            _cache[keyName] = decrypted;
+
+            return decrypted;
+        }
+
+        // =========================
+        // ❌ REMOVER TOKEN
+        // =========================
+        public async Task RemoverTokenAsync(string keyName)
+        {
+            await _fsql.Update<EncryptedToken>()
+                       .Set(x => x.IsActive, false)
+                       .Where(x => x.KeyName == keyName)
+                       .ExecuteAffrowsAsync();
+
+            // 🔥 remove do cache
+            _cache.TryRemove(keyName, out _);
+        }
+
+        // =========================
+        // 🔄 INVALIDAR CACHE
+        // =========================
+        public void LimparCache()
+        {
+            _cache.Clear();
+        }
+
+        // =========================
+        // 🔐 SEGURANÇA (limpa chave)
+        // =========================
+        public void Dispose()
+        {
+            KeyHelper.ZeroMemory(_masterKey);
+        }
     }
 }
