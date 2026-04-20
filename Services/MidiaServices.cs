@@ -11,7 +11,6 @@ namespace Telinha.Services
         private readonly TMDBServices _tmdb = tmdb;
         private readonly TokenServices? _tokenService;
 
-
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
             var tipoAlternativo = (tipoSolicitado == MidiaTipo.Filme)
