@@ -1,8 +1,5 @@
 ﻿using DeepL;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Telinha.Contracts;
 using Telinha.Services;
 
