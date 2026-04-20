@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using Telinha.Models;
+using Telinha.Services;
 
 namespace Telinha.Helpers
 {
@@ -59,6 +61,27 @@ namespace Telinha.Helpers
         public static void ZeroMemory(byte[] key)
         {
             CryptographicOperations.ZeroMemory(key);
+        }
+
+        public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
+        {
+            if (_cache.TryGetValue(keyName, out var cached))
+                return cached;
+
+            var entity = await _fsql.Select<EncryptedToken>()
+                                    .Where(x => x.KeyName == keyName && x.IsActive)
+                                    .FirstAsync();
+
+            if (entity == null)
+                return null;
+
+            using var encryptor = new TokenEncryptionService(_masterKey);
+
+            var decrypted = encryptor.Decrypt(entity.EncryptedData, aad);
+
+            _cache[keyName] = decrypted;
+
+            return decrypted;
         }
     }
 }
