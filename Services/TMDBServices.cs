@@ -3,14 +3,9 @@ using RestSharp;
 
 namespace Telinha.Services
 {
-    public class TMDBServices
+    public class TMDBServices(RestClient client)
     {
-        private readonly RestClient _client;
-
-        public TMDBServices(RestClient client)
-        {
-            _client = client;
-        }
+        private readonly RestClient _client = client;
 
         public async Task<JObject> GetAsync(string endpoint, Dictionary<string, string>? query = null)
         {
