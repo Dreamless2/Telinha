@@ -34,18 +34,16 @@ namespace Telinha.Factory
             if (_tmdbClient == null)
             {
                 var token = await _tokenService.ObterTokenAsync("TMDB");
-                MessageBox.Show(token ?? "TOKEN NULL");
 
                 if (string.IsNullOrWhiteSpace(token))
                     throw new InvalidOperationException("Token TMDB não configurado.");
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
-
-                _tmdbClient.AddDefaultHeader("Authorization", $"Bearer {token}");
-                _tmdbClient.AddDefaultHeader("accept", "application/json");
             }
 
-            return new TMDBServices(_tmdbClient);
+            var tokenFinal = await _tokenService.ObterTokenAsync("TMDB");
+
+            return new TMDBServices(_tmdbClient, tokenFinal!);
         }
     }
 }
