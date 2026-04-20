@@ -22,6 +22,10 @@ namespace Telinha
             {
                 Application.Run(new Token());
             }
+            else
+            {
+                Application.Run(new Token());
+            }
         }
     }
 }
