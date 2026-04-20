@@ -1,4 +1,5 @@
-﻿using Telinha.Services;
+﻿using Telinha.Factory;
+using Telinha.Services;
 
 namespace Telinha
 {
@@ -47,7 +48,10 @@ namespace Telinha
 
                 Hide();
 
-                using var home = new Home();
+                var tokenService = new TokenServices();
+                var apiFactory = new ApiClientFactory(tokenService);
+
+                using var home = new Home(apiFactory);
                 home.ShowDialog();
             }
             catch (Exception ex)
