@@ -1,4 +1,5 @@
-﻿using Telinha.Services;
+﻿using Telinha.Factory;
+using Telinha.Services;
 
 namespace Telinha
 {
@@ -10,6 +11,7 @@ namespace Telinha
             ApplicationConfiguration.Initialize();
 
             var tokenService = new TokenServices();
+            var apiFactory = new ApiClientFactory(tokenService);
             var hasToken = Task.Run(async () =>
             {
                 var tmdb = await tokenService.ObterTokenAsync("TMDB");
@@ -20,7 +22,7 @@ namespace Telinha
 
             if (hasToken)
             {
-                Application.Run(new Home());
+                Application.Run(new Home(apiFactory));
             }
             else
             {
