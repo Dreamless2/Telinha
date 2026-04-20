@@ -14,7 +14,7 @@ namespace Telinha
     {
         private TMDBServices? _tmdb;
         private MidiaServices? _midiaService;
-        private ApiClientFactory _apiFactory;
+        private readonly ApiClientFactory _apiFactory;
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
