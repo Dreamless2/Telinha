@@ -11,16 +11,17 @@ namespace Telinha
 {
     public partial class Home : Form
     {
-        private TMDBServices _tmdb;
-        private readonly MidiaServices _midiaService;
-        private readonly ApiClientFactory _apiClientFactory;
+        private TMDBServices? _tmdb;
+        private readonly MidiaServices? _midiaService;
+        private readonly ApiClientFactory _apiFactory;
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
+
         public Home(ApiClientFactory apiFactory)
         {
             InitializeComponent();
-            _apiClientFactory = apiFactory;
+            _apiFactory = apiFactory;
             Load += Principal_Load!;
             SairButton.Click += SairButton_Click!;
             CopiarButton.Click += CopiarButton_Click!;
@@ -268,6 +269,10 @@ namespace Telinha
         private async void Principal_Load(object sender, EventArgs e)
         {
             SetupBindings();
+
+            _tmdb = await _apiFactory.GetTMDBAsync();
+
+
 
             try
             {
