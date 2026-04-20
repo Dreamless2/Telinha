@@ -17,7 +17,7 @@ namespace Telinha.Factory
 
         public ApiClientFactory(TokenServices tokenService)
         {
-            _tokenService = tokenService;
+            _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
         }
 
         // 🔹 DeepL
