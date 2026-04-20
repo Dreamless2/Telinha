@@ -5,17 +5,12 @@ using Telinha.Services;
 
 namespace Telinha.Factory
 {
-    public class ApiClientFactory
+    public class ApiClientFactory(TokenServices tokenService)
     {
-        private readonly TokenServices _tokenService;
+        private readonly TokenServices _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
 
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
-
-        public ApiClientFactory(TokenServices tokenService)
-        {
-            _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
-        }
 
         // 🔹 DeepL
         public async Task<DEEPLContracts> GetDeepLAsync()
