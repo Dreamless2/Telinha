@@ -123,8 +123,8 @@ namespace Telinha.Utils
             var semAcento = RemoverAcentos(comAcento);
 
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
-                ? $"#{semAcento}"
-                : $"#{semAcento} #{comAcento}";
+                ? $"#{semAcento}<<AQUI>>"
+                : $"#{semAcento}<<AQUI>> #{comAcento}";
         }
     }
 }
