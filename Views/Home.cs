@@ -378,9 +378,7 @@ namespace Telinha
 
                 // Atualiza a UI de acordo com o tipo real
                 if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
-                {
                     AtualizarUI(tipoReal, midia);
-                }
 
                 // Preenche os campos, mas mantendo o código que o usuário digitou
                 PreencherCampos(midia);
@@ -394,8 +392,7 @@ namespace Telinha
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao buscar a mídia:\n{ex.Message}",
-                                "Erro na Busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao buscar a mídia:\n{ex.Message}", "Erro na Busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
