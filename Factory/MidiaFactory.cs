@@ -77,16 +77,16 @@ namespace Telinha.Factory
             item.Original = json[originalTitleField]?.ToString() ?? "--";
 
             // 6. GÊNEROS E ESTÚDIOS
-            item.Genero = Cleanser.NormalizarGeneros(
+            item.Genero = TagEngine.NormalizarGeneros(
                 string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? [])
             );
 
-            item.Produtora = Cleanser.GerarTags(
+            item.Produtora = TagEngine.GerarTags(
                 string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? [])
             );
 
             // 7. CAMPOS ESPECÍFICOS POR CATEGORIA
-            string tituloFormatado = Cleanser.FormatarTitulo(item.Nome);
+            string tituloFormatado = TagEngine.FormatarTitulo(item.Nome);
 
             if (tipoDetectado == MidiaTipo.Anime)
             {
