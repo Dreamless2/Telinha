@@ -80,16 +80,22 @@ namespace Telinha.Utils
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
 
+            // 🔥 remove espaços direto (igual ao seu)
             var semEspacos = titulo.Replace(" ", "");
 
+            // 🔥 remove caracteres inválidos (letras + números apenas)
             semEspacos = NonAlphaNumericRegex().Replace(semEspacos, "");
 
-            if (string.IsNullOrEmpty(semEspacos))
+            if (semEspacos.Length == 0)
                 return string.Empty;
 
+            // 🔥 capitaliza primeira letra (igual ao seu)
             var comAcento = char.ToUpperInvariant(semEspacos[0]) + semEspacos[1..];
+
+            // 🔥 versão sem acento
             var semAcento = RemoverAcentos(comAcento);
 
+            // 🔥 mantém exatamente sua regra de retorno
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
                 ? $"#{semAcento}"
                 : $"#{semAcento} #{comAcento}";
