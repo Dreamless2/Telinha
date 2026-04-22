@@ -140,7 +140,7 @@ namespace Telinha.Factory
 
             if (taskPais != null || taskIdioma != null)
             {
-                LogServices.Info("Traduzindo...");
+                LogServices.Info("Traduzindo países e idiomas... {0}.", taskPais != null ? "pais" : "idioma");
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
                 LogServices.Info("Tradução concluida.");
             }
