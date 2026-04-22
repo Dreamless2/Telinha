@@ -102,29 +102,28 @@ namespace Telinha.Utils
         public static string FormatarTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
-            {
                 return string.Empty;
-            }
 
-            // Remove tudo que NÃO é letra ou número (preserva acento)
+            // 🔹 Limpa mantendo acento
             var apenasTexto = Regex.Replace(titulo, @"[^\p{L}\p{Nd} ]", "");
-
             var semEspacos = apenasTexto.Replace(" ", "");
 
             if (string.IsNullOrWhiteSpace(semEspacos))
-            {
                 return string.Empty;
-            }
 
+            // 🔹 Versão com acento (preservada)
             var comAcento = semEspacos.Length > 1
                 ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
                 : semEspacos.ToUpper();
 
+            // 🔹 Versão sem acento (derivada)
             var semAcento = RemoverAcentos(comAcento);
 
-            return semAcento.Equals(comAcento, StringComparison.Ordinal)
-                ? $"#{semAcento}<<AQUI>>"
-                : $"#{semAcento}<<AQUI>> #{comAcento}";
+            // 🔥 GARANTE separação REAL
+            if (semAcento.Equals(comAcento, StringComparison.Ordinal))
+                return $"#{semAcento}";
+
+            return string.Concat("#", semAcento, " ", "#", comAcento);
         }
     }
 }
