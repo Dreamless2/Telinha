@@ -86,7 +86,7 @@ namespace Telinha.Factory
             );
 
             // 7. CAMPOS ESPECÍFICOS POR CATEGORIA
-            var tituloFormatado = TagEngine.FormatarTitulo(item.Nome);
+            var tituloFormatado = TagEngine.FormatarTitulo(item.Nome).Replace("", " ");
 
             if (tipoDetectado == MidiaTipo.Anime)
             {
