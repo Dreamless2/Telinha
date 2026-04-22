@@ -11,7 +11,7 @@ namespace Telinha.Card
         string original = "",
         string lancamento = "",
         string alternativo = "",
-        string pais = "",
+        string local = "",
         string idioma = "",
         string franquia = "",
         string genero = "",
@@ -21,8 +21,8 @@ namespace Telinha.Card
         string produtora = "",
         string mcu = "",
         string autores = "",
-        string criadores = "",
-        string obra = "")
+        string showrunners = "",
+        string referencia = "")
     {
         private readonly MidiaTipo _tipo = tipo;
         private readonly string _titulo = titulo ?? "";
@@ -31,7 +31,7 @@ namespace Telinha.Card
         private readonly string _original = original ?? "";
         private readonly string _lancamento = lancamento ?? "";
         private readonly string _alternativo = alternativo ?? "";
-        private readonly string _pais = pais ?? "";
+        private readonly string _local = local ?? "";
         private readonly string _idioma = idioma ?? "";
         private readonly string _franquia = franquia ?? "";
         private readonly string _genero = genero ?? "";
@@ -41,8 +41,8 @@ namespace Telinha.Card
         private readonly string _produtora = produtora ?? "";
         private readonly string _mcu = mcu ?? "";
         private readonly string _autores = autores ?? "";
-        private readonly string _criadores = criadores ?? "";
-        private readonly string _obra = obra ?? "";
+        private readonly string _showrunners = showrunners ?? "";
+        private readonly string _referencia = referencia ?? "";
 
         public string GetFormattedText()
         {
@@ -64,7 +64,7 @@ namespace Telinha.Card
             // Bloco de Origem (Só para Séries e Animes)
             if (_tipo != MidiaTipo.Filme)
             {
-                sb.AppendLine($"**Local de Produção:** {_pais}");
+                sb.AppendLine($"**Local de Produção:** {_local}");
                 sb.AppendLine($"**Idioma:** {_idioma}");
             }
 
@@ -83,8 +83,8 @@ namespace Telinha.Card
             if (_tipo != MidiaTipo.Filme)
             {
                 sb.AppendLine($"**Autores:** {_autores}");
-                sb.AppendLine($"**Showrunners:** {_criadores}");
-                sb.AppendLine($"**Obra de Referência:** __{_obra}__");
+                sb.AppendLine($"**Showrunners:** {_showrunners}");
+                sb.AppendLine($"**Obra de Referência:** __{_referencia}__");
             }
 
             // Bloco Final Comum
