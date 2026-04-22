@@ -60,7 +60,7 @@ namespace Telinha
                     );
                 }
 
-                MessageBox.Show("Salvo com sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Hide();
 
