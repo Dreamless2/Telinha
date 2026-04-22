@@ -33,7 +33,7 @@ namespace Telinha.Services
                 {
                     return await ExecutarBusca(id, MidiaTipo.Filme);
                 }
-                catch
+                catch (Exception ex)
                 {
                     //return null;
                     MessageBox.Show($"Erro interno: {ex.Message}\n{ex.StackTrace}");
