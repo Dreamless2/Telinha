@@ -14,6 +14,8 @@ namespace Telinha.Services
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
+            LogServices.Info("Buscando midia: {Id} - {Tipo}", id, tipoSolicitado);
+
             var tipoAlternativo = (tipoSolicitado == MidiaTipo.Filme)
                 ? MidiaTipo.Serie
                 : MidiaTipo.Filme;
@@ -23,7 +25,7 @@ namespace Telinha.Services
             if (cacheSolicitado != null)
                 return JsonConvert.DeserializeObject<MidiaModel>(cacheSolicitado);
 
-            LogServices.Info("Buscando midia: {Id} - {Tipo}", id, tipoSolicitado);
+
 
             string? cacheAlternativo = MidiaCache.Get(tipoAlternativo, id, 720);
             if (cacheAlternativo != null)
