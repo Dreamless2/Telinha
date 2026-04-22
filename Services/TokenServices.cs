@@ -50,7 +50,6 @@ namespace Telinha.Services
             if (_cache.TryGetValue(keyName, out var cached))
                 return cached;
 
-            // 🔎 2. busca no banco
             var entity = await _fsql.Select<EncryptedToken>()
                                     .Where(x => x.KeyName == keyName && x.IsActive)
                                     .FirstAsync();
