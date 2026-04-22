@@ -18,10 +18,6 @@ namespace Telinha
             TokenTMDBBox.KeyPress += Hidden!;
         }
 
-
-
-
-
         private void Hidden(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Back)
@@ -36,11 +32,6 @@ namespace Telinha
 
             e.Handled = true;
         }
-
-
-
-
-
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try
