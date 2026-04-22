@@ -7,7 +7,7 @@ namespace Telinha
     public partial class Token : Form
     {
         private readonly TokenServices _tokenService;
-        private string senhaReal = "";
+        private string charHidden = "";
         public Token(TokenServices tokenService)
         {
             _tokenService = tokenService;
@@ -16,17 +16,20 @@ namespace Telinha
             SairButton.Click += SairButton_Click!;
         }
 
+
+
+
+
         private void Hidden(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Back)
             {
-                if (senhaReal.Length > 0)
-                    senhaReal = senhaReal.Substring(0, senhaReal.Length - 1);
+                if (charHidden.Length > 0)
+                    charHidden = charHidden.Substring(0, charHidden.Length - 1);
             }
-            // Se for um caractere imprimível, adiciona à string real
             else if (!char.IsControl(e.KeyChar))
             {
-                senhaReal += e.KeyChar;
+                charHidden += e.KeyChar;
             }
 
             e.Handled = true;
