@@ -6,7 +6,7 @@ namespace Telinha.Utils
 {
     public static class TagEngine
     {
-        public static Dictionary<string, string> Tags = new Dictionary<string, string>()
+        public static Dictionary<string, string> GeneroMapeado = new Dictionary<string, string>()
        {
         { "ficção científica", "ficcaocientifica ficçãocientífica" },
         { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
