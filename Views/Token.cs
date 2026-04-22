@@ -37,7 +37,7 @@ namespace Telinha
 
                 if (string.IsNullOrWhiteSpace(tmdbToken) && string.IsNullOrWhiteSpace(deeplToken))
                 {
-                    MessageBox.Show("Informe pelo menos um token.");
+                    MessageBox.Show("Informe a chave de acesso.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
