@@ -144,6 +144,7 @@ namespace Telinha.Factory
             item.Pais = taskPais != null ? Cleanser.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? Cleanser.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
 
+            LogServices.Info("Midia criada com sucesso.");
             return item;
         }
     }
