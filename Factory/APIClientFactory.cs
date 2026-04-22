@@ -26,7 +26,6 @@ namespace Telinha.Factory
 
             return new DEEPLContracts(_deepLClient);
         }
-
         public async Task<TMDBServices> GetTMDBAsync()
         {
             if (_tmdbClient == null)
