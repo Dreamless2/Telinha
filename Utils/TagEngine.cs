@@ -8,7 +8,7 @@ namespace Telinha.Utils
     {
         // Regex compilado (melhor performance)
         [GeneratedRegex(@"[^a-zA-Z0-9]")]
-        private static readonly Regex RegexLimpeza();
+        private static partial Regex RegexLimpeza();
 
         // Cache para remover acentos (evita recomputação)
         private static readonly Dictionary<string, string> CacheAcentos = [];
