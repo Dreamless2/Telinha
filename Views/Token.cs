@@ -20,7 +20,6 @@ namespace Telinha
             TokenDEEPLBox.TextChanged += (s, e) => Hidden(TokenDEEPLBox);
             TokenTMDBBox.TextChanged += (s, e) => Hidden(TokenTMDBBox);
         }
-
         private static void Hidden(TextBoxBase txt)
         {
             txt.SelectionStart = 0;
