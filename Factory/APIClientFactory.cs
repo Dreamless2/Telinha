@@ -41,8 +41,8 @@ namespace Telinha.Factory
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
 
-                _tmdbClient.AddDefaultHeader("Authorization", $"Bearer {token}");
-                _tmdbClient.AddDefaultHeader("accept", "application/json");
+                _tmdbClient.AddDefaultParameter("api_key", token);
+
             }
 
             var tokenFinal = (await _tokenService.ObterTokenAsync("TMDB"))?.Trim();
