@@ -25,8 +25,6 @@ namespace Telinha.Services
             if (cacheSolicitado != null)
                 return JsonConvert.DeserializeObject<MidiaModel>(cacheSolicitado);
 
-
-
             string? cacheAlternativo = MidiaCache.Get(tipoAlternativo, id, 720);
             if (cacheAlternativo != null)
                 return JsonConvert.DeserializeObject<MidiaModel>(cacheAlternativo);
