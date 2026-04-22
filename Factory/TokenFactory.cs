@@ -54,7 +54,10 @@ namespace Telinha.Factory
                                    .FirstAsync();
 
             if (entity?.EncryptedData == null)
+            {
+                LogServices.Error("Erro ao obter token: {KeyName}", keyName);
                 return null;
+            }
 
             using var encryptor = new TokenEncryptionServices(_masterKey);
 
