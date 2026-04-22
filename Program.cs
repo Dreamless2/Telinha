@@ -12,21 +12,24 @@ namespace Telinha
             ApplicationConfiguration.Initialize();
             LogServices.Configure();
 
-            var tokenService = new TokenServices();
-            var apiFactory = new ApiClientFactory(tokenService);
-            var hasToken = Task.Run(async () =>
+            try
             {
-                var tmdb = await tokenService.ObterTokenAsync("TMDB");
-                var deepl = await tokenService.ObterTokenAsync("DEEPL");
 
-                return !string.IsNullOrEmpty(tmdb) || !string.IsNullOrEmpty(deepl);
-            }).GetAwaiter().GetResult();
+                var tokenService = new TokenServices();
+                var apiFactory = new ApiClientFactory(tokenService);
+                var hasToken = Task.Run(async () =>
+                {
+                    var tmdb = await tokenService.ObterTokenAsync("TMDB");
+                    var deepl = await tokenService.ObterTokenAsync("DEEPL");
 
-            if (hasToken)
-                Application.Run(new Home(apiFactory));
-            else
-                Application.Run(new Token(tokenService));
+                    return !string.IsNullOrEmpty(tmdb) || !string.IsNullOrEmpty(deepl);
+                }).GetAwaiter().GetResult();
 
+                if (hasToken)
+                    Application.Run(new Home(apiFactory));
+                else
+                    Application.Run(new Token(tokenService));
+            }
             LogServices.Close();
         }
     }
