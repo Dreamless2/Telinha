@@ -3,17 +3,20 @@ using DeepL.Model;
 
 namespace Telinha.Contracts
 {
-    public class DEEPLContracts(DeepLClient client)
+    public async Task<string?> Translate(string text)
     {
-        private readonly DeepLClient _client = client;
+        if (string.IsNullOrWhiteSpace(text) || text == "--")
+            return null;
 
-        public async Task<TextResult> Translate(string text)
+        try
         {
-            return await _client.TranslateTextAsync(
-                text,
-                null,
-                LanguageCode.PortugueseBrazilian
-            );
+            var result = await _client.TranslateTextAsync(text, null, LanguageCode.PortugueseBrazilian);
+            return result.Text;
+        }
+        catch (DeepLException ex) when (ex.Message.Contains("Not found"))
+        {
+            // Se não achou tradução, retorna o original
+            return text;
         }
     }
 }
