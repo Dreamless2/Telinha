@@ -68,9 +68,9 @@
             TipoLabel = new Label();
             TagsLabel = new Label();
             AlternativoLabel = new Label();
-            LancamentoBox = new TextBox();
+            EstreiaBox = new TextBox();
             OriginalBox = new TextBox();
-            LancamentoLabel = new Label();
+            EstreiaLabel = new Label();
             OriginalLabel = new Label();
             SinopseLabel = new Label();
             AudioLabel = new Label();
@@ -201,9 +201,9 @@
             PanelForms.Controls.Add(TipoLabel);
             PanelForms.Controls.Add(TagsLabel);
             PanelForms.Controls.Add(AlternativoLabel);
-            PanelForms.Controls.Add(LancamentoBox);
+            PanelForms.Controls.Add(EstreiaBox);
             PanelForms.Controls.Add(OriginalBox);
-            PanelForms.Controls.Add(LancamentoLabel);
+            PanelForms.Controls.Add(EstreiaLabel);
             PanelForms.Controls.Add(OriginalLabel);
             PanelForms.Controls.Add(SinopseLabel);
             PanelForms.Controls.Add(AudioLabel);
@@ -475,13 +475,13 @@
             AlternativoLabel.TabIndex = 12;
             AlternativoLabel.Text = "Nome Alternativo";
             // 
-            // LancamentoBox
+            // EstreiaBox
             // 
-            LancamentoBox.Location = new Point(739, 239);
-            LancamentoBox.Name = "LancamentoBox";
-            LancamentoBox.PlaceholderText = "Lançamento";
-            LancamentoBox.Size = new Size(121, 23);
-            LancamentoBox.TabIndex = 11;
+            EstreiaBox.Location = new Point(739, 239);
+            EstreiaBox.Name = "EstreiaBox";
+            EstreiaBox.PlaceholderText = "Data de Estreia";
+            EstreiaBox.Size = new Size(121, 23);
+            EstreiaBox.TabIndex = 11;
             // 
             // OriginalBox
             // 
@@ -491,14 +491,14 @@
             OriginalBox.Size = new Size(721, 23);
             OriginalBox.TabIndex = 10;
             // 
-            // LancamentoLabel
+            // EstreiaLabel
             // 
-            LancamentoLabel.AutoSize = true;
-            LancamentoLabel.Location = new Point(739, 221);
-            LancamentoLabel.Name = "LancamentoLabel";
-            LancamentoLabel.Size = new Size(73, 15);
-            LancamentoLabel.TabIndex = 9;
-            LancamentoLabel.Text = "Lançamento";
+            EstreiaLabel.AutoSize = true;
+            EstreiaLabel.Location = new Point(739, 221);
+            EstreiaLabel.Name = "EstreiaLabel";
+            EstreiaLabel.Size = new Size(84, 15);
+            EstreiaLabel.TabIndex = 9;
+            EstreiaLabel.Text = "Data de Estreia";
             // 
             // OriginalLabel
             // 
@@ -613,9 +613,9 @@
         private TextBox NomeBox;
         private TextBox CodigoBox;
         private Label CodigoLabel;
-        private TextBox LancamentoBox;
+        private TextBox EstreiaBox;
         private TextBox OriginalBox;
-        private Label LancamentoLabel;
+        private Label EstreiaLabel;
         private Label OriginalLabel;
         private Label SinopseLabel;
         private Label AudioLabel;

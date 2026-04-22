@@ -38,7 +38,7 @@ namespace Telinha
             AudioBox.DataBindings.Add("Text", _bs, "Audio", false, DataSourceUpdateMode.OnPropertyChanged);
             SinopseBox.DataBindings.Add("Text", _bs, "Sinopse", false, DataSourceUpdateMode.OnPropertyChanged);
             OriginalBox.DataBindings.Add("Text", _bs, "Original", false, DataSourceUpdateMode.OnPropertyChanged);
-            LancamentoBox.DataBindings.Add("Text", _bs, "Lancamento", false, DataSourceUpdateMode.OnPropertyChanged);
+            EstreiaBox.DataBindings.Add("Text", _bs, "Lancamento", false, DataSourceUpdateMode.OnPropertyChanged);
             AlternativoBox.DataBindings.Add("Text", _bs, "Alternativo", false, DataSourceUpdateMode.OnPropertyChanged);
             TagsBox.DataBindings.Add("Text", _bs, "Tags", false, DataSourceUpdateMode.OnPropertyChanged);
             TipoBox.DataBindings.Add("Text", _bs, "NomeFormatado", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -86,7 +86,7 @@ namespace Telinha
                 audio: AudioBox.Text,
                 sinopse: SinopseBox.Text,
                 original: OriginalBox.Text,
-                lancamento: LancamentoBox.Text,
+                lancamento: EstreiaBox.Text,
                 alternativo: AlternativoBox.Text,
                 local: LocalBox.Text,
                 idioma: IdiomaBox.Text,
@@ -106,7 +106,7 @@ namespace Telinha
         private void ConectarEventos()
         {
             var controles = new Control[] {
-                TipoBox, NomeBox, AudioBox, SinopseBox, OriginalBox, LancamentoBox,
+                TipoBox, NomeBox, AudioBox, SinopseBox, OriginalBox, EstreiaBox,
                 AlternativoBox, LocalBox, IdiomaBox, FranquiaBox, GeneroBox,
                 TagsBox, DiretorBox, ArtistasBox, ProdutoraBox, MCUBox,
                 AutoresBox, ShowrunnersBox, ReferenciaBox
@@ -201,7 +201,7 @@ namespace Telinha
                 [nameof(midia.Nome)] = NomeBox,
                 [nameof(midia.Sinopse)] = SinopseBox,
                 [nameof(midia.Original)] = OriginalBox,
-                [nameof(midia.Estreia)] = LancamentoBox,
+                [nameof(midia.Estreia)] = EstreiaBox,
                 [nameof(midia.Alternativo)] = AlternativoBox,
                 [nameof(midia.Tags)] = TagsBox,
                 [nameof(midia.Tipo)] = TipoBox,
@@ -242,7 +242,7 @@ namespace Telinha
                 { nameof(NomeBox),        NomeBox },
                 { nameof(SinopseBox),     SinopseBox },
                 { nameof(OriginalBox),    OriginalBox },
-                { nameof(LancamentoBox),  LancamentoBox },
+                { nameof(EstreiaBox),  EstreiaBox },
                 { nameof(AlternativoBox), AlternativoBox },
                 { nameof(TagsBox),        TagsBox },
                 { nameof(TipoBox),        TipoBox },
