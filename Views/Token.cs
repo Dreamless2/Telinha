@@ -1,4 +1,5 @@
-﻿using Telinha.Factory;
+﻿using System.Text;
+using Telinha.Factory;
 using Telinha.Services;
 
 namespace Telinha
@@ -6,13 +7,29 @@ namespace Telinha
     public partial class Token : Form
     {
         private readonly TokenServices _tokenService;
+        private StringBuilder _buffer = new();
         public Token(TokenServices tokenService)
         {
             _tokenService = tokenService;
             InitializeComponent();
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
+            TokenTMDBBox.KeyPress += TokenTMDBBox_KeyPress!;
+            TokenDEEPLBox.KeyPress += TokenDEEPLBox_KeyPress!;
         }
+
+        private void TokenDEEPLBox_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+
+        }
+
+
+        private void TokenTMDBBox_KeyPress(object? sender, KeyPressEventArgs e)
+
+        {
+        }
+
+
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try

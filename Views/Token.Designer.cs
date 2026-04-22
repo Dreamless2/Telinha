@@ -44,7 +44,7 @@
             TokenTMDBBox.Location = new Point(128, 111);
             TokenTMDBBox.Name = "TokenTMDBBox";
             TokenTMDBBox.PasswordChar = '*';
-            TokenTMDBBox.PlaceholderText = "Token TMDB";
+            TokenTMDBBox.PlaceholderText = "API TMDB";
             TokenTMDBBox.Size = new Size(754, 23);
             TokenTMDBBox.TabIndex = 0;
             // 
@@ -53,27 +53,27 @@
             TokenDEEPLBox.Location = new Point(128, 163);
             TokenDEEPLBox.Name = "TokenDEEPLBox";
             TokenDEEPLBox.PasswordChar = '*';
-            TokenDEEPLBox.PlaceholderText = "Token DEEPL";
+            TokenDEEPLBox.PlaceholderText = "API DEEPL";
             TokenDEEPLBox.Size = new Size(754, 23);
             TokenDEEPLBox.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(47, 114);
+            label1.Location = new Point(61, 119);
             label1.Name = "label1";
-            label1.Size = new Size(75, 15);
+            label1.Size = new Size(61, 15);
             label1.TabIndex = 2;
-            label1.Text = "Token TMDB";
+            label1.Text = "API TMDB";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(47, 166);
+            label2.Location = new Point(61, 166);
             label2.Name = "label2";
-            label2.Size = new Size(75, 15);
+            label2.Size = new Size(61, 15);
             label2.TabIndex = 3;
-            label2.Text = "Token DEEPL";
+            label2.Text = "API DEEPL";
             // 
             // PanelTopTitle
             // 
