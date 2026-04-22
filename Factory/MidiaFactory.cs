@@ -133,7 +133,6 @@ namespace Telinha.Factory
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
 
-            /*
             Task<DeepL.Model.TextResult>? taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
             Task<DeepL.Model.TextResult>? taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
 
@@ -147,27 +146,6 @@ namespace Telinha.Factory
 
             item.Local = taskPais != null ? TagEngine.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
-            */
-
-            var taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
-            var taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
-
-            LogServices.Info("Países: {pais}", taskPais!.Result.Text);
-            LogServices.Info("Idioma: {idioma}", taskIdioma!.Result.Text);
-
-            if (taskPais != null)
-                await taskPais;
-
-            if (taskIdioma != null)
-                await taskIdioma;
-
-            item.Local = taskPais != null
-                ? TagEngine.FormatarTitulo(taskPais.Result.Text)
-                : "--";
-
-            item.Idioma = taskIdioma != null
-                ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower()
-                : "--";
 
             LogServices.Info("Mídia criada com sucesso.");
 
