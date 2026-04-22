@@ -81,7 +81,6 @@ namespace Telinha.Services
         {
             _cache.Clear();
         }
-
         public void Dispose()
         {
             KeyHelper.ZeroMemory(_masterKey);
