@@ -37,20 +37,33 @@ namespace Telinha.Services
 
         public async Task<JObject> GetAsync(string endpoint, Dictionary<string, string>? query = null)
         {
+            // 1. Limpeza radical do token
+            // Remove espaços, quebras de linha e o caractere nulo (\0) que a descriptografia pode deixar
+            string cleanToken = _token?.Trim()
+                                .Replace("\0", "")
+                                .Replace("\r", "")
+                                .Replace("\n", "") ?? "";
+
             var req = new RestRequest(endpoint);
+
+            // 2. Limpa headers antigos para evitar duplicidade (Bearer Bearer...)
+            req.RemoveHeader("Authorization");
+            req.AddHeader("Authorization", $"Bearer {cleanToken}");
+
             req.AddHeader("accept", "application/json");
 
-            // 🔥 Limpeza extrema antes de enviar
-            string cleanToken = _token.Trim().Replace("\0", "").Replace("\r", "").Replace("\n", "");
-
-            req.AddHeader("Authorization", $"Bearer {cleanToken}");
+            if (query != null)
+            {
+                foreach (var p in query)
+                    req.AddQueryParameter(p.Key, p.Value);
+            }
 
             var resp = await _client.ExecuteAsync(req);
 
-            if (!resp.IsSuccessful)
+            if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
             {
-                // Se falhar, vamos ver exatamente o que foi enviado (CUIDADO EM PROD, use apenas para debug)
-                throw new Exception($"TMDB ERROR {resp.StatusCode}: {resp.Content}");
+                // Se der erro, vamos capturar exatamente o que o servidor respondeu
+                throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
             }
 
             return JObject.Parse(resp.Content!);
