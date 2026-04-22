@@ -23,15 +23,25 @@ namespace Telinha.Services
                                 .Replace("\r", "")
                                 .Replace("\n", "") ?? "";
 
-            var req = new RestRequest(endpoint);
+            var request = new RestRequest(endpoint);
 
-            req.AddHeader("Authorization", $"Bearer {cleanToken}");
-            req.AddHeader("accept", "application/json");
+            // To remove a specific header by name
+            var headerToRemove = request.Parameters
+                .FirstOrDefault(p => p.Name.Equals("Authorization", StringComparison.OrdinalIgnoreCase));
+
+            if (headerToRemove != null)
+            {
+                request.Parameters.RemoveParameter(headerToRemove);
+            }
+
+
+            request.AddHeader("Authorization", $"Bearer {cleanToken}");
+            request.AddHeader("accept", "application/json");
 
             if (query != null)
             {
                 foreach (var p in query)
-                    req.AddQueryParameter(p.Key, p.Value);
+                    request.AddQueryParameter(p.Key, p.Value);
             }
 
             var resp = await _client.ExecuteAsync(req);
