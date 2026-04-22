@@ -27,7 +27,7 @@ namespace Telinha.Services
 
             // To remove a specific header by name
             var headerToRemove = request.Parameters
-                .FirstOrDefault(p => p.Name.Equals("Authorization", StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(p => p.Name!.Equals("Authorization", StringComparison.OrdinalIgnoreCase));
 
             if (headerToRemove != null)
             {
@@ -44,7 +44,7 @@ namespace Telinha.Services
                     request.AddQueryParameter(p.Key, p.Value);
             }
 
-            var resp = await _client.ExecuteAsync(req);
+            var resp = await _client.ExecuteAsync(request);
 
             if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
             {
