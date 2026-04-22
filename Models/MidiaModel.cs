@@ -169,8 +169,9 @@ namespace Telinha.Models
                 if (string.IsNullOrWhiteSpace(Nome))
                     return string.Empty;
 
-                return TagEngine.FormatarTitulo(Nome)
-                               .Replace(" ", "");
+                var tags = new HashSet<string>();
+
+                tags.UnionWith(TagEngine.FormatarTitulo(Nome!));
             }
         }
     }
