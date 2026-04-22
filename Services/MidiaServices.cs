@@ -130,6 +130,8 @@ namespace Telinha.Services
 
             bool invalido = results[0]?["id"] == null || (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString())) || (tipo != MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()));
 
+            LogServices.Info("Busca de midia concluida: {Id} - {Tipo} - {Invalido}", id, tipo, invalido);
+
             if (invalido)
                 return null;
 
