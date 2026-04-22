@@ -142,6 +142,7 @@ namespace Telinha.Factory
             {
                 LogServices.Info("Traduzindo...");
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
+                LogServices.Info("Tradução concluida.");
             }
 
             item.Pais = taskPais != null ? Cleanser.FormatarTitulo(taskPais.Result.Text) : "--";
