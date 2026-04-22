@@ -2,6 +2,7 @@
 using Telinha.Factory;
 using Telinha.Infrastructure.Logging;
 using Telinha.Services;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Telinha
 {
@@ -32,6 +33,9 @@ namespace Telinha
         }
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
+            var conteudoOculto = TokenTMDBBox.Text;
+            MessageBox.Show("O conteúdo colado foi: " + conteudoOculto);
+
             try
             {
                 var tmdbToken = TokenTMDBBox.Text?.Trim();
