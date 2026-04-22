@@ -4,8 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Telinha.Utils
 {
-
-    public static partial class Cleanser
+    public static partial class TagEngine
     {
         private static readonly HashSet<string> StopWords = new(StringComparer.OrdinalIgnoreCase)
     {
