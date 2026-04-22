@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Telinha.Cache
+﻿namespace Telinha.Cache
 {
     public static class TranslationCache
     {

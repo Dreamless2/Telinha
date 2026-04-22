@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Telinha.Mapper
+﻿namespace Telinha.Mapper
 {
     public static class LanguageMapper
     {
