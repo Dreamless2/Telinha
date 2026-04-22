@@ -38,7 +38,20 @@ namespace Telinha
 
         private void TokenTMDBBox_KeyPress(object? sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                if (_buffer.Length > 0)
+                    _buffer.Length--;
 
+                e.Handled = true;
+                return;
+            }
+
+            if (!char.IsControl(e.KeyChar))
+            {
+                _buffer.Append(e.KeyChar);
+                e.Handled = true; // 🔥 impede de aparecer
+            }
         }
 
 
