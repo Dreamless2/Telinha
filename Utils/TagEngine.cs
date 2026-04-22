@@ -5,8 +5,9 @@ using System.Text.RegularExpressions;
 namespace Telinha.Utils
 {
     public static class TagEngine
-
     {
+        public static Dictionary<string, string> Tags = new Dictionary<string, string>()
+       {
         { "ficção científica", "ficcaocientifica ficçãocientífica" },
         { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
         { "ficção científica e aventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
@@ -30,94 +31,94 @@ namespace Telinha.Utils
         { "ficção científica e terror", "ficcaocientificaeterror ficçãocientíficaeterror" }
     };
 
-public static string NormalizarGeneros(string entrada)
-{
-    if (string.IsNullOrWhiteSpace(entrada))
-    {
-        return string.Empty;
-    }
-
-    var hashTags = new HashSet<string>();
-
-    var generos = entrada.Split(',')
-                         .Select(g => g.Trim().ToLowerInvariant());
-
-    foreach (var generoOriginal in generos)
-    {
-        var chave = generoOriginal.Replace(" ", "");
-
-        if (GeneroMapeado.TryGetValue(chave, out var formas))
+        public static string NormalizarGeneros(string entrada)
         {
-            foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+            if (string.IsNullOrWhiteSpace(entrada))
             {
-                hashTags.Add($"#{forma}");
+                return string.Empty;
             }
+
+            var hashTags = new HashSet<string>();
+
+            var generos = entrada.Split(',')
+                                 .Select(g => g.Trim().ToLowerInvariant());
+
+            foreach (var generoOriginal in generos)
+            {
+                var chave = generoOriginal.Replace(" ", "");
+
+                if (GeneroMapeado.TryGetValue(chave, out var formas))
+                {
+                    foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        hashTags.Add($"#{forma}");
+                    }
+                }
+                else
+                {
+                    var semEspaco = chave;
+                    var semAcento = RemoverAcentos(semEspaco);
+
+                    hashTags.Add($"#{semAcento}");
+                    hashTags.Add($"#{semEspaco}");
+                }
+            }
+
+            return string.Join(" ", hashTags);
         }
-        else
+
+        public static string GerarTags(string texto)
         {
-            var semEspaco = chave;
-            var semAcento = RemoverAcentos(semEspaco);
+            if (string.IsNullOrWhiteSpace(texto))
+            {
+                return string.Empty;
+            }
 
-            hashTags.Add($"#{semAcento}");
-            hashTags.Add($"#{semEspaco}");
+            var nomes = texto.Split(',')
+                             .Select(n => RemoverAcentos(n.Trim()))
+                             .Select(n => Regex.Replace(n, @"[^a-zA-Z0-9]", ""))
+                             .Where(n => !string.IsNullOrWhiteSpace(n))
+                             .Select(n => $"#{n}");
+
+            return string.Join(" ", nomes);
         }
-    }
 
-    return string.Join(" ", hashTags);
-}
-
-public static string GerarTags(string texto)
-{
-    if (string.IsNullOrWhiteSpace(texto))
-    {
-        return string.Empty;
-    }
-
-    var nomes = texto.Split(',')
-                     .Select(n => RemoverAcentos(n.Trim()))
-                     .Select(n => Regex.Replace(n, @"[^a-zA-Z0-9]", ""))
-                     .Where(n => !string.IsNullOrWhiteSpace(n))
-                     .Select(n => $"#{n}");
-
-    return string.Join(" ", nomes);
-}
-
-public static string RemoverAcentos(string texto)
-{
-    var normalized = texto.Normalize(NormalizationForm.FormD);
-    var sb = new StringBuilder();
-
-    foreach (var c in normalized)
-    {
-        if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+        public static string RemoverAcentos(string texto)
         {
-            sb.Append(c);
+            var normalized = texto.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+
+            foreach (var c in normalized)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(c);
+                }
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
+        }
+
+        public static string FormatarTitulo(string titulo)
+        {
+            if (string.IsNullOrWhiteSpace(titulo))
+            {
+                return string.Empty;
+            }
+
+            var semEspacos = titulo.Replace(" ", "");
+            semEspacos = Regex.Replace(semEspacos, @"[^\w\d]", "");
+
+            if (string.IsNullOrWhiteSpace(semEspacos))
+            {
+                return string.Empty;
+            }
+
+            var comAcento = char.ToUpper(semEspacos[0]) + semEspacos[1..];
+            var semAcento = RemoverAcentos(comAcento);
+
+            return semAcento.Equals(comAcento, StringComparison.Ordinal)
+                ? $"#{semAcento}"
+                : $"#{semAcento} #{comAcento}";
         }
     }
-
-    return sb.ToString().Normalize(NormalizationForm.FormC);
-}
-
-public static string FormatarTitulo(string titulo)
-{
-    if (string.IsNullOrWhiteSpace(titulo))
-    {
-        return string.Empty;
-    }
-
-    var semEspacos = titulo.Replace(" ", "");
-    semEspacos = Regex.Replace(semEspacos, @"[^\w\d]", "");
-
-    if (string.IsNullOrWhiteSpace(semEspacos))
-    {
-        return string.Empty;
-    }
-
-    var comAcento = char.ToUpper(semEspacos[0]) + semEspacos[1..];
-    var semAcento = RemoverAcentos(comAcento);
-
-    return semAcento.Equals(comAcento, StringComparison.Ordinal)
-        ? $"#{semAcento}"
-        : $"#{semAcento} #{comAcento}";
-}
-}
