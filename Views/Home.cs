@@ -146,11 +146,11 @@ namespace Telinha
 
             // 1. TRATAMENTO DOS DADOS
             // Se for filme, força "--". Se não for, só mexe se estiver nulo (coalescência).
-            item.Pai = isFilme ? "--" : (item.Pais ?? "");
+            item.Local = isFilme ? "--" : (item.Local ?? "");
             item.Idioma = isFilme ? "--" : (item.Idioma ?? "");
-            item.Obra = isFilme ? "--" : (item.Obra ?? "");
+            item.Referencia = isFilme ? "--" : (item.Referencia ?? "");
             item.Autores = isFilme ? "--" : (item.Autores ?? "");
-            item.Criadores = isFilme ? "--" : (item.Criadores ?? "");
+            item.Showrunners = isFilme ? "--" : (item.Showrunners ?? "");
 
             // 2. ESTADO DOS CONTROLES (ENABLE/DISABLE)
             bool habilitarCamposGerais = !isFilme;
@@ -169,11 +169,11 @@ namespace Telinha
             TipoBox.PlaceholderText = TipoLabel.Text;
 
             // 4. EXIBIÇÃO NA UI (VALORES FINAIS)
-            PaisBox.Text = item.Pais;
+            PaisBox.Text = item.Local;
             IdiomaBox.Text = item.Idioma;
-            ObraBox.Text = item.Obra;
+            ObraBox.Text = item.Referencia;
             AutoresBox.Text = item.Autores;
-            CriadoresBox.Text = item.Criadores;
+            CriadoresBox.Text = item.Showrunners;
 
             if (isAnime)
             {
@@ -201,16 +201,16 @@ namespace Telinha
                 [nameof(midia.Nome)] = NomeBox,
                 [nameof(midia.Sinopse)] = SinopseBox,
                 [nameof(midia.Original)] = OriginalBox,
-                [nameof(midia.Lancamento)] = LancamentoBox,
+                [nameof(midia.Estreia)] = LancamentoBox,
                 [nameof(midia.Alternativo)] = AlternativoBox,
                 [nameof(midia.Tags)] = TagsBox,
                 [nameof(midia.Tipo)] = TipoBox,
                 [nameof(midia.MCU)] = MCUBox,
-                [nameof(midia.Pais)] = PaisBox,
+                [nameof(midia.Local)] = PaisBox,
                 [nameof(midia.Idioma)] = IdiomaBox,
                 [nameof(midia.Autores)] = AutoresBox,
                 [nameof(midia.Franquia)] = FranquiaBox,
-                [nameof(midia.Criadores)] = CriadoresBox,
+                [nameof(midia.Showrunners)] = CriadoresBox,
                 [nameof(midia.Genero)] = GeneroBox,
                 [nameof(midia.Diretor)] = DiretorBox,
                 [nameof(midia.Artistas)] = ArtistasBox,
