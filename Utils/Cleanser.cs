@@ -16,7 +16,7 @@ namespace Telinha.Utils
         [GeneratedRegex(@"[^\p{L}\p{Nd}]")]
         private static partial Regex NonAlphaNumericRegex();
 
-        [GeneratedRegex(@"\s+", RegexOptions.NonBacktracking)]
+        [GeneratedRegex(@"\s+")]
         private static partial Regex MultiSpaceRegex();
 
         // =========================
