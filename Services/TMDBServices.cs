@@ -24,7 +24,7 @@ namespace Telinha.Services
                 foreach (var p in query)
                     request.AddQueryParameter(p.Key, p.Value);
 
-            Log.Information("Consultando TMDB: {Endpoint}", endpoint);
+            LogServices.Info("Consultando TMDB: {Endpoint}", endpoint);
 
             var resp = await _client.ExecuteAsync(request);
 
