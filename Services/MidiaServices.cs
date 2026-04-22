@@ -84,6 +84,8 @@ namespace Telinha.Services
 
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
         {
+            LogServices.Info("Buscando midia: {Id} - {Tipo}", id, tipo);
+
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
             var calls = new List<(string, Dictionary<string, string>?)>
             {
