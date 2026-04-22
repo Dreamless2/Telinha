@@ -28,9 +28,8 @@ namespace Telinha.Services
             var resp = await _client.ExecuteAsync(request);
 
             if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
-            {
                 throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
-            }
+
 
             return JObject.Parse(resp.Content!);
         }
