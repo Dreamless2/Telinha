@@ -56,7 +56,6 @@ namespace Telinha.Utils
 
             return string.Join(' ', tags);
         }
-
         public static string GerarTags(string texto)
         {
             if (string.IsNullOrWhiteSpace(texto))
@@ -66,10 +65,10 @@ namespace Telinha.Utils
 
             foreach (var item in texto.Split(',', StringSplitOptions.RemoveEmptyEntries))
             {
-                var limpo = LimparTexto(item, manterAcento: false);
-
-                if (limpo.Length > 0)
-                    AddTag(tags, limpo);
+                foreach (var tag in GerarTagsNomeComposto(item))
+                {
+                    tags.Add(tag);
+                }
             }
 
             return string.Join(' ', tags);
