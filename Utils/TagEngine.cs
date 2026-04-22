@@ -1,11 +1,10 @@
-﻿using System.Collections.Frozen;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Telinha.Utils
 {
-    public static partial class TagEngine
+    public static class TagEngine
     {
         public static string NormalizarGeneros(string entrada)
         {
