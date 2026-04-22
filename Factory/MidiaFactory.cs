@@ -138,6 +138,10 @@ namespace Telinha.Factory
             var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : Task.FromResult<TextResult?>(null)!;
             var taskIdioma = idiomaRaw != "--" ? deepl.Translate(idiomaRaw) : Task.FromResult<TextResult?>(null)!;
 
+
+            LogServices.Info("Buscando informações de localização e tradução...");
+            LogServices.Info("idioma {idioma", taskIdioma.Result?.Text);
+
             await Task.WhenAll(taskPais, taskIdioma);
 
             item.Local = taskPais.Result != null
