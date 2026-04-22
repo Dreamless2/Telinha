@@ -17,6 +17,8 @@ namespace Telinha
             SairButton.Click += SairButton_Click!;
             TokenTMDBBox.KeyPress += TokenTMDBBox_KeyPress!;
             TokenDEEPLBox.KeyPress += TokenDEEPLBox_KeyPress!;
+            TokenTMDBBox.PasswordChar = '\u200B';
+            TokenDEEPLBox.PasswordChar = '\u200B';
         }
 
         private void TokenDEEPLBox_KeyPress(object? sender, KeyPressEventArgs e)
