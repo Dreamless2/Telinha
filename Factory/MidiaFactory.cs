@@ -167,14 +167,14 @@ namespace Telinha.Factory
             var pais = "--";
             var idioma = "--";
 
-            if (serieObject["production_countries"] is JArray productionCountriesArray)
+            if (json["production_countries"] is JArray productionCountriesArray)
             {
                 pais = productionCountriesArray
                     .Select(c => c["name"]?.ToString())
                     .FirstOrDefault() ?? "--";
             }
 
-            if (serieObject["spoken_languages"] is JArray spokenLanguagesArray)
+            if (json["spoken_languages"] is JArray spokenLanguagesArray)
             {
                 idioma = spokenLanguagesArray
                     .Select(c => c["english_name"]?.ToString())
@@ -184,8 +184,9 @@ namespace Telinha.Factory
             pais = (await deepl.Translate(pais)).Text;
             idioma = (await deepl.Translate(idioma)).Text;
 
-            item.Pais = Cleanser.FormatarTitulo(pais);
-            item.Idioma = Cleanser.FormatarTitulo(idioma).ToLower();
+            item.Local = TagEngine.FormatarTitulo(pais);
+            item.Idioma = TagEngine.FormatarTitulo(idioma).ToLower();
+
             LogServices.Info("Mídia criada com sucesso.");
             return item;
         }
