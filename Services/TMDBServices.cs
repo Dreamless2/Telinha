@@ -4,16 +4,10 @@ using Telinha.Infrastructure.Logging;
 
 namespace Telinha.Services
 {
-    public class TMDBServices
+    public class TMDBServices(RestClient client, string token)
     {
-        private readonly string _token;
-        private readonly RestClient _client;
-
-        public TMDBServices(RestClient client, string token)
-        {
-            _client = client;
-            _token = token;
-        }
+        private readonly string _token = token;
+        private readonly RestClient _client = client;
 
         public async Task<JObject> GetAsync(string endpoint, Dictionary<string, string>? query = null)
         {
