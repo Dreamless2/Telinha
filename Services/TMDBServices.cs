@@ -24,19 +24,7 @@ namespace Telinha.Services
                                 .Replace("\n", "") ?? "";
 
             var request = new RestRequest(endpoint);
-
-            // To remove a specific header by name
-            var headerToRemove = request.Parameters
-                .FirstOrDefault(p => p.Name!.Equals("Authorization", StringComparison.OrdinalIgnoreCase));
-
-            if (headerToRemove != null)
-            {
-                request.Parameters.RemoveParameter(headerToRemove);
-            }
-
-
-            request.AddHeader("Authorization", $"Bearer {cleanToken}");
-            request.AddHeader("accept", "application/json");
+            request.AddQueryParameter("api_key", "ae0d6c15bfcd81b3c140023da8da64c9");
 
             if (query != null)
             {
