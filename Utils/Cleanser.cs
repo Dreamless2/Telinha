@@ -4,83 +4,137 @@ using System.Text.RegularExpressions;
 
 namespace Telinha.Utils
 {
-    public class Cleanser
-    {
-        private static readonly Dictionary<string, string> GeneroMapeado = new()
-        {
-            { "ficção científica", "ficcaocientifica ficçãocientífica" },
-            { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-            { "ficção científica e aventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
-            { "romântico", "romantico romântico" },
-            { "romântica", "romantica romântica" },
-            { "comédia", "comedia comédia" },
-            { "mistério", "misterio mistério" },
-            { "ação", "acao ação" },
-            { "ação e fantasia", "acaoefantasia açãoefantasia" },
-            { "ação e aventura", "acaoeaventura açãoeaventura" },
-            { "animação", "animacao animação" },
-            { "documentário", "documentario documentário" },
-            { "comédia dramática", "comediadramatica comédiadramática" },
-            { "comédia romântica", "comediaromantica comédiaromântica" },
-            { "ficção científica e fantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-            { "ficção científica e ação", "ficcaocientificaeacao ficçãocientíficaeação" },
-            { "ficção científica e comédia", "ficcaocientificaecomedia ficçãocientíficaecomédia" },
-            { "ficção científica e drama", "ficcaocientificaedrama ficçãocientíficaedrama" },
-            { "ficção científica e mistério", "ficcaocientificaemisterio ficçãocientíficaemistério" },
-            { "ficção científica e romance", "ficcaocientificaeromance ficçãocientíficaeromance" },
-            { "ficção científica e terror", "ficcaocientificaeterror ficçãocientíficaeterror" }
-        };
+    using System.Globalization;
+    using System.Text;
+    using System.Text.RegularExpressions;
 
+    public static class Cleanser
+    {
+        private static readonly Regex NonAlphaNumericRegex = new(@"[^\p{L}\p{Nd}]", RegexOptions.Compiled);
+        private static readonly Regex MultiSpaceRegex = new(@"\s+", RegexOptions.Compiled);
+
+        private static readonly HashSet<string> StopWords = new()
+    {
+        "e", "and", "de", "da", "do", "das", "dos"
+    };
+
+        // 🔥 PRINCIPAL
         public static string NormalizarGeneros(string entrada)
         {
             if (string.IsNullOrWhiteSpace(entrada))
-            {
                 return string.Empty;
-            }
 
-            var hashTags = new HashSet<string>();
+            var tags = new HashSet<string>();
 
-            var generos = entrada.Split(',')
-                                 .Select(g => g.Trim().ToLowerInvariant());
-
-            foreach (var generoOriginal in generos)
+            foreach (var genero in entrada.Split(','))
             {
-                var chave = generoOriginal.Replace(" ", "");
+                var original = LimparTexto(genero, manterAcento: true);
+                var semAcento = RemoverAcentos(original);
 
-                if (GeneroMapeado.TryGetValue(chave, out var formas))
-                {
-                    foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
-                    {
-                        hashTags.Add($"#{forma}");
-                    }
-                }
-                else
-                {
-                    var semEspaco = chave;
-                    var semAcento = RemoverAcentos(semEspaco);
+                var compactoOriginal = Compactar(original);
+                var compactoSemAcento = Compactar(semAcento);
 
-                    hashTags.Add($"#{semAcento}");
-                    hashTags.Add($"#{semEspaco}");
+                // versão completa
+                AddTag(tags, compactoOriginal);
+                AddTag(tags, compactoSemAcento);
+
+                // 🔥 versão por palavras (explode gênero composto)
+                foreach (var palavra in original.Split(' '))
+                {
+                    var p = palavra.Trim().ToLowerInvariant();
+
+                    if (StopWords.Contains(p) || p.Length < 3)
+                        continue;
+
+                    var pSemAcento = RemoverAcentos(p);
+
+                    AddTag(tags, p);
+                    AddTag(tags, pSemAcento);
                 }
             }
 
-            return string.Join(" ", hashTags);
+            return string.Join(" ", tags);
         }
 
         public static string GerarTags(string texto)
         {
             if (string.IsNullOrWhiteSpace(texto))
-            {
                 return string.Empty;
+
+            var tags = new HashSet<string>();
+
+            foreach (var item in texto.Split(','))
+            {
+                var limpo = LimparTexto(item, manterAcento: false);
+
+                if (!string.IsNullOrWhiteSpace(limpo))
+                    AddTag(tags, limpo);
             }
 
-            var nomes = texto.Split(',')
-                             .Select(n => RemoverAcentos(n.Trim()))
-                             .Select(n => Regex.Replace(n, @"[^a-zA-Z0-9]", ""))
-                             .Where(n => !string.IsNullOrWhiteSpace(n))
-                             .Select(n => $"#{n}");
+            return string.Join(" ", tags);
+        }
 
-            return string.Join(" ", nomes);
+        public static string FormatarTitulo(string titulo)
+        {
+            if (string.IsNullOrWhiteSpace(titulo))
+                return string.Empty;
+
+            var original = LimparTexto(titulo, manterAcento: true);
+            var semAcento = RemoverAcentos(original);
+
+            var compactoOriginal = Compactar(original);
+            var compactoSemAcento = Compactar(semAcento);
+
+            if (string.IsNullOrEmpty(compactoOriginal))
+                return string.Empty;
+
+            var tags = new HashSet<string>();
+
+            AddTag(tags, Capitalizar(compactoOriginal));
+            AddTag(tags, Capitalizar(compactoSemAcento));
+
+            return string.Join(" ", tags);
+        }
+
+        // =========================
+        // 🔹 Helpers inteligentes
+        // =========================
+
+        private static string LimparTexto(string texto, bool manterAcento)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                return string.Empty;
+
+            var t = texto.Trim().ToLowerInvariant();
+
+            t = MultiSpaceRegex.Replace(t, " ");
+
+            if (!manterAcento)
+                t = RemoverAcentos(t);
+
+            t = NonAlphaNumericRegex.Replace(t, " ");
+            t = MultiSpaceRegex.Replace(t, " ").Trim();
+
+            return t;
+        }
+
+        private static string Compactar(string texto)
+        {
+            return texto.Replace(" ", "");
+        }
+
+        private static void AddTag(HashSet<string> tags, string valor)
+        {
+            if (!string.IsNullOrWhiteSpace(valor))
+                tags.Add($"#{valor}");
+        }
+
+        private static string Capitalizar(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+                return texto;
+
+            return char.ToUpper(texto[0]) + texto[1..];
         }
 
         public static string RemoverAcentos(string texto)
@@ -91,35 +145,10 @@ namespace Telinha.Utils
             foreach (var c in normalized)
             {
                 if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
-                {
                     sb.Append(c);
-                }
             }
 
             return sb.ToString().Normalize(NormalizationForm.FormC);
-        }
-
-        public static string FormatarTitulo(string titulo)
-        {
-            if (string.IsNullOrWhiteSpace(titulo))
-            {
-                return string.Empty;
-            }
-
-            var semEspacos = titulo.Replace(" ", "");
-            semEspacos = Regex.Replace(semEspacos, @"[^\w\d]", "");
-
-            if (string.IsNullOrWhiteSpace(semEspacos))
-            {
-                return string.Empty;
-            }
-
-            var comAcento = char.ToUpper(semEspacos[0]) + semEspacos[1..];
-            var semAcento = RemoverAcentos(comAcento);
-
-            return semAcento.Equals(comAcento, StringComparison.Ordinal)
-                ? $"#{semAcento}"
-                : $"#{semAcento} #{comAcento}";
         }
     }
 }
