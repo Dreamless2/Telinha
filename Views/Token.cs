@@ -7,7 +7,6 @@ namespace Telinha
     public partial class Token : Form
     {
         private readonly TokenServices _tokenService;
-
         private string senhaReal = "";
         public Token(TokenServices tokenService)
         {
@@ -30,7 +29,6 @@ namespace Telinha
                 senhaReal += e.KeyChar;
             }
 
-            // Impede que o caractere seja desenhado no TextBox
             e.Handled = true;
         }
 
