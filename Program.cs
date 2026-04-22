@@ -1,4 +1,5 @@
 ﻿using Telinha.Factory;
+using Telinha.Infrastructure.Logging;
 using Telinha.Services;
 
 namespace Telinha
@@ -9,6 +10,7 @@ namespace Telinha
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+            LogServices.Configure();
 
             var tokenService = new TokenServices();
             var apiFactory = new ApiClientFactory(tokenService);
@@ -21,13 +23,13 @@ namespace Telinha
             }).GetAwaiter().GetResult();
 
             if (hasToken)
-            {
                 Application.Run(new Home(apiFactory));
-            }
             else
-            {
                 Application.Run(new Token(tokenService));
-            }
+
+
         }
+
+
     }
 }
