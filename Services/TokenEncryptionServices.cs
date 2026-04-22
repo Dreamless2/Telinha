@@ -16,10 +16,7 @@ namespace Telinha.Services
         public TokenEncryptionServices(byte[] key)
         {
             if (key == null || key.Length != 32)
-            {
-                LogServices.Error("A chave deve ter exatamente 32 bytes.");
                 throw new ArgumentException("A chave deve ter exatamente 32 bytes.", nameof(key));
-            }
 
             _key = (byte[])key.Clone();
         }
