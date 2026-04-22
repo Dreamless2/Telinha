@@ -133,7 +133,7 @@ namespace Telinha.Factory
             }
 
             // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)
-            var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
+            /*var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
 
             // Cria as tasks só se não for "--"
@@ -146,6 +146,33 @@ namespace Telinha.Factory
             // Pega o resultado das tasks, não chama de novo
             item.Local = taskPais.Result ?? "--";
             item.Idioma = TagEngine.FormatarTitulo(taskIdioma.Result ?? "--").ToLower();
+            */
+
+            var countryRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString();
+
+            var languageEnglish = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString();
+            var languageIso = json["spoken_languages"]?.FirstOrDefault()?["iso_639_1"]?.ToString();
+
+            // 🔹 Tasks reais
+            var taskPais = !string.IsNullOrWhiteSpace(countryRaw)
+                ? deepl.Translate(countryRaw)
+                : Task.FromResult<string?>("--");
+
+            var taskIdioma = LanguageResolver.ResolveAsync(
+                languageEnglish,
+                languageIso,
+                deepl.Translate
+            );
+
+            // 🔹 Aguarda tudo
+            await Task.WhenAll(taskPais!, taskIdioma);
+
+            // 🔹 Resultado final
+            item.Local = taskPais.Result ?? "--";
+
+            item.Idioma = TagEngine
+                .FormatarTitulo(taskIdioma.Result ?? "--")
+                .ToLower();
 
             LogServices.Info("Mídia criada com sucesso.");
 
