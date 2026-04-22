@@ -149,5 +149,35 @@ namespace Telinha.Utils
 
             return sb.ToString().Normalize(NormalizationForm.FormC);
         }
+        public static IEnumerable<string> GerarTagsNomeComposto(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                yield break;
+
+            var original = LimparTexto(texto, manterAcento: true);
+            if (original.Length == 0)
+                yield break;
+
+            var palavras = original.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            // 🔥 mantém todas palavras (inclusive stopwords)
+            var pascal = new StringBuilder();
+            var lower = new StringBuilder();
+
+            foreach (var palavra in palavras)
+            {
+                if (palavra.Length == 0)
+                    continue;
+
+                pascal.Append(Capitalizar(palavra));
+                lower.Append(palavra);
+            }
+
+            var comAcento = pascal.ToString();
+            var semAcento = RemoverAcentos(comAcento);
+
+            yield return $"#{comAcento}";
+            yield return $"#{semAcento.ToLowerInvariant()}";
+        }
     }
 }
