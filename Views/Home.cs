@@ -162,7 +162,6 @@ namespace Telinha
             TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
             TipoBox.PlaceholderText = TipoLabel.Text;
 
-            // 4. EXIBIÇÃO NA UI (VALORES FINAIS)
             LocalBox.Text = item.Local;
             IdiomaBox.Text = item.Idioma;
             ReferenciaBox.Text = item.Referencia;
