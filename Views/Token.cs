@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Telinha.Factory;
+using Telinha.Infrastructure.Logging;
 using Telinha.Services;
 
 namespace Telinha
@@ -72,7 +73,8 @@ namespace Telinha
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao salvar tokens:\n{ex.Message}");
+                LogServices.Error(ex, "Erro ao salvar token.");
+                MessageBox.Show($"Erro ao salvar:\n{ex.Message}");
             }
         }
         private void SairButton_Click(object sender, EventArgs e)
