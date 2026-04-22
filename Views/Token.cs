@@ -17,17 +17,17 @@ namespace Telinha
             TokenTMDBBox.PasswordChar = '\u200B';
             TokenDEEPLBox.ShortcutsEnabled = true;
             TokenTMDBBox.ShortcutsEnabled = true;
-            TokenDEEPLBox.TextChanged += TokenDEEPLBox_TextChanged!;
-            TokenTMDBBox.TextChanged += TokenTMDBBox_TextChanged!;
+            TokenDEEPLBox.TextChanged += (s, e) => Hidden(TokenDEEPLBox, s!, e);
+            TokenTMDBBox.TextChanged += (s, e) => Hidden(TokenTMDBBox, s!, e);
+
         }
-        private void TokenDEEPLBox_TextChanged(object sender, EventArgs e)
+
+        private void Hidden(TextBoxBase txt, object sender, EventArgs e)
         {
-            TokenDEEPLBox.SelectionStart = 0;
+            txt.SelectionStart = 0;
         }
-        private void TokenTMDBBox_TextChanged(object sender, EventArgs e)
-        {
-            TokenTMDBBox.SelectionStart = 0;
-        }
+
+
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try
