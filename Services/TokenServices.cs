@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using Telinha.Data;
 using Telinha.Helpers;
+using Telinha.Infrastructure.Logging;
 using Telinha.Models;
 
 namespace Telinha.Services
@@ -44,6 +45,8 @@ namespace Telinha.Services
 
         public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
         {
+            LogServices.Info("Token")
+
             if (string.IsNullOrWhiteSpace(keyName))
                 return null;
 
