@@ -215,7 +215,6 @@ namespace Telinha
                 kvp.Value.Text = valor ?? string.Empty;
             }
 
-            // Áudio continua com lógica especial
             string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
 
             if (!AudioBox.Items.Contains(audioValue))
@@ -227,7 +226,6 @@ namespace Telinha
         {
             currentId = 0;
 
-            // Dicionário de campos (fácil de adicionar/remover no futuro)
             var camposTexto = new Dictionary<string, TextBox>
             {
                 { nameof(CodigoBox),      CodigoBox },
