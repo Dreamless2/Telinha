@@ -76,7 +76,7 @@ namespace Telinha.Utils
             return string.Join(' ', tags);
         }
 
-        public static string FormatarTituloRaw(string titulo)
+        public static string FormatarTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
