@@ -19,7 +19,6 @@ namespace Telinha
             TokenTMDBBox.ShortcutsEnabled = true;
             TokenDEEPLBox.TextChanged += (s, e) => Hidden(TokenDEEPLBox, s!, e);
             TokenTMDBBox.TextChanged += (s, e) => Hidden(TokenTMDBBox, s!, e);
-
         }
 
         private static void Hidden(TextBoxBase txt, object sender, EventArgs e)
