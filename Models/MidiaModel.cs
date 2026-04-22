@@ -172,6 +172,7 @@ namespace Telinha.Models
                 var tags = new HashSet<string>();
 
                 tags.UnionWith(TagEngine.FormatarTitulo(Nome!));
+                return string.Join(", ", tags);
             }
         }
     }
