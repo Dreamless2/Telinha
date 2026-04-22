@@ -7,10 +7,7 @@ namespace Telinha.Contracts
     {
         private readonly DeepLClient _client;
 
-        public DEEPLContracts(DeepLClient client)
-        {
-            _client = client;
-        }
+        public DEEPLContracts(DeepLClient client) => _client = client;
 
         public async Task<TextResult> Translate(string text)
         {
