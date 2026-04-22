@@ -18,25 +18,11 @@
             }
         }
 
-
         public static void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-            }
-        }
-        public static void ConfigurarCampo(TextBoxBase txt, bool podeEditar)
-        {
-            txt.Enabled = podeEditar;
-
-            if (podeEditar)
-            {
-                txt.BackColor = Color.White; // Volta a cor normal
-            }
-            else
-            {
-                txt.Text = string.Empty;
             }
         }
     }
