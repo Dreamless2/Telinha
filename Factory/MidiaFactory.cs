@@ -130,7 +130,7 @@ namespace Telinha.Factory
             }
 
             // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)
-            var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
+            /*var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             //var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
 
             // "original_language" retorna "en", "pt", "es", etc.
@@ -160,7 +160,32 @@ namespace Telinha.Factory
 
             item.Local = taskPais != null ? TagEngine.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
+            */
 
+
+
+            var pais = "--";
+            var idioma = "--";
+
+            if (serieObject["production_countries"] is JArray productionCountriesArray)
+            {
+                pais = productionCountriesArray
+                    .Select(c => c["name"]?.ToString())
+                    .FirstOrDefault() ?? "--";
+            }
+
+            if (serieObject["spoken_languages"] is JArray spokenLanguagesArray)
+            {
+                idioma = spokenLanguagesArray
+                    .Select(c => c["english_name"]?.ToString())
+                    .FirstOrDefault() ?? "--";
+            }
+
+            pais = (await deepl.Translate(pais)).Text;
+            idioma = (await deepl.Translate(idioma)).Text;
+
+            item.Pais = Cleanser.FormatarTitulo(pais);
+            item.Idioma = Cleanser.FormatarTitulo(idioma).ToLower();
             LogServices.Info("Mídia criada com sucesso.");
             return item;
         }
