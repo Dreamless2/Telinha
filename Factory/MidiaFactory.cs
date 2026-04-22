@@ -139,9 +139,9 @@ namespace Telinha.Factory
 
             if (taskPais != null || taskIdioma != null)
             {
-                var resultado = taskIdioma!.Result.Text;
-                var formatado = TagEngine.FormatarTitulo(resultado);
-                LogServices.Info($"Idioma: {formatado}");
+                var original = taskIdioma!.Result.Text;
+                var formatado = TagEngine.FormatarTitulo(original).ToLower();
+                LogServices.Info("LOG CRÍTICO: Entrada: {original} | Saída: {formatado}", original, formatado);
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
             }
 
