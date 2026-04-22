@@ -16,7 +16,6 @@ namespace Telinha.Factory
             _masterKey = KeyHelper.GetOrCreateMasterKey();
             _fsql = Database.DB;
         }
-
         public async Task SalvarTokenAsync(string keyName, string plainToken, string? description = null, string? aad = null)
         {
             LogServices.Info("Salvando token: {KeyName}", keyName);
