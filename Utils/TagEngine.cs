@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Telinha.Utils
 {
-    public static partial class TagEngine
+    public static class TagEngine
     {
         // Regex compilado (melhor performance)
         private static readonly Regex RegexLimpeza = new(@"[^a-zA-Z0-9]", RegexOptions.Compiled);
