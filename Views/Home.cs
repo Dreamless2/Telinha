@@ -272,7 +272,8 @@ namespace Telinha
 
             _tmdb = await _apiFactory.GetTMDBAsync();
 
-            //_midiaService = new MidiaServices(_tmdb, token);
+            var tokenService = new TokenServices();
+            _midiaService = new MidiaServices(_tmdb, tokenService);
 
             try
             {
