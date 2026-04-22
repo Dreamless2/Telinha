@@ -3,6 +3,7 @@ using DeepL.Model;
 using Newtonsoft.Json.Linq;
 using Telinha.Contracts;
 using Telinha.Enums;
+using Telinha.Helpers;
 using Telinha.Infrastructure.Logging;
 using Telinha.Mapper;
 using Telinha.Models;
@@ -158,7 +159,7 @@ namespace Telinha.Factory
                 ? deepl.Translate(countryRaw)
                 : Task.FromResult<string?>("--");
 
-            var taskIdioma = LanguageResolver.ResolveAsync(
+            var taskIdioma = LanguageHelper.ResolveAsync(
                 languageEnglish,
                 languageIso,
                 deepl.Translate
