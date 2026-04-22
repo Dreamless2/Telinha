@@ -45,7 +45,7 @@ namespace Telinha.Factory
                 _tmdbClient.AddDefaultHeader("accept", "application/json");
             }
 
-            var tokenFinal = await _tokenService.ObterTokenAsync("TMDB");
+            var tokenFinal = (await _tokenService.ObterTokenAsync("TMDB"))?.Trim();
 
             return new TMDBServices(_tmdbClient, tokenFinal!);
         }
