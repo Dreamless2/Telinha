@@ -78,10 +78,9 @@ namespace Telinha.Services
 
                 if (filme != null) return filme;
             }
-            LogServices.Info("Midia nao encontrada: {Id} - {Tipo}", id, tipoSolicitado);
+
+            LogServices.Error("Midia nao encontrada: {Id} - {Tipo}", id, tipoSolicitado);
             return null;
-
-
         }
 
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
