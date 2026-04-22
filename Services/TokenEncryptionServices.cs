@@ -99,7 +99,6 @@ namespace Telinha.Services
 
             return Encoding.UTF8.GetString(plaintext);
         }
-
         public void Dispose()
         {
             if (_key != null)
