@@ -16,6 +16,8 @@ namespace Telinha
             SairButton.Click += SairButton_Click!;
             TokenDEEPLBox.PasswordChar = '\u200B';
             TokenTMDBBox.PasswordChar = '\u200B';
+            TokenDEEPLBox.ShortcutsEnabled = true;
+            TokenTMDBBox.ShortcutsEnabled = true;
             TokenDEEPLBox.TextChanged += TokenDEEPLBox_TextChanged!;
             TokenTMDBBox.TextChanged += TokenTMDBBox_TextChanged!;
         }
