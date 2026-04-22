@@ -123,7 +123,7 @@ namespace Telinha.Utils
             if (semAcento.Equals(comAcento, StringComparison.Ordinal))
                 return $"#{semAcento}";
 
-            return string.Concat("#", semAcento, "--", "#", comAcento);
+            return string.Concat("#", semAcento, "  ", "#", comAcento);
         }
     }
 }
