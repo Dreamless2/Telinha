@@ -136,12 +136,16 @@ namespace Telinha.Factory
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
 
-            var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : null;
+            // Cria as tasks só se não for "--"
+            var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : Task.FromResult<string?>(null);
+            var taskIdioma = idiomaRaw != "--" ? Task.FromResult(LanguageMapper.ToPtBr(idiomaRaw)) : Task.FromResult<string?>("--");
 
-            await Task.WhenAll(new List<Task> { taskPais!, taskIdioma! }.Where(t => t != null)!);
+            // Espera as 2
+            await Task.WhenAll(taskPais, taskIdioma);
 
-            item.Local = paisRaw != "--" ? await deepl.Translate(paisRaw) : "--";
-            item.Idioma = idiomaRaw != "--" ? LanguageMapper.ToPtBr(idiomaRaw) : "--";
+            // Pega o resultado das tasks, não chama de novo
+            item.Local = taskPais.Result ?? "--";
+            item.Idioma = taskIdioma.Result ?? "--";
 
             LogServices.Info("Mídia criada com sucesso.");
 
