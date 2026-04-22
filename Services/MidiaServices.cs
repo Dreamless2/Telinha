@@ -79,7 +79,7 @@ namespace Telinha.Services
                 if (filme != null) return filme;
             }
 
-            LogServices.Error("Midia nao encontrada: {Id} - {Tipo}", id, tipoSolicitado);
+            LogServices.Error("Nenhuma midia encontrada: {Id} - {Tipo}", id, tipoSolicitado);
             return null;
         }
 
