@@ -43,12 +43,12 @@ namespace Telinha
             TagsBox.DataBindings.Add("Text", _bs, "Tags", false, DataSourceUpdateMode.OnPropertyChanged);
             TipoBox.DataBindings.Add("Text", _bs, "NomeFormatado", false, DataSourceUpdateMode.OnPropertyChanged);
             MCUBox.DataBindings.Add("Text", _bs, "MCU", false, DataSourceUpdateMode.OnPropertyChanged);
-            PaisBox.DataBindings.Add("Text", _bs, "Pais", false, DataSourceUpdateMode.OnPropertyChanged);
+            LocalBox.DataBindings.Add("Text", _bs, "Pais", false, DataSourceUpdateMode.OnPropertyChanged);
             IdiomaBox.DataBindings.Add("Text", _bs, "Idioma", false, DataSourceUpdateMode.OnPropertyChanged);
-            ObraBox.DataBindings.Add("Text", _bs, "Obra", false, DataSourceUpdateMode.OnPropertyChanged);
+            ReferenciaBox.DataBindings.Add("Text", _bs, "Obra", false, DataSourceUpdateMode.OnPropertyChanged);
             AutoresBox.DataBindings.Add("Text", _bs, "Autores", false, DataSourceUpdateMode.OnPropertyChanged);
             FranquiaBox.DataBindings.Add("Text", _bs, "Franquia", false, DataSourceUpdateMode.OnPropertyChanged);
-            CriadoresBox.DataBindings.Add("Text", _bs, "Criadores", false, DataSourceUpdateMode.OnPropertyChanged);
+            ShowrunnersBox.DataBindings.Add("Text", _bs, "Criadores", false, DataSourceUpdateMode.OnPropertyChanged);
             GeneroBox.DataBindings.Add("Text", _bs, "Genero", false, DataSourceUpdateMode.OnPropertyChanged);
             DiretorBox.DataBindings.Add("Text", _bs, "Diretor", false, DataSourceUpdateMode.OnPropertyChanged);
             ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -88,7 +88,7 @@ namespace Telinha
                 original: OriginalBox.Text,
                 lancamento: LancamentoBox.Text,
                 alternativo: AlternativoBox.Text,
-                local: PaisBox.Text,
+                local: LocalBox.Text,
                 idioma: IdiomaBox.Text,
                 franquia: FranquiaBox.Text,
                 genero: GeneroBox.Text,
@@ -98,8 +98,8 @@ namespace Telinha
                 produtora: ProdutoraBox.Text,
                 mcu: MCUBox.Text,
                 autores: AutoresBox.Text,
-                showrunners: CriadoresBox.Text,
-                referencia: ObraBox.Text
+                showrunners: ShowrunnersBox.Text,
+                referencia: ReferenciaBox.Text
             );
             ResumoBox.Text = card.GetFormattedText();
         }
@@ -107,9 +107,9 @@ namespace Telinha
         {
             var controles = new Control[] {
                 TipoBox, NomeBox, AudioBox, SinopseBox, OriginalBox, LancamentoBox,
-                AlternativoBox, PaisBox, IdiomaBox, FranquiaBox, GeneroBox,
+                AlternativoBox, LocalBox, IdiomaBox, FranquiaBox, GeneroBox,
                 TagsBox, DiretorBox, ArtistasBox, ProdutoraBox, MCUBox,
-                AutoresBox, CriadoresBox, ObraBox
+                AutoresBox, ShowrunnersBox, ReferenciaBox
             };
 
             foreach (var ctrl in controles)
@@ -155,11 +155,11 @@ namespace Telinha
             // 2. ESTADO DOS CONTROLES (ENABLE/DISABLE)
             bool habilitarCamposGerais = !isFilme;
 
-            PaisLabel.Enabled = PaisBox.Enabled = habilitarCamposGerais;
+            LocalLabel.Enabled = LocalBox.Enabled = habilitarCamposGerais;
             IdiomaLabel.Enabled = IdiomaBox.Enabled = habilitarCamposGerais;
-            ObraLabel.Enabled = ObraBox.Enabled = habilitarCamposGerais;
+            ReferenciaLabel.Enabled = ReferenciaBox.Enabled = habilitarCamposGerais;
             AutoresLabel.Enabled = AutoresBox.Enabled = habilitarCamposGerais;
-            CriadoresLabel.Enabled = CriadoresBox.Enabled = habilitarCamposGerais;
+            S.Enabled = ShowrunnersBox.Enabled = habilitarCamposGerais;
 
             // MCU só habilita se não for Filme nem Anime (ou seja, apenas Série)
             MCUBox.Enabled = !isFilme && !isAnime;
@@ -169,11 +169,11 @@ namespace Telinha
             TipoBox.PlaceholderText = TipoLabel.Text;
 
             // 4. EXIBIÇÃO NA UI (VALORES FINAIS)
-            PaisBox.Text = item.Local;
+            LocalBox.Text = item.Local;
             IdiomaBox.Text = item.Idioma;
-            ObraBox.Text = item.Referencia;
+            ReferenciaBox.Text = item.Referencia;
             AutoresBox.Text = item.Autores;
-            CriadoresBox.Text = item.Showrunners;
+            ShowrunnersBox.Text = item.Showrunners;
 
             if (isAnime)
             {
@@ -206,11 +206,11 @@ namespace Telinha
                 [nameof(midia.Tags)] = TagsBox,
                 [nameof(midia.Tipo)] = TipoBox,
                 [nameof(midia.MCU)] = MCUBox,
-                [nameof(midia.Local)] = PaisBox,
+                [nameof(midia.Local)] = LocalBox,
                 [nameof(midia.Idioma)] = IdiomaBox,
                 [nameof(midia.Autores)] = AutoresBox,
                 [nameof(midia.Franquia)] = FranquiaBox,
-                [nameof(midia.Showrunners)] = CriadoresBox,
+                [nameof(midia.Showrunners)] = ShowrunnersBox,
                 [nameof(midia.Genero)] = GeneroBox,
                 [nameof(midia.Diretor)] = DiretorBox,
                 [nameof(midia.Artistas)] = ArtistasBox,
@@ -247,11 +247,11 @@ namespace Telinha
                 { nameof(TagsBox),        TagsBox },
                 { nameof(TipoBox),        TipoBox },
                 { nameof(MCUBox),         MCUBox },
-                { nameof(PaisBox),        PaisBox },
+                { nameof(LocalBox),        LocalBox },
                 { nameof(IdiomaBox),      IdiomaBox },
                 { nameof(AutoresBox),     AutoresBox },
                 { nameof(FranquiaBox),    FranquiaBox },
-                { nameof(CriadoresBox),   CriadoresBox },
+                { nameof(ShowrunnersBox),   ShowrunnersBox },
                 { nameof(GeneroBox),      GeneroBox },
                 { nameof(DiretorBox),     DiretorBox },
                 { nameof(ArtistasBox),    ArtistasBox },

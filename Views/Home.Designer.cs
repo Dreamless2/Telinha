@@ -44,13 +44,13 @@
             GeneroBox = new TextBox();
             ArtistasBox = new TextBox();
             FranquiaBox = new TextBox();
-            CriadoresBox = new TextBox();
+            ShowrunnersBox = new TextBox();
             TagsBox = new TextBox();
             TipoBox = new TextBox();
             IdiomaBox = new TextBox();
-            ObraBox = new TextBox();
+            ReferenciaBox = new TextBox();
             AutoresBox = new TextBox();
-            PaisBox = new TextBox();
+            LocalBox = new TextBox();
             MCUBox = new TextBox();
             AlternativoBox = new TextBox();
             ResumoLabel = new Label();
@@ -58,12 +58,12 @@
             ArtistasLabel = new Label();
             DiretorLabel = new Label();
             GeneroLabel = new Label();
-            CriadoresLabel = new Label();
+            S = new Label();
             FranquiaLabel = new Label();
             AutoresLabel = new Label();
-            ObraLabel = new Label();
+            ReferenciaLabel = new Label();
             IdiomaLabel = new Label();
-            PaisLabel = new Label();
+            LocalLabel = new Label();
             MCULabel = new Label();
             TipoLabel = new Label();
             TagsLabel = new Label();
@@ -177,13 +177,13 @@
             PanelForms.Controls.Add(GeneroBox);
             PanelForms.Controls.Add(ArtistasBox);
             PanelForms.Controls.Add(FranquiaBox);
-            PanelForms.Controls.Add(CriadoresBox);
+            PanelForms.Controls.Add(ShowrunnersBox);
             PanelForms.Controls.Add(TagsBox);
             PanelForms.Controls.Add(TipoBox);
             PanelForms.Controls.Add(IdiomaBox);
-            PanelForms.Controls.Add(ObraBox);
+            PanelForms.Controls.Add(ReferenciaBox);
             PanelForms.Controls.Add(AutoresBox);
-            PanelForms.Controls.Add(PaisBox);
+            PanelForms.Controls.Add(LocalBox);
             PanelForms.Controls.Add(MCUBox);
             PanelForms.Controls.Add(AlternativoBox);
             PanelForms.Controls.Add(ResumoLabel);
@@ -191,12 +191,12 @@
             PanelForms.Controls.Add(ArtistasLabel);
             PanelForms.Controls.Add(DiretorLabel);
             PanelForms.Controls.Add(GeneroLabel);
-            PanelForms.Controls.Add(CriadoresLabel);
+            PanelForms.Controls.Add(S);
             PanelForms.Controls.Add(FranquiaLabel);
             PanelForms.Controls.Add(AutoresLabel);
-            PanelForms.Controls.Add(ObraLabel);
+            PanelForms.Controls.Add(ReferenciaLabel);
             PanelForms.Controls.Add(IdiomaLabel);
-            PanelForms.Controls.Add(PaisLabel);
+            PanelForms.Controls.Add(LocalLabel);
             PanelForms.Controls.Add(MCULabel);
             PanelForms.Controls.Add(TipoLabel);
             PanelForms.Controls.Add(TagsLabel);
@@ -268,13 +268,13 @@
             FranquiaBox.Size = new Size(458, 23);
             FranquiaBox.TabIndex = 36;
             // 
-            // CriadoresBox
+            // ShowrunnersBox
             // 
-            CriadoresBox.Location = new Point(476, 460);
-            CriadoresBox.Name = "CriadoresBox";
-            CriadoresBox.PlaceholderText = "Criadores";
-            CriadoresBox.Size = new Size(384, 23);
-            CriadoresBox.TabIndex = 35;
+            ShowrunnersBox.Location = new Point(476, 460);
+            ShowrunnersBox.Name = "ShowrunnersBox";
+            ShowrunnersBox.PlaceholderText = "Showrunners";
+            ShowrunnersBox.Size = new Size(384, 23);
+            ShowrunnersBox.TabIndex = 35;
             // 
             // TagsBox
             // 
@@ -300,13 +300,13 @@
             IdiomaBox.Size = new Size(384, 23);
             IdiomaBox.TabIndex = 32;
             // 
-            // ObraBox
+            // ReferenciaBox
             // 
-            ObraBox.Location = new Point(12, 416);
-            ObraBox.Name = "ObraBox";
-            ObraBox.PlaceholderText = "Obra Original";
-            ObraBox.Size = new Size(458, 23);
-            ObraBox.TabIndex = 31;
+            ReferenciaBox.Location = new Point(12, 416);
+            ReferenciaBox.Name = "ReferenciaBox";
+            ReferenciaBox.PlaceholderText = "Obra de Referência";
+            ReferenciaBox.Size = new Size(458, 23);
+            ReferenciaBox.TabIndex = 31;
             // 
             // AutoresBox
             // 
@@ -316,13 +316,13 @@
             AutoresBox.Size = new Size(384, 23);
             AutoresBox.TabIndex = 30;
             // 
-            // PaisBox
+            // LocalBox
             // 
-            PaisBox.Location = new Point(12, 372);
-            PaisBox.Name = "PaisBox";
-            PaisBox.PlaceholderText = "País";
-            PaisBox.Size = new Size(458, 23);
-            PaisBox.TabIndex = 29;
+            LocalBox.Location = new Point(12, 372);
+            LocalBox.Name = "LocalBox";
+            LocalBox.PlaceholderText = "Local de Produção";
+            LocalBox.Size = new Size(458, 23);
+            LocalBox.TabIndex = 29;
             // 
             // MCUBox
             // 
@@ -385,14 +385,14 @@
             GeneroLabel.TabIndex = 22;
             GeneroLabel.Text = "Gênero";
             // 
-            // CriadoresLabel
+            // S
             // 
-            CriadoresLabel.AutoSize = true;
-            CriadoresLabel.Location = new Point(476, 442);
-            CriadoresLabel.Name = "CriadoresLabel";
-            CriadoresLabel.Size = new Size(57, 15);
-            CriadoresLabel.TabIndex = 21;
-            CriadoresLabel.Text = "Criadores";
+            S.AutoSize = true;
+            S.Location = new Point(476, 442);
+            S.Name = "S";
+            S.Size = new Size(76, 15);
+            S.TabIndex = 21;
+            S.Text = "Showrunners";
             // 
             // FranquiaLabel
             // 
@@ -412,14 +412,14 @@
             AutoresLabel.TabIndex = 19;
             AutoresLabel.Text = "Autores";
             // 
-            // ObraLabel
+            // ReferenciaLabel
             // 
-            ObraLabel.AutoSize = true;
-            ObraLabel.Location = new Point(12, 398);
-            ObraLabel.Name = "ObraLabel";
-            ObraLabel.Size = new Size(78, 15);
-            ObraLabel.TabIndex = 18;
-            ObraLabel.Text = "Obra Original";
+            ReferenciaLabel.AutoSize = true;
+            ReferenciaLabel.Location = new Point(12, 398);
+            ReferenciaLabel.Name = "ReferenciaLabel";
+            ReferenciaLabel.Size = new Size(107, 15);
+            ReferenciaLabel.TabIndex = 18;
+            ReferenciaLabel.Text = "Obra de Referência";
             // 
             // IdiomaLabel
             // 
@@ -430,14 +430,14 @@
             IdiomaLabel.TabIndex = 17;
             IdiomaLabel.Text = "Idioma Original";
             // 
-            // PaisLabel
+            // LocalLabel
             // 
-            PaisLabel.AutoSize = true;
-            PaisLabel.Location = new Point(12, 354);
-            PaisLabel.Name = "PaisLabel";
-            PaisLabel.Size = new Size(87, 15);
-            PaisLabel.TabIndex = 16;
-            PaisLabel.Text = "País de Origem";
+            LocalLabel.AutoSize = true;
+            LocalLabel.Location = new Point(12, 354);
+            LocalLabel.Name = "LocalLabel";
+            LocalLabel.Size = new Size(105, 15);
+            LocalLabel.TabIndex = 16;
+            LocalLabel.Text = "Local de Produção";
             // 
             // MCULabel
             // 
@@ -628,23 +628,23 @@
         private Label ArtistasLabel;
         private Label DiretorLabel;
         private Label GeneroLabel;
-        private Label CriadoresLabel;
+        private Label S;
         private Label FranquiaLabel;
         private Label AutoresLabel;
-        private Label ObraLabel;
+        private Label ReferenciaLabel;
         private Label IdiomaLabel;
-        private Label PaisLabel;
+        private Label LocalLabel;
         private Label MCULabel;
         private Label TipoLabel;
         private Label TagsLabel;
         private TextBox FranquiaBox;
-        private TextBox CriadoresBox;
+        private TextBox ShowrunnersBox;
         private TextBox TagsBox;
         private TextBox TipoBox;
         private TextBox IdiomaBox;
-        private TextBox ObraBox;
+        private TextBox ReferenciaBox;
         private TextBox AutoresBox;
-        private TextBox PaisBox;
+        private TextBox LocalBox;
         private TextBox MCUBox;
         private TextBox ResumoBox;
         private TextBox ProdutoraBox;
