@@ -26,12 +26,10 @@ namespace Telinha.Infrastructure.Logging
         {
             Log.Information(message, args);
         }
-
         public static void Warn(string message, params object[] args)
         {
             Log.Warning(message, args);
         }
-
 
         public static void Close()
         {
