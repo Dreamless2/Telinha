@@ -269,6 +269,7 @@ namespace Telinha
         private async void Principal_Load(object sender, EventArgs e)
         {
             SetupBindings();
+            CodigoBox.Focus();
 
             _tmdb = await _apiFactory.GetTMDBAsync();
 
@@ -284,8 +285,9 @@ namespace Telinha
                 else
                 {
                     currentId = 0;
-                    MessageBox.Show("Nenhuma mídia encontrada. Insira um código válido e pressione Enter para buscar.",
+                    MessageBox.Show("Para começar, insira um novo registro.",
                                     "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CodigoBox.Focus();
                 }
             }
             catch (Exception ex)
