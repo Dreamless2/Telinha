@@ -62,6 +62,7 @@ namespace Telinha.Factory
             }
             catch
             {
+                LogServices.Error("Erro ao obter token: {KeyName}", keyName);
                 return null;
             }
         }
