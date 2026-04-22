@@ -10,7 +10,7 @@ namespace Telinha.Utils
         private static readonly Regex RegexLimpeza = new(@"[^a-zA-Z0-9]", RegexOptions.Compiled);
 
         // Cache para remover acentos (evita recomputação)
-        private static readonly Dictionary<string, string> CacheAcentos = new();
+        private static readonly Dictionary<string, string> CacheAcentos = [];
 
         // Dicionário inteligente (gerado automaticamente)
         private static readonly Dictionary<string, string[]> GeneroMapeado = CriarMapaGeneros();
