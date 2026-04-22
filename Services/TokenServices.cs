@@ -45,7 +45,7 @@ namespace Telinha.Services
 
         public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
         {
-            LogServices.Info("Token")
+            LogServices.Info($"Obtendo token: {keyName}");
 
             if (string.IsNullOrWhiteSpace(keyName))
                 return null;
