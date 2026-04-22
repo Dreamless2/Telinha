@@ -88,7 +88,7 @@ namespace Telinha
                 original: OriginalBox.Text,
                 lancamento: LancamentoBox.Text,
                 alternativo: AlternativoBox.Text,
-                pais: PaisBox.Text,
+                local: PaisBox.Text,
                 idioma: IdiomaBox.Text,
                 franquia: FranquiaBox.Text,
                 genero: GeneroBox.Text,
@@ -98,8 +98,8 @@ namespace Telinha
                 produtora: ProdutoraBox.Text,
                 mcu: MCUBox.Text,
                 autores: AutoresBox.Text,
-                criadores: CriadoresBox.Text,
-                obra: ObraBox.Text
+                showrunners: CriadoresBox.Text,
+                referencia: ObraBox.Text
             );
             ResumoBox.Text = card.GetFormattedText();
         }
@@ -146,7 +146,7 @@ namespace Telinha
 
             // 1. TRATAMENTO DOS DADOS
             // Se for filme, força "--". Se não for, só mexe se estiver nulo (coalescência).
-            item.Pais = isFilme ? "--" : (item.Pais ?? "");
+            item.Pai = isFilme ? "--" : (item.Pais ?? "");
             item.Idioma = isFilme ? "--" : (item.Idioma ?? "");
             item.Obra = isFilme ? "--" : (item.Obra ?? "");
             item.Autores = isFilme ? "--" : (item.Autores ?? "");
