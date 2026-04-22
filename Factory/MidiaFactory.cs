@@ -142,8 +142,6 @@ namespace Telinha.Factory
                 var resultado = taskIdioma!.Result.Text;
                 var formatado = TagEngine.FormatarTitulo(resultado);
                 LogServices.Info($"Idioma: {formatado}");
-
-
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
             }
 
