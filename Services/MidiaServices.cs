@@ -20,7 +20,7 @@ namespace Telinha.Services
                 ? MidiaTipo.Serie
                 : MidiaTipo.Filme;
 
-            // 🔹 1. CACHE (tenta ambos)
+            // 🔹 1. CACHE
             string? cacheSolicitado = MidiaCache.Get(tipoSolicitado, id, 720);
             if (cacheSolicitado != null)
                 return JsonConvert.DeserializeObject<MidiaModel>(cacheSolicitado);
