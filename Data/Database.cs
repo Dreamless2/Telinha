@@ -56,14 +56,14 @@ CREATE TABLE IF NOT EXISTS midia (
     audio TEXT CHECK(audio IN ('Dublado', 'Legendado', 'Nacional', 'Desconhecido')),
     sinopse TEXT,
     original TEXT,
-    lancamento TEXT,
+    estreia TEXT,
     alternativo TEXT,
-    pais TEXT,
+    local TEXT,
     idioma TEXT,
     franquia TEXT,
     autores TEXT,
-    criadores TEXT,
-    obra TEXT,
+    showrunners TEXT,
+    referencia TEXT,
     genero TEXT,
     tags TEXT,
     diretor TEXT,
@@ -88,14 +88,11 @@ CREATE TABLE IF NOT EXISTS cache (
 
             _db.Ado.ExecuteNonQuery(sqlCache);
 
-            // 🔹 Índice para performance/cache cleanup
             const string idxCache = @"
 CREATE INDEX IF NOT EXISTS idx_cache_updated 
 ON cache(updated_at);";
 
             _db.Ado.ExecuteNonQuery(idxCache);
-
-
 
             // ====================== TABELA TOKENS (NOVA) ======================
             const string sqlTokens = @"
@@ -118,7 +115,6 @@ CREATE INDEX IF NOT EXISTS idx_encrypted_tokens_key
 ON encrypted_tokens(key_name);";
 
             _db.Ado.ExecuteNonQuery(idxTokens);
-
         }
         private static void CreateTriggers()
         {
