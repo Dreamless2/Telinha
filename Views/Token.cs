@@ -21,9 +21,11 @@ namespace Telinha
             TokenTMDBBox.TextChanged += (s, e) => Hidden(TokenTMDBBox, s!, e);
         }
 
-        private static void Hidden(TextBoxBase txt, object sender, EventArgs e)
+        private static void Hidden(TextBoxBase txt)
         {
+            // Força o cursor a ficar no início para não mostrar progresso de digitação
             txt.SelectionStart = 0;
+            txt.SelectionLength = 0;
         }
 
 
