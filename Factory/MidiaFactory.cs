@@ -129,7 +129,7 @@ namespace Telinha.Factory
 
                 item.Diretor = string.Join(" ", directors);
             }
-            /*
+
             // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
@@ -144,7 +144,7 @@ namespace Telinha.Factory
 
             item.Pais = taskPais != null ? Cleanser.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? Cleanser.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
-            */
+
             return item;
         }
     }
