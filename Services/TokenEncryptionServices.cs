@@ -1,7 +1,6 @@
 ﻿using System.Security;
 using System.Security.Cryptography;
 using System.Text;
-using Telinha.Infrastructure.Logging;
 
 namespace Telinha.Services
 {

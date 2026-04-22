@@ -1,7 +1,6 @@
 ﻿using DeepL;
 using RestSharp;
 using Telinha.Contracts;
-using Telinha.Infrastructure.Logging;
 using Telinha.Services;
 
 namespace Telinha.Factory
