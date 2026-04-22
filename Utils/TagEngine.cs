@@ -6,30 +6,30 @@ namespace Telinha.Utils
 {
     public static class TagEngine
     {
-        public static Dictionary<string, string> GeneroMapeado = new Dictionary<string, string>()
-       {
-        { "ficção científica", "ficcaocientifica ficçãocientífica" },
-        { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-        { "ficção científica e aventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
-        { "romântico", "romantico romântico" },
-        { "romântica", "romantica romântica" },
-        { "comédia", "comedia comédia" },
-        { "mistério", "misterio mistério" },
-        { "ação", "acao ação" },
-        { "ação e fantasia", "acaoefantasia açãoefantasia" },
-        { "ação e aventura", "acaoeaventura açãoeaventura" },
-        { "animação", "animacao animação" },
-        { "documentário", "documentario documentário" },
-        { "comédia dramática", "comediadramatica comédiadramática" },
-        { "comédia romântica", "comediaromantica comédiaromântica" },
-        { "ficção científica e fantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-        { "ficção científica e ação", "ficcaocientificaeacao ficçãocientíficaeação" },
-        { "ficção científica e comédia", "ficcaocientificaecomedia ficçãocientíficaecomédia" },
-        { "ficção científica e drama", "ficcaocientificaedrama ficçãocientíficaedrama" },
-        { "ficção científica e mistério", "ficcaocientificaemisterio ficçãocientíficaemistério" },
-        { "ficção científica e romance", "ficcaocientificaeromance ficçãocientíficaeromance" },
-        { "ficção científica e terror", "ficcaocientificaeterror ficçãocientíficaeterror" }
-    };
+        private static readonly Dictionary<string, string> GeneroMapeado = new()
+        {
+            { "ficção científica", "ficcaocientifica ficçãocientífica" },
+            { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
+            { "ficção científica e aventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
+            { "romântico", "romantico romântico" },
+            { "romântica", "romantica romântica" },
+            { "comédia", "comedia comédia" },
+            { "mistério", "misterio mistério" },
+            { "ação", "acao ação" },
+            { "ação e fantasia", "acaoefantasia açãoefantasia" },
+            { "ação e aventura", "acaoeaventura açãoeaventura" },
+            { "animação", "animacao animação" },
+            { "documentário", "documentario documentário" },
+            { "comédia dramática", "comediadramatica comédiadramática" },
+            { "comédia romântica", "comediaromantica comédiaromântica" },
+            { "ficção científica e fantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
+            { "ficção científica e ação", "ficcaocientificaeacao ficçãocientíficaeação" },
+            { "ficção científica e comédia", "ficcaocientificaecomedia ficçãocientíficaecomédia" },
+            { "ficção científica e drama", "ficcaocientificaedrama ficçãocientíficaedrama" },
+            { "ficção científica e mistério", "ficcaocientificaemisterio ficçãocientíficaemistério" },
+            { "ficção científica e romance", "ficcaocientificaeromance ficçãocientíficaeromance" },
+            { "ficção científica e terror", "ficcaocientificaeterror ficçãocientíficaeterror" }
+        };
 
         public static string NormalizarGeneros(string entrada)
         {
