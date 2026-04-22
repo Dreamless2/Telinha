@@ -30,7 +30,6 @@ namespace Telinha.Services
 
             if (resp.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                LogServices.Warn("Falha na chamada: {Status} - {Content}", resp.StatusCode, resp.Content!);
                 return new JObject { ["status_code"] = 34, ["success"] = false };
             }
 
