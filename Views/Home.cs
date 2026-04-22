@@ -272,6 +272,9 @@ namespace Telinha
 
             SetupBindings();
 
+
+            MessageBox.Show("[" + TagEngine.FormatarTitulo("Uma Família da Pesada") + "]");
+
             _tmdb = await _apiFactory.GetTMDBAsync();
 
             var tokenService = new TokenServices();
