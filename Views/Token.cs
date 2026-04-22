@@ -30,8 +30,6 @@ namespace Telinha
         }
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
-            var conteudoOculto = TokenTMDBBox.Text;
-            MessageBox.Show("O conteúdo colado foi: " + conteudoOculto);
 
             try
             {
