@@ -32,8 +32,10 @@ namespace Telinha.Services
                 return new JObject { ["status_code"] = 34, ["success"] = false };
 
             if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
+            {
                 LogServices.Warn("Falha na chamada: {Status} - {Content}", resp.StatusCode, resp.Content!);
-            throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
+                throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
+            }
 
             return JObject.Parse(resp.Content!);
         }
