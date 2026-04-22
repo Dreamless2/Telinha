@@ -55,7 +55,6 @@ namespace Telinha.Factory
 
             if (entity?.EncryptedData == null)
             {
-                LogServices.Error("Erro ao obter token: {KeyName}", keyName);
                 return null;
             }
 
