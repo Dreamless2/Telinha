@@ -15,46 +15,7 @@ namespace Telinha
             InitializeComponent();
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
-            TokenTMDBBox.KeyPress += TokenTMDBBox_KeyPress!;
-            TokenDEEPLBox.KeyPress += TokenDEEPLBox_KeyPress!;
-            TokenTMDBBox.PasswordChar = '\u200B';
-            TokenDEEPLBox.PasswordChar = '\u200B';
         }
-
-        private void TokenDEEPLBox_KeyPress(object? sender, KeyPressEventArgs e)
-        {
-            // Se for Backspace, remove o último caractere
-            if (e.KeyChar == (char)Keys.Back)
-            {
-                if (senhaReal.Length > 0)
-                    senhaReal = senhaReal.Substring(0, senhaReal.Length - 1);
-            }
-            // Se for um caractere imprimível, adiciona à string real
-            else if (!char.IsControl(e.KeyChar))
-            {
-                senhaReal += e.KeyChar;
-            }
-
-            // Impede que o caractere seja desenhado no TextBox
-            e.Handled = true;
-        }
-
-        private void TokenTMDBBox_KeyPress(object? sender, KeyPressEventArgs e)
-        {
-            // Se for Backspace, remove o último caractere
-            if (e.KeyChar == (char)Keys.Back)
-            {
-                if (senhaReal.Length > 0)
-                    senhaReal = senhaReal.Substring(0, senhaReal.Length - 1);
-            }
-            // Se for um caractere imprimível, adiciona à string real
-            else if (!char.IsControl(e.KeyChar))
-            {
-                senhaReal += e.KeyChar;
-            }
-        }
-
-
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try
