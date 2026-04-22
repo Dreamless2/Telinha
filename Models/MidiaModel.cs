@@ -60,7 +60,7 @@ namespace Telinha.Models
             set => SetField(ref _original, value);
         }
         private string? _lancamento;
-        public string? Lancamento
+        public string? Estreia
         {
             get => _lancamento;
             set => SetField(ref _lancamento, value);
@@ -71,11 +71,11 @@ namespace Telinha.Models
             get => _alternativo;
             set => SetField(ref _alternativo, value);
         }
-        private string? _pais;
-        public string? Pais
+        private string? _local;
+        public string? Local
         {
-            get => _pais;
-            set => SetField(ref _pais, value);
+            get => _local;
+            set => SetField(ref _local, value);
         }
         private string? _idioma;
         public string? Idioma
@@ -103,17 +103,17 @@ namespace Telinha.Models
             get => _autores;
             set => SetField(ref _autores, value);
         }
-        private string? _criadores;
-        public string? Criadores
+        private string? _showrunners;
+        public string? Showrunners
         {
-            get => _criadores;
-            set => SetField(ref _criadores, value);
+            get => _showrunners;
+            set => SetField(ref _showrunners, value);
         }
-        private string? _obra;
-        public string? Obra
+        private string? _referencia;
+        public string? Referencia
         {
-            get => _obra;
-            set => SetField(ref _obra, value);
+            get => _referencia;
+            set => SetField(ref _referencia, value);
         }
         private string? _genero;
         public string? Genero
