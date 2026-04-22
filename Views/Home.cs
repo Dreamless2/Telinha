@@ -187,7 +187,6 @@ namespace Telinha
 
             currentId = midia.Id;
 
-            // Mapeamento de propriedade → Control
             var mapeamento = new Dictionary<string, TextBox>
             {
                 [nameof(midia.Codigo)] = CodigoBox,
