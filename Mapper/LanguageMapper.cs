@@ -44,3 +44,4 @@ namespace Telinha.Mapper
             return Map.TryGetValue(input, out var pt) ? pt : null;
         }
     }
+}
