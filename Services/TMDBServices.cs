@@ -26,6 +26,9 @@ namespace Telinha.Services
 
             var resp = await _client.ExecuteAsync(request);
 
+            if (resp.StatusCode == System.Net.HttpStatusCode.NotFound)
+                return new JObject { ["status_code"] = 34, ["success"] = false };
+
             if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
                 throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
 
