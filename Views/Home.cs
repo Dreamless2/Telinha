@@ -295,7 +295,6 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}",
                                 "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void CopiarButton_Click(object sender, EventArgs e)
