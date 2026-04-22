@@ -139,7 +139,11 @@ namespace Telinha.Factory
             Task<DeepL.Model.TextResult>? taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
 
             if (taskPais != null || taskIdioma != null)
+            {
+                var resultado = taskIdioma.Result.Text;
+                var formatado = TagEngine.FormatarTitulo(taskIdioma.Result.Text);
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
+            }
 
             item.Local = taskPais != null ? TagEngine.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
