@@ -125,3 +125,4 @@ namespace Telinha.Utils
             return sb.ToString().Normalize(NormalizationForm.FormC);
         }
     }
+}
