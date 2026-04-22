@@ -106,15 +106,20 @@ namespace Telinha.Utils
                 return string.Empty;
             }
 
-            var semEspacos = titulo.Replace(" ", "");
-            semEspacos = Regex.Replace(semEspacos, @"[^\w\d]", "");
+            // Remove tudo que NÃO é letra ou número (preserva acento)
+            var apenasTexto = Regex.Replace(titulo, @"[^\p{L}\p{Nd} ]", "");
+
+            var semEspacos = apenasTexto.Replace(" ", "");
 
             if (string.IsNullOrWhiteSpace(semEspacos))
             {
                 return string.Empty;
             }
 
-            var comAcento = char.ToUpper(semEspacos[0]) + semEspacos[1..];
+            var comAcento = semEspacos.Length > 1
+                ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
+                : semEspacos.ToUpper();
+
             var semAcento = RemoverAcentos(comAcento);
 
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
