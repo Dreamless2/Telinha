@@ -47,7 +47,7 @@ namespace Telinha
                     await _tokenService.SalvarTokenAsync(
                         "TMDB",
                         tmdbToken,
-                        "Token de acesso à API do TMDB"
+                        "Chave API do TMDB"
                     );
                 }
 
@@ -56,11 +56,11 @@ namespace Telinha
                     await _tokenService.SalvarTokenAsync(
                         "DEEPL",
                         deeplToken,
-                        "Token de acesso à API do DeepL"
+                        "Chave API do DeepL"
                     );
                 }
 
-                MessageBox.Show("Tokens salvos com sucesso!");
+                MessageBox.Show("Salvo com sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Hide();
 
