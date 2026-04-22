@@ -96,7 +96,6 @@ namespace Telinha.Utils
                     sb.Append(palavra.ToLowerInvariant());
                 else
                     sb.Append(Capitalizar(palavra));
-
             }
 
 
