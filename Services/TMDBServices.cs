@@ -26,7 +26,6 @@ namespace Telinha.Services
                 foreach (var p in query)
                     request.AddQueryParameter(p.Key, p.Value);
 
-
             var resp = await _client.ExecuteAsync(request);
 
             if (resp.StatusCode == System.Net.HttpStatusCode.NotFound)
