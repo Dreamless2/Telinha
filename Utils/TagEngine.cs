@@ -8,97 +8,88 @@ namespace Telinha.Utils
 {
     public static partial class TagEngine
     {
-        private static readonly HashSet<string> StopWords = new(StringComparer.OrdinalIgnoreCase)
-        {
-            "e", "and", "de", "da", "do", "das", "dos"
-        };
-
-        // 🔥 GeneratedRegex (resolve SYSLIB1045)
-        [GeneratedRegex(@"[^\p{L}\p{Nd}]")]
+        [GeneratedRegex(@"[^\p{L}\p{Nd}]", RegexOptions.NonBacktracking)]
         private static partial Regex NonAlphaNumericRegex();
 
-        [GeneratedRegex(@"\s+")]
+        [GeneratedRegex(@"\s+", RegexOptions.NonBacktracking)]
         private static partial Regex MultiSpaceRegex();
 
+        private static readonly HashSet<string> StopWords = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "e", "and", "de", "da", "do", "das", "dos"
+    };
+
         // =========================
-        // 🚀 PRINCIPAL
+        // 🎬 GÊNEROS
         // =========================
-        public static string NormalizarGeneros(string entrada)
+        public static IEnumerable<string> NormalizarGeneros(string entrada)
         {
             if (string.IsNullOrWhiteSpace(entrada))
-                return string.Empty;
-
-            var tags = new HashSet<string>(StringComparer.Ordinal);
+                yield break;
 
             foreach (var genero in entrada.Split(',', StringSplitOptions.RemoveEmptyEntries))
             {
                 var original = LimparTexto(genero, manterAcento: true);
-                if (original.Length == 0) continue;
+                if (original.Length == 0)
+                    continue;
 
                 var semAcento = RemoverAcentos(original);
 
-                var compactoOriginal = Compactar(original);
-                var compactoSemAcento = Compactar(semAcento);
+                yield return $"#{Compactar(original)}";
+                yield return $"#{Compactar(semAcento)}";
 
-                AddTag(tags, compactoOriginal);
-                AddTag(tags, compactoSemAcento);
-
-                // 🔥 explode palavras
                 foreach (var palavra in original.Split(' ', StringSplitOptions.RemoveEmptyEntries))
                 {
                     if (palavra.Length < 3 || StopWords.Contains(palavra))
                         continue;
 
-                    AddTag(tags, palavra);
-
-                    var pSemAcento = RemoverAcentos(palavra);
-                    AddTag(tags, pSemAcento);
+                    yield return $"#{palavra}";
+                    yield return $"#{RemoverAcentos(palavra)}";
                 }
             }
-
-            return string.Join(' ', tags);
         }
-        public static string GerarTags(string texto)
+
+        // =========================
+        // 🏷️ NOMES / TAGS
+        // =========================
+        public static IEnumerable<string> GerarTags(string texto)
         {
             if (string.IsNullOrWhiteSpace(texto))
-                return string.Empty;
-
-            var tags = new HashSet<string>(StringComparer.Ordinal);
+                yield break;
 
             foreach (var item in texto.Split(',', StringSplitOptions.RemoveEmptyEntries))
             {
-                foreach (var tag in GerarTagsNomeComposto(item))
-                {
-                    tags.Add(tag);
-                }
+                foreach (var tag in FormatarTitulo(item))
+                    yield return tag;
             }
-
-            return string.Join(' ', tags);
         }
-        public static string FormatarTitulo(string titulo)
+
+        // =========================
+        // 🎯 TÍTULO (SEU ORIGINAL)
+        // =========================
+        public static IEnumerable<string> FormatarTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
-                return string.Empty;
+                yield break;
 
             var semEspacos = titulo.Replace(" ", "");
-
             semEspacos = NonAlphaNumericRegex().Replace(semEspacos, "");
 
             if (semEspacos.Length == 0)
-                return string.Empty;
+                yield break;
 
             var comAcento = char.ToUpperInvariant(semEspacos[0]) + semEspacos[1..];
             var semAcento = RemoverAcentos(comAcento);
 
-            return semAcento.Equals(comAcento, StringComparison.Ordinal)
-                ? $"#{semAcento}"
-                : $"#{semAcento} #{comAcento}";
+            yield return $"#{semAcento}";
+
+            if (!semAcento.Equals(comAcento, StringComparison.Ordinal))
+                yield return $"#{comAcento}";
         }
 
         // =========================
-        // 🔹 Helpers
+        // 🔹 HELPERS
         // =========================
-
         private static string LimparTexto(string texto, bool manterAcento)
         {
             var t = texto.Trim().ToLowerInvariant();
@@ -117,20 +108,6 @@ namespace Telinha.Utils
         private static string Compactar(string texto)
             => texto.Replace(" ", "");
 
-        private static void AddTag(HashSet<string> tags, string valor)
-        {
-            if (!string.IsNullOrEmpty(valor))
-                tags.Add($"#{valor}");
-        }
-
-        private static string Capitalizar(string texto)
-        {
-            if (string.IsNullOrEmpty(texto))
-                return texto;
-
-            return char.ToUpperInvariant(texto[0]) + texto[1..];
-        }
-
         public static string RemoverAcentos(string texto)
         {
             if (string.IsNullOrEmpty(texto))
@@ -147,35 +124,4 @@ namespace Telinha.Utils
 
             return sb.ToString().Normalize(NormalizationForm.FormC);
         }
-        public static IEnumerable<string> GerarTagsNomeComposto(string texto)
-        {
-            if (string.IsNullOrWhiteSpace(texto))
-                yield break;
-
-            var original = LimparTexto(texto, manterAcento: true);
-            if (original.Length == 0)
-                yield break;
-
-            var palavras = original.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-            // 🔥 mantém todas palavras (inclusive stopwords)
-            var pascal = new StringBuilder();
-            var lower = new StringBuilder();
-
-            foreach (var palavra in palavras)
-            {
-                if (palavra.Length == 0)
-                    continue;
-
-                pascal.Append(Capitalizar(palavra));
-                lower.Append(palavra);
-            }
-
-            var comAcento = pascal.ToString();
-            var semAcento = RemoverAcentos(comAcento);
-
-            yield return $"#{comAcento}";
-            yield return $"#{semAcento}";
-        }
     }
-}
