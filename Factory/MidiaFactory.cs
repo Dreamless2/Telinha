@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Telinha.Contracts;
 using Telinha.Enums;
+using Telinha.Infrastructure.Logging;
 using Telinha.Models;
 using Telinha.Utils;
 
@@ -10,6 +11,8 @@ namespace Telinha.Factory
     {
         public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase, DEEPLContracts deepl)
         {
+            LogServices.Info("Construindo midia: {Json}", json.ToString());
+
             // 1. DETECÇÃO AUTOMÁTICA DE TIPO (Filme vs TV)
             // Se o JSON tem 'title' é filme, se tem 'name' é série/anime.
             MidiaTipo tipoDetectado = tipoBase;
@@ -45,8 +48,6 @@ namespace Telinha.Factory
             item.Lancamento = hasValidDate ? releaseDate.ToString("dd/MM/yyyy") : "--";
 
             string tagBase = tipoDetectado.ToString();
-
-            //item.Tags = hasValidDate ? $"#{tagBase} #{tagBase}{releaseDate.Year}" : $"#{tagBase}";
 
             var tags = new List<string>
             {
