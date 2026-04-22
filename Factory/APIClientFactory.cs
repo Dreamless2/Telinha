@@ -20,9 +20,7 @@ namespace Telinha.Factory
                 var key = await _tokenService.ObterTokenAsync("DEEPL");
 
                 if (string.IsNullOrWhiteSpace(key))
-                {
                     throw new InvalidOperationException("Token DeepL não configurado.");
-                }
 
                 _deepLClient = new DeepLClient(key);
             }
