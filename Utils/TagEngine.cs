@@ -7,61 +7,35 @@ namespace Telinha.Utils
     public static partial class TagEngine
     {
         // Regex compilado (melhor performance)
-        [GeneratedRegex(@"[^a-zA-Z0-9]")]
-        private static partial Regex RegexLimpeza();
+        private static readonly Regex RegexLimpeza = new(@"[^a-zA-Z0-9]", RegexOptions.Compiled);
 
         // Cache para remover acentos (evita recomputação)
-        private static readonly Dictionary<string, string> CacheAcentos = [];
+        private static readonly Dictionary<string, string> CacheAcentos = new();
 
-        // Dicionário inteligente (gerado automaticamente)
-        private static readonly Dictionary<string, string[]> GeneroMapeado = CriarMapaGeneros();
-
-        private static Dictionary<string, string[]> CriarMapaGeneros()
-        {
-            var mapa = new Dictionary<string, string[]>();
-
-            void Add(params string[] termos)
-            {
-                foreach (var termo in termos)
-                {
-                    var chave = NormalizarChave(termo);
-
-                    var semEspaco = termo.Replace(" ", "");
-                    var semAcento = RemoverAcentos(semEspaco);
-
-                    mapa[chave] = new[]
-                    {
-                    semAcento.ToLowerInvariant(),
-                    semEspaco.ToLowerInvariant()
-                };
-                }
-            }
-
-            // Ficção científica e variações
-            Add("ficção científica");
-            Add("ficção científica e fantasia");
-            Add("ficção científica e aventura");
-            Add("ficção científica e ação");
-            Add("ficção científica e comédia");
-            Add("ficção científica e drama");
-            Add("ficção científica e mistério");
-            Add("ficção científica e romance");
-            Add("ficção científica e terror");
-
-            // Outros gêneros
-            Add("romântico", "romântica");
-            Add("comédia");
-            Add("mistério");
-            Add("ação");
-            Add("ação e fantasia");
-            Add("ação e aventura");
-            Add("animação");
-            Add("documentário");
-            Add("comédia dramática");
-            Add("comédia romântica");
-
-            return mapa;
-        }
+        // Dicionário já NORMALIZADO (sem acento e sem espaço)
+        private static readonly Dictionary<string, string[]> GeneroMapeado = new()
+    {
+        { "ficcaocientifica", new[] { "ficcaocientifica", "ficçãocientífica" } },
+        { "ficcaocientificaefantasia", new[] { "ficcaocientificaefantasia", "ficçãocientíficaefantasia" } },
+        { "ficcaocientificaeaventura", new[] { "ficcaocientificaeaventura", "ficçãocientíficaeaventura" } },
+        { "romantico", new[] { "romantico", "romântico" } },
+        { "romantica", new[] { "romantica", "romântica" } },
+        { "comedia", new[] { "comedia", "comédia" } },
+        { "misterio", new[] { "misterio", "mistério" } },
+        { "acao", new[] { "acao", "ação" } },
+        { "acaoefantasia", new[] { "acaoefantasia", "açãoefantasia" } },
+        { "acaoeaventura", new[] { "acaoeaventura", "açãoeaventura" } },
+        { "animacao", new[] { "animacao", "animação" } },
+        { "documentario", new[] { "documentario", "documentário" } },
+        { "comediadramatica", new[] { "comediadramatica", "comédiadramática" } },
+        { "comediaromantica", new[] { "comediaromantica", "comédiaromântica" } },
+        { "ficcaocientificaeacao", new[] { "ficcaocientificaeacao", "ficçãocientíficaeação" } },
+        { "ficcaocientificaecomedia", new[] { "ficcaocientificaecomedia", "ficçãocientíficaecomédia" } },
+        { "ficcaocientificaedrama", new[] { "ficcaocientificaedrama", "ficçãocientíficaedrama" } },
+        { "ficcaocientificaemisterio", new[] { "ficcaocientificaemisterio", "ficçãocientíficaemistério" } },
+        { "ficcaocientificaeromance", new[] { "ficcaocientificaeromance", "ficçãocientíficaeromance" } },
+        { "ficcaocientificaeterror", new[] { "ficcaocientificaeterror", "ficçãocientíficaeterror" } }
+    };
 
         public static string NormalizarGeneros(string entrada)
         {
@@ -104,7 +78,7 @@ namespace Telinha.Utils
 
             var nomes = texto.Split(',', StringSplitOptions.RemoveEmptyEntries)
                              .Select(n => RemoverAcentos(n.Trim()))
-                             .Select(n => RegexLimpeza().Replace(n, ""))
+                             .Select(n => RegexLimpeza.Replace(n, ""))
                              .Where(n => !string.IsNullOrWhiteSpace(n))
                              .Select(n => $"#{n}");
 
@@ -116,7 +90,7 @@ namespace Telinha.Utils
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
 
-            var semEspacos = RegexLimpeza().Replace(titulo.Replace(" ", ""), "");
+            var semEspacos = RegexLimpeza.Replace(titulo.Replace(" ", ""), "");
 
             if (string.IsNullOrWhiteSpace(semEspacos))
                 return string.Empty;
