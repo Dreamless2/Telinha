@@ -7,7 +7,8 @@ namespace Telinha.Utils
     public static class TagEngine
     {
         // Regex compilado (melhor performance)
-        private static readonly Regex RegexLimpeza = new(@"[^a-zA-Z0-9]", RegexOptions.Compiled);
+        [GeneratedRegex(@"[^a-zA-Z0-9]")]
+        private static readonly Regex RegexLimpeza();
 
         // Cache para remover acentos (evita recomputação)
         private static readonly Dictionary<string, string> CacheAcentos = [];
