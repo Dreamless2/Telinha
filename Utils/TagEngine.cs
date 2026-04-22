@@ -7,9 +7,9 @@ namespace Telinha.Utils
     public static partial class TagEngine
     {
         private static readonly HashSet<string> StopWords = new(StringComparer.OrdinalIgnoreCase)
-    {
-        "e", "and", "de", "da", "do", "das", "dos"
-    };
+        {
+            "e", "and", "de", "da", "do", "das", "dos"
+        };
 
         // 🔥 GeneratedRegex (resolve SYSLIB1045)
         [GeneratedRegex(@"[^\p{L}\p{Nd}]")]
