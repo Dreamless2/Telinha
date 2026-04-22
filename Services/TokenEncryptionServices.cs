@@ -26,6 +26,7 @@ namespace Telinha.Services
 
         public string Encrypt(string plainToken, string? aad = null)
         {
+            LogServices.Info("Encriptando token...");
             if (string.IsNullOrWhiteSpace(plainToken))
                 throw new ArgumentException("Token inválido.", nameof(plainToken));
 
