@@ -138,9 +138,7 @@ namespace Telinha.Factory
             Task<DeepL.Model.TextResult>? taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
 
             if (taskPais != null || taskIdioma != null)
-            {
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
-            }
 
             item.Pais = taskPais != null ? Cleanser.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? Cleanser.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
