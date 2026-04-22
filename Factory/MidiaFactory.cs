@@ -108,6 +108,8 @@ namespace Telinha.Factory
                 }
             }
 
+            MessageBox.Show("Serie: [" + item.Serie + "]");
+
             // 8. ELENCO (Top 3)
             if (credits["cast"] is JArray castArray)
             {
