@@ -22,7 +22,7 @@ namespace Telinha
 
         }
 
-        private void Hidden(TextBoxBase txt, object sender, EventArgs e)
+        private static void Hidden(TextBoxBase txt, object sender, EventArgs e)
         {
             txt.SelectionStart = 0;
         }
