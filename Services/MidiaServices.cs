@@ -35,6 +35,8 @@ namespace Telinha.Services
                 }
                 catch
                 {
+                    //return null;
+                    MessageBox.Show($"Erro interno: {ex.Message}\n{ex.StackTrace}");
                     return null;
                 }
             });
