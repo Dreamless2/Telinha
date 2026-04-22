@@ -1,4 +1,5 @@
 ﻿using DeepL;
+using DeepL.Model;
 using RestSharp;
 using Telinha.Contracts;
 using Telinha.Services;
@@ -21,7 +22,7 @@ namespace Telinha.Factory
                 if (string.IsNullOrWhiteSpace(key))
                     throw new InvalidOperationException("Token DeepL não configurado.");
 
-                _deepLClient = new DeepLClient(key);
+                _deepLClient = new DeepLClient(key, );
             }
 
             return new DEEPLContracts(_deepLClient);
