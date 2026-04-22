@@ -82,9 +82,6 @@ namespace Telinha.Services
             _cache.Clear();
         }
 
-        // =========================
-        // 🔐 SEGURANÇA (limpa chave)
-        // =========================
         public void Dispose()
         {
             KeyHelper.ZeroMemory(_masterKey);
