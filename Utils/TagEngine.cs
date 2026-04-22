@@ -65,7 +65,7 @@ namespace Telinha.Utils
             if (string.IsNullOrEmpty(limpo)) return string.Empty;
 
             // Capitalização moderna
-            string comAcento = string.Concat(char.ToUpperInvariant(limpo[0]), limpo.AsSpan(1));
+            string comAcento = string.Concat(char.ToUpperInvariant(limpo[0]), limpo[1..]);
             string semAcento = RemoverAcentos(comAcento);
 
             return semAcento == comAcento ? $"#{semAcento}" : $"#{semAcento} #{comAcento}";
