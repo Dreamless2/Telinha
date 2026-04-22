@@ -124,12 +124,12 @@ namespace Telinha.Services
 
             var model = await MidiaFactory.ConstruirMidia(results[0], results[1], results.Length > 2 ? results[2] : null, tipo, deepl);
 
-            /*if (model != null)
+            if (model != null)
                 if (Enum.TryParse(model.Tipo, out MidiaTipo tipoReal))
-                    ///MidiaCache.Save(tipoReal, id, JsonConvert.SerializeObject(model));
+                    MidiaCache.Save(tipoReal, id, JsonConvert.SerializeObject(model));
                 else
-                    //MidiaCache.Save(tipo, id, JsonConvert.SerializeObject(model));
-            */
+                    MidiaCache.Save(tipo, id, JsonConvert.SerializeObject(model));
+
 
             bool invalido = results[0]?["id"] == null || (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString())) || (tipo != MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()));
 
