@@ -78,17 +78,13 @@ namespace Telinha.Utils
         public static string FormatarTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
-            {
                 return string.Empty;
-            }
 
             var semEspacos = titulo.Replace(" ", "");
             semEspacos = Regex.Replace(semEspacos, @"[^\w\d]", "");
 
             if (string.IsNullOrWhiteSpace(semEspacos))
-            {
                 return string.Empty;
-            }
 
             var comAcento = char.ToUpper(semEspacos[0]) + semEspacos[1..];
             var semAcento = RemoverAcentos(comAcento);
