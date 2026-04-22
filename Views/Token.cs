@@ -30,7 +30,6 @@ namespace Telinha
         }
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
-
             try
             {
                 var tmdbToken = TokenTMDBBox.Text?.Trim();
