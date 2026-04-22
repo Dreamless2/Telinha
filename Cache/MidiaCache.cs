@@ -1,7 +1,8 @@
-﻿using Telinha.Enums;
+﻿using Telinha.Data;
+using Telinha.Enums;
 using Telinha.Models;
 
-namespace Telinha.Data
+namespace Telinha.Cache
 {
     public static class MidiaCache
     {
