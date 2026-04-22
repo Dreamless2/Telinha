@@ -13,7 +13,6 @@ namespace Telinha.Factory
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
 
-        // 🔹 DeepL
         public async Task<DEEPLContracts> GetDeepLAsync()
         {
             if (_deepLClient == null)
@@ -32,7 +31,6 @@ namespace Telinha.Factory
             return new DEEPLContracts(_deepLClient);
         }
 
-        // 🔹 TMDB
         public async Task<TMDBServices> GetTMDBAsync()
         {
             if (_tmdbClient == null)
