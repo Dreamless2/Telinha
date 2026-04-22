@@ -59,13 +59,13 @@ namespace Telinha.Card
             // Bloco de Identidade
             sb.AppendLine($"**Nome Original:** __{_original}__");
             sb.AppendLine($"**Nome alternativo:** __{_alternativo}__");
-            sb.AppendLine($"**Data de lançamento:** __{_lancamento}__");
+            sb.AppendLine($"**Data de Estreia:** __{_lancamento}__");
 
             // Bloco de Origem (Só para Séries e Animes)
             if (_tipo != MidiaTipo.Filme)
             {
-                sb.AppendLine($"**Países de Origem:** {_pais}");
-                sb.AppendLine($"**Idioma Original:** {_idioma}");
+                sb.AppendLine($"**Local de Produção:** {_pais}");
+                sb.AppendLine($"**Idioma:** {_idioma}");
             }
 
             // Bloco Dinâmico
@@ -83,8 +83,8 @@ namespace Telinha.Card
             if (_tipo != MidiaTipo.Filme)
             {
                 sb.AppendLine($"**Autores:** {_autores}");
-                sb.AppendLine($"**Criadores:** {_criadores}");
-                sb.AppendLine($"**Obra Original:** __{_obra}__");
+                sb.AppendLine($"**Showrunners:** {_criadores}");
+                sb.AppendLine($"**Obra de Referência:** __{_obra}__");
             }
 
             // Bloco Final Comum
