@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Infrastructure.Logging;
+using Telinha.Mapper;
 using Telinha.Models;
 using Telinha.Utils;
 
@@ -146,8 +147,8 @@ namespace Telinha.Factory
             LogServices.Info($"Traduzido pais: {taskPais?.Result.Text}");
             LogServices.Info($"Traduzido idioma: {taskIdioma?.Result.Text}");
 
-            item.Local = taskPais != null ? TagEngine.FormatarTitulo(taskPais.Result.Text) : "--";
-            item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text) : "--";
+            item.Local = paisRaw != "--" ? await deepl.Translate(paisRaw) : "--";
+            item.Idioma = idiomaRaw != "--" ? LanguageMapper.ToPtBr(idiomaRaw) : "--";
 
             LogServices.Info("Mídia criada com sucesso.");
 
