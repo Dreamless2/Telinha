@@ -134,7 +134,6 @@ namespace Telinha.Factory
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
             LogServices.Info($"Pais: {paisRaw} - Idioma: {idiomaRaw}");
 
-
             Task<DeepL.Model.TextResult>? taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
             Task<DeepL.Model.TextResult>? taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
 
