@@ -1,7 +1,6 @@
 ﻿using System.Security;
 using System.Security.Cryptography;
 using System.Text;
-using Telinha.Infrastructure.Logging;
 
 namespace Telinha.Services
 {
@@ -15,7 +14,6 @@ namespace Telinha.Services
 
         public TokenEncryptionServices(byte[] key)
         {
-            LogServices.Info("Criando TokenEncryptionServices...");
             if (key == null || key.Length != 32)
                 throw new ArgumentException("A chave deve ter exatamente 32 bytes.", nameof(key));
 
@@ -26,7 +24,6 @@ namespace Telinha.Services
 
         public string Encrypt(string plainToken, string? aad = null)
         {
-            LogServices.Info("Encriptando token...");
             if (string.IsNullOrWhiteSpace(plainToken))
                 throw new ArgumentException("Token inválido.", nameof(plainToken));
 
