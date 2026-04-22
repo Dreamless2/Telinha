@@ -135,11 +135,12 @@ namespace Telinha.Factory
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
 
+            LogServices.Info("Pais: {paisRaw}, Idioma: {idiomaRaw}", paisRaw, idiomaRaw);
+
             var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : Task.FromResult<TextResult?>(null)!;
             var taskIdioma = idiomaRaw != "--" ? deepl.Translate(idiomaRaw) : Task.FromResult<TextResult?>(null)!;
 
             LogServices.Info("idioma {idioma", taskIdioma!.Result.Text);
-
 
             await Task.WhenAll(taskPais, taskIdioma);
 
