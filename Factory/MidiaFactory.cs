@@ -99,7 +99,7 @@ namespace Telinha.Factory
             }
             else if (tipoDetectado == MidiaTipo.Filme)
             {
-                item.Franquia = tituloFormatado;
+                item.Franquia = "--";
 
                 if (alternative?["titles"] is JArray titles)
                 {
@@ -140,7 +140,6 @@ namespace Telinha.Factory
 
             if (taskPais != null || taskIdioma != null)
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
-
 
             item.Local = taskPais != null ? TagEngine.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
