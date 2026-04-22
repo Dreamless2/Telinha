@@ -22,7 +22,6 @@ namespace Telinha.Services
 
             LogServices.Info("Chamando TMDB: {Endpoint}", endpoint);
 
-
             if (query != null)
                 foreach (var p in query)
                     request.AddQueryParameter(p.Key, p.Value);
@@ -32,6 +31,7 @@ namespace Telinha.Services
 
             if (resp.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
+                LogServices.Warn("Falha na chamada: {Status}", resp.StatusCode);
                 return new JObject { ["status_code"] = 34, ["success"] = false };
             }
 
