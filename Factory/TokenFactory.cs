@@ -1,5 +1,6 @@
 ﻿using Telinha.Data;
 using Telinha.Helpers;
+using Telinha.Infrastructure.Logging;
 using Telinha.Models;
 using Telinha.Services;
 
@@ -18,6 +19,8 @@ namespace Telinha.Factory
 
         public async Task SalvarTokenAsync(string keyName, string plainToken, string? description = null, string? aad = null)
         {
+            LogServices.Info("Salvando token: {KeyName}", keyName);
+
             if (string.IsNullOrWhiteSpace(keyName) || string.IsNullOrWhiteSpace(plainToken))
                 throw new ArgumentException("KeyName e Token são obrigatórios.");
 
