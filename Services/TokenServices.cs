@@ -47,7 +47,6 @@ namespace Telinha.Services
         {
             LogServices.Info("Obtendo token: {KeyName}", keyName);
 
-
             if (string.IsNullOrWhiteSpace(keyName))
                 return null;
 
@@ -73,6 +72,8 @@ namespace Telinha.Services
 
         public async Task RemoverTokenAsync(string keyName)
         {
+            LogServices.Info("Removendo token: {KeyName}", keyName);
+
             await _fsql.Update<EncryptedToken>()
                        .Set(x => x.IsActive, false)
                        .Where(x => x.KeyName == keyName)
