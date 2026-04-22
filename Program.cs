@@ -30,12 +30,12 @@ namespace Telinha
 
                 if (temTokensValidos)
                 {
-                    LogServices.Info("Tokens encontrados. Iniciando Home...");
+                    LogServices.Info("Chaves encontrados. Iniciando Home...");
                     Application.Run(new Home(apiFactory));
                 }
                 else
                 {
-                    LogServices.Info("Tokens ausentes. Abrindo tela de configuração...");
+                    LogServices.Info("Chaves ausentes. Abrindo tela de configuração...");
                     Application.Run(new Token(tokenService));
                 }
             }
@@ -46,7 +46,6 @@ namespace Telinha
             }
             finally
             {
-                // 4. Garante que o log escreva tudo no disco antes de fechar o processo
                 LogServices.Close();
             }
         }
