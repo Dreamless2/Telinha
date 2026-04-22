@@ -177,7 +177,7 @@ namespace Telinha.Utils
             var semAcento = RemoverAcentos(comAcento);
 
             yield return $"#{comAcento}";
-            yield return $"#{semAcento.ToLowerInvariant()}";
+            yield return $"#{semAcento}";
         }
     }
 }
