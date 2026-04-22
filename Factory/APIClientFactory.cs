@@ -40,9 +40,7 @@ namespace Telinha.Factory
                     throw new InvalidOperationException("Token TMDB não configurado.");
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
-
                 _tmdbClient.AddDefaultParameter("api_key", token);
-
             }
 
             var tokenFinal = (await _tokenService.ObterTokenAsync("TMDB"))?.Trim();
