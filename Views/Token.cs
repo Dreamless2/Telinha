@@ -16,6 +16,28 @@ namespace Telinha
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
         }
+
+        private void Hidden(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                if (senhaReal.Length > 0)
+                    senhaReal = senhaReal.Substring(0, senhaReal.Length - 1);
+            }
+            // Se for um caractere imprimível, adiciona à string real
+            else if (!char.IsControl(e.KeyChar))
+            {
+                senhaReal += e.KeyChar;
+            }
+
+            // Impede que o caractere seja desenhado no TextBox
+            e.Handled = true;
+        }
+
+
+
+
+
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try
