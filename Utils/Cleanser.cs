@@ -63,7 +63,7 @@ namespace Telinha.Utils
 
             var nomes = texto.Split(',').Select(n => RemoverAcentos(n.Trim())).Select(n => Regex.Replace(n, @"[^a-zA-Z0-9]", "")).Where(n => !string.IsNullOrWhiteSpace(n)).Select(n => $"#{n}");
 
-            return string.Join(" ", tags);
+            return string.Join(" ", nomes);
         }
 
         public static string FormatarTitulo(string titulo)
