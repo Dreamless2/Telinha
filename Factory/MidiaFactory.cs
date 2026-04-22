@@ -99,8 +99,6 @@ namespace Telinha.Factory
             }
             else if (tipoDetectado == MidiaTipo.Filme)
             {
-                item.Franquia = "--";
-
                 if (alternative?["titles"] is JArray titles)
                 {
                     item.Alternativo = titles
