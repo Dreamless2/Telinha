@@ -152,6 +152,9 @@ namespace Telinha.Factory
             var taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
             var taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
 
+            LogServices.Info("Países: {pais}", taskPais!.Result.Text);
+            LogServices.Info("Idioma: {idioma}", taskIdioma!.Result.Text);
+
             if (taskPais != null)
                 await taskPais;
 
