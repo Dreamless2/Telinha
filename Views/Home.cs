@@ -341,8 +341,7 @@ namespace Telinha
 
             if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
             {
-                MessageBox.Show("Digite um código numérico válido.", "Código Inválido",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Informe o código do TMDB.", "Código Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
