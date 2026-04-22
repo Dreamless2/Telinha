@@ -34,7 +34,6 @@ namespace Telinha.Services
             {
                 try
                 {
-                    LogServices.Info("Buscando filme: {Id}", id);
                     return await ExecutarBusca(id, MidiaTipo.Filme);
                 }
                 catch (Exception ex)
