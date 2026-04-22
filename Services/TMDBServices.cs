@@ -20,16 +20,14 @@ namespace Telinha.Services
             request.AddQueryParameter("api_key", _token);
 
             if (query != null)
-            {
                 foreach (var p in query)
                     request.AddQueryParameter(p.Key, p.Value);
-            }
+
 
             var resp = await _client.ExecuteAsync(request);
 
             if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
                 throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
-
 
             return JObject.Parse(resp.Content!);
         }
