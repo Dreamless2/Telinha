@@ -139,16 +139,13 @@ namespace Telinha.Factory
             Task<DeepL.Model.TextResult>? taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
 
             if (taskPais != null || taskIdioma != null)
-            {
-                LogServices.Info("Traduzindo países e idiomas... {0}.", taskPais != null ? "pais" : "idioma");
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
-                LogServices.Info("Tradução concluida.");
-            }
+
 
             item.Pais = taskPais != null ? Cleanser.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? Cleanser.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
 
-            LogServices.Info("Midia criada com sucesso.");
+            LogServices.Info("Mídia criada com sucesso.");
             return item;
         }
     }
