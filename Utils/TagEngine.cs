@@ -76,35 +76,23 @@ namespace Telinha.Utils
             return string.Join(' ', tags);
         }
 
-        public static string FormatarTitulo(string titulo)
+        public static string FormatarTituloRaw(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
 
-            var original = LimparTexto(titulo, manterAcento: true);
-            if (original.Length == 0)
+            var semEspacos = titulo.Replace(" ", "");
+            semEspacos = NonAlphaNumericRegex().Replace(semEspacos, "");
+
+            if (semEspacos.Length == 0)
                 return string.Empty;
 
-            var palavras = original.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-            var sb = new StringBuilder();
-
-            foreach (var palavra in palavras)
-            {
-                //sb.Append(Capitalizar(palavra));
-                if (StopWords.Contains(palavra))
-                    sb.Append(palavra.ToLowerInvariant());
-                else
-                    sb.Append(Capitalizar(palavra));
-            }
-
-
-            var comAcento = sb.ToString();
+            var comAcento = char.ToUpperInvariant(semEspacos[0]) + semEspacos[1..];
             var semAcento = RemoverAcentos(comAcento);
 
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
-                ? $"#{comAcento}"
-                : $"#{semAcento.ToLowerInvariant()} #{comAcento}";
+                ? $"#{semAcento}"
+                : $"#{semAcento} #{comAcento}";
         }
 
         // =========================
