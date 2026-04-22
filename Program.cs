@@ -11,7 +11,6 @@ namespace Telinha
         {
             ApplicationConfiguration.Initialize();
 
-            // 1. Inicia o Log primeiro de tudo
             LogServices.Configure();
 
             try
