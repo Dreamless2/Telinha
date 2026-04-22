@@ -17,10 +17,12 @@ namespace Telinha.Services
         {
             var req = new RestRequest(endpoint);
 
-            req.AddHeader("accept", "application/json");
+            //req.AddHeader("accept", "application/json");
 
             // 🔥 GARANTE o token aqui
-            req.AddHeader("Authorization", $"Bearer {_token}");
+            //req.AddHeader("Authorization", $"Bearer {_token}");
+
+            if (string.IsNullOrEmpty(_token)) throw new Exception("Token TMDB está vazio!");
 
             if (query != null)
             {
