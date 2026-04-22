@@ -20,11 +20,13 @@ namespace Telinha.Services
             var request = new RestRequest(endpoint);
             request.AddQueryParameter("api_key", _token);
 
+            LogServices.Info("Chamando TMDB: {Endpoint}", endpoint);
+
+
             if (query != null)
                 foreach (var p in query)
                     request.AddQueryParameter(p.Key, p.Value);
 
-            LogServices.Info("Consultando TMDB: {Endpoint}", endpoint);
 
             var resp = await _client.ExecuteAsync(request);
 
