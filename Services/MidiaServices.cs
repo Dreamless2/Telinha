@@ -51,6 +51,7 @@ namespace Telinha.Services
                 }
                 catch
                 {
+                    LogServices.Error("Erro ao buscar série: {Id}", id);
                     return null;
                 }
             });
