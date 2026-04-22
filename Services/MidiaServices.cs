@@ -38,7 +38,7 @@ namespace Telinha.Services
                 }
                 catch (Exception ex)
                 {
-                    LogServices.Error("Erro interno: {Ex}", ex);
+                    LogServices.Error(ex, "Erro ao buscar filme: {Id}", id);
                     return null;
                 }
             });
