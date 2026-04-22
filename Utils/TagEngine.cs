@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Telinha.Utils
 {
-    public static class TagEngine
+    public class TagEngine
     {
         private static readonly Dictionary<string, string> GeneroMapeado = new()
         {
