@@ -33,8 +33,7 @@ namespace Telinha.Factory
         {
             if (_tmdbClient == null)
             {
-                //var token = await _tokenService.ObterTokenAsync("TMDB");
-                var token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZTBkNmMxNWJmY2Q4MWIzYzE0MDAyM2RhOGRhNjRjOSIsIm5iZiI6MTc1NjYwODYzMC41NTAwMDAyLCJzdWIiOiI2OGIzYjg3NjcwMzc1YzcyZDYzOTdhMzciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.md8gEfeVlGepwG9GuT5I6tcBFZYy7F_A4TewbcEZDjU";
+                var token = await _tokenService.ObterTokenAsync("TMDB");
                 MessageBox.Show(token ?? "TOKEN NULL");
 
                 if (string.IsNullOrWhiteSpace(token))
