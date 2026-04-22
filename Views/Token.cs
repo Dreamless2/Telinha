@@ -1,15 +1,12 @@
-﻿using System.Text;
-using Telinha.Factory;
+﻿using Telinha.Factory;
 using Telinha.Infrastructure.Logging;
 using Telinha.Services;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Telinha
 {
     public partial class Token : Form
     {
         private readonly TokenServices _tokenService;
-        private string charHidden = "";
         public Token(TokenServices tokenService)
         {
             _tokenService = tokenService;
