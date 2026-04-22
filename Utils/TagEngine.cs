@@ -178,7 +178,7 @@ namespace Telinha.Utils
                 lower.Append(palavra);
             }
 
-            var comAcento = pascal.ToString().ToUpper();
+            var comAcento = pascal.ToString();
             var semAcento = RemoverAcentos(comAcento);
 
             yield return $"#{comAcento}";
