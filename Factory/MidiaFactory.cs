@@ -162,7 +162,9 @@ namespace Telinha.Factory
                 ? TagEngine.FormatarTitulo(taskPais.Result.Text)
                 : "--";
 
-            item.Idioma = TagEngine.FormatarTitulo(taskIdioma != null ? taskIdioma.Result.Text : "--").ToLower();
+            item.Idioma = taskIdioma != null
+                ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower()
+                : "--";
 
             LogServices.Info("Mídia criada com sucesso.");
 
