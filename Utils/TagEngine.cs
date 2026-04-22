@@ -78,8 +78,8 @@ namespace Telinha.Utils
 
         public static string FormatarTitulo(string titulo)
         {
-            f(string.IsNullOrWhiteSpace(titulo))
-        return string.Empty;
+            if (string.IsNullOrWhiteSpace(titulo))
+                return string.Empty;
 
             var original = LimparTexto(titulo, manterAcento: true);
             if (original.Length == 0)
