@@ -137,7 +137,6 @@ namespace Telinha.Factory
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
 
             var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : null;
-            var taskIdioma = idiomaRaw != "--" ? deepl.Translate(idiomaRaw) : null;
 
             await Task.WhenAll(new List<Task> { taskPais!, taskIdioma! }.Where(t => t != null)!);
 
