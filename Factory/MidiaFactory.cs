@@ -138,10 +138,10 @@ namespace Telinha.Factory
 
             // Cria as tasks só se não for "--"
             var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : Task.FromResult<string?>(null);
-            var taskIdioma = idiomaRaw != "--" ? Task.FromResult(LanguageMapper.ToPtBr(idiomaRaw)) : Task.FromResult<string?>("--");
+            var taskIdioma = idiomaRaw != "--" ? Task.FromResult(LanguageMapper.ToPtBr(idiomaRaw)) : Task.FromResult<string?>("--")!;
 
             // Espera as 2
-            await Task.WhenAll(taskPais, taskIdioma);
+            await Task.WhenAll(taskPais!, taskIdioma);
 
             // Pega o resultado das tasks, não chama de novo
             item.Local = taskPais.Result ?? "--";
