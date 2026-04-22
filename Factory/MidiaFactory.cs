@@ -107,7 +107,7 @@ namespace Telinha.Factory
                         .FirstOrDefault() ?? "--";
                 }
             }
-            LogServices.Info("Serie: [" + item.Serie + "]");
+            LogServices.Info("Serie: [" + tituloFormatado + "]");
 
             // 8. ELENCO (Top 3)
             if (credits["cast"] is JArray castArray)
