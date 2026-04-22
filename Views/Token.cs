@@ -14,6 +14,8 @@ namespace Telinha
             InitializeComponent();
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
+            TokenDEEPLBox.KeyPress += Hidden!;
+            TokenTMDBBox.KeyPress += Hidden!;
         }
 
 
