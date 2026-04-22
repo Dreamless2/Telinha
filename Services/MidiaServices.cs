@@ -73,9 +73,11 @@ namespace Telinha.Services
                 if (serie != null && serie.Tipo!.Equals("Anime", StringComparison.OrdinalIgnoreCase))
                     return serie;
 
-                if (serie != null) return serie;
+                if (serie != null)
+                    return serie;
 
-                if (filme != null) return filme;
+                if (filme != null)
+                    return filme;
             }
 
             LogServices.Error("Nenhuma midia encontrada: {Id} - {Tipo}", id, tipoSolicitado);
