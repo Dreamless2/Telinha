@@ -7,7 +7,8 @@ namespace Telinha
     public partial class Token : Form
     {
         private readonly TokenServices _tokenService;
-        private StringBuilder _buffer = new();
+
+        private string senhaReal = "";
         public Token(TokenServices tokenService)
         {
             _tokenService = tokenService;
@@ -20,37 +21,34 @@ namespace Telinha
 
         private void TokenDEEPLBox_KeyPress(object? sender, KeyPressEventArgs e)
         {
+            // Se for Backspace, remove o último caractere
             if (e.KeyChar == (char)Keys.Back)
             {
-                if (_buffer.Length > 0)
-                    _buffer.Length--;
-
-                e.Handled = true;
-                return;
+                if (senhaReal.Length > 0)
+                    senhaReal = senhaReal.Substring(0, senhaReal.Length - 1);
             }
-
-            if (!char.IsControl(e.KeyChar))
+            // Se for um caractere imprimível, adiciona à string real
+            else if (!char.IsControl(e.KeyChar))
             {
-                _buffer.Append(e.KeyChar);
-                e.Handled = true; // 🔥 impede de aparecer
+                senhaReal += e.KeyChar;
             }
+
+            // Impede que o caractere seja desenhado no TextBox
+            e.Handled = true;
         }
 
         private void TokenTMDBBox_KeyPress(object? sender, KeyPressEventArgs e)
         {
+            // Se for Backspace, remove o último caractere
             if (e.KeyChar == (char)Keys.Back)
             {
-                if (_buffer.Length > 0)
-                    _buffer.Length--;
-
-                e.Handled = true;
-                return;
+                if (senhaReal.Length > 0)
+                    senhaReal = senhaReal.Substring(0, senhaReal.Length - 1);
             }
-
-            if (!char.IsControl(e.KeyChar))
+            // Se for um caractere imprimível, adiciona à string real
+            else if (!char.IsControl(e.KeyChar))
             {
-                _buffer.Append(e.KeyChar);
-                e.Handled = true; // 🔥 impede de aparecer
+                senhaReal += e.KeyChar;
             }
         }
 
