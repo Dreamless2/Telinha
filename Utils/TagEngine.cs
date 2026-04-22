@@ -130,7 +130,7 @@ namespace Telinha.Utils
             if (string.IsNullOrEmpty(texto))
                 return texto;
 
-            return char.ToUpper(texto[0]) + texto[1..];
+            return char.ToUpperInvariant(texto[0]) + texto[1..];
         }
 
         public static string RemoverAcentos(string texto)
