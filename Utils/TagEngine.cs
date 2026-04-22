@@ -92,7 +92,13 @@ namespace Telinha.Utils
             foreach (var palavra in palavras)
             {
                 sb.Append(Capitalizar(palavra));
+                if (StopWords.Contains(palavra))
+                    sb.Append(palavra.ToLowerInvariant());
+                else
+                    sb.Append(Capitalizar(palavra));
+
             }
+
 
             var comAcento = sb.ToString();
             var semAcento = RemoverAcentos(comAcento);
