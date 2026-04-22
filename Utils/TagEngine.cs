@@ -98,6 +98,7 @@ namespace Telinha.Utils
                 : $"#{semAcento} #{comAcento}";
         }
 
+
         // =========================
         // 🔹 Helpers
         // =========================
