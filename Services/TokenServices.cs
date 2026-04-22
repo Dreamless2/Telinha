@@ -47,8 +47,12 @@ namespace Telinha.Services
         {
             LogServices.Info("Obtendo token: {KeyName}", keyName);
 
+
             if (string.IsNullOrWhiteSpace(keyName))
+            {
+                LogServices.Warn("KeyName nulo ou vazio.");
                 return null;
+            }
 
             if (_cache.TryGetValue(keyName, out var cached))
                 return cached;
