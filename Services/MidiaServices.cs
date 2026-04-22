@@ -2,6 +2,7 @@
 using Telinha.Data;
 using Telinha.Enums;
 using Telinha.Factory;
+using Telinha.Infrastructure.Logging;
 using Telinha.Models;
 
 namespace Telinha.Services
@@ -21,6 +22,8 @@ namespace Telinha.Services
             string? cacheSolicitado = MidiaCache.Get(tipoSolicitado, id, 720);
             if (cacheSolicitado != null)
                 return JsonConvert.DeserializeObject<MidiaModel>(cacheSolicitado);
+
+            LogServices.Info("Buscando midia: {Id} - {Tipo}", id, tipoSolicitado);
 
             string? cacheAlternativo = MidiaCache.Get(tipoAlternativo, id, 720);
             if (cacheAlternativo != null)
