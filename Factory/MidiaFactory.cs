@@ -117,7 +117,7 @@ namespace Telinha.Factory
                                     .Select(a => Cleanser.GerarTags(a["name"]?.ToString()!))
                                     .Where(s => !string.IsNullOrEmpty(s));
 
-                item.Artistas = string.Join(" ", top3);
+                item.Artistas = string.Join("", top3);
             }
 
             // 9. DIRETOR / EQUIPE
