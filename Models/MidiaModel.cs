@@ -167,7 +167,7 @@ namespace Telinha.Models
                 if (string.IsNullOrWhiteSpace(Nome))
                     return string.Empty;
 
-                return Cleanser.FormatarTitulo(Nome)
+                return TagEngine.FormatarTitulo(Nome)
                                .Replace(" ", ""); // remove espaços → hashtag
             }
         }
