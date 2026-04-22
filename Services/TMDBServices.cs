@@ -16,15 +16,8 @@ namespace Telinha.Services
 
         public async Task<JObject> GetAsync(string endpoint, Dictionary<string, string>? query = null)
         {
-            // 1. Limpeza radical do token
-            // Remove espaços, quebras de linha e o caractere nulo (\0) que a descriptografia pode deixar
-            string cleanToken = _token?.Trim()
-                                .Replace("\0", "")
-                                .Replace("\r", "")
-                                .Replace("\n", "") ?? "";
-
             var request = new RestRequest(endpoint);
-            request.AddQueryParameter("api_key", "ae0d6c15bfcd81b3c140023da8da64c9");
+            request.AddQueryParameter("api_key", _token);
 
             if (query != null)
             {
@@ -36,7 +29,6 @@ namespace Telinha.Services
 
             if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
             {
-                // Se der erro, vamos capturar exatamente o que o servidor respondeu
                 throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
             }
 
