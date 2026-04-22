@@ -16,13 +16,9 @@ namespace Telinha
 
             try
             {
-                // 2. Instancia os serviços base
                 using var tokenService = new TokenServices();
                 var apiFactory = new ApiClientFactory(tokenService);
 
-                // 3. Checagem de tokens (Sincronizada de forma limpa)
-                // Usar .GetAwaiter().GetResult() na Main é aceitável, 
-                // mas certifique-se de que o ObterTokenAsync não use o contexto de UI.
                 var tmdb = tokenService.ObterTokenAsync("TMDB").GetAwaiter().GetResult();
                 var deepl = tokenService.ObterTokenAsync("DEEPL").GetAwaiter().GetResult();
 
