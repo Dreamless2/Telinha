@@ -13,7 +13,7 @@ namespace Telinha.Utils
     };
 
         // 🔥 GeneratedRegex (resolve SYSLIB1045)
-        [GeneratedRegex(@"[^\p{L}\p{Nd}]", RegexOptions.NonBacktracking)]
+        [GeneratedRegex(@"[^\p{L}\p{Nd}]")]
         private static partial Regex NonAlphaNumericRegex();
 
         [GeneratedRegex(@"\s+", RegexOptions.NonBacktracking)]
