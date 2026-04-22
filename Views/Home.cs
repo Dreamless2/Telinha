@@ -144,15 +144,12 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-            // 1. TRATAMENTO DOS DADOS
-            // Se for filme, força "--". Se não for, só mexe se estiver nulo (coalescência).
             item.Local = isFilme ? "--" : (item.Local ?? "");
             item.Idioma = isFilme ? "--" : (item.Idioma ?? "");
             item.Referencia = isFilme ? "--" : (item.Referencia ?? "");
             item.Autores = isFilme ? "--" : (item.Autores ?? "");
             item.Showrunners = isFilme ? "--" : (item.Showrunners ?? "");
 
-            // 2. ESTADO DOS CONTROLES (ENABLE/DISABLE)
             bool habilitarCamposGerais = !isFilme;
 
             LocalLabel.Enabled = LocalBox.Enabled = habilitarCamposGerais;
@@ -160,11 +157,8 @@ namespace Telinha
             ReferenciaLabel.Enabled = ReferenciaBox.Enabled = habilitarCamposGerais;
             AutoresLabel.Enabled = AutoresBox.Enabled = habilitarCamposGerais;
             ShowrunnersLabel.Enabled = ShowrunnersBox.Enabled = habilitarCamposGerais;
-
-            // MCU só habilita se não for Filme nem Anime (ou seja, apenas Série)
             MCUBox.Enabled = !isFilme && !isAnime;
 
-            // 3. TIPO VISUAL
             TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
             TipoBox.PlaceholderText = TipoLabel.Text;
 
