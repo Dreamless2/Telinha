@@ -17,7 +17,6 @@ namespace Telinha.Services
         {
             var req = new RestRequest(endpoint);
 
-            if (string.IsNullOrEmpty(_token)) throw new Exception("Token TMDB está vazio!");
 
             req.AddHeader("accept", "application/json");
             req.AddHeader("Authorization", $"Bearer {_token}");
