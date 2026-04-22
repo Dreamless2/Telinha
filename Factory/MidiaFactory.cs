@@ -145,7 +145,7 @@ namespace Telinha.Factory
 
             // Pega o resultado das tasks, não chama de novo
             item.Local = taskPais.Result ?? "--";
-            item.Idioma = taskIdioma.Result ?? "--";
+            item.Idioma = TagEngine.FormatarTitulo(taskIdioma.Result ?? "--");
 
             LogServices.Info("Mídia criada com sucesso.");
 
