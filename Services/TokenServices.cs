@@ -42,15 +42,11 @@ namespace Telinha.Services
             _cache[keyName] = plainToken;
         }
 
-        // =========================
-        // 🔓 OBTER TOKEN (COM CACHE)
-        // =========================
         public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
         {
             if (string.IsNullOrWhiteSpace(keyName))
                 return null;
 
-            // 🔥 1. tenta cache
             if (_cache.TryGetValue(keyName, out var cached))
                 return cached;
 
