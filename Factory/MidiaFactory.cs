@@ -135,22 +135,19 @@ namespace Telinha.Factory
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
 
-            LogServices.Info("Pais: {paisRaw}, Idioma: {idiomaRaw}", paisRaw, idiomaRaw);
+            LogServices.Info($"Raw pais: {paisRaw}");
+            LogServices.Info($"Raw idioma: {idiomaRaw}");
 
-            var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : Task.FromResult<TextResult?>(null)!;
-            var taskIdioma = idiomaRaw != "--" ? deepl.Translate(idiomaRaw) : Task.FromResult<TextResult?>(null)!;
+            var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : null;
+            var taskIdioma = idiomaRaw != "--" ? deepl.Translate(idiomaRaw) : null;
 
-            LogServices.Info("idioma {idioma}", taskIdioma!.Result.Text);
+            await Task.WhenAll(new List<Task> { taskPais!, taskIdioma! }.Where(t => t != null)!);
 
-            await Task.WhenAll(taskPais, taskIdioma);
+            LogServices.Info($"Traduzido pais: {taskPais?.Result.Text}");
+            LogServices.Info($"Traduzido idioma: {taskIdioma?.Result.Text}");
 
-            item.Local = taskPais.Result != null
-                ? TagEngine.FormatarTitulo(taskPais.Result.Text)
-                : "--";
-
-            item.Idioma = taskIdioma.Result != null
-                ? TagEngine.FormatarTitulo(taskIdioma.Result.Text)
-                : "--";
+            item.Local = taskPais != null ? TagEngine.FormatarTitulo(taskPais.Result.Text) : "--";
+            item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text) : "--";
 
             LogServices.Info("Mídia criada com sucesso.");
 
