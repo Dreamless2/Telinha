@@ -357,8 +357,7 @@ namespace Telinha
 
                 if (midia == null)
                 {
-                    MessageBox.Show($"Nenhuma mídia encontrada com o código {id}.",
-                                    "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
