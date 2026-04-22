@@ -121,9 +121,9 @@ namespace Telinha.Utils
 
             // 🔥 GARANTE separação REAL
             if (semAcento.Equals(comAcento, StringComparison.Ordinal))
-                return $"#{semAcento}<<AQUI>>";
+                return $"#{semAcento}";
 
-            return string.Concat("#", semAcento, " ", "#", comAcento);
+            return string.Concat("#", semAcento, "--", "#", comAcento);
         }
     }
 }
