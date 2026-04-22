@@ -62,15 +62,11 @@ namespace Telinha.Services
 
             var decrypted = encryptor.Decrypt(entity.EncryptedData, aad);
 
-            // 🔥 3. salva no cache
             _cache[keyName] = decrypted;
 
             return decrypted;
         }
 
-        // =========================
-        // ❌ REMOVER TOKEN
-        // =========================
         public async Task RemoverTokenAsync(string keyName)
         {
             await _fsql.Update<EncryptedToken>()
@@ -78,13 +74,9 @@ namespace Telinha.Services
                        .Where(x => x.KeyName == keyName)
                        .ExecuteAffrowsAsync();
 
-            // 🔥 remove do cache
             _cache.TryRemove(keyName, out _);
         }
 
-        // =========================
-        // 🔄 INVALIDAR CACHE
-        // =========================
         public void LimparCache()
         {
             _cache.Clear();
