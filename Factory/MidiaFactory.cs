@@ -1,11 +1,8 @@
-﻿using DeepL;
-using DeepL.Model;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Helpers;
 using Telinha.Infrastructure.Logging;
-using Telinha.Mapper;
 using Telinha.Models;
 using Telinha.Utils;
 

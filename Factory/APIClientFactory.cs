@@ -1,5 +1,4 @@
 ﻿using DeepL;
-using DeepL.Model;
 using RestSharp;
 using Telinha.Contracts;
 using Telinha.Services;

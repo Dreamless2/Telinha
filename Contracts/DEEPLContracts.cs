@@ -1,5 +1,4 @@
 ﻿using DeepL;
-using DeepL.Model;
 
 namespace Telinha.Contracts
 {

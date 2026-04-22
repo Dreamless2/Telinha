@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Telinha.Cache;
-using Telinha.Data;
 using Telinha.Enums;
 using Telinha.Factory;
 using Telinha.Infrastructure.Logging;
