@@ -36,7 +36,7 @@ namespace Telinha.Services
                 {
                     return await ExecutarBusca(id, MidiaTipo.Filme);
                 }
-                catch (Exception ex)
+                catch
                 {
                     return null;
                 }
