@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using DeepL;
+using DeepL.Model;
+using Newtonsoft.Json.Linq;
 using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Infrastructure.Logging;
@@ -133,18 +135,20 @@ namespace Telinha.Factory
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
 
-            Task<DeepL.Model.TextResult>? taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
-            Task<DeepL.Model.TextResult>? taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
+            var deepl = new DEEPLContracts(deeplClient);
 
-            if (taskPais != null || taskIdioma != null)
-            {
-                var original = taskIdioma!.Result.Text;
-                var formatado = TagEngine.FormatarTitulo(original).ToLower();
-                await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
-            }
+            var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : Task.FromResult<TextResult?>(null);
+            var taskIdioma = idiomaRaw != "--" ? deepl.Translate(idiomaRaw) : Task.FromResult<TextResult?>(null);
 
-            item.Local = taskPais != null ? TagEngine.FormatarTitulo(taskPais.Result.Text) : "--";
-            item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
+            await Task.WhenAll(taskPais, taskIdioma);
+
+            item.Local = taskPais.Result != null
+                ? TagEngine.FormatarTitulo(taskPais.Result.Text)
+                : "--";
+
+            item.Idioma = taskIdioma.Result != null
+                ? TagEngine.FormatarTitulo(taskIdioma.Result.Text)
+                : "--";
 
             LogServices.Info("Mídia criada com sucesso.");
 
