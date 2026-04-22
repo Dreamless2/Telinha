@@ -150,15 +150,19 @@ namespace Telinha.Factory
             */
 
             var taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
+            var taskIdioma = (idiomaRaw != "--") ? deepl.Translate(idiomaRaw) : null;
 
             if (taskPais != null)
                 await taskPais;
+
+            if (taskIdioma != null)
+                await taskIdioma;
 
             item.Local = taskPais != null
                 ? TagEngine.FormatarTitulo(taskPais.Result.Text)
                 : "--";
 
-            item.Idioma = TagEngine.FormatarTitulo(idiomaRaw).ToLower();
+            item.Idioma = TagEngine.FormatarTitulo(taskIdioma != null ? taskIdioma.Result.Text : "--").ToLower();
 
             LogServices.Info("Mídia criada com sucesso.");
 
