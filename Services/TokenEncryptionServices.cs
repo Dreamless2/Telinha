@@ -17,8 +17,6 @@ namespace Telinha.Services
             if (key == null || key.Length != 32)
                 throw new ArgumentException("A chave deve ter exatamente 32 bytes.", nameof(key));
 
-
-
             _key = (byte[])key.Clone();
         }
 
