@@ -4,52 +4,58 @@ using System.Text.RegularExpressions;
 
 namespace Telinha.Utils
 {
-    public static class Cleanser
-    {
-        private static readonly Regex NonAlphaNumericRegex = new(@"[^\p{L}\p{Nd}]", RegexOptions.Compiled);
-        private static readonly Regex MultiSpaceRegex = new(@"\s+", RegexOptions.Compiled);
 
-        private static readonly HashSet<string> StopWords = new()
+    public static partial class Cleanser
+    {
+        private static readonly HashSet<string> StopWords = new(StringComparer.OrdinalIgnoreCase)
     {
         "e", "and", "de", "da", "do", "das", "dos"
     };
 
-        // 🔥 PRINCIPAL
+        // 🔥 GeneratedRegex (resolve SYSLIB1045)
+        [GeneratedRegex(@"[^\p{L}\p{Nd}]", RegexOptions.NonBacktracking)]
+        private static partial Regex NonAlphaNumericRegex();
+
+        [GeneratedRegex(@"\s+", RegexOptions.NonBacktracking)]
+        private static partial Regex MultiSpaceRegex();
+
+        // =========================
+        // 🚀 PRINCIPAL
+        // =========================
         public static string NormalizarGeneros(string entrada)
         {
             if (string.IsNullOrWhiteSpace(entrada))
                 return string.Empty;
 
-            var tags = new HashSet<string>();
+            var tags = new HashSet<string>(StringComparer.Ordinal);
 
-            foreach (var genero in entrada.Split(','))
+            foreach (var genero in entrada.Split(',', StringSplitOptions.RemoveEmptyEntries))
             {
                 var original = LimparTexto(genero, manterAcento: true);
+                if (original.Length == 0) continue;
+
                 var semAcento = RemoverAcentos(original);
 
                 var compactoOriginal = Compactar(original);
                 var compactoSemAcento = Compactar(semAcento);
 
-                // versão completa
                 AddTag(tags, compactoOriginal);
                 AddTag(tags, compactoSemAcento);
 
-                // 🔥 versão por palavras (explode gênero composto)
-                foreach (var palavra in original.Split(' '))
+                // 🔥 explode palavras
+                foreach (var palavra in original.Split(' ', StringSplitOptions.RemoveEmptyEntries))
                 {
-                    var p = palavra.Trim().ToLowerInvariant();
-
-                    if (StopWords.Contains(p) || p.Length < 3)
+                    if (palavra.Length < 3 || StopWords.Contains(palavra))
                         continue;
 
-                    var pSemAcento = RemoverAcentos(p);
+                    AddTag(tags, palavra);
 
-                    AddTag(tags, p);
+                    var pSemAcento = RemoverAcentos(palavra);
                     AddTag(tags, pSemAcento);
                 }
             }
 
-            return string.Join(" ", tags);
+            return string.Join(' ', tags);
         }
 
         public static string GerarTags(string texto)
@@ -57,17 +63,17 @@ namespace Telinha.Utils
             if (string.IsNullOrWhiteSpace(texto))
                 return string.Empty;
 
-            var tags = new HashSet<string>();
+            var tags = new HashSet<string>(StringComparer.Ordinal);
 
-            foreach (var item in texto.Split(','))
+            foreach (var item in texto.Split(',', StringSplitOptions.RemoveEmptyEntries))
             {
                 var limpo = LimparTexto(item, manterAcento: false);
 
-                if (!string.IsNullOrWhiteSpace(limpo))
+                if (limpo.Length > 0)
                     AddTag(tags, limpo);
             }
 
-            return string.Join(" ", tags);
+            return string.Join(' ', tags);
         }
 
         public static string FormatarTitulo(string titulo)
@@ -76,52 +82,47 @@ namespace Telinha.Utils
                 return string.Empty;
 
             var original = LimparTexto(titulo, manterAcento: true);
+            if (original.Length == 0)
+                return string.Empty;
+
             var semAcento = RemoverAcentos(original);
 
             var compactoOriginal = Compactar(original);
             var compactoSemAcento = Compactar(semAcento);
 
-            if (string.IsNullOrEmpty(compactoOriginal))
-                return string.Empty;
-
-            var tags = new HashSet<string>();
+            var tags = new HashSet<string>(StringComparer.Ordinal);
 
             AddTag(tags, Capitalizar(compactoOriginal));
             AddTag(tags, Capitalizar(compactoSemAcento));
 
-            return string.Join(" ", tags);
+            return string.Join(' ', tags);
         }
 
         // =========================
-        // 🔹 Helpers inteligentes
+        // 🔹 Helpers
         // =========================
 
         private static string LimparTexto(string texto, bool manterAcento)
         {
-            if (string.IsNullOrWhiteSpace(texto))
-                return string.Empty;
-
             var t = texto.Trim().ToLowerInvariant();
 
-            t = MultiSpaceRegex.Replace(t, " ");
+            t = MultiSpaceRegex().Replace(t, " ");
 
             if (!manterAcento)
                 t = RemoverAcentos(t);
 
-            t = NonAlphaNumericRegex.Replace(t, " ");
-            t = MultiSpaceRegex.Replace(t, " ").Trim();
+            t = NonAlphaNumericRegex().Replace(t, " ");
+            t = MultiSpaceRegex().Replace(t, " ");
 
-            return t;
+            return t.Trim();
         }
 
         private static string Compactar(string texto)
-        {
-            return texto.Replace(" ", "");
-        }
+            => texto.Replace(" ", "");
 
         private static void AddTag(HashSet<string> tags, string valor)
         {
-            if (!string.IsNullOrWhiteSpace(valor))
+            if (!string.IsNullOrEmpty(valor))
                 tags.Add($"#{valor}");
         }
 
@@ -130,13 +131,16 @@ namespace Telinha.Utils
             if (string.IsNullOrEmpty(texto))
                 return texto;
 
-            return char.ToUpper(texto[0]) + texto[1..];
+            return char.ToUpperInvariant(texto[0]) + texto[1..];
         }
 
         public static string RemoverAcentos(string texto)
         {
+            if (string.IsNullOrEmpty(texto))
+                return texto;
+
             var normalized = texto.Normalize(NormalizationForm.FormD);
-            var sb = new StringBuilder();
+            var sb = new StringBuilder(texto.Length);
 
             foreach (var c in normalized)
             {
