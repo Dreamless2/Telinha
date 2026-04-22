@@ -17,8 +17,8 @@ namespace Telinha
             TokenTMDBBox.PasswordChar = '\u200B';
             TokenDEEPLBox.ShortcutsEnabled = true;
             TokenTMDBBox.ShortcutsEnabled = true;
-            TokenDEEPLBox.TextChanged += (s, e) => Hidden(TokenDEEPLBox, s!, e);
-            TokenTMDBBox.TextChanged += (s, e) => Hidden(TokenTMDBBox, s!, e);
+            TokenDEEPLBox.TextChanged += (s, e) => Hidden(TokenDEEPLBox);
+            TokenTMDBBox.TextChanged += (s, e) => Hidden(TokenTMDBBox);
         }
 
         private static void Hidden(TextBoxBase txt)
@@ -27,7 +27,6 @@ namespace Telinha
             txt.SelectionStart = 0;
             txt.SelectionLength = 0;
         }
-
 
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
