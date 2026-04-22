@@ -131,7 +131,7 @@ namespace Telinha.Factory
 
             // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
-            var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
+            var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             LogServices.Info($"Pais: {paisRaw} - Idioma: {idiomaRaw}");
 
             Task<DeepL.Model.TextResult>? taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
