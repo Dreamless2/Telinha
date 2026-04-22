@@ -272,7 +272,7 @@ namespace Telinha
 
             _tmdb = await _apiFactory.GetTMDBAsync();
 
-            _midiaService = new MidiaServices(_tmdb);
+            //_midiaService = new MidiaServices(_tmdb, token);
 
             try
             {
@@ -292,6 +292,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}",
                                 "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            */
         }
 
         private void CopiarButton_Click(object sender, EventArgs e)
