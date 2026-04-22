@@ -268,8 +268,9 @@ namespace Telinha
         }
         private async void Principal_Load(object sender, EventArgs e)
         {
-            SetupBindings();
             CodigoBox.Focus();
+
+            SetupBindings();
 
             _tmdb = await _apiFactory.GetTMDBAsync();
 
