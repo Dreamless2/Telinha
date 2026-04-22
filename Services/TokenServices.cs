@@ -18,10 +18,6 @@ namespace Telinha.Services
             _fsql = Database.DB;
             _masterKey = KeyHelper.GetOrCreateMasterKey();
         }
-
-        // =========================
-        // 🔐 SALVAR TOKEN
-        // =========================
         public async Task SalvarTokenAsync(string keyName, string plainToken, string? description = null, string? aad = null)
         {
             if (string.IsNullOrWhiteSpace(keyName) || string.IsNullOrWhiteSpace(plainToken))
