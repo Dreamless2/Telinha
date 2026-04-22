@@ -8,7 +8,7 @@ namespace Telinha.Factory
 {
     public static class MidiaFactory
     {
-        public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase, DEEPLContracts deepl)
+        public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase)
         {
             // 1. DETECÇÃO AUTOMÁTICA DE TIPO (Filme vs TV)
             // Se o JSON tem 'title' é filme, se tem 'name' é série/anime.
@@ -129,7 +129,7 @@ namespace Telinha.Factory
 
                 item.Diretor = string.Join(" ", directors);
             }
-
+            /*
             // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)
             var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
             var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
@@ -144,7 +144,7 @@ namespace Telinha.Factory
 
             item.Pais = taskPais != null ? Cleanser.FormatarTitulo(taskPais.Result.Text) : "--";
             item.Idioma = taskIdioma != null ? Cleanser.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
-
+            */
             return item;
         }
     }
