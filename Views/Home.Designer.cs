@@ -58,7 +58,7 @@
             ArtistasLabel = new Label();
             DiretorLabel = new Label();
             GeneroLabel = new Label();
-            S = new Label();
+            ShowrunnersLabel = new Label();
             FranquiaLabel = new Label();
             AutoresLabel = new Label();
             ReferenciaLabel = new Label();
@@ -191,7 +191,7 @@
             PanelForms.Controls.Add(ArtistasLabel);
             PanelForms.Controls.Add(DiretorLabel);
             PanelForms.Controls.Add(GeneroLabel);
-            PanelForms.Controls.Add(S);
+            PanelForms.Controls.Add(ShowrunnersLabel);
             PanelForms.Controls.Add(FranquiaLabel);
             PanelForms.Controls.Add(AutoresLabel);
             PanelForms.Controls.Add(ReferenciaLabel);
@@ -385,14 +385,14 @@
             GeneroLabel.TabIndex = 22;
             GeneroLabel.Text = "Gênero";
             // 
-            // S
+            // ShowrunnersLabel
             // 
-            S.AutoSize = true;
-            S.Location = new Point(476, 442);
-            S.Name = "S";
-            S.Size = new Size(76, 15);
-            S.TabIndex = 21;
-            S.Text = "Showrunners";
+            ShowrunnersLabel.AutoSize = true;
+            ShowrunnersLabel.Location = new Point(476, 442);
+            ShowrunnersLabel.Name = "ShowrunnersLabel";
+            ShowrunnersLabel.Size = new Size(76, 15);
+            ShowrunnersLabel.TabIndex = 21;
+            ShowrunnersLabel.Text = "Showrunners";
             // 
             // FranquiaLabel
             // 
@@ -628,7 +628,7 @@
         private Label ArtistasLabel;
         private Label DiretorLabel;
         private Label GeneroLabel;
-        private Label S;
+        private Label ShowrunnersLabel;
         private Label FranquiaLabel;
         private Label AutoresLabel;
         private Label ReferenciaLabel;

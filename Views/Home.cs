@@ -159,7 +159,7 @@ namespace Telinha
             IdiomaLabel.Enabled = IdiomaBox.Enabled = habilitarCamposGerais;
             ReferenciaLabel.Enabled = ReferenciaBox.Enabled = habilitarCamposGerais;
             AutoresLabel.Enabled = AutoresBox.Enabled = habilitarCamposGerais;
-            S.Enabled = ShowrunnersBox.Enabled = habilitarCamposGerais;
+            ShowrunnersLabel.Enabled = ShowrunnersBox.Enabled = habilitarCamposGerais;
 
             // MCU só habilita se não for Filme nem Anime (ou seja, apenas Série)
             MCUBox.Enabled = !isFilme && !isAnime;
