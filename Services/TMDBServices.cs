@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using RestSharp;
+using Telinha.Infrastructure.Logging;
 
 namespace Telinha.Services
 {
@@ -23,6 +24,7 @@ namespace Telinha.Services
                 foreach (var p in query)
                     request.AddQueryParameter(p.Key, p.Value);
 
+            LogServices.Info($"Consultando API: {endpoint}", endpoint);
 
             var resp = await _client.ExecuteAsync(request);
 
@@ -30,7 +32,8 @@ namespace Telinha.Services
                 return new JObject { ["status_code"] = 34, ["success"] = false };
 
             if (!resp.IsSuccessful || string.IsNullOrWhiteSpace(resp.Content))
-                throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
+                LogServices.Warn("Falha na chamada: {Status} - {Content}", resp.StatusCode, resp.Content!);
+            throw new Exception($"TMDB ERROR {resp.StatusCode}: {endpoint}\nContent: {resp.Content}");
 
             return JObject.Parse(resp.Content!);
         }
@@ -43,3 +46,4 @@ namespace Telinha.Services
         }
     }
 }
+;
