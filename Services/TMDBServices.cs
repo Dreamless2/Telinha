@@ -46,8 +46,7 @@ namespace Telinha.Services
 
             var req = new RestRequest(endpoint);
 
-            // 2. Limpa headers antigos para evitar duplicidade (Bearer Bearer...)
-            req.RemoveHeader("Authorization");
+            // 2. Limpa headers antigos para evitar duplicidade (Bearer Bearer...)           
             req.AddHeader("Authorization", $"Bearer {cleanToken}");
 
             req.AddHeader("accept", "application/json");
