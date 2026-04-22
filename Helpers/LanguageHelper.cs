@@ -6,7 +6,7 @@ using Telinha.Mapper;
 
 namespace Telinha.Helpers
 {
-    public class LanguageHelper
+    public static class LanguageHelper
     {
         public static async Task<string> ResolveAsync(
        string? englishName,
