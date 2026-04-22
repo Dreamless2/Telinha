@@ -64,12 +64,8 @@ namespace Telinha.Utils
             var tags = new HashSet<string>(StringComparer.Ordinal);
 
             foreach (var item in texto.Split(',', StringSplitOptions.RemoveEmptyEntries))
-
                 foreach (var tag in GerarTagsNomeComposto(item))
-
                     tags.Add(tag);
-
-
 
             return string.Join(' ', tags);
         }
