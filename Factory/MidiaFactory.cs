@@ -160,10 +160,8 @@ namespace Telinha.Factory
 
             item.Idioma = TagEngine.FormatarTitulo(idiomaRaw).ToLower();
 
-
-
-
             LogServices.Info("Mídia criada com sucesso.");
+
             return item;
         }
     }
