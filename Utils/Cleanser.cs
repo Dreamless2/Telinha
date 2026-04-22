@@ -56,23 +56,7 @@ namespace Telinha.Utils
             return string.Join(" ", tags);
         }
 
-        public static string GerarTags(string texto)
-        {
-            if (string.IsNullOrWhiteSpace(texto))
-                return string.Empty;
-
-            var tags = new HashSet<string>();
-
-            foreach (var item in texto.Split(','))
-            {
-                var limpo = LimparTexto(item, manterAcento: false);
-
-                if (!string.IsNullOrWhiteSpace(limpo))
-                    AddTag(tags, limpo);
-            }
-
-            return string.Join(" ", tags);
-        }
+        public static string GerarTags(string texto) { if (string.IsNullOrWhiteSpace(texto)) { return string.Empty; } var nomes = texto.Split(',').Select(n => RemoverAcentos(n.Trim())).Select(n => Regex.Replace(n, @"[^a-zA-Z0-9]", "")).Where(n => !string.IsNullOrWhiteSpace(n)).Select(n => $"#{n}"); return string.Join(" ", nomes); }
 
         public static string FormatarTitulo(string titulo)
         {
