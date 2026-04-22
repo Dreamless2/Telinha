@@ -104,7 +104,7 @@ namespace Telinha.Utils
 
             var nomes = texto.Split(',', StringSplitOptions.RemoveEmptyEntries)
                              .Select(n => RemoverAcentos(n.Trim()))
-                             .Select(n => RegexLimpeza.Replace(n, ""))
+                             .Select(n => RegexLimpeza().Replace(n, ""))
                              .Where(n => !string.IsNullOrWhiteSpace(n))
                              .Select(n => $"#{n}");
 
@@ -116,7 +116,7 @@ namespace Telinha.Utils
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
 
-            var semEspacos = RegexLimpeza.Replace(titulo.Replace(" ", ""), "");
+            var semEspacos = RegexLimpeza().Replace(titulo.Replace(" ", ""), "");
 
             if (string.IsNullOrWhiteSpace(semEspacos))
                 return string.Empty;
