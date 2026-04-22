@@ -3,11 +3,9 @@ using DeepL.Model;
 
 namespace Telinha.Contracts
 {
-    public class DEEPLContracts
+    public class DEEPLContracts(DeepLClient client)
     {
-        private readonly DeepLClient _client;
-
-        public DEEPLContracts(DeepLClient client) => _client = client;
+        private readonly DeepLClient _client = client;
 
         public async Task<TextResult> Translate(string text)
         {
