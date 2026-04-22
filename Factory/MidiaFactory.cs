@@ -162,30 +162,19 @@ namespace Telinha.Factory
             item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
             */
 
+            taskPais = (paisRaw != "--") ? deepl.Translate(paisRaw) : null;
+
+            if (taskPais != null)
+                await taskPais;
+
+            item.Local = taskPais != null
+                ? TagEngine.FormatarTitulo(taskPais.Result.Text)
+                : "--";
+
+            item.Idioma = TagEngine.FormatarTitulo(idiomaRaw).ToLower();
 
 
-            var pais = "--";
-            var idioma = "--";
 
-            if (json["production_countries"] is JArray productionCountriesArray)
-            {
-                pais = productionCountriesArray
-                    .Select(c => c["name"]?.ToString())
-                    .FirstOrDefault() ?? "--";
-            }
-
-            if (json["spoken_languages"] is JArray spokenLanguagesArray)
-            {
-                idioma = spokenLanguagesArray
-                    .Select(c => c["english_name"]?.ToString())
-                    .FirstOrDefault() ?? "--";
-            }
-
-            pais = (await deepl.Translate(pais)).Text;
-            idioma = (await deepl.Translate(idioma)).Text;
-
-            item.Local = TagEngine.FormatarTitulo(pais);
-            item.Idioma = TagEngine.FormatarTitulo(idioma).ToLower();
 
             LogServices.Info("Mídia criada com sucesso.");
             return item;
