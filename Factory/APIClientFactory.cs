@@ -9,11 +9,11 @@ namespace Telinha.Factory
     {
         private readonly TokenServices _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
 
-        //private DeepLClient? _deepLClient;
+        private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
 
         // 🔹 DeepL
-        /*public async Task<DEEPLContracts> GetDeepLAsync()
+        public async Task<DEEPLContracts> GetDeepLAsync()
         {
             if (_deepLClient == null)
             {
@@ -26,7 +26,7 @@ namespace Telinha.Factory
             }
 
             return new DEEPLContracts(_deepLClient);
-        }*/
+        }
 
         // 🔹 TMDB
         public async Task<TMDBServices> GetTMDBAsync()
