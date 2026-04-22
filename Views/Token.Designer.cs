@@ -43,7 +43,6 @@
             // 
             TokenTMDBBox.Location = new Point(128, 111);
             TokenTMDBBox.Name = "TokenTMDBBox";
-            TokenTMDBBox.PasswordChar = '*';
             TokenTMDBBox.PlaceholderText = "API TMDB";
             TokenTMDBBox.Size = new Size(754, 23);
             TokenTMDBBox.TabIndex = 0;
@@ -52,7 +51,6 @@
             // 
             TokenDEEPLBox.Location = new Point(128, 163);
             TokenDEEPLBox.Name = "TokenDEEPLBox";
-            TokenDEEPLBox.PasswordChar = '*';
             TokenDEEPLBox.PlaceholderText = "API DEEPL";
             TokenDEEPLBox.Size = new Size(754, 23);
             TokenDEEPLBox.TabIndex = 1;
