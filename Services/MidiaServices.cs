@@ -6,10 +6,10 @@ using Telinha.Models;
 
 namespace Telinha.Services
 {
-    public class MidiaServices(TMDBServices tmdb)
+    public class MidiaServices(TMDBServices tmdb, TokenServices tokenService)
     {
         private readonly TMDBServices _tmdb = tmdb;
-        private readonly TokenServices? _tokenService;
+        private readonly TokenServices? _tokenService = tokenService;
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
