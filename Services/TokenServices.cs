@@ -10,7 +10,6 @@ namespace Telinha.Services
         private readonly IFreeSql _fsql;
         private readonly byte[] _masterKey;
 
-        // 🔥 Cache em memória
         private readonly ConcurrentDictionary<string, string> _cache = new();
 
         public TokenServices()
@@ -40,7 +39,6 @@ namespace Telinha.Services
                        .SetSource(entity)
                        .ExecuteAffrowsAsync();
 
-            // 🔥 Atualiza cache
             _cache[keyName] = plainToken;
         }
 
