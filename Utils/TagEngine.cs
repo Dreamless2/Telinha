@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Telinha.Utils
 {
-    public static partial class TagEngine
+    public static class TagEngine
     {
         private static readonly Dictionary<string, string> GeneroMapeado = new()
     {
