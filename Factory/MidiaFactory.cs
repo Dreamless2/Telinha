@@ -45,7 +45,7 @@ namespace Telinha.Factory
             var releaseDateStr = json[dateField]?.ToString();
             bool hasValidDate = DateTime.TryParse(releaseDateStr, out DateTime releaseDate);
 
-            item.Lancamento = hasValidDate ? releaseDate.ToString("dd/MM/yyyy") : "--";
+            item.Estreia = hasValidDate ? releaseDate.ToString("dd/MM/yyyy") : "--";
 
             string tagBase = tipoDetectado.ToString();
 
@@ -91,7 +91,7 @@ namespace Telinha.Factory
             if (tipoDetectado == MidiaTipo.Anime)
             {
                 item.Serie = tituloFormatado;
-                item.Obra = item.Original;
+                item.Referencia = item.Original;
             }
             else if (tipoDetectado == MidiaTipo.Serie)
             {
@@ -114,7 +114,7 @@ namespace Telinha.Factory
             if (credits["cast"] is JArray castArray)
             {
                 var top3 = castArray.Take(3)
-                                    .Select(a => Cleanser.GerarTags(a["name"]?.ToString()!))
+                                    .Select(a => TagEngine.GerarTags(a["name"]?.ToString()!))
                                     .Where(s => !string.IsNullOrEmpty(s));
 
                 item.Artistas = string.Join(" ", top3);
@@ -125,7 +125,7 @@ namespace Telinha.Factory
             {
                 var directors = crewArray
                     .Where(c => string.Equals(c["job"]?.ToString(), "Director", StringComparison.OrdinalIgnoreCase))
-                    .Select(c => Cleanser.GerarTags(c["name"]?.ToString()!))
+                    .Select(c => TagEngine.GerarTags(c["name"]?.ToString()!))
                     .Where(s => !string.IsNullOrEmpty(s));
 
                 item.Diretor = string.Join(" ", directors);
@@ -142,8 +142,8 @@ namespace Telinha.Factory
                 await Task.WhenAll(new List<Task?> { taskPais, taskIdioma }.Where(t => t != null)!);
 
 
-            item.Pais = taskPais != null ? Cleanser.FormatarTitulo(taskPais.Result.Text) : "--";
-            item.Idioma = taskIdioma != null ? Cleanser.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
+            item.Local = taskPais != null ? TagEngine.FormatarTitulo(taskPais.Result.Text) : "--";
+            item.Idioma = taskIdioma != null ? TagEngine.FormatarTitulo(taskIdioma.Result.Text).ToLower() : "--";
 
             LogServices.Info("Mídia criada com sucesso.");
             return item;
