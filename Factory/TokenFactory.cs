@@ -52,7 +52,8 @@ namespace Telinha.Factory
 
             try
             {
-                return encryptor.Decrypt(entity.EncryptedData, aad);
+                var decrypted = encryptor.Decrypt(entity.EncryptedData, aad);
+                return decrypted?.Trim().Replace("\0", "");
             }
             catch
             {
