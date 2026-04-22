@@ -22,6 +22,10 @@ namespace Telinha.Infrastructure.Logging
         {
             Log.Error(ex, message, args);
         }
+        public static void Error(string message, params object[] args)
+        {
+            Log.Error(message, args);
+        }
         public static void Info(string message, params object[] args)
         {
             Log.Information(message, args);
