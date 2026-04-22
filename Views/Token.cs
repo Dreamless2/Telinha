@@ -14,23 +14,18 @@ namespace Telinha
             InitializeComponent();
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
-            TokenDEEPLBox.KeyPress += Hidden!;
-            TokenTMDBBox.KeyPress += Hidden!;
+            TokenDEEPLBox.PasswordChar = '\u200B';
+            TokenTMDBBox.PasswordChar = '\u200B';
+            TokenDEEPLBox.TextChanged += TokenDEEPLBox_TextChanged!;
+            TokenTMDBBox.TextChanged += TokenTMDBBox_TextChanged!;
         }
-
-        private void Hidden(object sender, KeyPressEventArgs e)
+        private void TokenDEEPLBox_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Back)
-            {
-                if (charHidden.Length > 0)
-                    charHidden = charHidden.Substring(0, charHidden.Length - 1);
-            }
-            else if (!char.IsControl(e.KeyChar))
-            {
-                charHidden += e.KeyChar;
-            }
-
-            e.Handled = true;
+            TokenDEEPLBox.SelectionStart = 0;
+        }
+        private void TokenTMDBBox_TextChanged(object sender, EventArgs e)
+        {
+            TokenTMDBBox.SelectionStart = 0;
         }
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
