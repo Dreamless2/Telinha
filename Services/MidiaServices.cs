@@ -38,7 +38,6 @@ namespace Telinha.Services
                 }
                 catch (Exception ex)
                 {
-                    LogServices.Error(ex, "Erro ao buscar filme: {Id}", id);
                     return null;
                 }
             });
@@ -51,7 +50,6 @@ namespace Telinha.Services
                 }
                 catch
                 {
-                    LogServices.Error("Erro ao buscar série: {Id}", id);
                     return null;
                 }
             });
