@@ -37,7 +37,7 @@ namespace Telinha
 
                 if (string.IsNullOrWhiteSpace(tmdbToken) && string.IsNullOrWhiteSpace(deeplToken))
                 {
-                    MessageBox.Show("Informe a chave de acesso.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Informe a chave de acesso.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -46,7 +46,7 @@ namespace Telinha
                     await _tokenService.SalvarTokenAsync(
                         "TMDB",
                         tmdbToken,
-                        "Chave API do TMDB"
+                        "Chave de API do TMDB"
                     );
                 }
 
@@ -55,7 +55,7 @@ namespace Telinha
                     await _tokenService.SalvarTokenAsync(
                         "DEEPL",
                         deeplToken,
-                        "Chave API do DeepL"
+                        "Chave de API do DeepL"
                     );
                 }
 
