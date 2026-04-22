@@ -17,12 +17,7 @@
                 }
             }
         }
-        public static void SetField(Label label, dynamic box, bool enabled, string placeholderWhenEnabled)
-        {
-            label.Enabled = enabled;
-            box.Enabled = enabled;
-            box.PlaceholderText = enabled ? placeholderWhenEnabled : "";
-        }
+
 
         public static void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
