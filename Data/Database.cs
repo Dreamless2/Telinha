@@ -28,13 +28,11 @@ namespace Telinha.Data
             if (_db != null)
                 return;
 
-            // 🔹 Garante que o arquivo existe (seguro)
             if (!File.Exists(DbPath))
             {
                 using (File.Create(DbPath)) { }
             }
 
-            // 🔹 Configura FreeSql
             _db = new FreeSqlBuilder()
                 .UseConnectionString(DataType.Sqlite, $"Data Source={DbPath}")
                 .UseAutoSyncStructure(false)
