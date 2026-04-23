@@ -334,9 +334,22 @@ namespace Telinha
 
         }
 
-        private void ProximoButton_Click(object sender, EventArgs e)
+        private async void ProximoButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var item = await MidiaController.GetNext<MidiaModel>(currentId);
 
+                if (item == null)
+                    throw new Exception("Não há mais registros.");
+
+                currentId = item.Id;
+                _bs.DataSource = item; // ou PreencherCampos(item)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
