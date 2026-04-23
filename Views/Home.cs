@@ -427,10 +427,8 @@ namespace Telinha
             if (string.IsNullOrWhiteSpace(texto))
                 return;
 
-            BuscarMidiaAsync(null, null);
+            BuscarMidiaAsync(null!, null!);
         }
-
-
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
