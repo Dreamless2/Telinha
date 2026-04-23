@@ -327,7 +327,11 @@ namespace Telinha
 
         private void ProximoButton_Click(object sender, EventArgs e)
         {
-
+            if (currentId <= 0)
+            {
+                MessageBox.Show("Nenhum registro carregado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
 
