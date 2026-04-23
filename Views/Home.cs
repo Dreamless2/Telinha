@@ -380,14 +380,11 @@ namespace Telinha
 
         private async Task AtualizarBotoesNavegacao()
         {
-            var temProximo = await MidiaController.ExistsNext(currentId);
-            var temAnterior = await MidiaController.ExistsPrevious(currentId);
-
+            var temProximo = await MidiaController.ExistsNext<MidiaCard>(currentId);
+            var temAnterior = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
             ProximoButton.Enabled = temProximo;
             AnteriorButton.Enabled = temAnterior;
         }
-
-
 
         private async Task LoadDataAsync()
         {
