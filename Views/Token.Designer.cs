@@ -114,7 +114,7 @@
             // 
             // SalvarButton
             // 
-            SalvarButton.Location = new Point(236, 445);
+            SalvarButton.Location = new Point(235, 422);
             SalvarButton.Name = "SalvarButton";
             SalvarButton.Size = new Size(180, 41);
             SalvarButton.TabIndex = 7;
@@ -123,7 +123,7 @@
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(472, 445);
+            SairButton.Location = new Point(471, 422);
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(180, 41);
             SairButton.TabIndex = 8;
@@ -172,7 +172,7 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(TokenTMDBBox);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(41, 111);
+            groupBox1.Location = new Point(42, 111);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(844, 100);
             groupBox1.TabIndex = 13;
@@ -189,7 +189,7 @@
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label5);
-            groupBox2.Location = new Point(42, 243);
+            groupBox2.Location = new Point(42, 226);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(844, 171);
             groupBox2.TabIndex = 14;
