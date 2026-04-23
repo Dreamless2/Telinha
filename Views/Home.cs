@@ -302,7 +302,7 @@ namespace Telinha
                 MessageBox.Show("Nada para ser copiado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private async void SalvarButton_ClickAsync(object? sender, EventArgs e)
+        private async void SalvarButton_Click(object? sender, EventArgs e)
         {
             try
             {
