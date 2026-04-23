@@ -42,6 +42,8 @@ namespace Telinha.Data
 
         public static void Initialize()
         {
+            var ConnStr = BuildConnectionString();
+
             if (_db != null)
                 return;
 
@@ -49,7 +51,6 @@ namespace Telinha.Data
                 .UseConnectionString(DataType.MySql, ConnStr)
                 .UseAutoSyncStructure(false)
                 .Build();
-
         }
     }
 }
