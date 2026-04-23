@@ -189,7 +189,7 @@
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label5);
-            groupBox2.Location = new Point(41, 243);
+            groupBox2.Location = new Point(42, 243);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(844, 171);
             groupBox2.TabIndex = 14;
