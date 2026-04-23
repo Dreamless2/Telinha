@@ -345,7 +345,7 @@ namespace Telinha
 
                 currentId = item.Id;
 
-                _bs.DataSource = item; // ou PreencherCampos(item)
+                PreencherCampos(item);
                 _bs.ResetBindings(false);
             }
             catch (Exception ex)
