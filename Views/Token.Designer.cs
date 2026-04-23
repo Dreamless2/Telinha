@@ -43,7 +43,12 @@
             label6 = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            textBox4 = new TextBox();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // TokenTMDBBox
@@ -128,7 +133,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(98, 440);
+            label3.Location = new Point(10, 29);
             label3.Name = "label3";
             label3.Size = new Size(32, 15);
             label3.TabIndex = 9;
@@ -137,7 +142,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(98, 482);
+            label4.Location = new Point(10, 61);
             label4.Name = "label4";
             label4.Size = new Size(35, 15);
             label4.TabIndex = 10;
@@ -146,7 +151,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(98, 530);
+            label5.Location = new Point(10, 101);
             label5.Name = "label5";
             label5.Size = new Size(47, 15);
             label5.TabIndex = 11;
@@ -155,7 +160,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(271, 599);
+            label6.Location = new Point(10, 134);
             label6.Name = "label6";
             label6.Size = new Size(39, 15);
             label6.TabIndex = 12;
@@ -176,12 +181,52 @@
             // 
             // groupBox2
             // 
-            groupBox2.Location = new Point(75, 284);
+            groupBox2.Controls.Add(textBox4);
+            groupBox2.Controls.Add(textBox3);
+            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Location = new Point(41, 243);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(200, 100);
+            groupBox2.Size = new Size(844, 284);
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
+            groupBox2.Text = "Dados";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(77, 26);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "API TMDB";
+            textBox1.Size = new Size(754, 23);
+            textBox1.TabIndex = 13;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(77, 58);
+            textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "API TMDB";
+            textBox2.Size = new Size(754, 23);
+            textBox2.TabIndex = 14;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(77, 93);
+            textBox3.Name = "textBox3";
+            textBox3.PlaceholderText = "API TMDB";
+            textBox3.Size = new Size(754, 23);
+            textBox3.TabIndex = 15;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(77, 131);
+            textBox4.Name = "textBox4";
+            textBox4.PlaceholderText = "API TMDB";
+            textBox4.Size = new Size(754, 23);
+            textBox4.TabIndex = 16;
             // 
             // Token
             // 
@@ -190,10 +235,6 @@
             ClientSize = new Size(929, 784);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(SairButton);
             Controls.Add(SalvarButton);
             Controls.Add(PanelBottom);
@@ -204,8 +245,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -225,5 +267,9 @@
         private Label label6;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private TextBox textBox4;
+        private TextBox textBox3;
+        private TextBox textBox2;
+        private TextBox textBox1;
     }
 }
