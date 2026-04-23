@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Telinha.Data;
-using Telinha.Entity;
 
 namespace Telinha.Controller
 {
@@ -30,35 +29,34 @@ namespace Telinha.Controller
             return prop;
         }
 
-        public static async Task<(bool inserted, bool updated)> SaveAsync<T>(T item) where T : class, IEntity
+        public static async Task<(bool inserted, bool updated)> SaveAsync<T>(T item) where T : class
         {
-            ArgumentNullException.ThrowIfNull(item);
+            var type = typeof(T);
 
-            if (string.IsNullOrWhiteSpace(item.Codigo))
+            var propCodigo = GetCodigoProp(type);
+            var propId = GetIdProp(type);
+
+            var codigoValue = propCodigo?.GetValue(item)?.ToString();
+
+            if (string.IsNullOrWhiteSpace(codigoValue))
                 throw new ArgumentException("Código da mídia inválido.");
 
-            // tenta localizar por código
             var existente = await DB.Select<T>()
-                .Where(x => x.Codigo == item.Codigo)
+                .WhereDynamic(new { Codigo = codigoValue })
                 .FirstAsync();
 
-            // INSERT
             if (existente == null)
             {
-                // garante que o ID será retornado
-                var id = await DB.Insert(item).ExecuteIdentityAsync();
-
-                item.Id = Convert.ToInt64(id);
-
+                await DB.Insert(item).ExecuteAffrowsAsync();
                 return (true, false);
             }
 
-            // UPDATE
-            item.Id = existente.Id;
+            var idExistente = propId?.GetValue(existente);
+            propId?.SetValue(item, idExistente);
 
             var rows = await DB.Update<T>()
                 .SetSource(item)
-                .Where(x => x.Id == existente.Id)
+                .WhereDynamic(new { Id = idExistente })
                 .ExecuteAffrowsAsync();
 
             return (false, rows > 0);
