@@ -8,7 +8,7 @@ namespace Telinha.Services
     {
         private static readonly string FilePath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "SeuApp",
+            AppDomain.CurrentDomain.FriendlyName,
             "appconfig.key");
 
         private const string Entropy = "telinha-app-v1";
