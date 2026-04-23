@@ -1,4 +1,5 @@
 ﻿using FreeSql;
+using Telinha.Store;
 
 namespace Telinha.Data
 {
@@ -25,6 +26,22 @@ namespace Telinha.Data
                 return _db!;
             }
         }
+
+        private static string BuildConnectionString()
+        {
+            var configStore = new SecureConfigStore();
+            var config = configStore.Load();
+
+            if (config == null)
+                throw new Exception("Configuração não encontrada.");
+
+            return $"Data Source={config.Host};" +
+                   $"Port={config.Porta};" +
+                   $"User ID={config.Usuario};" +
+                   $"Password={config.Senha};" +
+                   $"Initial Catalog=telinha;";
+        }
+
         public static void Initialize()
         {
             if (_db != null)
