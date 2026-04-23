@@ -79,7 +79,6 @@ namespace Telinha.Services
 
             return null;
         }
-
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
         {
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
