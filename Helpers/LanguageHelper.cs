@@ -15,11 +15,9 @@ namespace Telinha.Helpers
             if (string.IsNullOrWhiteSpace(raw))
                 return "--";
 
-            // 🔹 1. Cache
             if (TranslationCache.TryGet(raw, out var cached))
                 return cached;
 
-            // 🔹 2. Mapper direto
             var mapped = LanguageMapper.TryMap(raw);
             if (mapped != null)
             {
@@ -27,7 +25,6 @@ namespace Telinha.Helpers
                 return mapped;
             }
 
-            // 🔹 3. Se tiver englishName, tenta mapear ele também
             if (!string.IsNullOrWhiteSpace(englishName))
             {
                 mapped = LanguageMapper.TryMap(englishName);
@@ -38,7 +35,6 @@ namespace Telinha.Helpers
                 }
             }
 
-            // 🔹 4. DeepL fallback
             try
             {
                 var translated = await translateFunc(raw);
