@@ -10,23 +10,20 @@ namespace Telinha.Services
         private readonly IFreeSql _fsql;
         private readonly byte[] _masterKey;
         private readonly TokenEncryptionServices _encryptor;
-
-        private readonly ConcurrentDictionary<string, string> _cache = new();
+        private readonly IMemoryCache _cache;
 
         public TokenServices()
         {
             _fsql = Database.DB;
             _masterKey = KeyHelper.GetOrCreateMasterKey();
             _encryptor = new TokenEncryptionServices(_masterKey);
+
+            _cache = new MemoryCache(new MemoryCacheOptions());
         }
+
         public async Task SalvarTokenAsync(string keyName, string plainToken, string? description = null, string? aad = null)
         {
-            if (string.IsNullOrWhiteSpace(keyName) || string.IsNullOrWhiteSpace(plainToken))
-                throw new ArgumentException("KeyName e Token são obrigatórios.");
-
-            using var encryptor = new TokenEncryptionServices(_masterKey);
-
-            string encryptedBase64 = encryptor.Encrypt(plainToken, aad);
+            string encryptedBase64 = _encryptor.Encrypt(plainToken, aad);
 
             var entity = new EncryptedToken
             {
@@ -41,15 +38,17 @@ namespace Telinha.Services
                        .SetSource(entity)
                        .ExecuteAffrowsAsync();
 
-            _cache[keyName] = plainToken;
+            // cache com expiração
+            _cache.Set(keyName, plainToken, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10),
+                SlidingExpiration = TimeSpan.FromMinutes(5)
+            });
         }
 
         public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
         {
-            if (string.IsNullOrWhiteSpace(keyName))
-                return null;
-
-            if (_cache.TryGetValue(keyName, out var cached))
+            if (_cache.TryGetValue(keyName, out string cached))
                 return cached;
 
             var entity = await _fsql.Select<EncryptedToken>()
@@ -59,11 +58,13 @@ namespace Telinha.Services
             if (entity == null)
                 return null;
 
-            using var encryptor = new TokenEncryptionServices(_masterKey);
+            var decrypted = _encryptor.Decrypt(entity.EncryptedData, aad);
 
-            var decrypted = encryptor.Decrypt(entity.EncryptedData, aad);
-
-            _cache[keyName] = decrypted;
+            _cache.Set(keyName, decrypted, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10),
+                SlidingExpiration = TimeSpan.FromMinutes(5)
+            });
 
             return decrypted;
         }
@@ -75,16 +76,16 @@ namespace Telinha.Services
                        .Where(x => x.KeyName == keyName)
                        .ExecuteAffrowsAsync();
 
-            _cache.TryRemove(keyName, out _);
-        }
-
-        public void LimparCache()
-        {
-            _cache.Clear();
+            _cache.Remove(keyName);
         }
         public void Dispose()
         {
+            _encryptor.Dispose();
             KeyHelper.ZeroMemory(_masterKey);
+
+            if (_cache is IDisposable d)
+                d.Dispose();
+
             GC.SuppressFinalize(this);
         }
     }
