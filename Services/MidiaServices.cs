@@ -77,14 +77,11 @@ namespace Telinha.Services
                     return filme;
             }
 
-            LogServices.Error("Nenhuma midia encontrada: {Id} - {Tipo}", id, tipoSolicitado);
             return null;
         }
 
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
         {
-            LogServices.Info("Executando busca de midia: {Id} - {Tipo}", id, tipo);
-
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
             var calls = new List<(string, Dictionary<string, string>?)>
             {
