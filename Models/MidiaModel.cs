@@ -29,32 +29,36 @@ namespace Telinha.Models
             get => _codigo;
             set => SetField(ref _codigo, value);
         }
+
         private string? _nome;
         public string? Nome
         {
             get => _nome;
             set => SetField(ref _nome, value);
         }
+
         private string? _audio;
         public string? Audio
         {
             get => _audio;
             set => SetField(ref _audio, value);
         }
-        private string? _tipo;
 
+        private string? _tipo;
         [Column(IsIgnore = true)]
         public string? Tipo
         {
             get => _tipo;
             set => SetField(ref _tipo, value);
         }
+
         private string? _sinopse;
         public string? Sinopse
         {
             get => _sinopse;
             set => SetField(ref _sinopse, value);
         }
+
         private string? _original;
         public string? Original
         {
