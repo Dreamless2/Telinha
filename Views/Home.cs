@@ -1,5 +1,6 @@
 ﻿using Telinha.Card;
 using Telinha.Controller;
+using Telinha.Data;
 using Telinha.Enums;
 using Telinha.Factory;
 using Telinha.Helpers;
@@ -417,6 +418,27 @@ namespace Telinha
             Interval = 400 // ms
         };
 
+        private void SearchTimer_Tick(object? sender, EventArgs e)
+        {
+            _searchTimer.Stop();
+
+            var texto = txtBusca.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(texto))
+                return;
+
+            var item = Database.DB.Select<MidiaModel>()
+                .Where(m => m.Nome.Contains(texto))
+                .OrderBy(m => m.Nome)
+                .First();
+
+            if (item != null)
+            {
+                currentId = item.Id;
+                _bs.DataSource = item;
+                _bs.ResetBindings(false);
+            }
+        }
 
 
 
