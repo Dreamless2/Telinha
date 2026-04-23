@@ -360,20 +360,15 @@ namespace Telinha
                     return;
                 }
 
-                // ✅ IMPORTANTE: Atualiza o Label primeiro
                 TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
 
-                // Atualiza a UI de acordo com o tipo real
                 if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
                     AtualizarUI(tipoReal, midia);
 
-                // Preenche os campos, mas mantendo o código que o usuário digitou
                 PreencherCampos(midia);
 
-                // Força o código digitado a permanecer no TextBox (solução principal)
                 CodigoBox.Text = codigoDigitado;
 
-                // Coloca o cursor no final do texto (melhor UX)
                 CodigoBox.SelectionStart = CodigoBox.Text.Length;
                 CodigoBox.SelectionLength = 0;
             }
