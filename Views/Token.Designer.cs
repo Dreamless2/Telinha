@@ -42,11 +42,12 @@
             label5 = new Label();
             label6 = new Label();
             groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // TokenTMDBBox
             // 
-            TokenTMDBBox.Location = new Point(128, 111);
+            TokenTMDBBox.Location = new Point(77, 22);
             TokenTMDBBox.Name = "TokenTMDBBox";
             TokenTMDBBox.PlaceholderText = "API TMDB";
             TokenTMDBBox.Size = new Size(754, 23);
@@ -54,7 +55,7 @@
             // 
             // TokenDEEPLBox
             // 
-            TokenDEEPLBox.Location = new Point(128, 163);
+            TokenDEEPLBox.Location = new Point(77, 60);
             TokenDEEPLBox.Name = "TokenDEEPLBox";
             TokenDEEPLBox.PlaceholderText = "API DEEPL";
             TokenDEEPLBox.Size = new Size(754, 23);
@@ -63,7 +64,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(61, 119);
+            label1.Location = new Point(10, 30);
             label1.Name = "label1";
             label1.Size = new Size(61, 15);
             label1.TabIndex = 2;
@@ -72,7 +73,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(61, 166);
+            label2.Location = new Point(10, 68);
             label2.Name = "label2";
             label2.Size = new Size(61, 15);
             label2.TabIndex = 3;
@@ -161,9 +162,13 @@
             // 
             // groupBox1
             // 
-            groupBox1.Location = new Point(189, 397);
+            groupBox1.Controls.Add(TokenDEEPLBox);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(TokenTMDBBox);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Location = new Point(51, 216);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(200, 100);
+            groupBox1.Size = new Size(844, 100);
             groupBox1.TabIndex = 13;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
@@ -183,13 +188,11 @@
             Controls.Add(PanelBottom);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelTopBar);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(TokenDEEPLBox);
-            Controls.Add(TokenTMDBBox);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Token";
             StartPosition = FormStartPosition.CenterScreen;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
