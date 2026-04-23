@@ -335,39 +335,52 @@ namespace Telinha
         }
         private async void AnteriorButton_Click(object sender, EventArgs e)
         {
-            var item = await MidiaController.GetPrevious<MidiaModel>(currentId);
-
-            if (item == null)
+            try
             {
-                MessageBox.Show("Não há mais registros.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ProximoButton.Enabled = false;
-                return;
+                var item = await MidiaController.GetPrevious<MidiaModel>(currentId);
+
+                if (item == null)
+                {
+                    MessageBox.Show("Você chegou ao primeiro registro.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AnteriorButton.Enabled = false; // <- era ProximoButton
+                    return;
+                }
+
+                currentId = item.Id;
+                PreencherCampos(item);
+                _bs.Position = _bs.IndexOf(item); // mantém assim
+                await AtualizarBotoesNavegacao();
             }
-
-            currentId = item.Id;
-            PreencherCampos(item);
-            _bs.Position = _bs.IndexOf(item);
-            await AtualizarBotoesNavegacao();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao navegar: {ex.Message}");
+            }
         }
-
 
         private async void ProximoButton_Click(object sender, EventArgs e)
         {
-            var item = await MidiaController.GetNext<MidiaModel>(currentId);
-
-            if (item == null)
+            try
             {
-                MessageBox.Show("Não há mais registros.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AnteriorButton.Enabled = false;
-                return;
-            }
+                var item = await MidiaController.GetNext<MidiaModel>(currentId);
 
-            currentId = item.Id;
-            PreencherCampos(item);
-            _bs.ResetBindings(false);
-            await AtualizarBotoesNavegacao();
+                if (item == null)
+                {
+                    MessageBox.Show("Você chegou ao último registro.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ProximoButton.Enabled = false; // <- era AnteriorButton
+                    return;
+                }
+
+                currentId = item.Id;
+                PreencherCampos(item);
+                _bs.Position = _bs.IndexOf(item); // padroniza com o de cima
+                await AtualizarBotoesNavegacao();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao navegar: {ex.Message}");
+            }
         }
 
         private void SairButton_Click(object sender, EventArgs e)
