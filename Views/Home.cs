@@ -320,6 +320,7 @@ namespace Telinha
             try
             {
                 var item = MidiaController.GetPrevious<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
+
                 currentId = item.Id;
 
                 PreencherCampos(item);
