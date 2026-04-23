@@ -10,8 +10,6 @@ namespace Telinha
         {
             ApplicationConfiguration.Initialize();
 
-            LogServices.Configure();
-
             try
             {
                 using var tokenService = new TokenServices();
