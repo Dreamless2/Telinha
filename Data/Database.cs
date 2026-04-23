@@ -27,7 +27,6 @@ namespace Telinha.Data
             if (_db != null)
                 return;
 
-
             _db = new FreeSqlBuilder()
                 .UseConnectionString(DataType.MySql, "")
                 .UseAutoSyncStructure(false)
@@ -36,5 +35,3 @@ namespace Telinha.Data
         }
     }
 }
-
-
