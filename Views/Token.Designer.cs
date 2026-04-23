@@ -42,6 +42,7 @@
             label5 = new Label();
             label6 = new Label();
             groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -166,18 +167,28 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(TokenTMDBBox);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(51, 216);
+            groupBox1.Location = new Point(41, 111);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(844, 100);
             groupBox1.TabIndex = 13;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "API";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Location = new Point(75, 284);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(200, 100);
+            groupBox2.TabIndex = 14;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "groupBox2";
             // 
             // Token
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(929, 784);
+            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -213,5 +224,6 @@
         private Label label5;
         private Label label6;
         private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }
