@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Telinha.Services;
+﻿using Telinha.Services;
 
 namespace Telinha.Store
 {

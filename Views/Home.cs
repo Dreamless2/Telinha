@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using Telinha.Card;
 using Telinha.Controller;
-using Telinha.Data;
 using Telinha.Enums;
 using Telinha.Factory;
 using Telinha.Helpers;
