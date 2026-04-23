@@ -41,6 +41,7 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // TokenTMDBBox
@@ -158,11 +159,19 @@
             label6.TabIndex = 12;
             label6.Text = "Senha";
             // 
+            // panel1
+            // 
+            panel1.Location = new Point(95, 206);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 100);
+            panel1.TabIndex = 13;
+            // 
             // Token
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(929, 604);
+            Controls.Add(panel1);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -198,5 +207,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private Panel panel1;
     }
 }
