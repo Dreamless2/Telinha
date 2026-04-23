@@ -201,6 +201,7 @@
             // 
             // HostBox
             // 
+            HostBox.ForeColor = Color.Gray;
             HostBox.Location = new Point(77, 26);
             HostBox.Name = "HostBox";
             HostBox.PlaceholderText = "Host";
