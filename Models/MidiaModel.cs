@@ -150,26 +150,29 @@ namespace Telinha.Models
             get => _diretor;
             set => SetField(ref _diretor, value);
         }
+
         private string? _mcu;
         public string? MCU
         {
             get => _mcu;
             set => SetField(ref _mcu, value);
         }
+
         private string? _artistas;
         public string? Artistas
         {
             get => _artistas;
             set => SetField(ref _artistas, value);
         }
+
         private string? _produtora;
         public string? Produtora
         {
             get => _produtora;
             set => SetField(ref _produtora, value);
         }
-        private string? _tipoSolicitado;
 
+        private string? _tipoSolicitado;
         [Column(IsIgnore = true)]
         public string? TipoSolicitado
         {
