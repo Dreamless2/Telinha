@@ -378,8 +378,8 @@ namespace Telinha
         private async Task LoadDataAsync()
         {
             var lista = await Database.DB.Select<MidiaModel>()
-    .OrderBy(m => m.Id)
-    .ToListAsync();
+                    .OrderBy(m => m.Id)
+                    .ToListAsync();
 
             _bs.DataSource = new BindingList<MidiaModel>(lista);
         }
