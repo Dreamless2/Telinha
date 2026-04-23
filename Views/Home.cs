@@ -306,9 +306,18 @@ namespace Telinha
         {
             try
             {
-                _bs.EndEdit();
+                _bs.EndEdit(); // força validar último campo
 
-                var item = (MidiaModel)_bs.Current!;
+                if (_bs.Current == null)
+                {
+                    MessageBox.Show("Nenhum registro para salvar.", "Aviso");
+                    return;
+                }
+
+                var item = (MidiaModel)_bs.Current;
+
+                // Se Id = 0 é insert, se não é update
+                bool isNew = item.Id == 0;
 
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
 
@@ -316,21 +325,29 @@ namespace Telinha
                     ? $"{item.Nome} inserido com sucesso!"
                     : $"{item.Nome} atualizado com sucesso!");
 
-                if (inserted)
+                if (inserted && isNew)
                 {
-                    var lista = (BindingList<MidiaModel>)_bs.DataSource!;
-                    lista.Add(item);
+                    // SaveAsync já deve ter setado o item.Id com o novo ID do banco
+                    currentId = item.Id;
 
-                    _bs.Position = _bs.Count - 1;
+                    // Se a lista não contém ainda, adiciona
+                    var lista = (BindingList<MidiaModel>)_bs.DataSource;
+                    if (!lista.Contains(item))
+                        lista.Add(item);
+
+                    _bs.Position = _bs.IndexOf(item);
                 }
                 else
                 {
-                    _bs.ResetCurrentItem();
+                    _bs.ResetCurrentItem(); // atualiza só a linha atual
                 }
+
+                await AtualizarBotoesNavegacao(); // atualiza Próximo/Anterior
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private async void AnteriorButton_Click(object sender, EventArgs e)
