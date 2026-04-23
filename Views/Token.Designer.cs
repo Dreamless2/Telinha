@@ -191,7 +191,7 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Location = new Point(41, 243);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(844, 175);
+            groupBox2.Size = new Size(844, 171);
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             groupBox2.Text = "Dados";
