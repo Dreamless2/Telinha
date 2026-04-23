@@ -37,6 +37,7 @@
             PanelBottom = new Panel();
             SalvarButton = new Button();
             SairButton = new Button();
+            label3 = new Label();
             SuspendLayout();
             // 
             // TokenTMDBBox
@@ -95,14 +96,14 @@
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 320);
+            PanelBottom.Location = new Point(0, 560);
             PanelBottom.Name = "PanelBottom";
             PanelBottom.Size = new Size(929, 44);
             PanelBottom.TabIndex = 6;
             // 
             // SalvarButton
             // 
-            SalvarButton.Location = new Point(257, 239);
+            SalvarButton.Location = new Point(257, 473);
             SalvarButton.Name = "SalvarButton";
             SalvarButton.Size = new Size(180, 41);
             SalvarButton.TabIndex = 7;
@@ -111,18 +112,28 @@
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(493, 239);
+            SairButton.Location = new Point(493, 473);
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(180, 41);
             SairButton.TabIndex = 8;
             SairButton.Text = "Sair";
             SairButton.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(92, 282);
+            label3.Name = "label3";
+            label3.Size = new Size(61, 15);
+            label3.TabIndex = 9;
+            label3.Text = "API TMDB";
+            // 
             // Token
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(929, 364);
+            ClientSize = new Size(929, 604);
+            Controls.Add(label3);
             Controls.Add(SairButton);
             Controls.Add(SalvarButton);
             Controls.Add(PanelBottom);
@@ -150,5 +161,6 @@
         private Panel PanelBottom;
         private Button SalvarButton;
         private Button SairButton;
+        private Label label3;
     }
 }
