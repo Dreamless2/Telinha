@@ -211,6 +211,7 @@
             // 
             // PortaBox
             // 
+            PortaBox.ForeColor = Color.Gray;
             PortaBox.Location = new Point(77, 58);
             PortaBox.Name = "PortaBox";
             PortaBox.PlaceholderText = "Porta";
