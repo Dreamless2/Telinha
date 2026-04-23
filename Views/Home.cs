@@ -400,10 +400,18 @@ namespace Telinha
 
         private async Task AtualizarBotoesNavegacao()
         {
+            // Se tá num registro novo que ainda não salvou
+            if (_bs.Current is MidiaModel item && item.Id == 0)
+            {
+                AnteriorButton.Enabled = await MidiaController.GetPrevious<MidiaModel>(0) != null;
+                ProximoButton.Enabled = false; // novo registro não tem próximo
+                return;
+            }
+
             if (currentId <= 0)
             {
                 AnteriorButton.Enabled = false;
-                ProximoButton.Enabled = false;
+                ProximoButton.Enabled = await MidiaController.GetNext<MidiaModel>(0) != null;
                 return;
             }
 
