@@ -40,6 +40,7 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // TokenTMDBBox
@@ -142,17 +143,27 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(448, 295);
+            label5.Location = new Point(75, 331);
             label5.Name = "label5";
-            label5.Size = new Size(32, 15);
+            label5.Size = new Size(47, 15);
             label5.TabIndex = 11;
-            label5.Text = "Host";
+            label5.Text = "Usuário";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(448, 295);
+            label6.Name = "label6";
+            label6.Size = new Size(32, 15);
+            label6.TabIndex = 12;
+            label6.Text = "Host";
             // 
             // Token
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(929, 604);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -186,5 +197,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Label label6;
     }
 }
