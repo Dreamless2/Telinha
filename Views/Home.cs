@@ -349,7 +349,6 @@ namespace Telinha
             PreencherCampos(item);
             _bs.Position = _bs.IndexOf(item);
             await AtualizarBotoesNavegacao();
-
         }
 
 
