@@ -351,7 +351,7 @@ namespace Telinha
         }
         private async void ProximoButton_Click(object sender, EventArgs e)
         {
-            /*try
+            try
             {
                 var item = MidiaController.GetNext<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
 
@@ -363,11 +363,7 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }*/
-            if (_bs.Position < _bs.Count - 1)
-                _bs.MoveNext();
-            else
-                MessageBox.Show("Não há mais registros.");
+            }
         }
         private void SairButton_Click(object sender, EventArgs e)
         {
