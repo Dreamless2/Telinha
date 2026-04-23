@@ -306,7 +306,6 @@ namespace Telinha
         {
             try
             {
-                _bs.EndEdit();
 
                 var item = (MidiaModel)_bs.Current!;
 
