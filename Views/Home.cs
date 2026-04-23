@@ -306,6 +306,10 @@ namespace Telinha
             {
                 _bs.EndEdit();
 
+                var tipo = (MidiaModel)_bs.Current!;
+
+                tipo.Tipo = TipoLabel.Text;
+
                 if (_bs.Current is not MidiaModel item)
                 {
                     MessageBox.Show("Nenhum registro para salvar.", "Aviso");
@@ -453,7 +457,7 @@ namespace Telinha
                 }
 
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
-                
+
                 if (midia == null)
                 {
                     MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
