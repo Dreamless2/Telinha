@@ -335,13 +335,13 @@ namespace Telinha
         }
         private async void AnteriorButton_Click(object sender, EventArgs e)
         {
-            var item = await MidiaController.GetPrevious<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
+            var item = await MidiaController.GetPrevious<MidiaModel>(currentId);
 
             if (item == null)
             {
                 MessageBox.Show("Não há mais registros.", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ProximoButton.Enabled = false; // já desabilita
+                ProximoButton.Enabled = false;
                 return;
             }
 
@@ -354,13 +354,13 @@ namespace Telinha
 
         private async void ProximoButton_Click(object sender, EventArgs e)
         {
-            var item = await MidiaController.GetNext<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
+            var item = await MidiaController.GetNext<MidiaModel>(currentId);
 
             if (item == null)
             {
                 MessageBox.Show("Não há mais registros.", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AnteriorButton.Enabled = false; // já desabilita
+                AnteriorButton.Enabled = false;
                 return;
             }
 
