@@ -7,7 +7,7 @@ using Telinha.Utils;
 namespace Telinha.Models
 {
     [Table(Name = "midia")]
-    public class MidiaModel : INotifyPropertyChanged, IEntity
+    public class MidiaModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
