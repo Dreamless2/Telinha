@@ -23,24 +23,15 @@ namespace Telinha
                 bool temTokensValidos = !string.IsNullOrWhiteSpace(tmdb) && !string.IsNullOrWhiteSpace(deepl);
 
                 if (temTokensValidos)
-                {
-                    LogServices.Info("Chaves encontrados. Iniciando Home...");
                     Application.Run(new Home(apiFactory));
-                }
                 else
                 {
-                    LogServices.Info("Chaves ausentes. Abrindo tela de configuração...");
                     Application.Run(new Token(tokenService));
                 }
             }
             catch (Exception ex)
             {
-                LogServices.Error(ex, "Erro fatal na inicialização do sistema.");
                 MessageBox.Show("Erro crítico ao iniciar: " + ex.Message);
-            }
-            finally
-            {
-                LogServices.Close();
             }
         }
     }
