@@ -347,7 +347,6 @@ namespace Telinha
                     return;
                 }
 
-
                 currentId = item.Id;
                 PreencherCampos(item);
                 _bs.Position = _bs.IndexOf(item);
