@@ -47,6 +47,8 @@
             PortaBox = new TextBox();
             UsuarioBox = new TextBox();
             SenhaBox = new TextBox();
+            label7 = new Label();
+            PanelTopTitle.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -88,6 +90,7 @@
             // PanelTopTitle
             // 
             PanelTopTitle.BackColor = Color.FromArgb(5, 74, 105);
+            PanelTopTitle.Controls.Add(label7);
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 29);
             PanelTopTitle.Name = "PanelTopTitle";
@@ -230,6 +233,15 @@
             SenhaBox.Size = new Size(754, 23);
             SenhaBox.TabIndex = 16;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(90, 22);
+            label7.Name = "label7";
+            label7.Size = new Size(38, 15);
+            label7.TabIndex = 0;
+            label7.Text = "label7";
+            // 
             // Token
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -245,6 +257,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Token";
             StartPosition = FormStartPosition.CenterScreen;
+            PanelTopTitle.ResumeLayout(false);
+            PanelTopTitle.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -273,5 +287,6 @@
         private TextBox UsuarioBox;
         private TextBox PortaBox;
         private TextBox HostBox;
+        private Label label7;
     }
 }
