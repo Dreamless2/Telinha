@@ -24,6 +24,8 @@ namespace Telinha.Models
         public long Id { get; set; }
 
         private string? _codigo;
+
+        [Column(IsIgnore = true)]
         public string? Codigo
         {
             get => _codigo;

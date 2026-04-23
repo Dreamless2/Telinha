@@ -51,7 +51,6 @@ namespace Telinha.Data
             const string sqlMidia = @"
 CREATE TABLE IF NOT EXISTS midia (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    codigo TEXT,
     nome TEXT,
     audio TEXT CHECK(audio IN ('Dublado', 'Legendado', 'Nacional', 'Desconhecido')),
     sinopse TEXT,
