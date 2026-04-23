@@ -101,42 +101,49 @@ namespace Telinha.Models
             get => _serie;
             set => SetField(ref _serie, value);
         }
+
         private string? _franquia;
         public string? Franquia
         {
             get => _franquia;
             set => SetField(ref _franquia, value);
         }
+
         private string? _autores;
         public string? Autores
         {
             get => _autores;
             set => SetField(ref _autores, value);
         }
+
         private string? _showrunners;
         public string? Showrunners
         {
             get => _showrunners;
             set => SetField(ref _showrunners, value);
         }
+
         private string? _referencia;
         public string? Referencia
         {
             get => _referencia;
             set => SetField(ref _referencia, value);
         }
+
         private string? _genero;
         public string? Genero
         {
             get => _genero;
             set => SetField(ref _genero, value);
         }
+
         private string? _tags;
         public string? Tags
         {
             get => _tags;
             set => SetField(ref _tags, value);
         }
+
         private string? _diretor;
         public string? Diretor
         {
