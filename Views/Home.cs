@@ -27,7 +27,7 @@ namespace Telinha
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
-            CodigoBox.TextChanged += BuscarMidia!;
+            CodigoBox.TextChanged += BuscarMidiaAsync!;
             SalvarButton.Click += SalvarButton_ClickAsync;
             AnteriorButton.Click += AnteriorButton_Click!;
             ProximoButton.Click += ProximoButton_Click!;
@@ -352,7 +352,7 @@ namespace Telinha
             Application.Exit();
         }
 
-        private async void BuscarMidia(object sender, EventArgs e)
+        private async void BuscarMidiaAsync(object sender, EventArgs e)
         {
             string codigoDigitado = CodigoBox.Text.Trim();
 
