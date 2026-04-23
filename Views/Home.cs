@@ -455,7 +455,7 @@ namespace Telinha
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
                 var item = _bs.Current as MidiaModel;
 
-                item.Tipo = midia.MediaType switch
+                item.Tipo = midi switch
                 {
                     "movie" => MidiaTipo.Filme.ToString(),
                     "tv" => MidiaTipo.Serie.ToString(),
