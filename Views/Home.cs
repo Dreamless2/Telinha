@@ -29,7 +29,7 @@ namespace Telinha
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
-            SalvarButton.Click += SalvarButton_ClickAsync;
+            SalvarButton.Click += SalvarButton_Click;
             AnteriorButton.Click += AnteriorButton_Click!;
             ProximoButton.Click += ProximoButton_Click!;
             ConectarEventos();
