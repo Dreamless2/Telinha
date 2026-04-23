@@ -351,20 +351,14 @@ namespace Telinha
         }
         private async void ProximoButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var item = await MidiaController.GetNext<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
+            var item = await MidiaController.GetNext<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
 
-                currentId = item.Id;
+            currentId = item.Id;
 
-                PreencherCampos(item);
-                _bs.ResetBindings(false);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            PreencherCampos(item);
+            _bs.ResetBindings(false);
         }
+                    }
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
