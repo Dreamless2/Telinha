@@ -8,8 +8,6 @@ namespace Telinha.Data
         private static IFreeSql? _db;
         private static readonly Lock _lock = new();
 
-        private static readonly string ConnStr = "Data Source=localhost;Port=3306;User ID=root;Password=qdgdTJYiuYbzp8%n;Initial Catalog=telinha;";
-
         public static IFreeSql DB
         {
             get
