@@ -309,6 +309,8 @@ namespace Telinha
 
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
 
+                MessageBox.Show(inserted ? $"{item.Nome} inserido com sucesso!" : $"{item.Nome} atualizado com sucesso!");
+
                 if (inserted)
                 {
                     ((List<MidiaModel>)_bs.DataSource!).Add(item);
@@ -317,13 +319,8 @@ namespace Telinha
                 }
                 else
                 {
-                    // só atualiza UI
                     _bs.ResetCurrentItem();
                 }
-
-                MessageBox.Show(inserted ? $"{item.Nome} inserido com sucesso!" : $"{item.Nome} atualizado com sucesso!");
-
-                _bs.EndEdit();
             }
             catch (Exception ex)
             {
