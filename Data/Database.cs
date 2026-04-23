@@ -8,6 +8,8 @@ namespace Telinha.Data
         private static IFreeSql? _db;
         private static readonly Lock _lock = new();
 
+        private static string? _connStr;
+
         public static IFreeSql DB
         {
             get
@@ -27,28 +29,38 @@ namespace Telinha.Data
 
         private static string BuildConnectionString()
         {
-            var configStore = new SecureConfigStore();
-            var config = configStore.Load();
+            if (_connStr != null)
+                return _connStr;
+
+            var config = new SecureConfigStore().Load();
 
             if (config == null)
-                throw new Exception("Configuração não encontrada.");
+                throw new InvalidOperationException("Configuração não encontrada.");
 
-            return $"Data Source={config.Host};" +
-                   $"Port={config.Porta};" +
-                   $"User ID={config.Usuario};" +
-                   $"Password={config.Senha};" +
-                   $"Initial Catalog=telinha;";
+            if (string.IsNullOrWhiteSpace(config.Host) ||
+                string.IsNullOrWhiteSpace(config.Porta) ||
+                string.IsNullOrWhiteSpace(config.Usuario) ||
+                string.IsNullOrWhiteSpace(config.Senha))
+            {
+                throw new InvalidOperationException("Configuração inválida.");
+            }
+
+            _connStr =
+                $"Data Source={config.Host};" +
+                $"Port={config.Porta};" +
+                $"User ID={config.Usuario};" +
+                $"Password={config.Senha};" +
+                $"Initial Catalog=telinha;";
+
+            return _connStr;
         }
 
-        public static void Initialize()
+        private static void Initialize()
         {
-            var ConnStr = BuildConnectionString();
-
-            if (_db != null)
-                return;
+            var connStr = BuildConnectionString();
 
             _db = new FreeSqlBuilder()
-                .UseConnectionString(DataType.MySql, ConnStr)
+                .UseConnectionString(DataType.MySql, connStr)
                 .UseAutoSyncStructure(false)
                 .Build();
         }
