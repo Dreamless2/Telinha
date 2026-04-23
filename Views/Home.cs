@@ -414,15 +414,7 @@ namespace Telinha
             AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
             ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
-
-        private async Task LoadDataAsync()
-        {
-            var lista = await Database.DB.Select<MidiaModel>()
-                    .OrderBy(m => m.Id)
-                    .ToListAsync();
-
-            _bs.DataSource = new BindingList<MidiaModel>(lista);
-        }
+    
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
