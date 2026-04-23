@@ -375,6 +375,15 @@ namespace Telinha
             Application.Exit();
         }
 
+
+
+
+
+
+
+
+
+
         private async Task LoadDataAsync()
         {
             var lista = await Database.DB.Select<MidiaModel>()
