@@ -100,14 +100,14 @@
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 560);
+            PanelBottom.Location = new Point(0, 740);
             PanelBottom.Name = "PanelBottom";
             PanelBottom.Size = new Size(929, 44);
             PanelBottom.TabIndex = 6;
             // 
             // SalvarButton
             // 
-            SalvarButton.Location = new Point(257, 473);
+            SalvarButton.Location = new Point(253, 658);
             SalvarButton.Name = "SalvarButton";
             SalvarButton.Size = new Size(180, 41);
             SalvarButton.TabIndex = 7;
@@ -116,7 +116,7 @@
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(493, 473);
+            SairButton.Location = new Point(489, 658);
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(180, 41);
             SairButton.TabIndex = 8;
@@ -172,7 +172,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(929, 604);
+            ClientSize = new Size(929, 784);
             Controls.Add(groupBox1);
             Controls.Add(label6);
             Controls.Add(label5);
