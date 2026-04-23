@@ -129,22 +129,7 @@ namespace Telinha.Factory
                 item.Diretor = string.Join(" ", directors);
             }
 
-            // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)
-            /*var paisRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString() ?? "--";
-            var idiomaRaw = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString() ?? "--";
-
-            // Cria as tasks só se não for "--"
-            var taskPais = paisRaw != "--" ? deepl.Translate(paisRaw) : Task.FromResult<string?>(null);
-            var taskIdioma = idiomaRaw != "--" ? Task.FromResult(LanguageMapper.ToPtBr(idiomaRaw)) : Task.FromResult<string?>("--")!;
-
-            // Espera as 2
-            await Task.WhenAll(taskPais!, taskIdioma);
-
-            // Pega o resultado das tasks, não chama de novo
-            item.Local = taskPais.Result ?? "--";
-            item.Idioma = TagEngine.FormatarTitulo(taskIdioma.Result ?? "--").ToLower();
-            */
-
+            // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)            
             var countryRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString();
 
             var languageEnglish = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString();
