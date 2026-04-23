@@ -3,7 +3,6 @@
 namespace Telinha.Models
 {
     [Table(Name = "cache")]
-    // Este índice garante que a combinação de tipo e id seja única no banco
     [Index("idx_cache_unique", "type, midia_id", true)]
     public class CacheModel
     {
