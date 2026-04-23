@@ -51,7 +51,7 @@ namespace Telinha
 
                 if (string.IsNullOrWhiteSpace(tmdbToken) && string.IsNullOrWhiteSpace(deeplToken) && string.IsNullOrWhiteSpace(host) && string.IsNullOrWhiteSpace(porta) && string.IsNullOrWhiteSpace(usuario) && string.IsNullOrWhiteSpace(senha))
                 {
-                    MessageBox.Show("Preencha os campos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Preencha os campos para continuar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
