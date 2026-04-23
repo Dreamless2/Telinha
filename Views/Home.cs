@@ -335,27 +335,24 @@ namespace Telinha
         }
         private async void AnteriorButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var item = await MidiaController.GetPrevious<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
+            var item = await MidiaController.GetPrevious<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
 
-                if (item == null)
-                {
-                    MessageBox.Show("Não há mais registros.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ProximoButton.Enabled = false; // já desabilita
-                    return;
-                }
-
-                currentId = item.Id;
-                PreencherCampos(item);
-                _bs.Position = _bs.IndexOf(item);
-            }
-            catch (Exception ex)
+            if (item == null)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Não há mais registros.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ProximoButton.Enabled = false; // já desabilita
+                return;
             }
+
+            currentId = item.Id;
+            PreencherCampos(item);
+            _bs.Position = _bs.IndexOf(item);
+            await AtualizarBotoesNavegacao();
+
         }
+
+
         private async void ProximoButton_Click(object sender, EventArgs e)
         {
             var item = await MidiaController.GetNext<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
