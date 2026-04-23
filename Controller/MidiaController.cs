@@ -30,11 +30,9 @@ namespace Telinha.Controller
             return prop;
         }
 
-        public static async Task<(bool inserted, bool updated)> SaveAsync<T>(T item)
-    where T : class, IEntity
+        public static async Task<(bool inserted, bool updated)> SaveAsync<T>(T item) where T : class, IEntity
         {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
+            ArgumentNullException.ThrowIfNull(item);
 
             if (string.IsNullOrWhiteSpace(item.Codigo))
                 throw new ArgumentException("Código da mídia inválido.");
