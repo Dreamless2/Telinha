@@ -1,7 +1,6 @@
 ﻿using FreeSql.DataAnnotations;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Telinha.Entity;
 using Telinha.Utils;
 
 namespace Telinha.Models
