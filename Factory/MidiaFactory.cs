@@ -156,7 +156,6 @@ namespace Telinha.Factory
                 .FormatarTitulo(taskIdioma.Result ?? "--")
                 .ToLower();
 
-
             return item;
         }
     }
