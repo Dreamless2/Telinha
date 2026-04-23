@@ -6,65 +6,58 @@ namespace Telinha.Utils
 {
     public class TagEngine
     {
-        private static readonly Dictionary<string, string> GeneroMapeado = new()
-        {
-            { "ficção científica", "ficcaocientifica ficçãocientífica" },
-            { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-            { "ficção científica e aventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
-            { "romântico", "romantico romântico" },
-            { "romântica", "romantica romântica" },
-            { "comédia", "comedia comédia" },
-            { "mistério", "misterio mistério" },
-            { "ação", "acao ação" },
-            { "ação e fantasia", "acaoefantasia açãoefantasia" },
-            { "ação e aventura", "acaoeaventura açãoeaventura" },
-            { "animação", "animacao animação" },
-            { "documentário", "documentario documentário" },
-            { "comédia dramática", "comediadramatica comédiadramática" },
-            { "comédia romântica", "comediaromantica comédiaromântica" },
-            { "ficção científica e fantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-            { "ficção científica e ação", "ficcaocientificaeacao ficçãocientíficaeação" },
-            { "ficção científica e comédia", "ficcaocientificaecomedia ficçãocientíficaecomédia" },
-            { "ficção científica e drama", "ficcaocientificaedrama ficçãocientíficaedrama" },
-            { "ficção científica e mistério", "ficcaocientificaemisterio ficçãocientíficaemistério" },
-            { "ficção científica e romance", "ficcaocientificaeromance ficçãocientíficaeromance" },
-            { "ficção científica e terror", "ficcaocientificaeterror ficçãocientíficaeterror" }
-        };
+        // Armazenamos os nomes limpos para evitar reprocessamento
+        private static readonly HashSet<string> GenerosBase = new()
+    {
+        "ficção científica", "comédia romântica", "ação e aventura" 
+        // Adicione apenas os nomes "bonitos" aqui se precisar de uma lista fixa, 
+        // ou deixe vazio para aceitar qualquer entrada.
+    };
 
-        public static string NormalizarGeneros(string entrada)
+        public static string NormalizarGeneros(string? entrada)
         {
-            if (string.IsNullOrWhiteSpace(entrada))
-            {
-                return string.Empty;
-            }
+            if (string.IsNullOrWhiteSpace(entrada)) return string.Empty;
 
+            // Usamos um StringBuilder com tamanho inicial estimado para evitar realocações
+            var resultado = new StringBuilder(entrada.Length * 2);
             var hashTags = new HashSet<string>();
 
-            var generos = entrada.Split(',')
-                                 .Select(g => g.Trim().ToLowerInvariant());
-
-            foreach (var generoOriginal in generos)
+            // Span-based splitting para evitar alocar arrays de strings
+            foreach (var segmento in entrada.AsSpan().EnumerateSplits(','))
             {
-                var chave = generoOriginal.Replace(" ", "");
+                var genero = entrada.AsSpan(segmento).Trim();
+                if (genero.IsEmpty) continue;
 
-                if (GeneroMapeado.TryGetValue(chave, out var formas))
-                {
-                    foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
-                    {
-                        hashTags.Add($"#{forma}");
-                    }
-                }
-                else
-                {
-                    var semEspaco = chave;
-                    var semAcento = RemoverAcentos(semEspaco);
+                // 1. Gerar versão com acento e sem espaços
+                string comAcento = genero.ToString().Replace(" ", "").ToLowerInvariant();
 
-                    hashTags.Add($"#{semAcento}");
-                    hashTags.Add($"#{semEspaco}");
-                }
+                // 2. Gerar versão sem acento e sem espaços
+                string semAcento = RemoverAcentos(comAcento);
+
+                hashTags.Add($"#{comAcento}");
+                hashTags.Add($"#{semAcento}");
             }
 
             return string.Join(" ", hashTags);
+        }
+
+        private static string RemoverAcentos(string texto)
+        {
+            // Técnica eficiente usando Normalização de forma D (Decomposition)
+            var normalizada = texto.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder(normalizada.Length);
+
+            foreach (var c in normalizada)
+            {
+                var category = CharUnicodeInfo.GetUnicodeCategory(c);
+                // Mantém apenas o que não é marca de acentuação (NonSpacingMark)
+                if (category != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(c);
+                }
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
         }
 
         public static string GerarTags(string texto)
