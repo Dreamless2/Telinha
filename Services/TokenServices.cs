@@ -11,7 +11,7 @@ namespace Telinha.Services
         private readonly IFreeSql _fsql;
         private readonly byte[] _masterKey;
         private readonly TokenEncryptionServices _encryptor;
-        private readonly IMemoryCache _cache;
+        private readonly MemoryCache _cache;
 
         public TokenServices()
         {
