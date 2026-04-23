@@ -340,10 +340,7 @@ namespace Telinha
         {
             try
             {
-                var item = MidiaController.GetPrevious<MidiaModel>(currentId);
-
-                if (item == null)
-                    throw new Exception("Não há mais registros.");
+                var item = MidiaController.GetNext<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
 
                 currentId = item.Id;
 
