@@ -27,10 +27,6 @@ namespace Telinha.Data
             if (_db != null)
                 return;
 
-            if (!File.Exists(DbPath))
-            {
-                using (File.Create(DbPath)) { }
-            }
 
             _db = new FreeSqlBuilder()
                 .UseConnectionString(DataType.Sqlite, $"Data Source={DbPath}")
