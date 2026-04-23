@@ -14,10 +14,22 @@ namespace Telinha
             SairButton.Click += SairButton_Click!;
             TokenDEEPLBox.PasswordChar = '\u200B';
             TokenTMDBBox.PasswordChar = '\u200B';
+            HostBox.PasswordChar = '\u200B';
+            PortaBox.PasswordChar = '\u200B';
+            UsuarioBox.PasswordChar = '\u200B';
+            SenhaBox.PasswordChar = '\u200B';
             TokenDEEPLBox.ShortcutsEnabled = true;
             TokenTMDBBox.ShortcutsEnabled = true;
+            HostBox.ShortcutsEnabled = true;
+            PortaBox.ShortcutsEnabled = true;
+            UsuarioBox.ShortcutsEnabled = true;
+            SenhaBox.ShortcutsEnabled = true;
             TokenDEEPLBox.TextChanged += (s, e) => Hidden(TokenDEEPLBox);
             TokenTMDBBox.TextChanged += (s, e) => Hidden(TokenTMDBBox);
+            HostBox.TextChanged += (s, e) => Hidden(HostBox);
+            PortaBox.TextChanged += (s, e) => Hidden(PortaBox);
+            UsuarioBox.TextChanged += (s, e) => Hidden(UsuarioBox);
+            SenhaBox.TextChanged += (s, e) => Hidden(SenhaBox);
         }
         private static void Hidden(TextBoxBase txt)
         {
