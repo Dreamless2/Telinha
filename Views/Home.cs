@@ -411,6 +411,11 @@ namespace Telinha
             }
         }
 
+        private readonly System.Windows.Forms.Timer _searchTimer = new()
+        {
+            Interval = 400 // ms
+        };
+
 
 
 
