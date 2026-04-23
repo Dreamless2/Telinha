@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Telinha.Entity
 {
-    internal interface IEntity
+    public interface IEntity
     {
         long Id { get; }
         string Codigo { get; set; }
