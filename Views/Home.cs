@@ -371,6 +371,7 @@ namespace Telinha
             currentId = item.Id;
             PreencherCampos(item);
             _bs.ResetBindings(false);
+            await AtualizarBotoesNavegacao();
         }
 
         private void SairButton_Click(object sender, EventArgs e)
