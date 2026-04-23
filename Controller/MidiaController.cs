@@ -103,10 +103,5 @@ namespace Telinha.Controller
                 .Where("id < @id", new { id })
                 .AnyAsync();
 
-
     }
-
-
-
-
 }
