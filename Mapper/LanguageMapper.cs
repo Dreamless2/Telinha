@@ -2,7 +2,7 @@
 {
     public static class LanguageMapper
     {
-        private static readonly Dictionary<string, string> Map = new(StringComparer.OrdinalIgnoreCase)
+        private static readonly concurret<string, string> Map = new(StringComparer.OrdinalIgnoreCase)
         {
             ["English"] = "Inglês",
             ["en"] = "Inglês",
