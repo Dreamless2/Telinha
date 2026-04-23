@@ -350,7 +350,7 @@ namespace Telinha
 
                 currentId = item.Id;
                 PreencherCampos(item);
-                _bs.ResetBindings(false);
+                _bs.Position = _bs.IndexOf(item);
             }
             catch (Exception ex)
             {
