@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using System.Collections.Concurrent;
 using Telinha.Data;
 using Telinha.Helpers;
 using Telinha.Models;

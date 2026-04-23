@@ -19,7 +19,7 @@ namespace Telinha.Factory
                 var key = await _tokenService.ObterTokenAsync("DEEPL");
 
                 if (string.IsNullOrWhiteSpace(key))
-                    throw new InvalidOperationException("Token DeepL não configurado.");
+                    throw new InvalidOperationException("Chave API do DeepL não configurada.");
 
                 _deepLClient = new DeepLClient(key);
             }
@@ -33,7 +33,7 @@ namespace Telinha.Factory
                 var token = await _tokenService.ObterTokenAsync("TMDB");
 
                 if (string.IsNullOrWhiteSpace(token))
-                    throw new InvalidOperationException("Token TMDB não configurado.");
+                    throw new InvalidOperationException("Chave API do TMDB não configurada.");
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
                 _tmdbClient.AddDefaultParameter("api_key", token);

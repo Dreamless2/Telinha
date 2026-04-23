@@ -2,20 +2,11 @@
 
 namespace Telinha.Store
 {
-    public sealed class SecureKeyStore
+    public class SecureKeyStore(TokenEncryptionServices crypto, string filePath)
     {
-        private readonly TokenEncryptionServices _crypto;
-        private readonly string _filePath;
+        private readonly TokenEncryptionServices _crypto = crypto ?? throw new ArgumentNullException(nameof(crypto));
+        private readonly string _filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
 
-        public SecureKeyStore(TokenEncryptionServices crypto, string filePath)
-        {
-            _crypto = crypto ?? throw new ArgumentNullException(nameof(crypto));
-            _filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
-        }
-
-        /// <summary>
-        /// Salva um valor criptografado no arquivo
-        /// </summary>
         public void Save(string value, string? aad = null)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -26,9 +17,6 @@ namespace Telinha.Store
             File.WriteAllText(_filePath, encrypted);
         }
 
-        /// <summary>
-        /// Lê e descriptografa o valor do arquivo
-        /// </summary>
         public string Load(string? aad = null)
         {
             if (!File.Exists(_filePath))
@@ -39,17 +27,11 @@ namespace Telinha.Store
             return _crypto.Decrypt(encrypted, aad);
         }
 
-        /// <summary>
-        /// Verifica se o arquivo existe
-        /// </summary>
         public bool Exists()
         {
             return File.Exists(_filePath);
         }
 
-        /// <summary>
-        /// Remove o arquivo com segurança básica
-        /// </summary>
         public void Delete()
         {
             if (File.Exists(_filePath))

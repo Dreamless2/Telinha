@@ -1,5 +1,6 @@
 ﻿using Telinha.Factory;
 using Telinha.Services;
+using Telinha.Store;
 
 namespace Telinha
 {
@@ -43,10 +44,15 @@ namespace Telinha
             {
                 var tmdbToken = TokenTMDBBox.Text?.Trim();
                 var deeplToken = TokenDEEPLBox.Text?.Trim();
+                var host = HostBox.Text?.Trim();
+                var porta = PortaBox.Text?.Trim();
+                var usuario = UsuarioBox.Text?.Trim();
+                var senha = SenhaBox.Text?.Trim();
 
-                if (string.IsNullOrWhiteSpace(tmdbToken) && string.IsNullOrWhiteSpace(deeplToken))
+
+                if (string.IsNullOrWhiteSpace(tmdbToken) && string.IsNullOrWhiteSpace(deeplToken) && string.IsNullOrWhiteSpace(host) && string.IsNullOrWhiteSpace(porta) && string.IsNullOrWhiteSpace(usuario) && string.IsNullOrWhiteSpace(senha))
                 {
-                    MessageBox.Show("Informe a chave de acesso.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Preencha os campos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -67,6 +73,16 @@ namespace Telinha
                         "Chave de API do DeepL"
                     );
                 }
+
+                var configStore = new SecureConfigStore();
+                var existing = configStore.Load() ?? new SecureConfigStore.ConfigData();
+
+                existing.Host = host ?? existing.Host;
+                existing.Porta = porta ?? existing.Porta;
+                existing.Usuario = usuario ?? existing.Usuario;
+                existing.Senha = senha ?? existing.Senha;
+
+                configStore.Save(existing);
 
                 MessageBox.Show("Chaves de acesso salvas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
