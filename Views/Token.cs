@@ -1,5 +1,4 @@
 ﻿using Telinha.Factory;
-using Telinha.Infrastructure.Logging;
 using Telinha.Services;
 
 namespace Telinha

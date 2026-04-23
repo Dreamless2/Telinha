@@ -1,6 +1,5 @@
 ﻿using Telinha.Data;
 using Telinha.Helpers;
-using Telinha.Infrastructure.Logging;
 using Telinha.Models;
 using Telinha.Services;
 

@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using RestSharp;
-using Telinha.Infrastructure.Logging;
 
 namespace Telinha.Services
 {
