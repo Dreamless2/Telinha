@@ -261,8 +261,9 @@ namespace Telinha
         {
             CodigoBox.Focus();
             CodigoBox.SelectAll();
-
             SetupBindings();
+
+            await LoadDataAsync();
 
             _tmdb = await _apiFactory.GetTMDBAsync();
 
