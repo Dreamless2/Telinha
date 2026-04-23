@@ -1,12 +1,13 @@
 ﻿using FreeSql.DataAnnotations;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Telinha.Entity;
 using Telinha.Utils;
 
 namespace Telinha.Models
 {
     [Table(Name = "midia")]
-    public class MidiaModel : INotifyPropertyChanged
+    public class MidiaModel : INotifyPropertyChanged, IEntity
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
