@@ -303,6 +303,8 @@ namespace Telinha
         {
             try
             {
+                _bs.EndEdit();
+
                 var item = (MidiaModel)_bs.Current!;
 
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
