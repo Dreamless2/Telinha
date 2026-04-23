@@ -312,12 +312,15 @@ namespace Telinha
 
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
 
-                MessageBox.Show(inserted ? $"{item.Nome} inserido com sucesso!" : $"{item.Nome} atualizado com sucesso!");
+                MessageBox.Show(inserted
+                    ? $"{item.Nome} inserido com sucesso!"
+                    : $"{item.Nome} atualizado com sucesso!");
 
                 if (inserted)
                 {
-                    ((List<MidiaModel>)_bs.DataSource!).Add(item);
-                    _bs.ResetBindings(false);
+                    var lista = (BindingList<MidiaModel>)_bs.DataSource!;
+                    lista.Add(item);
+
                     _bs.Position = _bs.Count - 1;
                 }
                 else
