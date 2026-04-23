@@ -24,7 +24,7 @@ namespace Telinha.Services
             public string? DEEPL { get; set; }
         }
 
-        public void Save(AppConfig config)
+        public static void Save(AppConfig config)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(FilePath)!);
 
