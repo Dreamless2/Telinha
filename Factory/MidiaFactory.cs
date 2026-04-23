@@ -129,7 +129,6 @@ namespace Telinha.Factory
             var languageEnglish = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString();
             var languageIso = json["spoken_languages"]?.FirstOrDefault()?["iso_639_1"]?.ToString();
 
-            // 🔹 Tasks reais
             var taskPais = !string.IsNullOrWhiteSpace(countryRaw)
                 ? deepl.Translate(countryRaw)
                 : Task.FromResult<string?>("--");
@@ -140,10 +139,8 @@ namespace Telinha.Factory
                 deepl.Translate
             );
 
-            // 🔹 Aguarda tudo
             await Task.WhenAll(taskPais!, taskIdioma);
 
-            // 🔹 Resultado final
             item.Local = taskPais.Result ?? "--";
 
             item.Idioma = TagEngine
