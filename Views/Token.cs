@@ -56,7 +56,7 @@ namespace Telinha
                     );
                 }
 
-                MessageBox.Show("Salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Chaves de acesso salvas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Hide();
 
