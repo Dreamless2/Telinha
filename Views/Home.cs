@@ -264,6 +264,7 @@ namespace Telinha
             SetupBindings();
 
             await LoadDataAsync();
+            _bs.Position = _bs.Count - 1;
 
             _tmdb = await _apiFactory.GetTMDBAsync();
 
