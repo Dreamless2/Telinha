@@ -38,6 +38,7 @@
             SalvarButton = new Button();
             SairButton = new Button();
             label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // TokenTMDBBox
@@ -122,17 +123,27 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(92, 282);
+            label3.Location = new Point(61, 242);
             label3.Name = "label3";
-            label3.Size = new Size(61, 15);
+            label3.Size = new Size(32, 15);
             label3.TabIndex = 9;
-            label3.Text = "API TMDB";
+            label3.Text = "Host";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(448, 295);
+            label4.Name = "label4";
+            label4.Size = new Size(32, 15);
+            label4.TabIndex = 10;
+            label4.Text = "Host";
             // 
             // Token
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(929, 604);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(SairButton);
             Controls.Add(SalvarButton);
@@ -162,5 +173,6 @@
         private Button SalvarButton;
         private Button SairButton;
         private Label label3;
+        private Label label4;
     }
 }
