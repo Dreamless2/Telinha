@@ -453,15 +453,7 @@ namespace Telinha
                 }
 
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
-                var item = _bs.Current as MidiaModel;
-
-                item.Tipo = midi switch
-                {
-                    "movie" => MidiaTipo.Filme.ToString(),
-                    "tv" => MidiaTipo.Serie.ToString(),
-                    _ => item.Tipo
-                };
-
+                
                 if (midia == null)
                 {
                     MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
