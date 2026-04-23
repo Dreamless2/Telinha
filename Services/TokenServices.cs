@@ -47,7 +47,6 @@ namespace Telinha.Services
             if (string.IsNullOrWhiteSpace(keyName))
                 return null;
 
-
             if (_cache.TryGetValue(keyName, out var cached))
                 return cached;
 
