@@ -218,7 +218,7 @@
             // 
             textBox3.Location = new Point(77, 93);
             textBox3.Name = "textBox3";
-            textBox3.PlaceholderText = "API TMDB";
+            textBox3.PlaceholderText = "Usuário";
             textBox3.Size = new Size(754, 23);
             textBox3.TabIndex = 15;
             // 
