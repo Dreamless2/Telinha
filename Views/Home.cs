@@ -427,17 +427,7 @@ namespace Telinha
             if (string.IsNullOrWhiteSpace(texto))
                 return;
 
-            var item = Database.DB.Select<MidiaModel>()
-                .Where(m => m.Nome.Contains(texto))
-                .OrderBy(m => m.Nome)
-                .First();
-
-            if (item != null)
-            {
-                currentId = item.Id;
-                _bs.DataSource = item;
-                _bs.ResetBindings(false);
-            }
+            BuscarMidiaAsync(null, null);
         }
 
 
