@@ -29,7 +29,7 @@ namespace Telinha.Data
 
 
             _db = new FreeSqlBuilder()
-                .UseConnectionString(DataType.Sqlite, $"Data Source={DbPath}")
+                .UseConnectionString(DataType.MySql, "")
                 .UseAutoSyncStructure(false)
                 .Build();
 
