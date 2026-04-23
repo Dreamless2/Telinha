@@ -306,18 +306,13 @@ namespace Telinha
         {
             try
             {
-                _bs.EndEdit(); // força validar último campo
+                _bs.EndEdit();
 
-                if (_bs.Current == null)
+                if (_bs.Current is not MidiaModel item)
                 {
                     MessageBox.Show("Nenhum registro para salvar.", "Aviso");
                     return;
                 }
-
-                var item = (MidiaModel)_bs.Current;
-
-                // Se Id = 0 é insert, se não é update
-                bool isNew = item.Id == 0;
 
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
 
@@ -325,24 +320,24 @@ namespace Telinha
                     ? $"{item.Nome} inserido com sucesso!"
                     : $"{item.Nome} atualizado com sucesso!");
 
-                if (inserted && isNew)
+                if (inserted && item.Id != 0)
                 {
-                    // SaveAsync já deve ter setado o item.Id com o novo ID do banco
                     currentId = item.Id;
 
-                    // Se a lista não contém ainda, adiciona
-                    var lista = (BindingList<MidiaModel>)_bs.DataSource;
-                    if (!lista.Contains(item))
+                    // Pattern matching já garante que não é nulo
+                    if (_bs.DataSource is BindingList<MidiaModel> lista && !lista.Contains(item))
+                    {
                         lista.Add(item);
+                    }
 
                     _bs.Position = _bs.IndexOf(item);
                 }
                 else
                 {
-                    _bs.ResetCurrentItem(); // atualiza só a linha atual
+                    _bs.ResetCurrentItem();
                 }
 
-                await AtualizarBotoesNavegacao(); // atualiza Próximo/Anterior
+                await AtualizarBotoesNavegacao();
             }
             catch (Exception ex)
             {
