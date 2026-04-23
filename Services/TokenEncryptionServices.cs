@@ -11,7 +11,6 @@ namespace Telinha.Services
         private const int NonceSize = 12; // 96 bits
         private const int TagSize = 16;   // 128 bits
         private const byte Version = 1;
-
         public TokenEncryptionServices(byte[] key)
         {
             if (key == null || key.Length != 32)
