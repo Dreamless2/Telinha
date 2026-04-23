@@ -314,6 +314,25 @@ namespace Telinha
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void AnteriorButton_Click(object sender, EventArgs e)
+        {
+            if (currentId <= 1)
+            {
+                MessageBox.Show("Este é o primeiro registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+        }
+
+        private void ProximoButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
