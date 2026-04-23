@@ -1,4 +1,5 @@
-﻿using Telinha.Card;
+﻿using System.ComponentModel;
+using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Data;
 using Telinha.Enums;
@@ -377,10 +378,10 @@ namespace Telinha
         private async Task LoadDataAsync()
         {
             var lista = await Database.DB.Select<MidiaModel>()
-                .OrderBy(m => m.Id)
-                .ToListAsync();
+    .OrderBy(m => m.Id)
+    .ToListAsync();
 
-            _bs.DataSource = lista;
+            _bs.DataSource = new BindingList<MidiaModel>(lista);
         }
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
