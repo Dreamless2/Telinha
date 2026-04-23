@@ -28,6 +28,8 @@ namespace Telinha
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
             SalvarButton.Click += SalvarButton_ClickAsync;
+            AnteriorButton.Click += AnteriorButton_Click!;
+            ProximoButton.Click += ProximoButton_Click!;
             ConectarEventos();
         }
         private void SetupBindings()
@@ -54,7 +56,6 @@ namespace Telinha
             ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
             ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
         }
-
         private async Task Carregar()
         {
             var item = await MidiaController.GetFirstAsync<MidiaModel>();
@@ -77,7 +78,6 @@ namespace Telinha
                 _ => tipo.ToString()
             };
         }
-
         private void PreencherMascara(MidiaTipo tipo)
         {
             var card = new MidiaCard(
