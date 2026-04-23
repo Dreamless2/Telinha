@@ -94,9 +94,9 @@ namespace Telinha.Controller
 
 
         public static async Task<bool> ExistsNext<T>(long id) where T : class
-    => await DB.Select<T>()
-        .Where("id > @id", new { id })
-        .AnyAsync(); // SELECT 1 WHERE EXISTS... bem mais rápido que trazer o objeto
+            => await DB.Select<T>()
+                .Where("id > @id", new { id })
+                .AnyAsync(); // SELECT 1 WHERE EXISTS... bem mais rápido que trazer o objeto
 
         public static async Task<bool> ExistsPrevious<T>(long id) where T : class
             => await DB.Select<T>()
