@@ -132,11 +132,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(448, 295);
+            label4.Location = new Point(61, 293);
             label4.Name = "label4";
-            label4.Size = new Size(32, 15);
+            label4.Size = new Size(47, 15);
             label4.TabIndex = 10;
-            label4.Text = "Host";
+            label4.Text = "Usuário";
             // 
             // Token
             // 
