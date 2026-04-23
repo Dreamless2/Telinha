@@ -46,7 +46,7 @@
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            SenhaBox = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -181,7 +181,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox4);
+            groupBox2.Controls.Add(SenhaBox);
             groupBox2.Controls.Add(textBox3);
             groupBox2.Controls.Add(textBox2);
             groupBox2.Controls.Add(textBox1);
@@ -222,13 +222,13 @@
             textBox3.Size = new Size(754, 23);
             textBox3.TabIndex = 15;
             // 
-            // textBox4
+            // SenhaBox
             // 
-            textBox4.Location = new Point(77, 131);
-            textBox4.Name = "textBox4";
-            textBox4.PlaceholderText = "API TMDB";
-            textBox4.Size = new Size(754, 23);
-            textBox4.TabIndex = 16;
+            SenhaBox.Location = new Point(77, 131);
+            SenhaBox.Name = "SenhaBox";
+            SenhaBox.PlaceholderText = "Senha";
+            SenhaBox.Size = new Size(754, 23);
+            SenhaBox.TabIndex = 16;
             // 
             // Token
             // 
@@ -269,7 +269,7 @@
         private Label label6;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private TextBox textBox4;
+        private TextBox SenhaBox;
         private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
