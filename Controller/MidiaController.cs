@@ -77,13 +77,13 @@ namespace Telinha.Controller
             => DB.Select<T>()
                 .Where("id > @id", new { id })
                 .OrderBy("id")
-                .First();
+                .FirstAsync();
 
-        public static T? GetPrevious<T>(long id) where T : class
+        public async static T? GetPrevious<T>(long id) where T : class
             => DB.Select<T>()
                 .Where("id < @id", new { id })
                 .OrderBy("id DESC")
-                .First();
+                .FirstAsync();
 
         public static bool Any<T>() where T : class
             => DB.Select<T>().Any();
