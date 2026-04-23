@@ -13,8 +13,6 @@ namespace Telinha.Services
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
-            LogServices.Info("Buscando midia: {Id} - {Tipo}", id, tipoSolicitado);
-
             var tipoAlternativo = (tipoSolicitado == MidiaTipo.Filme)
                 ? MidiaTipo.Serie
                 : MidiaTipo.Filme;
