@@ -314,7 +314,6 @@ namespace Telinha
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void AnteriorButton_Click(object sender, EventArgs e)
         {
             try
@@ -330,9 +329,7 @@ namespace Telinha
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
-
         private async void ProximoButton_Click(object sender, EventArgs e)
         {
             try
@@ -349,7 +346,6 @@ namespace Telinha
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
