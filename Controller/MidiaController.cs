@@ -79,8 +79,8 @@ namespace Telinha.Controller
                 .OrderBy("id")
                 .FirstAsync();
 
-        public async static T? GetPrevious<T>(long id) where T : class
-            => DB.Select<T>()
+        public async static Task<T?> GetPrevious<T>(long id) where T : class
+            => await DB.Select<T>()
                 .Where("id < @id", new { id })
                 .OrderBy("id DESC")
                 .FirstAsync();
