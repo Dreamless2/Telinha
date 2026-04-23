@@ -265,10 +265,6 @@ namespace Telinha
 
             SetupBindings();
 
-            await LoadDataAsync();
-
-            _bs.Position = _bs.Count - 1;
-
             _tmdb = await _apiFactory.GetTMDBAsync();
 
             var tokenService = new TokenServices();
@@ -414,7 +410,7 @@ namespace Telinha
             AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
             ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
-    
+
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
