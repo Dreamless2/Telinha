@@ -172,7 +172,6 @@ namespace Telinha.Factory
                 .FormatarTitulo(taskIdioma.Result ?? "--")
                 .ToLower();
 
-            LogServices.Info("Mídia criada com sucesso.");
 
             return item;
         }
