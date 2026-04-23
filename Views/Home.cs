@@ -329,7 +329,6 @@ namespace Telinha
                     }
 
                     _bs.Position = _bs.IndexOf(item);
-                    await AtualizarBotoesNavegacao();
                 }
                 else
                 {
