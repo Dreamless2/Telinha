@@ -32,7 +32,7 @@ namespace Telinha
                 }
                 catch
                 {
-                    Application.Run(new Token());
+                    Application.Run(new TokenServices());
                     return;
                 }
 
