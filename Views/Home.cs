@@ -317,21 +317,13 @@ namespace Telinha
 
         private void AnteriorButton_Click(object sender, EventArgs e)
         {
-            if (currentId <= 1)
-            {
-                MessageBox.Show("Este é o primeiro registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+
 
         }
 
         private void ProximoButton_Click(object sender, EventArgs e)
         {
-            if (currentId <= 0)
-            {
-                MessageBox.Show("Nenhum registro carregado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+
         }
 
 
