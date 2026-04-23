@@ -353,8 +353,8 @@ namespace Telinha
             {
                 MessageBox.Show(ex.Message);
             }*/
-            if (_bs.Position > 0)
-                _bs.MovePrevious();
+            if (_bs.Position < _bs.Count - 1)
+                _bs.MoveNext();
             else
                 MessageBox.Show("Não há mais registros.");
         }
