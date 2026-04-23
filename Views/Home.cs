@@ -469,7 +469,6 @@ namespace Telinha
                 PreencherCampos(midia);
 
                 CodigoBox.Text = codigoDigitado;
-
                 CodigoBox.SelectionStart = CodigoBox.Text.Length;
                 CodigoBox.SelectionLength = 0;
             }
