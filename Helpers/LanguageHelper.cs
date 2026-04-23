@@ -47,10 +47,8 @@ namespace Telinha.Helpers
             }
             catch
             {
-                // ignora erro de API
             }
 
-            // 🔹 5. fallback final
             return raw;
         }
     }
