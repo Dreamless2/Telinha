@@ -80,7 +80,8 @@ namespace Telinha.Factory
             );
 
             // 7. CAMPOS ESPECÍFICOS POR CATEGORIA
-            var tituloFormatado = TagEngine.FormatarTitulo(item.Nome);
+            //var tituloFormatado = TagEngine.FormatarTitulo(item.Nome);
+            var tituloFormatado = TagEngine.FormatarTitulo("Highlander 2 A Ressurreição");
 
             if (tipoDetectado == MidiaTipo.Anime)
             {
