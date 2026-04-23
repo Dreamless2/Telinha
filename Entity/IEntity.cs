@@ -7,7 +7,7 @@ namespace Telinha.Entity
 {
     public interface IEntity
     {
-        public long Id { get; }
+        public long Id { get; set; }
         public string Codigo { get; set; }
     }
 }
