@@ -236,11 +236,13 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(90, 22);
+            label7.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(12, 0);
             label7.Name = "label7";
-            label7.Size = new Size(38, 15);
+            label7.Size = new Size(146, 65);
             label7.TabIndex = 0;
-            label7.Text = "label7";
+            label7.Text = "Login";
             // 
             // Token
             // 
