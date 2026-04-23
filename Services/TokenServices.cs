@@ -1,7 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using Telinha.Data;
 using Telinha.Helpers;
-using Telinha.Infrastructure.Logging;
 using Telinha.Models;
 
 namespace Telinha.Services

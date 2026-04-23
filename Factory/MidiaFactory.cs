@@ -2,7 +2,6 @@
 using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Helpers;
-using Telinha.Infrastructure.Logging;
 using Telinha.Models;
 using Telinha.Utils;
 

@@ -2,7 +2,6 @@
 using Telinha.Cache;
 using Telinha.Enums;
 using Telinha.Factory;
-using Telinha.Infrastructure.Logging;
 using Telinha.Models;
 
 namespace Telinha.Services
