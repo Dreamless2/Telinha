@@ -123,7 +123,6 @@ namespace Telinha.Services
                 else
                     MidiaCache.Save(tipo, id, JsonConvert.SerializeObject(model));
 
-
             bool invalido = results[0]?["id"] == null || (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString())) || (tipo != MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()));
 
             if (invalido)
