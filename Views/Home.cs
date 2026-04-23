@@ -360,8 +360,15 @@ namespace Telinha
         {
             var item = await MidiaController.GetNext<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
 
-            currentId = item.Id;
+            if (item == null)
+            {
+                MessageBox.Show("Não há mais registros.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AnteriorButton.Enabled = false; // já desabilita
+                return;
+            }
 
+            currentId = item.Id;
             PreencherCampos(item);
             _bs.ResetBindings(false);
         }
