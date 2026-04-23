@@ -21,7 +21,7 @@ namespace Telinha.Store
             public string? Senha { get; set; }
         }
 
-        public static void Save(ConfigData data)
+        public void Save(ConfigData data)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(FilePath)!);
 
@@ -36,7 +36,7 @@ namespace Telinha.Store
             File.SetAttributes(FilePath, FileAttributes.Hidden);
         }
 
-        public static ConfigData? Load()
+        public ConfigData? Load()
         {
             if (!File.Exists(FilePath))
                 return null;
