@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Telinha.Services
 {
-    public class AppConfigService
+    public class AppConfigServices
     {
         private static readonly string FilePath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
@@ -65,3 +63,4 @@ namespace Telinha.Services
             }
         }
     }
+}
