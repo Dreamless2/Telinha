@@ -355,63 +355,13 @@ namespace Telinha
             Application.Exit();
         }
 
-        private async void BuscarMidiaAsync(object sender, EventArgs e)
+        private async Task LoadDataAsync()
         {
-            string codigoDigitado = CodigoBox.Text.Trim();
+            var lista = await Database.DB.Select<MidiaModel>()
+                .OrderBy(m => m.Id)
+                .ToListAsync();
 
-            if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
-            {
-                MessageBox.Show("Informe o código do TMDB.", "Código Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (_buscando)
-                return;
-
-            _buscando = true;
-
-            try
-            {
-                MidiaTipo tipoSolicitado = TipoLabel.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
-                    ? MidiaTipo.Filme
-                    : MidiaTipo.Serie;
-
-
-                if (_midiaService == null)
-                {
-                    MessageBox.Show("Serviço ainda não inicializado.");
-                    return;
-                }
-
-                var midia = await _midiaService.GetMidia(id, tipoSolicitado);
-
-
-                if (midia == null)
-                {
-                    MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
-
-                if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
-                    AtualizarUI(tipoReal, midia);
-
-                PreencherCampos(midia);
-
-                CodigoBox.Text = codigoDigitado;
-
-                CodigoBox.SelectionStart = CodigoBox.Text.Length;
-                CodigoBox.SelectionLength = 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao buscar a mídia:\n{ex.Message}", "Erro na Busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                _buscando = false;
-            }
+            _bs.DataSource = lista;
         }
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
