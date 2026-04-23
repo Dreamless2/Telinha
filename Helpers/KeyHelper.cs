@@ -43,10 +43,6 @@ namespace Telinha.Helpers
 
             return masterKey;
         }
-
-        /// <summary>
-        /// Limpa a chave da memória (boa prática)
-        /// </summary>
         public static void ZeroMemory(byte[] key)
         {
             CryptographicOperations.ZeroMemory(key);
