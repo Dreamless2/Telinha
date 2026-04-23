@@ -41,16 +41,12 @@ namespace Telinha.Factory
 
         public async Task<string?> ObterTokenAsync(string keyName, string? aad = null)
         {
-            LogServices.Info("Obtendo token: {KeyName}", keyName);
-
             var entity = await _fsql.Select<EncryptedToken>()
                                    .Where(x => x.KeyName == keyName && x.IsActive)
                                    .FirstAsync();
 
             if (entity?.EncryptedData == null)
-            {
                 return null;
-            }
 
             using var encryptor = new TokenEncryptionServices(_masterKey);
 
