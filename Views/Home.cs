@@ -260,11 +260,13 @@ namespace Telinha
         }
         private async void Principal_Load(object sender, EventArgs e)
         {
-            CodigoBox.Focus();
-            CodigoBox.SelectAll();
+            var lista = new BindingList<MidiaModel>();
+            _bs.DataSource = lista;
+
             SetupBindings();
 
             await LoadDataAsync();
+
             _bs.Position = _bs.Count - 1;
 
             _tmdb = await _apiFactory.GetTMDBAsync();
