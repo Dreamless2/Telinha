@@ -49,14 +49,12 @@ namespace Telinha.Factory
 
             var tags = new List<string>
             {
-                // sempre adiciona o padrão
                 $"#{tagBase}"
             };
 
             if (hasValidDate)
                 tags.Add($"#{tagBase}{releaseDate.Year}");
 
-            // 🔥 regra especial para Série
             if (tipoDetectado == MidiaTipo.Serie)
             {
                 string tagAcento = "Série";
