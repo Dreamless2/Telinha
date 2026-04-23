@@ -9,6 +9,7 @@ namespace Telinha.Services
     {
         private readonly IFreeSql _fsql;
         private readonly byte[] _masterKey;
+        private readonly TokenEncryptionServices _encryptor;
 
         private readonly ConcurrentDictionary<string, string> _cache = new();
 
@@ -16,6 +17,7 @@ namespace Telinha.Services
         {
             _fsql = Database.DB;
             _masterKey = KeyHelper.GetOrCreateMasterKey();
+            _encryptor = new TokenEncryptionServices(_masterKey);
         }
         public async Task SalvarTokenAsync(string keyName, string plainToken, string? description = null, string? aad = null)
         {
