@@ -16,11 +16,12 @@ namespace Telinha
             {
                 var configStore = new SecureConfigStore();
                 var config = configStore.Load();
+                using var tokenService = new TokenServices();
 
                 // 🔴 Se não tem config → abre tela direto
                 if (config == null)
                 {
-                    Application.Run(new Token());
+                    Application.Run(new Token(tokenService));
                     return;
                 }
 
@@ -32,12 +33,11 @@ namespace Telinha
                 }
                 catch
                 {
-                    Application.Run(new Token());
+                    Application.Run(new Token(tokenService));
                     return;
                 }
 
-                // ✅ agora sim pode usar serviços
-                using var tokenService = new TokenServices();
+                // ✅ agora sim pode usar serviços               
                 var apiFactory = new ApiClientFactory(tokenService);
 
                 var tmdb = tokenService.ObterTokenAsync("TMDB").GetAwaiter().GetResult();
