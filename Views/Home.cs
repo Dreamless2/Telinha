@@ -422,7 +422,7 @@ namespace Telinha
         {
             _searchTimer.Stop();
 
-            var texto = txtBusca.Text.Trim();
+            var texto = CodigoBox.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(texto))
                 return;
