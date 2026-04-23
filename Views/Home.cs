@@ -309,8 +309,7 @@ namespace Telinha
 
                 if (inserted)
                 {
-                    // adiciona na lista se for novo
-                    ((List<MidiaModel>)_bs.DataSource).Add(item);
+                    ((List<MidiaModel>)_bs.DataSource!).Add(item);
                     _bs.ResetBindings(false);
                     _bs.Position = _bs.Count - 1;
                 }
