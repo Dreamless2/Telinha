@@ -68,7 +68,6 @@ namespace Telinha
             }
             catch (Exception ex)
             {
-                LogServices.Error(ex, "Erro ao salvar token.");
                 MessageBox.Show($"Erro ao salvar:\n{ex.Message}");
             }
         }
