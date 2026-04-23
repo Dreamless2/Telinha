@@ -12,7 +12,6 @@ namespace Telinha.Factory
     {
         public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase, DEEPLContracts deepl)
         {
-            LogServices.Info("Construindo midia: {Json}", json.ToString());
 
             // 1. DETECÇÃO AUTOMÁTICA DE TIPO (Filme vs TV)
             // Se o JSON tem 'title' é filme, se tem 'name' é série/anime.
