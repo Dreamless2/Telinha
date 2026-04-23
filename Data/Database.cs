@@ -9,7 +9,6 @@ namespace Telinha.Data
         private static readonly Lock _lock = new();
 
         private static string? _connStr;
-
         public static IFreeSql DB
         {
             get
