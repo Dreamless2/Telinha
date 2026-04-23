@@ -1,8 +1,10 @@
-﻿namespace Telinha.Mapper
+﻿using System.Collections.Concurrent;
+
+namespace Telinha.Mapper
 {
     public static class LanguageMapper
     {
-        private static readonly concurret<string, string> Map = new(StringComparer.OrdinalIgnoreCase)
+        private static readonly ConcurrentDictionary<string, string> Map = new(StringComparer.OrdinalIgnoreCase)
         {
             ["English"] = "Inglês",
             ["en"] = "Inglês",
