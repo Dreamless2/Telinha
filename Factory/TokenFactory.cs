@@ -18,8 +18,6 @@ namespace Telinha.Factory
         }
         public async Task SalvarTokenAsync(string keyName, string plainToken, string? description = null, string? aad = null)
         {
-            LogServices.Info("Salvando token: {KeyName}", keyName);
-
             if (string.IsNullOrWhiteSpace(keyName) || string.IsNullOrWhiteSpace(plainToken))
             {
                 LogServices.Error("KeyName e Token são obrigatórios.");
