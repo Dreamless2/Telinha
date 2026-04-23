@@ -200,9 +200,10 @@
             // 
             textBox1.Location = new Point(77, 26);
             textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "API TMDB";
+            textBox1.PlaceholderText = "Host";
             textBox1.Size = new Size(754, 23);
             textBox1.TabIndex = 13;
+            textBox1.Text = "localhost";
             // 
             // textBox2
             // 
