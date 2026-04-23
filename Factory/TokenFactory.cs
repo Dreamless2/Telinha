@@ -59,7 +59,6 @@ namespace Telinha.Factory
                 return null;
             }
         }
-
         public void Dispose()
         {
             KeyHelper.ZeroMemory(_masterKey);
