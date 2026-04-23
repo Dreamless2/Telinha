@@ -339,8 +339,11 @@ namespace Telinha
             {
                 var item = await MidiaController.GetPrevious<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
 
-                currentId = item.Id;
+                if (item.Id == null)
+                    throw new Exception("Não houve registros anteriores.");
 
+
+                currentId = item.Id;
                 PreencherCampos(item);
                 _bs.ResetBindings(false);
             }
