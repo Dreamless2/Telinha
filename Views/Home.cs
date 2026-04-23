@@ -352,13 +352,8 @@ namespace Telinha
             Application.Exit();
         }
 
-        private async void BuscarMidia(object sender, KeyEventArgs e)
+        private async void BuscarMidia(object sender, EventArgs e)
         {
-            if (e.KeyCode != Keys.Enter)
-                return;
-
-            e.SuppressKeyPress = true;
-
             string codigoDigitado = CodigoBox.Text.Trim();
 
             if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
