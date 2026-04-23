@@ -372,13 +372,20 @@ namespace Telinha
             PreencherCampos(item);
             _bs.ResetBindings(false);
         }
-                    }
+
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        private async Task AtualizarBotoesNavegacao()
+        {
+            var temProximo = await MidiaController.ExistsNext(currentId);
+            var temAnterior = await MidiaController.ExistsPrevious(currentId);
 
+            ProximoButton.Enabled = temProximo;
+            AnteriorButton.Enabled = temAnterior;
+        }
 
 
 
