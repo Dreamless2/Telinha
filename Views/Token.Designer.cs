@@ -43,7 +43,7 @@
             label6 = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            textBox1 = new TextBox();
+            HostBox = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             SenhaBox = new TextBox();
@@ -184,7 +184,7 @@
             groupBox2.Controls.Add(SenhaBox);
             groupBox2.Controls.Add(textBox3);
             groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(HostBox);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label6);
@@ -196,14 +196,14 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Dados";
             // 
-            // textBox1
+            // HostBox
             // 
-            textBox1.Location = new Point(77, 26);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Host";
-            textBox1.Size = new Size(754, 23);
-            textBox1.TabIndex = 13;
-            textBox1.Text = "localhost";
+            HostBox.Location = new Point(77, 26);
+            HostBox.Name = "HostBox";
+            HostBox.PlaceholderText = "Host";
+            HostBox.Size = new Size(754, 23);
+            HostBox.TabIndex = 13;
+            HostBox.Text = "localhost";
             // 
             // textBox2
             // 
@@ -272,6 +272,6 @@
         private TextBox SenhaBox;
         private TextBox textBox3;
         private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox HostBox;
     }
 }
