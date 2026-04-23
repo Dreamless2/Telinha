@@ -44,7 +44,7 @@
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             HostBox = new TextBox();
-            textBox2 = new TextBox();
+            PortaBox = new TextBox();
             textBox3 = new TextBox();
             SenhaBox = new TextBox();
             groupBox1.SuspendLayout();
@@ -183,7 +183,7 @@
             // 
             groupBox2.Controls.Add(SenhaBox);
             groupBox2.Controls.Add(textBox3);
-            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(PortaBox);
             groupBox2.Controls.Add(HostBox);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label4);
@@ -205,14 +205,14 @@
             HostBox.TabIndex = 13;
             HostBox.Text = "localhost";
             // 
-            // textBox2
+            // PortaBox
             // 
-            textBox2.Location = new Point(77, 58);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Porta";
-            textBox2.Size = new Size(754, 23);
-            textBox2.TabIndex = 14;
-            textBox2.Text = "3306";
+            PortaBox.Location = new Point(77, 58);
+            PortaBox.Name = "PortaBox";
+            PortaBox.PlaceholderText = "Porta";
+            PortaBox.Size = new Size(754, 23);
+            PortaBox.TabIndex = 14;
+            PortaBox.Text = "3306";
             // 
             // textBox3
             // 
@@ -271,7 +271,7 @@
         private GroupBox groupBox2;
         private TextBox SenhaBox;
         private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox PortaBox;
         private TextBox HostBox;
     }
 }
