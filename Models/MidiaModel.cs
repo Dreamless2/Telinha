@@ -45,7 +45,6 @@ namespace Telinha.Models
         }
 
         private string? _tipo;
-        [Column(IsIgnore = true)]
         public string? Tipo
         {
             get => _tipo;
