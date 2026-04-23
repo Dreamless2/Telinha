@@ -339,8 +339,13 @@ namespace Telinha
             {
                 var item = await MidiaController.GetPrevious<MidiaModel>(currentId) ?? throw new Exception("Não há mais registros.");
 
-                if (item.Id == null)
-                    throw new Exception("Não houve registros anteriores.");
+                if (item == null)
+                {
+                    MessageBox.Show("Não há mais registros.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ProximoButton.Enabled = false; // já desabilita
+                    return;
+                }
 
 
                 currentId = item.Id;
