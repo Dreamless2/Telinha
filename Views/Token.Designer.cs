@@ -107,7 +107,7 @@
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 521);
+            PanelBottom.Location = new Point(0, 488);
             PanelBottom.Name = "PanelBottom";
             PanelBottom.Size = new Size(929, 44);
             PanelBottom.TabIndex = 6;
@@ -234,7 +234,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(929, 565);
+            ClientSize = new Size(929, 532);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(SairButton);
