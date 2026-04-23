@@ -125,7 +125,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(61, 242);
+            label3.Location = new Point(61, 267);
             label3.Name = "label3";
             label3.Size = new Size(32, 15);
             label3.TabIndex = 9;
@@ -134,7 +134,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(61, 293);
+            label4.Location = new Point(58, 316);
             label4.Name = "label4";
             label4.Size = new Size(35, 15);
             label4.TabIndex = 10;
@@ -154,9 +154,9 @@
             label6.AutoSize = true;
             label6.Location = new Point(448, 295);
             label6.Name = "label6";
-            label6.Size = new Size(32, 15);
+            label6.Size = new Size(39, 15);
             label6.TabIndex = 12;
-            label6.Text = "Host";
+            label6.Text = "Senha";
             // 
             // Token
             // 
