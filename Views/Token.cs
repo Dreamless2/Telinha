@@ -49,7 +49,6 @@ namespace Telinha
                 var usuario = UsuarioBox.Text?.Trim();
                 var senha = SenhaBox.Text?.Trim();
 
-
                 if (string.IsNullOrWhiteSpace(tmdbToken) && string.IsNullOrWhiteSpace(deeplToken) && string.IsNullOrWhiteSpace(host) && string.IsNullOrWhiteSpace(porta) && string.IsNullOrWhiteSpace(usuario) && string.IsNullOrWhiteSpace(senha))
                 {
                     MessageBox.Show("Preencha os campos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
