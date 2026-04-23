@@ -187,8 +187,7 @@ namespace Telinha.Models
                 if (string.IsNullOrWhiteSpace(Nome))
                     return string.Empty;
 
-                return TagEngine.FormatarTitulo(Nome)
-                               .Replace(" ", "");
+                return TagEngine.FormatarTitulo(Nome);
             }
         }
     }
