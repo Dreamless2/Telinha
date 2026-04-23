@@ -6,7 +6,6 @@ namespace Telinha.Data
     {
         private static IFreeSql? _db;
         private static readonly Lock _lock = new();
-        private static readonly string DbPath = "telinha.db";
         public static IFreeSql DB
         {
             get
