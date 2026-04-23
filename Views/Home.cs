@@ -260,6 +260,7 @@ namespace Telinha
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
+            _searchTimer.Tick += SearchTimer_Tick;
 
             SetupBindings();
 
