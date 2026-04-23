@@ -413,26 +413,6 @@ namespace Telinha
             }
         }
 
-        private readonly System.Windows.Forms.Timer _searchTimer = new()
-        {
-            Interval = 400 // ms
-        };
-
-        private void SearchTimer_Tick(object? sender, EventArgs e)
-        {
-            _searchTimer.Stop();
-
-            var texto = CodigoBox.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(texto))
-                return;
-
-            BuscarMidiaAsync(null!, null!);
-        }
-
-
-        private void CodigoBox_TextChanged(object sender, EventArgs e) => _searchTimer.Start();
-
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter)
