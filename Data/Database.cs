@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS midia (
     codigo TEXT,
     nome TEXT,
     audio TEXT CHECK(audio IN ('Dublado', 'Legendado', 'Nacional', 'Desconhecido')),
+    tipo TEXT CHECK(tipo IN ('Filme', 'Série', 'Anime')),
     sinopse TEXT,
     original TEXT,
     estreia TEXT,
