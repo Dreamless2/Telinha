@@ -114,7 +114,7 @@
             // 
             // SalvarButton
             // 
-            SalvarButton.Location = new Point(253, 658);
+            SalvarButton.Location = new Point(236, 445);
             SalvarButton.Name = "SalvarButton";
             SalvarButton.Size = new Size(180, 41);
             SalvarButton.TabIndex = 7;
@@ -123,7 +123,7 @@
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(489, 658);
+            SairButton.Location = new Point(472, 445);
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(180, 41);
             SairButton.TabIndex = 8;
