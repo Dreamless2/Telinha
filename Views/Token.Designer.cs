@@ -209,9 +209,10 @@
             // 
             textBox2.Location = new Point(77, 58);
             textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "API TMDB";
+            textBox2.PlaceholderText = "Porta";
             textBox2.Size = new Size(754, 23);
             textBox2.TabIndex = 14;
+            textBox2.Text = "3306";
             // 
             // textBox3
             // 
