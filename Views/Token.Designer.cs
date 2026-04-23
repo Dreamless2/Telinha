@@ -45,7 +45,7 @@
             groupBox2 = new GroupBox();
             HostBox = new TextBox();
             PortaBox = new TextBox();
-            textBox3 = new TextBox();
+            UsuarioBox = new TextBox();
             SenhaBox = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -182,7 +182,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(SenhaBox);
-            groupBox2.Controls.Add(textBox3);
+            groupBox2.Controls.Add(UsuarioBox);
             groupBox2.Controls.Add(PortaBox);
             groupBox2.Controls.Add(HostBox);
             groupBox2.Controls.Add(label3);
@@ -191,7 +191,7 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Location = new Point(41, 243);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(844, 284);
+            groupBox2.Size = new Size(844, 175);
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             groupBox2.Text = "Dados";
@@ -214,13 +214,13 @@
             PortaBox.TabIndex = 14;
             PortaBox.Text = "3306";
             // 
-            // textBox3
+            // UsuarioBox
             // 
-            textBox3.Location = new Point(77, 93);
-            textBox3.Name = "textBox3";
-            textBox3.PlaceholderText = "Usuário";
-            textBox3.Size = new Size(754, 23);
-            textBox3.TabIndex = 15;
+            UsuarioBox.Location = new Point(77, 93);
+            UsuarioBox.Name = "UsuarioBox";
+            UsuarioBox.PlaceholderText = "Usuário";
+            UsuarioBox.Size = new Size(754, 23);
+            UsuarioBox.TabIndex = 15;
             // 
             // SenhaBox
             // 
@@ -270,7 +270,7 @@
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private TextBox SenhaBox;
-        private TextBox textBox3;
+        private TextBox UsuarioBox;
         private TextBox PortaBox;
         private TextBox HostBox;
     }
