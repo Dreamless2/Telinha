@@ -38,7 +38,6 @@ namespace Telinha.Data
                 .UseAutoSyncStructure(false)
                 .Build();
 
-            // 🔹 Criação de estrutura
             CreateTablesIfNotExist();
             CreateTriggers();
         }
