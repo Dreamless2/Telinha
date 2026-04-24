@@ -237,7 +237,5 @@ namespace Telinha.Services
 
             return model;
         }
-
-
     }
 }
