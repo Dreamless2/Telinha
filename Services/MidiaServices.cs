@@ -12,10 +12,26 @@ namespace Telinha.Services
 
         public async Task<MidiaModel?> GetMidia(int id)
         {
-            var filme = await ExecutarBusca(id, MidiaTipo.Filme);
-            var serie = await ExecutarBusca(id, MidiaTipo.Serie);
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(8));
 
-            return DecidirMelhorResultado(filme, serie);
+            var filmeTask = ExecutarBuscaSeguro(id, MidiaTipo.Filme, cts.Token);
+            var serieTask = ExecutarBuscaSeguro(id, MidiaTipo.Serie, cts.Token);
+
+            await Task.WhenAll(filmeTask, serieTask);
+
+            var filme = filmeTask.Result;
+            var serie = serieTask.Result;
+
+            var escolhido = DecidirMelhorResultado(filme, serie);
+
+            LogServices.LogarInformacao(
+                "Resultado final -> Filme: {f}, Série: {s}, Escolhido: {e}",
+                filme != null,
+                serie != null,
+                escolhido?.Tipo
+            );
+
+            return escolhido;
         }
 
         private MidiaModel? DecidirMelhorResultado(MidiaModel? filme, MidiaModel? serie)
