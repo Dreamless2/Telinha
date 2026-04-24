@@ -9,6 +9,7 @@ namespace Telinha
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+            LogServices.ConfigurarLog();
             try
             {
                 var configService = new AppConfigServices();
@@ -35,6 +36,7 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show("Erro crítico ao iniciar:\n" + ex.Message);
+                LogServices.Erro(ex);
             }
         }
     }
