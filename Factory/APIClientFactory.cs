@@ -1,4 +1,5 @@
 ﻿using DeepL;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using Telinha.Contracts;
 using Telinha.Services;
@@ -17,7 +18,7 @@ namespace Telinha.Factory
             var config = new AppConfigServices().Load()
                 ?? throw new InvalidOperationException("Configuração não encontrada.");
 
-            _config = config;            
+            _config = config;
         }
 
         public DEEPLContracts GetDeepL()
@@ -41,8 +42,10 @@ namespace Telinha.Factory
                     throw new InvalidOperationException("Chave API do TMDB não configurada.");
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
-                _tmdbClient.AddDefaultParameter("api_key", _config.TMDB);
-                LogServices.LogarInformacao("Conectado ao TMDB.");
+                // _tmdbClient.AddDefaultParameter("api_key", _config.TMDB);
+                _tmdbClient.AddDefaultHeader("Authorization", $"Bearer {_config.TMDB}");
+                _tmdbClient.AddDefaultHeader("Accept", "application/json");
+                LogServices.LogarInformacao("");
             }
 
             return new TMDBServices(_tmdbClient, _config.TMDB!);
