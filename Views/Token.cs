@@ -41,7 +41,7 @@ namespace Telinha
         {
             try
             {
-                var config = new AppConfigService.AppConfig
+                var config = new AppConfigServices.AppConfig
                 {
                     TMDB = TokenTMDBBox.Text?.Trim(),
                     DEEPL = TokenDEEPLBox.Text?.Trim(),
@@ -70,8 +70,10 @@ namespace Telinha
 
                 Hide();
 
+                /*
                 using var home = new Home();
                 home.ShowDialog();
+                */
             }
             catch (Exception ex)
             {
