@@ -7,9 +7,10 @@ namespace Telinha.Factory
 {
     public class ApiClientFactory()
     {
+        private readonly AppConfigServices.AppConfig _config = new();
+
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
-        private readonly AppConfigServices.AppConfig _config = new();
 
         public ApiClientFactory()
         {
