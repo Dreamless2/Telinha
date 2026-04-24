@@ -60,9 +60,9 @@ namespace Telinha.Services
 
         private static MidiaModel? EscolherMelhorMidia(MidiaModel? filme, MidiaModel? serie, MidiaTipo tipoSolicitado)
         {
-            if (tipoSolicitado == MidiaTipo.Filme)
+            if (filme != null && serie != null)
             {
-                return filme ?? serie; // só cai pra série se filme não existir
+                return tipoSolicitado == MidiaTipo.Filme ? filme : serie;
             }
 
             // Para Série ou Anime
