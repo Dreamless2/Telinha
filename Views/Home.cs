@@ -401,8 +401,7 @@ namespace Telinha
 
                 if (item == null)
                 {
-                    MessageBox.Show("Você chegou ao último registro.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Você chegou ao último registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ProximoButton.Enabled = false;
                     return;
                 }
