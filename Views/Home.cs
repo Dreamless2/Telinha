@@ -249,6 +249,7 @@ namespace Telinha
                 [nameof(midia.Original)] = OriginalBox,
                 [nameof(midia.Estreia)] = EstreiaBox,
                 [nameof(midia.Alternativo)] = AlternativoBox,
+                [nameof(midia.Estreia)] = EstreiaBox,
                 [nameof(midia.Tags)] = TagsBox,
                 [nameof(midia.Tipo)] = TipoBox,
                 [nameof(midia.MCU)] = MCUBox,
