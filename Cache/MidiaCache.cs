@@ -31,7 +31,7 @@ namespace Telinha.Cache
             }
             catch (Exception ex)
             {
-                LogService.LogarErroComException(ex, "Erro ao ler cache MariaDB para {Tipo} ID {Id}", tipo, id);
+                LogServices.LogarErroComException(ex, "Erro ao ler cache MariaDB para {Tipo} ID {Id}", tipo, id);
                 return null;
             }
         }
@@ -48,8 +48,6 @@ namespace Telinha.Cache
                     UpdatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
                 };
 
-                // O MariaDB lida muito bem com o conceito de "UPSERT" 
-                // (Insert or Update baseado em chave única)
                 Database.DB.InsertOrUpdate<CacheModel>()
                     .SetSource(cache)
                     .ExecuteAffrows();
