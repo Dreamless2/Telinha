@@ -443,7 +443,9 @@ namespace Telinha
 
             e.SuppressKeyPress = true;
 
-            string codigoDigitado = CodigoBox.Text.Trim();
+            var codigoDigitado = CodigoBox.Text.Trim();
+
+            LogServices.LogarInformacao("VIEW: Enter pressionado. Código: {codigo}, TipoLabel: {tipo}", codigoDigitado, TipoLabel.Text); // 🔥 LOG 1
 
             if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
             {
