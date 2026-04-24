@@ -56,7 +56,7 @@ namespace Telinha.Services
             var serie = serieTask.Result;
 
             // 🔹 3. DECISÃO INTELIGENTE
-            if (tipoSolicitado == MidiaTipo.Filme)
+            /*if (tipoSolicitado == MidiaTipo.Filme)
             {
                 if (filme != null) return filme;
                 if (serie != null) return serie;
@@ -72,6 +72,17 @@ namespace Telinha.Services
 
                 if (filme != null)
                     return filme;
+            }*/
+            if (tipoSolicitado == MidiaTipo.Filme)
+            {
+                return filme; // NÃO cai pra série automaticamente
+            }
+            else
+            {
+                if (serie != null && serie.Tipo!.Equals("Anime", StringComparison.OrdinalIgnoreCase))
+                    return serie;
+
+                return serie;
             }
 
             return null;
