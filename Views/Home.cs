@@ -464,6 +464,14 @@ namespace Telinha
                     return;
                 }
 
+                // CORREÇÃO: Tentar descobrir o tipo real do objeto que voltou
+                if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoRetornado))
+                {
+                    // Atualiza a Label e a UI com o tipo que o serviço decidiu entregar
+                    TipoLabel.Text = TipoToDisplay(tipoRetornado);
+                    AtualizarUI(tipoRetornado, midia);
+                }
+
                 TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
 
                 if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
