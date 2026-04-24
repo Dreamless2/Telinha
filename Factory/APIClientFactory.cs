@@ -5,9 +5,8 @@ using Telinha.Services;
 
 namespace Telinha.Factory
 {
-    public class ApiClientFactory(TokenServices tokenService)
+    public class ApiClientFactory()
     {
-        private readonly TokenServices _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
 
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
