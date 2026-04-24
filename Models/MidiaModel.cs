@@ -51,6 +51,13 @@ namespace Telinha.Models
             set => SetField(ref _tipo, value);
         }
 
+        private string? _classificacao;
+        public string? Classificacao
+        {
+            get => _classificacao;
+            set => SetField(ref _classificacao, value);
+        }
+
         private string? _sinopse;
         public string? Sinopse
         {
@@ -91,6 +98,14 @@ namespace Telinha.Models
         {
             get => _idioma;
             set => SetField(ref _idioma, value);
+        }
+
+        private string? _idiomaOriginal;
+        [Column(IsIgnore = true)]
+        public string? IdiomaOriginal
+        {
+            get => _idiomaOriginal;
+            set => SetField(ref _idiomaOriginal, value);
         }
 
         private string? _serie;
@@ -178,6 +193,50 @@ namespace Telinha.Models
             get => _tipoSolicitado;
             set => SetField(ref _tipoSolicitado, value);
         }
+
+        // =========================
+        // 🔥 CAMPOS INTELIGENTES
+        // =========================
+
+        [Column(IsIgnore = true)]
+        public List<string>? GenerosLista { get; set; }
+
+        [Column(IsIgnore = true)]
+        public List<string>? PaisesOrigem { get; set; }
+
+        [Column(IsIgnore = true)]
+        public List<string>? ProdutorasLista { get; set; }
+
+        [Column(IsIgnore = true)]
+        public int Episodios { get; set; }
+
+        [Column(IsIgnore = true)]
+        public int DuracaoMedia { get; set; }
+
+        [Column(IsIgnore = true)]
+        public double Popularidade { get; set; }
+
+        [Column(IsIgnore = true)]
+        public int Votos { get; set; }
+
+        // =========================
+        // 🔥 PROPRIEDADES DERIVADAS
+        // =========================
+
+        [Column(IsIgnore = true)]
+        public bool EhAnimacao =>
+            GenerosLista?.Any(g =>
+                g.Contains("Animation", StringComparison.OrdinalIgnoreCase) ||
+                g.Contains("Animação", StringComparison.OrdinalIgnoreCase)) == true;
+
+        [Column(IsIgnore = true)]
+        public bool EhJapones => IdiomaOriginal?.Equals("ja", StringComparison.OrdinalIgnoreCase) == true;
+
+        [Column(IsIgnore = true)]
+        public bool EhCoreano => IdiomaOriginal?.Equals("ko", StringComparison.OrdinalIgnoreCase) == true;
+
+        [Column(IsIgnore = true)]
+        public bool EhChines => IdiomaOriginal?.Equals("zh", StringComparison.OrdinalIgnoreCase) == true;
 
         public string NomeFormatado
         {
