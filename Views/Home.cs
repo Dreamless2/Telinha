@@ -476,6 +476,8 @@ namespace Telinha
 
                 var midia = await _midiaService.GetMidia(id);
 
+                LogServices.LogarInformacao("VIEW: Busca ignorada - já está buscando"); // 🔥 LOG 2
+
                 if (midia == null)
                 {
                     MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
