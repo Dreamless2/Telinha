@@ -265,10 +265,9 @@ namespace Telinha
 
             SetupBindings();
 
-            _tmdb = await _apiFactory.GetTMDBAsync();
+            _tmdb = _apiFactory.GetTMDB();
 
-            var tokenService = new TokenServices();
-            _midiaService = new MidiaServices(_tmdb, tokenService);
+            _midiaService = new MidiaServices(_tmdb);
 
             try
             {
