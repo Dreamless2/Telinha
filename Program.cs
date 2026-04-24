@@ -35,7 +35,6 @@ namespace Telinha
             builder.RegisterType<Home>().AsSelf();
             builder.Build();
 
-
             LogServices.ConfigurarLog();
             try
             {
