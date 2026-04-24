@@ -21,7 +21,7 @@ namespace Telinha
         private readonly BindingSource _bs = [];
         private bool _buscando;
 
-        public Home(ApiClientFactory apiFactory)
+        public Home(ApiClientFactory apiFactory, File)
         {
             InitializeComponent();
             _apiFactory = apiFactory;
