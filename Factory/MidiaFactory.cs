@@ -156,7 +156,7 @@ namespace Telinha.Factory
             catch (Exception ex)
             {
                 LogServices.LogarErroComException(ex, "Falha ao construir objeto Midia no Factory para o JSON: {JsonSnippet}", json[titleField]?.ToString());
-                return null;
+                return null!;
             }
         }
     }
