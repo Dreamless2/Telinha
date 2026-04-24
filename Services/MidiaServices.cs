@@ -122,10 +122,11 @@ namespace Telinha.Services
             LogServices.LogarInformacao("TMDB {tipo} {id} - Raw: {json}",
                 tipo, id, details.ToString());
 
-            if (details == null) return null;
-            if (details["success"]?.ToObject<bool>() == false) return null;
-            if (details["status_code"]?.ToObject<int>() == 34) return null;
-            if (!IsValidMedia(details, tipo))
+            if (details is not JObject validDetails) return null;
+            if (validDetails["success"]?.ToObject<bool>() == false) return null;
+            if (validDetails["status_code"]?.ToObject<int>() == 34) return null;
+
+            if (!IsValidMedia(validDetails, tipo))
             {
                 LogServices.LogarInformacao("IsValidMedia FALSE - {tipo} {id}", tipo, id);
                 return null;
