@@ -141,6 +141,8 @@ namespace Telinha
                 }
             }
         }
+
+        #region Qualquer Alteração
         private void QualquerAlteracao(object sender, EventArgs e)
         {
             if (TipoLabel.Text == "Filme")
