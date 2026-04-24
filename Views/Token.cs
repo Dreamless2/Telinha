@@ -1,6 +1,4 @@
-﻿using Telinha.Factory;
-using Telinha.Services;
-using Telinha.Store;
+﻿using Telinha.Services;
 
 namespace Telinha
 {
