@@ -488,6 +488,7 @@ namespace Telinha
 
                 if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoRetornado))
                 {
+                    LogServices.LogarInformacao("VIEW: Tipo parseado: {tipoRetornado}", tipoRetornado); // 🔥 LOG 4
                     TipoLabel.Text = TipoToDisplay(tipoRetornado);
                     AtualizarUI(tipoRetornado, midia);
                 }
