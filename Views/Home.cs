@@ -284,30 +284,27 @@ namespace Telinha
                 if (string.IsNullOrWhiteSpace(valor))
                 {
                     if (camposOpcionaisPorTipo.Contains(kvp.Key) && ehSerie)
-                        kvp.Value.Text = "--"; // Série: vazio
+                        kvp.Value.Text = "--";
                     else
-                        kvp.Value.Text = "--"; // Filme: mostra --
+                    {
+                        kvp.Value.Text = valor;
+                    }
                 }
+
+                string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
+                if (!AudioBox.Items.Contains(audioValue))
+                    AudioBox.Items.Add(audioValue);
+                AudioBox.SelectedItem = audioValue;
+
+                // Usa o tipoNormalizado que já criou lá em cima
+                if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
+                    TipoLabel.Text = TipoToDisplay(tipoReal);
                 else
-                {
-                    kvp.Value.Text = valor;
-                }
+                    TipoLabel.Text = "Tipo";
             }
-
-            string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
-            if (!AudioBox.Items.Contains(audioValue))
-                AudioBox.Items.Add(audioValue);
-            AudioBox.SelectedItem = audioValue;
-
-            // Usa o tipoNormalizado que já criou lá em cima
-            if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
-                TipoLabel.Text = TipoToDisplay(tipoReal);
-            else
-                TipoLabel.Text = "Tipo";
-        }
         #endregion
 
-        #region Limpar Campos
+            #region Limpar Campos
         private void LimparCampos()
         {
             currentId = 0;
