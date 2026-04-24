@@ -13,33 +13,10 @@ namespace Telinha
         {
             ApplicationConfiguration.Initialize();
 
-            var builder = new ContainerBuilder();
+            var container = BuildContainer(); // onde você registra tudo
 
-            // MemoryCache do.NET
-            builder.RegisterType<MemoryCache>()
-               .As<IMemoryCache>()
-               .WithParameter("optionsAccessor", new OptionsWrapper<MemoryCacheOptions>(new MemoryCacheOptions()))
-               .SingleInstance();
-
-            builder.Register(c => new MemoryCache(new MemoryCacheOptions()))
-                .As<IMemoryCache>()
-                .SingleInstance();
-
-            // Teu cache híbrido
-            builder.RegisterType<FileCacheServices>()
-               .AsSelf()
-               .SingleInstance();
-
-
-            // Services
-            builder.RegisterType<TMDBServices>().AsSelf();
-            builder.RegisterType<MidiaServices>().AsSelf();
-            builder.RegisterType<ApiClientFactory>().AsSelf();
-
-
-            // Forms
-            builder.RegisterType<Home>().AsSelf();
-            var container = builder.Build();
+            using var scope = container.BeginLifetimeScope();
+            var home = scope.Resolve<Home>(); // 🔥 Autofac cria e injeta FileCacheService
 
             LogServices.ConfigurarLog();
             try
