@@ -58,6 +58,8 @@ namespace Telinha
                 var apiFactory = new ApiClientFactory();
                 var cacheServices = new FileCacheServices();
 
+                using var scope = container.BeginLifetimeScope();
+                var home = scope.Resolve<Home>();
                 Application.Run(new Home(apiFactory, cacheServices));
             }
             catch (Exception ex)
