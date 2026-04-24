@@ -5,16 +5,18 @@ using Telinha.Services;
 
 namespace Telinha.Factory
 {
-    public class ApiClientFactory()
+    public class ApiClientFactory
     {
-        private readonly AppConfigServices.AppConfig _config = new();
+        private readonly AppConfigServices.AppConfig _config;
 
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
 
         public ApiClientFactory()
         {
-            var config = new AppConfigServices().Load() ?? throw new InvalidOperationException("Configuração não encontrada.");
+            var config = new AppConfigServices().Load()
+                ?? throw new InvalidOperationException("Configuração não encontrada.");
+
             _config = config;
         }
 
