@@ -107,7 +107,7 @@ namespace Telinha.Services
         {
             double score = 0;
 
-            if (!string.IsNullOrWhiteSpace(m.TituloOriginal))
+            if (!string.IsNullOrWhiteSpace(m.Nome))
                 score += 2;
 
             if (!string.IsNullOrWhiteSpace(m.Sinopse))
