@@ -158,7 +158,8 @@ namespace Telinha
         }
         private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
         {
-            item ??
+            item ??= new MidiaModel();
+
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
