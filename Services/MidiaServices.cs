@@ -170,6 +170,29 @@ namespace Telinha.Services
             return model;
         }
 
+        private bool IsValidMedia(JObject data, MidiaTipo tipo)
+        {
+            if (tipo == MidiaTipo.Filme)
+            {
+                var title = data?["title"]?.ToString();
+                var runtime = data?["runtime"]?.ToObject<int?>();
+
+                return !string.IsNullOrWhiteSpace(title)
+                       && runtime.HasValue;
+            }
+
+            if (tipo == MidiaTipo.Serie)
+            {
+                var name = data?["name"]?.ToString();
+                var episodes = data?["number_of_episodes"]?.ToObject<int?>();
+
+                return !string.IsNullOrWhiteSpace(name)
+                       && episodes.HasValue;
+            }
+
+            return false;
+        }
+
         private void NormalizarModel(MidiaModel model, dynamic data)
         {
             // 🔹 idioma original (CRÍTICO pro anime detection)
