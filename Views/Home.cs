@@ -407,7 +407,6 @@ namespace Telinha
                 _buscando = false;
             }
         }
-
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
