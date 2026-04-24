@@ -459,10 +459,11 @@ namespace Telinha
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
 
                 if (midia == null)
-                {
+
                     MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                return;
+
+
                 TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
 
                 if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
