@@ -276,13 +276,13 @@ namespace Telinha.Services
             // 🔹 gêneros estruturados
             model.GenerosLista = ((IEnumerable<dynamic>?)data?["genres"])
                 ?.Select(g => (string?)g?["name"]?.ToString())
-                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .OfType<string>()
                 .ToList();
 
             // 🔹 produtoras estruturadas
             model.ProdutorasLista = ((IEnumerable<dynamic>?)data?["production_companies"])
                 ?.Select(p => (string?)p?["name"]?.ToString())
-                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .OfType<string>()
                 .ToList();
 
             // 🔹 título normalizado
@@ -292,5 +292,6 @@ namespace Telinha.Services
             model.Original = data?["original_title"]?.ToString()
                          ?? data?["original_name"]?.ToString();
         }
+
     }
 }
