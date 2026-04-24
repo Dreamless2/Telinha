@@ -6,17 +6,11 @@ using Telinha.Models;
 
 namespace Telinha.Services
 {
-    public class MidiaServices
+    public class MidiaServices(TMDBServices tmdb, FileCacheServices? cache = null)
     {
-        private readonly TMDBServices _tmdb;
-        private readonly FileCacheServices? _cache;
+        private readonly TMDBServices _tmdb = tmdb;
+        private readonly FileCacheServices? _cache = cache;
         private readonly TimeSpan _cacheTtl = TimeSpan.FromHours(12);
-
-        public MidiaServices(TMDBServices tmdb, FileCacheServices? cache = null)
-        {
-            _tmdb = tmdb;
-            _cache = cache;
-        }
 
         public async Task<MidiaModel?> GetMidia(int id)
         {
