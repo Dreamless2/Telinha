@@ -124,7 +124,7 @@ namespace Telinha.Services
 
         private string ClassificarAnimacaoAvancado(MidiaModel m)
         {
-            bool isAnimation = m.Generos?.Any(g =>
+            bool isAnimation = m.Genero?.Any(g =>
                 g.Contains("Animation", StringComparison.OrdinalIgnoreCase) ||
                 g.Contains("Animação", StringComparison.OrdinalIgnoreCase)) == true;
 
