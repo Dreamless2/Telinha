@@ -1,6 +1,5 @@
 ﻿using FreeSql;
-using Telinha.Store;
-
+using Telinha.Services;
 namespace Telinha.Data
 {
     public static class Database
@@ -9,6 +8,7 @@ namespace Telinha.Data
         private static readonly Lock _lock = new();
 
         private static string? _connStr;
+
         public static IFreeSql DB
         {
             get
@@ -31,11 +31,7 @@ namespace Telinha.Data
             if (_connStr != null)
                 return _connStr;
 
-            var config = new SecureConfigStore().Load();
-
-            if (config == null)
-                throw new InvalidOperationException("Configuração não encontrada.");
-
+            var config = new AppConfigServices().Load() ?? throw new InvalidOperationException("Configuração não encontrada.");
             if (string.IsNullOrWhiteSpace(config.Host) ||
                 string.IsNullOrWhiteSpace(config.Porta) ||
                 string.IsNullOrWhiteSpace(config.Usuario) ||
