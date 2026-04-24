@@ -148,7 +148,11 @@ namespace Telinha.Services
             var deepl = new ApiClientFactory().GetDeepL();
             var model = await MidiaFactory.ConstruirMidia(details, credits, alternative, tipo, deepl);
 
-            if (model != null) NormalizarModel(model, details);
+            if (model != null)
+            {
+                NormalizarModel(model, details);
+                await _cache.SetAsync(cacheKey, model, _cacheTtl);
+            }
 
             return model;
         }
