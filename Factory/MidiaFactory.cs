@@ -73,11 +73,11 @@ namespace Telinha.Factory
 
             // 6. GÊNEROS E ESTÚDIOS
             item.Genero = TagEngine.NormalizarGeneros(
-                string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? [])
+                string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? []) ?? "--"
             );
 
             item.Produtora = TagEngine.GerarTags(
-                string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? [])
+                string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? []) ?? "--"
             );
 
             // 7. CAMPOS ESPECÍFICOS POR CATEGORIA
