@@ -255,7 +255,7 @@ namespace Telinha
                 [nameof(midia.Local)] = LocalBox,
                 [nameof(midia.Idioma)] = IdiomaBox,
                 [nameof(midia.Referencia)] = ReferenciaBox,
-                [nameof(midia.Showrunners)] = ShowrunnersBox,
+
                 [nameof(midia.Autores)] = AutoresBox,
                 [nameof(midia.Franquia)] = FranquiaBox,
 
