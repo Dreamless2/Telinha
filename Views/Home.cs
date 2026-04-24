@@ -286,6 +286,8 @@ namespace Telinha
 
             AudioBox.SelectedIndex = -1;
         }
+        #endregion
+
         #region Load
         private async void Principal_Load(object sender, EventArgs e)
         {
