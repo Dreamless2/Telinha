@@ -147,10 +147,7 @@ namespace Telinha.Services
             {
                 NormalizarModel(model, details);
                 if (_cache != null)
-                {
                     await _cache.SetAsync(cacheKey, model, _cacheTtl);
-                    LogServices.LogarInformacao("Cache set - {tipo} {id}", tipo, id);
-                }
             }
 
             return model;
