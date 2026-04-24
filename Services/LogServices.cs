@@ -14,7 +14,6 @@ namespace Telinha.Services
 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug() // Define o nível mínimo de log
-                .WriteTo.Console()    // Opcional: Mostra no console também
                 .WriteTo.File(logPath,
                     rollingInterval: RollingInterval.Day, // Cria um arquivo novo por dia
                     retainedFileCountLimit: 7,            // Mantém apenas os últimos 7 dias
