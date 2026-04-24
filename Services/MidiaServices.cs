@@ -75,6 +75,7 @@ namespace Telinha.Services
 
                 return serie;
             }
+
             return filme ?? serie;
         }
 
