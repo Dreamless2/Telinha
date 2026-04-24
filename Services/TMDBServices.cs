@@ -16,7 +16,6 @@ namespace Telinha.Services
             request.AddHeader("Accept", "application/json");
             LogServices.LogarInformacao("TMDB {token}", _token);
 
-
             if (query != null)
                 foreach (var p in query)
                     request.AddQueryParameter(p.Key, p.Value);
