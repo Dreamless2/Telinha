@@ -6,8 +6,6 @@ namespace Telinha.Services
 {
     public class TMDBServices(ApiClientFactory client)
     {
-        private readonly string _token = token;
-        private readonly RestClient _client = client;
 
         private bool IsBearer => _token.StartsWith("eyJ");
 
