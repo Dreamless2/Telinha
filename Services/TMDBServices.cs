@@ -13,7 +13,7 @@ namespace Telinha.Services
             var request = new RestRequest(endpoint);
             //request.AddQueryParameter("api_key", _token);
             request.AddHeader("Authorization", $"Bearer {_token}");
-            request.AddHeader("Accept", "application/json");
+            request.AddHeader("accept", "application/json");
             LogServices.LogarInformacao("TMDB {token}", _token);
 
             if (query != null)
