@@ -4,7 +4,7 @@ using Telinha.Factory;
 
 namespace Telinha.Services
 {
-    public class TMDBServices(ApiClientFactory client, s)
+    public class TMDBServices
     {
         private readonly string _token = token;
         private readonly RestClient _client = client;
