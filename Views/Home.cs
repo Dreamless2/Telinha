@@ -63,6 +63,9 @@ namespace Telinha
 
             _bs.DataSource = item ?? new MidiaModel();
 
+            if (item != null)
+                PreencherCampos(item); // 👈 adiciona isso
+
             if (Enum.TryParse(item?.Tipo, true, out MidiaTipo tipoReal))
             {
                 TipoLabel.Text = TipoToDisplay(tipoReal);
