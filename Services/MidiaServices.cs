@@ -228,7 +228,7 @@ namespace Telinha.Services
                 string.IsNullOrWhiteSpace(data?["name"]?.ToString()))
                 return null;
 
-            var deepl = new ApiClientFactory().GetDeepL();
+            //var deepl = new ApiClientFactory().GetDeepL();/
 
             // 🔥 identifica corretamente cada resposta sem depender da posição
             var details = results.FirstOrDefault(x =>
