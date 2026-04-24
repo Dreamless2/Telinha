@@ -251,7 +251,7 @@ namespace Telinha.Services
 
             var model = await MidiaFactory.ConstruirMidia(
                 details,
-                credits,
+                creditsNonNull,
                 alternativeTitles,
                 tipo,
                 deepl
