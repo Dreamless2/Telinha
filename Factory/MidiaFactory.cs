@@ -28,7 +28,7 @@ namespace Telinha.Factory
 
             item.Estreia = hasValidDate ? releaseDate.ToString("dd/MM/yyyy") : "--";
 
-            string tagBase = tipoDetectado.ToString();
+            string tagBase = tipoBase.ToString();
 
             var tags = new List<string>
             {
