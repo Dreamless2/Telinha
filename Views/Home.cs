@@ -312,6 +312,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+#endregion
 
         #region Navegação
         private async Task AtualizarBotoesNavegacao()
