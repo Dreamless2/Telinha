@@ -94,9 +94,8 @@ namespace Telinha.Services
             if (results == null || results.Length < 2 || results[0] == null)
                 return null;
 
-            /*if (results[0]?["success"]?.ToObject<bool>() == false)
+            if (results[0]?["success"] != null && results[0]?["success"]?.ToObject<bool>() == false)
                 return null;
-            */
 
             if (results[0]?["status_code"]?.ToObject<int>() == 34)
                 return null;
