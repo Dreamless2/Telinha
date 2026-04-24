@@ -169,4 +169,24 @@ namespace Telinha.Services
             return null;
         }
 
+        private double CalcularScore(MidiaModel m)
+        {
+            double score = 0;
 
+            if (!string.IsNullOrWhiteSpace(m.Nome))
+                score += 2;
+
+            if (!string.IsNullOrWhiteSpace(m.Sinopse))
+                score += 1;
+
+            if (m.Popularidade > 0)
+                score += m.Popularidade / 100;
+
+            if (m.Votos > 0)
+                score += m.Votos / 1000;
+
+            return score;
+        }
+
+    }
+}
