@@ -300,7 +300,6 @@ namespace Telinha
             _tmdb = _apiFactory.GetTMDB();
 
             _midiaService = new MidiaServices(_tmdb, _cacheService);
-            _midiaService = new MidiaServices(_tmdb);
 
             try
             {
