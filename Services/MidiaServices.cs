@@ -242,11 +242,11 @@ namespace Telinha.Services
             model.Episodios = data?["number_of_episodes"]?.ToObject<int>() ?? 0;
 
             // 🔹 duração média (filmes ou episódios)
-            model.DuracaoMedia = data?["runtime"]?.ToObject<int>() ??
-                     (data?["episode_run_time"]?.HasValues == true
-                         ? data?["episode_run_time"]?[0]?.ToObject<int>()
-                         : null) ?? 0;
-
+            model.DuracaoMedia =
+      data?["runtime"]?.ToObject<int?>()
+      ?? (data?["episode_run_time"] is JArray arr && arr.Count > 0
+          ? arr[0].ToObject<int?>()
+          : 0);
             // 🔹 país de origem
             model.PaisesOrigem = ((IEnumerable<dynamic>?)data?["origin_country"])
                 ?.Select(x => (string)x.ToString())
