@@ -13,10 +13,6 @@ namespace Telinha
         {
             ApplicationConfiguration.Initialize();
 
-            var container = BuildContainer(); // onde você registra tudo
-
-            using var scope = container.BeginLifetimeScope();
-            var home = scope.Resolve<Home>(); // 🔥 Autofac cria e injeta FileCacheService
 
             LogServices.ConfigurarLog();
             try
