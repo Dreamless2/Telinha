@@ -71,6 +71,9 @@ namespace Telinha
                 TipoLabel.Text = TipoToDisplay(tipoReal);
                 AtualizarUI(tipoReal, item);
             }
+
+            var parseOk = Enum.TryParse(item?.Tipo, true, out MidiaTipo tipoReal);
+            MessageBox.Show($"Tipo no banco: '{item?.Tipo}' | Parse ok: {parseOk} | Resultado: {tipoReal}");
         }
         private static string TipoToDisplay(MidiaTipo tipo)
         {
