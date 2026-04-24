@@ -1,4 +1,5 @@
-﻿using Telinha.Factory;
+﻿using Autofac;
+using Telinha.Factory;
 using Telinha.Services;
 
 namespace Telinha
@@ -6,6 +7,7 @@ namespace Telinha
     public partial class Token : Form
     {
         private readonly AppConfigServices _configService = new();
+        private readonly ILifetimeScope _scope;
         public Token()
         {
             InitializeComponent();
@@ -73,7 +75,7 @@ namespace Telinha
 
                 using var home = new Home(apiFactory);
                 home.ShowDialog();
-                
+
             }
             catch (Exception ex)
             {
