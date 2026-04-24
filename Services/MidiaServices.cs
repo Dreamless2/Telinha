@@ -110,7 +110,7 @@ namespace Telinha.Services
             if (tipo != MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()))
                 return null;
 
-            var apiFactory = new ApiClientFactory(_tokenService!);
+            var apiFactory = new ApiClientFactory();
 
             var deepl = await apiFactory.GetDeepLAsync();
 
