@@ -58,7 +58,7 @@ namespace Telinha.Services
             return (await filmeTask, await serieTask);
         }
 
-        private MidiaModel? EscolherMelhorMidia(MidiaModel? filme, MidiaModel? serie, MidiaTipo tipoSolicitado)
+        private static MidiaModel? EscolherMelhorMidia(MidiaModel? filme, MidiaModel? serie, MidiaTipo tipoSolicitado)
         {
             if (tipoSolicitado == MidiaTipo.Filme)
             {
