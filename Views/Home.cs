@@ -406,7 +406,7 @@ namespace Telinha
             }
         }
 
-        #region Copiar
+        #region Copiar Button
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
