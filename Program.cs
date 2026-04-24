@@ -44,6 +44,7 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show("Erro crítico ao iniciar:\n" + ex.Message);
+                LogServices.LogarErroComException(ex, "Erro crítico ao iniciar a aplicação.");
             }
             finally
             {
