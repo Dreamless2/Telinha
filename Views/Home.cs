@@ -254,7 +254,6 @@ namespace Telinha
                 campo.Text = string.Empty;
             }
 
-            // Áudio
             AudioBox.SelectedIndex = -1;
         }
         private async void Principal_Load(object sender, EventArgs e)
