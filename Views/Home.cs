@@ -252,6 +252,8 @@ namespace Telinha
             else
                 TipoLabel.Text = "Tipo";
         }
+#endregion
+
         #region Limpar Campos
         private void LimparCampos()
         {
