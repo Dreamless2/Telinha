@@ -61,6 +61,9 @@ namespace Telinha
             ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
             ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
         }
+        #endregion
+
+        #region Carregar Dados
         private async Task Carregar()
         {
             var item = await MidiaController.GetFirstAsync<MidiaModel>();
