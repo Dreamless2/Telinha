@@ -56,7 +56,7 @@ namespace Telinha
 
                 // ✅ só agora cria
                 var apiFactory = new ApiClientFactory();
-                var cacheServices = new FileCacheServices();
+                var cacheServices = container.Resolve<FileCacheServices>();
 
                 using var scope = container.BeginLifetimeScope();
                 var home = scope.Resolve<Home>();
