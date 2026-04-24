@@ -107,15 +107,8 @@ namespace Telinha.Services
         {
             var cacheKey = $"tmdb_{tipo.ToString().ToLower()}_{id}";
 
-            if (_cache != null)
-            {
-                var cached = await _cache.GetAsync<MidiaModel>(cacheKey);
-                if (cached != null)
-                {
-                    LogServices.LogarInformacao("Cache HIT - {tipo} ID {id}", tipo, id);
-                    return cached;
-                }
-            }
+            var cached = await _cache.GetAsync(cacheKey);
+            if (cached != null) return cached;
 
 
 
