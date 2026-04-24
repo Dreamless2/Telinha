@@ -8,21 +8,21 @@ using Telinha.Services;
 
 namespace Telinha.Container
 {
-    public class Container
+    public static class ContainerConfig
     {
-        private static IContainer BuildContainer()
+        public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
 
             // MemoryCache
             builder.Register(c => new MemoryCache(new MemoryCacheOptions()))
-              .As<IMemoryCache>()
-              .SingleInstance();
+            .As<IMemoryCache>()
+            .SingleInstance();
 
             // Cache híbrido
-            builder.RegisterType<FileCacheServices>()
-              .AsSelf()
-              .SingleInstance();
+            builder.RegisterType<FileCacheService>()
+            .AsSelf()
+            .SingleInstance();
 
             // APIs
             builder.RegisterType<ApiClientFactory>().AsSelf().SingleInstance();
@@ -35,4 +35,3 @@ namespace Telinha.Container
             return builder.Build();
         }
     }
-}
