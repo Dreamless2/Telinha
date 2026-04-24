@@ -5,7 +5,7 @@ using Telinha.Models;
 
 namespace Telinha.Services
 {
-    public class FileCacheService
+    public class FileCacheServices
     {
         private readonly string _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmdb_cache.json");
         private readonly IMemoryCache _memory;
