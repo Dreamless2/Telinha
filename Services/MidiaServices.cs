@@ -193,6 +193,40 @@ namespace Telinha.Services
             return false;
         }
 
+        private MidiaModel? DecidirMelhorResultado(MidiaModel? filme, MidiaModel? serie)
+        {
+            if (filme == null) return serie;
+            if (serie == null) return filme;
+
+            // 🔥 Anime sempre vence série comum
+            if (serie.Classificacao is "Anime" or "AnimeLike")
+                return serie;
+
+            // 🔥 consistência estrutural
+            bool serieMaisForte =
+                serie.Episodios > 0 ||
+                !string.IsNullOrWhiteSpace(serie.Serie);
+
+            bool filmeMaisForte =
+                serie.Episodios == 0 &&
+                filme.DuracaoMedia > 0;
+
+            if (serieMaisForte && !filmeMaisForte)
+                return serie;
+
+            if (filmeMaisForte && !serieMaisForte)
+                return filme;
+
+            // fallback seguro
+            double scoreFilme = CalcularScore(filme);
+            double scoreSerie = CalcularScore(serie);
+
+            return scoreSerie >= scoreFilme ? serie : filme;
+        }
+
+
+
+
         private void NormalizarModel(MidiaModel model, dynamic data)
         {
             // 🔹 idioma original (CRÍTICO pro anime detection)
