@@ -110,7 +110,7 @@ namespace Telinha.Factory
                                     .Select(a => TagEngine.GerarTags(a["name"]?.ToString()!))
                                     .Where(s => !string.IsNullOrEmpty(s));
 
-                item.Artistas = string.Join(" ", top3);
+                item.Artistas = string.Join(" ", top3) ?? "--";
             }
 
             // 9. DIRETOR / EQUIPE
@@ -121,7 +121,7 @@ namespace Telinha.Factory
                     .Select(c => TagEngine.GerarTags(c["name"]?.ToString()!))
                     .Where(s => !string.IsNullOrEmpty(s));
 
-                item.Diretor = string.Join(" ", directors);
+                item.Diretor = string.Join(" ", directors) ?? "--";
             }
 
             // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)            
