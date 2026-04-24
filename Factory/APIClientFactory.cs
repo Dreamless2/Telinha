@@ -43,13 +43,12 @@ namespace Telinha.Factory
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
                 // _tmdbClient.AddDefaultParameter("api_key", _config.TMDB);
-                _tmdbClient.AddDefaultHeader("Authorization", $"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NGY0MWJmMzNkMTY1N2NmZjRmZTQ1ODFlMjdmNmMzZiIsIm5iZiI6MTc1NjYwODYzMC41NTAwMDAyLCJzdWIiOiI2OGIzYjg3NjcwMzc1YzcyZDYzOTdhMzciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Ct-1nggWzvjMYcVrn6d0sw57N4eP22Yej2KyBTxZkUQ");
+                _tmdbClient.AddDefaultHeader("Authorization", $"Bearer {_config.TMDB}");
                 _tmdbClient.AddDefaultHeader("accept", "application/json");
                 LogServices.LogarInformacao("Chave TMDB: {chave}", _config.TMDB);
             }
 
             return new TMDBServices(_tmdbClient, _config.TMDB!);
-
 
         }
     }
