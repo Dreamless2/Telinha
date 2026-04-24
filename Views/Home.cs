@@ -227,7 +227,7 @@ namespace Telinha
         #region Preencher Campos
         private void PreencherCampos(MidiaModel midia)
         {
-            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo); // 🔥 LOG 7
+            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
 
             if (midia == null)
             {
@@ -236,6 +236,16 @@ namespace Telinha
             }
 
             currentId = midia.Id;
+            var ehSerie = midia.Tipo == MidiaTipo.Serie || midia.Tipo == MidiaTipo.Anime;
+
+            // 🔥 Campos que em Série ficam vazios, em Filme viram "--"
+            var camposOpcionaisPorTipo = new HashSet<string>
+    {
+        nameof(midia.Referencia),
+        nameof(midia.Autores),
+        nameof(midia.Diretor), // DiretorBox
+        nameof(midia.Showrunners)
+    };
 
             var mapeamento = new Dictionary<string, TextBox>
             {
@@ -263,14 +273,25 @@ namespace Telinha
             foreach (var kvp in mapeamento)
             {
                 var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
-                kvp.Value.Text = valor ?? "--";
+
+                // 🔥 Regra: se vazio E é campo opcional E é série, deixa vazio
+                if (string.IsNullOrWhiteSpace(valor))
+                {
+                    if (camposOpcionaisPorTipo.Contains(kvp.Key) && ehSerie)
+                        kvp.Value.Text = ""; // Série: vazio mesmo
+                    else
+                        kvp.Value.Text = "--"; // Filme: mostra --
+                }
+                else
+                {
+                    kvp.Value.Text = valor;
+                }
             }
 
+            // AudioBox continua igual
             string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
-
             if (!AudioBox.Items.Contains(audioValue))
                 AudioBox.Items.Add(audioValue);
-
             AudioBox.SelectedItem = audioValue;
 
             var tipoNormalizado = midia.Tipo
