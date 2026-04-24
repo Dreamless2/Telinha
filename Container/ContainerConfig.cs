@@ -26,6 +26,7 @@ namespace Telinha.Container
 
             // APIs
             builder.RegisterType<ApiClientFactory>().AsSelf().SingleInstance();
+            builder.RegisterType<AppConfigServices>().AsSelf().SingleInstance();
             builder.RegisterType<TMDBServices>().AsSelf();
             builder.RegisterType<MidiaServices>().AsSelf();
 
