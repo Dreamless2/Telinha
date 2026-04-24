@@ -19,7 +19,6 @@ namespace Telinha.Services
             public string? Porta { get; set; }
             public string? Usuario { get; set; }
             public string? Senha { get; set; }
-
             public string? TMDB { get; set; }
             public string? DEEPL { get; set; }
         }
