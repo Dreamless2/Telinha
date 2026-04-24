@@ -8,7 +8,7 @@ using Telinha.Services;
 
 namespace Telinha.Container
 {
-    internal class Container
+    public class Container
     {
         private static IContainer BuildContainer()
         {
@@ -35,5 +35,4 @@ namespace Telinha.Container
             return builder.Build();
         }
     }
-}
 }
