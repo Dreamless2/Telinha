@@ -8,11 +8,23 @@ namespace Telinha.Services
         private readonly string _token = token;
         private readonly RestClient _client = client;
 
+        private bool IsBearer => _token.StartsWith("eyJ");
+
         public async Task<JObject> GetAsync(string endpoint, Dictionary<string, string>? query = null)
         {
             var request = new RestRequest(endpoint);
-            request.AddQueryParameter("api_key", _token);
-            LogServices.LogarInformacao("TMDB {token}", _token);
+
+            // 🔥 Detecta automaticamente
+            if (IsBearer)
+            {
+                request.AddHeader("Authorization", $"Bearer {_token}");
+            }
+            else
+            {
+                request.AddQueryParameter("api_key", _token);
+            }
+
+            request.AddHeader("Accept", "application/json");
 
             if (query != null)
                 foreach (var p in query)
@@ -20,9 +32,10 @@ namespace Telinha.Services
 
             var resp = await _client.ExecuteAsync(request);
 
-            LogServices.LogarInformacao("TMDB STATUS CODE:{status_code}", resp.StatusCode);
-
-            LogServices.LogarInformacao("TMDB RESPONSE: {content}", resp.Content!);
+            // 🔎 Logs úteis
+            LogServices.LogarInformacao("TMDB TipoAuth: {tipo}", IsBearer ? "Bearer" : "ApiKey");
+            LogServices.LogarInformacao("TMDB Status: {status}", resp.StatusCode);
+            LogServices.LogarInformacao("TMDB Response: {resp}", resp.Content!);
 
             if (resp.StatusCode == System.Net.HttpStatusCode.NotFound)
                 return new JObject { ["status_code"] = 34, ["success"] = false };
