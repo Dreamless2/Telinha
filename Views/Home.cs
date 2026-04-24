@@ -465,6 +465,9 @@ namespace Telinha
                 MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
+
+        #region Anterior/Próximo Buttons
         private async void AnteriorButton_Click(object sender, EventArgs e)
         {
             try
