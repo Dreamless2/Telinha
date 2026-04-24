@@ -79,6 +79,11 @@ namespace Telinha
                     AtualizarUI(tipoReal, item);
                 }
             }
+            else
+            {
+                TipoLabel.Text = "Tipo";
+                LimparCampos();
+            }
         }
         private static string TipoToDisplay(MidiaTipo tipo)
         {
