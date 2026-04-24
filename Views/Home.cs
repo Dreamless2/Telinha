@@ -294,10 +294,8 @@ namespace Telinha
 
             SetupBindings();
 
-            _cacheService.LimparExpirados();
-            
-
-            _midiaService = new MidiaServices(_cacheService);
+            _cacheService.LimparExpirados();           
+           
 
             try
             {
