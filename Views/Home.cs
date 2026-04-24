@@ -156,6 +156,7 @@ namespace Telinha
                 PreencherMascara(MidiaTipo.Anime);
             }
         }
+#endregion
 
         #region Atualizar UI
         private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
