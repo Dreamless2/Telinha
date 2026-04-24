@@ -266,7 +266,9 @@ namespace Telinha.Services
 
             // 🔹 duração média (filmes ou episódios)
             model.DuracaoMedia = data?["runtime"]?.ToObject<int>() ??
-                                  data?["episode_run_time"]?[0]?.ToObject<int>() ?? 0;
+                     (data?["episode_run_time"]?.HasValues == true
+                         ? data?["episode_run_time"]?[0]?.ToObject<int>()
+                         : null) ?? 0;
 
             // 🔹 país de origem
             model.PaisesOrigem = ((IEnumerable<dynamic>?)data?["origin_country"])
