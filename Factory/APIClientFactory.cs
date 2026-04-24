@@ -5,36 +5,43 @@ using Telinha.Services;
 
 namespace Telinha.Factory
 {
-    public class ApiClientFactory
+    public class ApiClientFactory(TokenServices tokenService)
     {
-        private readonly AppConfigServices.AppConfig _config;
+        private readonly TokenServices _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
 
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
 
-        public ApiClientFactory()
+        public async Task<DEEPLContracts> GetDeepLAsync()
         {
-            var config = new AppConfigServices().Load();
+            if (_deepLClient == null)
+            {
+                var key = await _tokenService.ObterTokenAsync("DEEPL");
 
-            if (config == null)
-                throw new InvalidOperationException("Configuração não encontrada.");
+                if (string.IsNullOrWhiteSpace(key))
+                    throw new InvalidOperationException("Chave API do DeepL não configurada.");
 
-            _config = config;
+                _deepLClient = new DeepLClient(key);
+            }
+
+            return new DEEPLContracts(_deepLClient);
         }
-
-        public async Task<DEEPLContracts> GetDeepLAsync() { if (_deepLClient == null) { var key = await _tokenService.ObterTokenAsync("DEEPL"); if (string.IsNullOrWhiteSpace(key)) throw new InvalidOperationException("Chave API do DeepL não configurada."); _deepLClient = new DeepLClient(key); } return new DEEPLContracts(_deepLClient); }
-        vices GetTMDB()
+        public async Task<TMDBServices> GetTMDBAsync()
         {
             if (_tmdbClient == null)
             {
-                if (string.IsNullOrWhiteSpace(_config.TMDB))
+                var token = await _tokenService.ObterTokenAsync("TMDB");
+
+                if (string.IsNullOrWhiteSpace(token))
                     throw new InvalidOperationException("Chave API do TMDB não configurada.");
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
-                _tmdbClient.AddDefaultParameter("api_key", _config.TMDB);
+                _tmdbClient.AddDefaultParameter("api_key", token);
             }
 
-            return new TMDBServices(_tmdbClient, _config.TMDB!);
+            var tokenFinal = (await _tokenService.ObterTokenAsync("TMDB"))?.Trim();
+
+            return new TMDBServices(_tmdbClient, tokenFinal!);
         }
     }
 }
