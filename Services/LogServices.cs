@@ -5,56 +5,61 @@ using System.Text;
 
 namespace Telinha.Services
 {
-    public class LogServices
+    public static void ConfigurarLog()
     {
-        public static void ConfigurarLog()
-        {
-            // Define o caminho onde os logs serão salvos (Pasta 'Logs' na raiz da app)
-            string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs", "log-.txt");
+        string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs", "log-.txt");
 
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug() // Define o nível mínimo de log
-                .WriteTo.File(logPath,
-                    rollingInterval: RollingInterval.Day, // Cria um arquivo novo por dia
-                    retainedFileCountLimit: 7,            // Mantém apenas os últimos 7 dias
-                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
-                .CreateLogger();
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.File(logPath,
+                rollingInterval: RollingInterval.Day,
+                retainedFileCountLimit: 7,
+                outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+            .CreateLogger();
 
-            Log.Information("Sistema de logs inicializado com sucesso.");
-        }
+        Log.Information("Sistema de logs inicializado com sucesso.");
+    }
 
-        public static void LogarInformacao(string formato, string mensagem)
-        {
-            Log.Information(formato, mensagem);
-        }
+    // O segredo está no 'params object[] args'
+    // O Serilog aceita o template da mensagem e os objetos que preenchem esse template.
 
-        public static void LogarErro(string mensagem)
-        {
-            Log.Error(mensagem);
-        }
+    public static void LogarInformacao(string mensagem, params object[] args)
+    {
+        Log.Information(mensagem, args);
+    }
 
-        public static void LogarAlerta(string mensagem)
-        {
-            Log.Warning(mensagem);
-        }
+    public static void LogarErro(string mensagem, params object[] args)
+    {
+        Log.Error(mensagem, args);
+    }
 
-        public static void LogarDebug(string mensagem)
-        {
-            Log.Debug(mensagem);
-        }
+    public static void LogarErroComException(Exception ex, string mensagem, params object[] args)
+    {
+        Log.Error(ex, mensagem, args);
+    }
 
-        public static void LogarTrace(string mensagem)
-        {
-            Log.Verbose(mensagem);
-        }
-        public static void LogarCritico(string mensagem)
-        {
-            Log.Fatal(mensagem);
-        }
+    public static void LogarAlerta(string mensagem, params object[] args)
+    {
+        Log.Warning(mensagem, args);
+    }
 
-        public static void EncerrarLog()
-        {
-            Log.CloseAndFlush(); // Garante que todos os logs no buffer sejam gravados antes de fechar
-        }
+    public static void LogarDebug(string mensagem, params object[] args)
+    {
+        Log.Debug(mensagem, args);
+    }
+
+    public static void LogarTrace(string mensagem, params object[] args)
+    {
+        Log.Verbose(mensagem, args);
+    }
+
+    public static void LogarCritico(string mensagem, params object[] args)
+    {
+        Log.Fatal(mensagem, args);
+    }
+
+    public static void EncerrarLog()
+    {
+        Log.CloseAndFlush();
     }
 }
