@@ -266,7 +266,7 @@ namespace Telinha
             foreach (var kvp in mapeamento)
             {
                 var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
-                kvp.Value.Text = valor ?? string.Empty;
+                kvp.Value.Text = valor ?? "--";
             }
 
             string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
