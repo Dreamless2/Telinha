@@ -6,6 +6,10 @@ namespace Telinha.Services
 {
     public class LogServices
     {
+        // serilog configuration
+        public LogServices() { }
+
 
     }
+
 }
