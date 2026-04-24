@@ -86,7 +86,7 @@ namespace Telinha.Factory
             if (tipoDetectado == MidiaTipo.Anime)
             {
                 item.Serie = tituloFormatado;
-                item.Referencia = item.Original;
+                item.Referencia = item.Original ?? "--";
             }
             else if (tipoDetectado == MidiaTipo.Serie)
             {
