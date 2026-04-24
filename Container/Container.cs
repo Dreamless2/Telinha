@@ -18,7 +18,7 @@ namespace Telinha.Container
           .SingleInstance();
 
         // Cache híbrido
-        builder.RegisterType<FileCacheService>()
+        builder.RegisterType<FileCacheServices>()
           .AsSelf()
           .SingleInstance();
 
