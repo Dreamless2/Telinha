@@ -377,8 +377,7 @@ namespace Telinha
 
                 if (item == null)
                 {
-                    MessageBox.Show("Você chegou ao primeiro registro.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Você chegou ao primeiro registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AnteriorButton.Enabled = false;
                     return;
                 }
