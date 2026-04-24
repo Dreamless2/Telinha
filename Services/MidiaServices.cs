@@ -142,7 +142,7 @@ namespace Telinha.Services
                 scoreAnime += 3;
 
             // 🔹 3. palavras-chave típicas
-            string texto = $"{m.TituloOriginal} {m.Sinopse}".ToLower();
+            string texto = $"{m.Original} {m.Sinopse}".ToLower();
 
             string[] palavrasAnime =
             [
