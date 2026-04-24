@@ -46,10 +46,12 @@ namespace Telinha.Services
             return JObject.Parse(resp.Content!);
         }
 
-        public async Task<JObject[]> Many(params (string url, Dictionary<string, string>? q)[] calls)
+        public async Task<JObject[]> Many(
+      params (string url, Dictionary<string, string>? q)[] calls,
+      CancellationToken ct = default)
         {
             return await Task.WhenAll(
-                calls.Select(c => GetAsync(c.url, c.q))
+                calls.Select(c => GetAsync(c.url, c.q, ct))
             );
         }
     }
