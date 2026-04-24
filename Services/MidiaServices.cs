@@ -34,6 +34,44 @@ namespace Telinha.Services
             return escolhido;
         }
 
+        private MidiaModel? DecidirMelhorResultado(MidiaModel? filme, MidiaModel? serie)
+        {
+            if (filme == null && serie == null)
+                return null;
+
+            if (filme != null && serie == null)
+                return filme;
+
+            if (serie != null && filme == null)
+                return serie;
+
+            // 🔥 DETECÇÃO DE ANIME
+            if (EhAnime(serie))
+                return serie;
+
+            // 🔹 Tipo explícito
+            if (filme?.Tipo?.Equals("Filme", StringComparison.OrdinalIgnoreCase) == true)
+                return filme;
+
+            if (serie?.Tipo?.Equals("Serie", StringComparison.OrdinalIgnoreCase) == true)
+                return serie;
+
+            // 🔹 Score de qualidade
+            double scoreFilme = CalcularScore(filme);
+            double scoreSerie = CalcularScore(serie);
+
+            LogServices.LogarInformacao("Score -> Filme: {f}, Série: {s}", scoreFilme, scoreSerie);
+
+            if (scoreFilme > scoreSerie)
+                return filme;
+
+            if (scoreSerie > scoreFilme)
+                return serie;
+
+            // fallback
+            return filme ?? serie;
+        }
+
         private async Task<MidiaModel?> ExecutarBuscaSeguro(int id, MidiaTipo tipo, CancellationToken ct)
         {
             const int maxTentativas = 2;
