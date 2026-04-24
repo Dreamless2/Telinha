@@ -22,7 +22,9 @@ namespace Telinha.Services
 
             var resp = await _client.ExecuteAsync(request);
 
-            LogServices.LogarInformacao("TMDB {status_code}", resp.StatusCode);
+            LogServices.LogarInformacao("TMDB STATUS CODE:{status_code}", resp.StatusCode);
+
+            LogServices.LogarInformacao("TMDB RESPONSE: {content}", resp.Content!);
 
             if (resp.StatusCode == System.Net.HttpStatusCode.NotFound)
                 return new JObject { ["status_code"] = 34, ["success"] = false };
