@@ -216,10 +216,6 @@ namespace Telinha
             AutoresBox.Text = item.Autores;
             ShowrunnersBox.Text = item.Showrunners;
 
-            FranquiaBox.Text = "--";
-            AlternativoBox.Text = "--";
-            MCUBox.Text = "--";
-
             if (isAnime)
             {
                 MCUBox.Enabled = false;
