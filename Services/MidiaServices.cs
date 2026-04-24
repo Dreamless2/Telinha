@@ -139,4 +139,34 @@ namespace Telinha.Services
             return filme ?? serie;
         }
 
+        private async Task<MidiaModel?> ExecutarBuscaSeguro(int id, MidiaTipo tipo, CancellationToken ct)
+        {
+            const int maxTentativas = 2;
+
+            for (int tentativa = 1; tentativa <= maxTentativas; tentativa++)
+            {
+                try
+                {
+                    ct.ThrowIfCancellationRequested();
+
+                    var result = await ExecutarBusca(id, tipo, ct);
+
+                    if (result != null)
+                        return result;
+                }
+                catch (OperationCanceledException)
+                {
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    LogServices.LogarErroComException(ex, $"Erro tentativa {tentativa} - {tipo}");
+                }
+
+                await Task.Delay(300, ct);
+            }
+
+            return null;
+        }
+
 
