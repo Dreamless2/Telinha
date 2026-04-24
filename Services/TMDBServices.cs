@@ -1,17 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
 using RestSharp;
-using Telinha.Factory;
 
 namespace Telinha.Services
 {
-    private readonly RestClient _client;
-    public class TMDBServices
+    public class TMDBServices(RestClient client, string token)
     {
-        public TMDBServices()
-        {
-            private readonly string _token = token;
+        private readonly string _token = token;
         private readonly RestClient _client = client;
-        }
 
         private bool IsBearer => _token.StartsWith("eyJ");
 
