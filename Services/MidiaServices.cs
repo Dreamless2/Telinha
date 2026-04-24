@@ -101,9 +101,9 @@ namespace Telinha.Services
             var cacheKey = $"tmdb_{tipo.ToString().ToLower()}_{id}";
 
             if (_cache != null)
+                return null; // 🔥 Desabilitado cache para evitar problemas com dados inconsistentes do TMDB
 
-
-                var cached = await _cache.GetAsync(cacheKey);
+            var cached = await _cache.GetAsync(cacheKey);
             if (cached != null) return cached;
 
 
