@@ -16,7 +16,7 @@ namespace Telinha
                 // 🔴 Se não tem config → abre tela de configuração
                 if (config == null ||
                     string.IsNullOrWhiteSpace(config.Host) ||
-                    string.IsNullOrWhiteSpace(config.Port) ||
+                    string.IsNullOrWhiteSpace(config.Porta) ||
                     string.IsNullOrWhiteSpace(config.Usuario) ||
                     string.IsNullOrWhiteSpace(config.Senha) ||
                     string.IsNullOrWhiteSpace(config.TMDB) ||
