@@ -21,6 +21,10 @@ namespace Telinha
                .WithParameter("optionsAccessor", new OptionsWrapper<MemoryCacheOptions>(new MemoryCacheOptions()))
                .SingleInstance();
 
+            builder.Register(c => new MemoryCache(new MemoryCacheOptions()))
+                .As<IMemoryCache>()
+                .SingleInstance();
+
             // Teu cache híbrido
             builder.RegisterType<FileCacheServices>()
                .AsSelf()
