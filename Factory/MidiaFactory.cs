@@ -75,11 +75,11 @@ namespace Telinha.Factory
                 item.Serie = tituloFormatado;
                 item.Referencia = item.Original;
             }
-            else if (tipoDetectado == MidiaTipo.Serie)
+            else if (tipoBase == MidiaTipo.Serie)
             {
                 item.Serie = tituloFormatado;
             }
-            else if (tipoDetectado == MidiaTipo.Filme)
+            else if (tipoBase == MidiaTipo.Filme)
             {
                 if (alternative?["titles"] is JArray titles)
                 {
