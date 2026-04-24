@@ -329,10 +329,6 @@ namespace Telinha
 
             _cacheService.LimparExpirados();
 
-            FranquiaBox.Text = "--";
-            MCUBox.Text = "--";
-            AlternativoBox.Text = "--";
-
             try
             {
                 if (await MidiaController.AnyAsync<MidiaModel>())
