@@ -2,7 +2,6 @@
 using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
-using Telinha.Factory;
 using Telinha.Helpers;
 using Telinha.Models;
 using Telinha.Services;
@@ -294,7 +293,7 @@ namespace Telinha
 
             SetupBindings();
 
-            _cacheService.LimparExpirados();          
+            _cacheService.LimparExpirados();
 
             try
             {

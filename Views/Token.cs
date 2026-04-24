@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Telinha.Factory;
 using Telinha.Services;
 
 namespace Telinha

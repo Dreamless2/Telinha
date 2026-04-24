@@ -1,8 +1,5 @@
 ﻿using Autofac;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
 using Telinha.Container;
-using Telinha.Factory;
 using Telinha.Services;
 
 namespace Telinha
