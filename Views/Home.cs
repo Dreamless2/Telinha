@@ -240,11 +240,8 @@ namespace Telinha
                 TipoLabel.Text = "Tipo";
 
 
-            if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipo))
-            {
-                AtualizarUI(tipo, midia);
-                PreencherMascara(tipo);
-            }
+
+
 
         }
 
