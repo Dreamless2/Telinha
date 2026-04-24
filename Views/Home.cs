@@ -345,7 +345,7 @@ namespace Telinha
                 var (inserted, updated) = await MidiaController.SaveAsync(item);
 
                 MessageBox.Show(inserted
-                    ? $"{item.Nome} inserido com sucesso!"
+                    ? $"{item.TipoSolicitado} {item.Nome} inserido com sucesso!"
                     : $"{item.Nome} atualizado com sucesso!");
 
                 if (inserted && item.Id != 0)
