@@ -14,14 +14,13 @@ namespace Telinha
     {
         private TMDBServices? _tmdb;
         private MidiaServices? _midiaService;
-        private readonly ApiClientFactory _apiFactory;
         private readonly FileCacheServices _cacheService;
 
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
 
-        public Home(ApiClientFactory apiFactory, FileCacheServices cacheServices, MidiaServices midiaService)
+        public Home(FileCacheServices cacheServices, MidiaServices midiaService)
         {
             InitializeComponent();
             _apiFactory = apiFactory;
