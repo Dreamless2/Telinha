@@ -22,9 +22,6 @@ namespace Telinha.Services
             Log.Information("Sistema de logs inicializado com sucesso.");
         }
 
-        // O segredo está no 'params object[] args'
-        // O Serilog aceita o template da mensagem e os objetos que preenchem esse template.
-
         public static void LogarInformacao(string mensagem, params object[] args)
         {
             Log.Information(mensagem, args);
