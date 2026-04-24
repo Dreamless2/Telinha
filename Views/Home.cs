@@ -157,8 +157,7 @@ namespace Telinha
             }
         }
 
-#reg
-
+        #region Atualizar UI
         private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
         {
             item ??= new MidiaModel();
