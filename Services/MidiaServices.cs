@@ -109,7 +109,6 @@ namespace Telinha.Services
             if (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString()))
                 return null;
 
-
             if (tipo != MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()))
                 return null;
 
