@@ -21,36 +21,31 @@ namespace Telinha.Factory
             _config = config;
         }
 
-        public async Task<DEEPLContracts> GetDeepLAsync()
+        public DEEPLContracts GetDeepL()
         {
             if (_deepLClient == null)
             {
-                var key = _config.DEEPL ?? await _tokenService.ObterTokenAsync("DEEPL");
-
-                if (string.IsNullOrWhiteSpace(key))
+                if (string.IsNullOrWhiteSpace(_config.DEEPL))
                     throw new InvalidOperationException("Chave API do DeepL não configurada.");
 
-                _deepLClient = new DeepLClient(key);
+                _deepLClient = new DeepLClient(_config.DEEPL);
             }
 
             return new DEEPLContracts(_deepLClient);
         }
-        public async Task<TMDBServices> GetTMDBAsync()
+
+        public TMDBServices GetTMDB()
         {
             if (_tmdbClient == null)
             {
-                var token = await _tokenService.ObterTokenAsync("TMDB");
-
-                if (string.IsNullOrWhiteSpace(token))
+                if (string.IsNullOrWhiteSpace(_config.TMDB))
                     throw new InvalidOperationException("Chave API do TMDB não configurada.");
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
-                _tmdbClient.AddDefaultParameter("api_key", token);
+                _tmdbClient.AddDefaultParameter("api_key", _config.TMDB);
             }
 
-            var tokenFinal = (await _tokenService.ObterTokenAsync("TMDB"))?.Trim();
-
-            return new TMDBServices(_tmdbClient, tokenFinal!);
+            return new TMDBServices(_tmdbClient, _config.TMDB!);
         }
     }
 }
