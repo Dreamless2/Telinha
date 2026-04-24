@@ -251,12 +251,7 @@ namespace Telinha
                 TipoLabel.Text = TipoToDisplay(tipoReal);
             else
                 TipoLabel.Text = "Tipo";
-
         }
-
-
-
-
         private void LimparCampos()
         {
             currentId = 0;
