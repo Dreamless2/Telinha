@@ -270,18 +270,18 @@ namespace Telinha.Services
 
             // 🔹 país de origem
             model.PaisesOrigem = ((IEnumerable<dynamic>?)data?["origin_country"])
-                ?.Select(x => x.ToString())
+                ?.Select(x => (string)x.ToString())
                 .ToList();
 
             // 🔹 gêneros estruturados
             model.GenerosLista = ((IEnumerable<dynamic>?)data?["genres"])
-                ?.Select(g => g?["name"]?.ToString())
+                ?.Select(g => (string?)g?["name"]?.ToString())
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .ToList();
 
             // 🔹 produtoras estruturadas
             model.ProdutorasLista = ((IEnumerable<dynamic>?)data?["production_companies"])
-                ?.Select(p => p?["name"]?.ToString())
+                ?.Select(p => (string?)p?["name"]?.ToString())
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .ToList();
 
