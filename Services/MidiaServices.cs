@@ -107,7 +107,10 @@ namespace Telinha.Services
 
             // ❗ validação de conteúdo real
             if (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString()))
+            {
+                LogServices.LogarAlerta("Filme ID {Id} não possui título no JSON", id);
                 return null;
+            }
 
             if (tipo != MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()))
                 return null;
