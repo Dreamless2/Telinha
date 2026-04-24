@@ -52,6 +52,7 @@ namespace Telinha.Models
         }
 
         private string? _classificacao;
+        [Column(IsIgnore = true)]
         public string? Classificacao
         {
             get => _classificacao;
