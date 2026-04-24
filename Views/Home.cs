@@ -285,6 +285,7 @@ namespace Telinha
 
             AudioBox.SelectedIndex = -1;
         }
+        #region 
         private async void Principal_Load(object sender, EventArgs e)
         {
             var lista = new BindingList<MidiaModel>();
@@ -312,7 +313,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-#endregion
+        #endregion
 
         #region Navegação
         private async Task AtualizarBotoesNavegacao()
