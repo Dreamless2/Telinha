@@ -223,12 +223,10 @@ namespace Telinha
 
             AudioBox.SelectedItem = audioValue;
 
-            TipoLabel.Text = midia.Tipo switch
-            {
-                "Filme" => "Filme",
-                "Serie" => "Série",
-                _ => midia.Tipo ?? "Tipo"
-            };
+            if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
+                TipoLabel.Text = TipoToDisplay(tipoReal);
+            else
+                TipoLabel.Text = "Tipo";
         }
         private void LimparCampos()
         {
