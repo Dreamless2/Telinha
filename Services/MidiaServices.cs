@@ -134,11 +134,11 @@ namespace Telinha.Services
             int scoreAnime = 0;
 
             // 🔹 1. idioma japonês (peso forte)
-            if (m.IdiomaOriginal == "ja")
+            if (m.Idioma == "ja")
                 scoreAnime += 4;
 
             // 🔹 2. país de origem
-            if (m.PaisesOrigem?.Any(p => p.Equals("JP", StringComparison.OrdinalIgnoreCase)) == true)
+            if (m.Local?.Any(p => p.Equals("JP", StringComparison.OrdinalIgnoreCase)) == true)
                 scoreAnime += 3;
 
             // 🔹 3. palavras-chave típicas
