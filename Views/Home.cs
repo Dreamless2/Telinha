@@ -236,14 +236,21 @@ namespace Telinha
             }
 
             currentId = midia.Id;
-            var ehSerie = midia.Tipo == MidiaTipo.Serie || midia.Tipo == MidiaTipo.Anime;
+
+            // 🔥 Normaliza o tipo primeiro pra comparar
+            var tipoNormalizado = midia.Tipo?
+                .Replace("Série", "Serie")
+                .Replace("Animé", "Anime");
+
+            var ehSerie = tipoNormalizado?.Equals("Serie", StringComparison.OrdinalIgnoreCase) == true
+                       || tipoNormalizado?.Equals("Anime", StringComparison.OrdinalIgnoreCase) == true;
 
             // 🔥 Campos que em Série ficam vazios, em Filme viram "--"
             var camposOpcionaisPorTipo = new HashSet<string>
     {
         nameof(midia.Referencia),
         nameof(midia.Autores),
-        nameof(midia.Diretor), // DiretorBox
+        nameof(midia.Diretor),
         nameof(midia.Showrunners)
     };
 
@@ -274,11 +281,10 @@ namespace Telinha
             {
                 var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
 
-                // 🔥 Regra: se vazio E é campo opcional E é série, deixa vazio
                 if (string.IsNullOrWhiteSpace(valor))
                 {
                     if (camposOpcionaisPorTipo.Contains(kvp.Key) && ehSerie)
-                        kvp.Value.Text = ""; // Série: vazio mesmo
+                        kvp.Value.Text = ""; // Série: vazio
                     else
                         kvp.Value.Text = "--"; // Filme: mostra --
                 }
@@ -288,16 +294,12 @@ namespace Telinha
                 }
             }
 
-            // AudioBox continua igual
             string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
             if (!AudioBox.Items.Contains(audioValue))
                 AudioBox.Items.Add(audioValue);
             AudioBox.SelectedItem = audioValue;
 
-            var tipoNormalizado = midia.Tipo
-                    ?.Replace("Série", "Serie")
-                    .Replace("Animé", "Anime");
-
+            // Usa o tipoNormalizado que já criou lá em cima
             if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
                 TipoLabel.Text = TipoToDisplay(tipoReal);
             else
