@@ -6,12 +6,12 @@ namespace Telinha
 {
     public partial class Token : Form
     {
-        private readonly AppConfigServices _configService = new();
         private readonly ILifetimeScope _scope;
         public Token(ILifetimeScope scope, AppConfigServices configService)
         {
             InitializeComponent();
             _scope = scope;
+            _configService = configService;
 
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
