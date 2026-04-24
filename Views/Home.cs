@@ -471,6 +471,7 @@ namespace Telinha
                     AtualizarUI(tipoReal, midia);
 
                 PreencherCampos(midia);
+                MessageBox.Show(midia.Nome);
 
                 CodigoBox.Text = codigoDigitado;
                 CodigoBox.SelectionStart = CodigoBox.Text.Length;
