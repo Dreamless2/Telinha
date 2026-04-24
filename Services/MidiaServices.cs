@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using Telinha.Cache;
 using Telinha.Enums;
 using Telinha.Factory;
 using Telinha.Models;
