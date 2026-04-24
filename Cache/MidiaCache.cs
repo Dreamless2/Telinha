@@ -14,7 +14,7 @@ namespace Telinha.Cache
                 // Alterado para FirstOrDefault para evitar exceções se não houver cache
                 var item = Database.DB.Select<CacheModel>()
                     .Where(x => x.Type == tipo.ToString() && x.MidiaId == id)
-                    .FirstOrDefault();
+                    .ToOne();
 
                 if (item == null) return null;
 
