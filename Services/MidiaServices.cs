@@ -25,8 +25,7 @@ namespace Telinha.Services
             // 🔥 Classificação automática aplicada
             filme?.Classificacao = ClassificarAnimacaoAvancado(filme);
 
-            if (serie != null)
-                serie.Classificacao = ClassificarAnimacaoAvancado(serie);
+            serie?.Classificacao = ClassificarAnimacaoAvancado(serie);
 
             var escolhido = DecidirMelhorResultado(filme, serie);
 
