@@ -325,9 +325,7 @@ namespace Telinha
                     currentId = item.Id;
 
                     if (_bs.DataSource is BindingList<MidiaModel> lista && !lista.Contains(item))
-                    {
                         lista.Add(item);
-                    }
 
                     _bs.Position = _bs.IndexOf(item);
                 }
