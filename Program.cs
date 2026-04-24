@@ -32,8 +32,6 @@ namespace Telinha
                     string.IsNullOrWhiteSpace(config.TMDB) ||
                     string.IsNullOrWhiteSpace(config.DEEPL))
                 {
-
-
                     var token = scope.Resolve<Token>();
                     Application.Run(token);
                     return;
