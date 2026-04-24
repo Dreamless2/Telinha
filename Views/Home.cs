@@ -299,7 +299,6 @@ namespace Telinha
                 AudioBox.Items.Add(audioValue);
             AudioBox.SelectedItem = audioValue;
 
-            // Usa o tipoNormalizado que já criou lá em cima
             if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
                 TipoLabel.Text = TipoToDisplay(tipoReal);
             else
