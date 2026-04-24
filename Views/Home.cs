@@ -230,7 +230,11 @@ namespace Telinha
 
             AudioBox.SelectedItem = audioValue;
 
-            if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
+            var tipoNormalizado = midia.Tipo
+                    ?.Replace("Série", "Serie")
+                    .Replace("Animé", "Anime");
+
+            if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
                 TipoLabel.Text = TipoToDisplay(tipoReal);
             else
                 TipoLabel.Text = "Tipo";
