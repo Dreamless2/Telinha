@@ -152,9 +152,7 @@ namespace Telinha.Services
 
             if (details != null && IsValidMedia(details, tipo))
                 return null;
-
             var deepl = new ApiClientFactory().GetDeepL();
-
 
             var model = await MidiaFactory.ConstruirMidia(
                 details,
