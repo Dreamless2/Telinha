@@ -198,6 +198,7 @@ namespace Telinha
                 MCUBox.Enabled = true;
             }
         }
+        #endregion
 
         #region Preencher Campos
         private void PreencherCampos(MidiaModel midia)
