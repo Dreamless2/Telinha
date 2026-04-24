@@ -30,6 +30,8 @@ namespace Telinha
                     string.IsNullOrWhiteSpace(config.TMDB) ||
                     string.IsNullOrWhiteSpace(config.DEEPL))
                 {
+
+
                     Application.Run(new Token());
                     return;
                 }
