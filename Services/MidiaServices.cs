@@ -12,6 +12,11 @@ namespace Telinha.Services
         private readonly FileCacheServices? _cache;
         private readonly TimeSpan _cacheTtl = TimeSpan.FromHours(12);
 
+        public MidiaServices()
+        {
+
+        }
+
         public async Task<MidiaModel?> GetMidia(int id)
         {
             using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(15));
