@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Telinha.Services
 {
-    internal class LogServices
+    public class LogServices
     {
+
     }
 }
