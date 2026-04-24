@@ -22,20 +22,8 @@ namespace Telinha.Factory
             _config = config;
         }
 
-        public DEEPLContracts GetDeepL()
-        {
-            if (_deepLClient == null)
-            {
-                if (string.IsNullOrWhiteSpace(_config.DEEPL))
-                    throw new InvalidOperationException("Chave API do DeepL não configurada.");
-
-                _deepLClient = new DeepLClient(_config.DEEPL);
-            }
-
-            return new DEEPLContracts(_deepLClient);
-        }
-
-        public TMDBServices GetTMDB()
+        public async Task<DEEPLContracts> GetDeepLAsync() { if (_deepLClient == null) { var key = await _tokenService.ObterTokenAsync("DEEPL"); if (string.IsNullOrWhiteSpace(key)) throw new InvalidOperationException("Chave API do DeepL não configurada."); _deepLClient = new DeepLClient(key); } return new DEEPLContracts(_deepLClient); }
+        vices GetTMDB()
         {
             if (_tmdbClient == null)
             {
