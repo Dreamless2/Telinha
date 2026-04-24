@@ -188,6 +188,68 @@ namespace Telinha.Services
             return score;
         }
 
+        private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo, CancellationToken ct)
+        {
+            var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
+
+            var calls = new List<(string, Dictionary<string, string>?)>
+    {
+        ($"/{baseRoute}/{id}", new()
+        {
+            ["language"] = "pt-BR"
+        }),
+        ($"/{baseRoute}/{id}/credits", new()
+        {
+            ["language"] = "pt-BR"
+        })
+    };
+
+            if (tipo == MidiaTipo.Filme)
+                calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
+
+            var results = await _tmdb.Many([.. calls], ct);
+
+            // 🔴 validação base
+            if (results == null || results.Length < 2 || results[0] == null)
+                return null;
+
+            if (results[0]?["success"]?.ToObject<bool>() == false)
+                return null;
+
+            if (results[0]?["status_code"]?.ToObject<int>() == 34)
+                return null;
+
+            var data = results[0];
+
+            // 🔴 validação de existência real
+            if (tipo == MidiaTipo.Filme &&
+                string.IsNullOrWhiteSpace(data?["title"]?.ToString()))
+                return null;
+
+            if (tipo == MidiaTipo.Serie &&
+                string.IsNullOrWhiteSpace(data?["name"]?.ToString()))
+                return null;
+
+            var deepl = new ApiClientFactory().GetDeepL();
+
+            var model = await MidiaFactory.ConstruirMidia(
+                data,
+                results[1],
+                results.Length > 2 ? results[2] : null,
+                tipo,
+                deepl
+            );
+
+            if (model == null)
+                return null;
+
+            // 🔥 NORMALIZAÇÃO (ESSENCIAL pro teu sistema novo)
+
+            NormalizarModel(model, data);
+
+            return model;
+        }
+
     }
 
 
