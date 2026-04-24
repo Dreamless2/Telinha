@@ -224,6 +224,57 @@ namespace Telinha.Services
             return scoreSerie >= scoreFilme ? serie : filme;
         }
 
+        private double CalcularScore(MidiaModel m)
+        {
+            double score = 0;
+
+            // 🔥 identidade forte (o que mais importa)
+            if (!string.IsNullOrWhiteSpace(m.Nome))
+                score += 3;
+
+            if (!string.IsNullOrWhiteSpace(m.Sinopse) && m.Sinopse.Length > 30)
+                score += 2;
+
+            // 🔥 estrutura válida de série vs filme
+            if (m.Episodios > 0)
+                score += 3;
+
+            if (m.DuracaoMedia > 0)
+                score += 2;
+
+            // 🔥 consistência de classificação
+            if (!string.IsNullOrWhiteSpace(m.Classificacao))
+            {
+                if (m.Classificacao == "Anime")
+                    score += 4;
+
+                if (m.Classificacao == "AnimeLike")
+                    score += 2;
+
+                if (m.Classificacao == "LiveAction")
+                    score += 1;
+            }
+
+            // 🔥 sinais fracos (não decisivos sozinhos)
+            if (m.Popularidade > 0)
+                score += Math.Min(m.Popularidade / 50.0, 2);
+
+            if (m.Votos > 0)
+                score += Math.Min(m.Votos / 1000.0, 2);
+
+            // 🔥 bônus de consistência interna
+            bool pareceSerie = m.Episodios > 0 && m.DuracaoMedia <= 45;
+            bool pareceFilme = m.Episodios == 0 && m.DuracaoMedia > 60;
+
+            if (pareceSerie)
+                score += 3;
+
+            if (pareceFilme)
+                score += 3;
+
+            return score;
+        }
+
 
         private void NormalizarModel(MidiaModel model, dynamic data)
         {
