@@ -34,7 +34,7 @@ namespace Telinha
 
                     using var scope = container.BeginLifetimeScope();
                     var token = scope.Resolve<Token>();
-                    Application.Run(new Token());
+                    Application.Run(token);
                     return;
                 }
 
