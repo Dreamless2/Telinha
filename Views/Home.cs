@@ -355,13 +355,13 @@ namespace Telinha
                 {
                     MessageBox.Show("Você chegou ao primeiro registro.", "Aviso",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AnteriorButton.Enabled = false; // <- era ProximoButton
+                    AnteriorButton.Enabled = false;
                     return;
                 }
 
                 currentId = item.Id;
                 PreencherCampos(item);
-                _bs.Position = _bs.IndexOf(item); // mantém assim
+                _bs.Position = _bs.IndexOf(item);
                 await AtualizarBotoesNavegacao();
             }
             catch (Exception ex)
