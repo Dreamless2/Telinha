@@ -75,8 +75,6 @@ namespace Telinha
                 TipoLabel.Text = TipoToDisplay(tipoReal);
                 AtualizarUI(tipoReal, item);
             }
-
-
         }
         private static string TipoToDisplay(MidiaTipo tipo)
         {
