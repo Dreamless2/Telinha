@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
 using RestSharp;
+using Telinha.Factory;
 
 namespace Telinha.Services
 {
-    public class TMDBServices(RestClient client, string token)
+    public class TMDBServices(ApiClientFactory client)
     {
         private readonly string _token = token;
         private readonly RestClient _client = client;
