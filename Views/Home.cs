@@ -295,6 +295,8 @@ namespace Telinha
 
             SetupBindings();
 
+            _cacheService.LimparExpirados(); // 🔥 remove lixo velho
+
             _tmdb = _apiFactory.GetTMDB();
 
             _midiaService = new MidiaServices(_tmdb);
