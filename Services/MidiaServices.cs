@@ -123,7 +123,29 @@ namespace Telinha.Services
         }
 
 
+        private bool EhAnime(MidiaModel? m)
+        {
+            if (m == null) return false;
 
+            // idioma japonês
+            if (m.IdiomaOriginal?.Equals("ja", StringComparison.OrdinalIgnoreCase) == true)
+                return true;
+
+            // palavras-chave comuns
+            if (m.Generos?.Any(g =>
+                g.Contains("anima", StringComparison.OrdinalIgnoreCase) ||
+                g.Contains("anime", StringComparison.OrdinalIgnoreCase)) == true)
+                return true;
+
+            // produtoras comuns de anime (exemplo)
+            if (m.Produtoras?.Any(p =>
+                p.Contains("Toei", StringComparison.OrdinalIgnoreCase) ||
+                p.Contains("Madhouse", StringComparison.OrdinalIgnoreCase) ||
+                p.Contains("Bones", StringComparison.OrdinalIgnoreCase)) == true)
+                return true;
+
+            return false;
+        }
 
 
 
