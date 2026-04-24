@@ -25,7 +25,7 @@ namespace Telinha.Factory
         {
             if (_deepLClient == null)
             {
-                var key = await _tokenService.ObterTokenAsync("DEEPL");
+                var key = _config.DEEPL ?? await _tokenService.ObterTokenAsync("DEEPL");
 
                 if (string.IsNullOrWhiteSpace(key))
                     throw new InvalidOperationException("Chave API do DeepL não configurada.");
