@@ -22,7 +22,7 @@ namespace Telinha
                .SingleInstance();
 
             // Teu cache híbrido
-            builder.RegisterType<FileCacheService>()
+            builder.RegisterType<FileCacheServices>()
                .AsSelf()
                .SingleInstance();
 
