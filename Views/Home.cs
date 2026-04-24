@@ -257,6 +257,7 @@ namespace Telinha
                 [nameof(midia.Autores)] = AutoresBox,
                 [nameof(midia.Franquia)] = FranquiaBox,
                 [nameof(midia.Showrunners)] = ShowrunnersBox,
+                [nameof(midia.Referencia)] = ReferenciaBox,
                 [nameof(midia.Genero)] = GeneroBox,
                 [nameof(midia.Diretor)] = DiretorBox,
                 [nameof(midia.Artistas)] = ArtistasBox,
