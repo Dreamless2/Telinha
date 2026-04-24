@@ -319,7 +319,7 @@ namespace Telinha
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
             {
                 Clipboard.SetText(ResumoBox.Text);
-                MessageBox.Show("Copiado para a transferência!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Copiado para a área de transferência!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
