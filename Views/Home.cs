@@ -312,6 +312,8 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #region Navegação
         private async Task AtualizarBotoesNavegacao()
         {
             if (_bs.Current is MidiaModel item && item.Id == 0)
@@ -331,6 +333,7 @@ namespace Telinha
             AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
             ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
+        #endregion
 
         #region Buscar por Código
         private async void BuscarMidia(object sender, KeyEventArgs e)
