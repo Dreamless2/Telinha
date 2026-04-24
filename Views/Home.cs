@@ -65,18 +65,18 @@ namespace Telinha
 
             _bs.DataSource = item ?? new MidiaModel();
 
-            if (item != null)
+            if (item is MidiaModel midiaValida)
             {
-                PreencherCampos(item);
+                PreencherCampos(midiaValida);
 
-                var tipoNormalizado = item?.Tipo
+                var tipoNormalizado = midiaValida.Tipo
                     ?.Replace("Série", "Serie")
                     .Replace("Animé", "Anime");
 
                 if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
                 {
                     TipoLabel.Text = TipoToDisplay(tipoReal);
-                    AtualizarUI(tipoReal, item);
+                    AtualizarUI(tipoReal, midiaValida); // 🔥 sem warning
                 }
             }
             else
