@@ -49,6 +49,8 @@ namespace Telinha.Factory
             }
 
             return new TMDBServices(_tmdbClient, _config.TMDB!);
+
+
         }
     }
 }
