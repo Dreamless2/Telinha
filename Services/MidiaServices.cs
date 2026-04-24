@@ -97,8 +97,9 @@ namespace Telinha.Services
             if (results[0]?["success"] != null && results[0]?["success"]?.ToObject<bool>() == false)
                 return null;
 
-            if (results[0]?["status_code"]?.ToObject<int>() == 34)
-                return null;
+            /*if (results[0]?["status_code"]?.ToObject<int>() == 34)
+                return null;3
+            */
 
             // ❗ validação de conteúdo real
             if (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString()))
