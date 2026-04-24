@@ -38,7 +38,7 @@ namespace Telinha.Factory
             if (hasValidDate)
                 tags.Add($"#{tagBase}{releaseDate.Year}");
 
-            if (tipoDetectado == MidiaTipo.Serie)
+            if (tipoBase == MidiaTipo.Serie)
             {
                 string tagAcento = "Série";
 
