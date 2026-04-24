@@ -295,7 +295,6 @@ namespace Telinha
             SetupBindings();
 
             _cacheService.LimparExpirados();          
-           
 
             try
             {
