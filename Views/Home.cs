@@ -222,6 +222,13 @@ namespace Telinha
                 AudioBox.Items.Add(audioValue);
 
             AudioBox.SelectedItem = audioValue;
+
+            TipoLabel.Text = midia.Tipo switch
+            {
+                "Filme" => "Filme",
+                "Serie" => "Série",
+                _ => midia.Tipo ?? "Tipo"
+            };
         }
         private void LimparCampos()
         {
