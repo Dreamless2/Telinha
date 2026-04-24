@@ -11,11 +11,10 @@ namespace Telinha
             ApplicationConfiguration.Initialize();
             try
             {
-                var configService = new AppConfigServices();
+                var configService = new AppConfigService();
                 var config = configService.Load();
-                var apiFactory = new ApiClientFactory();
 
-                // 🔴 Se não tem config → abre tela de configuração
+                // 🔴 valida primeiro
                 if (config == null ||
                     string.IsNullOrWhiteSpace(config.Host) ||
                     string.IsNullOrWhiteSpace(config.Porta) ||
@@ -28,7 +27,9 @@ namespace Telinha
                     return;
                 }
 
-                // ✅ Já tem tudo → vai direto pra Home
+                // ✅ só agora cria
+                var apiFactory = new ApiClientFactory();
+
                 Application.Run(new Home(apiFactory));
             }
             catch (Exception ex)
