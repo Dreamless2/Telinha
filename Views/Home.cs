@@ -56,7 +56,6 @@ namespace Telinha
             DiretorBox.DataBindings.Add("Text", _bs, "Diretor", false, DataSourceUpdateMode.OnPropertyChanged);
             ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
             ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
-            TipoLabel.DataBindings.Add("Text", _bs, "Tipo", true, DataSourceUpdateMode.OnPropertyChanged);
         }
         private async Task Carregar()
         {
