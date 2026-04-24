@@ -79,7 +79,7 @@ namespace Telinha.Services
             return filme ?? serie;
         }
 
-        private async Task SalvarEmCacheAsync(MidiaModel model, int id)
+        private static async Task SalvarEmCacheAsync(MidiaModel model, int id)
         {
             if (string.IsNullOrWhiteSpace(model.Tipo) ||
                 !Enum.TryParse<MidiaTipo>(model.Tipo, true, out var tipoReal))
