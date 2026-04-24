@@ -107,12 +107,8 @@ namespace Telinha.Services
         {
             var cacheKey = $"tmdb_{tipo.ToString().ToLower()}_{id}";
 
-            if (_cache != null)
-                hed = await _cache.GetAsync(cacheKey);
-
+            var cached = await _cache.GetAsync(cacheKey);
             if (cached != null) return cached;
-
-
 
 
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
