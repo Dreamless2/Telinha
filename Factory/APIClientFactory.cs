@@ -7,9 +7,9 @@ namespace Telinha.Factory
 {
     public class ApiClientFactory()
     {
-
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
+        private readonly AppConfigServices.AppConfig _config;
 
         public async Task<DEEPLContracts> GetDeepLAsync()
         {
