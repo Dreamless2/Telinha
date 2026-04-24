@@ -247,12 +247,12 @@ namespace Telinha
 
             // 🔥 Campos que em Série ficam vazios, em Filme viram "--"
             var camposOpcionaisPorTipo = new HashSet<string>
-    {
-        nameof(midia.Referencia),
-        nameof(midia.Autores),
-        nameof(midia.Diretor),
-        nameof(midia.Showrunners)
-    };
+            {
+                nameof(midia.Referencia),
+                nameof(midia.Autores),
+                nameof(midia.Diretor),
+                nameof(midia.Showrunners)
+                };
 
             var mapeamento = new Dictionary<string, TextBox>
             {
