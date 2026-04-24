@@ -65,7 +65,6 @@ namespace Telinha.Services
                 return tipoSolicitado == MidiaTipo.Filme ? filme : serie;
             }
 
-            return filme ?? serie;
 
             // Para Série ou Anime
             if (serie != null)
@@ -76,8 +75,7 @@ namespace Telinha.Services
 
                 return serie;
             }
-
-            return filme; // fallback para filme se não achou série
+            return filme ?? serie;
         }
 
         private async Task SalvarEmCacheAsync(MidiaModel model, int id)
