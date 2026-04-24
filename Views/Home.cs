@@ -105,6 +105,7 @@ namespace Telinha
                 _ => tipo.ToString()
             };
         }
+        #endregion
 
         #region Preencher Máscara
         private void PreencherMascara(MidiaTipo tipo)
