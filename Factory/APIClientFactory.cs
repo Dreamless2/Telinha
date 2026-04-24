@@ -45,7 +45,7 @@ namespace Telinha.Factory
                 // _tmdbClient.AddDefaultParameter("api_key", _config.TMDB);
                 _tmdbClient.AddDefaultHeader("Authorization", $"Bearer {_config.TMDB}");
                 _tmdbClient.AddDefaultHeader("Accept", "application/json");
-                LogServices.LogarInformacao("Chave TMDB {chave}", _config.TMDB);
+                LogServices.LogarInformacao("Chave TMDB: {chave}", _config.TMDB);
             }
 
             return new TMDBServices(_tmdbClient, _config.TMDB!);
