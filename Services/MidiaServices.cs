@@ -250,6 +250,49 @@ namespace Telinha.Services
             return model;
         }
 
+        private void NormalizarModel(MidiaModel model, dynamic data)
+        {
+            // 🔹 idioma original (CRÍTICO pro anime detection)
+            model.IdiomaOriginal = data?["original_language"]?.ToString();
+
+            // 🔹 popularidade
+            model.Popularidade = data?["popularity"]?.ToObject<double>() ?? 0;
+
+            // 🔹 votos
+            model.Votos = data?["vote_count"]?.ToObject<int>() ?? 0;
+
+            // 🔹 episódios (séries)
+            model.Episodios = data?["number_of_episodes"]?.ToObject<int>() ?? 0;
+
+            // 🔹 duração média (filmes ou episódios)
+            model.DuracaoMedia = data?["runtime"]?.ToObject<int>() ??
+                                  data?["episode_run_time"]?[0]?.ToObject<int>() ?? 0;
+
+            // 🔹 país de origem
+            model.PaisesOrigem = ((IEnumerable<dynamic>?)data?["origin_country"])
+                ?.Select(x => x.ToString())
+                .ToList();
+
+            // 🔹 gêneros estruturados
+            model.GenerosLista = ((IEnumerable<dynamic>?)data?["genres"])
+                ?.Select(g => g?["name"]?.ToString())
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .ToList();
+
+            // 🔹 produtoras estruturadas
+            model.ProdutorasLista = ((IEnumerable<dynamic>?)data?["production_companies"])
+                ?.Select(p => p?["name"]?.ToString())
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .ToList();
+
+            // 🔹 título normalizado
+            model.Nome = data?["title"]?.ToString()
+                      ?? data?["name"]?.ToString();
+
+            model.Original = data?["original_title"]?.ToString()
+                         ?? data?["original_name"]?.ToString();
+        }
+
     }
 
 
