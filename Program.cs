@@ -1,4 +1,5 @@
-﻿using Telinha.Services;
+﻿using Telinha.Factory;
+using Telinha.Services;
 
 namespace Telinha
 {
@@ -12,6 +13,7 @@ namespace Telinha
             {
                 var configService = new AppConfigServices();
                 var config = configService.Load();
+                var apiFactory = new ApiClientFactory();
 
                 // 🔴 Se não tem config → abre tela de configuração
                 if (config == null ||
@@ -27,7 +29,7 @@ namespace Telinha
                 }
 
                 // ✅ Já tem tudo → vai direto pra Home
-                //Application.Run(new Home());
+                Application.Run(new Home(apiFactory));
             }
             catch (Exception ex)
             {
