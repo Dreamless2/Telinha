@@ -56,7 +56,7 @@ namespace Telinha.Cache
             }
             catch (Exception ex)
             {
-                LogService.LogarErroComException(ex, "Erro ao salvar cache no MariaDB para {Tipo} ID {Id}", tipo, id);
+                LogServices.LogarErroComException(ex, "Erro ao salvar cache no MariaDB para {Tipo} ID {Id}", tipo, id);
             }
         }
     }
