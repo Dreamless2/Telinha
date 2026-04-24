@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Telinha.Cache;
 using Telinha.Enums;
 using Telinha.Factory;
@@ -245,6 +246,8 @@ namespace Telinha.Services
                 return null;
 
             var deepl = new ApiClientFactory().GetDeepL();
+
+            var creditsNonNull = credits ?? new JObject();
 
             var model = await MidiaFactory.ConstruirMidia(
                 details,
