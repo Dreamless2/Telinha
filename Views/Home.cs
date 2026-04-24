@@ -195,6 +195,8 @@ namespace Telinha
             item.Autores = isFilme ? "--" : (item.Autores ?? "");
             item.Showrunners = isFilme ? "--" : (item.Showrunners ?? "");
 
+
+
             bool habilitarCamposGerais = !isFilme;
 
             LocalLabel.Enabled = LocalBox.Enabled = habilitarCamposGerais;
