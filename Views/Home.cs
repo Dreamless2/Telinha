@@ -11,7 +11,6 @@ namespace Telinha
 {
     public partial class Home : Form
     {
-        private TMDBServices? _tmdb;
         private MidiaServices? _midiaService;
         private readonly FileCacheServices _cacheService;
 
