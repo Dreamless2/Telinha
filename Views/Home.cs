@@ -21,11 +21,12 @@ namespace Telinha
         private readonly BindingSource _bs = [];
         private bool _buscando;
 
-        public Home(ApiClientFactory apiFactory, FileCacheServices cacheServices)
+        public Home(ApiClientFactory apiFactory, FileCacheServices cacheServices, MidiaServices midiaService)
         {
             InitializeComponent();
             _apiFactory = apiFactory;
             _cacheService = cacheServices;
+            _midiaService = midiaService;
             Load += Principal_Load!;
             SairButton.Click += SairButton_Click!;
             CopiarButton.Click += CopiarButton_Click!;
