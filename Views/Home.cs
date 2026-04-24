@@ -15,6 +15,10 @@ namespace Telinha
         private TMDBServices? _tmdb;
         private MidiaServices? _midiaService;
         private readonly ApiClientFactory _apiFactory;
+        private readonly FileCacheServices
+
+
+
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
