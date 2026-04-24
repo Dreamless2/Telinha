@@ -97,9 +97,8 @@ namespace Telinha.Services
             if (results[0]?["success"] != null && results[0]?["success"]?.ToObject<bool>() == false)
                 return null;
 
-            /*if (results[0]?["status_code"]?.ToObject<int>() == 34)
-                return null;3
-            */
+            if (results[0]?["status_code"]?.ToObject<int>() == 34)
+                return null;
 
             LogServices.LogarInformacao("RESULT[0]: {json}", results[0]?.ToString()!);
 
@@ -121,8 +120,6 @@ namespace Telinha.Services
                     MidiaCache.Save(tipoReal, id, JsonConvert.SerializeObject(model));
                 else
                     MidiaCache.Save(tipo, id, JsonConvert.SerializeObject(model));
-
-
 
             return model;
         }
