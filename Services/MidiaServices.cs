@@ -122,32 +122,6 @@ namespace Telinha.Services
             return score;
         }
 
-
-        private bool EhAnime(MidiaModel? m)
-        {
-            if (m == null) return false;
-
-            // idioma japonês
-            if (m.Idioma?.Equals("ja", StringComparison.OrdinalIgnoreCase) == true)
-                return true;
-
-            // palavras-chave comuns
-            if (m.Genero?.Any(g =>
-                g.Contains("anima", StringComparison.OrdinalIgnoreCase) ||
-                g.Contains("anime", StringComparison.OrdinalIgnoreCase)) == true)
-                return true;
-
-            // produtoras comuns de anime (exemplo)
-            if (m.Produtora?.Any(p =>
-                p.Contains("Toei", StringComparison.OrdinalIgnoreCase) ||
-                p.Contains("Madhouse", StringComparison.OrdinalIgnoreCase) ||
-                p.Contains("Bones", StringComparison.OrdinalIgnoreCase)) == true)
-                return true;
-
-            return false;
-        }
-
-
         private string ClassificarAnimacaoAvancado(MidiaModel m)
         {
             bool isAnimation = m.Generos?.Any(g =>
