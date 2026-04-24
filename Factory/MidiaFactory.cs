@@ -3,7 +3,6 @@ using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Helpers;
 using Telinha.Models;
-using Telinha.Services;
 using Telinha.Utils;
 
 namespace Telinha.Factory

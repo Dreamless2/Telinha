@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;

@@ -1,5 +1,4 @@
 ﻿using DeepL;
-using Newtonsoft.Json.Linq;
 using RestSharp;
 using Telinha.Contracts;
 using Telinha.Services;
