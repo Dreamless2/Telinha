@@ -305,7 +305,7 @@ namespace Telinha
                 else
                 {
                     currentId = 0;
-                    MessageBox.Show("Para começar, insira um novo registro.", "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Insira um novo registro para começar.", "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CodigoBox.Focus();
                 }
             }
