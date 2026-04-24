@@ -132,7 +132,7 @@ namespace Telinha.Services
                 return true;
 
             // palavras-chave comuns
-            if (m.Generos?.Any(g =>
+            if (m.Genero?.Any(g =>
                 g.Contains("anima", StringComparison.OrdinalIgnoreCase) ||
                 g.Contains("anime", StringComparison.OrdinalIgnoreCase)) == true)
                 return true;
