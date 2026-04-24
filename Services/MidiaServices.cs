@@ -230,13 +230,27 @@ namespace Telinha.Services
 
             var deepl = new ApiClientFactory().GetDeepL();
 
-            var model = await MidiaFactory.ConstruirMidia(
+            /*var model = await MidiaFactory.ConstruirMidia(
                 data,
                 results[1],
                 results.Length > 2 ? results[2] : null,
                 tipo,
                 deepl
-            );
+            );*/
+
+            // 🔴 em vez de posição fixa
+            var details = results.FirstOrDefault(x =>
+                x?["name"] != null || x?["title"] != null);
+
+            var credits = results.FirstOrDefault(x =>
+                x?["cast"] != null);
+
+            var alternative = results.Length > 2
+                ? results[2]
+                : null;
+
+            if (details == null)
+                return null;
 
             if (model == null)
                 return null;
