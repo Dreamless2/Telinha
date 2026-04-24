@@ -192,75 +192,41 @@ namespace Telinha.Services
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
 
             var calls = new List<(string, Dictionary<string, string>?)>
-            {
-                ($"/{baseRoute}/{id}", new()
-                {
-                    ["language"] = "pt-BR"
-                }),
-                ($"/{baseRoute}/{id}/credits", new()
-                {
-                    ["language"] = "pt-BR"
-                })
-            };
+    {
+        ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
+        ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
+    };
 
             if (tipo == MidiaTipo.Filme)
                 calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
 
             var results = await _tmdb.Many(ct, [.. calls]);
 
-            // 🔴 validação base
-            if (results == null || results.Length < 2 || results[0] == null)
-                return null;
-
-            if (results[0]?["success"]?.ToObject<bool>() == false)
-                return null;
-
-            if (results[0]?["status_code"]?.ToObject<int>() == 34)
-                return null;
-
-            var data = results[0];
-
-            // 🔴 validação de existência real
-            if (tipo == MidiaTipo.Filme &&
-                string.IsNullOrWhiteSpace(data?["title"]?.ToString()))
-                return null;
-
-            if (tipo == MidiaTipo.Serie &&
-                string.IsNullOrWhiteSpace(data?["name"]?.ToString()))
-                return null;
-
-            //var deepl = new ApiClientFactory().GetDeepL();/
-
-            // 🔥 identifica corretamente cada resposta sem depender da posição
             var details = results.FirstOrDefault(x =>
-                x?["name"] != null || x?["title"] != null);
+                x?["id"] != null && (x?["title"] != null || x?["name"] != null));
 
             var credits = results.FirstOrDefault(x =>
                 x?["cast"] != null && x?["crew"] != null);
 
-            var alternativeTitles = results.FirstOrDefault(x =>
-                x?["titles"] != null || x?["results"] != null); // depende do endpoint
+            var alternative = results.FirstOrDefault(x =>
+                x?["titles"] != null || x?["results"] != null);
 
-            // 🔴 validação base
             if (details == null)
                 return null;
 
             var deepl = new ApiClientFactory().GetDeepL();
 
-            var creditsNonNull = credits ?? [];
-
             var model = await MidiaFactory.ConstruirMidia(
                 details,
-                creditsNonNull,
-                alternativeTitles,
-                tipo,
+                credits ?? new JObject(),
+                alternative,
+                tipo, // 🔥 tipo FIXO, não negociável
                 deepl
             );
 
             if (model == null)
                 return null;
 
-            // 🔥 NORMALIZAÇÃO
             NormalizarModel(model, details);
 
             return model;
