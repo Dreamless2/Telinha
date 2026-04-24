@@ -149,6 +149,9 @@ namespace Telinha.Services
                 return null;
 
             // 🔥 validação estrutural REAL (sem inferência fraca)
+            if (details?["status_code"]?.ToObject<int>() == 7)
+                return null;
+
             if (!IsValidMedia(details, tipo))
                 return null;
 
