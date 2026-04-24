@@ -154,7 +154,7 @@ namespace Telinha.Services
                 scoreAnime += 2;
 
             // 🔹 4. estúdios conhecidos (peso leve, sem lista gigante)
-            if (m.Produtoras?.Any(p =>
+            if (m.Produtora?.Any(p =>
                 p.Contains("studio", StringComparison.OrdinalIgnoreCase) ||
                 p.Contains("animation", StringComparison.OrdinalIgnoreCase)) == true)
                 scoreAnime += 1;
