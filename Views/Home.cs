@@ -405,6 +405,8 @@ namespace Telinha
                 _buscando = false;
             }
         }
+
+        #region 
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
