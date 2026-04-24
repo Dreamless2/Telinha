@@ -41,55 +41,36 @@ namespace Telinha
         {
             try
             {
-                var tmdbToken = TokenTMDBBox.Text?.Trim();
-                var deeplToken = TokenDEEPLBox.Text?.Trim();
-                var host = HostBox.Text?.Trim();
-                var porta = PortaBox.Text?.Trim();
-                var usuario = UsuarioBox.Text?.Trim();
-                var senha = SenhaBox.Text?.Trim();
-
-                if (string.IsNullOrWhiteSpace(tmdbToken) && string.IsNullOrWhiteSpace(deeplToken) && string.IsNullOrWhiteSpace(host) && string.IsNullOrWhiteSpace(porta) && string.IsNullOrWhiteSpace(usuario) && string.IsNullOrWhiteSpace(senha))
+                var config = new AppConfigService.AppConfig
                 {
-                    MessageBox.Show("Preencha os campos para continuar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TMDB = TokenTMDBBox.Text?.Trim(),
+                    DEEPL = TokenDEEPLBox.Text?.Trim(),
+                    Host = HostBox.Text?.Trim(),
+                    Porta = PortaBox.Text?.Trim(),
+                    Usuario = UsuarioBox.Text?.Trim(),
+                    Senha = SenhaBox.Text?.Trim()
+                };
+
+                if (string.IsNullOrWhiteSpace(config.TMDB) &&
+                    string.IsNullOrWhiteSpace(config.DEEPL) &&
+                    string.IsNullOrWhiteSpace(config.Host) &&
+                    string.IsNullOrWhiteSpace(config.Porta) &&
+                    string.IsNullOrWhiteSpace(config.Usuario) &&
+                    string.IsNullOrWhiteSpace(config.Senha))
+                {
+                    MessageBox.Show("Preencha os campos para continuar.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                if (!string.IsNullOrWhiteSpace(tmdbToken))
-                {
-                    await _tokenService.SalvarTokenAsync(
-                        "TMDB",
-                        tmdbToken,
-                        "Chave de API do TMDB"
-                    );
-                }
+                _configService.Save(config);
 
-                if (!string.IsNullOrWhiteSpace(deeplToken))
-                {
-                    await _tokenService.SalvarTokenAsync(
-                        "DEEPL",
-                        deeplToken,
-                        "Chave de API do DeepL"
-                    );
-                }
-
-                var configStore = new SecureConfigStore();
-                var existing = configStore.Load() ?? new SecureConfigStore.ConfigData();
-
-                existing.Host = host ?? existing.Host;
-                existing.Porta = porta ?? existing.Porta;
-                existing.Usuario = usuario ?? existing.Usuario;
-                existing.Senha = senha ?? existing.Senha;
-
-                configStore.Save(existing);
-
-                MessageBox.Show("Chaves de acesso salvas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Dados salvos com sucesso!", "Sucesso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Hide();
 
-                var tokenService = new TokenServices();
-                var apiFactory = new ApiClientFactory(tokenService);
-
-                using var home = new Home(apiFactory);
+                using var home = new Home();
                 home.ShowDialog();
             }
             catch (Exception ex)
