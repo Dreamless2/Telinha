@@ -47,9 +47,9 @@ namespace Telinha.Factory
             string tagBase = tipoDetectado.ToString();
 
             var tags = new List<string>
-                {
-                    $"#{tagBase}"
-                };
+            {
+                $"#{tagBase}"
+            };
 
             if (hasValidDate)
                 tags.Add($"#{tagBase}{releaseDate.Year}");
