@@ -11,21 +11,6 @@ namespace Telinha.Factory
     {
         public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase, DEEPLContracts deepl)
         {
-            // 1. DETECÇÃO AUTOMÁTICA DE TIPO (Filme vs TV)
-            MidiaTipo tipoDetectado = tipoBase;
-
-            // 2. REFINAMENTO (Série vs Anime)
-            if (tipoDetectado == MidiaTipo.Serie)
-            {
-                var generosIds = json["genres"]?.Select(g => (int)g["id"]!).ToList() ?? [];
-                string lingua = json["original_language"]?.ToString() ?? "";
-
-                if (generosIds.Contains(16) && (lingua == "ja" || lingua == "zh" || lingua == "ko"))
-                {
-                    tipoDetectado = MidiaTipo.Anime;
-                }
-            }
-
             var item = new MidiaModel
             {
                 Tipo = tipoDetectado.ToString()
