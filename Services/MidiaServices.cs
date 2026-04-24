@@ -31,14 +31,15 @@ namespace Telinha.Services
 
             var escolhido = DecidirMelhorResultado(filme, serie);
 
-            LogServices.LogarInformacao(
-                "Final -> Filme: {f} ({cf}), Série: {s} ({cs}), Escolhido: {e}",
-                filme != null,
-                filme?.Classificacao,
-                serie != null,
-                serie?.Classificacao,
-                escolhido?.Classificacao
-            );
+            if (filme != null && serie != null && escolhido != null)
+            {
+                LogServices.LogarInformacao(
+                    "Final -> Filme: {f} ({cf}), Série: {s} ({cs}), Escolhido: {e}",
+                    filme.Classificacao,
+                    serie.Classificacao,
+                    escolhido.Classificacao
+                );
+            }
 
             return escolhido;
         }
