@@ -285,10 +285,8 @@ namespace Telinha
                 {
                     if (camposOpcionaisPorTipo.Contains(kvp.Key) && ehSerie)
                     {
-                        kvp.Value.Text = ""; // Série: vazio
+                        kvp.Value.Text = "--";
                     }
-                    else
-                        kvp.Value.Text = "--"; // Filme: mostra --
                 }
                 else
                 {
