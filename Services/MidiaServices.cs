@@ -104,9 +104,7 @@ namespace Telinha.Services
             {
                 var cached = await _cache.GetAsync(cacheKey);
                 if (cached != null)
-                {
                     return cached;
-                }
             }
 
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
