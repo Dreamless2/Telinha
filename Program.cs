@@ -11,7 +11,7 @@ namespace Telinha
             ApplicationConfiguration.Initialize();
             try
             {
-                var configService = new AppConfigService();
+                var configService = new AppConfigServices();
                 var config = configService.Load();
 
                 // 🔴 valida primeiro
