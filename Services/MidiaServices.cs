@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Telinha.Cache;
 using Telinha.Enums;
 using Telinha.Factory;
@@ -26,11 +25,11 @@ namespace Telinha.Services
             bool serieExiste = serie != null && !string.IsNullOrWhiteSpace(serie.Nome);
             bool filmeExiste = filme != null && !string.IsNullOrWhiteSpace(filme.Nome);
 
+            LogServices.LogarInformacao("ID {id} - Filme: {filmeExiste}, Série: {serieExiste}",
+                id, filmeExiste, serieExiste);
+
             if (!serieExiste && !filmeExiste)
-            {
-                LogServices.LogarInformacao("ID {id} - Nenhum resultado válido", id);
                 return null;
-            }
 
             if (serieExiste && !filmeExiste)
                 return serie;
@@ -38,7 +37,6 @@ namespace Telinha.Services
             if (filmeExiste && !serieExiste)
                 return filme;
 
-            // Se os dois existem, decide qual é melhor
             filme!.Classificacao = ClassificarAnimacaoAvancado(filme);
             serie!.Classificacao = ClassificarAnimacaoAvancado(serie);
 
@@ -53,48 +51,28 @@ namespace Telinha.Services
                 g.Contains("Animation", StringComparison.OrdinalIgnoreCase) ||
                 g.Contains("Animação", StringComparison.OrdinalIgnoreCase)) == true;
 
-            if (!isAnimation)
-                return "LiveAction";
+            if (!isAnimation) return "LiveAction";
 
             int scoreAnime = 0;
-
-            if (m.IdiomaOriginal == "ja")
-                scoreAnime += 4;
-
-            if (m.PaisesOrigem?.Any(p => p.Equals("JP", StringComparison.OrdinalIgnoreCase)) == true)
-                scoreAnime += 3;
+            if (m.IdiomaOriginal == "ja") scoreAnime += 4;
+            if (m.PaisesOrigem?.Any(p => p.Equals("JP", StringComparison.OrdinalIgnoreCase)) == true) scoreAnime += 3;
 
             string texto = $"{m.Nome} {m.Sinopse}".ToLower();
             string[] palavrasAnime = ["anime", "mangá", "manga", "shonen", "shoujo", "isekai", "mecha", "otaku", "samurai"];
+            if (palavrasAnime.Any(p => texto.Contains(p))) scoreAnime += 2;
+            if (m.ProdutorasLista?.Any(p => p.Contains("animation", StringComparison.OrdinalIgnoreCase)) == true) scoreAnime += 1;
+            if (m.Episodios > 0 && m.Episodios <= 30 && m.DuracaoMedia > 0 && m.DuracaoMedia <= 30) scoreAnime += 1;
 
-            if (palavrasAnime.Any(p => texto.Contains(p)))
-                scoreAnime += 2;
-
-            if (m.ProdutorasLista?.Any(p => p.Contains("animation", StringComparison.OrdinalIgnoreCase)) == true)
-                scoreAnime += 1;
-
-            if (m.Episodios > 0 && m.Episodios <= 30 && m.DuracaoMedia > 0 && m.DuracaoMedia <= 30)
-                scoreAnime += 1;
-
-            if (scoreAnime >= 6 && m.IdiomaOriginal == "ja")
-                return "Anime";
-
-            if (scoreAnime >= 5)
-                return "AnimeLike";
-
-            if (m.IdiomaOriginal == "zh")
-                return "Donghua";
-
-            if (m.IdiomaOriginal == "ko")
-                return "AnimacaoCoreana";
-
+            if (scoreAnime >= 6 && m.IdiomaOriginal == "ja") return "Anime";
+            if (scoreAnime >= 5) return "AnimeLike";
+            if (m.IdiomaOriginal == "zh") return "Donghua";
+            if (m.IdiomaOriginal == "ko") return "AnimacaoCoreana";
             return "AnimacaoOcidental";
         }
 
         private async Task<MidiaModel?> ExecutarBuscaSeguro(int id, MidiaTipo tipo, CancellationToken ct)
         {
             const int maxTentativas = 2;
-
             for (int tentativa = 1; tentativa <= maxTentativas; tentativa++)
             {
                 try
@@ -112,17 +90,14 @@ namespace Telinha.Services
                     LogServices.LogarErroComException(ex, $"Erro tentativa {tentativa} - {tipo} ID {id}");
                 }
 
-                if (tentativa < maxTentativas)
-                    await Task.Delay(500);
+                if (tentativa < maxTentativas) await Task.Delay(500);
             }
-
             return null;
         }
 
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo, CancellationToken ct)
         {
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
-
             var calls = new List<(string, Dictionary<string, string>?)>
             {
                 ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
@@ -144,18 +119,11 @@ namespace Telinha.Services
             var credits = results[1];
             var alternative = results.Length > 2 ? results[2] : null;
 
-            LogServices.LogarInformacao("TMDB {tipo} {id} - Success: {success}, Status: {status}, Title: {title}",
-                tipo, id,
-                details?["success"],
-                details?["status_code"],
-                details?["title"] ?? details?["name"]);
+            LogServices.LogarInformacao("TMDB {tipo} {id} - Raw: {json}",
+                tipo, id, details.ToString());
 
-            if (details?["success"]?.ToObject<bool>() == false)
-                return null;
-
-            if (details?["status_code"]?.ToObject<int>() == 34)
-                return null;
-
+            if (details?["success"]?.ToObject<bool>() == false) return null;
+            if (details?["status_code"]?.ToObject<int>() == 34) return null;
             if (!IsValidMedia(details, tipo))
             {
                 LogServices.LogarInformacao("IsValidMedia FALSE - {tipo} {id}", tipo, id);
@@ -165,29 +133,30 @@ namespace Telinha.Services
             var deepl = new ApiClientFactory().GetDeepL();
             var model = await MidiaFactory.ConstruirMidia(details, credits, alternative, tipo, deepl);
 
-            if (model != null)
-                NormalizarModel(model, details);
+            if (model != null) NormalizarModel(model, details);
 
             return model;
         }
 
         private bool IsValidMedia(JObject data, MidiaTipo tipo)
         {
-            if (data?["success"]?.ToObject<bool>() == false)
-                return false;
+            if (data?["success"]?.ToObject<bool>() == false) return false;
+            if (data?["status_code"]?.ToObject<int>() == 34) return false;
 
-            if (data?["status_code"]?.ToObject<int>() == 34)
-                return false;
-
+            // 🔥 FIX: TMDB pode retornar array vazio em vez de string
             if (tipo == MidiaTipo.Filme)
             {
-                var title = data?["title"]?.ToString();
+                var titleToken = data?["title"];
+                if (titleToken == null || titleToken.Type == JTokenType.Array) return false;
+                var title = titleToken.ToString();
                 return !string.IsNullOrWhiteSpace(title);
             }
 
             if (tipo == MidiaTipo.Serie)
             {
-                var name = data?["name"]?.ToString();
+                var nameToken = data?["name"];
+                if (nameToken == null || nameToken.Type == JTokenType.Array) return false;
+                var name = nameToken.ToString();
                 return !string.IsNullOrWhiteSpace(name);
             }
 
@@ -199,71 +168,45 @@ namespace Telinha.Services
             if (filme == null) return serie;
             if (serie == null) return filme;
 
-            // 🔥 Anime sempre vence série comum
-            if (serie.Classificacao is "Anime" or "AnimeLike")
-                return serie;
+            if (serie.Classificacao is "Anime" or "AnimeLike") return serie;
 
-            // 🔥 consistência estrutural
             bool serieMaisForte = serie.Episodios > 0;
-            bool filmeMaisForte = serie.Episodios == 0 && filme.DuracaoMedia > 60;
+            bool filmeMaisForte = filme.Episodios == 0 && filme.DuracaoMedia > 60;
 
-            if (serieMaisForte && !filmeMaisForte)
-                return serie;
+            if (serieMaisForte && !filmeMaisForte) return serie;
+            if (filmeMaisForte && !serieMaisForte) return filme;
 
-            if (filmeMaisForte && !serieMaisForte)
-                return filme;
-
-            // fallback por score
             double scoreFilme = CalcularScore(filme);
             double scoreSerie = CalcularScore(serie);
 
             LogServices.LogarInformacao("Score Filme: {filme}, Série: {serie}", scoreFilme, scoreSerie);
-
             return scoreSerie >= scoreFilme ? serie : filme;
         }
 
         private double CalcularScore(MidiaModel m)
         {
             double score = 0;
+            if (!string.IsNullOrWhiteSpace(m.Nome)) score += 3;
+            if (!string.IsNullOrWhiteSpace(m.Sinopse) && m.Sinopse.Length > 30) score += 2;
+            if (m.Episodios > 0) score += 3;
+            if (m.DuracaoMedia > 0) score += 2;
 
-            if (!string.IsNullOrWhiteSpace(m.Nome))
-                score += 3;
+            if (m.Classificacao == "Anime") score += 4;
+            else if (m.Classificacao == "AnimeLike") score += 2;
+            else if (m.Classificacao == "LiveAction") score += 1;
 
-            if (!string.IsNullOrWhiteSpace(m.Sinopse) && m.Sinopse.Length > 30)
-                score += 2;
-
-            if (m.Episodios > 0)
-                score += 3;
-
-            if (m.DuracaoMedia > 0)
-                score += 2;
-
-            if (m.Classificacao == "Anime")
-                score += 4;
-            else if (m.Classificacao == "AnimeLike")
-                score += 2;
-            else if (m.Classificacao == "LiveAction")
-                score += 1;
-
-            if (m.Popularidade > 0)
-                score += Math.Min(m.Popularidade / 50.0, 2);
-
-            if (m.Votos > 0)
-                score += Math.Min(m.Votos / 1000.0, 2);
+            if (m.Popularidade > 0) score += Math.Min(m.Popularidade / 50.0, 2);
+            if (m.Votos > 0) score += Math.Min(m.Votos / 1000.0, 2);
 
             bool pareceSerie = m.Episodios > 0 && m.DuracaoMedia <= 45;
             bool pareceFilme = m.Episodios == 0 && m.DuracaoMedia > 60;
 
-            if (pareceSerie)
-                score += 3;
-
-            if (pareceFilme)
-                score += 3;
-
+            if (pareceSerie) score += 3;
+            if (pareceFilme) score += 3;
             return score;
         }
 
-        private void NormalizarModel(MidiaModel model, dynamic data)
+        private void NormalizarModel(MidiaModel model, JObject data)
         {
             model.IdiomaOriginal = data?["original_language"]?.ToString();
             model.Popularidade = data?["popularity"]?.ToObject<double>() ?? 0;
@@ -271,26 +214,21 @@ namespace Telinha.Services
             model.Episodios = data?["number_of_episodes"]?.ToObject<int>() ?? 0;
 
             model.DuracaoMedia = data?["runtime"]?.ToObject<int?>()
-                   ?? (data?["episode_run_time"] is JArray arr && arr.Count > 0
-                       ? arr[0].ToObject<int?>()
-                        : 0) ?? 0;
+                  ?? (data?["episode_run_time"] is JArray arr && arr.Count > 0
+                      ? arr[0].ToObject<int?>()
+                       : 0) ?? 0;
 
-            model.PaisesOrigem = ((IEnumerable<dynamic>?)data?["origin_country"])
-               ?.Select(x => (string)x.ToString())
-               .ToList() ?? [];
+            model.PaisesOrigem = data?["origin_country"]?.ToObject<List<string>>() ?? [];
+            model.GenerosLista = data?["genres"]?.Select(g => g["name"]?.ToString()).OfType<string>().ToList() ?? [];
+            model.ProdutorasLista = data?["production_companies"]?.Select(p => p["name"]?.ToString()).OfType<string>().ToList() ?? [];
 
-            model.GenerosLista = ((IEnumerable<dynamic>?)data?["genres"])
-               ?.Select(g => (string?)g?["name"]?.ToString())
-               .OfType<string>()
-               .ToList() ?? [];
+            // 🔥 Garante que não pega array vazio
+            var titleToken = data?["title"] ?? data?["name"];
+            model.Nome = titleToken?.Type != JTokenType.Array ? titleToken?.ToString() : "--";
 
-            model.ProdutorasLista = ((IEnumerable<dynamic>?)data?["production_companies"])
-               ?.Select(p => (string?)p?["name"]?.ToString())
-               .OfType<string>()
-               .ToList() ?? [];
+            var originalToken = data?["original_title"] ?? data?["original_name"];
+            model.Original = originalToken?.Type != JTokenType.Array ? originalToken?.ToString() : "--";
 
-            model.Nome = data?["title"]?.ToString() ?? data?["name"]?.ToString();
-            model.Original = data?["original_title"]?.ToString() ?? data?["original_name"]?.ToString();
             model.Sinopse = data?["overview"]?.ToString();
         }
     }
