@@ -120,6 +120,7 @@ namespace Telinha
             );
             ResumoBox.Text = card.GetFormattedText();
         }
+#endregion
 
         #region Conectar Eventos
         private void ConectarEventos()
