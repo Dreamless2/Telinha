@@ -261,8 +261,8 @@ namespace Telinha
         }
         private async void Principal_Load(object sender, EventArgs e)
         {
-            var lista = new BindingList<MidiaModel>();
-            _bs.DataSource = lista;
+            //var lista = new BindingList<MidiaModel>();
+            //_bs.DataSource = lista;
 
             SetupBindings();
 
