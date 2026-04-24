@@ -120,14 +120,8 @@ namespace Telinha.Services
 
             var calls = new List<(string, Dictionary<string, string>?)>
     {
-        ($"/{baseRoute}/{id}", new()
-        {
-            ["language"] = "pt-BR"
-        }),
-        ($"/{baseRoute}/{id}/credits", new()
-        {
-            ["language"] = "pt-BR"
-        })
+        ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
+        ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
     };
 
             if (tipo == MidiaTipo.Filme)
@@ -148,9 +142,8 @@ namespace Telinha.Services
             if (details?["status_code"]?.ToObject<int>() == 34)
                 return null;
 
-            // 🔥 validação estrutural REAL (sem inferência fraca)
-
-            if (!IsValidMedia(details, tipo))
+            // 🔥 FIX: inverteu a lógica aqui
+            if (details == null || !IsValidMedia(details, tipo))
                 return null;
 
             var deepl = new ApiClientFactory().GetDeepL();
@@ -167,7 +160,6 @@ namespace Telinha.Services
                 return null;
 
             NormalizarModel(model, details);
-
             return model;
         }
 
