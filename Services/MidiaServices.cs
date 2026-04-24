@@ -35,9 +35,9 @@ namespace Telinha.Services
             {
                 LogServices.LogarInformacao(
                     "Final -> Filme: {f} ({cf}), Série: {s} ({cs}), Escolhido: {e}",
-                    filme.Classificacao,
-                    serie.Classificacao,
-                    escolhido.Classificacao
+                    filme.Classificacao ?? "N/A",
+                    serie.Classificacao ?? "N/A",
+                    escolhido.Classificacao ?? "N/A"
                 );
             }
 
