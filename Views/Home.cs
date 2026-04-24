@@ -64,7 +64,7 @@ namespace Telinha
             _bs.DataSource = item ?? new MidiaModel();
 
             if (item != null)
-                PreencherCampos(item); // 👈 adiciona isso
+                PreencherCampos(item);
 
             var tipoNormalizado = item?.Tipo
                 ?.Replace("Série", "Serie")
