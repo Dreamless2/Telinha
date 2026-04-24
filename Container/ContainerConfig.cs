@@ -14,7 +14,7 @@ namespace Telinha.Container
             // Infra
             builder.Register(c => new MemoryCache(new MemoryCacheOptions()))
               .As<IMemoryCache>().SingleInstance();
-            builder.RegisterType<FileCacheService>().AsSelf().SingleInstance();
+            builder.RegisterType<FileCacheServices>().AsSelf().SingleInstance();
             builder.RegisterType<AppConfigServices>().AsSelf().SingleInstance();
 
             // 🔥 ApiClientFactory cria tudo
