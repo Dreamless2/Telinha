@@ -324,7 +324,6 @@ namespace Telinha
                 {
                     currentId = item.Id;
 
-                    // Pattern matching já garante que não é nulo
                     if (_bs.DataSource is BindingList<MidiaModel> lista && !lista.Contains(item))
                     {
                         lista.Add(item);
