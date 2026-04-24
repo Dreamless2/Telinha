@@ -92,10 +92,8 @@ namespace Telinha.Services
 
             // ❗ VALIDAÇÃO CRÍTICA
             if (results == null || results.Length < 2 || results[0] == null)
-            {
-                LogServices.LogarAlerta("TMDB retornou dados insuficientes para ID {Id}", id);
                 return null;
-            }
+
 
             if (results[0]?["success"] != null && results[0]?["success"]?.ToObject<bool>() == false)
                 return null;
