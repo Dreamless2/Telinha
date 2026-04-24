@@ -20,6 +20,7 @@ namespace Telinha
             {
                 var configService = new AppConfigServices();
                 var config = configService.Load();
+                var container = ContainerConfig.Configure(); // 🔥 1 linha
 
                 // 🔴 valida primeiro
                 if (config == null ||
@@ -38,7 +39,7 @@ namespace Telinha
 
                 // ✅ só agora cria
                 var apiFactory = new ApiClientFactory();
-                var container = ContainerConfig.Configure(); // 🔥 1 linha
+
 
                 using var scope = container.BeginLifetimeScope();
                 var home = scope.Resolve<Home>();
