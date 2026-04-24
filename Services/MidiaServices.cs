@@ -8,7 +8,7 @@ namespace Telinha.Services
 {
     public class MidiaServices
     {
-        private readonly TMDBServices _tmdb = tmdb;
+        private readonly TMDBServices _tmdb;
         private readonly FileCacheServices? _cache;
         private readonly TimeSpan _cacheTtl = TimeSpan.FromHours(12);
 
