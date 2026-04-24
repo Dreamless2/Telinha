@@ -106,7 +106,7 @@
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 804);
+            PanelBottom.Location = new Point(0, 874);
             PanelBottom.Name = "PanelBottom";
             PanelBottom.Size = new Size(1438, 44);
             PanelBottom.TabIndex = 3;
@@ -119,7 +119,7 @@
             PanelButtons.Controls.Add(SalvarButton);
             PanelButtons.Controls.Add(CopiarButton);
             PanelButtons.Dock = DockStyle.Bottom;
-            PanelButtons.Location = new Point(0, 719);
+            PanelButtons.Location = new Point(0, 789);
             PanelButtons.Name = "PanelButtons";
             PanelButtons.Size = new Size(1438, 85);
             PanelButtons.TabIndex = 6;
@@ -216,7 +216,7 @@
             PanelForms.Dock = DockStyle.Fill;
             PanelForms.Location = new Point(0, 87);
             PanelForms.Name = "PanelForms";
-            PanelForms.Size = new Size(1438, 632);
+            PanelForms.Size = new Size(1438, 702);
             PanelForms.TabIndex = 7;
             // 
             // ResumoBox
@@ -584,7 +584,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1438, 848);
+            ClientSize = new Size(1438, 918);
             Controls.Add(PanelForms);
             Controls.Add(PanelButtons);
             Controls.Add(PanelBottom);
