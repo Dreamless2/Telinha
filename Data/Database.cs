@@ -8,6 +8,7 @@ namespace Telinha.Data
         private static readonly Lock _lock = new();
 
         private static string? _connStr;
+        private static readonly AppConfigServices _configService = new();
 
         public static IFreeSql DB
         {
