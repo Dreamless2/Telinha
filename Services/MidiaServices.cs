@@ -173,6 +173,8 @@ namespace Telinha.Services
 
                 return model;
             }
+
+            return null;
         }
 
         private bool IsValidMedia(JObject data, MidiaTipo tipo)
