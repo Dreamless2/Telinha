@@ -169,10 +169,10 @@ namespace Telinha.Services
                 return "Anime";
 
             // 🔹 animação asiática não japonesa
-            if (m.IdiomaOriginal == "zh")
+            if (m.Idioma == "zh")
                 return "Donghua";
 
-            if (m.IdiomaOriginal == "ko")
+            if (m.Idioma == "ko")
                 return "AnimacaoCoreana";
 
             return "AnimacaoOcidental";
