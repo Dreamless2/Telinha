@@ -331,7 +331,7 @@ namespace Telinha
 
             FranquiaBox.Text = "--";
             MCUBox.Text = "--";
-
+            AlternativoBox.Text = "--";
 
             try
             {
