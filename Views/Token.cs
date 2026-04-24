@@ -11,6 +11,8 @@ namespace Telinha
         public Token(ILifetimeScope scope)
         {
             InitializeComponent();
+            _scope = scope;
+
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
             TokenDEEPLBox.PasswordChar = '\u200B';
