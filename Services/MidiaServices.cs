@@ -67,8 +67,7 @@ namespace Telinha.Services
 
             string[] palavrasAnime =
             [
-                "anime", "mangá", "manga", "shonen", "shoujo",
-        "isekai", "mecha", "otaku", "samurai"
+                "anime", "mangá", "manga", "shonen", "shoujo", "isekai", "mecha", "otaku", "samurai"
             ];
 
             if (palavrasAnime.Any(p => texto.Contains(p)))
