@@ -464,6 +464,8 @@ namespace Telinha
                     return;
                 }
 
+                TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
+
                 // CORREÇÃO: Tentar descobrir o tipo real do objeto que voltou
                 if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoRetornado))
                 {
@@ -472,10 +474,8 @@ namespace Telinha
                     AtualizarUI(tipoRetornado, midia);
                 }
 
-                TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
 
-                if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoReal))
-                    AtualizarUI(tipoReal, midia);
+
 
                 PreencherCampos(midia);
 
