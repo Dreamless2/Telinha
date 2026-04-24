@@ -33,8 +33,7 @@ namespace Telinha
 
             // Forms
             builder.RegisterType<Home>().AsSelf();
-
-            var container = builder.Build();
+            builder.Build();
 
 
             LogServices.ConfigurarLog();
