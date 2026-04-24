@@ -57,9 +57,11 @@ namespace Telinha.Factory
             item.Original = json[originalTitleField]?.ToString() ?? "--";
 
             // 6. GÊNEROS E ESTÚDIOS
-            item.Genero = TagEngine.NormalizarGeneros(
-                string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? [])
-            );
+            var genres = json["genres"]?.Select(g => g["name"]?.ToString()).ToList() ?? [];
+
+            if (genres.Any(g => g?.Contains("Animation", StringComparison.OrdinalIgnoreCase) == true))
+                item.Tags += "#Animacao";
+
 
             item.Produtora = TagEngine.GerarTags(
                 string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? [])
