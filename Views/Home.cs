@@ -18,6 +18,7 @@ namespace Telinha
         private readonly BindingSource _bs = [];
         private bool _buscando;
 
+        #region Constructor
         public Home(FileCacheServices cacheServices, MidiaServices midiaService)
         {
             InitializeComponent();
@@ -33,6 +34,9 @@ namespace Telinha
             ProximoButton.Click += ProximoButton_Click!;
             ConectarEventos();
         }
+        #endregion
+
+        #region Setup Bindings
         private void SetupBindings()
         {
             _bs.DataSource = new MidiaModel();
