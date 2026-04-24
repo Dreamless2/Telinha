@@ -196,6 +196,8 @@ namespace Telinha
                 MCUBox.Enabled = true;
             }
         }
+
+        #region Preencher Campos
         private void PreencherCampos(MidiaModel midia)
         {
             LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo); // 🔥 LOG 7
@@ -252,7 +254,7 @@ namespace Telinha
             else
                 TipoLabel.Text = "Tipo";
         }
-#endregion
+        #endregion
 
         #region Limpar Campos
         private void LimparCampos()
