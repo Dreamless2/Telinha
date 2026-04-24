@@ -92,6 +92,9 @@ namespace Telinha
                 LimparCampos();
             }
         }
+        #endregion
+
+        #region Tipo para Display
         private static string TipoToDisplay(MidiaTipo tipo)
         {
             return tipo switch
