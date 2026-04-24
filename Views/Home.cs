@@ -95,6 +95,8 @@ namespace Telinha
                 _ => tipo.ToString()
             };
         }
+
+        #region Preencher Máscara
         private void PreencherMascara(MidiaTipo tipo)
         {
             var card = new MidiaCard(
@@ -120,7 +122,7 @@ namespace Telinha
             );
             ResumoBox.Text = card.GetFormattedText();
         }
-#endregion
+        #endregion
 
         #region Conectar Eventos
         private void ConectarEventos()
