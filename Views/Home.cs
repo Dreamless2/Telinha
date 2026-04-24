@@ -270,7 +270,7 @@ namespace Telinha
 
             _midiaService = new MidiaServices(_tmdb);
 
-            try
+            /*try
             {
                 if (await MidiaController.AnyAsync<MidiaModel>())
                 {
@@ -286,7 +286,7 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
         private void CopiarButton_Click(object sender, EventArgs e)
         {
