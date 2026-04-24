@@ -514,6 +514,9 @@ namespace Telinha
                 MessageBox.Show($"Erro ao navegar: {ex.Message}");
             }
         }
+        #endregion
+
+
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
