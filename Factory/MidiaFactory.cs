@@ -142,7 +142,7 @@ namespace Telinha.Factory
 
             await Task.WhenAll(taskPais!, taskIdioma);
 
-            item.Local = taskPais.Result ?? "--";
+            item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
 
             item.Idioma = TagEngine
                 .FormatarTitulo(taskIdioma.Result ?? "--")
