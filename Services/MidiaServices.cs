@@ -28,7 +28,7 @@ namespace Telinha.Services
                 "Resultado final -> Filme: {f}, Série: {s}, Escolhido: {e}",
                 filme != null,
                 serie != null,
-                escolhido != null ? escolhido.Titulo : null
+                escolhido != null ? escolhido.Tipo : null
             );
 
             return escolhido;
