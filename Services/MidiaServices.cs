@@ -225,8 +225,6 @@ namespace Telinha.Services
         }
 
 
-
-
         private void NormalizarModel(MidiaModel model, dynamic data)
         {
             // 🔹 idioma original (CRÍTICO pro anime detection)
