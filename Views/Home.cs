@@ -284,7 +284,9 @@ namespace Telinha
                 if (string.IsNullOrWhiteSpace(valor))
                 {
                     if (camposOpcionaisPorTipo.Contains(kvp.Key) && ehSerie)
+                    {
                         kvp.Value.Text = "--";
+                    }
                     else
                     {
                         kvp.Value.Text = valor;
