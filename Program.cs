@@ -24,7 +24,7 @@ namespace Telinha
                 }
 
                 // ✅ Já tem tudo → vai direto pra Home
-                Application.Run(new Home());
+                //Application.Run(new Home());
             }
             catch (Exception ex)
             {
