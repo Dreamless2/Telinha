@@ -64,8 +64,7 @@ namespace Telinha.Services
             return null;
         }
 
-
-        private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
+        private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo, CancellationToken ct)
         {
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
 
@@ -78,9 +77,8 @@ namespace Telinha.Services
             if (tipo == MidiaTipo.Filme)
                 calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
 
-            var results = await _tmdb.Many([.. calls]);
+            var results = await _tmdb.Many([.. calls], ct);
 
-            // 🔴 validações fortes
             if (results == null || results.Length < 2 || results[0] == null)
                 return null;
 
@@ -90,7 +88,7 @@ namespace Telinha.Services
             if (results[0]?["status_code"]?.ToObject<int>() == 34)
                 return null;
 
-            // 🔴 validação essencial de conteúdo
+            // 🔥 validação REAL do TMDB
             if (tipo == MidiaTipo.Filme &&
                 string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString()))
                 return null;
@@ -99,18 +97,17 @@ namespace Telinha.Services
                 string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()))
                 return null;
 
-            var apiFactory = new ApiClientFactory();
-            var deepl = apiFactory.GetDeepL();
+            var deepl = new ApiClientFactory().GetDeepL();
 
-            var model = await MidiaFactory.ConstruirMidia(
+            return await MidiaFactory.ConstruirMidia(
                 results[0],
                 results[1],
                 results.Length > 2 ? results[2] : null,
                 tipo,
                 deepl
             );
-
-            return model;
         }
     }
 }
+
+
