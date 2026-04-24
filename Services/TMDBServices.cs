@@ -11,9 +11,7 @@ namespace Telinha.Services
         public async Task<JObject> GetAsync(string endpoint, Dictionary<string, string>? query = null)
         {
             var request = new RestRequest(endpoint);
-            //request.AddQueryParameter("api_key", _token);
-            request.AddHeader("Authorization", $"Bearer {_token}");
-            request.AddHeader("accept", "application/json");
+            request.AddQueryParameter("api_key", _token);
             LogServices.LogarInformacao("TMDB {token}", _token);
 
             if (query != null)
