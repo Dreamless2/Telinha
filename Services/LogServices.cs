@@ -23,6 +23,26 @@ namespace Telinha.Services
             Log.Information("Sistema de logs inicializado com sucesso.");
         }
 
+        public static void LogarInformacao(string mensagem)
+        {
+            Log.Information(mensagem);
+        }
+
+        public static void LogarErro(string mensagem)
+        {
+            Log.Error(mensagem);
+        }
+
+        public static void LogarAlerta(string mensagem)
+        {
+            Log.Warning(mensagem);
+        }
+
+        public static void LogarDebug(string mensagem)
+        {
+            Log.Debug(mensagem);
+        }
+
         public static void EncerrarLog()
         {
             Log.CloseAndFlush(); // Garante que todos os logs no buffer sejam gravados antes de fechar
