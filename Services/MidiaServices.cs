@@ -17,6 +17,54 @@ namespace Telinha.Services
 
             return DecidirMelhorResultado(filme, serie);
         }
+
+        private MidiaModel? DecidirMelhorResultado(MidiaModel? filme, MidiaModel? serie)
+        {
+            // 🔹 1. Só um existe
+            if (filme != null && serie == null)
+                return filme;
+
+            if (serie != null && filme == null)
+                return serie;
+
+            // 🔹 2. Nenhum existe
+            if (filme == null && serie == null)
+                return null;
+
+            // 🔹 3. Ambos existem → decidir com critério
+
+            // Prioridade 1: Tipo explícito (se vier correto)
+            if (Enum.TryParse(filme!.Tipo, true, out MidiaTipo tipoFilme) &&
+                tipoFilme == MidiaTipo.Filme)
+                return filme;
+
+            if (Enum.TryParse(serie!.Tipo, true, out MidiaTipo tipoSerie) &&
+                tipoSerie != MidiaTipo.Filme)
+                return serie;
+
+            // 🔹 4. Critério por conteúdo (TMDB padrão)
+
+            bool filmeValido = !string.IsNullOrWhiteSpace(filme?.TituloOriginal);
+            bool serieValida = !string.IsNullOrWhiteSpace(serie?.TituloOriginal);
+
+            if (filmeValido && !serieValida)
+                return filme;
+
+            if (serieValida && !filmeValido)
+                return serie;
+
+            // 🔹 5. Critério por popularidade (se tiver)
+            if (filme?.Popularidade > serie?.Popularidade)
+                return filme;
+
+            if (serie?.Popularidade > filme?.Popularidade)
+                return serie;
+
+            // 🔹 6. Fallback final (evita null)
+            return filme ?? serie;
+        }
+
+
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
         {
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
