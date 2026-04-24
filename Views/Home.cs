@@ -187,8 +187,7 @@ namespace Telinha
         }
         private void PreencherCampos(MidiaModel midia)
         {
-            logServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}",
-        midia.Id, midia.Nome, midia.Tipo); // 🔥 LOG 7
+            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo); // 🔥 LOG 7
 
             if (midia == null)
             {
