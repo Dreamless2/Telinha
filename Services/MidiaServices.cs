@@ -150,8 +150,11 @@ namespace Telinha.Services
 
             // 🔥 validação estrutural REAL (sem inferência fraca)
 
-            if (!IsValidMedia(details, tipo))
-                return null;
+            if (details != null && IsValidMedia(details, tipo))
+            {
+                if (!IsValidMedia(details, tipo))
+                    return null;
+            }
 
             var deepl = new ApiClientFactory().GetDeepL();
 
