@@ -32,7 +32,7 @@ namespace Telinha.Services
             return midiaEscolhida;
         }
 
-        private async Task<MidiaModel?> TryGetFromCacheAsync(int id, MidiaTipo tipo)
+        private static async Task<MidiaModel?> TryGetFromCacheAsync(int id, MidiaTipo tipo)
         {
             // Tenta o tipo solicitado primeiro
             string? json = MidiaCache.Get(tipo, id, 720);
