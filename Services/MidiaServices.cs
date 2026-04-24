@@ -101,57 +101,57 @@ namespace Telinha.Services
             var cacheKey = $"tmdb_{tipo.ToString().ToLower()}_{id}";
 
             if (_cache != null)
-                return null; // 🔥 Desabilitado cache para evitar problemas com dados inconsistentes do TMDB
+            {
 
-            var cached = await _cache.GetAsync(cacheKey);
-            if (cached != null) return cached;
+                var cached = await _cache.GetAsync(cacheKey);
+                if (cached != null) return cached;
 
 
-            var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
-            var calls = new List<(string, Dictionary<string, string>?)>
+                var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
+                var calls = new List<(string, Dictionary<string, string>?)>
             {
                 ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
                 ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
             };
 
-            if (tipo == MidiaTipo.Filme)
-                calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
+                if (tipo == MidiaTipo.Filme)
+                    calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
 
-            var results = await _tmdb.Many(ct, [.. calls]);
+                var results = await _tmdb.Many(ct, [.. calls]);
 
-            if (results == null || results.Length < 2 || results[0] == null)
-            {
-                LogServices.LogarInformacao("TMDB {tipo} {id} - Resultado nulo", tipo, id);
-                return null;
+                if (results == null || results.Length < 2 || results[0] == null)
+                {
+                    LogServices.LogarInformacao("TMDB {tipo} {id} - Resultado nulo", tipo, id);
+                    return null;
+                }
+
+                var details = results[0];
+                var credits = results[1];
+                var alternative = results.Length > 2 ? results[2] : null;
+
+                LogServices.LogarInformacao("TMDB {tipo} {id} - Raw: {json}",
+                    tipo, id, details.ToString());
+
+                if (details is not JObject validDetails) return null;
+                if (validDetails["success"]?.ToObject<bool>() == false) return null;
+                if (validDetails["status_code"]?.ToObject<int>() == 34) return null;
+                if (!IsValidMedia(validDetails, tipo))
+                {
+                    LogServices.LogarInformacao("IsValidMedia FALSE - {tipo} {id}", tipo, id);
+                    return null;
+                }
+
+                var deepl = new ApiClientFactory().GetDeepL();
+                var model = await MidiaFactory.ConstruirMidia(details, credits, alternative, tipo, deepl);
+
+                if (model != null)
+                {
+                    NormalizarModel(model, details);
+                    await _cache.SetAsync(cacheKey, model, _cacheTtl);
+                }
+
+                return model;
             }
-
-            var details = results[0];
-            var credits = results[1];
-            var alternative = results.Length > 2 ? results[2] : null;
-
-            LogServices.LogarInformacao("TMDB {tipo} {id} - Raw: {json}",
-                tipo, id, details.ToString());
-
-            if (details is not JObject validDetails) return null;
-            if (validDetails["success"]?.ToObject<bool>() == false) return null;
-            if (validDetails["status_code"]?.ToObject<int>() == 34) return null;
-            if (!IsValidMedia(validDetails, tipo))
-            {
-                LogServices.LogarInformacao("IsValidMedia FALSE - {tipo} {id}", tipo, id);
-                return null;
-            }
-
-            var deepl = new ApiClientFactory().GetDeepL();
-            var model = await MidiaFactory.ConstruirMidia(details, credits, alternative, tipo, deepl);
-
-            if (model != null)
-            {
-                NormalizarModel(model, details);
-                await _cache.SetAsync(cacheKey, model, _cacheTtl);
-            }
-
-            return model;
-        }
 
         private bool IsValidMedia(JObject data, MidiaTipo tipo)
         {
