@@ -380,13 +380,13 @@ namespace Telinha
                 {
                     MessageBox.Show("Você chegou ao último registro.", "Aviso",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ProximoButton.Enabled = false; // <- era AnteriorButton
+                    ProximoButton.Enabled = false;
                     return;
                 }
 
                 currentId = item.Id;
                 PreencherCampos(item);
-                _bs.Position = _bs.IndexOf(item); // padroniza com o de cima
+                _bs.Position = _bs.IndexOf(item);
                 await AtualizarBotoesNavegacao();
             }
             catch (Exception ex)
