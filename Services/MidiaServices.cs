@@ -119,10 +119,10 @@ namespace Telinha.Services
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
 
             var calls = new List<(string, Dictionary<string, string>?)>
-    {
-        ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
-        ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
-    };
+            {
+                ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
+                ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
+            };
 
             if (tipo == MidiaTipo.Filme)
                 calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
