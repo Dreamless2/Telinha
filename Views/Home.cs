@@ -285,7 +285,7 @@ namespace Telinha
 
             AudioBox.SelectedIndex = -1;
         }
-        #region 
+        #region Load
         private async void Principal_Load(object sender, EventArgs e)
         {
             var lista = new BindingList<MidiaModel>();
