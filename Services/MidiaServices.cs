@@ -13,22 +13,42 @@ namespace Telinha.Services
 
         public async Task<MidiaModel?> GetMidia(int id)
         {
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(8));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(15));
 
-            var filme = await ExecutarBuscaSeguro(id, MidiaTipo.Filme, cts.Token);
-            var serie = await ExecutarBuscaSeguro(id, MidiaTipo.Serie, cts.Token);
+            var filmeTask = ExecutarBuscaSeguro(id, MidiaTipo.Filme, cts.Token);
+            var serieTask = ExecutarBuscaSeguro(id, MidiaTipo.Serie, cts.Token);
 
-            filme?.Classificacao = ClassificarAnimacaoAvancado(filme);
-            serie?.Classificacao = ClassificarAnimacaoAvancado(serie);
+            await Task.WhenAll(filmeTask, serieTask);
 
-            // 🔥 REGRA SIMPLES E BLINDADA
-            if (serie != null)
+            var filme = filmeTask.Result;
+            var serie = serieTask.Result;
+
+            bool serieExiste = serie != null && !string.IsNullOrWhiteSpace(serie.Nome);
+            bool filmeExiste = filme != null && !string.IsNullOrWhiteSpace(filme.Nome);
+
+            if (!serieExiste && !filmeExiste)
+            {
+                LogServices.LogarInformacao("ID {id} - Nenhum resultado válido", id);
+                return null;
+            }
+
+            if (serieExiste && !filmeExiste)
                 return serie;
 
-            return filme;
+            if (filmeExiste && !serieExiste)
+                return filme;
+
+            // Se os dois existem, decide qual é melhor
+            filme!.Classificacao = ClassificarAnimacaoAvancado(filme);
+            serie!.Classificacao = ClassificarAnimacaoAvancado(serie);
+
+            return DecidirMelhorResultado(filme, serie);
         }
+
         private string ClassificarAnimacaoAvancado(MidiaModel m)
         {
+            if (m == null) return "LiveAction";
+
             bool isAnimation = m.GenerosLista?.Any(g =>
                 g.Contains("Animation", StringComparison.OrdinalIgnoreCase) ||
                 g.Contains("Animação", StringComparison.OrdinalIgnoreCase)) == true;
@@ -38,35 +58,23 @@ namespace Telinha.Services
 
             int scoreAnime = 0;
 
-            // 🔹 1. idioma japonês (peso forte)
             if (m.IdiomaOriginal == "ja")
                 scoreAnime += 4;
 
-            // 🔹 2. país de origem
             if (m.PaisesOrigem?.Any(p => p.Equals("JP", StringComparison.OrdinalIgnoreCase)) == true)
                 scoreAnime += 3;
 
-            // 🔹 3. palavras-chave
             string texto = $"{m.Nome} {m.Sinopse}".ToLower();
-
-            string[] palavrasAnime =
-            [
-                "anime", "mangá", "manga", "shonen", "shoujo", "isekai", "mecha", "otaku", "samurai"
-            ];
+            string[] palavrasAnime = ["anime", "mangá", "manga", "shonen", "shoujo", "isekai", "mecha", "otaku", "samurai"];
 
             if (palavrasAnime.Any(p => texto.Contains(p)))
                 scoreAnime += 2;
 
-            // 🔹 4. estúdio (peso leve)
-            if (m.ProdutorasLista?.Any(p =>
-                p.Contains("animation", StringComparison.OrdinalIgnoreCase)) == true)
+            if (m.ProdutorasLista?.Any(p => p.Contains("animation", StringComparison.OrdinalIgnoreCase)) == true)
                 scoreAnime += 1;
 
-            // 🔹 5. formato típico
             if (m.Episodios > 0 && m.Episodios <= 30 && m.DuracaoMedia > 0 && m.DuracaoMedia <= 30)
                 scoreAnime += 1;
-
-            // 🔥 DECISÃO FINAL (melhorada)
 
             if (scoreAnime >= 6 && m.IdiomaOriginal == "ja")
                 return "Anime";
@@ -91,28 +99,25 @@ namespace Telinha.Services
             {
                 try
                 {
-                    ct.ThrowIfCancellationRequested();
-
                     var result = await ExecutarBusca(id, tipo, ct);
-
-                    if (result != null)
-                        return result;
+                    if (result != null) return result;
                 }
                 catch (OperationCanceledException)
                 {
+                    LogServices.LogarInformacao("Timeout {tipo} ID {id}", tipo, id);
                     return null;
                 }
                 catch (Exception ex)
                 {
-                    LogServices.LogarErroComException(ex, $"Erro tentativa {tentativa} - {tipo}");
+                    LogServices.LogarErroComException(ex, $"Erro tentativa {tentativa} - {tipo} ID {id}");
                 }
 
-                await Task.Delay(300, ct);
+                if (tentativa < maxTentativas)
+                    await Task.Delay(500);
             }
 
             return null;
         }
-
 
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo, CancellationToken ct)
         {
@@ -130,11 +135,20 @@ namespace Telinha.Services
             var results = await _tmdb.Many(ct, [.. calls]);
 
             if (results == null || results.Length < 2 || results[0] == null)
+            {
+                LogServices.LogarInformacao("TMDB {tipo} {id} - Resultado nulo", tipo, id);
                 return null;
+            }
 
             var details = results[0];
             var credits = results[1];
             var alternative = results.Length > 2 ? results[2] : null;
+
+            LogServices.LogarInformacao("TMDB {tipo} {id} - Success: {success}, Status: {status}, Title: {title}",
+                tipo, id,
+                details?["success"],
+                details?["status_code"],
+                details?["title"] ?? details?["name"]);
 
             if (details?["success"]?.ToObject<bool>() == false)
                 return null;
@@ -142,45 +156,39 @@ namespace Telinha.Services
             if (details?["status_code"]?.ToObject<int>() == 34)
                 return null;
 
-            // 🔥 FIX: inverteu a lógica aqui
-            if (details == null || !IsValidMedia(details, tipo))
+            if (!IsValidMedia(details, tipo))
+            {
+                LogServices.LogarInformacao("IsValidMedia FALSE - {tipo} {id}", tipo, id);
                 return null;
+            }
 
             var deepl = new ApiClientFactory().GetDeepL();
+            var model = await MidiaFactory.ConstruirMidia(details, credits, alternative, tipo, deepl);
 
-            var model = await MidiaFactory.ConstruirMidia(
-                details,
-                credits,
-                alternative,
-                tipo,
-                deepl
-            );
+            if (model != null)
+                NormalizarModel(model, details);
 
-            if (model == null)
-                return null;
-
-            NormalizarModel(model, details);
             return model;
         }
 
         private bool IsValidMedia(JObject data, MidiaTipo tipo)
         {
+            if (data?["success"]?.ToObject<bool>() == false)
+                return false;
+
+            if (data?["status_code"]?.ToObject<int>() == 34)
+                return false;
+
             if (tipo == MidiaTipo.Filme)
             {
                 var title = data?["title"]?.ToString();
-                var runtime = data?["runtime"]?.ToObject<int?>();
-
-                return !string.IsNullOrWhiteSpace(title)
-                       && runtime.HasValue;
+                return !string.IsNullOrWhiteSpace(title);
             }
 
             if (tipo == MidiaTipo.Serie)
             {
                 var name = data?["name"]?.ToString();
-                var episodes = data?["number_of_episodes"]?.ToObject<int?>();
-
-                return !string.IsNullOrWhiteSpace(name)
-                       && episodes.HasValue;
+                return !string.IsNullOrWhiteSpace(name);
             }
 
             return false;
@@ -196,13 +204,8 @@ namespace Telinha.Services
                 return serie;
 
             // 🔥 consistência estrutural
-            bool serieMaisForte =
-                serie.Episodios > 0 ||
-                !string.IsNullOrWhiteSpace(serie.Serie);
-
-            bool filmeMaisForte =
-                serie.Episodios == 0 &&
-                filme.DuracaoMedia > 0;
+            bool serieMaisForte = serie.Episodios > 0;
+            bool filmeMaisForte = serie.Episodios == 0 && filme.DuracaoMedia > 60;
 
             if (serieMaisForte && !filmeMaisForte)
                 return serie;
@@ -210,9 +213,11 @@ namespace Telinha.Services
             if (filmeMaisForte && !serieMaisForte)
                 return filme;
 
-            // fallback seguro
+            // fallback por score
             double scoreFilme = CalcularScore(filme);
             double scoreSerie = CalcularScore(serie);
+
+            LogServices.LogarInformacao("Score Filme: {filme}, Série: {serie}", scoreFilme, scoreSerie);
 
             return scoreSerie >= scoreFilme ? serie : filme;
         }
@@ -221,41 +226,31 @@ namespace Telinha.Services
         {
             double score = 0;
 
-            // 🔥 identidade forte (o que mais importa)
             if (!string.IsNullOrWhiteSpace(m.Nome))
                 score += 3;
 
             if (!string.IsNullOrWhiteSpace(m.Sinopse) && m.Sinopse.Length > 30)
                 score += 2;
 
-            // 🔥 estrutura válida de série vs filme
             if (m.Episodios > 0)
                 score += 3;
 
             if (m.DuracaoMedia > 0)
                 score += 2;
 
-            // 🔥 consistência de classificação
-            if (!string.IsNullOrWhiteSpace(m.Classificacao))
-            {
-                if (m.Classificacao == "Anime")
-                    score += 4;
+            if (m.Classificacao == "Anime")
+                score += 4;
+            else if (m.Classificacao == "AnimeLike")
+                score += 2;
+            else if (m.Classificacao == "LiveAction")
+                score += 1;
 
-                if (m.Classificacao == "AnimeLike")
-                    score += 2;
-
-                if (m.Classificacao == "LiveAction")
-                    score += 1;
-            }
-
-            // 🔥 sinais fracos (não decisivos sozinhos)
             if (m.Popularidade > 0)
                 score += Math.Min(m.Popularidade / 50.0, 2);
 
             if (m.Votos > 0)
                 score += Math.Min(m.Votos / 1000.0, 2);
 
-            // 🔥 bônus de consistência interna
             bool pareceSerie = m.Episodios > 0 && m.DuracaoMedia <= 45;
             bool pareceFilme = m.Episodios == 0 && m.DuracaoMedia > 60;
 
@@ -268,50 +263,35 @@ namespace Telinha.Services
             return score;
         }
 
-
         private void NormalizarModel(MidiaModel model, dynamic data)
         {
-            // 🔹 idioma original (CRÍTICO pro anime detection)
             model.IdiomaOriginal = data?["original_language"]?.ToString();
-
-            // 🔹 popularidade
             model.Popularidade = data?["popularity"]?.ToObject<double>() ?? 0;
-
-            // 🔹 votos
             model.Votos = data?["vote_count"]?.ToObject<int>() ?? 0;
-
-            // 🔹 episódios (séries)
             model.Episodios = data?["number_of_episodes"]?.ToObject<int>() ?? 0;
 
-            // 🔹 duração média (filmes ou episódios)
             model.DuracaoMedia = data?["runtime"]?.ToObject<int?>()
-                    ?? (data?["episode_run_time"] is JArray arr && arr.Count > 0
-                    ? arr[0].ToObject<int?>()
-                    : 0);
+                   ?? (data?["episode_run_time"] is JArray arr && arr.Count > 0
+                       ? arr[0].ToObject<int?>()
+                        : 0) ?? 0;
 
-            // 🔹 país de origem
             model.PaisesOrigem = ((IEnumerable<dynamic>?)data?["origin_country"])
-                ?.Select(x => (string)x.ToString())
-                .ToList();
+               ?.Select(x => (string)x.ToString())
+               .ToList() ?? [];
 
-            // 🔹 gêneros estruturados
             model.GenerosLista = ((IEnumerable<dynamic>?)data?["genres"])
-                ?.Select(g => (string?)g?["name"]?.ToString())
-                .OfType<string>()
-                .ToList();
+               ?.Select(g => (string?)g?["name"]?.ToString())
+               .OfType<string>()
+               .ToList() ?? [];
 
-            // 🔹 produtoras estruturadas
             model.ProdutorasLista = ((IEnumerable<dynamic>?)data?["production_companies"])
-                ?.Select(p => (string?)p?["name"]?.ToString())
-                .OfType<string>()
-                .ToList();
+               ?.Select(p => (string?)p?["name"]?.ToString())
+               .OfType<string>()
+               .ToList() ?? [];
 
-            // 🔹 título normalizado
-            model.Nome = data?["title"]?.ToString()
-                      ?? data?["name"]?.ToString();
-
-            model.Original = data?["original_title"]?.ToString()
-                         ?? data?["original_name"]?.ToString();
+            model.Nome = data?["title"]?.ToString() ?? data?["name"]?.ToString();
+            model.Original = data?["original_title"]?.ToString() ?? data?["original_name"]?.ToString();
+            model.Sinopse = data?["overview"]?.ToString();
         }
     }
 }
