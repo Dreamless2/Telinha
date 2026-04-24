@@ -17,7 +17,7 @@ namespace Telinha.Factory
             var config = new AppConfigServices().Load()
                 ?? throw new InvalidOperationException("Configuração não encontrada.");
 
-            _config = config;
+            _config = config;            
         }
 
         public DEEPLContracts GetDeepL()
@@ -42,6 +42,7 @@ namespace Telinha.Factory
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
                 _tmdbClient.AddDefaultParameter("api_key", _config.TMDB);
+                LogServices.LogarInformacao("Conectado ao TMDB.");
             }
 
             return new TMDBServices(_tmdbClient, _config.TMDB!);
