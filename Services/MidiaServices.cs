@@ -6,133 +6,141 @@ using Telinha.Models;
 
 namespace Telinha.Services
 {
-    public class MidiaServices(TMDBServices tmdb)
+    public class MidiaServices
     {
-        private readonly TMDBServices _tmdb = tmdb;
+        private readonly TMDBServices _tmdb;
+
+        public MidiaServices(TMDBServices tmdb)
+        {
+            _tmdb = tmdb;
+        }
 
         public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
         {
-            var tipoAlternativo = (tipoSolicitado == MidiaTipo.Filme)
-                ? MidiaTipo.Serie
-                : MidiaTipo.Filme;
+            // 1. Tenta cache primeiro (prioridade máxima)
+            var cache = await TryGetFromCacheAsync(id, tipoSolicitado);
+            if (cache != null)
+                return cache;
 
-            // 🔹 1. CACHE
-            string? cacheSolicitado = MidiaCache.Get(tipoSolicitado, id, 720);
-            if (cacheSolicitado != null)
-                return JsonConvert.DeserializeObject<MidiaModel>(cacheSolicitado);
+            // 2. Busca paralela no TMDB
+            var (filme, serie) = await BuscarFilmeESerieEmParaleloAsync(id);
 
-            string? cacheAlternativo = MidiaCache.Get(tipoAlternativo, id, 720);
-            if (cacheAlternativo != null)
-                return JsonConvert.DeserializeObject<MidiaModel>(cacheAlternativo);
+            // 3. Decisão inteligente de qual retornar
+            var midiaEscolhida = EscolherMelhorMidia(filme, serie, tipoSolicitado);
 
-            // 🔹 2. BUSCA PARALELA
-            var filmeTask = Task.Run(async () =>
+            // 4. Salva em cache (com o tipo real encontrado)
+            if (midiaEscolhida != null)
             {
-                try
-                {
-                    return await ExecutarBusca(id, MidiaTipo.Filme);
-                }
-                catch
-                {
-                    return null;
-                }
-            });
+                await SalvarEmCacheAsync(midiaEscolhida, id);
+            }
 
-            var serieTask = Task.Run(async () =>
-            {
-                try
-                {
-                    return await ExecutarBusca(id, MidiaTipo.Serie);
-                }
-                catch
-                {
-                    return null;
-                }
-            });
+            return midiaEscolhida;
+        }
+
+        private async Task<MidiaModel?> TryGetFromCacheAsync(int id, MidiaTipo tipo)
+        {
+            // Tenta o tipo solicitado primeiro
+            string? json = MidiaCache.Get(tipo, id, 720);
+            if (json != null)
+                return JsonConvert.DeserializeObject<MidiaModel>(json);
+
+            // Tenta o tipo alternativo (útil quando o ID é compartilhado entre filme e série)
+            var tipoAlternativo = tipo == MidiaTipo.Filme ? MidiaTipo.Serie : MidiaTipo.Filme;
+            json = MidiaCache.Get(tipoAlternativo, id, 720);
+            if (json != null)
+                return JsonConvert.DeserializeObject<MidiaModel>(json);
+
+            return null;
+        }
+
+        private async Task<(MidiaModel? filme, MidiaModel? serie)> BuscarFilmeESerieEmParaleloAsync(int id)
+        {
+            var filmeTask = ExecutarBuscaAsync(id, MidiaTipo.Filme);
+            var serieTask = ExecutarBuscaAsync(id, MidiaTipo.Serie);
 
             await Task.WhenAll(filmeTask, serieTask);
 
-            var filme = filmeTask.Result;
-            var serie = serieTask.Result;
+            return (await filmeTask, await serieTask);
+        }
 
-            // 🔹 3. DECISÃO INTELIGENTE
-            /*if (tipoSolicitado == MidiaTipo.Filme)
-            {
-                if (filme != null) return filme;
-                if (serie != null) return serie;
-            }
-            else // Série OU Anime
-            {
-                // 🔥 prioriza anime se detectado
-                if (serie != null && serie.Tipo!.Equals("Anime", StringComparison.OrdinalIgnoreCase))
-                    return serie;
-
-                if (serie != null)
-                    return serie;
-
-                if (filme != null)
-                    return filme;
-            }*/
+        private MidiaModel? EscolherMelhorMidia(MidiaModel? filme, MidiaModel? serie, MidiaTipo tipoSolicitado)
+        {
             if (tipoSolicitado == MidiaTipo.Filme)
             {
-                return filme; // NÃO cai pra série automaticamente
+                return filme ?? serie; // só cai pra série se filme não existir
             }
-            else
+
+            // Para Série ou Anime
+            if (serie != null)
             {
-                if (serie != null && serie.Tipo!.Equals("Anime", StringComparison.OrdinalIgnoreCase))
+                // Prioriza Anime se detectado
+                if (serie.Tipo?.Equals("Anime", StringComparison.OrdinalIgnoreCase) == true)
                     return serie;
 
                 return serie;
             }
 
-            return null;
+            return filme; // fallback para filme se não achou série
         }
-        private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
+
+        private async Task SalvarEmCacheAsync(MidiaModel model, int id)
+        {
+            if (string.IsNullOrWhiteSpace(model.Tipo) ||
+                !Enum.TryParse<MidiaTipo>(model.Tipo, true, out var tipoReal))
+            {
+                tipoReal = model.Tipo?.Contains("Anime", StringComparison.OrdinalIgnoreCase) == true
+                           ? MidiaTipo.Serie
+                           : MidiaTipo.Serie; // ajuste conforme sua lógica
+            }
+
+            MidiaCache.Save(tipoReal, id, JsonConvert.SerializeObject(model));
+        }
+
+        private async Task<MidiaModel?> ExecutarBuscaAsync(int id, MidiaTipo tipo)
         {
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
-            var calls = new List<(string, Dictionary<string, string>?)>
-            {
-                ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
-                ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
-            };
+
+            var calls = new List<(string endpoint, Dictionary<string, string>? query)>
+        {
+            ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
+            ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
+        };
 
             if (tipo == MidiaTipo.Filme)
-                calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
+            {
+                calls.Add(("/movie/" + id + "/alternative_titles", null));
+            }
 
             var results = await _tmdb.Many([.. calls]);
 
-            // ❗ VALIDAÇÃO CRÍTICA
+            // Validações críticas
             if (results == null || results.Length < 2 || results[0] == null)
                 return null;
 
-
-            if (results[0]?["success"] != null && results[0]?["success"]?.ToObject<bool>() == false)
+            if (results[0]?["success"]?.ToObject<bool>() == false)
                 return null;
 
-            if (results[0]?["status_code"]?.ToObject<int>() == 34)
+            if (results[0]?["status_code"]?.ToObject<int>() == 34) // Not Found
                 return null;
 
-            LogServices.LogarInformacao("RESULT[0]: {json}", results[0]?.ToString()!);
+            // Validação de conteúdo real
+            var titulo = tipo == MidiaTipo.Filme
+                ? results[0]?["title"]?.ToString()
+                : results[0]?["name"]?.ToString();
 
-            // ❗ validação de conteúdo real
-            if (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString()))
+            if (string.IsNullOrWhiteSpace(titulo))
                 return null;
 
-            if (tipo != MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["name"]?.ToString()))
-                return null;
-
+            // Construção do modelo
             var apiFactory = new ApiClientFactory();
-
             var deepl = apiFactory.GetDeepL();
 
-            var model = await MidiaFactory.ConstruirMidia(results[0], results[1], results.Length > 2 ? results[2] : null, tipo, deepl);
-
-            if (model != null)
-                if (Enum.TryParse(model.Tipo, out MidiaTipo tipoReal))
-                    MidiaCache.Save(tipo, id, JsonConvert.SerializeObject(model));
-
-                else
-                    MidiaCache.Save(tipo, id, JsonConvert.SerializeObject(model));
+            var model = await MidiaFactory.ConstruirMidia(
+                results[0],
+                results[1],
+                results.Length > 2 ? results[2] : null,
+                tipo,
+                deepl);
 
             return model;
         }
