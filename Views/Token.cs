@@ -8,7 +8,7 @@ namespace Telinha
     {
         private readonly AppConfigServices _configService = new();
         private readonly ILifetimeScope _scope;
-        public Token(ILifetimeScope scope)
+        public Token(ILifetimeScope scope, AppConfigServices configService)
         {
             InitializeComponent();
             _scope = scope;
