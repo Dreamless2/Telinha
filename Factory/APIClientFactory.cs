@@ -42,12 +42,9 @@ namespace Telinha.Factory
                     throw new InvalidOperationException("Chave API do TMDB não configurada.");
 
                 _tmdbClient = new RestClient("https://api.themoviedb.org/3/");
-                _tmdbClient.AddDefaultParameter("api_key", _config.TMDB);
-                LogServices.LogarInformacao("Chave TMDB: {chave}", _config.TMDB);
             }
 
             return new TMDBServices(_tmdbClient, _config.TMDB!);
-
         }
     }
 }
