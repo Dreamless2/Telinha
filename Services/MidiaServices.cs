@@ -148,6 +148,62 @@ namespace Telinha.Services
         }
 
 
+        private string ClassificarAnimacaoAvancado(MidiaModel m)
+        {
+            bool isAnimation = m.Generos?.Any(g =>
+                g.Contains("Animation", StringComparison.OrdinalIgnoreCase) ||
+                g.Contains("Animação", StringComparison.OrdinalIgnoreCase)) == true;
+
+            if (!isAnimation)
+                return "LiveAction";
+
+            int scoreAnime = 0;
+
+            // 🔹 1. idioma japonês (peso forte)
+            if (m.IdiomaOriginal == "ja")
+                scoreAnime += 4;
+
+            // 🔹 2. país de origem
+            if (m.PaisesOrigem?.Any(p => p.Equals("JP", StringComparison.OrdinalIgnoreCase)) == true)
+                scoreAnime += 3;
+
+            // 🔹 3. palavras-chave típicas
+            string texto = $"{m.TituloOriginal} {m.Sinopse}".ToLower();
+
+            string[] palavrasAnime =
+            [
+                "anime", "mangá", "manga", "shonen", "shoujo",
+        "isekai", "mecha", "otaku", "samurai"
+            ];
+
+            if (palavrasAnime.Any(p => texto.Contains(p)))
+                scoreAnime += 2;
+
+            // 🔹 4. estúdios conhecidos (peso leve, sem lista gigante)
+            if (m.Produtoras?.Any(p =>
+                p.Contains("studio", StringComparison.OrdinalIgnoreCase) ||
+                p.Contains("animation", StringComparison.OrdinalIgnoreCase)) == true)
+                scoreAnime += 1;
+
+            // 🔹 5. estilo (duração e formato ajudam)
+            if (m.Episodios <= 30 && m.DuracaoMedia <= 30)
+                scoreAnime += 1;
+
+            // 🔥 DECISÃO FINAL
+
+            if (scoreAnime >= 5)
+                return "Anime";
+
+            // 🔹 animação asiática não japonesa
+            if (m.IdiomaOriginal == "zh")
+                return "Donghua";
+
+            if (m.IdiomaOriginal == "ko")
+                return "AnimacaoCoreana";
+
+            return "AnimacaoOcidental";
+        }
+
 
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo, CancellationToken ct)
         {
