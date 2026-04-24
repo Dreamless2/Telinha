@@ -23,9 +23,9 @@ namespace Telinha.Services
             Log.Information("Sistema de logs inicializado com sucesso.");
         }
 
-        public static void LogarInformacao(string mensagem)
+        public static void LogarInformacao(string formato, string mensagem)
         {
-            Log.Information(mensagem);
+            Log.Information(formato, mensagem);
         }
 
         public static void LogarErro(string mensagem)
