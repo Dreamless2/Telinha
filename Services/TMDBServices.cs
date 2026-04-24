@@ -4,10 +4,14 @@ using Telinha.Factory;
 
 namespace Telinha.Services
 {
+    private readonly RestClient _client;
     public class TMDBServices
     {
-        private readonly string _token = token;
+        public TMDBServices()
+        {
+            private readonly string _token = token;
         private readonly RestClient _client = client;
+        }
 
         private bool IsBearer => _token.StartsWith("eyJ");
 
