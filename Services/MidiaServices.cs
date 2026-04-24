@@ -22,18 +22,26 @@ namespace Telinha.Services
             var filme = filmeTask.Result;
             var serie = serieTask.Result;
 
+            // 🔥 Classificação automática aplicada
+            if (filme != null)
+                filme.Classificacao = ClassificarAnimacaoAvancado(filme);
+
+            if (serie != null)
+                serie.Classificacao = ClassificarAnimacaoAvancado(serie);
+
             var escolhido = DecidirMelhorResultado(filme, serie);
 
             LogServices.LogarInformacao(
-                "Resultado final -> Filme: {f}, Série: {s}, Escolhido: {e}",
+                "Final -> Filme: {f} ({cf}), Série: {s} ({cs}), Escolhido: {e}",
                 filme != null,
+                filme?.Classificacao,
                 serie != null,
-                escolhido?.Tipo
+                serie?.Classificacao,
+                escolhido?.Classificacao
             );
 
             return escolhido;
         }
-
         private string ClassificarAnimacaoAvancado(MidiaModel m)
         {
             bool isAnimation = m.Generos?.Any(g =>
