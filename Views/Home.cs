@@ -491,7 +491,6 @@ namespace Telinha
                 MessageBox.Show($"Erro ao navegar: {ex.Message}");
             }
         }
-
         private async void ProximoButton_Click(object sender, EventArgs e)
         {
             try
