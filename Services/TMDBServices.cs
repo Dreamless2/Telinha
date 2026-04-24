@@ -10,19 +10,14 @@ namespace Telinha.Services
 
         private bool IsBearer => _token.StartsWith("eyJ");
 
-        public async Task<JObject> GetAsync(string endpoint, Dictionary<string, string>? query = null)
+        public async Task<JObject> GetAsync(string endpoint, Dictionary<string, string>? query = null, CancellationToken ct = default)
         {
             var request = new RestRequest(endpoint);
 
-            // 🔥 Detecta automaticamente
             if (IsBearer)
-            {
                 request.AddHeader("Authorization", $"Bearer {_token}");
-            }
             else
-            {
                 request.AddQueryParameter("api_key", _token);
-            }
 
             request.AddHeader("Accept", "application/json");
 
@@ -30,9 +25,8 @@ namespace Telinha.Services
                 foreach (var p in query)
                     request.AddQueryParameter(p.Key, p.Value);
 
-            var resp = await _client.ExecuteAsync(request);
+            var resp = await _client.ExecuteAsync(request, ct);
 
-            // 🔎 Logs úteis
             LogServices.LogarInformacao("TMDB TipoAuth: {tipo}", IsBearer ? "Bearer" : "ApiKey");
             LogServices.LogarInformacao("TMDB Status: {status}", resp.StatusCode);
             LogServices.LogarInformacao("TMDB Response: {resp}", resp.Content!);
@@ -46,8 +40,7 @@ namespace Telinha.Services
             return JObject.Parse(resp.Content!);
         }
 
-        public async Task<JObject[]> Many(params (string url, Dictionary<string, string>? q)[] calls,
-      CancellationToken ct = default)
+        public async Task<JObject[]> Many(CancellationToken ct, params (string url, Dictionary<string, string>? q)[] calls)
         {
             return await Task.WhenAll(
                 calls.Select(c => GetAsync(c.url, c.q, ct))
