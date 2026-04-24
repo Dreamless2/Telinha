@@ -40,7 +40,7 @@ namespace Telinha
                 }
 
                 // ✅ só agora cria
-                var apiFactory = new ApiClientFactory();
+                //var apiFactory = new ApiClientFactory();
                 var home = scope.Resolve<Home>();
                 Application.Run(home);
             }
