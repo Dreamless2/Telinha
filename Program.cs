@@ -1,7 +1,4 @@
-﻿using Telinha.Data;
-using Telinha.Factory;
-using Telinha.Services;
-using Telinha.Store;
+﻿using Telinha.Services;
 
 namespace Telinha
 {
@@ -13,7 +10,7 @@ namespace Telinha
             ApplicationConfiguration.Initialize();
             try
             {
-                var configService = new AppConfigService();
+                var configService = new AppConfigServices();
                 var config = configService.Load();
 
                 // 🔴 Se não tem config → abre tela de configuração
