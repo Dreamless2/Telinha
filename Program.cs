@@ -37,30 +37,6 @@ namespace Telinha
             var container = builder.Build();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             LogServices.ConfigurarLog();
             try
             {
