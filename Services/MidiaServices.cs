@@ -149,7 +149,6 @@ namespace Telinha.Services
                 return null;
 
             // 🔥 validação estrutural REAL (sem inferência fraca)
-            var detailsValidos = IsValidMedia(details, tipo);
 
             if (!IsValidMedia(details, tipo))
                 return null;
