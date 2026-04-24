@@ -68,3 +68,4 @@ namespace Telinha.Services
             Log.CloseAndFlush();
         }
     }
+}
