@@ -11,37 +11,29 @@ namespace Telinha.Container
         {
             var builder = new ContainerBuilder();
 
-            // MemoryCache
+            // Infra
             builder.Register(c => new MemoryCache(new MemoryCacheOptions()))
-            .As<IMemoryCache>()
-            .SingleInstance();
-
-            // Cache híbrido
-            builder.RegisterType<FileCacheServices>()
-            .AsSelf()
-            .SingleInstance();
-
-            // APIs
-            builder.RegisterType<ApiClientFactory>().AsSelf().SingleInstance();
+              .As<IMemoryCache>().SingleInstance();
+            builder.RegisterType<FileCacheService>().AsSelf().SingleInstance();
             builder.RegisterType<AppConfigServices>().AsSelf().SingleInstance();
-            // 🔥 TMDBServices com factory
-            builder.Register(c =>
-            {
-                var factory = c.Resolve<ApiClientFactory>();
-                var config = c.Resolve<AppConfigServices>().Load();
 
-                if (string.IsNullOrWhiteSpace(config.TMDB))
-                    throw new InvalidOperationException("Token TMDB não encontrado. Configure na tela de Token.");
+            // 🔥 ApiClientFactory cria tudo
+            builder.RegisterType<ApiClientFactory>().AsSelf().SingleInstance();
 
-                var client = factory.GetTMDB(); // RestClient base
-                return new TMDBServices(client, config.TMDB); // passa os 2 params
-            })
-           .AsSelf()
-           .SingleInstance(); // TMDBServices pode ser singleton
+            // 🔥 TMDBServices vem da factory, não do RegisterType
+            builder.Register(c => c.Resolve<ApiClientFactory>().GetTMDB())
+              .AsSelf()
+              .SingleInstance();
+
+            // 🔥 DEEPLContracts também se precisar
+            builder.Register(c => c.Resolve<ApiClientFactory>().GetDeepL())
+              .AsSelf()
+              .InstancePerDependency();
+
             builder.RegisterType<MidiaServices>().AsSelf();
-
-            // Forms
+            builder.RegisterType<Token>().AsSelf();
             builder.RegisterType<Home>().AsSelf();
+
 
             return builder.Build();
         }
