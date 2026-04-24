@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
@@ -456,6 +457,7 @@ namespace Telinha
                 }
 
                 var midia = await _midiaService.GetMidia(id, tipoSolicitado);
+                LogServices.LogarInformacao("MIDIA: {midia}", JsonConvert.SerializeObject(midia));
 
                 if (midia == null)
                 {
