@@ -67,8 +67,8 @@ namespace Telinha
                 PreencherCampos(item); // 👈 adiciona isso
 
             var tipoNormalizado = item?.Tipo
-    ?.Replace("Série", "Serie")
-    .Replace("Animé", "Anime");
+                ?.Replace("Série", "Serie")
+                .Replace("Animé", "Anime");
 
             if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
             {
