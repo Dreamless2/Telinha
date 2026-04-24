@@ -23,7 +23,6 @@ namespace Telinha
         public Home(FileCacheServices cacheServices, MidiaServices midiaService)
         {
             InitializeComponent();
-            _apiFactory = apiFactory;
             _cacheService = cacheServices;
             _midiaService = midiaService;
             Load += Principal_Load!;
