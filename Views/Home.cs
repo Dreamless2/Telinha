@@ -297,7 +297,7 @@ namespace Telinha
             _cacheService.LimparExpirados();
             
 
-            _midiaService = new MidiaServices(_tmdb, _cacheService);
+            _midiaService = new MidiaServices(_cacheService);
 
             try
             {
