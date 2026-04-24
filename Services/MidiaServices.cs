@@ -10,7 +10,7 @@ namespace Telinha.Services
     {
         private readonly TMDBServices _tmdb = tmdb;
         private readonly FileCacheServices _cache;
-        private readonly TimeSpan _cacheTtl = TimeSpan.FromDays(7);
+        private readonly TimeSpan _cacheTtl = TimeSpan.FromHours(12);
 
         public async Task<MidiaModel?> GetMidia(int id)
         {
