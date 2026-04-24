@@ -3,6 +3,7 @@ using Telinha.Contracts;
 using Telinha.Enums;
 using Telinha.Helpers;
 using Telinha.Models;
+using Telinha.Services;
 using Telinha.Utils;
 
 namespace Telinha.Factory
@@ -154,8 +155,7 @@ namespace Telinha.Factory
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao carregar: {ex.Message}", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogServices.LogarErroComException(ex, "Falha ao construir objeto Midia no Factory para o JSON: {JsonSnippet}", json[titleField]?.ToString());
                 return null;
             }
         }
