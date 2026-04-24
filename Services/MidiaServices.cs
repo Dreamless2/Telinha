@@ -120,8 +120,14 @@ namespace Telinha.Services
 
             var calls = new List<(string, Dictionary<string, string>?)>
     {
-        ($"/{baseRoute}/{id}", new() { ["language"] = "pt-BR" }),
-        ($"/{baseRoute}/{id}/credits", new() { ["language"] = "pt-BR" })
+        ($"/{baseRoute}/{id}", new()
+        {
+            ["language"] = "pt-BR"
+        }),
+        ($"/{baseRoute}/{id}/credits", new()
+        {
+            ["language"] = "pt-BR"
+        })
     };
 
             if (tipo == MidiaTipo.Filme)
@@ -129,25 +135,30 @@ namespace Telinha.Services
 
             var results = await _tmdb.Many(ct, [.. calls]);
 
-            var details = results.FirstOrDefault(x =>
-                x?["id"] != null && (x?["title"] != null || x?["name"] != null));
+            if (results == null || results.Length < 2 || results[0] == null)
+                return null;
 
-            var credits = results.FirstOrDefault(x =>
-                x?["cast"] != null && x?["crew"] != null);
+            var details = results[0];
+            var credits = results[1];
+            var alternative = results.Length > 2 ? results[2] : null;
 
-            var alternative = results.FirstOrDefault(x =>
-                x?["titles"] != null || x?["results"] != null);
+            if (details?["success"]?.ToObject<bool>() == false)
+                return null;
 
-            if (details == null)
+            if (details?["status_code"]?.ToObject<int>() == 34)
+                return null;
+
+            // 🔥 validação estrutural REAL (sem inferência fraca)
+            if (!IsValidMedia(details, tipo))
                 return null;
 
             var deepl = new ApiClientFactory().GetDeepL();
 
             var model = await MidiaFactory.ConstruirMidia(
                 details,
-                credits ?? new JObject(),
+                credits,
                 alternative,
-                tipo, // 🔥 tipo FIXO, não negociável
+                tipo,
                 deepl
             );
 
