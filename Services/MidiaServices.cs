@@ -138,7 +138,7 @@ namespace Telinha.Services
                 return true;
 
             // produtoras comuns de anime (exemplo)
-            if (m.Produtoras?.Any(p =>
+            if (m.Produtora?.Any(p =>
                 p.Contains("Toei", StringComparison.OrdinalIgnoreCase) ||
                 p.Contains("Madhouse", StringComparison.OrdinalIgnoreCase) ||
                 p.Contains("Bones", StringComparison.OrdinalIgnoreCase)) == true)
