@@ -15,32 +15,17 @@ namespace Telinha.Services
         {
             using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(8));
 
-            var filmeTask = ExecutarBuscaSeguro(id, MidiaTipo.Filme, cts.Token);
-            var serieTask = ExecutarBuscaSeguro(id, MidiaTipo.Serie, cts.Token);
+            var filme = await ExecutarBuscaSeguro(id, MidiaTipo.Filme, cts.Token);
+            var serie = await ExecutarBuscaSeguro(id, MidiaTipo.Serie, cts.Token);
 
-            await Task.WhenAll(filmeTask, serieTask);
-
-            var filme = filmeTask.Result;
-            var serie = serieTask.Result;
-
-            // 🔥 Classificação automática aplicada
             filme?.Classificacao = ClassificarAnimacaoAvancado(filme);
-
             serie?.Classificacao = ClassificarAnimacaoAvancado(serie);
 
-            var escolhido = DecidirMelhorResultado(filme, serie);
+            // 🔥 REGRA SIMPLES E BLINDADA
+            if (serie != null)
+                return serie;
 
-            if (filme != null && serie != null && escolhido != null)
-            {
-                LogServices.LogarInformacao(
-                    "Final -> Filme: {f} ({cf}), Série: {s} ({cs}), Escolhido: {e}",
-                    filme.Classificacao ?? "N/A",
-                    serie.Classificacao ?? "N/A",
-                    escolhido.Classificacao ?? "N/A"
-                );
-            }
-
-            return escolhido;
+            return filme;
         }
         private string ClassificarAnimacaoAvancado(MidiaModel m)
         {
