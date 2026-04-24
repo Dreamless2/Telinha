@@ -25,7 +25,7 @@ namespace Telinha
         {
             InitializeComponent();
             _apiFactory = apiFactory;
-            _cacheServices = cacheServices;
+            _cacheService = cacheServices;
             Load += Principal_Load!;
             SairButton.Click += SairButton_Click!;
             CopiarButton.Click += CopiarButton_Click!;
