@@ -26,10 +26,12 @@ namespace Telinha
                .AsSelf()
                .SingleInstance();
 
+
             // Services
             builder.RegisterType<TMDBServices>().AsSelf();
             builder.RegisterType<MidiaServices>().AsSelf();
             builder.RegisterType<ApiClientFactory>().AsSelf();
+
 
             // Forms
             builder.RegisterType<Home>().AsSelf();
