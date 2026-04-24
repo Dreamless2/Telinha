@@ -207,7 +207,7 @@ namespace Telinha.Services
             if (tipo == MidiaTipo.Filme)
                 calls.Add(($"/{baseRoute}/{id}/alternative_titles", null));
 
-            var results = await _tmdb.Many([.. calls], ct);
+            var results = await _tmdb.Many(ct, [.. calls]);
 
             // 🔴 validação base
             if (results == null || results.Length < 2 || results[0] == null)
