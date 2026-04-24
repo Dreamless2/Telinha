@@ -73,11 +73,9 @@ namespace Telinha
 
                 Hide();
 
-                var apiFactory = new ApiClientFactory();
-
-                using var home = new Home(apiFactory);
+                // 🔥 Pede pro Autofac criar o Home com todas as dependências
+                var home = _scope.Resolve<Home>();
                 home.ShowDialog();
-
             }
             catch (Exception ex)
             {
