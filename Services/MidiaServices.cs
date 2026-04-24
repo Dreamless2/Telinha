@@ -247,7 +247,7 @@ namespace Telinha.Services
 
             var deepl = new ApiClientFactory().GetDeepL();
 
-            var creditsNonNull = credits ?? new JObject();
+            var creditsNonNull = credits ?? [];
 
             var model = await MidiaFactory.ConstruirMidia(
                 details,
