@@ -23,8 +23,7 @@ namespace Telinha.Services
             var serie = serieTask.Result;
 
             // 🔥 Classificação automática aplicada
-            if (filme != null)
-                filme.Classificacao = ClassificarAnimacaoAvancado(filme);
+            filme?.Classificacao = ClassificarAnimacaoAvancado(filme);
 
             if (serie != null)
                 serie.Classificacao = ClassificarAnimacaoAvancado(serie);
