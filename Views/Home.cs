@@ -319,7 +319,7 @@ namespace Telinha
         }
         #endregion
 
-        #region Load
+        #region Form Load
         private async void Principal_Load(object sender, EventArgs e)
         {
             var lista = new BindingList<MidiaModel>();
