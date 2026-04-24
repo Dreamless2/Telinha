@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
+using Telinha.Container;
 using Telinha.Factory;
 using Telinha.Services;
 
@@ -35,11 +36,11 @@ namespace Telinha
 
                 // ✅ só agora cria
                 var apiFactory = new ApiClientFactory();
-                var container = BuildContainer(); // onde você registra tudo
+                var container = ContainerConfig.Configure(); // 🔥 1 linha
 
                 using var scope = container.BeginLifetimeScope();
-                var home = scope.Resolve<Home>(); // 🔥 Autofac cria e injeta FileCacheService
-
+                var home = scope.Resolve<Home>();
+                Application.Run(home);
             }
             catch (Exception ex)
             {
