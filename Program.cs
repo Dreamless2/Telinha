@@ -56,6 +56,7 @@ namespace Telinha
 
                 // ✅ só agora cria
                 var apiFactory = new ApiClientFactory();
+                var cacheServices = new FileCacheServices();
 
                 Application.Run(new Home(apiFactory));
             }
