@@ -14,7 +14,7 @@ namespace Telinha.Services
             //request.AddQueryParameter("api_key", _token);
             request.AddHeader("Authorization", $"Bearer {_token}");
             request.AddHeader("Accept", "application/json");
-            LogServices.LogarInformacao($"TMDB {endpoint}");
+            LogServices.LogarInformacao("TMDB {token}", _token);
 
 
             if (query != null)
@@ -23,7 +23,7 @@ namespace Telinha.Services
 
             var resp = await _client.ExecuteAsync(request);
 
-            LogServices.LogarInformacao($"TMDB {resp.StatusCode}: {endpoint}");
+            LogServices.LogarInformacao("TMDB {status} {endpoint}", resp.StatusCode, endpoint);
 
             if (resp.StatusCode == System.Net.HttpStatusCode.NotFound)
                 return new JObject { ["status_code"] = 34, ["success"] = false };
