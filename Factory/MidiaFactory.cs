@@ -13,11 +13,11 @@ namespace Telinha.Factory
         {
             var item = new MidiaModel
             {
-                Tipo = tipoDetectado.ToString()
+                Tipo = tipoBase.ToString()
             };
 
             // 3. MAPEAMENTO DE CAMPOS DINÂMICO
-            bool isTV = tipoDetectado != MidiaTipo.Filme;
+            bool isTV = tipoBase != MidiaTipo.Filme;
             string titleField = isTV ? "name" : "title";
             string dateField = isTV ? "first_air_date" : "release_date";
             string originalTitleField = isTV ? "original_name" : "original_title";
