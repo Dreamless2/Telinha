@@ -310,6 +310,5 @@ namespace Telinha.Services
             model.Original = data?["original_title"]?.ToString()
                          ?? data?["original_name"]?.ToString();
         }
-
     }
 }
