@@ -17,7 +17,7 @@ namespace Telinha.Factory
             };
 
             // 3. MAPEAMENTO DE CAMPOS DINÂMICO
-            bool isTV = tipoBase != MidiaTipo.Filme;
+            bool isTV = tipoBase == MidiaTipo.Filme;
             string titleField = isTV ? "name" : "title";
             string dateField = isTV ? "first_air_date" : "release_date";
             string originalTitleField = isTV ? "original_name" : "original_title";
