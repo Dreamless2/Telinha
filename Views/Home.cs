@@ -332,6 +332,7 @@ namespace Telinha
             ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
 
+        #region Buscar por Código
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter)
