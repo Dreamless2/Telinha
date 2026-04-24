@@ -455,7 +455,7 @@ namespace Telinha
                     return;
                 }
 
-                var midia = await _midiaService.GetMidia(id, tipoSolicitado);
+                var midia = await _midiaService.GetMidia(id);
 
                 if (midia == null)
                 {
