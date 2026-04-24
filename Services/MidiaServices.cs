@@ -101,6 +101,8 @@ namespace Telinha.Services
                 return null;3
             */
 
+            LogServices.LogarInformacao("RESULT[0]: {json}", results[0]?.ToString()!);
+
             // ❗ validação de conteúdo real
             if (tipo == MidiaTipo.Filme && string.IsNullOrWhiteSpace(results[0]?["title"]?.ToString()))
                 return null;
