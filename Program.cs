@@ -35,18 +35,8 @@ namespace Telinha
                 }
 
                 // ✅ só agora cria
-                if (string.IsNullOrWhiteSpace(config.TMDB))
-                {
-                    // Abre Token primeiro
-                    var token = scope.Resolve<Token>();
-                    Application.Run(token);
-                }
-                else
-                {
-                    // Já tem token, abre Home direto
-                    var home = scope.Resolve<Home>();
-                    Application.Run(home);
-                }
+                var home = scope.Resolve<Home>();
+                Application.Run(home);
             }
             catch (Exception ex)
             {
