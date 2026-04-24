@@ -109,7 +109,6 @@ namespace Telinha.Services
                 }
             }
 
-
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
             var calls = new List<(string, Dictionary<string, string>?)>
             {
