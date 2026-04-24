@@ -99,4 +99,44 @@ namespace Telinha.Services
             return "AnimacaoOcidental";
         }
 
+        private MidiaModel? DecidirMelhorResultado(MidiaModel? filme, MidiaModel? serie)
+        {
+            if (filme == null && serie == null)
+                return null;
+
+            if (filme != null && serie == null)
+                return filme;
+
+            if (serie != null && filme == null)
+                return serie;
+
+            // 🔥 PRIORIDADE: Anime e AnimeLike
+            if (serie?.Classificacao == "Anime")
+                return serie;
+
+            if (serie?.Classificacao == "AnimeLike")
+                return serie;
+
+            // 🔹 Tipo explícito
+            if (filme?.Tipo?.Equals("Filme", StringComparison.OrdinalIgnoreCase) == true)
+                return filme;
+
+            if (serie?.Tipo?.Equals("Serie", StringComparison.OrdinalIgnoreCase) == true)
+                return serie;
+
+            // 🔹 Score
+            double scoreFilme = CalcularScore(filme!);
+            double scoreSerie = CalcularScore(serie!);
+
+            LogServices.LogarInformacao("Score -> Filme: {f}, Série: {s}", scoreFilme, scoreSerie);
+
+            if (scoreFilme > scoreSerie)
+                return filme;
+
+            if (scoreSerie > scoreFilme)
+                return serie;
+
+            return filme ?? serie;
+        }
+
 
