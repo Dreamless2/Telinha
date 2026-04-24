@@ -120,6 +120,8 @@ namespace Telinha
             );
             ResumoBox.Text = card.GetFormattedText();
         }
+
+        #region Conectar Eventos
         private void ConectarEventos()
         {
             var controles = new Control[] {
@@ -141,6 +143,7 @@ namespace Telinha
                 }
             }
         }
+        #endregion
 
         #region Qualquer Alteração
         private void QualquerAlteracao(object sender, EventArgs e)
@@ -158,7 +161,7 @@ namespace Telinha
                 PreencherMascara(MidiaTipo.Anime);
             }
         }
-#endregion
+        #endregion
 
         #region Atualizar UI
         private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
