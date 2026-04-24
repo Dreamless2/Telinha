@@ -61,6 +61,8 @@ namespace Telinha
         {
             var item = await MidiaController.GetFirstAsync<MidiaModel>();
 
+            LogServices.LogarInformacao("VIEW: Carregar inicial. Item null? {isNull}", item == null); // 🔥 LOG 8
+
             _bs.DataSource = item ?? new MidiaModel();
 
             if (item != null)
