@@ -66,6 +66,7 @@ namespace Telinha.Factory
             item.Tags = string.Join(" ", tags);
 
             // 5. INFORMAÇÕES BÁSICAS
+            item.Id = json["id"]?.ToObject<int>() ?? 0;
             item.Nome = json[titleField]?.ToString() ?? "--";
             item.Sinopse = json["overview"]?.ToString() ?? "--";
             item.Original = json[originalTitleField]?.ToString() ?? "--";
