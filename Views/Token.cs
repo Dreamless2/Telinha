@@ -8,7 +8,7 @@ namespace Telinha
     {
         private readonly AppConfigServices _configService = new();
         private readonly ILifetimeScope _scope;
-        public Token()
+        public Token(ILifetimeScope scope)
         {
             InitializeComponent();
             SalvarButton.Click += SalvarButton_Click!;
