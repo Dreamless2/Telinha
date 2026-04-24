@@ -10,20 +10,12 @@ namespace Telinha.Services
     {
         private readonly TMDBServices _tmdb = tmdb;
 
-        public async Task<MidiaModel?> GetMidia(int id, MidiaTipo tipoSolicitado)
+        public async Task<MidiaModel?> GetMidia(int id)
         {
-            // 🔹 1. tenta direto o tipo solicitado
-            var resultado = await ExecutarBusca(id, tipoSolicitado);
+            var filme = await ExecutarBusca(id, MidiaTipo.Filme);
+            var serie = await ExecutarBusca(id, MidiaTipo.Serie);
 
-            if (resultado != null)
-                return resultado;
-
-            // 🔹 2. fallback opcional (se quiser manter)
-            var tipoAlternativo = tipoSolicitado == MidiaTipo.Filme
-                ? MidiaTipo.Serie
-                : MidiaTipo.Filme;
-
-            return await ExecutarBusca(id, tipoAlternativo);
+            return DecidirMelhorResultado(filme, serie);
         }
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo)
         {
