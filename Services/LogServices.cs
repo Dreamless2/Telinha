@@ -43,6 +43,15 @@ namespace Telinha.Services
             Log.Debug(mensagem);
         }
 
+        public static void LogarTrace(string mensagem)
+        {
+            Log.Verbose(mensagem);
+        }
+        public static void LogarCritico(string mensagem)
+        {
+            Log.Fatal(mensagem);
+        }
+
         public static void EncerrarLog()
         {
             Log.CloseAndFlush(); // Garante que todos os logs no buffer sejam gravados antes de fechar
