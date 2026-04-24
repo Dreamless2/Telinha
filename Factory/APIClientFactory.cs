@@ -11,6 +11,16 @@ namespace Telinha.Factory
         private RestClient? _tmdbClient;
         private readonly AppConfigServices.AppConfig _config;
 
+        public ApiClientFactory()
+        {
+            var config = new AppConfigServices().Load();
+
+            if (config == null)
+                throw new InvalidOperationException("Configuração não encontrada.");
+
+            _config = config;
+        }
+
         public async Task<DEEPLContracts> GetDeepLAsync()
         {
             if (_deepLClient == null)
