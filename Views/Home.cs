@@ -474,9 +474,6 @@ namespace Telinha
                     AtualizarUI(tipoRetornado, midia);
                 }
 
-
-
-
                 PreencherCampos(midia);
 
                 CodigoBox.Text = codigoDigitado;
