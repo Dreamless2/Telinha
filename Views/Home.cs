@@ -454,7 +454,10 @@ namespace Telinha
             }
 
             if (_buscando)
+            {
+                LogServices.LogarInformacao("VIEW: Busca ignorada - já está buscando"); // 🔥 LOG 2
                 return;
+            }
 
             _buscando = true;
 
