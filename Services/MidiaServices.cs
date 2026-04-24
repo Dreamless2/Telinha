@@ -34,50 +34,34 @@ namespace Telinha.Services
             return escolhido;
         }
 
-        private MidiaModel? DecidirMelhorResultado(MidiaModel? filme, MidiaModel? serie)
+        private async Task<MidiaModel?> ExecutarBuscaSeguro(int id, MidiaTipo tipo, CancellationToken ct)
         {
-            // 🔹 1. Só um existe
-            if (filme != null && serie == null)
-                return filme;
+            const int maxTentativas = 2;
 
-            if (serie != null && filme == null)
-                return serie;
+            for (int tentativa = 1; tentativa <= maxTentativas; tentativa++)
+            {
+                try
+                {
+                    ct.ThrowIfCancellationRequested();
 
-            // 🔹 2. Nenhum existe
-            if (filme == null && serie == null)
-                return null;
+                    var result = await ExecutarBusca(id, tipo, ct);
 
-            // 🔹 3. Ambos existem → decidir com critério
+                    if (result != null)
+                        return result;
+                }
+                catch (OperationCanceledException)
+                {
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    LogServices.LogarErroComException(ex, $"Erro tentativa {tentativa} - {tipo}");
+                }
 
-            // Prioridade 1: Tipo explícito (se vier correto)
-            if (Enum.TryParse(filme!.Tipo, true, out MidiaTipo tipoFilme) &&
-                tipoFilme == MidiaTipo.Filme)
-                return filme;
+                await Task.Delay(300, ct); // pequeno retry
+            }
 
-            if (Enum.TryParse(serie!.Tipo, true, out MidiaTipo tipoSerie) &&
-                tipoSerie != MidiaTipo.Filme)
-                return serie;
-
-            // 🔹 4. Critério por conteúdo (TMDB padrão)
-
-            bool filmeValido = !string.IsNullOrWhiteSpace(filme?.TituloOriginal);
-            bool serieValida = !string.IsNullOrWhiteSpace(serie?.TituloOriginal);
-
-            if (filmeValido && !serieValida)
-                return filme;
-
-            if (serieValida && !filmeValido)
-                return serie;
-
-            // 🔹 5. Critério por popularidade (se tiver)
-            if (filme?.Popularidade > serie?.Popularidade)
-                return filme;
-
-            if (serie?.Popularidade > filme?.Popularidade)
-                return serie;
-
-            // 🔹 6. Fallback final (evita null)
-            return filme ?? serie;
+            return null;
         }
 
 
