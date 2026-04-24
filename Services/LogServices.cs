@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Telinha.Services
 {
-    public static class LogService
+    public static class LogServices
     {
         public static void ConfigurarLog()
         {
