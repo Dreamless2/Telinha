@@ -35,11 +35,11 @@ namespace Telinha
 
                 // ✅ só agora cria
                 var apiFactory = new ApiClientFactory();
-                var cacheServices = container.Resolve<FileCacheServices>();
+                var container = BuildContainer(); // onde você registra tudo
 
                 using var scope = container.BeginLifetimeScope();
-                var home = scope.Resolve<Home>();
-                Application.Run(new Home(apiFactory, cacheServices));
+                var home = scope.Resolve<Home>(); // 🔥 Autofac cria e injeta FileCacheService
+
             }
             catch (Exception ex)
             {
