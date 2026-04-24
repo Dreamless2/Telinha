@@ -1,4 +1,7 @@
-﻿using Telinha.Factory;
+﻿using Autofac;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
+using Telinha.Factory;
 using Telinha.Services;
 
 namespace Telinha
@@ -9,6 +12,55 @@ namespace Telinha
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+
+            var builder = new ContainerBuilder();
+
+            // MemoryCache do.NET
+            builder.RegisterType<MemoryCache>()
+               .As<IMemoryCache>()
+               .WithParameter("optionsAccessor", new OptionsWrapper<MemoryCacheOptions>(new MemoryCacheOptions()))
+               .SingleInstance();
+
+            // Teu cache híbrido
+            builder.RegisterType<FileCacheService>()
+               .AsSelf()
+               .SingleInstance();
+
+            // Services
+            builder.RegisterType<TMDBServices>().AsSelf();
+            builder.RegisterType<MidiaServices>().AsSelf();
+            builder.RegisterType<ApiClientFactory>().AsSelf();
+
+            // Forms
+            builder.RegisterType<Home>().AsSelf();
+
+            var container = builder.Build();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             LogServices.ConfigurarLog();
             try
             {
