@@ -128,7 +128,7 @@ namespace Telinha.Services
             if (m == null) return false;
 
             // idioma japonês
-            if (m.IdiomaOriginal?.Equals("ja", StringComparison.OrdinalIgnoreCase) == true)
+            if (m.Idioma?.Equals("ja", StringComparison.OrdinalIgnoreCase) == true)
                 return true;
 
             // palavras-chave comuns
