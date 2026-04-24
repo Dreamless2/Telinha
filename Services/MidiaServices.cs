@@ -230,10 +230,26 @@ namespace Telinha.Services
 
             var deepl = new ApiClientFactory().GetDeepL();
 
+            // 🔥 identifica corretamente cada resposta sem depender da posição
+            var details = results.FirstOrDefault(x =>
+                x?["name"] != null || x?["title"] != null);
+
+            var credits = results.FirstOrDefault(x =>
+                x?["cast"] != null && x?["crew"] != null);
+
+            var alternativeTitles = results.FirstOrDefault(x =>
+                x?["titles"] != null || x?["results"] != null); // depende do endpoint
+
+            // 🔴 validação base
+            if (details == null)
+                return null;
+
+            var deepl = new ApiClientFactory().GetDeepL();
+
             var model = await MidiaFactory.ConstruirMidia(
-                data,
-                results[1],
-                results.Length > 2 ? results[2] : null,
+                details,
+                credits,
+                alternativeTitles,
                 tipo,
                 deepl
             );
@@ -241,9 +257,8 @@ namespace Telinha.Services
             if (model == null)
                 return null;
 
-            // 🔥 NORMALIZAÇÃO (ESSENCIAL pro teu sistema novo)
-
-            NormalizarModel(model, data);
+            // 🔥 NORMALIZAÇÃO
+            NormalizarModel(model, details);
 
             return model;
         }
