@@ -65,6 +65,8 @@ namespace Telinha.Services
                 return tipoSolicitado == MidiaTipo.Filme ? filme : serie;
             }
 
+            return filme ?? serie;
+
             // Para Série ou Anime
             if (serie != null)
             {
