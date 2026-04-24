@@ -239,10 +239,6 @@ namespace Telinha
             else
                 TipoLabel.Text = "Tipo";
 
-
-
-
-
         }
 
 
