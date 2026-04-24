@@ -13,7 +13,7 @@ namespace Telinha.Services
         private readonly SemaphoreSlim _fileLock = new(1, 1);
         private readonly TimeSpan _memoryTtl = TimeSpan.FromMinutes(30);
 
-        public FileCacheService(IMemoryCache memory)
+        public FileCacheServices(IMemoryCache memory)
         {
             _memory = memory;
             CarregarDoDisco();
