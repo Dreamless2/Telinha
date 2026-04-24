@@ -32,7 +32,8 @@ namespace Telinha
                     string.IsNullOrWhiteSpace(config.DEEPL))
                 {
 
-
+                    using var scope = container.BeginLifetimeScope();
+                    var token = scope.Resolve<Token>();
                     Application.Run(new Token());
                     return;
                 }
