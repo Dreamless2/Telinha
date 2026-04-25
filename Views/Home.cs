@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Reflection;
 using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
@@ -308,36 +309,22 @@ namespace Telinha
         #region Limpar Campos
         private void LimparCampos()
         {
-            currentId = 0;
+            // 🔥 Pega todos os TextBox desta classe via reflection
+            var textBoxes = this.GetType()
+                .GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
+                .Where(f => f.FieldType == typeof(TextBox))
+                .Select(f => f.GetValue(this) as TextBox)
+                .Where(tb => tb != null);
 
-            var camposTexto = new Dictionary<string, TextBox>
+            foreach (var tb in textBoxes)
             {
-                { nameof(CodigoBox),      CodigoBox },
-                { nameof(NomeBox),        NomeBox },
-                { nameof(SinopseBox),     SinopseBox },
-                { nameof(OriginalBox),    OriginalBox },
-                { nameof(EstreiaBox),  EstreiaBox },
-                { nameof(AlternativoBox), AlternativoBox },
-                { nameof(TagsBox),        TagsBox },
-                { nameof(TipoBox),        TipoBox },
-                { nameof(MCUBox),         MCUBox },
-                { nameof(LocalBox),        LocalBox },
-                { nameof(IdiomaBox),      IdiomaBox },
-                { nameof(AutoresBox),     AutoresBox },
-                { nameof(FranquiaBox),    FranquiaBox },
-                { nameof(ShowrunnersBox),   ShowrunnersBox },
-                { nameof(GeneroBox),      GeneroBox },
-                { nameof(DiretorBox),     DiretorBox },
-                { nameof(ArtistasBox),    ArtistasBox },
-                { nameof(ProdutoraBox),   ProdutoraBox }
-            };
-
-            foreach (var campo in camposTexto.Values)
-            {
-                campo.Text = string.Empty;
+                tb!.Clear();
             }
 
+            // ComboBox e Label ainda tem que fazer na mão
             AudioBox.SelectedIndex = -1;
+            TipoLabel.Text = "Tipo";
+            currentId = 0;
         }
         #endregion
 
