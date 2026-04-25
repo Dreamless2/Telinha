@@ -9,7 +9,6 @@ using Telinha.Utils;
 
 namespace Telinha
 {
-
     #region Form
     public partial class Home : Form
     {
