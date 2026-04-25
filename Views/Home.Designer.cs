@@ -609,7 +609,7 @@
             dreamButton1.ColorD = Color.FromArgb(0, 0, 0, 0);
             dreamButton1.ColorE = Color.FromArgb(25, 255, 255, 255);
             dreamButton1.ForeColor = Color.FromArgb(40, 218, 255);
-            dreamButton1.Location = new Point(1261, 37);
+            dreamButton1.Location = new Point(1237, 22);
             dreamButton1.Name = "dreamButton1";
             dreamButton1.Size = new Size(120, 40);
             dreamButton1.TabIndex = 8;
