@@ -370,9 +370,15 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            PanelTopBar.BackColor = Color.Red;
-            PanelTopTitle.BackColor = Color.Green;
-            PanelBottom.BackColor = Color.Blue;
+            Color baseColor = tipoReal switch
+            {
+                MidiaTipo.Filme => Color.FromArgb(103, 80, 164),   // roxo
+                MidiaTipo.Serie => Color.FromArgb(25, 118, 210),   // azul
+                MidiaTipo.Anime => Color.FromArgb(211, 47, 47),    // vermelho
+                _ => Color.Gray
+            };
+
+            var scheme = ColorSchemeManager.GenerateFromBase(baseColor);
         }
         #endregion
 
