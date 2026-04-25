@@ -162,12 +162,15 @@
             // 
             // CopiarButton
             // 
+            CopiarButton.BackColor = Color.FromArgb(4, 52, 72);
+            CopiarButton.FlatStyle = FlatStyle.Flat;
+            CopiarButton.ForeColor = Color.White;
             CopiarButton.Location = new Point(147, 22);
             CopiarButton.Name = "CopiarButton";
             CopiarButton.Size = new Size(180, 41);
             CopiarButton.TabIndex = 3;
             CopiarButton.Text = "Copiar";
-            CopiarButton.UseVisualStyleBackColor = true;
+            CopiarButton.UseVisualStyleBackColor = false;
             // 
             // PanelForms
             // 
