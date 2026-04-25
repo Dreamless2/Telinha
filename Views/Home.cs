@@ -332,8 +332,6 @@ namespace Telinha
 
             _cacheService.LimparExpirados();
 
-            CodigoBox.Focus();
-
             try
             {
                 if (await MidiaController.AnyAsync<MidiaModel>())
