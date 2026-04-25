@@ -258,7 +258,6 @@ namespace Telinha
                 nameof(midia.Showrunners)
                 };
 
-
             foreach (var kvp in _mapeamentoCampos)
             {
                 var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
