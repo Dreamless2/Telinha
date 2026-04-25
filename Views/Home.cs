@@ -3,6 +3,7 @@ using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
 using Telinha.Helpers;
+using Telinha.Manager;
 using Telinha.Models;
 using Telinha.Services;
 using Telinha.Utils;
@@ -344,7 +345,9 @@ namespace Telinha
         #region Form Load
         private async void Principal_Load(object sender, EventArgs e)
         {
-            ColorHelper.AplicarCores(PanelTopBar, PanelTopTitle, PanelBottom);
+            var scheme = ColorSchemeManager.LoadOrCreate(darkMode: false);
+
+
 
             var lista = new BindingList<MidiaModel>();
             _bs.DataSource = lista;
