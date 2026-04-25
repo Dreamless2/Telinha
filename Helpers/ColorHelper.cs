@@ -56,5 +56,10 @@ namespace Telinha.Helpers
         {
             _indiceAtual = 0;
         }
+
+        private static readonly string[] NomesPaletas =
+      { "Blue", "Green", "Purple", "Teal", "Orange", "Red", "Indigo", "Pink", "Amber", "Cyan" };
+
+        public static string NomePaletaAtual => NomesPaletas[_indiceAtual];
     }
 }
