@@ -90,7 +90,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 0);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(1438, 29);
+            PanelTopBar.Size = new Size(1381, 29);
             PanelTopBar.TabIndex = 1;
             // 
             // PanelTopTitle
@@ -99,7 +99,7 @@
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 29);
             PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(1438, 58);
+            PanelTopTitle.Size = new Size(1381, 58);
             PanelTopTitle.TabIndex = 2;
             // 
             // PanelBottom
@@ -108,7 +108,7 @@
             PanelBottom.Dock = DockStyle.Bottom;
             PanelBottom.Location = new Point(0, 799);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(1438, 44);
+            PanelBottom.Size = new Size(1381, 44);
             PanelBottom.TabIndex = 3;
             // 
             // PanelButtons
@@ -121,7 +121,7 @@
             PanelButtons.Dock = DockStyle.Bottom;
             PanelButtons.Location = new Point(0, 714);
             PanelButtons.Name = "PanelButtons";
-            PanelButtons.Size = new Size(1438, 85);
+            PanelButtons.Size = new Size(1381, 85);
             PanelButtons.TabIndex = 6;
             // 
             // SairButton
@@ -236,7 +236,7 @@
             PanelForms.Dock = DockStyle.Fill;
             PanelForms.Location = new Point(0, 87);
             PanelForms.Name = "PanelForms";
-            PanelForms.Size = new Size(1438, 627);
+            PanelForms.Size = new Size(1381, 627);
             PanelForms.TabIndex = 7;
             // 
             // ResumoBox
@@ -604,7 +604,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1438, 843);
+            ClientSize = new Size(1381, 843);
             Controls.Add(PanelForms);
             Controls.Add(PanelButtons);
             Controls.Add(PanelBottom);
