@@ -361,25 +361,20 @@ namespace Telinha
         {
             if (_bs.Current is MidiaModel item && item.Id == 0)
             {
-                var temAnterior = await MidiaController.GetPrevious<MidiaModel>(0) != null;
-                AnteriorButton.SetMaterialState(temAnterior); // 🔥 MD3
-                ProximoButton.SetMaterialState(false);        // 🔥 MD3
+                AnteriorButton.Enabled = await MidiaController.GetPrevious<MidiaModel>(0) != null;
+                ProximoButton.Enabled = false;
                 return;
             }
 
             if (currentId <= 0)
             {
-                AnteriorButton.SetMaterialState(false); // 🔥 MD3
-                var temProximo = await MidiaController.GetNext<MidiaModel>(0) != null;
-                ProximoButton.SetMaterialState(temProximo); // 🔥 MD3
+                AnteriorButton.Enabled = false;
+                ProximoButton.Enabled = await MidiaController.GetNext<MidiaModel>(0) != null;
                 return;
             }
 
-            var existeAnterior = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
-            var existeProximo = await MidiaController.ExistsNext<MidiaModel>(currentId);
-
-            AnteriorButton.SetMaterialState(existeAnterior); // 🔥 MD3
-            ProximoButton.SetMaterialState(existeProximo);   // 🔥 MD3
+            AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
+            ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
         #endregion
 
@@ -530,7 +525,7 @@ namespace Telinha
                 if (item == null)
                 {
                     MessageBox.Show("Você chegou ao primeiro registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AnteriorButton.SetMaterialState(false); // 🔥 MD3
+                    AnteriorButton.Enabled = false;
                     return;
                 }
 
@@ -553,7 +548,7 @@ namespace Telinha
                 if (item == null)
                 {
                     MessageBox.Show("Você chegou ao último registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ProximoButton.SetMaterialState(false); // 🔥 MD3
+                    ProximoButton.Enabled = false;
                     return;
                 }
 
