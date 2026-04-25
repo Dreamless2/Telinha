@@ -9,7 +9,7 @@ namespace Telinha.Utils
         private static readonly Color EnabledBack = Color.FromArgb(4, 52, 72);
         private static readonly Color EnabledFore = Color.White;
         private static readonly Color DisabledBack = Color.FromArgb(45, 45, 45);
-        private static readonly Color DisabledFore = Color.FromArgb(255, 255, 255);
+        private static readonly Color DisabledFore = Color.White;
 
         public static void SetMaterialState(this Button btn, bool enabled)
         {
