@@ -132,20 +132,6 @@ namespace Telinha.Services
                 _ = SalvarNoDisco();
             }
         }
-
-        public bool TryGet<T>(string key, out T value)
-        {
-            if (_diskCache.TryGetValue(key, out value))
-            {
-                Interlocked.Increment(ref _hits);
-                return true;
-            }
-            Interlocked.Increment(ref _misses);
-            return false;
-        }
-
-        public double HitRate => _hits + _misses == 0 ? 0 : (double)_hits / (_hits + _misses) * 100;
-
         private class CacheItem
         {
             public string Json { get; set; } = string.Empty;
