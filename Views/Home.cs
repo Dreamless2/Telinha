@@ -373,8 +373,8 @@ namespace Telinha
                 return;
             }
 
-            AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
-            ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
+            //AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
+            //ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
         #endregion
 
