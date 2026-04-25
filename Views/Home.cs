@@ -16,7 +16,6 @@ namespace Telinha
         #region Variáveis
         private readonly MidiaServices? _midiaService;
         private readonly FileCacheServices _cacheService;
-        private readonly SemaphoreSlim _buscaLock = new(1, 1);
 
         private long currentId = 0;
         private readonly BindingSource _bs = [];
