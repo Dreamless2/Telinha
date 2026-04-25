@@ -277,9 +277,7 @@ namespace Telinha
                 nameof(midia.Showrunners),
                 nameof(midia.Alternativo),
                 nameof(midia.Franquia),
-                // mcu
-                nameof(midia.mcy
-                ),
+                nameof(midia.MCU),
             };
 
             foreach (var kvp in _mapeamentoCampos)
