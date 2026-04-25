@@ -617,7 +617,7 @@
             materialButton1.Size = new Size(158, 36);
             materialButton1.TabIndex = 8;
             materialButton1.Text = "materialButton1";
-            materialButton1.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton1.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Text;
             materialButton1.UseAccentColor = false;
             materialButton1.UseVisualStyleBackColor = true;
             // 
