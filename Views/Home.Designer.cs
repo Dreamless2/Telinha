@@ -569,7 +569,7 @@
             SalvarButton.PressedColor = Color.FromArgb(165, 37, 37);
             SalvarButton.Size = new Size(180, 41);
             SalvarButton.TabIndex = 9;
-            SalvarButton.Text = "button2";
+            SalvarButton.Text = "Salvar / Atualizar";
             SalvarButton.TextAlignment = StringAlignment.Center;
             // 
             // AnteriorButton
