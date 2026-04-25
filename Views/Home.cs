@@ -235,7 +235,7 @@ namespace Telinha
                 return;
             }
 
-            LimparCampos();
+            //LimparCampos();
 
             currentId = midia.Id;
 
