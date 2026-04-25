@@ -347,7 +347,7 @@ namespace Telinha
         {
             var scheme = ColorSchemeManager.LoadOrCreate(darkMode: false);
 
-            ColorSchemeManager.Apply(PanelTopTitle, PanelTopBar, PanelBottom, scheme);
+            ColorSchemeManager.Apply(PanelTopBar, PanelTopTitle, PanelBottom, scheme);
 
             var lista = new BindingList<MidiaModel>();
             _bs.DataSource = lista;
