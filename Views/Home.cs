@@ -344,14 +344,14 @@ namespace Telinha
         #region Form Load
         private async void Principal_Load(object sender, EventArgs e)
         {
+            ColorHelper.AplicarCores(PanelTopBar, PanelTopTitle, PanelBottom);
+
             var lista = new BindingList<MidiaModel>();
             _bs.DataSource = lista;
 
             SetupBindings();
 
             _cacheService.LimparExpirados();
-
-            ColorHelper.AplicarCores(PanelTopBar, PanelTopTitle, PanelBottom);
 
             try
             {
