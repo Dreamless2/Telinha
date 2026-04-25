@@ -34,9 +34,9 @@ namespace Telinha
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
-            button2.Click += SalvarButton_Click;
-            button3.Click += AnteriorButton_Click!;
-            button4.Click += ProximoButton_Click!;
+            SalvarButton.Click += SalvarButton_Click;
+            AnteriorButton.Click += AnteriorButton_Click!;
+            ProximoButton.Click += ProximoButton_Click!;
             ConectarEventos();
             _mapeamentoCampos = new Dictionary<string, TextBox>
             {
