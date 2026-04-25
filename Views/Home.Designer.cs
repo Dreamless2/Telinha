@@ -607,7 +607,7 @@
             ProximoButton.PressedColor = Color.FromArgb(165, 37, 37);
             ProximoButton.Size = new Size(180, 41);
             ProximoButton.TabIndex = 11;
-            ProximoButton.Text = "button4";
+            ProximoButton.Text = "Próximo";
             ProximoButton.TextAlignment = StringAlignment.Center;
             // 
             // SairButton
