@@ -361,20 +361,20 @@ namespace Telinha
         {
             if (_bs.Current is MidiaModel item && item.Id == 0)
             {
-                button3.Enabled = await MidiaController.GetPrevious<MidiaModel>(0) != null;
-                button4.Enabled = false;
+                AnteriorButton.Enabled = await MidiaController.GetPrevious<MidiaModel>(0) != null;
+                ProximoButton.Enabled = false;
                 return;
             }
 
             if (currentId <= 0)
             {
-                button3.Enabled = false;
-                button4.Enabled = await MidiaController.GetNext<MidiaModel>(0) != null;
+                AnteriorButton.Enabled = false;
+                ProximoButton.Enabled = await MidiaController.GetNext<MidiaModel>(0) != null;
                 return;
             }
 
-            button3.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
-            button4.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
+            AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
+            ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
         #endregion
 
