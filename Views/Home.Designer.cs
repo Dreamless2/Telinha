@@ -80,6 +80,7 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
+            materialButton1 = new ReaLTaiizor.Controls.MaterialButton();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -113,6 +114,7 @@
             // 
             // PanelButtons
             // 
+            PanelButtons.Controls.Add(materialButton1);
             PanelButtons.Controls.Add(SairButton);
             PanelButtons.Controls.Add(ProximoButton);
             PanelButtons.Controls.Add(AnteriorButton);
@@ -599,6 +601,26 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
+            // materialButton1
+            // 
+            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButton1.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton1.Depth = 0;
+            materialButton1.HighEmphasis = true;
+            materialButton1.Icon = null;
+            materialButton1.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            materialButton1.Location = new Point(1294, 28);
+            materialButton1.Margin = new Padding(4, 6, 4, 6);
+            materialButton1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialButton1.Name = "materialButton1";
+            materialButton1.NoAccentTextColor = Color.Empty;
+            materialButton1.Size = new Size(158, 36);
+            materialButton1.TabIndex = 8;
+            materialButton1.Text = "materialButton1";
+            materialButton1.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton1.UseAccentColor = false;
+            materialButton1.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -618,6 +640,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
             PanelButtons.ResumeLayout(false);
+            PanelButtons.PerformLayout();
             PanelForms.ResumeLayout(false);
             PanelForms.PerformLayout();
             ResumeLayout(false);
@@ -676,5 +699,6 @@
         private Button AnteriorButton;
         private Button SalvarButton;
         private Button CopiarButton;
+        private ReaLTaiizor.Controls.MaterialButton materialButton1;
     }
 }
