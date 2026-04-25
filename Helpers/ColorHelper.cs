@@ -52,13 +52,10 @@ namespace Telinha.Helpers
 
             _indiceAtual = (_indiceAtual + 1) % Paletas.Length;
         }
-        public static void Resetar()
-        {
-            _indiceAtual = 0;
-        }
+        public static void Resetar() => _indiceAtual = 0;
 
         private static readonly string[] NomesPaletas =
-      { "Blue", "Green", "Purple", "Teal", "Orange", "Red", "Indigo", "Pink", "Amber", "Cyan" };
+        { "Blue", "Green", "Purple", "Teal", "Orange", "Red", "Indigo", "Pink", "Amber", "Cyan" };
 
         public static string NomePaletaAtual => NomesPaletas[_indiceAtual];
     }
