@@ -80,6 +80,7 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
+            button1 = new ReaLTaiizor.Controls.Button();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -113,6 +114,7 @@
             // 
             // PanelButtons
             // 
+            PanelButtons.Controls.Add(button1);
             PanelButtons.Controls.Add(SairButton);
             PanelButtons.Controls.Add(ProximoButton);
             PanelButtons.Controls.Add(AnteriorButton);
@@ -599,6 +601,25 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BorderColor = Color.FromArgb(32, 34, 37);
+            button1.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            button1.EnteredColor = Color.FromArgb(32, 34, 37);
+            button1.Font = new Font("Microsoft Sans Serif", 12F);
+            button1.Image = null;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.InactiveColor = Color.FromArgb(32, 34, 37);
+            button1.Location = new Point(1248, 26);
+            button1.Name = "button1";
+            button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            button1.PressedColor = Color.FromArgb(165, 37, 37);
+            button1.Size = new Size(120, 40);
+            button1.TabIndex = 8;
+            button1.Text = "button1";
+            button1.TextAlignment = StringAlignment.Center;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -676,5 +697,6 @@
         private Button AnteriorButton;
         private Button SalvarButton;
         private Button CopiarButton;
+        private ReaLTaiizor.Controls.Button button1;
     }
 }
