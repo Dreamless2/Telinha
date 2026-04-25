@@ -126,39 +126,55 @@
             // 
             // SairButton
             // 
+            SairButton.BackColor = Color.FromArgb(4, 52, 72);
+            SairButton.FlatAppearance.BorderSize = 0;
+            SairButton.FlatStyle = FlatStyle.Flat;
+            SairButton.ForeColor = Color.White;
             SairButton.Location = new Point(1051, 22);
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(180, 41);
             SairButton.TabIndex = 7;
             SairButton.Text = "Sair";
-            SairButton.UseVisualStyleBackColor = true;
+            SairButton.UseVisualStyleBackColor = false;
             // 
             // ProximoButton
             // 
+            ProximoButton.BackColor = Color.FromArgb(4, 52, 72);
+            ProximoButton.FlatAppearance.BorderSize = 0;
+            ProximoButton.FlatStyle = FlatStyle.Flat;
+            ProximoButton.ForeColor = Color.White;
             ProximoButton.Location = new Point(825, 22);
             ProximoButton.Name = "ProximoButton";
             ProximoButton.Size = new Size(180, 41);
             ProximoButton.TabIndex = 6;
             ProximoButton.Text = "Próximo";
-            ProximoButton.UseVisualStyleBackColor = true;
+            ProximoButton.UseVisualStyleBackColor = false;
             // 
             // AnteriorButton
             // 
+            AnteriorButton.BackColor = Color.FromArgb(4, 52, 72);
+            AnteriorButton.FlatAppearance.BorderSize = 0;
+            AnteriorButton.FlatStyle = FlatStyle.Flat;
+            AnteriorButton.ForeColor = Color.White;
             AnteriorButton.Location = new Point(599, 22);
             AnteriorButton.Name = "AnteriorButton";
             AnteriorButton.Size = new Size(180, 41);
             AnteriorButton.TabIndex = 5;
             AnteriorButton.Text = "Anterior";
-            AnteriorButton.UseVisualStyleBackColor = true;
+            AnteriorButton.UseVisualStyleBackColor = false;
             // 
             // SalvarButton
             // 
+            SalvarButton.BackColor = Color.FromArgb(4, 52, 72);
+            SalvarButton.FlatAppearance.BorderSize = 0;
+            SalvarButton.FlatStyle = FlatStyle.Flat;
+            SalvarButton.ForeColor = Color.White;
             SalvarButton.Location = new Point(373, 22);
             SalvarButton.Name = "SalvarButton";
             SalvarButton.Size = new Size(180, 41);
             SalvarButton.TabIndex = 4;
             SalvarButton.Text = "Salvar / Atualizar";
-            SalvarButton.UseVisualStyleBackColor = true;
+            SalvarButton.UseVisualStyleBackColor = false;
             // 
             // CopiarButton
             // 
