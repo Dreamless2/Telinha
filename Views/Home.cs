@@ -338,6 +338,7 @@ namespace Telinha
                 if (await MidiaController.AnyAsync<MidiaModel>())
                 {
                     await Carregar();
+                    LimparCampos();
                 }
                 else
                 {
