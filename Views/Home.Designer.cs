@@ -79,7 +79,7 @@
             SalvarButton = new ReaLTaiizor.Controls.Button();
             AnteriorButton = new ReaLTaiizor.Controls.Button();
             ProximoButton = new ReaLTaiizor.Controls.Button();
-            button5 = new ReaLTaiizor.Controls.Button();
+            SairButton = new ReaLTaiizor.Controls.Button();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -113,7 +113,7 @@
             // 
             // PanelButtons
             // 
-            PanelButtons.Controls.Add(button5);
+            PanelButtons.Controls.Add(SairButton);
             PanelButtons.Controls.Add(ProximoButton);
             PanelButtons.Controls.Add(AnteriorButton);
             PanelButtons.Controls.Add(SalvarButton);
@@ -610,24 +610,24 @@
             ProximoButton.Text = "button4";
             ProximoButton.TextAlignment = StringAlignment.Center;
             // 
-            // button5
+            // SairButton
             // 
-            button5.BackColor = Color.Transparent;
-            button5.BorderColor = Color.FromArgb(32, 34, 37);
-            button5.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            button5.EnteredColor = Color.FromArgb(32, 34, 37);
-            button5.Font = new Font("Microsoft Sans Serif", 12F);
-            button5.Image = null;
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.InactiveColor = Color.FromArgb(32, 34, 37);
-            button5.Location = new Point(1048, 22);
-            button5.Name = "button5";
-            button5.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button5.PressedColor = Color.FromArgb(165, 37, 37);
-            button5.Size = new Size(180, 41);
-            button5.TabIndex = 12;
-            button5.Text = "button5";
-            button5.TextAlignment = StringAlignment.Center;
+            SairButton.BackColor = Color.Transparent;
+            SairButton.BorderColor = Color.FromArgb(32, 34, 37);
+            SairButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            SairButton.EnteredColor = Color.FromArgb(32, 34, 37);
+            SairButton.Font = new Font("Microsoft Sans Serif", 12F);
+            SairButton.Image = null;
+            SairButton.ImageAlign = ContentAlignment.MiddleLeft;
+            SairButton.InactiveColor = Color.FromArgb(32, 34, 37);
+            SairButton.Location = new Point(1048, 22);
+            SairButton.Name = "SairButton";
+            SairButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            SairButton.PressedColor = Color.FromArgb(165, 37, 37);
+            SairButton.Size = new Size(180, 41);
+            SairButton.TabIndex = 12;
+            SairButton.Text = "Sair";
+            SairButton.TextAlignment = StringAlignment.Center;
             // 
             // Home
             // 
@@ -702,7 +702,7 @@
         private TextBox GeneroBox;
         private TextBox ArtistasBox;
         private ReaLTaiizor.Controls.Button CopiarButton;
-        private ReaLTaiizor.Controls.Button button5;
+        private ReaLTaiizor.Controls.Button SairButton;
         private ReaLTaiizor.Controls.Button ProximoButton;
         private ReaLTaiizor.Controls.Button AnteriorButton;
         private ReaLTaiizor.Controls.Button SalvarButton;
