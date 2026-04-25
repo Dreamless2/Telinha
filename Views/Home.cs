@@ -30,8 +30,6 @@ namespace Telinha
             _cacheService = cacheServices;
             _midiaService = midiaService;
             Load += Principal_Load!;
-            button5.Click += SairButton_Click!;
-            button1.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
             button2.Click += SalvarButton_Click;
