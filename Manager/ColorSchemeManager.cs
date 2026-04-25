@@ -28,7 +28,6 @@ namespace Telinha.Manager
         public static ColorScheme GenerateFromBase(Color baseColor, bool darkMode = false)
         {
             // Geração estilo Material You (simplificada)
-
             var primary = FromHsl(ToHsl(baseColor).H, 0.7, darkMode ? 0.4 : 0.6);
             var secondary = FromHsl((ToHsl(baseColor).H + 30) % 360, 0.4, darkMode ? 0.3 : 0.7);
             var tertiary = FromHsl((ToHsl(baseColor).H + 60) % 360, 0.5, darkMode ? 0.35 : 0.65);
