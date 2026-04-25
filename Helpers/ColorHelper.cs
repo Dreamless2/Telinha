@@ -39,17 +39,18 @@ namespace Telinha.Helpers
         {
             if (panels == null || panels.Length == 0) return;
 
-            // Pega 3 cores a partir do índice atual, com wrap
-            for (int i = 0; i < panels.Length; i++)
+            // 🔥 Pega a paleta atual - que é Color[]
+            var paletaAtual = Paletas[_indiceAtual];
+
+            // Aplica até 3 cores, se tiver menos panel usa só o que tem
+            var limite = Math.Min(panels.Length, paletaAtual.Length);
+
+            for (int i = 0; i < limite; i++)
             {
-                var corIndex = (_indiceAtual + i) % Cores.Length;
-                panels[i].BackColor = Cores[corIndex];
+                panels[i].BackColor = paletaAtual[i]; // 🔥 Agora é Color, não Color[]
             }
 
-            // Avança 1 posição pro próximo load
-            _indiceAtual = (_indiceAtual + 1) % Cores.Length;
-
-            LogServices.LogarDebug("Cores aplicadas. Próximo índice: {indice}", _indiceAtual);
+            _indiceAtual = (_indiceAtual + 1) % Paletas.Length;
         }
         public static void Resetar()
         {
