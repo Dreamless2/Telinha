@@ -473,6 +473,7 @@ namespace Telinha
             finally
             {
                 _buscando = false;
+                _buscaLock.Release();
             }
         }
         #endregion
