@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Reflection;
 using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
@@ -303,9 +302,15 @@ namespace Telinha
             AudioBox.SelectedItem = audioValue;
 
             if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
+            {
+                PreencherMascara(tipoReal);
                 TipoLabel.Text = TipoToDisplay(tipoReal);
+            }
             else
+            {
                 TipoLabel.Text = "Tipo";
+                ResumoBox.Clear();
+            }
         }
         #endregion
 
