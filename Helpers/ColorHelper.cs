@@ -10,7 +10,7 @@ namespace Telinha.Helpers
 
         // 🔥 Arreio de 3 cores. Troca os RGB aí
         private static readonly Color[] Cores =
-        {}
+        {
             // 1. Blue
         new[] { Color.FromArgb(0, 30, 60), Color.FromArgb(0, 74, 127), Color.FromArgb(100, 181, 246) },
         // 2. Green
@@ -31,29 +31,29 @@ namespace Telinha.Helpers
         new[] { Color.FromArgb(50, 38, 0), Color.FromArgb(106, 80, 0), Color.FromArgb(255, 213, 79) },
         // 10. Cyan
         new[] { Color.FromArgb(0, 47, 53), Color.FromArgb(0, 99, 112), Color.FromArgb(38, 198, 218) }
-        ];
+};
 
         private static int _indiceAtual = 0;
 
-    public static void AplicarCores(params Panel[] panels)
-    {
-        if (panels == null || panels.Length == 0) return;
-
-        // Pega 3 cores a partir do índice atual, com wrap
-        for (int i = 0; i < panels.Length; i++)
+        public static void AplicarCores(params Panel[] panels)
         {
-            var corIndex = (_indiceAtual + i) % Cores.Length;
-            panels[i].BackColor = Cores[corIndex];
+            if (panels == null || panels.Length == 0) return;
+
+            // Pega 3 cores a partir do índice atual, com wrap
+            for (int i = 0; i < panels.Length; i++)
+            {
+                var corIndex = (_indiceAtual + i) % Cores.Length;
+                panels[i].BackColor = Cores[corIndex];
+            }
+
+            // Avança 1 posição pro próximo load
+            _indiceAtual = (_indiceAtual + 1) % Cores.Length;
+
+            LogServices.LogarDebug("Cores aplicadas. Próximo índice: {indice}", _indiceAtual);
         }
-
-        // Avança 1 posição pro próximo load
-        _indiceAtual = (_indiceAtual + 1) % Cores.Length;
-
-        LogServices.LogarDebug("Cores aplicadas. Próximo índice: {indice}", _indiceAtual);
+        public static void Resetar()
+        {
+            _indiceAtual = 0;
+        }
     }
-    public static void Resetar()
-    {
-        _indiceAtual = 0;
-    }
-}
 }
