@@ -369,8 +369,6 @@ namespace Telinha
             {
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            var scheme = ColorSchemeManager.GetRandomDynamic();
-            ColorSchemeManager.Apply(PanelTopBar, PanelTopTitle, PanelBottom, scheme);
         }
         #endregion
 
