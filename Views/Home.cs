@@ -3,7 +3,6 @@ using Telinha.Card;
 using Telinha.Controller;
 using Telinha.Enums;
 using Telinha.Helpers;
-using Telinha.Manager;
 using Telinha.Models;
 using Telinha.Services;
 using Telinha.Utils;
