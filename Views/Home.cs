@@ -340,7 +340,6 @@ namespace Telinha
                 }
                 else
                 {
-                    LimparCampos();
                     currentId = 0;
                     MessageBox.Show("Insira um novo registro para começar.", "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
