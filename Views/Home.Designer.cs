@@ -588,7 +588,7 @@
             AnteriorButton.PressedColor = Color.FromArgb(165, 37, 37);
             AnteriorButton.Size = new Size(180, 41);
             AnteriorButton.TabIndex = 10;
-            AnteriorButton.Text = "button3";
+            AnteriorButton.Text = "Anterior";
             AnteriorButton.TextAlignment = StringAlignment.Center;
             // 
             // ProximoButton
