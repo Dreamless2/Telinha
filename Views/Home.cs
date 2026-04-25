@@ -525,7 +525,7 @@ namespace Telinha
                 if (item == null)
                 {
                     MessageBox.Show("Você chegou ao primeiro registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //AnteriorButton.Enabled = false;
+                    AnteriorButton.Enabled = false;
                     return;
                 }
 
@@ -548,7 +548,7 @@ namespace Telinha
                 if (item == null)
                 {
                     MessageBox.Show("Você chegou ao último registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //ProximoButton.Enabled = false;
+                    ProximoButton.Enabled = false;
                     return;
                 }
 
