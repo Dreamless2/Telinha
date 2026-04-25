@@ -124,7 +124,7 @@ namespace Telinha.Services
             foreach (var key in expirados)
                 _diskCache.TryRemove(key, out _);
 
-            if (expirados.Any())
+            if (expirados.Count != 0)
             {
                 LogServices.LogarInformacao("CACHE CLEAN - {count} itens expirados removidos", expirados.Count);
                 _ = SalvarNoDisco();
