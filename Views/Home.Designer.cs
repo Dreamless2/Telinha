@@ -128,6 +128,7 @@
             // 
             // materialButton1
             // 
+            materialButton1.AutoSize = false;
             materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             materialButton1.BackColor = SystemColors.Control;
             materialButton1.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
@@ -140,7 +141,7 @@
             materialButton1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialButton1.Name = "materialButton1";
             materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(158, 36);
+            materialButton1.Size = new Size(139, 41);
             materialButton1.TabIndex = 8;
             materialButton1.Text = "materialButton1";
             materialButton1.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -641,7 +642,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
             PanelButtons.ResumeLayout(false);
-            PanelButtons.PerformLayout();
             PanelForms.ResumeLayout(false);
             PanelForms.PerformLayout();
             ResumeLayout(false);
