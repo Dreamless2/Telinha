@@ -370,7 +370,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            MidiaTipo tipoReal;
+
             Color baseColor = tipoReal switch
             {
                 MidiaTipo.Filme => Color.FromArgb(103, 80, 164),   // roxo
