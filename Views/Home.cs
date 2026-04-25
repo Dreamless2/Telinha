@@ -231,7 +231,7 @@ namespace Telinha
 
             if (midia == null)
             {
-                //LimparCampos();
+                LimparCampos();
                 return;
             }
 
