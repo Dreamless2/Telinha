@@ -77,7 +77,7 @@
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
             SalvarButton = new ReaLTaiizor.Controls.Button();
-            button3 = new ReaLTaiizor.Controls.Button();
+            AnteriorButton = new ReaLTaiizor.Controls.Button();
             button4 = new ReaLTaiizor.Controls.Button();
             button5 = new ReaLTaiizor.Controls.Button();
             PanelButtons.SuspendLayout();
@@ -115,7 +115,7 @@
             // 
             PanelButtons.Controls.Add(button5);
             PanelButtons.Controls.Add(button4);
-            PanelButtons.Controls.Add(button3);
+            PanelButtons.Controls.Add(AnteriorButton);
             PanelButtons.Controls.Add(SalvarButton);
             PanelButtons.Controls.Add(CopiarButton);
             PanelButtons.Dock = DockStyle.Bottom;
@@ -572,24 +572,24 @@
             SalvarButton.Text = "button2";
             SalvarButton.TextAlignment = StringAlignment.Center;
             // 
-            // button3
+            // AnteriorButton
             // 
-            button3.BackColor = Color.Transparent;
-            button3.BorderColor = Color.FromArgb(32, 34, 37);
-            button3.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            button3.EnteredColor = Color.FromArgb(32, 34, 37);
-            button3.Font = new Font("Microsoft Sans Serif", 12F);
-            button3.Image = null;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.InactiveColor = Color.FromArgb(32, 34, 37);
-            button3.Location = new Point(598, 22);
-            button3.Name = "button3";
-            button3.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button3.PressedColor = Color.FromArgb(165, 37, 37);
-            button3.Size = new Size(180, 41);
-            button3.TabIndex = 10;
-            button3.Text = "button3";
-            button3.TextAlignment = StringAlignment.Center;
+            AnteriorButton.BackColor = Color.Transparent;
+            AnteriorButton.BorderColor = Color.FromArgb(32, 34, 37);
+            AnteriorButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            AnteriorButton.EnteredColor = Color.FromArgb(32, 34, 37);
+            AnteriorButton.Font = new Font("Microsoft Sans Serif", 12F);
+            AnteriorButton.Image = null;
+            AnteriorButton.ImageAlign = ContentAlignment.MiddleLeft;
+            AnteriorButton.InactiveColor = Color.FromArgb(32, 34, 37);
+            AnteriorButton.Location = new Point(598, 22);
+            AnteriorButton.Name = "AnteriorButton";
+            AnteriorButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            AnteriorButton.PressedColor = Color.FromArgb(165, 37, 37);
+            AnteriorButton.Size = new Size(180, 41);
+            AnteriorButton.TabIndex = 10;
+            AnteriorButton.Text = "button3";
+            AnteriorButton.TextAlignment = StringAlignment.Center;
             // 
             // button4
             // 
@@ -704,7 +704,7 @@
         private ReaLTaiizor.Controls.Button CopiarButton;
         private ReaLTaiizor.Controls.Button button5;
         private ReaLTaiizor.Controls.Button button4;
-        private ReaLTaiizor.Controls.Button button3;
+        private ReaLTaiizor.Controls.Button AnteriorButton;
         private ReaLTaiizor.Controls.Button SalvarButton;
     }
 }
