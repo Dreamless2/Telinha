@@ -421,12 +421,6 @@ namespace Telinha
 
             _buscando = true;
 
-            if (!await _buscaLock.WaitAsync(0)) // 🔥 Se já tem busca, sai
-            {
-                LogServices.LogarInformacao("VIEW: Busca ignorada - lock ativo");
-                return;
-            }
-
             try
             {
                 MidiaTipo tipoSolicitado = TipoLabel.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
@@ -473,7 +467,6 @@ namespace Telinha
             finally
             {
                 _buscando = false;
-                _buscaLock.Release();
             }
         }
         #endregion
