@@ -40,7 +40,6 @@ namespace Telinha
             ProximoButton.Click += ProximoButton_Click!;
             ConectarEventos();
 
-            // Cria uma vez só
             _mapeamentoCampos = new Dictionary<string, TextBox>
             {
                 [nameof(MidiaModel.Codigo)] = CodigoBox,
