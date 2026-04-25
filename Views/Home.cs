@@ -259,8 +259,6 @@ namespace Telinha
                 return;
             }
 
-            LimparCampos();
-
             currentId = midia.Id;
 
             // 🔥 Normaliza o tipo primeiro pra comparar
