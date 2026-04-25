@@ -258,28 +258,6 @@ namespace Telinha
                 nameof(midia.Showrunners)
                 };
 
-            var mapeamento = new Dictionary<string, TextBox>
-            {
-                [nameof(midia.Codigo)] = CodigoBox,
-                [nameof(midia.Nome)] = NomeBox,
-                [nameof(midia.Sinopse)] = SinopseBox,
-                [nameof(midia.Original)] = OriginalBox,
-                [nameof(midia.Estreia)] = EstreiaBox,
-                [nameof(midia.Alternativo)] = AlternativoBox,
-                [nameof(midia.Tags)] = TagsBox,
-                [nameof(midia.Tipo)] = TipoBox,
-                [nameof(midia.MCU)] = MCUBox,
-                [nameof(midia.Local)] = LocalBox,
-                [nameof(midia.Idioma)] = IdiomaBox,
-                [nameof(midia.Referencia)] = ReferenciaBox,
-                [nameof(midia.Autores)] = AutoresBox,
-                [nameof(midia.Franquia)] = FranquiaBox,
-                [nameof(midia.Showrunners)] = ShowrunnersBox,
-                [nameof(midia.Genero)] = GeneroBox,
-                [nameof(midia.Diretor)] = DiretorBox,
-                [nameof(midia.Artistas)] = ArtistasBox,
-                [nameof(midia.Produtora)] = ProdutoraBox,
-            };
 
             foreach (var kvp in mapeamento)
             {
