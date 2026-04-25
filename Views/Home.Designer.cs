@@ -32,7 +32,7 @@
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
             PanelButtons = new Panel();
-            Copiar = new ReaLTaiizor.Controls.Button();
+            S = new ReaLTaiizor.Controls.Button();
             PanelForms = new Panel();
             ResumoBox = new TextBox();
             ProdutoraBox = new TextBox();
@@ -76,7 +76,7 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
-            button2 = new ReaLTaiizor.Controls.Button();
+            SalvarButton = new ReaLTaiizor.Controls.Button();
             button3 = new ReaLTaiizor.Controls.Button();
             button4 = new ReaLTaiizor.Controls.Button();
             button5 = new ReaLTaiizor.Controls.Button();
@@ -116,32 +116,32 @@
             PanelButtons.Controls.Add(button5);
             PanelButtons.Controls.Add(button4);
             PanelButtons.Controls.Add(button3);
-            PanelButtons.Controls.Add(button2);
-            PanelButtons.Controls.Add(Copiar);
+            PanelButtons.Controls.Add(SalvarButton);
+            PanelButtons.Controls.Add(S);
             PanelButtons.Dock = DockStyle.Bottom;
             PanelButtons.Location = new Point(0, 719);
             PanelButtons.Name = "PanelButtons";
             PanelButtons.Size = new Size(1381, 85);
             PanelButtons.TabIndex = 6;
             // 
-            // Copiar
+            // S
             // 
-            Copiar.BackColor = Color.Transparent;
-            Copiar.BorderColor = Color.FromArgb(32, 34, 37);
-            Copiar.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            Copiar.EnteredColor = Color.FromArgb(32, 34, 37);
-            Copiar.Font = new Font("Microsoft Sans Serif", 12F);
-            Copiar.Image = null;
-            Copiar.ImageAlign = ContentAlignment.MiddleLeft;
-            Copiar.InactiveColor = Color.FromArgb(32, 34, 37);
-            Copiar.Location = new Point(143, 22);
-            Copiar.Name = "Copiar";
-            Copiar.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            Copiar.PressedColor = Color.FromArgb(165, 37, 37);
-            Copiar.Size = new Size(180, 41);
-            Copiar.TabIndex = 8;
-            Copiar.Text = "button1";
-            Copiar.TextAlignment = StringAlignment.Center;
+            S.BackColor = Color.Transparent;
+            S.BorderColor = Color.FromArgb(32, 34, 37);
+            S.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            S.EnteredColor = Color.FromArgb(32, 34, 37);
+            S.Font = new Font("Microsoft Sans Serif", 12F);
+            S.Image = null;
+            S.ImageAlign = ContentAlignment.MiddleLeft;
+            S.InactiveColor = Color.FromArgb(32, 34, 37);
+            S.Location = new Point(143, 22);
+            S.Name = "S";
+            S.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            S.PressedColor = Color.FromArgb(165, 37, 37);
+            S.Size = new Size(180, 41);
+            S.TabIndex = 8;
+            S.Text = "button1";
+            S.TextAlignment = StringAlignment.Center;
             // 
             // PanelForms
             // 
@@ -553,24 +553,24 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
-            // button2
+            // SalvarButton
             // 
-            button2.BackColor = Color.Transparent;
-            button2.BorderColor = Color.FromArgb(32, 34, 37);
-            button2.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            button2.EnteredColor = Color.FromArgb(32, 34, 37);
-            button2.Font = new Font("Microsoft Sans Serif", 12F);
-            button2.Image = null;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.InactiveColor = Color.FromArgb(32, 34, 37);
-            button2.Location = new Point(372, 22);
-            button2.Name = "button2";
-            button2.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button2.PressedColor = Color.FromArgb(165, 37, 37);
-            button2.Size = new Size(180, 41);
-            button2.TabIndex = 9;
-            button2.Text = "button2";
-            button2.TextAlignment = StringAlignment.Center;
+            SalvarButton.BackColor = Color.Transparent;
+            SalvarButton.BorderColor = Color.FromArgb(32, 34, 37);
+            SalvarButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            SalvarButton.EnteredColor = Color.FromArgb(32, 34, 37);
+            SalvarButton.Font = new Font("Microsoft Sans Serif", 12F);
+            SalvarButton.Image = null;
+            SalvarButton.ImageAlign = ContentAlignment.MiddleLeft;
+            SalvarButton.InactiveColor = Color.FromArgb(32, 34, 37);
+            SalvarButton.Location = new Point(372, 22);
+            SalvarButton.Name = "SalvarButton";
+            SalvarButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            SalvarButton.PressedColor = Color.FromArgb(165, 37, 37);
+            SalvarButton.Size = new Size(180, 41);
+            SalvarButton.TabIndex = 9;
+            SalvarButton.Text = "button2";
+            SalvarButton.TextAlignment = StringAlignment.Center;
             // 
             // button3
             // 
@@ -701,10 +701,10 @@
         private TextBox DiretorBox;
         private TextBox GeneroBox;
         private TextBox ArtistasBox;
-        private ReaLTaiizor.Controls.Button Copiar;
+        private ReaLTaiizor.Controls.Button S;
         private ReaLTaiizor.Controls.Button button5;
         private ReaLTaiizor.Controls.Button button4;
         private ReaLTaiizor.Controls.Button button3;
-        private ReaLTaiizor.Controls.Button button2;
+        private ReaLTaiizor.Controls.Button SalvarButton;
     }
 }
