@@ -32,7 +32,7 @@
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
             PanelButtons = new Panel();
-            S = new ReaLTaiizor.Controls.Button();
+            CopiarButton = new ReaLTaiizor.Controls.Button();
             PanelForms = new Panel();
             ResumoBox = new TextBox();
             ProdutoraBox = new TextBox();
@@ -117,31 +117,31 @@
             PanelButtons.Controls.Add(button4);
             PanelButtons.Controls.Add(button3);
             PanelButtons.Controls.Add(SalvarButton);
-            PanelButtons.Controls.Add(S);
+            PanelButtons.Controls.Add(CopiarButton);
             PanelButtons.Dock = DockStyle.Bottom;
             PanelButtons.Location = new Point(0, 719);
             PanelButtons.Name = "PanelButtons";
             PanelButtons.Size = new Size(1381, 85);
             PanelButtons.TabIndex = 6;
             // 
-            // S
+            // CopiarButton
             // 
-            S.BackColor = Color.Transparent;
-            S.BorderColor = Color.FromArgb(32, 34, 37);
-            S.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            S.EnteredColor = Color.FromArgb(32, 34, 37);
-            S.Font = new Font("Microsoft Sans Serif", 12F);
-            S.Image = null;
-            S.ImageAlign = ContentAlignment.MiddleLeft;
-            S.InactiveColor = Color.FromArgb(32, 34, 37);
-            S.Location = new Point(143, 22);
-            S.Name = "S";
-            S.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            S.PressedColor = Color.FromArgb(165, 37, 37);
-            S.Size = new Size(180, 41);
-            S.TabIndex = 8;
-            S.Text = "button1";
-            S.TextAlignment = StringAlignment.Center;
+            CopiarButton.BackColor = Color.Transparent;
+            CopiarButton.BorderColor = Color.FromArgb(32, 34, 37);
+            CopiarButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            CopiarButton.EnteredColor = Color.FromArgb(32, 34, 37);
+            CopiarButton.Font = new Font("Microsoft Sans Serif", 12F);
+            CopiarButton.Image = null;
+            CopiarButton.ImageAlign = ContentAlignment.MiddleLeft;
+            CopiarButton.InactiveColor = Color.FromArgb(32, 34, 37);
+            CopiarButton.Location = new Point(143, 22);
+            CopiarButton.Name = "CopiarButton";
+            CopiarButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            CopiarButton.PressedColor = Color.FromArgb(165, 37, 37);
+            CopiarButton.Size = new Size(180, 41);
+            CopiarButton.TabIndex = 8;
+            CopiarButton.Text = "button1";
+            CopiarButton.TextAlignment = StringAlignment.Center;
             // 
             // PanelForms
             // 
@@ -701,7 +701,7 @@
         private TextBox DiretorBox;
         private TextBox GeneroBox;
         private TextBox ArtistasBox;
-        private ReaLTaiizor.Controls.Button S;
+        private ReaLTaiizor.Controls.Button CopiarButton;
         private ReaLTaiizor.Controls.Button button5;
         private ReaLTaiizor.Controls.Button button4;
         private ReaLTaiizor.Controls.Button button3;
