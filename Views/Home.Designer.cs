@@ -32,7 +32,7 @@
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
             PanelButtons = new Panel();
-            CopiarButton = new ReaLTaiizor.Controls.Button();
+            button1 = new ReaLTaiizor.Controls.Button();
             PanelForms = new Panel();
             ResumoBox = new TextBox();
             ProdutoraBox = new TextBox();
@@ -76,10 +76,11 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
-            SalvarButton = new ReaLTaiizor.Controls.Button();
-            AnteriorButton = new ReaLTaiizor.Controls.Button();
-            ProximoButton = new ReaLTaiizor.Controls.Button();
-            SairButton = new ReaLTaiizor.Controls.Button();
+            SairButton = new Button();
+            ProximoButton = new Button();
+            AnteriorButton = new Button();
+            SalvarButton = new Button();
+            CopiarButton = new Button();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -113,6 +114,7 @@
             // 
             // PanelButtons
             // 
+            PanelButtons.Controls.Add(button1);
             PanelButtons.Controls.Add(SairButton);
             PanelButtons.Controls.Add(ProximoButton);
             PanelButtons.Controls.Add(AnteriorButton);
@@ -124,24 +126,24 @@
             PanelButtons.Size = new Size(1381, 85);
             PanelButtons.TabIndex = 6;
             // 
-            // CopiarButton
+            // button1
             // 
-            CopiarButton.BackColor = Color.Transparent;
-            CopiarButton.BorderColor = Color.FromArgb(32, 34, 37);
-            CopiarButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            CopiarButton.EnteredColor = Color.FromArgb(32, 34, 37);
-            CopiarButton.Font = new Font("Microsoft Sans Serif", 12F);
-            CopiarButton.Image = null;
-            CopiarButton.ImageAlign = ContentAlignment.MiddleLeft;
-            CopiarButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            CopiarButton.Location = new Point(148, 22);
-            CopiarButton.Name = "CopiarButton";
-            CopiarButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            CopiarButton.PressedColor = Color.FromArgb(165, 37, 37);
-            CopiarButton.Size = new Size(180, 41);
-            CopiarButton.TabIndex = 8;
-            CopiarButton.Text = "Copiar";
-            CopiarButton.TextAlignment = StringAlignment.Center;
+            button1.BackColor = Color.Transparent;
+            button1.BorderColor = Color.FromArgb(32, 34, 37);
+            button1.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            button1.EnteredColor = Color.FromArgb(32, 34, 37);
+            button1.Font = new Font("Microsoft Sans Serif", 12F);
+            button1.Image = null;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.InactiveColor = Color.FromArgb(32, 34, 37);
+            button1.Location = new Point(1237, 22);
+            button1.Name = "button1";
+            button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            button1.PressedColor = Color.FromArgb(165, 37, 37);
+            button1.Size = new Size(120, 41);
+            button1.TabIndex = 8;
+            button1.Text = "button1";
+            button1.TextAlignment = StringAlignment.Center;
             // 
             // PanelForms
             // 
@@ -553,81 +555,70 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
-            // SalvarButton
+            // SairButton
             // 
-            SalvarButton.BackColor = Color.Transparent;
-            SalvarButton.BorderColor = Color.FromArgb(32, 34, 37);
-            SalvarButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            SalvarButton.EnteredColor = Color.FromArgb(32, 34, 37);
-            SalvarButton.Font = new Font("Microsoft Sans Serif", 12F);
-            SalvarButton.Image = null;
-            SalvarButton.ImageAlign = ContentAlignment.MiddleLeft;
-            SalvarButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            SalvarButton.Location = new Point(374, 22);
-            SalvarButton.Name = "SalvarButton";
-            SalvarButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            SalvarButton.PressedColor = Color.FromArgb(165, 37, 37);
-            SalvarButton.Size = new Size(180, 41);
-            SalvarButton.TabIndex = 9;
-            SalvarButton.Text = "Salvar / Atualizar";
-            SalvarButton.TextAlignment = StringAlignment.Center;
-            // 
-            // AnteriorButton
-            // 
-            AnteriorButton.BackColor = Color.Transparent;
-            AnteriorButton.BorderColor = Color.FromArgb(32, 34, 37);
-            AnteriorButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            AnteriorButton.EnteredColor = Color.FromArgb(32, 34, 37);
-            AnteriorButton.Font = new Font("Microsoft Sans Serif", 12F);
-            AnteriorButton.Image = null;
-            AnteriorButton.ImageAlign = ContentAlignment.MiddleLeft;
-            AnteriorButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            AnteriorButton.Location = new Point(600, 22);
-            AnteriorButton.Name = "AnteriorButton";
-            AnteriorButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            AnteriorButton.PressedColor = Color.FromArgb(165, 37, 37);
-            AnteriorButton.Size = new Size(180, 41);
-            AnteriorButton.TabIndex = 10;
-            AnteriorButton.Text = "Anterior";
-            AnteriorButton.TextAlignment = StringAlignment.Center;
+            SairButton.BackColor = Color.FromArgb(4, 52, 72);
+            SairButton.FlatAppearance.BorderSize = 0;
+            SairButton.FlatStyle = FlatStyle.Flat;
+            SairButton.ForeColor = Color.White;
+            SairButton.Location = new Point(1051, 22);
+            SairButton.Name = "SairButton";
+            SairButton.Size = new Size(180, 41);
+            SairButton.TabIndex = 7;
+            SairButton.Text = "Sair";
+            SairButton.UseVisualStyleBackColor = false;
             // 
             // ProximoButton
             // 
-            ProximoButton.BackColor = Color.Transparent;
-            ProximoButton.BorderColor = Color.FromArgb(32, 34, 37);
-            ProximoButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            ProximoButton.EnteredColor = Color.FromArgb(32, 34, 37);
-            ProximoButton.Font = new Font("Microsoft Sans Serif", 12F);
-            ProximoButton.Image = null;
-            ProximoButton.ImageAlign = ContentAlignment.MiddleLeft;
-            ProximoButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            ProximoButton.Location = new Point(826, 22);
+            ProximoButton.BackColor = Color.FromArgb(4, 52, 72);
+            ProximoButton.FlatAppearance.BorderSize = 0;
+            ProximoButton.FlatStyle = FlatStyle.Flat;
+            ProximoButton.ForeColor = Color.White;
+            ProximoButton.Location = new Point(825, 22);
             ProximoButton.Name = "ProximoButton";
-            ProximoButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            ProximoButton.PressedColor = Color.FromArgb(165, 37, 37);
             ProximoButton.Size = new Size(180, 41);
-            ProximoButton.TabIndex = 11;
+            ProximoButton.TabIndex = 6;
             ProximoButton.Text = "Próximo";
-            ProximoButton.TextAlignment = StringAlignment.Center;
+            ProximoButton.UseVisualStyleBackColor = false;
             // 
-            // SairButton
+            // AnteriorButton
             // 
-            SairButton.BackColor = Color.Transparent;
-            SairButton.BorderColor = Color.FromArgb(32, 34, 37);
-            SairButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            SairButton.EnteredColor = Color.FromArgb(32, 34, 37);
-            SairButton.Font = new Font("Microsoft Sans Serif", 12F);
-            SairButton.Image = null;
-            SairButton.ImageAlign = ContentAlignment.MiddleLeft;
-            SairButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            SairButton.Location = new Point(1052, 22);
-            SairButton.Name = "SairButton";
-            SairButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            SairButton.PressedColor = Color.FromArgb(165, 37, 37);
-            SairButton.Size = new Size(180, 41);
-            SairButton.TabIndex = 12;
-            SairButton.Text = "Sair";
-            SairButton.TextAlignment = StringAlignment.Center;
+            AnteriorButton.BackColor = Color.FromArgb(4, 52, 72);
+            AnteriorButton.FlatAppearance.BorderSize = 0;
+            AnteriorButton.FlatStyle = FlatStyle.Flat;
+            AnteriorButton.ForeColor = Color.White;
+            AnteriorButton.Location = new Point(599, 22);
+            AnteriorButton.Name = "AnteriorButton";
+            AnteriorButton.Size = new Size(180, 41);
+            AnteriorButton.TabIndex = 5;
+            AnteriorButton.Text = "Anterior";
+            AnteriorButton.UseVisualStyleBackColor = false;
+            // 
+            // SalvarButton
+            // 
+            SalvarButton.BackColor = Color.FromArgb(4, 52, 72);
+            SalvarButton.FlatAppearance.BorderSize = 0;
+            SalvarButton.FlatStyle = FlatStyle.Flat;
+            SalvarButton.ForeColor = Color.White;
+            SalvarButton.Location = new Point(373, 22);
+            SalvarButton.Name = "SalvarButton";
+            SalvarButton.Size = new Size(180, 41);
+            SalvarButton.TabIndex = 4;
+            SalvarButton.Text = "Salvar / Atualizar";
+            SalvarButton.UseVisualStyleBackColor = false;
+            // 
+            // CopiarButton
+            // 
+            CopiarButton.BackColor = Color.FromArgb(4, 52, 72);
+            CopiarButton.FlatAppearance.BorderSize = 0;
+            CopiarButton.FlatStyle = FlatStyle.Flat;
+            CopiarButton.ForeColor = Color.White;
+            CopiarButton.Location = new Point(147, 22);
+            CopiarButton.Name = "CopiarButton";
+            CopiarButton.Size = new Size(180, 41);
+            CopiarButton.TabIndex = 3;
+            CopiarButton.Text = "Copiar";
+            CopiarButton.UseVisualStyleBackColor = false;
             // 
             // Home
             // 
@@ -701,10 +692,11 @@
         private TextBox DiretorBox;
         private TextBox GeneroBox;
         private TextBox ArtistasBox;
-        private ReaLTaiizor.Controls.Button CopiarButton;
-        private ReaLTaiizor.Controls.Button SairButton;
-        private ReaLTaiizor.Controls.Button ProximoButton;
-        private ReaLTaiizor.Controls.Button AnteriorButton;
-        private ReaLTaiizor.Controls.Button SalvarButton;
+        private ReaLTaiizor.Controls.Button button1;
+        private Button SairButton;
+        private Button ProximoButton;
+        private Button AnteriorButton;
+        private Button SalvarButton;
+        private Button CopiarButton;
     }
 }

@@ -30,13 +30,13 @@ namespace Telinha
             _cacheService = cacheServices;
             _midiaService = midiaService;
             Load += Principal_Load!;
-            SairButton.Click += SairButton_Click!;
-            CopiarButton.Click += CopiarButton_Click!;
+            button5.Click += SairButton_Click!;
+            button1.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
-            SalvarButton.Click += SalvarButton_Click;
-            AnteriorButton.Click += AnteriorButton_Click!;
-            ProximoButton.Click += ProximoButton_Click!;
+            button2.Click += SalvarButton_Click;
+            button3.Click += AnteriorButton_Click!;
+            button4.Click += ProximoButton_Click!;
             ConectarEventos();
             _mapeamentoCampos = new Dictionary<string, TextBox>
             {
@@ -361,20 +361,20 @@ namespace Telinha
         {
             if (_bs.Current is MidiaModel item && item.Id == 0)
             {
-                AnteriorButton.Enabled = await MidiaController.GetPrevious<MidiaModel>(0) != null;
-                ProximoButton.Enabled = false;
+                button3.Enabled = await MidiaController.GetPrevious<MidiaModel>(0) != null;
+                button4.Enabled = false;
                 return;
             }
 
             if (currentId <= 0)
             {
-                AnteriorButton.Enabled = false;
-                ProximoButton.Enabled = await MidiaController.GetNext<MidiaModel>(0) != null;
+                button3.Enabled = false;
+                button4.Enabled = await MidiaController.GetNext<MidiaModel>(0) != null;
                 return;
             }
 
-            AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
-            ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
+            button3.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
+            button4.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
         #endregion
 
@@ -525,7 +525,7 @@ namespace Telinha
                 if (item == null)
                 {
                     MessageBox.Show("Você chegou ao primeiro registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AnteriorButton.Enabled = false;
+                    button3.Enabled = false;
                     return;
                 }
 
@@ -548,7 +548,7 @@ namespace Telinha
                 if (item == null)
                 {
                     MessageBox.Show("Você chegou ao último registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ProximoButton.Enabled = false;
+                    button4.Enabled = false;
                     return;
                 }
 
