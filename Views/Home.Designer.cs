@@ -80,7 +80,6 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
-            aloneButton1 = new ReaLTaiizor.Controls.AloneButton();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -114,7 +113,6 @@
             // 
             // PanelButtons
             // 
-            PanelButtons.Controls.Add(aloneButton1);
             PanelButtons.Controls.Add(SairButton);
             PanelButtons.Controls.Add(ProximoButton);
             PanelButtons.Controls.Add(AnteriorButton);
@@ -601,18 +599,6 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
-            // aloneButton1
-            // 
-            aloneButton1.BackColor = Color.Transparent;
-            aloneButton1.EnabledCalc = true;
-            aloneButton1.Font = new Font("Segoe UI", 9F);
-            aloneButton1.ForeColor = Color.FromArgb(124, 133, 142);
-            aloneButton1.Location = new Point(1258, 21);
-            aloneButton1.Name = "aloneButton1";
-            aloneButton1.Size = new Size(120, 40);
-            aloneButton1.TabIndex = 8;
-            aloneButton1.Text = "aloneButton1";
-            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -690,6 +676,5 @@
         private Button AnteriorButton;
         private Button SalvarButton;
         private Button CopiarButton;
-        private ReaLTaiizor.Controls.AloneButton aloneButton1;
     }
 }
