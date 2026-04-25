@@ -331,8 +331,6 @@ namespace Telinha
 
             _cacheService.LimparExpirados();
 
-            PreencherMascara(MidiaTipo.Filme);
-
             CodigoBox.Focus();
 
             try
