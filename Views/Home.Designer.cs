@@ -80,7 +80,6 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
-            dreamButton1 = new ReaLTaiizor.Controls.DreamButton();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -114,7 +113,6 @@
             // 
             // PanelButtons
             // 
-            PanelButtons.Controls.Add(dreamButton1);
             PanelButtons.Controls.Add(SairButton);
             PanelButtons.Controls.Add(ProximoButton);
             PanelButtons.Controls.Add(AnteriorButton);
@@ -601,21 +599,6 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
-            // dreamButton1
-            // 
-            dreamButton1.ColorA = Color.FromArgb(31, 31, 31);
-            dreamButton1.ColorB = Color.FromArgb(41, 41, 41);
-            dreamButton1.ColorC = Color.FromArgb(51, 51, 51);
-            dreamButton1.ColorD = Color.FromArgb(0, 0, 0, 0);
-            dreamButton1.ColorE = Color.FromArgb(25, 255, 255, 255);
-            dreamButton1.ForeColor = Color.FromArgb(40, 218, 255);
-            dreamButton1.Location = new Point(1237, 22);
-            dreamButton1.Name = "dreamButton1";
-            dreamButton1.Size = new Size(120, 40);
-            dreamButton1.TabIndex = 8;
-            dreamButton1.Text = "dreamButton1";
-            dreamButton1.UseVisualStyleBackColor = true;
-            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -693,6 +676,5 @@
         private Button AnteriorButton;
         private Button SalvarButton;
         private Button CopiarButton;
-        private ReaLTaiizor.Controls.DreamButton dreamButton1;
     }
 }
