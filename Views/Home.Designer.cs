@@ -32,6 +32,7 @@
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
             PanelButtons = new Panel();
+            button1 = new ReaLTaiizor.Controls.Button();
             SairButton = new Button();
             ProximoButton = new Button();
             AnteriorButton = new Button();
@@ -80,7 +81,6 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
-            button1 = new ReaLTaiizor.Controls.Button();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -125,6 +125,26 @@
             PanelButtons.Name = "PanelButtons";
             PanelButtons.Size = new Size(1381, 85);
             PanelButtons.TabIndex = 6;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BorderColor = Color.FromArgb(32, 34, 37);
+            button1.Enabled = false;
+            button1.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            button1.EnteredColor = Color.FromArgb(32, 34, 37);
+            button1.Font = new Font("Microsoft Sans Serif", 12F);
+            button1.Image = null;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.InactiveColor = Color.FromArgb(32, 34, 37);
+            button1.Location = new Point(1237, 22);
+            button1.Name = "button1";
+            button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            button1.PressedColor = Color.FromArgb(165, 37, 37);
+            button1.Size = new Size(120, 41);
+            button1.TabIndex = 8;
+            button1.Text = "button1";
+            button1.TextAlignment = StringAlignment.Center;
             // 
             // SairButton
             // 
@@ -600,26 +620,6 @@
             CodigoLabel.Size = new Size(82, 15);
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Transparent;
-            button1.BorderColor = Color.FromArgb(32, 34, 37);
-            button1.Enabled = false;
-            button1.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            button1.EnteredColor = Color.FromArgb(32, 34, 37);
-            button1.Font = new Font("Microsoft Sans Serif", 12F);
-            button1.Image = null;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.InactiveColor = Color.FromArgb(32, 34, 37);
-            button1.Location = new Point(1248, 26);
-            button1.Name = "button1";
-            button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button1.PressedColor = Color.FromArgb(165, 37, 37);
-            button1.Size = new Size(120, 40);
-            button1.TabIndex = 8;
-            button1.Text = "button1";
-            button1.TextAlignment = StringAlignment.Center;
             // 
             // Home
             // 
