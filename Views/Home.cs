@@ -277,7 +277,7 @@ namespace Telinha
                 nameof(midia.Diretor),
                 nameof(midia.Showrunners),
                 nameof(midia.Alternativo),
-                };
+            };
 
             foreach (var kvp in _mapeamentoCampos)
             {
