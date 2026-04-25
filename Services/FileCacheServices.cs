@@ -135,7 +135,7 @@ namespace Telinha.Services
 
         public bool TryGet<T>(string key, out T value)
         {
-            if (_cache.TryGetValue(key, out value))
+            if (_diskCache.TryGetValue(key, out value))
             {
                 Interlocked.Increment(ref _hits);
                 return true;
