@@ -291,19 +291,10 @@ namespace Telinha
         #region Limpar Campos
         private void LimparCampos()
         {
-            // 🔥 Pega todos os TextBox desta classe via reflection
-            var textBoxes = this.GetType()
-                .GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(f => f.FieldType == typeof(TextBox))
-                .Select(f => f.GetValue(this) as TextBox)
-                .Where(tb => tb != null);
+            // 🔥 Uma linha pra limpar todos
+            foreach (var tb in _mapeamentoCampos.Values)
+                tb.Clear();
 
-            foreach (var tb in textBoxes)
-            {
-                tb!.Clear();
-            }
-
-            // ComboBox e Label ainda tem que fazer na mão
             AudioBox.SelectedIndex = -1;
             TipoLabel.Text = "Tipo";
             currentId = 0;
