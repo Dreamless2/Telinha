@@ -130,7 +130,6 @@
             // 
             button1.BackColor = Color.Transparent;
             button1.BorderColor = Color.FromArgb(32, 34, 37);
-            button1.Enabled = false;
             button1.EnteredBorderColor = Color.FromArgb(165, 37, 37);
             button1.EnteredColor = Color.FromArgb(32, 34, 37);
             button1.Font = new Font("Microsoft Sans Serif", 12F);
