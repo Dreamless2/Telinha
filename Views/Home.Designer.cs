@@ -78,7 +78,7 @@
             CodigoLabel = new Label();
             SalvarButton = new ReaLTaiizor.Controls.Button();
             AnteriorButton = new ReaLTaiizor.Controls.Button();
-            button4 = new ReaLTaiizor.Controls.Button();
+            ProximoButton = new ReaLTaiizor.Controls.Button();
             button5 = new ReaLTaiizor.Controls.Button();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
@@ -114,7 +114,7 @@
             // PanelButtons
             // 
             PanelButtons.Controls.Add(button5);
-            PanelButtons.Controls.Add(button4);
+            PanelButtons.Controls.Add(ProximoButton);
             PanelButtons.Controls.Add(AnteriorButton);
             PanelButtons.Controls.Add(SalvarButton);
             PanelButtons.Controls.Add(CopiarButton);
@@ -591,24 +591,24 @@
             AnteriorButton.Text = "button3";
             AnteriorButton.TextAlignment = StringAlignment.Center;
             // 
-            // button4
+            // ProximoButton
             // 
-            button4.BackColor = Color.Transparent;
-            button4.BorderColor = Color.FromArgb(32, 34, 37);
-            button4.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            button4.EnteredColor = Color.FromArgb(32, 34, 37);
-            button4.Font = new Font("Microsoft Sans Serif", 12F);
-            button4.Image = null;
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.InactiveColor = Color.FromArgb(32, 34, 37);
-            button4.Location = new Point(827, 22);
-            button4.Name = "button4";
-            button4.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button4.PressedColor = Color.FromArgb(165, 37, 37);
-            button4.Size = new Size(180, 41);
-            button4.TabIndex = 11;
-            button4.Text = "button4";
-            button4.TextAlignment = StringAlignment.Center;
+            ProximoButton.BackColor = Color.Transparent;
+            ProximoButton.BorderColor = Color.FromArgb(32, 34, 37);
+            ProximoButton.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            ProximoButton.EnteredColor = Color.FromArgb(32, 34, 37);
+            ProximoButton.Font = new Font("Microsoft Sans Serif", 12F);
+            ProximoButton.Image = null;
+            ProximoButton.ImageAlign = ContentAlignment.MiddleLeft;
+            ProximoButton.InactiveColor = Color.FromArgb(32, 34, 37);
+            ProximoButton.Location = new Point(827, 22);
+            ProximoButton.Name = "ProximoButton";
+            ProximoButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            ProximoButton.PressedColor = Color.FromArgb(165, 37, 37);
+            ProximoButton.Size = new Size(180, 41);
+            ProximoButton.TabIndex = 11;
+            ProximoButton.Text = "button4";
+            ProximoButton.TextAlignment = StringAlignment.Center;
             // 
             // button5
             // 
@@ -703,7 +703,7 @@
         private TextBox ArtistasBox;
         private ReaLTaiizor.Controls.Button CopiarButton;
         private ReaLTaiizor.Controls.Button button5;
-        private ReaLTaiizor.Controls.Button button4;
+        private ReaLTaiizor.Controls.Button ProximoButton;
         private ReaLTaiizor.Controls.Button AnteriorButton;
         private ReaLTaiizor.Controls.Button SalvarButton;
     }
