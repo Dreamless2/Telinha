@@ -331,6 +331,8 @@ namespace Telinha
 
             _cacheService.LimparExpirados();
 
+
+
             try
             {
                 if (await MidiaController.AnyAsync<MidiaModel>())
