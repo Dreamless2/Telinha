@@ -331,7 +331,7 @@ namespace Telinha
 
             _cacheService.LimparExpirados();
 
-
+            CodigoBox.Focus();
 
             try
             {
