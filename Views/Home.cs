@@ -371,7 +371,7 @@ namespace Telinha
             }
 
 
-            Color baseColor = tipoReal switch
+            Color baseColor = MidiaTipo tipoReal switch
             {
                 MidiaTipo.Filme => Color.FromArgb(103, 80, 164),   // roxo
                 MidiaTipo.Serie => Color.FromArgb(25, 118, 210),   // azul
