@@ -39,6 +39,30 @@ namespace Telinha
             AnteriorButton.Click += AnteriorButton_Click!;
             ProximoButton.Click += ProximoButton_Click!;
             ConectarEventos();
+
+            // Cria uma vez só
+            _mapeamentoCampos = new Dictionary<string, TextBox>
+            {
+                [nameof(MidiaModel.Codigo)] = CodigoBox,
+                [nameof(MidiaModel.Nome)] = NomeBox,
+                [nameof(MidiaModel.Sinopse)] = SinopseBox,
+                [nameof(MidiaModel.Original)] = OriginalBox,
+                [nameof(MidiaModel.Estreia)] = EstreiaBox,
+                [nameof(MidiaModel.Alternativo)] = AlternativoBox,
+                [nameof(MidiaModel.Tags)] = TagsBox,
+                [nameof(MidiaModel.Tipo)] = TipoBox,
+                [nameof(MidiaModel.MCU)] = MCUBox,
+                [nameof(MidiaModel.Local)] = LocalBox,
+                [nameof(MidiaModel.Idioma)] = IdiomaBox,
+                [nameof(MidiaModel.Referencia)] = ReferenciaBox,
+                [nameof(MidiaModel.Autores)] = AutoresBox,
+                [nameof(MidiaModel.Franquia)] = FranquiaBox,
+                [nameof(MidiaModel.Showrunners)] = ShowrunnersBox,
+                [nameof(MidiaModel.Genero)] = GeneroBox,
+                [nameof(MidiaModel.Diretor)] = DiretorBox,
+                [nameof(MidiaModel.Artistas)] = ArtistasBox,
+                [nameof(MidiaModel.Produtora)] = ProdutoraBox,
+            };
         }
         #endregion
 
