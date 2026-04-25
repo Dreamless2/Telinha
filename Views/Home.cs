@@ -369,6 +369,10 @@ namespace Telinha
             {
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            PanelTopBar.BackColor = Color.Red;
+            PanelTopTitle.BackColor = Color.Green;
+            PanelBottom.BackColor = Color.Blue;
         }
         #endregion
 
