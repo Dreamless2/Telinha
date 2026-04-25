@@ -134,13 +134,13 @@
             CopiarButton.Image = null;
             CopiarButton.ImageAlign = ContentAlignment.MiddleLeft;
             CopiarButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            CopiarButton.Location = new Point(143, 22);
+            CopiarButton.Location = new Point(148, 22);
             CopiarButton.Name = "CopiarButton";
             CopiarButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
             CopiarButton.PressedColor = Color.FromArgb(165, 37, 37);
             CopiarButton.Size = new Size(180, 41);
             CopiarButton.TabIndex = 8;
-            CopiarButton.Text = "button1";
+            CopiarButton.Text = "Copiar";
             CopiarButton.TextAlignment = StringAlignment.Center;
             // 
             // PanelForms
@@ -563,7 +563,7 @@
             SalvarButton.Image = null;
             SalvarButton.ImageAlign = ContentAlignment.MiddleLeft;
             SalvarButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            SalvarButton.Location = new Point(372, 22);
+            SalvarButton.Location = new Point(374, 22);
             SalvarButton.Name = "SalvarButton";
             SalvarButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
             SalvarButton.PressedColor = Color.FromArgb(165, 37, 37);
@@ -582,7 +582,7 @@
             AnteriorButton.Image = null;
             AnteriorButton.ImageAlign = ContentAlignment.MiddleLeft;
             AnteriorButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            AnteriorButton.Location = new Point(598, 22);
+            AnteriorButton.Location = new Point(600, 22);
             AnteriorButton.Name = "AnteriorButton";
             AnteriorButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
             AnteriorButton.PressedColor = Color.FromArgb(165, 37, 37);
@@ -601,7 +601,7 @@
             ProximoButton.Image = null;
             ProximoButton.ImageAlign = ContentAlignment.MiddleLeft;
             ProximoButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            ProximoButton.Location = new Point(827, 22);
+            ProximoButton.Location = new Point(826, 22);
             ProximoButton.Name = "ProximoButton";
             ProximoButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
             ProximoButton.PressedColor = Color.FromArgb(165, 37, 37);
@@ -620,7 +620,7 @@
             SairButton.Image = null;
             SairButton.ImageAlign = ContentAlignment.MiddleLeft;
             SairButton.InactiveColor = Color.FromArgb(32, 34, 37);
-            SairButton.Location = new Point(1048, 22);
+            SairButton.Location = new Point(1052, 22);
             SairButton.Name = "SairButton";
             SairButton.PressedBorderColor = Color.FromArgb(165, 37, 37);
             SairButton.PressedColor = Color.FromArgb(165, 37, 37);
