@@ -12,6 +12,8 @@ namespace Telinha.Services
         private readonly ConcurrentDictionary<string, CacheItem> _diskCache = new();
         private readonly SemaphoreSlim _fileLock = new(1, 1);
         private readonly TimeSpan _memoryTtl = TimeSpan.FromMinutes(30);
+        private long _hits = 0;
+        private long _misses = 0;
 
         public FileCacheServices(IMemoryCache memory)
         {
