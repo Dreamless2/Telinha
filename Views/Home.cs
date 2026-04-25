@@ -375,9 +375,6 @@ namespace Telinha
 
             AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
             ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
-
-
-
         }
         #endregion
 
