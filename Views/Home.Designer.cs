@@ -163,6 +163,7 @@
             // CopiarButton
             // 
             CopiarButton.BackColor = Color.FromArgb(4, 52, 72);
+            CopiarButton.FlatAppearance.BorderSize = 0;
             CopiarButton.FlatStyle = FlatStyle.Flat;
             CopiarButton.ForeColor = Color.White;
             CopiarButton.Location = new Point(147, 22);
