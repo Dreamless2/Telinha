@@ -331,6 +331,8 @@ namespace Telinha
 
             _cacheService.LimparExpirados();
 
+            PreencherMascara()
+
             CodigoBox.Focus();
 
             try
