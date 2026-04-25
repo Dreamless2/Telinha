@@ -371,6 +371,10 @@ namespace Telinha
             {
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            var scheme = ColorSchemeManager.LoadOrCreate(darkMode: false);
+
+            ColorSchemeManager.Apply(PanelTopBar, PanelTopTitle, PanelBottom, scheme);
         }
         #endregion
 
