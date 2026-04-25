@@ -9,7 +9,7 @@ namespace Telinha.Helpers
     {
 
         // 🔥 Arreio de 3 cores. Troca os RGB aí
-        private static readonly Color[][] Cores =
+        private static readonly Color[][] Paletas =
         {
             // 1. Blue
             new[] { Color.FromArgb(0, 30, 60), Color.FromArgb(0, 74, 127), Color.FromArgb(100, 181, 246) },
