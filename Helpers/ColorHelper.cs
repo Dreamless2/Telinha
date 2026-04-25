@@ -11,10 +11,10 @@ namespace Telinha.Helpers
         // 🔥 Arreio de 3 cores. Troca os RGB aí
         private static readonly Color[] Cores =
         {
-        Color.FromArgb(45, 45, 48), // Cinza escuro
-        Color.FromArgb(0, 122, 204), // Azul VS
-        Color.FromArgb(16, 124, 16) // Verde VS
-    };
+            Color.FromArgb(45, 45, 48), // Cinza escuro
+            Color.FromArgb(0, 122, 204), // Azul VS
+            Color.FromArgb(16, 124, 16) // Verde VS
+        };
 
         private static int _indiceAtual = 0;
 
