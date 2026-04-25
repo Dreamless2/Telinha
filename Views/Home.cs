@@ -351,7 +351,7 @@ namespace Telinha
 
             _cacheService.LimparExpirados();
 
-            ColorHelper.AplicarCores(Panel
+            ColorHelper.AplicarCores(PanelTopBar, PanelTopTitle, PanelBottom);
 
             try
             {
