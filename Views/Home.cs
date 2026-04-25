@@ -276,6 +276,10 @@ namespace Telinha
                 nameof(midia.Diretor),
                 nameof(midia.Showrunners),
                 nameof(midia.Alternativo),
+                nameof(midia.Franquia),
+                 nameof(midia.Genero),
+                 nameof(midia.Idioma),
+                 nameof(midia.Local)
             };
 
             foreach (var kvp in _mapeamentoCampos)
