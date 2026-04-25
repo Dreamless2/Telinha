@@ -275,7 +275,8 @@ namespace Telinha
                 nameof(midia.Referencia),
                 nameof(midia.Autores),
                 nameof(midia.Diretor),
-                nameof(midia.Showrunners)
+                nameof(midia.Showrunners),
+                nameof(midia.Alternativo),
                 };
 
             foreach (var kvp in _mapeamentoCampos)
