@@ -1,4 +1,4 @@
-**Dreamless2 – Software License Agreement (Proprietary and Confidential)**
+**Telinha – Software License Agreement (Proprietary and Confidential)**
 
 Copyright (c) 2026 Dreamless2. All rights reserved.
 
