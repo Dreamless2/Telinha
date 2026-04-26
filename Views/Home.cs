@@ -560,9 +560,18 @@ namespace Telinha
 
                 currentId = item.Id;
                 _bs.Position = _bs.IndexOf(item);
-                //PreencherCampos(item);
+                PreencherCampos(item);
+                MessageBox.Show($"Tipo: '{item.Tipo}'"); // ← VÊ O QUE TEM AQUI
+
                 if (Enum.TryParse<MidiaTipo>(item.Tipo, out var tipoEnum))
+                {
+                    MessageBox.Show($"Convertido pra: {tipoEnum}"); // ← VÊ SE CONVERTEU
                     AtualizarUI(tipoEnum, item);
+                }
+                else
+                {
+                    MessageBox.Show("FALHOU O PARSE"); // ← Se cair aqui, achamos
+                }
                 await AtualizarBotoesNavegacao();
             }
             catch (Exception ex)
