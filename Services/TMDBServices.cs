@@ -42,8 +42,7 @@ namespace Telinha.Services
 
         public async Task<JObject[]> Many(CancellationToken ct, params (string url, Dictionary<string, string>? q)[] calls)
         {
-            return await Task.WhenAll(
-                calls.Select(c => GetAsync(c.url, c.q, ct))
+            return await Task.WhenAll(calls.Select(c => GetAsync(c.url, c.q, ct))
             );
         }
     }
