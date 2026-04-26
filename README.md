@@ -30,7 +30,7 @@ Without prior written authorization.
 
 ---
 
-## 🔒 Licença / License
+## 🔒 License
 
 This software is under a proprietary license.
 
