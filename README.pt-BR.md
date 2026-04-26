@@ -56,7 +56,7 @@ O uso indevido pode resultar em medidas legais.
 
 ---
 
-## 📩 Contato / Contact
+## 📩 Contato
 
 📧 [tiagonet50@gmail.com](mailto:tiagonet50@gmail.com)
 
