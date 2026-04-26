@@ -10,9 +10,9 @@
 
 ## 📌 Sobre o Projeto / About the Project
 
-Dreamless2 é um software desenvolvido com foco em desempenho, organização e arquitetura robusta.
+Telinha é um software desenvolvido com foco em desempenho, organização e arquitetura robusta.
 
-Dreamless2 is a software project focused on performance, clean architecture, and code organization.
+Telinha is a software project focused on performance, clean architecture, and code organization.
 
 Este repositório existe exclusivamente para **portfólio técnico**.
 This repository exists solely for **technical portfolio purposes**.
