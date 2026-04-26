@@ -14,16 +14,12 @@ namespace Telinha.Utils
                 if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attr)
                 {
                     if (attr.Description == description)
-                    {
-                        if (field.GetValue(null) != null)
-                            return (T)field.GetValue(null);
-                    }
-                }
-                if (field.Name == description)
-                {
-                    if (field.GetValue(null) != null)
                         return (T)field.GetValue(null);
                 }
+                if (field.Name == description)
+                    return (T)field.GetValue(null);
             }
             return default;
         }
+    }
+}
