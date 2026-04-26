@@ -88,9 +88,8 @@ namespace Telinha.Controller
         public static bool Any<T>() where T : class
             => DB.Select<T>().Any();
 
-        // anyasync
         public static async Task<bool> AnyAsync<T>() where T : class
-            => await DB.Select<T>().AnyAsync();
+           => await DB.Select<T>().AnyAsync();
 
 
         public static async Task<bool> ExistsNext<T>(long id) where T : class
