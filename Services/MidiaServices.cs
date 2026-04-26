@@ -42,7 +42,6 @@ namespace Telinha.Services
 
             return DecidirMelhorResultado(filme, serie);
         }
-
         private string ClassificarAnimacaoAvancado(MidiaModel m)
         {
             if (m == null) return "LiveAction";
