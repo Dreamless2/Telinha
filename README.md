@@ -38,15 +38,14 @@ See the `LICENSE` file for details.
 
 ---
 
-## 🎯 Objetivo / Purpose
+## 🎯 Purpose
 
-Demonstrar:
 To demonstrate:
 
-* Arquitetura de software / Software architecture
-* Boas práticas / Best practices
-* Organização de código / Code organization
-* Capacidade técnica / Technical skills
+* Software architecture
+* Best practices
+* Code organization
+* Technical skills
 
 ---
 
