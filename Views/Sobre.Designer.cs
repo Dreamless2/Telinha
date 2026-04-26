@@ -28,13 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            PanelBottom = new Panel();
+            PanelTopBar = new Panel();
             SuspendLayout();
+            // 
+            // PanelBottom
+            // 
+            PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
+            PanelBottom.Dock = DockStyle.Bottom;
+            PanelBottom.Location = new Point(0, 374);
+            PanelBottom.Name = "PanelBottom";
+            PanelBottom.Size = new Size(862, 44);
+            PanelBottom.TabIndex = 5;
+            // 
+            // PanelTopBar
+            // 
+            PanelTopBar.BackColor = Color.FromArgb(4, 52, 72);
+            PanelTopBar.Dock = DockStyle.Top;
+            PanelTopBar.Location = new Point(0, 0);
+            PanelTopBar.Name = "PanelTopBar";
+            PanelTopBar.Size = new Size(862, 29);
+            PanelTopBar.TabIndex = 4;
             // 
             // Sobre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(862, 418);
+            Controls.Add(PanelBottom);
+            Controls.Add(PanelTopBar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Sobre";
             StartPosition = FormStartPosition.CenterScreen;
@@ -43,5 +65,8 @@
         }
 
         #endregion
+
+        private Panel PanelBottom;
+        private Panel PanelTopBar;
     }
 }
