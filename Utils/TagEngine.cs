@@ -80,9 +80,8 @@ namespace Telinha.Utils
         public static string GerarTags(string texto)
         {
             if (string.IsNullOrWhiteSpace(texto))
-            {
                 return string.Empty;
-            }
+
 
             var nomes = texto.Split(',')
                              .Select(n => RemoverAcentos(n.Trim()))
