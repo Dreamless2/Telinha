@@ -273,8 +273,6 @@ namespace Telinha
             {
                 nameof(midia.Referencia),
                 nameof(midia.Autores),
-                nameof(midia.Diretor),
-                nameof(midia.Showrunners),
                 nameof(midia.Alternativo),
                 nameof(midia.Franquia),
                 nameof(midia.MCU),
