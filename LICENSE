@@ -33,7 +33,7 @@ Sistema desktop em C# WinForms para [descreve o que faz: gestão de vendas, cont
 ## 📦 Estrutura do Projeto├── Core/           # Entidades e interfaces
 ├── Infrastructure/ # FreeSql, Repositórios
 ├── Services/       # Regras de negócio
-├── UI/             # Forms e UserControls
+├── Views/          # Forms e UserControls
 └── Program.cs      # Configuração do AutoFac
 
 ## 📞 Contato
