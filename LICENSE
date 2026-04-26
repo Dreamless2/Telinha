@@ -1,18 +1,43 @@
-Copyright (c) 2026 Dreamless2
-TODOS OS DIREITOS RESERVADOS
+# Nome do Sistema
 
-Este software é proprietário e confidencial.
+Sistema desktop em C# WinForms para [descreve o que faz: gestão de vendas, controle de estoque, etc].
 
-É estritamente proibida a cópia, modificação, distribuição, 
-engenharia reversa ou qualquer outro uso deste código-fonte, 
-no todo ou em parte, sem a permissão expressa por escrito do 
-detentor dos direitos autorais.
+> ⚠️ **Código-fonte proprietário**  
+> Este repositório serve apenas para demonstração de portfólio.  
+> O código não pode ser copiado, usado ou distribuído. Ver `LICENSE`.
 
-A visualização deste código, incluindo em repositórios públicos, 
-não concede qualquer licença de uso. Destina-se apenas para 
-fins de avaliação de portfólio.
+## 🚀 Demonstração
 
-O descumprimento sujeitará o infrator às penalidades previstas 
-na Lei nº 9.610/98 (Lei de Direitos Autorais).
+[Cola aqui um GIF ou link do YouTube mostrando o sistema rodando]  
+Ex: `![Demo](docs/demo.gif)`
 
-Para solicitar licença de uso, entre em contato: tiagonet50@gmail.com
+### Principais Telas
+| Tela de Login | Dashboard | Cadastro de Clientes |
+| --- | --- | --- |
+| ![Login](docs/login.png) | ![Dashboard](docs/dashboard.png) | ![Clientes](docs/clientes.png) |
+
+## 🛠️ Stack Técnica
+
+**Frontend:** C# WinForms .NET 8  
+**Banco:** MySQL 8 + FreeSql ORM  
+**Arquitetura:** Injeção de Dependência com AutoFac, Repository Pattern  
+**Bibliotecas:**  
+- AutoFac 9.1.0 - DI Container
+- FreeSql 3.5.309 - ORM
+- Serilog 4.3.1 - Logs estruturados
+- Newtonsoft.Json 13.0.4 - Serialização
+- RestSharp 114.0.0 - Consumo de APIs
+- DEEPL.Net 1.21.0 - Tradução automática
+
+**Outros:** Cache em memória, chamadas a APIs REST, relatórios
+
+## ✨ Features Técnicas
+
+1. **Injeção de Dependência**: Desacoplamento total usando AutoFac
+2. **ORM**: FreeSql com mapeamento Code First e LINQ
+3. **Logs**: Serilog gravando em arquivo com níveis de erro
+4. **Cache**: `Microsoft.Extensions.Caching.Memory` para performance
+5. **Integrações**: Consumo da API DeepL e APIs REST próprias com RestSharp
+6. **Tratamento de Erros**: Try/catch global + logs
+
+## 📦 Estrutura do Projeto
