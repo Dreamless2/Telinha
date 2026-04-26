@@ -15,7 +15,8 @@ This software, including source code, structure, algorithms, and documentation (
 
 ### **2. Concessão de Direitos / Grant of Rights**
 
-Nenhuma licença é concedida. O acesso é permitido apenas para avaliação técnica e portfólio.<br>
+Nenhuma licença é concedida. O acesso é permitido apenas para avaliação técnica e portfólio.
+
 No license is granted. Access is provided solely for technical evaluation and portfolio purposes.
 
 ---
