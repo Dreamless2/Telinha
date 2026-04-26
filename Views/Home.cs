@@ -220,7 +220,6 @@ namespace Telinha
             item.Franquia = isFilme ? "--" : (item.Franquia ?? "");
             item.MCU = isFilme || isAnime ? "--" : (item.MCU ?? "");
 
-
             bool habilitarCamposGerais = !isFilme;
 
             LocalLabel.Enabled = LocalBox.Enabled = habilitarCamposGerais;
