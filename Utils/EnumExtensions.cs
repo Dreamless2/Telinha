@@ -19,7 +19,7 @@ namespace Telinha.Utils
                 if (field.Name == description)
                     return (T)field.GetValue(null)!;
             }
-            return default; // pra enum retorna 0 = Film
+            return default;
         }
     }
 }
