@@ -11,13 +11,12 @@ namespace Telinha
         {
             ApplicationConfiguration.Initialize();
 
-
             LogServices.ConfigurarLog();
             try
             {
                 var configService = new AppConfigServices();
                 var config = configService.Load();
-                var container = ContainerConfig.Configure(); // 🔥 1 linha
+                var container = ContainerConfig.Configure();
                 using var scope = container.BeginLifetimeScope();
 
                 // 🔴 valida primeiro
