@@ -172,7 +172,6 @@ namespace Telinha.Services
 
             return false;
         }
-
         private MidiaModel? DecidirMelhorResultado(MidiaModel? filme, MidiaModel? serie)
         {
             if (filme == null) return serie;
