@@ -19,7 +19,6 @@ namespace Telinha
                 var container = ContainerConfig.Configure();
                 using var scope = container.BeginLifetimeScope();
 
-                // 🔴 valida primeiro
                 if (config == null ||
                     string.IsNullOrWhiteSpace(config.Host) ||
                     string.IsNullOrWhiteSpace(config.Porta) ||
@@ -33,7 +32,6 @@ namespace Telinha
                     return;
                 }
 
-                // ✅ só agora cria
                 var home = scope.Resolve<Home>();
                 Application.Run(home);
             }
