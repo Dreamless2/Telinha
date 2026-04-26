@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Telinha.Utils
 {
-    public static class ButtonExtensions
+    public static class EnumExtensions
     {
-        private static readonly Color EnabledBack = Color.FromArgb(4, 52, 72);
-        private static readonly Color EnabledFore = Color.White;
-        private static readonly Color DisabledBack = Color.FromArgb(45, 45, 45);
-        private static readonly Color DisabledFore = Color.White;
-
-        public static void SetMaterialState(this Button btn, bool enabled)
+        public static T GetValueFromDescription<T>(string description) where T : Enum
         {
-            btn.BackColor = enabled ? EnabledBack : DisabledBack;
-            btn.ForeColor = enabled ? EnabledFore : DisabledFore;
-            btn.Enabled = enabled;
+            foreach (var field in typeof(T).GetFields())
+            {
+                if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attr)
+                {
+                    if (attr.Description == description)
+                        return (T)field.GetValue(null);
+                }
+                if (field.Name == description)
+                    return (T)field.GetValue(null);
+            }
+            return default;
         }
     }
 }
