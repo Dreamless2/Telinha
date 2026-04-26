@@ -39,7 +39,6 @@ namespace Telinha
             txt.SelectionStart = 0;
             txt.SelectionLength = 0;
         }
-
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try
