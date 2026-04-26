@@ -70,9 +70,9 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(10, 9);
             label1.Name = "label1";
-            label1.Size = new Size(105, 40);
+            label1.Size = new Size(91, 40);
             label1.TabIndex = 0;
-            label1.Text = "Telinha";
+            label1.Text = "Sobre";
             // 
             // Sobre
             // 
