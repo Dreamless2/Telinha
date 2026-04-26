@@ -34,7 +34,6 @@ namespace Telinha.Container
             builder.RegisterType<Token>().AsSelf();
             builder.RegisterType<Home>().AsSelf();
 
-
             return builder.Build();
         }
     }
