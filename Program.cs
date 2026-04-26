@@ -16,7 +16,7 @@ namespace Telinha
             try
             {
                 var configService = new AppConfigServices();
-                var config = configService.Load();
+                var config = AppConfigServices.Load();
                 var container = ContainerConfig.Configure(); // 🔥 1 linha
                 using var scope = container.BeginLifetimeScope();
 
