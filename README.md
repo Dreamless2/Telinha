@@ -7,7 +7,7 @@
 
 ## 📌 Sobre o Projeto
 
-Dreamless2 é um software desenvolvido com foco em desempenho, organização de código e arquitetura robusta.
+Telinha é um software desenvolvido com foco em desempenho, organização de código e arquitetura robusta.
 
 Este repositório tem como objetivo exclusivo a **apresentação de portfólio**, permitindo a análise da qualidade técnica, estrutura e boas práticas utilizadas no desenvolvimento.
 
