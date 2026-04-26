@@ -83,6 +83,7 @@ Violation of these terms results in immediate termination of any permission.
 ### **10. Legislação / Governing Law**
 
 Regido pelas leis do Brasil.
+
 Governed by the laws of Brazil.
 
 ---
