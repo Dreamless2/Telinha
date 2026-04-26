@@ -1,42 +1,87 @@
 **Dreamless2 – Contrato de Licença de Software (Proprietário e Confidencial)**
+**Dreamless2 – Software License Agreement (Proprietary and Confidential)**
+
 Copyright (c) 2026 Dreamless2. Todos os direitos reservados.
+Copyright (c) 2026 Dreamless2. All rights reserved.
 
-**1. Propriedade Intelectual**
-Este software, incluindo, mas não se limitando ao código-fonte, estrutura, organização, algoritmos e documentação associada (“Software”), é de propriedade exclusiva de Dreamless2 e está protegido pelas leis de direitos autorais e demais legislações aplicáveis.
+---
 
-**2. Concessão de Direitos**
-Nenhuma licença ou direito de uso é concedido ao usuário. O acesso ao Software é permitido exclusivamente para fins de avaliação técnica e apresentação de portfólio, não implicando em qualquer autorização para uso, reprodução ou exploração.
+### **1. Propriedade Intelectual / Intellectual Property**
 
-**3. Restrições**
-É expressamente proibido, sem autorização prévia e por escrito do titular dos direitos:
+Este software, incluindo código-fonte, estrutura, algoritmos e documentação (“Software”), é de propriedade exclusiva de Dreamless2 e protegido por lei.
+This software, including source code, structure, algorithms, and documentation (“Software”), is the exclusive property of Dreamless2 and is protected by law.
 
-* Copiar, modificar, adaptar, traduzir ou criar obras derivadas;
-* Distribuir, sublicenciar, alugar, arrendar ou transferir o Software;
-* Realizar engenharia reversa, descompilação ou tentativa de obtenção do código-fonte;
-* Utilizar o Software para fins comerciais ou produtivos;
-* Remover ou alterar avisos de direitos autorais.
+---
 
-**4. Confidencialidade**
-O Software é considerado informação confidencial. O usuário concorda em não divulgar, compartilhar ou tornar disponível qualquer parte do Software a terceiros sem autorização expressa.
+### **2. Concessão de Direitos / Grant of Rights**
 
-**5. Disponibilização em Repositórios**
-A disponibilização do Software em repositórios públicos ou privados não constitui concessão de licença de uso. O acesso ao código não implica autorização legal para sua utilização.
+Nenhuma licença é concedida. O acesso é permitido apenas para avaliação técnica e portfólio.
+No license is granted. Access is provided solely for technical evaluation and portfolio purposes.
 
-**6. Ausência de Garantias**
-O Software é fornecido “no estado em que se encontra” (“as is”), sem garantias de qualquer natureza, expressas ou implícitas, incluindo, mas não se limitando a garantias de comercialização, adequação a um propósito específico ou não violação de direitos.
+---
 
-**7. Limitação de Responsabilidade**
-Em nenhuma hipótese o titular dos direitos será responsável por quaisquer danos diretos, indiretos, incidentais, especiais ou consequenciais, incluindo perda de dados, lucros cessantes ou interrupção de negócios, decorrentes do uso ou da impossibilidade de uso do Software.
+### **3. Restrições / Restrictions**
 
-**8. Penalidades**
-O uso não autorizado do Software sujeitará o infrator às sanções civis e criminais cabíveis, nos termos da Lei nº 9.610/98 e demais legislações aplicáveis.
+É proibido, sem autorização por escrito:
+It is strictly prohibited, without prior written authorization:
 
-**9. Rescisão**
-Qualquer violação destes termos resultará na revogação imediata de qualquer permissão implícita de acesso, devendo o usuário cessar imediatamente qualquer utilização do Software.
+* Copiar, modificar ou criar derivados / Copy, modify, or create derivative works
+* Distribuir ou sublicenciar / Distribute or sublicense
+* Engenharia reversa / Reverse engineer
+* Uso comercial ou produtivo / Commercial or production use
+* Remover avisos legais / Remove legal notices
 
-**10. Legislação Aplicável e Foro**
-Este contrato será regido pelas leis da República Federativa do Brasil. Fica eleito o foro da comarca do titular dos direitos, com renúncia a qualquer outro, por mais privilegiado que seja.
+---
 
-**11. Contato para Licenciamento**
-Para solicitações de licença de uso ou outras informações, entre em contato:
-[tiagonet50@gmail.com](mailto:tiagonet50@gmail.com)
+### **4. Confidencialidade / Confidentiality**
+
+O Software é confidencial e não pode ser compartilhado.
+The Software is confidential and may not be disclosed or shared.
+
+---
+
+### **5. Repositórios / Repository Availability**
+
+A disponibilização do código não concede licença de uso.
+Availability of the code does not grant any usage rights.
+
+---
+
+### **6. Garantias / Warranty Disclaimer**
+
+Fornecido “no estado em que se encontra”, sem garantias.
+Provided “as is”, without warranties of any kind.
+
+---
+
+### **7. Responsabilidade / Limitation of Liability**
+
+O titular não se responsabiliza por quaisquer danos.
+The owner shall not be liable for any damages.
+
+---
+
+### **8. Penalidades / Penalties**
+
+O uso indevido pode resultar em sanções legais.
+Unauthorized use may result in legal penalties.
+
+---
+
+### **9. Rescisão / Termination**
+
+Violação destes termos encerra imediatamente qualquer permissão.
+Violation of these terms results in immediate termination of any permission.
+
+---
+
+### **10. Legislação / Governing Law**
+
+Regido pelas leis do Brasil.
+Governed by the laws of Brazil.
+
+---
+
+### **11. Contato / Contact**
+
+📧 [tiagonet50@gmail.com](mailto:tiagonet50@gmail.com)
