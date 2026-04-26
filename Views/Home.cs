@@ -547,7 +547,7 @@ namespace Telinha
                 currentId = item.Id;
                 _bs.Position = _bs.IndexOf(item);
                 PreencherCampos(item);
-                var tipoEnum = ObterTipo(item.Tipo); // ← usa aqui
+                var tipoEnum = ObterTipo(item.Tipo);
                 AtualizarUI(tipoEnum, item);
                 await AtualizarBotoesNavegacao();
             }
