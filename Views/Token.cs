@@ -74,7 +74,6 @@ namespace Telinha
 
                 Hide();
 
-                // 🔥 Pede pro Autofac criar o Home com todas as dependências
                 var home = _scope.Resolve<Home>();
                 home.ShowDialog();
             }
