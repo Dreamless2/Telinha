@@ -1,68 +1,123 @@
 ﻿using Serilog;
+using System.Runtime.CompilerServices;
 
 namespace Telinha.Services
 {
     public static class LogServices
     {
-        private static bool _configurado = false;
+        private static readonly Lazy<Logger> _lazyLogger = new(InitLogger, isThreadSafe: true);
 
-        public static void ConfigurarLog()
+        private static Logger InitLogger()
         {
-            if (_configurado) return;
+            var logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs", "log-.txt");
 
-            string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs", "log-.txt");
-
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.File(logPath,
+            var logger = new LoggerConfiguration()
+              .MinimumLevel.Debug()
+              .Enrich.FromLogContext()
+              .WriteTo.File(logPath,
                     rollingInterval: RollingInterval.Day,
                     retainedFileCountLimit: 7,
                     fileSizeLimitBytes: 10_000_000,
-                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
-                .CreateLogger();
+                    rollOnFileSizeLimit: true,
+                    shared: true, // permite múltiplos processos
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{Caller}] {Message:lj}{NewLine}{Exception}")
+              .CreateLogger();
 
-            _configurado = true;
-            Log.Information("Sistema de logs inicializado com sucesso.");
+            logger.Information("Sistema de logs inicializado com sucesso.");
+            return logger;
         }
 
-        public static void LogarInformacao(string mensagem, params object?[] args)
+        public static void ConfigurarLog() => _ = _lazyLogger.Value; // força init
+
+        public static void LogarInformacao(
+            string mensagem,
+            [CallerMemberName] string member = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int line = 0,
+            params object?[] args)
         {
-            Log.Information(mensagem, args);
+            _lazyLogger.Value.ForContext("Caller", $"{Path.GetFileName(path)}:{member}:{line}")
+               .Information(mensagem, args);
         }
 
-        public static void LogarErro(string mensagem, params object?[] args)
+        public static void LogarErro(
+            string mensagem,
+            [CallerMemberName] string member = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int line = 0,
+            params object?[] args)
         {
-            Log.Error(mensagem, args);
+            _lazyLogger.Value.ForContext("Caller", $"{Path.GetFileName(path)}:{member}:{line}")
+               .Error(mensagem, args);
         }
 
-        public static void LogarErroComException(Exception ex, string mensagem, params object?[] args)
+        public static void LogarErroComException(
+            Exception ex,
+            string mensagem,
+            [CallerMemberName] string member = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int line = 0,
+            params object?[] args)
         {
-            Log.Error(ex, mensagem, args);
+            _lazyLogger.Value.ForContext("Caller", $"{Path.GetFileName(path)}:{member}:{line}")
+               .Error(ex, mensagem, args);
         }
 
-        public static void LogarAlerta(string mensagem, params object?[] args)
+        public static void LogarAlerta(
+            string mensagem,
+            [CallerMemberName] string member = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int line = 0,
+            params object?[] args)
         {
-            Log.Warning(mensagem, args);
+            _lazyLogger.Value.ForContext("Caller", $"{Path.GetFileName(path)}:{member}:{line}")
+               .Warning(mensagem, args);
         }
 
-        public static void LogarDebug(string mensagem, params object?[] args)
+        public static void LogarDebug(
+            string mensagem,
+            [CallerMemberName] string member = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int line = 0,
+            params object?[] args)
         {
-            Log.Debug(mensagem, args);
+            _lazyLogger.Value.ForContext("Caller", $"{Path.GetFileName(path)}:{member}:{line}")
+               .Debug(mensagem, args);
         }
 
-        public static void LogarTrace(string mensagem, params object?[] args)
+        public static void LogarTrace(
+            string mensagem,
+            [CallerMemberName] string member = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int line = 0,
+            params object?[] args)
         {
-            Log.Verbose(mensagem, args);
+            _lazyLogger.Value.ForContext("Caller", $"{Path.GetFileName(path)}:{member}:{line}")
+               .Verbose(mensagem, args);
         }
 
-        public static void LogarCritico(string mensagem, params object?[] args)
+        public static void LogarCritico(
+            string mensagem,
+            [CallerMemberName] string member = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int line = 0,
+            params object?[] args)
         {
-            Log.Fatal(mensagem, args);
+            _lazyLogger.Value.ForContext("Caller", $"{Path.GetFileName(path)}:{member}:{line}")
+               .Fatal(mensagem, args);
         }
 
-        public static void EncerrarLog()
+        public static void EncerrarLog() => Log.CloseAndFlush();
+
+        // Bônus: pra logar objeto inteiro
+        public static void LogarDebugObj<T>(
+            T obj,
+            string mensagem = "Objeto: {@Obj}",
+            [CallerMemberName] string member = "",
+            [CallerFilePath] string path = "",
+            [CallerLineNumber] int line = 0)
         {
-            Log.CloseAndFlush();
+            _lazyLogger.Value.ForContext("Caller", $"{Path.GetFileName(path)}:{member}:{line}")
+               .Debug(mensagem, obj);
         }
     }
-}
