@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Frozen;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -10,29 +11,25 @@ namespace Telinha.Utils
         private static readonly Regex RegexNaoAlfaNum = new(@"[^\p{L}\p{Nd}]", RegexOptions.Compiled);
         private static readonly Regex RegexNaoAlfaNumEspaco = new(@"[^\p{L}\p{Nd} ]", RegexOptions.Compiled);
 
-        private static readonly Dictionary<string, string> GeneroMapeado = new(StringComparer.OrdinalIgnoreCase)
-    {
-        { "ficçãocientífica", "ficcaocientifica ficçãocientífica" },
-        { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-        { "ficçãocientíficaeaventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
-        { "romântico", "romantico romântico" },
-        { "romântica", "romantica romântica" },
-        { "comédia", "comedia comédia" },
-        { "mistério", "misterio mistério" },
-        { "ação", "acao ação" },
-        { "açãoefantasia", "acaoefantasia açãoefantasia" },
-        { "açãoeaventura", "acaoeaventura açãoeaventura" },
-        { "animação", "animacao animação" },
-        { "documentário", "documentario documentário" },
-        { "comédiadramática", "comediadramatica comédiadramática" },
-        { "comédiaromântica", "comediaromantica comédiaromântica" },
-        { "ficçãocientíficaeação", "ficcaocientificaeacao ficçãocientíficaeação" },
-        { "ficçãocientíficaecomédia", "ficcaocientificaecomedia ficçãocientíficaecomédia" },
-        { "ficçãocientíficaedrama", "ficcaocientificaedrama ficçãocientíficaedrama" },
-        { "ficçãocientíficaemistério", "ficcaocientificaemisterio ficçãocientíficaemistério" },
-        { "ficçãocientíficaeromance", "ficcaocientificaeromance ficçãocientíficaeromance" },
-        { "ficçãocientíficaeterror", "ficcaocientificaeterror ficçãocientíficaeterror" }
-    };
+        private static readonly FrozenDictionary<string, string> GeneroMapeado = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["ficçãocientífica"] = P("ficçãocientífica"),
+            ["ficçãocientíficaefantasia"] = P("ficçãocientíficaefantasia"),
+            ["ficçãocientíficaeaventura"] = P("ficçãocientíficaeaventura"),
+            ["romântico"] = P("romântico"),
+            ["romântica"] = P("romântica"),
+            ["comédia"] = P("comédia"),
+            ["mistério"] = P("mistério"),
+            ["ação"] = P("ação"),
+            ["açãoefantasia"] = P("açãoefantasia"),
+            ["açãoeaventura"] = P("açãoeaventura"),
+            ["animação"] = P("animação"),
+            ["documentário"] = P("documentário"),
+            ["comédiadramática"] = P("comédiadramática"),
+            ["comédiaromântica"] = P("comédiaromântica"),
+        }.ToFrozenDictionary();
+
+        private static string P(string s) => $"{RemoverAcentos(s)} {s}".Replace($"{s} {s}", s);
 
         public static string NormalizarGeneros(string entrada)
         {
