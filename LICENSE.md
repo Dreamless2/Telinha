@@ -73,6 +73,7 @@ The owner shall not be liable for any damages.
 ### **8. Penalidades / Penalties**
 
 O uso indevido pode resultar em sanções legais.
+
 Unauthorized use may result in legal penalties.
 
 ---
@@ -80,6 +81,7 @@ Unauthorized use may result in legal penalties.
 ### **9. Rescisão / Termination**
 
 Violação destes termos encerra imediatamente qualquer permissão.
+
 Violation of these terms results in immediate termination of any permission.
 
 ---
