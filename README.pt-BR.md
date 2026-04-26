@@ -15,7 +15,7 @@ Este repositório existe exclusivamente para **portfólio técnico**.
 
 ---
 
-## ⚠️ Aviso Legal / Legal Notice
+## ⚠️ Aviso Legal
 
 Este projeto **não é open source**.
 
