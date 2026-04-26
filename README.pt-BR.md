@@ -1,4 +1,4 @@
-# Dreamless2
+# Telinha
 
 > ⚠️ Este repositório é apenas para visualização
 
@@ -10,10 +10,8 @@
 
 Telinha é um software desenvolvido com foco em desempenho, organização e arquitetura robusta.
 
-Telinha is a software project focused on performance, clean architecture, and code organization.
 
 Este repositório existe exclusivamente para **portfólio técnico**.
-This repository exists solely for **technical portfolio purposes**.
 
 ---
 
@@ -21,20 +19,15 @@ This repository exists solely for **technical portfolio purposes**.
 
 Este projeto **não é open source**.
 
-This project is **not open source**.
-
 Nenhuma permissão é concedida para:
 
-No permission is granted to:
-
-* Uso / Use
-* Cópia / Copy
-* Modificação / Modify
-* Distribuição / Distribute
-* Uso comercial / Commercial use
+* Uso
+* Cópia
+* Modificação
+* Distribuição
+* Uso comercial 
 
 Sem autorização prévia por escrito.
-Without prior written authorization.
 
 ---
 
@@ -42,11 +35,7 @@ Without prior written authorization.
 
 Este software está sob licença proprietária.
 
-This software is under a proprietary license.
-
 Consulte o arquivo `LICENSE` para mais detalhes.
-
-See the `LICENSE` file for details.
 
 ---
 
