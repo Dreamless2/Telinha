@@ -14,12 +14,12 @@ namespace Telinha.Utils
                 if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attr)
                 {
                     if (attr.Description == description)
-                        return (T)field.GetValue(null)!; // ← ! diz "confia, não é nulo"
+                        return (T)field.GetValue(null)!;
                 }
                 if (field.Name == description)
                     return (T)field.GetValue(null)!;
             }
-            return default; // pra enum retorna 0 = Filme
+            return default; // pra enum retorna 0 = Film
         }
     }
 }
