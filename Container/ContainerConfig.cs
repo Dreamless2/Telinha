@@ -17,15 +17,15 @@ namespace Telinha.Container
             builder.RegisterType<FileCacheServices>().AsSelf().SingleInstance();
             builder.RegisterType<AppConfigServices>().AsSelf().SingleInstance();
 
-            // 🔥 ApiClientFactory cria tudo
+            // 🔥 ApiClientFactory
             builder.RegisterType<ApiClientFactory>().AsSelf().SingleInstance();
 
-            // 🔥 TMDBServices vem da factory, não do RegisterType
+            // 🔥 TMDBServices
             builder.Register(c => c.Resolve<ApiClientFactory>().GetTMDB())
               .AsSelf()
               .SingleInstance();
 
-            // 🔥 DEEPLContracts também se precisar
+            // 🔥 DEEPLContracts
             builder.Register(c => c.Resolve<ApiClientFactory>().GetDeepL())
               .AsSelf()
               .InstancePerDependency();
