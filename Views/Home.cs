@@ -268,7 +268,6 @@ namespace Telinha
             var ehSerie = tipoNormalizado?.Equals("Serie", StringComparison.OrdinalIgnoreCase) == true
                        || tipoNormalizado?.Equals("Anime", StringComparison.OrdinalIgnoreCase) == true;
 
-            // 🔥 Campos vazios viram "--"
             var camposOpcionaisPorTipo = new HashSet<string>
             {
                 nameof(midia.Referencia),
