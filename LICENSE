@@ -30,7 +30,8 @@ Sistema desktop em C# WinForms para [descreve o que faz: gestão de vendas, cont
 5. **Integrações**: Consumo da API DeepL e APIs REST próprias com RestSharp
 6. **Tratamento de Erros**: Try/catch global + logs
 
-## 📦 Estrutura do Projeto├── Core/           # Entidades e interfaces
+## 📦 Estrutura do Projeto
+├── Core/           # Entidades e interfaces
 ├── Infrastructure/ # FreeSql, Repositórios
 ├── Services/       # Regras de negócio
 ├── Views/          # Forms e UserControls
