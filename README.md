@@ -1,34 +1,58 @@
 # Dreamless2
 
+> ⚠️ Este repositório é disponibilizado apenas para **visualização e avaliação técnica**.
+> ❌ Não é permitido uso do código.
+
+---
+
 ## 📌 Sobre o Projeto
 
-Dreamless2 é um software desenvolvido com foco em desempenho, organização de código e arquitetura robusta. Este repositório foi disponibilizado exclusivamente para fins de **avaliação técnica e apresentação de portfólio**.
+Dreamless2 é um software desenvolvido com foco em desempenho, organização de código e arquitetura robusta.
 
-## ⚠️ Aviso Importante
+Este repositório tem como objetivo exclusivo a **apresentação de portfólio**, permitindo a análise da qualidade técnica, estrutura e boas práticas utilizadas no desenvolvimento.
+
+---
+
+## ⚠️ Aviso Legal
 
 Este projeto **não é open source**.
 
-O código-fonte está disponível apenas para visualização.
-Nenhuma permissão é concedida para uso, cópia, modificação, distribuição ou exploração do software, total ou parcial, sem autorização prévia e por escrito do titular dos direitos.
+Nenhuma permissão é concedida para:
+
+* Uso
+* Cópia
+* Modificação
+* Distribuição
+* Exploração comercial
+
+Sem autorização prévia e por escrito do titular dos direitos.
+
+---
 
 ## 🔒 Licença
 
 Este software é protegido por uma **licença proprietária**.
 
-Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
+Consulte o arquivo `LICENSE` para mais informações.
+
+---
 
 ## 🎯 Objetivo
 
-O objetivo deste repositório é demonstrar:
+Este repositório foi criado para demonstrar:
 
-* Organização e estrutura de código
+* Arquitetura de software
+* Organização de código
 * Boas práticas de desenvolvimento
-* Arquitetura e padrões utilizados
-* Capacidade técnica do desenvolvedor
+* Capacidade técnica
+
+---
 
 ## 🚫 Uso Não Autorizado
 
-Qualquer uso indevido deste software pode resultar em medidas legais, conforme a legislação vigente (Lei nº 9.610/98).
+O uso indevido deste software pode resultar em medidas legais, conforme a legislação vigente (Lei nº 9.610/98).
+
+---
 
 ## 📩 Contato
 
