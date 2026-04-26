@@ -35,3 +35,11 @@ Sistema desktop em C# WinForms para [descreve o que faz: gestão de vendas, cont
 ├── Services/       # Regras de negócio
 ├── UI/             # Forms e UserControls
 └── Program.cs      # Configuração do AutoFac
+
+## 📞 Contato
+
+Desenvolvido por Tiago da Silva Pereira.
+LinkedIn: [seu-link] | Email: tiagonet50@gmail.com
+
+---
+**Nota:** Trechos sensíveis como strings de conexão, chaves de API e regras de negócio específicas foram omitidos deste repositório.
