@@ -49,6 +49,7 @@ The Software is confidential and may not be disclosed or shared.
 ### **5. Repositórios / Repository Availability**
 
 A disponibilização do código não concede licença de uso.
+
 Availability of the code does not grant any usage rights.
 
 ---
@@ -56,6 +57,7 @@ Availability of the code does not grant any usage rights.
 ### **6. Garantias / Warranty Disclaimer**
 
 Fornecido “no estado em que se encontra”, sem garantias.
+
 Provided “as is”, without warranties of any kind.
 
 ---
