@@ -41,6 +41,7 @@ It is strictly prohibited, without prior written authorization:
 ### **4. Confidencialidade / Confidentiality**
 
 O Software é confidencial e não pode ser compartilhado.
+
 The Software is confidential and may not be disclosed or shared.
 
 ---
