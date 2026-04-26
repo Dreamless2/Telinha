@@ -535,8 +535,10 @@ namespace Telinha
 
                 currentId = item.Id;
                 PreencherCampos(item);
-                Enum.TryParse<MidiaTipo>(item.Tipo, out var tipoEnum);
-                AtualizarUI(tipoEnum, item);
+                if (Enum.TryParse<MidiaTipo>(item.Tipo, out var tipoEnum))
+                {
+                    AtualizarUI(tipoEnum, item);
+                }
                 _bs.Position = _bs.IndexOf(item);
                 await AtualizarBotoesNavegacao();
             }
