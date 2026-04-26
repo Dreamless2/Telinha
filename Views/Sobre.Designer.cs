@@ -34,8 +34,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(966, 577);
+            ClientSize = new Size(807, 443);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Sobre";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sobre";
             ResumeLayout(false);
         }
