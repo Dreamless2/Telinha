@@ -82,15 +82,14 @@ namespace Telinha.Utils
             if (string.IsNullOrWhiteSpace(texto))
                 return string.Empty;
 
-
-            var nomes = texto.Split(',')
-                             .Select(n => RemoverAcentos(n.Trim()))
-                             .Select(n => Regex.Replace(n, @"[^a-zA-Z0-9]", ""))
-                             .Where(n => !string.IsNullOrWhiteSpace(n))
-                             .Select(n => $"#{n}");
-
-            return string.Join(" ", nomes);
+            return string.Join(' ', texto
+                .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                .Select(RemoverAcentos)
+                .Select(n => RegexNaoAlfaNum.Replace(n, ""))
+                .Where(n => !string.IsNullOrWhiteSpace(n))
+                .Select(n => $"#{n}"));
         }
+
 
         public static string RemoverAcentos(string texto)
         {
