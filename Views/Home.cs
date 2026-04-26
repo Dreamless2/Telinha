@@ -572,7 +572,6 @@ namespace Telinha
                 currentId = item.Id;
                 _bs.Position = _bs.IndexOf(item);
                 PreencherCampos(item);
-                MessageBox.Show($"Tipo: '{item.Tipo}'"); // ← VÊ O QUE TEM AQUI
 
                 var tipoEnum = ObterTipo(item.Tipo); // ← usa aqui
                 AtualizarUI(tipoEnum, item);
