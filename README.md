@@ -1,7 +1,9 @@
 # Dreamless2
 
 > ⚠️ Este repositório é apenas para visualização
+
 > ⚠️ This repository is for viewing purposes only
+
 > ❌ Uso do código não é permitido / Code usage is not allowed
 
 ---
