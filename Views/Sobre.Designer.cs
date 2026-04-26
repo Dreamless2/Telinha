@@ -30,15 +30,18 @@
         {
             PanelBottom = new Panel();
             PanelTopBar = new Panel();
+            PanelTopTitle = new Panel();
+            label1 = new Label();
+            PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
             // PanelBottom
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 374);
+            PanelBottom.Location = new Point(0, 508);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(862, 44);
+            PanelBottom.Size = new Size(892, 44);
             PanelBottom.TabIndex = 5;
             // 
             // PanelTopBar
@@ -47,20 +50,44 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 0);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(862, 29);
+            PanelTopBar.Size = new Size(892, 29);
             PanelTopBar.TabIndex = 4;
+            // 
+            // PanelTopTitle
+            // 
+            PanelTopTitle.BackColor = Color.FromArgb(5, 74, 105);
+            PanelTopTitle.Controls.Add(label1);
+            PanelTopTitle.Dock = DockStyle.Top;
+            PanelTopTitle.Location = new Point(0, 29);
+            PanelTopTitle.Name = "PanelTopTitle";
+            PanelTopTitle.Size = new Size(892, 58);
+            PanelTopTitle.TabIndex = 6;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(10, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(105, 40);
+            label1.TabIndex = 0;
+            label1.Text = "Telinha";
             // 
             // Sobre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(862, 418);
+            ClientSize = new Size(892, 552);
+            Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
             Controls.Add(PanelTopBar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Sobre";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sobre";
+            PanelTopTitle.ResumeLayout(false);
+            PanelTopTitle.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -68,5 +95,7 @@
 
         private Panel PanelBottom;
         private Panel PanelTopBar;
+        private Panel PanelTopTitle;
+        private Label label1;
     }
 }
