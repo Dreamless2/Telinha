@@ -6,10 +6,10 @@ using System.Text.RegularExpressions;
 
 namespace Telinha.Utils
 {
-    public static class TagEngine
+    public static partial class TagEngine
     {
         private static readonly Regex RegexNaoAlfaNum = new(@"[^\p{L}\p{Nd}]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex RegexNaoAlfaNumEspaco = new(@"[^\p{L}\p{Nd} ]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex RegexNaoAlfaNumEspaco = MyRegex();
 
         // .NET 8+ SearchValues - remove acento sem alocação de categoria
         private static readonly SearchValues<char> NonSpacingMarks = SearchValues.Create(
@@ -138,5 +138,8 @@ namespace Telinha.Utils
                 }
             })[..^0].Normalize(NormalizationForm.FormC);
         }
+
+        [GeneratedRegex(@"[^\p{L}\p{Nd} ]", RegexOptions.Compiled | RegexOptions.CultureInvariant)]
+        private static partial Regex MyRegex();
     }
 }
