@@ -535,6 +535,7 @@ namespace Telinha
 
                 currentId = item.Id;
                 PreencherCampos(item);
+                AtualizarUI(Enum.TryParse(item.Tipo, true, out MidiaTipo tipo) ? tipo : MidiaTipo.Filme, item);
                 _bs.Position = _bs.IndexOf(item);
                 await AtualizarBotoesNavegacao();
             }
