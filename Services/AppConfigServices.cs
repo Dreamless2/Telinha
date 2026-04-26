@@ -46,10 +46,7 @@ namespace Telinha.Services
             {
                 byte[] protectedData = File.ReadAllBytes(FilePath);
 
-                byte[] raw = ProtectedData.Unprotect(
-                    protectedData,
-                    Encoding.UTF8.GetBytes(Entropy),
-                    DataProtectionScope.CurrentUser);
+                byte[] raw = ProtectedData.Unprotect(protectedData, Encoding.UTF8.GetBytes(Entropy), DataProtectionScope.CurrentUser);
 
                 string json = Encoding.UTF8.GetString(raw);
 
