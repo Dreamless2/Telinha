@@ -61,6 +61,7 @@ Provided “as is”, without warranties of any kind.
 ### **7. Responsabilidade / Limitation of Liability**
 
 O titular não se responsabiliza por quaisquer danos.
+
 The owner shall not be liable for any damages.
 
 ---
