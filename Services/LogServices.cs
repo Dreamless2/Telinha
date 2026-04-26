@@ -1,33 +1,68 @@
 ﻿using Serilog;
-using Serilog.Core;
 
 namespace Telinha.Services
 {
     public static class LogServices
     {
-        private static readonly Lazy<Logger> _lazyLogger = new(InitLogger);
+        private static bool _configurado = false;
 
-        public static Logger Logger => _lazyLogger.Value;
-
-        private static Logger InitLogger()
+        public static void ConfigurarLog()
         {
-            var logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs", "log-.txt");
+            if (_configurado) return;
 
-            var logger = new LoggerConfiguration()
-               .MinimumLevel.Debug()
-               .Enrich.FromLogContext() // permite ForContext
-               .WriteTo.File(logPath,
+            string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs", "log-.txt");
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.File(logPath,
                     rollingInterval: RollingInterval.Day,
                     retainedFileCountLimit: 7,
                     fileSizeLimitBytes: 10_000_000,
-                    rollOnFileSizeLimit: true,
-                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}] {Message:lj}{NewLine}{Exception}")
-               .CreateLogger();
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+                .CreateLogger();
 
-            logger.Information("Sistema de logs inicializado com sucesso.");
-            return logger;
+            _configurado = true;
+            Log.Information("Sistema de logs inicializado com sucesso.");
         }
 
-        public static void EncerrarLog() => Log.CloseAndFlush();
+        public static void LogarInformacao(string mensagem, params object?[] args)
+        {
+            Log.Information(mensagem, args);
+        }
+
+        public static void LogarErro(string mensagem, params object?[] args)
+        {
+            Log.Error(mensagem, args);
+        }
+
+        public static void LogarErroComException(Exception ex, string mensagem, params object?[] args)
+        {
+            Log.Error(ex, mensagem, args);
+        }
+
+        public static void LogarAlerta(string mensagem, params object?[] args)
+        {
+            Log.Warning(mensagem, args);
+        }
+
+        public static void LogarDebug(string mensagem, params object?[] args)
+        {
+            Log.Debug(mensagem, args);
+        }
+
+        public static void LogarTrace(string mensagem, params object?[] args)
+        {
+            Log.Verbose(mensagem, args);
+        }
+
+        public static void LogarCritico(string mensagem, params object?[] args)
+        {
+            Log.Fatal(mensagem, args);
+        }
+
+        public static void EncerrarLog()
+        {
+            Log.CloseAndFlush();
+        }
     }
 }
