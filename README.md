@@ -55,12 +55,10 @@ Unauthorized use may result in legal action.
 
 ---
 
-## 📩 Contato / Contact
+## 📩 Contact
 
 📧 [tiagonet50@gmail.com](mailto:tiagonet50@gmail.com)
 
 ---
-
-© 2026 Dreamless2. Todos os direitos reservados.
 
 © 2026 Dreamless2. All rights reserved.
