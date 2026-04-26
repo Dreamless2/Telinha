@@ -1,6 +1,4 @@
-# Dreamless2
-
-> ⚠️ Este repositório é apenas para visualização
+# Telinha
 
 > ⚠️ This repository is for viewing purposes only
 
