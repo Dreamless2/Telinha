@@ -1,18 +1,41 @@
-Copyright (c) 2026 Dreamless2
-TODOS OS DIREITOS RESERVADOS
+# Dreamless2
 
-Este software é proprietário e confidencial.
+## 📌 Sobre o Projeto
 
-É estritamente proibida a cópia, modificação, distribuição, 
-engenharia reversa ou qualquer outro uso deste código-fonte, 
-no todo ou em parte, sem a permissão expressa por escrito do 
-detentor dos direitos autorais.
+Dreamless2 é um software desenvolvido com foco em desempenho, organização de código e arquitetura robusta. Este repositório foi disponibilizado exclusivamente para fins de **avaliação técnica e apresentação de portfólio**.
 
-A visualização deste código, incluindo em repositórios públicos, 
-não concede qualquer licença de uso. Destina-se apenas para 
-fins de avaliação de portfólio.
+## ⚠️ Aviso Importante
 
-O descumprimento sujeitará o infrator às penalidades previstas 
-na Lei nº 9.610/98 (Lei de Direitos Autorais).
+Este projeto **não é open source**.
 
-Para solicitar licença de uso, entre em contato: tiagonet50@gmail.com
+O código-fonte está disponível apenas para visualização.
+Nenhuma permissão é concedida para uso, cópia, modificação, distribuição ou exploração do software, total ou parcial, sem autorização prévia e por escrito do titular dos direitos.
+
+## 🔒 Licença
+
+Este software é protegido por uma **licença proprietária**.
+
+Consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
+
+## 🎯 Objetivo
+
+O objetivo deste repositório é demonstrar:
+
+* Organização e estrutura de código
+* Boas práticas de desenvolvimento
+* Arquitetura e padrões utilizados
+* Capacidade técnica do desenvolvedor
+
+## 🚫 Uso Não Autorizado
+
+Qualquer uso indevido deste software pode resultar em medidas legais, conforme a legislação vigente (Lei nº 9.610/98).
+
+## 📩 Contato
+
+Para solicitações de licenciamento ou outras informações:
+
+📧 [tiagonet50@gmail.com](mailto:tiagonet50@gmail.com)
+
+---
+
+© 2026 Dreamless2. Todos os direitos reservados.
