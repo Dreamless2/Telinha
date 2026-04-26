@@ -1,83 +1,82 @@
-**Dreamless2 – Software License Agreement (Proprietary and Confidential)**
+**Dreamless2 – Contrato de Licença de Software (Proprietário e Confidencial)**
 
-Copyright (c) 2026 Dreamless2. All rights reserved.
-
----
-
-### **1. Intellectual Property**
-
-This software, including but not limited to its source code, structure, organization, algorithms, and documentation (the “Software”), is the exclusive property of Dreamless2 and is protected by applicable intellectual property laws.
+Copyright (c) 2026 Dreamless2. Todos os direitos reservados.
 
 ---
 
-### **2. Grant of Rights**
+### **1. Propriedade Intelectual**
 
-No license or rights are granted to the user. Access to the Software is provided solely for technical evaluation and portfolio purposes and does not constitute authorization for use, reproduction, or exploitation of any kind.
-
----
-
-### **3. Restrictions**
-
-Without prior express written permission from the rights holder, the user shall not:
-
-* Copy, modify, adapt, translate, or create derivative works
-* Distribute, sublicense, lease, rent, or transfer the Software
-* Reverse engineer, decompile, or attempt to extract source code
-* Use the Software for commercial or production purposes
-* Remove or alter any proprietary notices
+Este software, incluindo, mas não se limitando ao código-fonte, estrutura, organização, algoritmos e documentação (“Software”), é de propriedade exclusiva de Dreamless2 e protegido pelas leis aplicáveis.
 
 ---
 
-### **4. Confidentiality**
+### **2. Concessão de Direitos**
 
-The Software is considered confidential information. The user agrees not to disclose, share, or make available any part of the Software to third parties.
-
----
-
-### **5. Repository Availability**
-
-The availability of the Software in public or private repositories, including platforms such as GitHub, does not grant any license or right to use the Software.
+Nenhuma licença ou direito é concedido. O acesso ao Software é permitido exclusivamente para avaliação técnica e portfólio.
 
 ---
 
-### **6. Warranty Disclaimer**
+### **3. Restrições**
 
-The Software is provided “as is”, without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
+Sem autorização prévia e por escrito, é proibido:
 
----
-
-### **7. Limitation of Liability**
-
-In no event shall the rights holder be liable for any direct, indirect, incidental, special, or consequential damages, including but not limited to loss of data, profits, or business interruption.
-
----
-
-### **8. Penalties**
-
-Unauthorized use of the Software may result in civil and criminal penalties under applicable law.
+* Copiar, modificar ou criar derivados
+* Distribuir ou sublicenciar
+* Realizar engenharia reversa
+* Utilizar para fins comerciais
+* Remover avisos de propriedade
 
 ---
 
-### **9. Termination**
+### **4. Confidencialidade**
 
-Any violation of these terms shall result in immediate termination of any granted access, and the user must cease all use of the Software.
-
----
-
-### **10. Governing Law**
-
-This Agreement shall be governed by the laws of the Federative Republic of Brazil.
+O Software é considerado informação confidencial e não pode ser divulgado.
 
 ---
 
-### **11. Contact**
+### **5. Repositórios**
 
-For licensing requests or further information:
+A disponibilização do código não concede qualquer direito de uso.
+
+---
+
+### **6. Garantias**
+
+O Software é fornecido “no estado em que se encontra”, sem garantias.
+
+---
+
+### **7. Responsabilidade**
+
+O titular não se responsabiliza por quaisquer danos decorrentes do uso.
+
+---
+
+### **8. Penalidades**
+
+O uso indevido pode resultar em sanções legais.
+
+---
+
+### **9. Rescisão**
+
+A violação destes termos encerra imediatamente qualquer permissão de acesso.
+
+---
+
+### **10. Legislação Aplicável**
+
+Este contrato é regido pelas leis da República Federativa do Brasil.
+
+---
+
+### **11. Contato**
+
 📧 [tiagonet50@gmail.com](mailto:tiagonet50@gmail.com)
 
 ---
 
-### **12. Language**
+### **12. Idioma**
 
-This Agreement may be translated into other languages for convenience.
-In the event of any conflict or inconsistency, the English version shall prevail.
+Esta versão é fornecida apenas para conveniência.
+Em caso de conflito, prevalece a versão em inglês.
