@@ -32,7 +32,7 @@ namespace Telinha.Data
             if (_connStr != null)
                 return _connStr;
 
-            var config = new AppConfigServices.Load() ?? throw new InvalidOperationException("Configuração não encontrada.");
+            var config = _configService.Load() ?? throw new InvalidOperationException("Configuração não encontrada.");
             if (string.IsNullOrWhiteSpace(config.Host) ||
                 string.IsNullOrWhiteSpace(config.Porta) ||
                 string.IsNullOrWhiteSpace(config.Usuario) ||
