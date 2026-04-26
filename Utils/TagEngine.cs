@@ -115,10 +115,9 @@ namespace Telinha.Utils
             var semAcento = RemoverAcentos(comAcento);
 
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
-               ? $"#{semAcento}"
+                ? $"#{semAcento}"
                 : $"#{semAcento} #{comAcento}";
         }
-        // Versão .NET 8+ com SearchValues - zero alocação de GetUnicodeCategory
         public static string RemoverAcentos(string texto)
         {
             if (string.IsNullOrEmpty(texto))
