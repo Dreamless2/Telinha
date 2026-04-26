@@ -32,6 +32,7 @@
             PanelTopBar = new Panel();
             PanelTopTitle = new Panel();
             label1 = new Label();
+            panel1 = new Panel();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
@@ -74,11 +75,19 @@
             label1.TabIndex = 0;
             label1.Text = "Sobre";
             // 
+            // panel1
+            // 
+            panel1.Location = new Point(87, 290);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 100);
+            panel1.TabIndex = 7;
+            // 
             // Sobre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(892, 552);
+            Controls.Add(panel1);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
             Controls.Add(PanelTopBar);
@@ -97,5 +106,6 @@
         private Panel PanelTopBar;
         private Panel PanelTopTitle;
         private Label label1;
+        private Panel panel1;
     }
 }
