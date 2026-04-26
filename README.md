@@ -79,4 +79,5 @@ Unauthorized use may result in legal action.
 ---
 
 © 2026 Dreamless2. Todos os direitos reservados.
+
 © 2026 Dreamless2. All rights reserved.
