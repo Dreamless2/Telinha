@@ -1,7 +1,9 @@
 **Dreamless2 – Contrato de Licença de Software (Proprietário e Confidencial)**
+
 **Dreamless2 – Software License Agreement (Proprietary and Confidential)**
 
 Copyright (c) 2026 Dreamless2. Todos os direitos reservados.
+
 Copyright (c) 2026 Dreamless2. All rights reserved.
 
 ---
