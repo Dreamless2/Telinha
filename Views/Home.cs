@@ -351,6 +351,7 @@ namespace Telinha
                 {
                     currentId = 0;
                     MessageBox.Show("Insira um novo registro para começar.", "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CodigoBox.Focus();
                 }
             }
             catch (Exception ex)
