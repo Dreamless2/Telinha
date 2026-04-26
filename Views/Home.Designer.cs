@@ -80,6 +80,8 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
+            label1 = new Label();
+            PanelTopTitle.SuspendLayout();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             SuspendLayout();
@@ -96,6 +98,7 @@
             // PanelTopTitle
             // 
             PanelTopTitle.BackColor = Color.FromArgb(5, 74, 105);
+            PanelTopTitle.Controls.Add(label1);
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 29);
             PanelTopTitle.Name = "PanelTopTitle";
@@ -599,6 +602,15 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(41, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 0;
+            label1.Text = "label1";
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -617,6 +629,8 @@
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
+            PanelTopTitle.ResumeLayout(false);
+            PanelTopTitle.PerformLayout();
             PanelButtons.ResumeLayout(false);
             PanelForms.ResumeLayout(false);
             PanelForms.PerformLayout();
@@ -676,5 +690,6 @@
         private Button AnteriorButton;
         private Button SalvarButton;
         private Button CopiarButton;
+        private Label label1;
     }
 }
