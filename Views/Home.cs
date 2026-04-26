@@ -260,7 +260,6 @@ namespace Telinha
 
             currentId = midia.Id;
 
-            // 🔥 Normaliza o tipo primeiro pra comparar
             var tipoNormalizado = midia.Tipo?
                 .Replace("Série", "Serie")
                 .Replace("Animé", "Anime");
