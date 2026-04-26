@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using Serilog.Core;
 using System.Runtime.CompilerServices;
 
 namespace Telinha.Services
