@@ -26,8 +26,7 @@ namespace Telinha.Services
             bool serieExiste = serie != null && !string.IsNullOrWhiteSpace(serie.Nome);
             bool filmeExiste = filme != null && !string.IsNullOrWhiteSpace(filme.Nome);
 
-            LogServices.LogarInformacao("ID {id} - Filme: {filmeExiste}, Série: {serieExiste}",
-                id, filmeExiste, serieExiste);
+            LogServices.LogarInformacao("ID {id} - Filme: {filmeExiste}, Série: {serieExiste}", id, filmeExiste, serieExiste);
 
             if (!serieExiste && !filmeExiste)
                 return null;
