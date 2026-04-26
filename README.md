@@ -1,65 +1,75 @@
 # Dreamless2
 
-> ⚠️ Este repositório é disponibilizado apenas para **visualização e avaliação técnica**.
-> ❌ Não é permitido uso do código.
+> ⚠️ Este repositório é apenas para visualização
+> ⚠️ This repository is for viewing purposes only
+> ❌ Uso do código não é permitido / Code usage is not allowed
 
 ---
 
-## 📌 Sobre o Projeto
+## 📌 Sobre o Projeto / About the Project
 
-Telinha é um software desenvolvido com foco em desempenho, organização de código e arquitetura robusta.
+Dreamless2 é um software desenvolvido com foco em desempenho, organização e arquitetura robusta.
 
-Este repositório tem como objetivo exclusivo a **apresentação de portfólio**, permitindo a análise da qualidade técnica, estrutura e boas práticas utilizadas no desenvolvimento.
+Dreamless2 is a software project focused on performance, clean architecture, and code organization.
+
+Este repositório existe exclusivamente para **portfólio técnico**.
+This repository exists solely for **technical portfolio purposes**.
 
 ---
 
-## ⚠️ Aviso Legal
+## ⚠️ Aviso Legal / Legal Notice
 
 Este projeto **não é open source**.
+This project is **not open source**.
 
 Nenhuma permissão é concedida para:
+No permission is granted to:
 
-* Uso
-* Cópia
-* Modificação
-* Distribuição
-* Exploração comercial
+* Uso / Use
+* Cópia / Copy
+* Modificação / Modify
+* Distribuição / Distribute
+* Uso comercial / Commercial use
 
-Sem autorização prévia e por escrito do titular dos direitos.
-
----
-
-## 🔒 Licença
-
-Este software é protegido por uma **licença proprietária**.
-
-Consulte o arquivo `LICENSE` para mais informações.
+Sem autorização prévia por escrito.
+Without prior written authorization.
 
 ---
 
-## 🎯 Objetivo
+## 🔒 Licença / License
 
-Este repositório foi criado para demonstrar:
+Este software está sob licença proprietária.
+This software is under a proprietary license.
 
-* Arquitetura de software
-* Organização de código
-* Boas práticas de desenvolvimento
-* Capacidade técnica
-
----
-
-## 🚫 Uso Não Autorizado
-
-O uso indevido deste software pode resultar em medidas legais, conforme a legislação vigente (Lei nº 9.610/98).
+Consulte o arquivo `LICENSE` para mais detalhes.
+See the `LICENSE` file for details.
 
 ---
 
-## 📩 Contato
+## 🎯 Objetivo / Purpose
 
-Para solicitações de licenciamento ou outras informações:
+Demonstrar:
+To demonstrate:
+
+* Arquitetura de software / Software architecture
+* Boas práticas / Best practices
+* Organização de código / Code organization
+* Capacidade técnica / Technical skills
+
+---
+
+## 🚫 Uso Não Autorizado / Unauthorized Use
+
+O uso indevido pode resultar em medidas legais.
+Unauthorized use may result in legal action.
+
+---
+
+## 📩 Contato / Contact
 
 📧 [tiagonet50@gmail.com](mailto:tiagonet50@gmail.com)
 
 ---
 
 © 2026 Dreamless2. Todos os direitos reservados.
+© 2026 Dreamless2. All rights reserved.
