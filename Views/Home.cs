@@ -249,6 +249,17 @@ namespace Telinha
         }
         #endregion
 
+        private MidiaTipo ObterTipo(string descricao)
+        {
+            return descricao switch
+            {
+                "Filme" => MidiaTipo.Filme,
+                "Série" => MidiaTipo.Serie,
+                "Anime" => MidiaTipo.Anime,
+                _ => MidiaTipo.Serie
+            };
+        }
+
         #region Preencher Campos
         private void PreencherCampos(MidiaModel midia)
         {
