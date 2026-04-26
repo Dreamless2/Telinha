@@ -537,17 +537,8 @@ namespace Telinha
                 _bs.Position = _bs.IndexOf(item);
                 PreencherCampos(item);
 
-                MessageBox.Show($"Tipo: '{item.Tipo}'"); // ← VÊ O QUE TEM AQUI
-
-                if (Enum.TryParse<MidiaTipo>(item.Tipo, out var tipoEnum))
-                {
-                    MessageBox.Show($"Convertido pra: {tipoEnum}"); // ← VÊ SE CONVERTEU
-                    AtualizarUI(tipoEnum, item);
-                }
-                else
-                {
-                    MessageBox.Show("FALHOU O PARSE"); // ← Se cair aqui, achamos
-                }
+                var tipoEnum = EnumExtensions.GetValueFromDescription<MidiaTipo>(item.Tipo);
+                AtualizarUI(tipoEnum, item);
 
                 await AtualizarBotoesNavegacao();
             }
