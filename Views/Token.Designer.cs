@@ -33,6 +33,7 @@
             label1 = new Label();
             label2 = new Label();
             PanelTopTitle = new Panel();
+            label7 = new Label();
             PanelTopBar = new Panel();
             PanelBottom = new Panel();
             SalvarButton = new Button();
@@ -43,11 +44,10 @@
             label6 = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            HostBox = new TextBox();
-            PortaBox = new TextBox();
-            UsuarioBox = new TextBox();
             SenhaBox = new TextBox();
-            label7 = new Label();
+            UsuarioBox = new TextBox();
+            PortaBox = new TextBox();
+            HostBox = new TextBox();
             PanelTopTitle.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -96,6 +96,17 @@
             PanelTopTitle.Name = "PanelTopTitle";
             PanelTopTitle.Size = new Size(929, 58);
             PanelTopTitle.TabIndex = 5;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(14, 13);
+            label7.Name = "label7";
+            label7.Size = new Size(87, 32);
+            label7.TabIndex = 0;
+            label7.Text = "Acesso";
             // 
             // PanelTopBar
             // 
@@ -199,15 +210,21 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Dados";
             // 
-            // HostBox
+            // SenhaBox
             // 
-            HostBox.ForeColor = Color.Gray;
-            HostBox.Location = new Point(77, 26);
-            HostBox.Name = "HostBox";
-            HostBox.PlaceholderText = "Host";
-            HostBox.Size = new Size(754, 23);
-            HostBox.TabIndex = 13;
-            HostBox.Text = "localhost";
+            SenhaBox.Location = new Point(77, 131);
+            SenhaBox.Name = "SenhaBox";
+            SenhaBox.PlaceholderText = "Senha";
+            SenhaBox.Size = new Size(754, 23);
+            SenhaBox.TabIndex = 16;
+            // 
+            // UsuarioBox
+            // 
+            UsuarioBox.Location = new Point(77, 93);
+            UsuarioBox.Name = "UsuarioBox";
+            UsuarioBox.PlaceholderText = "Usuário";
+            UsuarioBox.Size = new Size(754, 23);
+            UsuarioBox.TabIndex = 15;
             // 
             // PortaBox
             // 
@@ -219,32 +236,15 @@
             PortaBox.TabIndex = 14;
             PortaBox.Text = "3306";
             // 
-            // UsuarioBox
+            // HostBox
             // 
-            UsuarioBox.Location = new Point(77, 93);
-            UsuarioBox.Name = "UsuarioBox";
-            UsuarioBox.PlaceholderText = "Usuário";
-            UsuarioBox.Size = new Size(754, 23);
-            UsuarioBox.TabIndex = 15;
-            // 
-            // SenhaBox
-            // 
-            SenhaBox.Location = new Point(77, 131);
-            SenhaBox.Name = "SenhaBox";
-            SenhaBox.PlaceholderText = "Senha";
-            SenhaBox.Size = new Size(754, 23);
-            SenhaBox.TabIndex = 16;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(14, 12);
-            label7.Name = "label7";
-            label7.Size = new Size(73, 32);
-            label7.TabIndex = 0;
-            label7.Text = "Login";
+            HostBox.ForeColor = Color.Gray;
+            HostBox.Location = new Point(77, 26);
+            HostBox.Name = "HostBox";
+            HostBox.PlaceholderText = "Host";
+            HostBox.Size = new Size(754, 23);
+            HostBox.TabIndex = 13;
+            HostBox.Text = "localhost";
             // 
             // Token
             // 
