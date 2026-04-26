@@ -47,7 +47,6 @@ namespace Telinha.Utils
                 ["aventura"] = P("aventura")
             }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
 
-        // Gera "semAcento comAcento" automático
         private static string P(string comAcento)
         {
             var semAcento = RemoverAcentos(comAcento);
