@@ -12,7 +12,6 @@ namespace Telinha.Services
             "appconfig.key");
 
         private const string Entropy = "telinha-app-v1";
-
         public class AppConfig
         {
             public string? Host { get; set; }
