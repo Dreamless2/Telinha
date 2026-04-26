@@ -8,30 +8,29 @@ namespace Telinha.Utils
 {
     public class TagEngine
     {
-        private static readonly FrozenDictionary<string, string> GeneroMapeado =
-    new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-    {
-        ["ficçãocientífica"] = P("ficçãocientífica"),
-        ["ficçãocientíficaefantasia"] = P("ficçãocientíficaefantasia"),
-        ["ficçãocientíficaeaventura"] = P("ficçãocientíficaeaventura"),
-        ["ficçãocientíficaeação"] = P("ficçãocientíficaeação"),
-        ["ficçãocientíficaecomédia"] = P("ficçãocientíficaecomédia"),
-        ["ficçãocientíficaedrama"] = P("ficçãocientíficaedrama"),
-        ["ficçãocientíficaemistério"] = P("ficçãocientíficaemistério"),
-        ["ficçãocientíficaeromance"] = P("ficçãocientíficaeromance"),
-        ["ficçãocientíficaeterror"] = P("ficçãocientíficaeterror"),
-        ["romântico"] = P("romântico"),
-        ["romântica"] = P("romântica"),
-        ["comédia"] = P("comédia"),
-        ["comédiadramática"] = P("comédiadramática"),
-        ["comédiaromântica"] = P("comédiaromântica"),
-        ["mistério"] = P("mistério"),
-        ["ação"] = P("ação"),
-        ["açãoefantasia"] = P("açãoefantasia"),
-        ["açãoeaventura"] = P("açãoeaventura"),
-        ["animação"] = P("animação"),
-        ["documentário"] = P("documentário")
-    }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
+        private static readonly FrozenDictionary<string, string> GeneroMapeado = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["ficçãocientífica"] = P("ficçãocientífica"),
+            ["ficçãocientíficaefantasia"] = P("ficçãocientíficaefantasia"),
+            ["ficçãocientíficaeaventura"] = P("ficçãocientíficaeaventura"),
+            ["ficçãocientíficaeação"] = P("ficçãocientíficaeação"),
+            ["ficçãocientíficaecomédia"] = P("ficçãocientíficaecomédia"),
+            ["ficçãocientíficaedrama"] = P("ficçãocientíficaedrama"),
+            ["ficçãocientíficaemistério"] = P("ficçãocientíficaemistério"),
+            ["ficçãocientíficaeromance"] = P("ficçãocientíficaeromance"),
+            ["ficçãocientíficaeterror"] = P("ficçãocientíficaeterror"),
+            ["romântico"] = P("romântico"),
+            ["romântica"] = P("romântica"),
+            ["comédia"] = P("comédia"),
+            ["comédiadramática"] = P("comédiadramática"),
+            ["comédiaromântica"] = P("comédiaromântica"),
+            ["mistério"] = P("mistério"),
+            ["ação"] = P("ação"),
+            ["açãoefantasia"] = P("açãoefantasia"),
+            ["açãoeaventura"] = P("açãoeaventura"),
+            ["animação"] = P("animação"),
+            ["documentário"] = P("documentário")
+        }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
 
         // Gera "semAcento comAcento" automático. Se for igual, retorna só 1
         private static string P(string comAcento)
