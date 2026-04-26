@@ -86,7 +86,7 @@ namespace Telinha.Services
                     LogServices.LogarErroComException(ex, $"Erro tentativa {tentativa} - {tipo} ID {id}");
                 }
 
-                if (tentativa < maxTentativas) await Task.Delay(500);
+                if (tentativa < maxTentativas) await Task.Delay(500, ct);
             }
             return null;
         }
