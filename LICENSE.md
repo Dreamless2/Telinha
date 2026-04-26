@@ -27,6 +27,7 @@ No license is granted. Access is provided solely for technical evaluation and po
 ### **3. Restrições / Restrictions**
 
 É proibido, sem autorização por escrito:
+
 It is strictly prohibited, without prior written authorization:
 
 * Copiar, modificar ou criar derivados / Copy, modify, or create derivative works
