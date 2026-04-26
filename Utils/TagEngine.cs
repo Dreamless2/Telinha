@@ -89,22 +89,27 @@ namespace Telinha.Utils
                 .Where(n => !string.IsNullOrWhiteSpace(n))
                 .Select(n => $"#{n}"));
         }
-
-
         public static string RemoverAcentos(string texto)
         {
+            if (string.IsNullOrEmpty(texto))
+                return texto;
+
             var normalized = texto.Normalize(NormalizationForm.FormD);
-            var sb = new StringBuilder();
+            var span = normalized.AsSpan();
 
-            foreach (var c in normalized)
+            // Fast path: se não tem marca, retorna original
+            if (span.IndexOfAny(NonSpacingMarks) == -1)
+                return texto;
+
+            return string.Create(normalized.Length, normalized, (dest, src) =>
             {
-                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                var destIdx = 0;
+                foreach (var c in src)
                 {
-                    sb.Append(c);
+                    if (!NonSpacingMarks.Contains(c))
+                        dest[destIdx++] = c;
                 }
-            }
-
-            return sb.ToString().Normalize(NormalizationForm.FormC);
+            })[..^0].Normalize(NormalizationForm.FormC);
         }
 
         public static string FormatarTitulo(string titulo)
