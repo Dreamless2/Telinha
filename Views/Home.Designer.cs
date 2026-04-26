@@ -605,11 +605,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(41, 20);
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(10, 11);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(100, 37);
             label1.TabIndex = 0;
-            label1.Text = "label1";
+            label1.Text = "Telinha";
             // 
             // Home
             // 
