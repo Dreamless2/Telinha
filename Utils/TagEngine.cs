@@ -6,53 +6,49 @@ namespace Telinha.Utils
 {
     public class TagEngine
     {
-        private static readonly Dictionary<string, string> GeneroMapeado = new()
-        {
-            { "ficção científica", "ficcaocientifica ficçãocientífica" },
-            { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-            { "ficção científica e aventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
-            { "romântico", "romantico romântico" },
-            { "romântica", "romantica romântica" },
-            { "comédia", "comedia comédia" },
-            { "mistério", "misterio mistério" },
-            { "ação", "acao ação" },
-            { "ação e fantasia", "acaoefantasia açãoefantasia" },
-            { "ação e aventura", "acaoeaventura açãoeaventura" },
-            { "animação", "animacao animação" },
-            { "documentário", "documentario documentário" },
-            { "comédia dramática", "comediadramatica comédiadramática" },
-            { "comédia romântica", "comediaromantica comédiaromântica" },
-            { "ficção científica e fantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-            { "ficção científica e ação", "ficcaocientificaeacao ficçãocientíficaeação" },
-            { "ficção científica e comédia", "ficcaocientificaecomedia ficçãocientíficaecomédia" },
-            { "ficção científica e drama", "ficcaocientificaedrama ficçãocientíficaedrama" },
-            { "ficção científica e mistério", "ficcaocientificaemisterio ficçãocientíficaemistério" },
-            { "ficção científica e romance", "ficcaocientificaeromance ficçãocientíficaeromance" },
-            { "ficção científica e terror", "ficcaocientificaeterror ficçãocientíficaeterror" }
-        };
+        // Regex compilado 1x só
+        private static readonly Regex RegexNaoAlfaNum = new(@"[^\p{L}\p{Nd}]", RegexOptions.Compiled);
+        private static readonly Regex RegexNaoAlfaNumEspaco = new(@"[^\p{L}\p{Nd} ]", RegexOptions.Compiled);
+
+        private static readonly Dictionary<string, string> GeneroMapeado = new(StringComparer.OrdinalIgnoreCase)
+    {
+        { "ficçãocientífica", "ficcaocientifica ficçãocientífica" },
+        { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
+        { "ficçãocientíficaeaventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
+        { "romântico", "romantico romântico" },
+        { "romântica", "romantica romântica" },
+        { "comédia", "comedia comédia" },
+        { "mistério", "misterio mistério" },
+        { "ação", "acao ação" },
+        { "açãoefantasia", "acaoefantasia açãoefantasia" },
+        { "açãoeaventura", "acaoeaventura açãoeaventura" },
+        { "animação", "animacao animação" },
+        { "documentário", "documentario documentário" },
+        { "comédiadramática", "comediadramatica comédiadramática" },
+        { "comédiaromântica", "comediaromantica comédiaromântica" },
+        { "ficçãocientíficaeação", "ficcaocientificaeacao ficçãocientíficaeação" },
+        { "ficçãocientíficaecomédia", "ficcaocientificaecomedia ficçãocientíficaecomédia" },
+        { "ficçãocientíficaedrama", "ficcaocientificaedrama ficçãocientíficaedrama" },
+        { "ficçãocientíficaemistério", "ficcaocientificaemisterio ficçãocientíficaemistério" },
+        { "ficçãocientíficaeromance", "ficcaocientificaeromance ficçãocientíficaeromance" },
+        { "ficçãocientíficaeterror", "ficcaocientificaeterror ficçãocientíficaeterror" }
+    };
 
         public static string NormalizarGeneros(string entrada)
         {
             if (string.IsNullOrWhiteSpace(entrada))
-            {
                 return string.Empty;
-            }
 
-            var hashTags = new HashSet<string>();
+            var hashTags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            var generos = entrada.Split(',')
-                                 .Select(g => g.Trim().ToLowerInvariant());
-
-            foreach (var generoOriginal in generos)
+            foreach (var genero in entrada.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
             {
-                var chave = generoOriginal.Replace(" ", "");
+                var chave = genero.Replace(" ", "").ToLowerInvariant();
 
                 if (GeneroMapeado.TryGetValue(chave, out var formas))
                 {
                     foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
-                    {
                         hashTags.Add($"#{forma}");
-                    }
                 }
                 else
                 {
@@ -60,7 +56,8 @@ namespace Telinha.Utils
                     var semAcento = RemoverAcentos(semEspaco);
 
                     hashTags.Add($"#{semAcento}");
-                    hashTags.Add($"#{semEspaco}");
+                    if (!semAcento.Equals(semEspaco, StringComparison.Ordinal))
+                        hashTags.Add($"#{semEspaco}");
                 }
             }
 
@@ -70,33 +67,14 @@ namespace Telinha.Utils
         public static string GerarTags(string texto)
         {
             if (string.IsNullOrWhiteSpace(texto))
-            {
                 return string.Empty;
-            }
 
-            var nomes = texto.Split(',')
-                             .Select(n => RemoverAcentos(n.Trim()))
-                             .Select(n => Regex.Replace(n, @"[^a-zA-Z0-9]", ""))
-                             .Where(n => !string.IsNullOrWhiteSpace(n))
-                             .Select(n => $"#{n}");
-
-            return string.Join(" ", nomes);
-        }
-
-        public static string RemoverAcentos(string texto)
-        {
-            var normalized = texto.Normalize(NormalizationForm.FormD);
-            var sb = new StringBuilder();
-
-            foreach (var c in normalized)
-            {
-                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
-                {
-                    sb.Append(c);
-                }
-            }
-
-            return sb.ToString().Normalize(NormalizationForm.FormC);
+            return string.Join(" ", texto
+               .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+               .Select(n => RemoverAcentos(n))
+               .Select(n => RegexNaoAlfaNum.Replace(n, ""))
+               .Where(n => !string.IsNullOrWhiteSpace(n))
+               .Select(n => $"#{n}"));
         }
 
         public static string FormatarTitulo(string titulo)
@@ -104,26 +82,35 @@ namespace Telinha.Utils
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
 
-            // 🔹 Limpa mantendo acento
-            var apenasTexto = Regex.Replace(titulo, @"[^\p{L}\p{Nd} ]", "");
+            var apenasTexto = RegexNaoAlfaNumEspaco.Replace(titulo, "");
             var semEspacos = apenasTexto.Replace(" ", "");
 
             if (string.IsNullOrWhiteSpace(semEspacos))
                 return string.Empty;
 
-            // 🔹 Versão com acento (preservada)
             var comAcento = semEspacos.Length > 1
-                ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
+               ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
                 : semEspacos.ToUpper();
 
-            // 🔹 Versão sem acento (derivada)
             var semAcento = RemoverAcentos(comAcento);
 
-            // 🔥 GARANTE separação REAL
-            if (semAcento.Equals(comAcento, StringComparison.Ordinal))
-                return $"#{semAcento}";
+            return semAcento.Equals(comAcento, StringComparison.Ordinal)
+               ? $"#{semAcento}"
+                : $"#{semAcento} #{comAcento}";
+        }
 
-            return string.Concat("#", semAcento, " ", "#", comAcento);
+        public static string RemoverAcentos(string texto)
+        {
+            var normalized = texto.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder(normalized.Length);
+
+            foreach (var c in normalized)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                    sb.Append(c);
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
         }
     }
 }
