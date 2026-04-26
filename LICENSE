@@ -31,7 +31,7 @@ Sistema desktop em C# WinForms para [descreve o que faz: gestão de vendas, cont
 6. **Tratamento de Erros**: Try/catch global + logs
 
 ## 📦 Estrutura do Projeto
-├── Core/           # Entidades e interfaces
+├── /           # Entidades e interfaces
 ├── Infrastructure/ # FreeSql, Repositórios
 ├── Services/       # Regras de negócio
 ├── Views/          # Forms e UserControls
