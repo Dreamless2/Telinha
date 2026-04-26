@@ -22,9 +22,11 @@ This repository exists solely for **technical portfolio purposes**.
 ## ⚠️ Aviso Legal / Legal Notice
 
 Este projeto **não é open source**.
+
 This project is **not open source**.
 
 Nenhuma permissão é concedida para:
+
 No permission is granted to:
 
 * Uso / Use
