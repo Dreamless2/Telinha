@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 Sobre o Projeto / About the Project
+## 📌 Sobre o Projeto
 
 Telinha é um software desenvolvido com foco em desempenho, organização e arquitetura robusta.
 
