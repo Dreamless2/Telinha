@@ -68,8 +68,6 @@ To demonstrate:
 
 O uso indevido pode resultar em medidas legais.
 
-Unauthorized use may result in legal action.
-
 ---
 
 ## 📩 Contato / Contact
