@@ -79,4 +79,5 @@ Este contrato é regido pelas leis da República Federativa do Brasil.
 ### **12. Idioma**
 
 Esta versão é fornecida apenas para conveniência.
+
 Em caso de conflito, prevalece a versão em inglês.
