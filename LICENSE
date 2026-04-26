@@ -7,7 +7,7 @@ Sistema desktop em C# WinForms para [descreve o que faz: gestão de vendas, cont
 > O código não pode ser copiado, usado ou distribuído. Ver `LICENSE`.
 
 ### Principais Telas
-| Tela de Login | Dashboard | Cadastro de Clientes |
+| Dashboard | Cadastro de Clientes |
 | --- | --- | --- |
 | ![Login](docs/login.png) | ![Dashboard](docs/dashboard.png) | ![Clientes](docs/clientes.png) |
 
