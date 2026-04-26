@@ -13,7 +13,6 @@ namespace Telinha
             InitializeComponent();
             _scope = scope;
             _configService = configService;
-
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
             TokenDEEPLBox.PasswordChar = '\u200B';
