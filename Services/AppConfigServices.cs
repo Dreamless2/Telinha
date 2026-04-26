@@ -37,7 +37,7 @@ namespace Telinha.Services
             File.SetAttributes(FilePath, FileAttributes.Hidden);
         }
 
-        public static AppConfig? Load()
+        public AppConfig? Load()
         {
             if (!File.Exists(FilePath))
                 return null;
