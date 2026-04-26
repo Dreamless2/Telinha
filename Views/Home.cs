@@ -275,6 +275,7 @@ namespace Telinha
                 nameof(midia.Autores),
                 nameof(midia.Alternativo),
                 nameof(midia.Franquia),
+                nameof(midia.Showrunners),
                 nameof(midia.MCU),
             };
 
