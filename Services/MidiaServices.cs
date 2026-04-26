@@ -192,7 +192,7 @@ namespace Telinha.Services
             return scoreSerie >= scoreFilme ? serie : filme;
         }
 
-        private double CalcularScore(MidiaModel m)
+        private static double CalcularScore(MidiaModel m)
         {
             double score = 0;
             if (!string.IsNullOrWhiteSpace(m.Nome)) score += 3;
