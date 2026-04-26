@@ -67,7 +67,7 @@ namespace Telinha
                     return;
                 }
 
-                AppConfigServices.Save(config);
+                _configServiceSave(config);
 
                 MessageBox.Show("Dados salvos com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
