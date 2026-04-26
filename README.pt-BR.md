@@ -50,7 +50,7 @@ Demonstrar:
 
 ---
 
-## 🚫 Uso Não Autorizado / Unauthorized Use
+## 🚫 Uso Não Autorizado
 
 O uso indevido pode resultar em medidas legais.
 
