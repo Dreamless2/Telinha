@@ -32,7 +32,6 @@ namespace Telinha.Utils
             ["documentário"] = P("documentário")
         }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
 
-        // Gera "semAcento comAcento" automático. Se for igual, retorna só 1
         private static string P(string comAcento)
         {
             var semAcento = RemoverAcentos(comAcento);
