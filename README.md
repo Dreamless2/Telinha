@@ -2,17 +2,14 @@
 
 > ⚠️ This repository is for viewing purposes only
 
-> ❌ Uso do código não é permitido / Code usage is not allowed
+> ❌ Code usage is not allowed
 
 ---
 
-## 📌 Sobre o Projeto / About the Project
-
-Telinha é um software desenvolvido com foco em desempenho, organização e arquitetura robusta.
+## 📌 About the Project
 
 Telinha is a software project focused on performance, clean architecture, and code organization.
 
-Este repositório existe exclusivamente para **portfólio técnico**.
 This repository exists solely for **technical portfolio purposes**.
 
 ---
