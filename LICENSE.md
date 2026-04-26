@@ -62,7 +62,7 @@ Provided “as is”, without warranties of any kind.
 
 ---
 
-### **7. Responsabilidade / Limitation of Liability**
+### **7. Limitation of Liability**
 
 The owner shall not be liable for any damages.
 
