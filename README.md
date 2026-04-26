@@ -49,9 +49,7 @@ To demonstrate:
 
 ---
 
-## 🚫 Uso Não Autorizado / Unauthorized Use
-
-O uso indevido pode resultar em medidas legais.
+## 🚫 Unauthorized Use
 
 Unauthorized use may result in legal action.
 
