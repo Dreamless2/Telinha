@@ -6,11 +6,6 @@ Sistema desktop em C# WinForms para [descreve o que faz: gestão de vendas, cont
 > Este repositório serve apenas para demonstração de portfólio.  
 > O código não pode ser copiado, usado ou distribuído. Ver `LICENSE`.
 
-## 🚀 Demonstração
-
-[Cola aqui um GIF ou link do YouTube mostrando o sistema rodando]  
-Ex: `![Demo](docs/demo.gif)`
-
 ### Principais Telas
 | Tela de Login | Dashboard | Cadastro de Clientes |
 | --- | --- | --- |
