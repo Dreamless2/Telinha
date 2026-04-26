@@ -563,7 +563,6 @@ namespace Telinha
                 PreencherCampos(item);
                 if (Enum.TryParse<MidiaTipo>(item.Tipo, out var tipoEnum))
                     AtualizarUI(tipoEnum, item);
-
                 await AtualizarBotoesNavegacao();
             }
             catch (Exception ex)
