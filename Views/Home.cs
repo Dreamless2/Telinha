@@ -559,8 +559,8 @@ namespace Telinha
                 }
 
                 currentId = item.Id;
-                PreencherCampos(item);
                 _bs.Position = _bs.IndexOf(item);
+                PreencherCampos(item);
                 if (Enum.TryParse<MidiaTipo>(item.Tipo, out var tipoEnum))
                     AtualizarUI(tipoEnum, item);
 
