@@ -20,24 +20,19 @@ This project is **not open source**.
 
 No permission is granted to:
 
-* Uso / Use
-* Cópia / Copy
-* Modificação / Modify
-* Distribuição / Distribute
-* Uso comercial / Commercial use
+* Use
+* Copy
+* Modify
+* Distribute
+* Commercial use
 
-Sem autorização prévia por escrito.
 Without prior written authorization.
 
 ---
 
 ## 🔒 Licença / License
 
-Este software está sob licença proprietária.
-
 This software is under a proprietary license.
-
-Consulte o arquivo `LICENSE` para mais detalhes.
 
 See the `LICENSE` file for details.
 
