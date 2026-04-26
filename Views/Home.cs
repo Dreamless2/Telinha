@@ -332,6 +332,8 @@ namespace Telinha
         #region Form Load
         private async void Principal_Load(object sender, EventArgs e)
         {
+            CodigoBox.Focus();
+
             var lista = new BindingList<MidiaModel>();
             _bs.DataSource = lista;
 
