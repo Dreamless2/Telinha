@@ -39,9 +39,11 @@ Without prior written authorization.
 ## 🔒 Licença / License
 
 Este software está sob licença proprietária.
+
 This software is under a proprietary license.
 
 Consulte o arquivo `LICENSE` para mais detalhes.
+
 See the `LICENSE` file for details.
 
 ---
@@ -61,6 +63,7 @@ To demonstrate:
 ## 🚫 Uso Não Autorizado / Unauthorized Use
 
 O uso indevido pode resultar em medidas legais.
+
 Unauthorized use may result in legal action.
 
 ---
