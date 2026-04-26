@@ -52,37 +52,29 @@ namespace Telinha.Utils
         public static string NormalizarGeneros(string entrada)
         {
             if (string.IsNullOrWhiteSpace(entrada))
-            {
                 return string.Empty;
-            }
 
-            var hashTags = new HashSet<string>();
+            var hashTags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            var generos = entrada.Split(',')
-                                 .Select(g => g.Trim().ToLowerInvariant());
-
-            foreach (var generoOriginal in generos)
+            foreach (var genero in entrada.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
             {
-                var chave = generoOriginal.Replace(" ", "");
+                var chave = genero.Replace(" ", "");
 
                 if (GeneroMapeado.TryGetValue(chave, out var formas))
                 {
                     foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
-                    {
                         hashTags.Add($"#{forma}");
-                    }
                 }
                 else
                 {
-                    var semEspaco = chave;
-                    var semAcento = RemoverAcentos(semEspaco);
-
+                    var semAcento = RemoverAcentos(chave);
                     hashTags.Add($"#{semAcento}");
-                    hashTags.Add($"#{semEspaco}");
+                    if (!semAcento.Equals(chave, StringComparison.OrdinalIgnoreCase))
+                        hashTags.Add($"#{chave}");
                 }
             }
 
-            return string.Join(" ", hashTags);
+            return string.Join(' ', hashTags);
         }
 
         public static string GerarTags(string texto)
