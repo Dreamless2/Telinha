@@ -574,7 +574,7 @@ namespace Telinha
                 PreencherCampos(item);
                 MessageBox.Show($"Tipo: '{item.Tipo}'"); // ← VÊ O QUE TEM AQUI
 
-                var tipoEnum = EnumExtensions.GetValueFromDescription<MidiaTipo>(item.Tipo);
+                var tipoEnum = ObterTipo(item.Tipo); // ← usa aqui
                 AtualizarUI(tipoEnum, item);
 
                 await AtualizarBotoesNavegacao();
