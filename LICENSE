@@ -18,7 +18,7 @@ Ex: `![Demo](docs/demo.gif)`
 
 ## 🛠️ Stack Técnica
 
-**Frontend:** C# WinForms .NET 8  
+**Frontend:** C# WinForms .NET 10
 **Banco:** MySQL 8 + FreeSql ORM  
 **Arquitetura:** Injeção de Dependência com AutoFac, Repository Pattern  
 **Bibliotecas:**  
