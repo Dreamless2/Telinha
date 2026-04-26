@@ -97,7 +97,6 @@ namespace Telinha.Utils
             var normalized = texto.Normalize(NormalizationForm.FormD);
             var span = normalized.AsSpan();
 
-            // Fast path: se não tem marca, retorna original
             if (span.IndexOfAny(NonSpacingMarks) == -1)
                 return texto;
 
