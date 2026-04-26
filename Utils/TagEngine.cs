@@ -8,30 +8,38 @@ namespace Telinha.Utils
 {
     public class TagEngine
     {
-        private static readonly Dictionary<string, string> GeneroMapeado = new()
-    {
-        { "ficção científica", "ficcaocientifica ficçãocientífica" },
-        { "ficçãocientíficaefantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-        { "ficção científica e aventura", "ficcaocientificaeaventura ficçãocientíficaeaventura" },
-        { "romântico", "romantico romântico" },
-        { "romântica", "romantica romântica" },
-        { "comédia", "comedia comédia" },
-        { "mistério", "misterio mistério" },
-        { "ação", "acao ação" },
-        { "ação e fantasia", "acaoefantasia açãoefantasia" },
-        { "ação e aventura", "acaoeaventura açãoeaventura" },
-        { "animação", "animacao animação" },
-        { "documentário", "documentario documentário" },
-        { "comédia dramática", "comediadramatica comédiadramática" },
-        { "comédia romântica", "comediaromantica comédiaromântica" },
-        { "ficção científica e fantasia", "ficcaocientificaefantasia ficçãocientíficaefantasia" },
-        { "ficção científica e ação", "ficcaocientificaeacao ficçãocientíficaeação" },
-        { "ficção científica e comédia", "ficcaocientificaecomedia ficçãocientíficaecomédia" },
-        { "ficção científica e drama", "ficcaocientificaedrama ficçãocientíficaedrama" },
-        { "ficção científica e mistério", "ficcaocientificaemisterio ficçãocientíficaemistério" },
-        { "ficção científica e romance", "ficcaocientificaeromance ficçãocientíficaeromance" },
-        { "ficção científica e terror", "ficcaocientificaeterror ficçãocientíficaeterror" }
-    };
+        private static readonly FrozenDictionary<string, string> GeneroMapeado = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["ficçãocientífica"] = P("ficçãocientífica"),
+            ["ficçãocientíficaefantasia"] = P("ficçãocientíficaefantasia"),
+            ["ficçãocientíficaeaventura"] = P("ficçãocientíficaeaventura"),
+            ["ficçãocientíficaeação"] = P("ficçãocientíficaeação"),
+            ["ficçãocientíficaecomédia"] = P("ficçãocientíficaecomédia"),
+            ["ficçãocientíficaedrama"] = P("ficçãocientíficaedrama"),
+            ["ficçãocientíficaemistério"] = P("ficçãocientíficaemistério"),
+            ["ficçãocientíficaeromance"] = P("ficçãocientíficaeromance"),
+            ["ficçãocientíficaeterror"] = P("ficçãocientíficaeterror"),
+            ["romântico"] = P("romântico"),
+            ["romântica"] = P("romântica"),
+            ["comédia"] = P("comédia"),
+            ["comédiadramática"] = P("comédiadramática"),
+            ["comédiaromântica"] = P("comédiaromântica"),
+            ["mistério"] = P("mistério"),
+            ["ação"] = P("ação"),
+            ["açãoefantasia"] = P("açãoefantasia"),
+            ["açãoeaventura"] = P("açãoeaventura"),
+            ["animação"] = P("animação"),
+            ["documentário"] = P("documentário")
+        }.ToFrozenDictionary();
+
+        // Gera "semAcento comAcento" automático. Se for igual, retorna só 1
+        private static string P(string comAcento)
+        {
+            var semAcento = RemoverAcentos(comAcento);
+            return semAcento.Equals(comAcento, StringComparison.Ordinal)
+                ? semAcento
+                : $"{semAcento} {comAcento}";
+        }
 
         public static string NormalizarGeneros(string entrada)
         {
