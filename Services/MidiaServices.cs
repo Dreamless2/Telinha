@@ -28,14 +28,11 @@ namespace Telinha.Services
 
             LogServices.LogarInformacao("ID {id} - Filme: {filmeExiste}, Série: {serieExiste}", id, filmeExiste, serieExiste);
 
-            if (!serieExiste && !filmeExiste)
-                return null;
+            if (!serieExiste && !filmeExiste) return null;
 
-            if (serieExiste && !filmeExiste)
-                return serie;
+            if (serieExiste && !filmeExiste) return serie;
 
-            if (filmeExiste && !serieExiste)
-                return filme;
+            if (filmeExiste && !serieExiste) return filme;
 
             filme!.Classificacao = ClassificarAnimacaoAvancado(filme);
             serie!.Classificacao = ClassificarAnimacaoAvancado(serie);
