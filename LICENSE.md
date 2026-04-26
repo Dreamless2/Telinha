@@ -9,6 +9,7 @@ Copyright (c) 2026 Dreamless2. All rights reserved.
 ### **1. Propriedade Intelectual / Intellectual Property**
 
 Este software, incluindo código-fonte, estrutura, algoritmos e documentação (“Software”), é de propriedade exclusiva de Dreamless2 e protegido por lei.
+
 This software, including source code, structure, algorithms, and documentation (“Software”), is the exclusive property of Dreamless2 and is protected by law.
 
 ---
