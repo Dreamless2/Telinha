@@ -31,7 +31,7 @@ Sem autorização prévia por escrito.
 
 ---
 
-## 🔒 Licença / License
+## 🔒 Licença
 
 Este software está sob licença proprietária.
 
@@ -39,7 +39,7 @@ Consulte o arquivo `LICENSE` para mais detalhes.
 
 ---
 
-## 🎯 Objetivo / Purpose
+## 🎯 Objetivo
 
 Demonstrar:
 
