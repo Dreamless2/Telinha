@@ -35,7 +35,7 @@
             panel1 = new Panel();
             RestSharpLabel = new Label();
             FreeSqlLabel = new Label();
-            label4 = new Label();
+            MySQLConnectorLabel = new Label();
             label5 = new Label();
             PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
@@ -83,7 +83,7 @@
             // panel1
             // 
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
+            panel1.Controls.Add(MySQLConnectorLabel);
             panel1.Controls.Add(FreeSqlLabel);
             panel1.Controls.Add(RestSharpLabel);
             panel1.Dock = DockStyle.Fill;
@@ -112,15 +112,15 @@
             FreeSqlLabel.TabIndex = 1;
             FreeSqlLabel.Text = "label3";
             // 
-            // label4
+            // MySQLConnectorLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(12, 123);
-            label4.Name = "label4";
-            label4.Size = new Size(52, 21);
-            label4.TabIndex = 2;
-            label4.Text = "label4";
+            MySQLConnectorLabel.AutoSize = true;
+            MySQLConnectorLabel.Font = new Font("Segoe UI", 12F);
+            MySQLConnectorLabel.Location = new Point(12, 123);
+            MySQLConnectorLabel.Name = "MySQLConnectorLabel";
+            MySQLConnectorLabel.Size = new Size(52, 21);
+            MySQLConnectorLabel.TabIndex = 2;
+            MySQLConnectorLabel.Text = "label4";
             // 
             // label5
             // 
@@ -161,7 +161,7 @@
         private Panel panel1;
         private Label RestSharpLabel;
         private Label label5;
-        private Label label4;
+        private Label MySQLConnectorLabel;
         private Label FreeSqlLabel;
     }
 }
