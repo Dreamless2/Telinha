@@ -19,7 +19,8 @@ namespace Telinha.Views
 
         private void Sobre_Load(object sender, EventArgs e)
         {
-            var restSharp = Assembly
+            var restSharp = Assembly.Load("RestSharp");
+
         }
     }
 }
