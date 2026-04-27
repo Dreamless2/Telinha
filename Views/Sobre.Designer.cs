@@ -140,7 +140,7 @@
             SobreButton.FlatAppearance.BorderSize = 0;
             SobreButton.FlatStyle = FlatStyle.Flat;
             SobreButton.ForeColor = Color.White;
-            SobreButton.Location = new Point(323, 336);
+            SobreButton.Location = new Point(333, 270);
             SobreButton.Name = "SobreButton";
             SobreButton.Size = new Size(180, 41);
             SobreButton.TabIndex = 9;
