@@ -23,6 +23,8 @@ namespace Telinha.Views
             var freeSQL = Assembly.Load("FreeSql");
             var mysqlConnector = Assembly.Load("FreeSql.Provider.MySqlConnector");
             var deeplNet = Assembly.Load("DeepLNet");
+
+
         }
     }
 }
