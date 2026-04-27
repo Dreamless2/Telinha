@@ -20,7 +20,8 @@ namespace Telinha.Views
         private void Sobre_Load(object sender, EventArgs e)
         {
             var restSharp = Assembly.Load("RestSharp");
-
+            var freeSQL = Assembly.Load("FreeSql");
+            var mysqlConnector = Assembly.Load("MySqlConnector");
         }
     }
 }
