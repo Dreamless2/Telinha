@@ -37,6 +37,7 @@
             MySQLConnectorLabel = new Label();
             FreeSqlLabel = new Label();
             RestSharpLabel = new Label();
+            SobreButton = new Button();
             PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -82,6 +83,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(SobreButton);
             panel1.Controls.Add(DeeplNetLabel);
             panel1.Controls.Add(MySQLConnectorLabel);
             panel1.Controls.Add(FreeSqlLabel);
@@ -132,6 +134,19 @@
             RestSharpLabel.TabIndex = 0;
             RestSharpLabel.Text = "label2";
             // 
+            // SobreButton
+            // 
+            SobreButton.BackColor = Color.FromArgb(4, 52, 72);
+            SobreButton.FlatAppearance.BorderSize = 0;
+            SobreButton.FlatStyle = FlatStyle.Flat;
+            SobreButton.ForeColor = Color.White;
+            SobreButton.Location = new Point(323, 336);
+            SobreButton.Name = "SobreButton";
+            SobreButton.Size = new Size(180, 41);
+            SobreButton.TabIndex = 9;
+            SobreButton.Text = "Sobre";
+            SobreButton.UseVisualStyleBackColor = false;
+            // 
             // Sobre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -163,5 +178,6 @@
         private Label DeeplNetLabel;
         private Label MySQLConnectorLabel;
         private Label FreeSqlLabel;
+        private Button SobreButton;
     }
 }
