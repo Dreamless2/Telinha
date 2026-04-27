@@ -36,7 +36,7 @@
             RestSharpLabel = new Label();
             FreeSqlLabel = new Label();
             MySQLConnectorLabel = new Label();
-            label5 = new Label();
+            DeeplNet = new Label();
             PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -82,7 +82,7 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(label5);
+            panel1.Controls.Add(DeeplNet);
             panel1.Controls.Add(MySQLConnectorLabel);
             panel1.Controls.Add(FreeSqlLabel);
             panel1.Controls.Add(RestSharpLabel);
@@ -122,15 +122,15 @@
             MySQLConnectorLabel.TabIndex = 2;
             MySQLConnectorLabel.Text = "label4";
             // 
-            // label5
+            // DeeplNet
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(10, 163);
-            label5.Name = "label5";
-            label5.Size = new Size(52, 21);
-            label5.TabIndex = 3;
-            label5.Text = "label5";
+            DeeplNet.AutoSize = true;
+            DeeplNet.Font = new Font("Segoe UI", 12F);
+            DeeplNet.Location = new Point(10, 163);
+            DeeplNet.Name = "DeeplNet";
+            DeeplNet.Size = new Size(52, 21);
+            DeeplNet.TabIndex = 3;
+            DeeplNet.Text = "label5";
             // 
             // Sobre
             // 
@@ -160,7 +160,7 @@
         private Label label1;
         private Panel panel1;
         private Label RestSharpLabel;
-        private Label label5;
+        private Label DeeplNet;
         private Label MySQLConnectorLabel;
         private Label FreeSqlLabel;
     }
