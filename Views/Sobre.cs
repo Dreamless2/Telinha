@@ -28,8 +28,6 @@ namespace Telinha.Views
             FreeSqlLabel.Text = $"FreeSQL: {freeSQL.GetName().Version}";
             MySQLConnectorLabel.Text = $"MySqlConnector: {mysqlConnector.GetName().Version}";
             DeeplNetLabel.Text = $"DeepLNet: {deeplNet.GetName().Version}";
-
-
         }
     }
 }
