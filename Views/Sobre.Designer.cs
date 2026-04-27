@@ -92,9 +92,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.tmdb;
-            pictureBox1.Location = new Point(448, 14);
+            pictureBox1.Location = new Point(476, 80);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(392, 170);
+            pictureBox1.Size = new Size(229, 131);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
@@ -104,7 +105,7 @@
             SobreButton.FlatAppearance.BorderSize = 0;
             SobreButton.FlatStyle = FlatStyle.Flat;
             SobreButton.ForeColor = Color.White;
-            SobreButton.Location = new Point(322, 272);
+            SobreButton.Location = new Point(356, 272);
             SobreButton.Name = "SobreButton";
             SobreButton.Size = new Size(180, 41);
             SobreButton.TabIndex = 9;
