@@ -33,7 +33,7 @@
             PanelTopTitle = new Panel();
             label1 = new Label();
             panel1 = new Panel();
-            label2 = new Label();
+            RestSharpLabel = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -85,22 +85,22 @@
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(RestSharpLabel);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 87);
             panel1.Name = "panel1";
             panel1.Size = new Size(892, 421);
             panel1.TabIndex = 7;
             // 
-            // label2
+            // RestSharpLabel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(12, 43);
-            label2.Name = "label2";
-            label2.Size = new Size(52, 21);
-            label2.TabIndex = 0;
-            label2.Text = "label2";
+            RestSharpLabel.AutoSize = true;
+            RestSharpLabel.Font = new Font("Segoe UI", 12F);
+            RestSharpLabel.Location = new Point(12, 43);
+            RestSharpLabel.Name = "RestSharpLabel";
+            RestSharpLabel.Size = new Size(52, 21);
+            RestSharpLabel.TabIndex = 0;
+            RestSharpLabel.Text = "label2";
             // 
             // label3
             // 
@@ -159,7 +159,7 @@
         private Panel PanelTopTitle;
         private Label label1;
         private Panel panel1;
-        private Label label2;
+        private Label RestSharpLabel;
         private Label label5;
         private Label label4;
         private Label label3;
