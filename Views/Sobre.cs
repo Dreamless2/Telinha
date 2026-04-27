@@ -21,7 +21,8 @@ namespace Telinha.Views
         {
             var restSharp = Assembly.Load("RestSharp");
             var freeSQL = Assembly.Load("FreeSql");
-            var mysqlConnector = Assembly.Load("MySqlConnector");
+            var mysqlConnector = Assembly.Load("FreeSql.Provider.MySqlConnector");
+            var deeplNet = Assembly.Load("DeepLNet");
         }
     }
 }
