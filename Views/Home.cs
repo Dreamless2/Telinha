@@ -6,6 +6,7 @@ using Telinha.Helpers;
 using Telinha.Models;
 using Telinha.Services;
 using Telinha.Utils;
+using Telinha.Views;
 
 namespace Telinha
 {
