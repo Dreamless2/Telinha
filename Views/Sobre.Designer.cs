@@ -46,7 +46,7 @@
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 508);
+            PanelBottom.Location = new Point(0, 429);
             PanelBottom.Name = "PanelBottom";
             PanelBottom.Size = new Size(892, 44);
             PanelBottom.TabIndex = 5;
@@ -91,7 +91,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 87);
             panel1.Name = "panel1";
-            panel1.Size = new Size(892, 421);
+            panel1.Size = new Size(892, 342);
             panel1.TabIndex = 7;
             // 
             // DeeplNetLabel
@@ -140,7 +140,7 @@
             SobreButton.FlatAppearance.BorderSize = 0;
             SobreButton.FlatStyle = FlatStyle.Flat;
             SobreButton.ForeColor = Color.White;
-            SobreButton.Location = new Point(333, 270);
+            SobreButton.Location = new Point(307, 227);
             SobreButton.Name = "SobreButton";
             SobreButton.Size = new Size(180, 41);
             SobreButton.TabIndex = 9;
@@ -151,7 +151,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(892, 552);
+            ClientSize = new Size(892, 473);
             Controls.Add(panel1);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
