@@ -250,6 +250,8 @@ namespace Telinha
             }
         }
         #endregion
+
+        #region Obter Tipo
         private static MidiaTipo ObterTipo(string? descricao)
         {
             return descricao switch
@@ -260,6 +262,7 @@ namespace Telinha
                 _ => MidiaTipo.Serie
             };
         }
+        #endregion
 
         #region Preencher Campos
         private void PreencherCampos(MidiaModel midia)
