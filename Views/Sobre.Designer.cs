@@ -33,12 +33,8 @@
             PanelTopTitle = new Panel();
             label1 = new Label();
             panel1 = new Panel();
-            SobreButton = new Button();
-            DeeplNetLabel = new Label();
-            MySQLConnectorLabel = new Label();
-            FreeSqlLabel = new Label();
-            RestSharpLabel = new Label();
             pictureBox1 = new PictureBox();
+            SobreButton = new Button();
             PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -87,15 +83,19 @@
             // 
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(SobreButton);
-            panel1.Controls.Add(DeeplNetLabel);
-            panel1.Controls.Add(MySQLConnectorLabel);
-            panel1.Controls.Add(FreeSqlLabel);
-            panel1.Controls.Add(RestSharpLabel);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 87);
             panel1.Name = "panel1";
             panel1.Size = new Size(892, 342);
             panel1.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(448, 14);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(392, 170);
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
             // 
             // SobreButton
             // 
@@ -109,54 +109,6 @@
             SobreButton.TabIndex = 9;
             SobreButton.Text = "Fechar";
             SobreButton.UseVisualStyleBackColor = false;
-            // 
-            // DeeplNetLabel
-            // 
-            DeeplNetLabel.AutoSize = true;
-            DeeplNetLabel.Font = new Font("Segoe UI", 12F);
-            DeeplNetLabel.Location = new Point(10, 163);
-            DeeplNetLabel.Name = "DeeplNetLabel";
-            DeeplNetLabel.Size = new Size(52, 21);
-            DeeplNetLabel.TabIndex = 3;
-            DeeplNetLabel.Text = "label5";
-            // 
-            // MySQLConnectorLabel
-            // 
-            MySQLConnectorLabel.AutoSize = true;
-            MySQLConnectorLabel.Font = new Font("Segoe UI", 12F);
-            MySQLConnectorLabel.Location = new Point(12, 123);
-            MySQLConnectorLabel.Name = "MySQLConnectorLabel";
-            MySQLConnectorLabel.Size = new Size(52, 21);
-            MySQLConnectorLabel.TabIndex = 2;
-            MySQLConnectorLabel.Text = "label4";
-            // 
-            // FreeSqlLabel
-            // 
-            FreeSqlLabel.AutoSize = true;
-            FreeSqlLabel.Font = new Font("Segoe UI", 12F);
-            FreeSqlLabel.Location = new Point(12, 83);
-            FreeSqlLabel.Name = "FreeSqlLabel";
-            FreeSqlLabel.Size = new Size(52, 21);
-            FreeSqlLabel.TabIndex = 1;
-            FreeSqlLabel.Text = "label3";
-            // 
-            // RestSharpLabel
-            // 
-            RestSharpLabel.AutoSize = true;
-            RestSharpLabel.Font = new Font("Segoe UI", 12F);
-            RestSharpLabel.Location = new Point(12, 43);
-            RestSharpLabel.Name = "RestSharpLabel";
-            RestSharpLabel.Size = new Size(52, 21);
-            RestSharpLabel.TabIndex = 0;
-            RestSharpLabel.Text = "label2";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(448, 14);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(392, 170);
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
             // 
             // Sobre
             // 
@@ -174,7 +126,6 @@
             PanelTopTitle.ResumeLayout(false);
             PanelTopTitle.PerformLayout();
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -186,10 +137,6 @@
         private Panel PanelTopTitle;
         private Label label1;
         private Panel panel1;
-        private Label RestSharpLabel;
-        private Label DeeplNetLabel;
-        private Label MySQLConnectorLabel;
-        private Label FreeSqlLabel;
         private Button SobreButton;
         private PictureBox pictureBox1;
     }
