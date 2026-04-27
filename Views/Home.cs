@@ -584,6 +584,15 @@ namespace Telinha
         }
         #endregion
 
+        #region Limpar Button
+        private void LimparButton_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
+        #endregion
+
+
+
         #region Form Closing
         private void SairButton_Click(object sender, EventArgs e)
         {
