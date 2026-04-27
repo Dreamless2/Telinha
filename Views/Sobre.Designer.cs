@@ -38,8 +38,10 @@
             MySQLConnectorLabel = new Label();
             FreeSqlLabel = new Label();
             RestSharpLabel = new Label();
+            pictureBox1 = new PictureBox();
             PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // PanelBottom
@@ -83,6 +85,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(SobreButton);
             panel1.Controls.Add(DeeplNetLabel);
             panel1.Controls.Add(MySQLConnectorLabel);
@@ -147,6 +150,14 @@
             RestSharpLabel.TabIndex = 0;
             RestSharpLabel.Text = "label2";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(448, 14);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(392, 170);
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
             // Sobre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -164,6 +175,7 @@
             PanelTopTitle.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -179,5 +191,6 @@
         private Label MySQLConnectorLabel;
         private Label FreeSqlLabel;
         private Button SobreButton;
+        private PictureBox pictureBox1;
     }
 }
