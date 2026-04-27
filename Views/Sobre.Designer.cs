@@ -33,7 +33,9 @@
             PanelTopTitle = new Panel();
             label1 = new Label();
             panel1 = new Panel();
+            label2 = new Label();
             PanelTopTitle.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // PanelBottom
@@ -77,11 +79,21 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 87);
             panel1.Name = "panel1";
             panel1.Size = new Size(892, 421);
             panel1.TabIndex = 7;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(103, 68);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 0;
+            label2.Text = "label2";
             // 
             // Sobre
             // 
@@ -98,6 +110,8 @@
             Text = "Sobre";
             PanelTopTitle.ResumeLayout(false);
             PanelTopTitle.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -108,5 +122,6 @@
         private Panel PanelTopTitle;
         private Label label1;
         private Panel panel1;
+        private Label label2;
     }
 }
