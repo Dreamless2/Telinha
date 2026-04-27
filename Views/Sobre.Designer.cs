@@ -33,10 +33,10 @@
             PanelTopTitle = new Panel();
             label1 = new Label();
             panel1 = new Panel();
-            RestSharpLabel = new Label();
-            FreeSqlLabel = new Label();
+            DeeplNetLabel = new Label();
             MySQLConnectorLabel = new Label();
-            DeeplNet = new Label();
+            FreeSqlLabel = new Label();
+            RestSharpLabel = new Label();
             PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -82,7 +82,7 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(DeeplNet);
+            panel1.Controls.Add(DeeplNetLabel);
             panel1.Controls.Add(MySQLConnectorLabel);
             panel1.Controls.Add(FreeSqlLabel);
             panel1.Controls.Add(RestSharpLabel);
@@ -92,25 +92,15 @@
             panel1.Size = new Size(892, 421);
             panel1.TabIndex = 7;
             // 
-            // RestSharpLabel
+            // DeeplNetLabel
             // 
-            RestSharpLabel.AutoSize = true;
-            RestSharpLabel.Font = new Font("Segoe UI", 12F);
-            RestSharpLabel.Location = new Point(12, 43);
-            RestSharpLabel.Name = "RestSharpLabel";
-            RestSharpLabel.Size = new Size(52, 21);
-            RestSharpLabel.TabIndex = 0;
-            RestSharpLabel.Text = "label2";
-            // 
-            // FreeSqlLabel
-            // 
-            FreeSqlLabel.AutoSize = true;
-            FreeSqlLabel.Font = new Font("Segoe UI", 12F);
-            FreeSqlLabel.Location = new Point(12, 83);
-            FreeSqlLabel.Name = "FreeSqlLabel";
-            FreeSqlLabel.Size = new Size(52, 21);
-            FreeSqlLabel.TabIndex = 1;
-            FreeSqlLabel.Text = "label3";
+            DeeplNetLabel.AutoSize = true;
+            DeeplNetLabel.Font = new Font("Segoe UI", 12F);
+            DeeplNetLabel.Location = new Point(10, 163);
+            DeeplNetLabel.Name = "DeeplNetLabel";
+            DeeplNetLabel.Size = new Size(52, 21);
+            DeeplNetLabel.TabIndex = 3;
+            DeeplNetLabel.Text = "label5";
             // 
             // MySQLConnectorLabel
             // 
@@ -122,15 +112,25 @@
             MySQLConnectorLabel.TabIndex = 2;
             MySQLConnectorLabel.Text = "label4";
             // 
-            // DeeplNet
+            // FreeSqlLabel
             // 
-            DeeplNet.AutoSize = true;
-            DeeplNet.Font = new Font("Segoe UI", 12F);
-            DeeplNet.Location = new Point(10, 163);
-            DeeplNet.Name = "DeeplNet";
-            DeeplNet.Size = new Size(52, 21);
-            DeeplNet.TabIndex = 3;
-            DeeplNet.Text = "label5";
+            FreeSqlLabel.AutoSize = true;
+            FreeSqlLabel.Font = new Font("Segoe UI", 12F);
+            FreeSqlLabel.Location = new Point(12, 83);
+            FreeSqlLabel.Name = "FreeSqlLabel";
+            FreeSqlLabel.Size = new Size(52, 21);
+            FreeSqlLabel.TabIndex = 1;
+            FreeSqlLabel.Text = "label3";
+            // 
+            // RestSharpLabel
+            // 
+            RestSharpLabel.AutoSize = true;
+            RestSharpLabel.Font = new Font("Segoe UI", 12F);
+            RestSharpLabel.Location = new Point(12, 43);
+            RestSharpLabel.Name = "RestSharpLabel";
+            RestSharpLabel.Size = new Size(52, 21);
+            RestSharpLabel.TabIndex = 0;
+            RestSharpLabel.Text = "label2";
             // 
             // Sobre
             // 
@@ -160,7 +160,7 @@
         private Label label1;
         private Panel panel1;
         private Label RestSharpLabel;
-        private Label DeeplNet;
+        private Label DeeplNetLabel;
         private Label MySQLConnectorLabel;
         private Label FreeSqlLabel;
     }

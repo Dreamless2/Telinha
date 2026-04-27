@@ -27,7 +27,7 @@ namespace Telinha.Views
             RestSharpLabel.Text = $"RestSharp: {restSharp.GetName().Version}";
             FreeSqlLabel.Text = $"FreeSQL: {freeSQL.GetName().Version}";
             MySQLConnectorLabel.Text = $"MySqlConnector: {mysqlConnector.GetName().Version}";
-            Deep.Text = $"DeepLNet: {deeplNet.GetName().Version}";
+            DeeplNetLabel.Text = $"DeepLNet: {deeplNet.GetName().Version}";
 
 
         }
