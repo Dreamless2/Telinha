@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace Telinha.Views
 
         private void Sobre_Load(object sender, EventArgs e)
         {
-
+            var restSharp = Assembly
         }
     }
 }
