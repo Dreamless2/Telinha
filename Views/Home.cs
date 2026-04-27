@@ -593,8 +593,6 @@ namespace Telinha
         }
         #endregion
 
-
-
         #region Form Closing
         private void SairButton_Click(object sender, EventArgs e)
         {
