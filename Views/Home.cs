@@ -584,7 +584,12 @@ namespace Telinha
         }
         #endregion
 
-        #region Limpar Button
+        #region Sobre Button
+        private void SobreButton_Click(object sender, EventArgs e)
+        {
+            var sobreForm = new Sobre();
+            sobreForm.ShowDialog();
+        }
         #endregion
 
 
