@@ -250,7 +250,6 @@ namespace Telinha
             }
         }
         #endregion
-
         private static MidiaTipo ObterTipo(string? descricao)
         {
             return descricao switch
