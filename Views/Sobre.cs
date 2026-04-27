@@ -18,7 +18,6 @@ namespace Telinha.Views
 
         private void Sobre_Load(object sender, EventArgs e)
         {
-            // Configurações para o formulário "Sobre"
 
         }
     }
