@@ -37,7 +37,7 @@ namespace Telinha
             SalvarButton.Click += SalvarButton_Click;
             AnteriorButton.Click += AnteriorButton_Click!;
             ProximoButton.Click += ProximoButton_Click!;
-
+            SobreButton.Click += SobreButton_Click!;
             ConectarEventos();
             _mapeamentoCampos = new Dictionary<string, TextBox>
             {
