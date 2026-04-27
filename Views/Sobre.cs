@@ -25,7 +25,9 @@ namespace Telinha.Views
             var deeplNet = Assembly.Load("DeepLNet");
 
             RestSharpLabel.Text = $"RestSharp: {restSharp.GetName().Version}";
-            FreeSQLLabel.Text = $"FreeSQL: {freeSQL.GetName().Version}";
+            FreeSqlLabel.Text = $"FreeSQL: {freeSQL.GetName().Version}";
+            MySQLConnectorLabel.Text = $"MySqlConnector: {mysqlConnector.GetName().Version}";
+            Deep.Text = $"DeepLNet: {deeplNet.GetName().Version}";
 
 
         }
