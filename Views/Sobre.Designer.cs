@@ -104,7 +104,7 @@
             SobreButton.Name = "SobreButton";
             SobreButton.Size = new Size(180, 41);
             SobreButton.TabIndex = 9;
-            SobreButton.Text = "Sobre";
+            SobreButton.Text = "Fechar";
             SobreButton.UseVisualStyleBackColor = false;
             // 
             // DeeplNetLabel
