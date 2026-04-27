@@ -34,7 +34,7 @@
             label1 = new Label();
             panel1 = new Panel();
             RestSharpLabel = new Label();
-            label3 = new Label();
+            FreeSqlLabel = new Label();
             label4 = new Label();
             label5 = new Label();
             PanelTopTitle.SuspendLayout();
@@ -84,7 +84,7 @@
             // 
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
+            panel1.Controls.Add(FreeSqlLabel);
             panel1.Controls.Add(RestSharpLabel);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 87);
@@ -102,15 +102,15 @@
             RestSharpLabel.TabIndex = 0;
             RestSharpLabel.Text = "label2";
             // 
-            // label3
+            // FreeSqlLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(12, 83);
-            label3.Name = "label3";
-            label3.Size = new Size(52, 21);
-            label3.TabIndex = 1;
-            label3.Text = "label3";
+            FreeSqlLabel.AutoSize = true;
+            FreeSqlLabel.Font = new Font("Segoe UI", 12F);
+            FreeSqlLabel.Location = new Point(12, 83);
+            FreeSqlLabel.Name = "FreeSqlLabel";
+            FreeSqlLabel.Size = new Size(52, 21);
+            FreeSqlLabel.TabIndex = 1;
+            FreeSqlLabel.Text = "label3";
             // 
             // label4
             // 
@@ -162,6 +162,6 @@
         private Label RestSharpLabel;
         private Label label5;
         private Label label4;
-        private Label label3;
+        private Label FreeSqlLabel;
     }
 }
