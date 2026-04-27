@@ -33,11 +33,11 @@
             PanelTopTitle = new Panel();
             label1 = new Label();
             panel1 = new Panel();
+            SobreButton = new Button();
             DeeplNetLabel = new Label();
             MySQLConnectorLabel = new Label();
             FreeSqlLabel = new Label();
             RestSharpLabel = new Label();
-            SobreButton = new Button();
             PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -94,6 +94,19 @@
             panel1.Size = new Size(892, 342);
             panel1.TabIndex = 7;
             // 
+            // SobreButton
+            // 
+            SobreButton.BackColor = Color.FromArgb(4, 52, 72);
+            SobreButton.FlatAppearance.BorderSize = 0;
+            SobreButton.FlatStyle = FlatStyle.Flat;
+            SobreButton.ForeColor = Color.White;
+            SobreButton.Location = new Point(322, 272);
+            SobreButton.Name = "SobreButton";
+            SobreButton.Size = new Size(180, 41);
+            SobreButton.TabIndex = 9;
+            SobreButton.Text = "Sobre";
+            SobreButton.UseVisualStyleBackColor = false;
+            // 
             // DeeplNetLabel
             // 
             DeeplNetLabel.AutoSize = true;
@@ -133,19 +146,6 @@
             RestSharpLabel.Size = new Size(52, 21);
             RestSharpLabel.TabIndex = 0;
             RestSharpLabel.Text = "label2";
-            // 
-            // SobreButton
-            // 
-            SobreButton.BackColor = Color.FromArgb(4, 52, 72);
-            SobreButton.FlatAppearance.BorderSize = 0;
-            SobreButton.FlatStyle = FlatStyle.Flat;
-            SobreButton.ForeColor = Color.White;
-            SobreButton.Location = new Point(307, 227);
-            SobreButton.Name = "SobreButton";
-            SobreButton.Size = new Size(180, 41);
-            SobreButton.TabIndex = 9;
-            SobreButton.Text = "Sobre";
-            SobreButton.UseVisualStyleBackColor = false;
             // 
             // Sobre
             // 
