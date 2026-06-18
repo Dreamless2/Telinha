@@ -91,7 +91,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.tmdb;
+            pictureBox1.Image = Forms.Properties.Resources.tmdb;
             pictureBox1.Location = new Point(516, 45);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(229, 131);

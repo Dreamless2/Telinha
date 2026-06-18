@@ -5,8 +5,8 @@ using Telinha.Core.Enums;
 using Telinha.Core.Helpers;
 using Telinha.Core.Models;
 using Telinha.Core.Services;
-using Telinha.Core.Utils;
 using Telinha.Views;
+using Telinha.Forms.Extras;
 
 namespace Telinha
 {
