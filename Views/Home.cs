@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel;
-using Telinha.Card;
-using Telinha.Controller;
-using Telinha.Enums;
-using Telinha.Helpers;
-using Telinha.Models;
-using Telinha.Services;
-using Telinha.Utils;
+using Telinha.Core.Card;
+using Telinha.Core.Controller;
+using Telinha.Core.Enums;
+using Telinha.Core.Helpers;
+using Telinha.Core.Models;
+using Telinha.Core.Services;
+using Telinha.Core.Utils;
 using Telinha.Views;
 
 namespace Telinha

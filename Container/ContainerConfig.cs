@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Caching.Memory;
-using Telinha.Factory;
-using Telinha.Services;
+using Telinha.Core.Factory;
+using Telinha.Core.Services;
 
-namespace Telinha.Container
+namespace Telinha.Forms.Container
 {
     public static class ContainerConfig
     {

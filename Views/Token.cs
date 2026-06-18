@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Telinha.Services;
+using Telinha.Core.Services;
 
 namespace Telinha
 {

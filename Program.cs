@@ -1,8 +1,8 @@
 ﻿using Autofac;
-using Telinha.Container;
-using Telinha.Services;
+using Telinha.Core.Services;
+using Telinha.Forms.Container;
 
-namespace Telinha
+namespace Telinha.Forms
 {
     internal static class Program
     {
