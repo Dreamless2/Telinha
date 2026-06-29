@@ -116,7 +116,9 @@ namespace Telinha.Core.Utils
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
 
-            var apenasTexto = RegexNaoAlfaNumEspaco.Replace(titulo, "");
+            var tituloNormalizado = titulo.Normalize(NormalizationForm.FormC);
+
+            var apenasTexto = RegexNaoAlfaNumEspaco.Replace(tituloNormalizado, "");
             var semEspacos = apenasTexto.Replace(" ", "");
 
             if (semEspacos.Length == 0)
