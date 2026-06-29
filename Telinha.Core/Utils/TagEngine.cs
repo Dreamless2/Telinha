@@ -133,6 +133,9 @@ namespace Telinha.Core.Utils
                 : $"#{semAcento} #{comAcento}";
         }*/
 
-        public static string FormatarTitulo(sytrin)
+        public static string FormatarTitulo(string titulo)
+        {
+            return "###TESTE###";
+        }
     }
 }
