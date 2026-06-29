@@ -154,7 +154,7 @@ namespace Telinha.Core.Services
                     _disk.TryRemove(item.Key, out _);
             }
 
-            MarkDirty();
+            _ = MarkDirty();
         }
 
         // =========================
