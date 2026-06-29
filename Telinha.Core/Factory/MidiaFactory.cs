@@ -61,13 +61,11 @@ namespace Telinha.Core.Factory
 
             item.Tags = string.Join(" ", tags);
 
-            // 5. INFORMAÇÕES BÁSICAS
             item.Id = json["id"]?.ToObject<int>() ?? 0;
             item.Nome = json[titleField]?.ToString() ?? "--";
             item.Sinopse = json["overview"]?.ToString() ?? "--";
             item.Original = json[originalTitleField]?.ToString() ?? "--";
 
-            // 6. GÊNEROS E ESTÚDIOS
             item.Genero = TagEngine.NormalizarGeneros(
                 string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? []) ?? "--"
             );
@@ -76,7 +74,6 @@ namespace Telinha.Core.Factory
                 string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? []) ?? "--"
             );
 
-            // 7. CAMPOS ESPECÍFICOS POR CATEGORIA
             var tituloFormatado = TagEngine.FormatarTitulo(item.Nome);
 
             if (tipoDetectado == MidiaTipo.Anime)
@@ -99,7 +96,6 @@ namespace Telinha.Core.Factory
                 }
             }
 
-            // 8. ELENCO (Top 3)
             if (credits["cast"] is JArray castArray)
             {
                 var top3 = castArray.Take(3)
@@ -109,7 +105,6 @@ namespace Telinha.Core.Factory
                 item.Artistas = string.Join(" ", top3) ?? "--";
             }
 
-            // 9. DIRETOR / EQUIPE
             if (credits["crew"] is JArray crewArray)
             {
                 var directors = crewArray
@@ -120,9 +115,7 @@ namespace Telinha.Core.Factory
                 item.Diretor = string.Join(" ", directors) ?? "--";
             }
 
-            // 10. LOCALIZAÇÃO E TRADUÇÃO (DeepL)            
             var countryRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString();
-
             var languageEnglish = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString();
             var languageIso = json["spoken_languages"]?.FirstOrDefault()?["iso_639_1"]?.ToString();
 
