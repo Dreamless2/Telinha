@@ -111,7 +111,28 @@ namespace Telinha.Core.Utils
             })[..^0].Normalize(NormalizationForm.FormC);
         }*/
 
+        public static string RemoverAcentos(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+                return texto;
 
+            // Decompõe os acentos (ex: 'ã' vira 'a' + 'tilde')
+            var textoNormalizado = texto.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+
+            foreach (var caractere in textoNormalizado)
+            {
+                var categoriaUnicode = CharUnicodeInfo.GetUnicodeCategory(caractere);
+                // Só mantém o caractere se ele NÃO for um acento/marcação
+                if (categoriaUnicode != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(caractere);
+                }
+            }
+
+            // CRUCIAL: Retorna ao formato padrão do C# (FormC) para que o .Equals() funcione corretamente
+            return sb.ToString().Normalize(NormalizationForm.FormC);
+        }
 
 
 
