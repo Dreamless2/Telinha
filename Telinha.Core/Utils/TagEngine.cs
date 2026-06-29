@@ -116,6 +116,12 @@ namespace Telinha.Core.Utils
             if (string.IsNullOrEmpty(texto))
                 return texto;
 
+            if (texto.IsNormalized(NormalizationForm.FormC))
+            {
+                var span = texto.AsSpan();
+                if (span.IndexOfAny(NonSpacingMarks) == -1)
+                    return texto;
+            }
             var normalized = texto.Normalize(NormalizationForm.FormD);
             var span = normalized.AsSpan();
 
