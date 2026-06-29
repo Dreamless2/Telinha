@@ -110,27 +110,27 @@ namespace Telinha.Core.Utils
                 }
             })[..^0].Normalize(NormalizationForm.FormC);
         }
+
         public static string FormatarTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
 
-            var tituloNormalizado = titulo.Trim().Normalize(NormalizationForm.FormC);
-            var apenasTexto = RegexNaoAlfaNumEspaco.Replace(tituloNormalizado, "");
-            var semEspacos = Regex.Replace(apenasTexto, @"\s+", "");
+            var apenasTexto = RegexNaoAlfaNumEspaco.Replace(titulo, "");
+            var semEspacos = apenasTexto.Replace(" ", "");
 
             if (semEspacos.Length == 0)
                 return string.Empty;
 
-            var comAcento = semEspacos.ToLowerInvariant();
+            var comAcento = semEspacos.Length > 1
+               ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
+                : semEspacos.ToUpperInvariant();
+
             var semAcento = RemoverAcentos(comAcento);
 
-            if (semAcento.Equals(comAcento, StringComparison.OrdinalIgnoreCase))
-            {
-                return $"#{semAcento}";
-            }
-
-            return $"#{semAcento} #{comAcento}";
+            return semAcento.Equals(comAcento, StringComparison.Ordinal)
+                ? $"#{semAcento}"
+                : $"#{semAcento} #{comAcento}";
         }
     }
 }
