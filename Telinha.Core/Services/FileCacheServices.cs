@@ -43,7 +43,7 @@ namespace Telinha.Core.Services
                 if (entry.ExpiresAt <= DateTime.UtcNow)
                 {
                     _disk.TryRemove(key, out _);
-                    MarkDirty();
+                    using var _ = MarkDirty();
                     return Task.FromResult<MidiaModel?>(null);
                 }
 
