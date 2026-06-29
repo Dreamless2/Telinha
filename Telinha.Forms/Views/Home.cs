@@ -448,10 +448,9 @@ namespace Telinha
                 {
                     LogServices.LogarInformacao("VIEW: Tipo parseado: {tipoRetornado}", tipoRetornado); // 🔥 LOG 4
                     TipoLabel.Text = TipoToDisplay(tipoRetornado);
+                    PreencherCampos(midia);
                     AtualizarUI(tipoRetornado, midia);
                 }
-
-                PreencherCampos(midia);
 
                 CodigoBox.Text = codigoDigitado;
                 CodigoBox.SelectionStart = CodigoBox.Text.Length;
