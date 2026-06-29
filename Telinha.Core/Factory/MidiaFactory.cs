@@ -133,6 +133,9 @@ namespace Telinha.Core.Factory
                 .FormatarTitulo(taskIdioma.Result ?? "--")
                 .ToLower();
 
+            System.Diagnostics.Debug.WriteLine($"PAIS REAL GERADO: {item.Local}");
+            System.Diagnostics.Debug.WriteLine($"IDIOMA REAL GERADO: {item.Idioma}");
+
             return item;
         }
     }
