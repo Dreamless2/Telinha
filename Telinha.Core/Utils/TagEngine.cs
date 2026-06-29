@@ -137,7 +137,9 @@ namespace Telinha.Core.Utils
             }
             catch { /* ignora se falhar */ }
 
-            return $"#{semAcento},#{comAcento}";
+            var resultadoFinal = semAcento.Equals(comAcento, StringComparison.Ordinal)
+        ? $"#{semAcento}"
+        : $"#{semAcento} #{comAcento}";
         }
     }
 }
