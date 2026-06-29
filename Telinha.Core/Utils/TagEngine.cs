@@ -168,7 +168,6 @@ namespace Telinha.Core.Utils
                 });
             }
         }
-
         public static string FormatarTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
@@ -184,7 +183,7 @@ namespace Telinha.Core.Utils
                ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
                 : semEspacos.ToUpperInvariant();
 
-            var semAcento = TagEngine.RemoverAcentos(comAcento);
+            var semAcento = RemoverAcentos(comAcento);
 
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
                 ? $"#{semAcento}"
