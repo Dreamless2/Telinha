@@ -89,7 +89,7 @@ namespace Telinha.Core.Utils
                 .Where(n => !string.IsNullOrWhiteSpace(n))
                 .Select(n => $"#{n}"));
         }
-        public static string RemoverAcentos(string texto)
+        /*public static string RemoverAcentos(string texto)
         {
             if (string.IsNullOrEmpty(texto))
                 return texto;
@@ -109,7 +109,17 @@ namespace Telinha.Core.Utils
                         dest[destIdx++] = c;
                 }
             })[..^0].Normalize(NormalizationForm.FormC);
-        }
+        }*/
+
+
+
+
+
+
+
+
+
+
 
         public static string FormatarTitulo(string titulo)
         {
