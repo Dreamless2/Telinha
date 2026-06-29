@@ -90,8 +90,6 @@ namespace Telinha.Core.Controller
 
         public static async Task<bool> AnyAsync<T>() where T : class
            => await DB.Select<T>().AnyAsync();
-
-
         public static async Task<bool> ExistsNext<T>(long id) where T : class
             => await DB.Select<T>()
                 .Where("id > @id", new { id })
