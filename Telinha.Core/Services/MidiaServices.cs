@@ -216,7 +216,7 @@ namespace Telinha.Core.Services
             return score;
         }
 
-        private void NormalizarModel(MidiaModel model, JObject data)
+        private static void NormalizarModel(MidiaModel model, JObject data)
         {
             model.IdiomaOriginal = data?["original_language"]?.ToString();
             model.Popularidade = data?["popularity"]?.ToObject<double>() ?? 0;
