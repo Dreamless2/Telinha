@@ -66,7 +66,6 @@ namespace Telinha.Core.Services
             if (m.IdiomaOriginal == "ko") return "AnimacaoCoreana";
             return "AnimacaoOcidental";
         }
-
         private async Task<MidiaModel?> ExecutarBuscaSeguro(int id, MidiaTipo tipo, CancellationToken ct)
         {
             const int maxTentativas = 2;
