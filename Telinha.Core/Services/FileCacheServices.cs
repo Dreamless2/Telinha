@@ -7,110 +7,139 @@ namespace Telinha.Core.Services
 {
     public class FileCacheServices
     {
-        private readonly string _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmdb_cache.json");
         private readonly IMemoryCache _memory;
-        private readonly ConcurrentDictionary<string, CacheItem> _diskCache = new();
+        private readonly ConcurrentDictionary<string, CacheEntry> _disk = new();
+
+        private readonly string _path;
         private readonly SemaphoreSlim _fileLock = new(1, 1);
+
         private readonly TimeSpan _memoryTtl = TimeSpan.FromMinutes(30);
 
-        public FileCacheServices(IMemoryCache memory)
+        private readonly TimeSpan _diskFlushDelay = TimeSpan.FromSeconds(2);
+
+        private int _dirtyFlag = 0;
+
+        // versão do schema (evita cache quebrado silencioso)
+        private const int CACHE_VERSION = 1;
+
+        public FileCacheV2Service(IMemoryCache memory)
         {
             _memory = memory;
-            CarregarDoDisco();
+            _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmdb_cache_v2.json");
+
+            LoadFromDisk();
         }
 
-        public async Task<MidiaModel?> GetAsync(string key)
+        // =========================
+        // GET (lock-free hot path)
+        // =========================
+        public Task<MidiaModel?> GetAsync(string key)
         {
-            // 1. Tenta memória primeiro - 1ms
             if (_memory.TryGetValue(key, out MidiaModel? mem))
+                return Task.FromResult(mem);
+
+            if (_disk.TryGetValue(key, out var entry))
             {
-                LogServices.LogarInformacao("CACHE HIT MEM - {key}", key);
-                return mem;
+                if (entry.ExpiresAt <= DateTime.UtcNow)
+                {
+                    _disk.TryRemove(key, out _);
+                    MarkDirty();
+                    return Task.FromResult<MidiaModel?>(null);
+                }
+
+                _memory.Set(key, entry.Model, _memoryTtl);
+                return Task.FromResult<MidiaModel?>(entry.Model);
             }
 
-            // 2. Tenta arquivo - 5ms
-            if (_diskCache.TryGetValue(key, out var item))
-            {
-                if (item.ExpiraEm > DateTime.UtcNow)
-                {
-                    var model = JsonConvert.DeserializeObject<MidiaModel>(item.Json);
-                    _memory.Set(key, model, _memoryTtl); // esquenta memória
-                    LogServices.LogarInformacao("CACHE HIT FILE - {key}", key);
-                    return model;
-                }
-                else
-                {
-                    // Expirou, remove
-                    _diskCache.TryRemove(key, out _);
-                    _ = SalvarNoDisco(); // fire and forget
-                }
-            }
-
-            LogServices.LogarInformacao("CACHE MISS - {key}", key);
-            return null;
+            return Task.FromResult<MidiaModel?>(null);
         }
 
+        // =========================
+        // SET
+        // =========================
         public async Task SetAsync(string key, MidiaModel model, TimeSpan diskTtl)
         {
-            // Salva nos 2 lugares
             _memory.Set(key, model, _memoryTtl);
 
-            _diskCache[key] = new CacheItem
+            var entry = new CacheEntry
             {
-                Json = JsonConvert.SerializeObject(model),
-                ExpiraEm = DateTime.UtcNow.Add(diskTtl)
+                Model = model,
+                ExpiresAt = DateTime.UtcNow.Add(diskTtl),
+                Version = CACHE_VERSION
             };
 
-            LogServices.LogarInformacao("CACHE SET - {key} | Expira: {expira}", key, diskTtl);
-            await SalvarNoDisco();
+            _disk[key] = entry;
+
+            await MarkDirty();
         }
 
+        // =========================
+        // REMOVE
+        // =========================
         public async Task RemoveAsync(string key)
         {
             _memory.Remove(key);
-            _diskCache.TryRemove(key, out _);
-            await SalvarNoDisco();
+            _disk.TryRemove(key, out _);
+
+            await MarkDirty();
         }
 
-        private void CarregarDoDisco()
+        // =========================
+        // DISK LOAD
+        // =========================
+        private void LoadFromDisk()
         {
+            if (!File.Exists(_path))
+                return;
+
             try
             {
-                if (!File.Exists(_path)) return;
-
                 var json = File.ReadAllText(_path);
-                var dados = JsonConvert.DeserializeObject<Dictionary<string, CacheItem>>(json);
 
-                if (dados != null)
+                var data = JsonSerializer.Deserialize<Dictionary<string, CacheEntry>>(json);
+
+                if (data == null)
+                    return;
+
+                foreach (var kv in data)
                 {
-                    foreach (var kvp in dados)
-                    {
-                        // Já carrega só o que não expirou
-                        if (kvp.Value.ExpiraEm > DateTime.UtcNow)
-                            _diskCache[kvp.Key] = kvp.Value;
-                    }
-                }
+                    if (kv.Value.Version != CACHE_VERSION)
+                        continue;
 
-                LogServices.LogarInformacao("CACHE CARREGADO - {count} itens válidos", _diskCache.Count);
+                    if (kv.Value.ExpiresAt > DateTime.UtcNow)
+                        _disk[kv.Key] = kv.Value;
+                }
             }
-            catch (Exception ex)
+            catch
             {
-                LogServices.LogarErroComException(ex, "Erro ao carregar cache do disco");
-                _diskCache.Clear();
+                _disk.Clear();
             }
         }
 
-        private async Task SalvarNoDisco()
+        // =========================
+        // WRITE BATCH (CORE FIX)
+        // =========================
+        private async Task MarkDirty()
+        {
+            if (Interlocked.Exchange(ref _dirtyFlag, 1) == 1)
+                return;
+
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(_diskFlushDelay);
+                await FlushToDisk();
+
+                Interlocked.Exchange(ref _dirtyFlag, 0);
+            });
+        }
+
+        private async Task FlushToDisk()
         {
             await _fileLock.WaitAsync();
             try
             {
-                var json = JsonConvert.SerializeObject(_diskCache, Formatting.Indented);
+                var json = JsonSerializer.Serialize(_disk);
                 await File.WriteAllTextAsync(_path, json);
-            }
-            catch (Exception ex)
-            {
-                LogServices.LogarErroComException(ex, "Erro ao salvar cache no disco");
             }
             finally
             {
@@ -118,22 +147,29 @@ namespace Telinha.Core.Services
             }
         }
 
-        public void LimparExpirados()
+        // =========================
+        // CLEANUP
+        // =========================
+        public void CleanupExpired()
         {
-            var expirados = _diskCache.Where(x => x.Value.ExpiraEm <= DateTime.UtcNow).Select(x => x.Key).ToList();
-            foreach (var key in expirados)
-                _diskCache.TryRemove(key, out _);
+            var now = DateTime.UtcNow;
 
-            if (expirados.Count != 0)
+            foreach (var item in _disk)
             {
-                LogServices.LogarInformacao("CACHE CLEAN - {count} itens expirados removidos", expirados.Count);
-                _ = SalvarNoDisco();
+                if (item.Value.ExpiresAt <= now)
+                    _disk.TryRemove(item.Key, out _);
             }
+
+            MarkDirty();
         }
-        private class CacheItem
+
+        // =========================
+        // ENTRY MODEL
+        // =========================
+        private class CacheEntry
         {
-            public string Json { get; set; } = string.Empty;
-            public DateTime ExpiraEm { get; set; }
+            public MidiaModel Model { get; set; } = default!;
+            public DateTime ExpiresAt { get; set; }
+            public int Version { get; set; }
         }
     }
-}
