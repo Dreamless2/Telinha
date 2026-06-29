@@ -129,9 +129,9 @@ namespace Telinha.Core.Factory
             await Task.WhenAll(taskPais!, taskIdioma);
 
             LogServices.LogarInformacao(
-    "País traduzido: {pais} | Idioma traduzido: {idioma}",
-    taskPais.Result,
-    taskIdioma.Result
+            "País traduzido: {pais} | Idioma traduzido: {idioma}",
+                taskPais.Result,
+        taskIdioma.Result
 );
 
             item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
@@ -140,8 +140,8 @@ namespace Telinha.Core.Factory
                 .FormatarTitulo(taskIdioma.Result ?? "--")
                 .ToLower();
 
-           
-);
+
+
 
             return item;
         }
