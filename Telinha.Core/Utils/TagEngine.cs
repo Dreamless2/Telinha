@@ -113,38 +113,25 @@ namespace Telinha.Core.Utils
 
         public static string RemoverAcentos(string texto)
         {
-            var span = texto.AsSpan();
-            var normalized = texto.Normalize(NormalizationForm.FormD);
-
             if (string.IsNullOrEmpty(texto))
                 return texto;
 
-            if (texto.IsNormalized(NormalizationForm.FormC))
-            {
-                if (span.IndexOfAny(NonSpacingMarks) == -1)
-                    return texto;
-            }
+            var normalized = texto.Normalize(NormalizationForm.FormD);
 
-            // Não há acentos para remover
-            if (span.IndexOfAny(NonSpacingMarks) == -1)
-                return texto;
-
-            // Conta quantos caracteres ficarão
             int count = 0;
-            foreach (char c in span)
+            foreach (char c in normalized)
             {
-                if (!NonSpacingMarks.Contains(c))
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
                     count++;
             }
 
-            // Cria a string já com o tamanho exato
             return string.Create(count, normalized, static (dest, src) =>
             {
                 int idx = 0;
 
                 foreach (char c in src)
                 {
-                    if (!NonSpacingMarks.Contains(c))
+                    if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
                         dest[idx++] = c;
                 }
             }).Normalize(NormalizationForm.FormC);
