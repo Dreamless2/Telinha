@@ -131,8 +131,8 @@ namespace Telinha.Core.Factory
             LogServices.LogarInformacao(
             "País traduzido: {pais} | Idioma traduzido: {idioma}",
                 taskPais.Result,
-        taskIdioma.Result
-);
+                taskIdioma.Result
+            );
 
             item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
 
