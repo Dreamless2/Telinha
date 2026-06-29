@@ -13,8 +13,6 @@ namespace Telinha.Core.Helpers
                 $"{Assembly.GetExecutingAssembly().GetName().Name!}.key");
 
         private const string Entropy = "telinha-app-v1";
-
-
         public static byte[] GetOrCreateMasterKey()
         {
             Directory.CreateDirectory(Path.GetDirectoryName(KeyFilePath)!);
