@@ -10,7 +10,7 @@ namespace Telinha.Core.Services
     {
         private readonly TMDBServices _tmdb = tmdb;
         private readonly FileCacheServices? _cache = cache;
-        //private readonly TimeSpan _cacheTtl = TimeSpan.FromSeconds(60);
+        private readonly TimeSpan _cacheTtl = TimeSpan.FromSeconds(60);
 
         public async Task<MidiaModel?> GetMidia(int id)
         {
@@ -141,7 +141,7 @@ namespace Telinha.Core.Services
             if (model != null)
             {
                 NormalizarModel(model, details);
-                //if (_cache != null) await _cache.SetAsync(cacheKey, model, _cacheTtl);
+                if (_cache != null) await _cache.SetAsync(cacheKey, model, _cacheTtl);
             }
 
             return model;
