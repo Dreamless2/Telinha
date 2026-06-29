@@ -330,7 +330,6 @@ namespace Telinha
         #region Limpar Campos
         private void LimparCampos()
         {
-            // 🔥 Uma linha pra limpar todos
             foreach (var tb in _mapeamentoCampos.Values)
                 tb.Clear();
 
