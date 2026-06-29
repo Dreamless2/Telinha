@@ -89,7 +89,7 @@ namespace Telinha.Core.Utils
                 .Where(n => !string.IsNullOrWhiteSpace(n))
                 .Select(n => $"#{n}"));
         }
-        public static string RemoverAcentos(string texto)
+        /*public static string RemoverAcentos(string texto)
         {
             if (string.IsNullOrEmpty(texto))
                 return texto;
@@ -109,6 +109,39 @@ namespace Telinha.Core.Utils
                         dest[destIdx++] = c;
                 }
             })[..^0].Normalize(NormalizationForm.FormC);
+        }*/
+
+        public static string RemoverAcentos(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+                return texto;
+
+            var normalized = texto.Normalize(NormalizationForm.FormD);
+            var span = normalized.AsSpan();
+
+            // Não há acentos para remover
+            if (span.IndexOfAny(NonSpacingMarks) == -1)
+                return texto;
+
+            // Conta quantos caracteres ficarão
+            int count = 0;
+            foreach (char c in span)
+            {
+                if (!NonSpacingMarks.Contains(c))
+                    count++;
+            }
+
+            // Cria a string já com o tamanho exato
+            return string.Create(count, normalized, static (dest, src) =>
+            {
+                int idx = 0;
+
+                foreach (char c in src)
+                {
+                    if (!NonSpacingMarks.Contains(c))
+                        dest[idx++] = c;
+                }
+            }).Normalize(NormalizationForm.FormC);
         }
 
         public static string FormatarTitulo(string titulo)
@@ -131,6 +164,6 @@ namespace Telinha.Core.Utils
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
                 ? $"#{semAcento}"
                 : $"#{semAcento} #{comAcento}";
-        }        
+        }
     }
 }
