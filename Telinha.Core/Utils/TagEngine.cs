@@ -130,9 +130,6 @@ namespace Telinha.Core.Utils
 
             var semAcento = RemoverAcentos(comAcento);
 
-            // CORREÇÃO CRUCIAL AQUI: 
-            // Usamos 'StringComparison.InvariantCulture' para o C# entender que "ã" é linguisticamente diferente de "a",
-            // ignorando qualquer bagunça que o FormD/FormC tenham feito nos bytes secundários.
             if (semAcento.Equals(comAcento, StringComparison.InvariantCulture))
             {
                 return $"#{semAcento}";
