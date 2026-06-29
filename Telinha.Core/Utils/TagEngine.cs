@@ -131,8 +131,8 @@ namespace Telinha.Core.Utils
             }
 
             var resultadoFinal = semAcento.Equals(comAcento, StringComparison.Ordinal)
-      ? $"#{semAcento}"
-      : $"#{semAcento} #{comAcento}";
+                    ? $"#{semAcento}"
+                    : $"#{semAcento} #{comAcento}";
 
             try
             {
@@ -140,6 +140,8 @@ namespace Telinha.Core.Utils
                 File.AppendAllText(caminhoDesktop, $"Entrada: {titulo} -> Saída Gerada: {resultadoFinal}{Environment.NewLine}");
             }
             catch { /* ignora se falhar */ }
+
+            return resultadoFinal;
 
 
         }
