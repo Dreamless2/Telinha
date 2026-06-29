@@ -134,11 +134,40 @@ namespace Telinha.Core.Utils
             return sb.ToString().Normalize(NormalizationForm.FormC);
         }
 
+        public static string FormatarTitulo(string titulo)
+        {
+            if (string.IsNullOrWhiteSpace(titulo))
+                return string.Empty;
+
+            // 1. Remove espaços e caracteres especiais (pontuação, símbolos), MANTENDO as letras com acento.
+            // \p{L} pega qualquer letra (incluindo acentuadas). \p{N} pega números.
+            var comAcento = Regex.Replace(titulo, @"[^\p{L}\p{N}]", "");
+
+            if (string.IsNullOrEmpty(comAcento))
+                return string.Empty;
+
+            // Força a primeira letra a ser Maiúscula (Ex: "japão" vira "Japão")
+            comAcento = char.ToUpper(comAcento[0]) + (comAcento.Length > 1 ? comAcento[1..] : "");
+
+            // 2. Cria a versão sem acento a partir da versão limpa
+            var semAcento = RemoverAcentos(comAcento);
+
+            // 3. Compara de forma estrita (Ordinal). 
+            // Se forem diferentes (ex: "Japao" != "Japão"), retorna as duas tags.
+            if (!semAcento.Equals(comAcento, StringComparison.Ordinal))
+            {
+                return $"#{semAcento} #{comAcento}";
+            }
+
+            // Se forem iguais (ex: "Brasil" == "Brasil"), retorna apenas uma.
+            return $"#{semAcento}";
+        }
 
 
 
 
 
+        /*
 
 
 
@@ -162,6 +191,6 @@ namespace Telinha.Core.Utils
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
                 ? $"#{semAcento}"
                 : $"#{semAcento} #{comAcento}";
-        }
+        }*/
     }
 }
