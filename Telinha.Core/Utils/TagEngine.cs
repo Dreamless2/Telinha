@@ -1,6 +1,7 @@
 ﻿using System.Buffers;
 using System.Collections.Frozen;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -183,7 +184,7 @@ namespace Telinha.Core.Utils
                ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
                 : semEspacos.ToUpperInvariant();
 
-            var semAcento = RemoverAcentos(comAcento);
+            var semAcento = TagEngine.RemoverAcentos(comAcento);
 
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
                 ? $"#{semAcento}"
