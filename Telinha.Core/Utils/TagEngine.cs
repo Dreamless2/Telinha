@@ -121,7 +121,6 @@ namespace Telinha.Core.Utils
 
             if (texto.IsNormalized(NormalizationForm.FormC))
             {
-
                 if (span.IndexOfAny(NonSpacingMarks) == -1)
                     return texto;
             }
