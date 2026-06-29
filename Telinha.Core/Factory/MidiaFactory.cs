@@ -128,18 +128,6 @@ namespace Telinha.Core.Factory
 
             await Task.WhenAll(taskPais!, taskIdioma);
 
-            LogServices.LogarInformacao(
-                "DEBUG MidiaFactory - País bruto: '{pais}' | Idioma bruto: '{idioma}'",
-                taskPais.Result,
-                taskIdioma.Result
-            );
-
-            LogServices.LogarInformacao(
-                "DEBUG MidiaFactory - País formatado: '{pais}' | Idioma formatado: '{idioma}'",
-                TagEngine.FormatarTitulo(taskPais.Result ?? "--"),
-                TagEngine.FormatarTitulo(taskIdioma.Result ?? "--")
-            );
-
             item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
 
             item.Idioma = TagEngine
