@@ -180,18 +180,20 @@ namespace Telinha.Core.Utils
             if (j == 0)
                 return string.Empty;
 
-            var result = clean[..j].ToString();
+            var original = clean[..j].ToString();
 
-            if (result.Length == 0)
-                return string.Empty;
+            // capitaliza
+            var capitalizado =
+                original.Length > 1
+                    ? char.ToUpperInvariant(original[0]) + original[1..]
+                    : original.ToUpperInvariant();
 
-            var first = char.ToUpper(result[0]) + result[1..];
+            var semAcento = FastAccentRemover.RemoverAcentos(capitalizado);
 
-            var semAcento = FastAccentRemover.RemoverAcentos(first);
+            if (semAcento.Equals(capitalizado, StringComparison.Ordinal))
+                return $"#{semAcento}";
 
-            return semAcento.Equals(first, StringComparison.Ordinal)
-                ? $"#{semAcento}"
-                : $"#{semAcento} #{first}";
+            return $"#{semAcento} #{capitalizado}";
         }
 
         // ---------------- FAST NORMALIZER ----------------
