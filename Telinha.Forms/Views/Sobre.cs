@@ -11,7 +11,7 @@
         {
             try
             {
-                this.LinkTMDB.LinkVisited = true;
+                LinkTMDB.LinkVisited = true;
                 string url = "https://www.themoviedb.org/";
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                 {
