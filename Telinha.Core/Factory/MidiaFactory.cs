@@ -140,9 +140,6 @@ namespace Telinha.Core.Factory
                 .FormatarTitulo(taskIdioma.Result ?? "--")
                 .ToLower();
 
-
-
-
             return item;
         }
     }
