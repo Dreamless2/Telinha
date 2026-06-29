@@ -9,164 +9,269 @@ namespace Telinha.Core.Utils
 {
     public class TagEngine
     {
-        private static readonly Regex RegexNaoAlfaNum = new(@"[^\p{L}\p{Nd}]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static readonly Regex RegexNaoAlfaNumEspaco = new(@"[^\p{L}\p{Nd} ]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly FrozenDictionary<string, string> GeneroMapeado =
+            BuildGeneroMap();
 
-        // .NET 8+ SearchValues - remove acento sem alocação de categoria
-        private static readonly SearchValues<char> NonSpacingMarks = SearchValues.Create(
-            "\u0300\u0301\u0302\u0303\u0304\u0305\u0306\u0307\u0308\u0309\u030A\u030B\u030C\u030D\u030E\u030F" +
-            "\u0310\u0311\u0312\u0313\u0314\u0315\u0316\u0317\u0318\u0319\u031A\u031B\u031C\u031D\u031E\u031F" +
-            "\u0320\u0321\u0322\u0323\u0324\u0325\u0326\u0327\u0328\u0329\u032A\u032B\u032C\u032D\u032E\u032F");
-
-        private static readonly FrozenDictionary<string, string> GeneroMapeado = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        private static FrozenDictionary<string, string> BuildGeneroMap()
         {
-            ["ficçãocientífica"] = P("ficçãocientífica"),
-            ["ficçãocientíficaefantasia"] = P("ficçãocientíficaefantasia"),
-            ["ficçãocientíficaeaventura"] = P("ficçãocientíficaeaventura"),
-            ["ficçãocientíficaeação"] = P("ficçãocientíficaeação"),
-            ["ficçãocientíficaecomédia"] = P("ficçãocientíficaecomédia"),
-            ["ficçãocientíficaedrama"] = P("ficçãocientíficaedrama"),
-            ["ficçãocientíficaemistério"] = P("ficçãocientíficaemistério"),
-            ["ficçãocientíficaeromance"] = P("ficçãocientíficaeromance"),
-            ["ficçãocientíficaeterror"] = P("ficçãocientíficaeterror"),
-            ["romântico"] = P("romântico"),
-            ["romântica"] = P("romântica"),
-            ["comédia"] = P("comédia"),
-            ["comédiadramática"] = P("comédiadramática"),
-            ["comédiaromântica"] = P("comédiaromântica"),
-            ["mistério"] = P("mistério"),
-            ["ação"] = P("ação"),
-            ["açãoefantasia"] = P("açãoefantasia"),
-            ["açãoeaventura"] = P("açãoeaventura"),
-            ["animação"] = P("animação"),
-            ["documentário"] = P("documentário")
-        }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
+            var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["ficçãocientífica"] = P("ficçãocientífica"),
+                ["ficçãocientíficaefantasia"] = P("ficçãocientíficaefantasia"),
+                ["ficçãocientíficaeaventura"] = P("ficçãocientíficaeaventura"),
+                ["ficçãocientíficaeação"] = P("ficçãocientíficaeação"),
+                ["ficçãocientíficaecomédia"] = P("ficçãocientíficaecomédia"),
+                ["ficçãocientíficaedrama"] = P("ficçãocientíficaedrama"),
+                ["ficçãocientíficaemistério"] = P("ficçãocientíficaemistério"),
+                ["ficçãocientíficaeromance"] = P("ficçãocientíficaeromance"),
+                ["ficçãocientíficaeterror"] = P("ficçãocientíficaeterror"),
+                ["romântico"] = P("romântico"),
+                ["romântica"] = P("romântica"),
+                ["comédia"] = P("comédia"),
+                ["comédiadramática"] = P("comédiadramática"),
+                ["comédiaromântica"] = P("comédiaromântica"),
+                ["mistério"] = P("mistério"),
+                ["ação"] = P("ação"),
+                ["açãoefantasia"] = P("açãoefantasia"),
+                ["açãoeaventura"] = P("açãoeaventura"),
+                ["animação"] = P("animação"),
+                ["documentário"] = P("documentário")
+            };
 
-        private static string P(string comAcento)
-        {
-            var semAcento = RemoverAcentos(comAcento);
-            return semAcento.Equals(comAcento, StringComparison.Ordinal)
-                ? semAcento
-                : $"{semAcento} {comAcento}";
+            return dict.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
         }
+
+        // ---------------- FAST CORE ----------------
 
         public static string NormalizarGeneros(string entrada)
         {
             if (string.IsNullOrWhiteSpace(entrada))
                 return string.Empty;
 
-            var hashTags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var tags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            foreach (var genero in entrada.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+            ReadOnlySpan<char> span = entrada.AsSpan();
+
+            int start = 0;
+
+            for (int i = 0; i <= span.Length; i++)
             {
-                var chave = genero.Replace(" ", "");
+                if (i == span.Length || span[i] == ',')
+                {
+                    var slice = span[start..i].Trim();
 
-                if (GeneroMapeado.TryGetValue(chave, out var formas))
-                {
-                    foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
-                        hashTags.Add($"#{forma}");
-                }
-                else
-                {
-                    var semAcento = RemoverAcentos(chave);
-                    hashTags.Add($"#{semAcento}");
-                    if (!semAcento.Equals(chave, StringComparison.OrdinalIgnoreCase))
-                        hashTags.Add($"#{chave}");
+                    if (!slice.IsEmpty)
+                    {
+                        ProcessGenero(slice, tags);
+                    }
+
+                    start = i + 1;
                 }
             }
 
-            return string.Join(' ', hashTags);
+            return string.Join(' ', tags);
         }
+
+        private static void ProcessGenero(ReadOnlySpan<char> genero, HashSet<string> tags)
+        {
+            Span<char> buffer = stackalloc char[128];
+            int len = NormalizeFast(genero, buffer);
+
+            var chave = buffer[..len];
+
+            // remove espaços
+            Span<char> compact = stackalloc char[len];
+            int j = 0;
+
+            for (int i = 0; i < len; i++)
+                if (chave[i] != ' ')
+                    compact[j++] = chave[i];
+
+            var final = compact[..j].ToString();
+
+            if (GeneroMapeado.TryGetValue(final, out var formas))
+            {
+                foreach (var f in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                    tags.Add("#" + f);
+            }
+            else
+            {
+                tags.Add("#" + final);
+            }
+        }
+
+        // ---------------- FAST TAG GENERATION ----------------
 
         public static string GerarTags(string texto)
         {
             if (string.IsNullOrWhiteSpace(texto))
                 return string.Empty;
 
-            return string.Join(' ', texto
-                .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                .Select(RemoverAcentos)
-                .Select(n => RegexNaoAlfaNum.Replace(n, ""))
-                .Where(n => !string.IsNullOrWhiteSpace(n))
-                .Select(n => $"#{n}"));
-        }
+            var tags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-        public static class FastAccentRemover
-        {
-            // Tabela simples para Latin-1 estendido (0–255)
-            // Só cobre o que interessa na maioria dos sistemas PT-BR/ES
-            private static readonly char[] Map = CreateMap();
+            ReadOnlySpan<char> span = texto.AsSpan();
 
-            private static char[] CreateMap()
+            int start = 0;
+
+            for (int i = 0; i <= span.Length; i++)
             {
-                var map = new char[256];
-
-                for (int i = 0; i < map.Length; i++)
-                    map[i] = (char)i;
-
-                // PT-BR / ES principais
-                map['á'] = 'a'; map['à'] = 'a'; map['ã'] = 'a'; map['â'] = 'a';
-                map['ä'] = 'a'; map['å'] = 'a';
-
-                map['é'] = 'e'; map['è'] = 'e'; map['ê'] = 'e'; map['ë'] = 'e';
-
-                map['í'] = 'i'; map['ì'] = 'i'; map['î'] = 'i'; map['ï'] = 'i';
-
-                map['ó'] = 'o'; map['ò'] = 'o'; map['õ'] = 'o'; map['ô'] = 'o'; map['ö'] = 'o';
-
-                map['ú'] = 'u'; map['ù'] = 'u'; map['û'] = 'u'; map['ü'] = 'u';
-
-                map['ç'] = 'c';
-
-                // maiúsculas
-                map['Á'] = 'A'; map['À'] = 'A'; map['Ã'] = 'A'; map['Â'] = 'A'; map['Ä'] = 'A';
-                map['É'] = 'E'; map['È'] = 'E'; map['Ê'] = 'E'; map['Ë'] = 'E';
-                map['Í'] = 'I'; map['Ì'] = 'I'; map['Î'] = 'I'; map['Ï'] = 'I';
-                map['Ó'] = 'O'; map['Ò'] = 'O'; map['Õ'] = 'O'; map['Ô'] = 'O'; map['Ö'] = 'O';
-                map['Ú'] = 'U'; map['Ù'] = 'U'; map['Û'] = 'U'; map['Ü'] = 'U';
-                map['Ç'] = 'C';
-
-                return map;
-            }
-
-            public static string RemoverAcentos(string input)
-            {
-                if (string.IsNullOrEmpty(input))
-                    return input;
-
-                return string.Create(input.Length, input, static (dest, src) =>
+                if (i == span.Length || span[i] == ',')
                 {
-                    ReadOnlySpan<char> span = src.AsSpan();
+                    var slice = span[start..i].Trim();
 
-                    for (int i = 0; i < span.Length; i++)
+                    if (!slice.IsEmpty)
                     {
-                        char c = span[i];
-
-                        dest[i] = c < 256 ? Map[c] : c;
+                        ProcessTag(slice, tags);
                     }
-                });
+
+                    start = i + 1;
+                }
             }
+
+            return string.Join(' ', tags);
         }
+
+        private static void ProcessTag(ReadOnlySpan<char> text, HashSet<string> tags)
+        {
+            Span<char> buffer = stackalloc char[128];
+
+            int len = NormalizeFast(text, buffer);
+
+            Span<char> clean = buffer[..len];
+
+            int j = 0;
+            for (int i = 0; i < len; i++)
+            {
+                char c = clean[i];
+
+                if (IsAlphaNum(c))
+                    clean[j++] = c;
+            }
+
+            if (j == 0)
+                return;
+
+            tags.Add("#" + clean[..j].ToString());
+        }
+
+        // ---------------- FORMAT TITLE ----------------
+
         public static string FormatarTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
 
-            var apenasTexto = RegexNaoAlfaNumEspaco.Replace(titulo, "");
-            var semEspacos = apenasTexto.Replace(" ", "");
+            Span<char> buffer = stackalloc char[128];
 
-            if (semEspacos.Length == 0)
+            int len = NormalizeFast(titulo.AsSpan(), buffer);
+
+            Span<char> clean = buffer[..len];
+
+            int j = 0;
+
+            for (int i = 0; i < len; i++)
+            {
+                char c = clean[i];
+
+                if (IsAlphaNumOrSpace(c))
+                    clean[j++] = c;
+            }
+
+            if (j == 0)
                 return string.Empty;
 
-            var comAcento = semEspacos.Length > 1
-               ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
-                : semEspacos.ToUpperInvariant();
+            var result = clean[..j].ToString();
 
-            var semAcento = RemoverAcentos(comAcento);
+            if (result.Length == 0)
+                return string.Empty;
 
-            return semAcento.Equals(comAcento, StringComparison.Ordinal)
+            var first = char.ToUpper(result[0]) + result[1..];
+
+            var semAcento = FastAccentRemover.RemoverAcentos(first);
+
+            return semAcento.Equals(first, StringComparison.Ordinal)
                 ? $"#{semAcento}"
-                : $"#{semAcento} #{comAcento}";
+                : $"#{semAcento} #{first}";
+        }
+
+        // ---------------- FAST NORMALIZER ----------------
+
+        private static int NormalizeFast(ReadOnlySpan<char> input, Span<char> output)
+        {
+            int len = input.Length;
+
+            for (int i = 0; i < len; i++)
+            {
+                char c = input[i];
+                output[i] = FastAccentRemover.MapChar(c);
+            }
+
+            return len;
+        }
+
+        private static bool IsAlphaNum(char c)
+            => (c >= 'a' && c <= 'z') ||
+               (c >= 'A' && c <= 'Z') ||
+               (c >= '0' && c <= '9') ||
+               c >= 128;
+
+        private static bool IsAlphaNumOrSpace(char c)
+            => IsAlphaNum(c) || c == ' ';
+
+        private static string P(string comAcento)
+        {
+            var sem = FastAccentRemover.RemoverAcentos(comAcento);
+
+            return sem == comAcento
+                ? sem
+                : $"{sem} {comAcento}";
+        }
+    }
+
+    // 🔥 upgrade do remover acento para inline mapping
+    public static class FastAccentRemover
+    {
+        private static readonly char[] Map = CreateMap();
+
+        private static char[] CreateMap()
+        {
+            var map = new char[256];
+
+            for (int i = 0; i < map.Length; i++)
+                map[i] = (char)i;
+
+            map['á'] = map['à'] = map['ã'] = map['â'] = map['ä'] = 'a';
+            map['é'] = map['è'] = map['ê'] = map['ë'] = 'e';
+            map['í'] = map['ì'] = map['î'] = map['ï'] = 'i';
+            map['ó'] = map['ò'] = map['õ'] = map['ô'] = map['ö'] = 'o';
+            map['ú'] = map['ù'] = map['û'] = map['ü'] = 'u';
+            map['ç'] = 'c';
+
+            map['Á'] = map['À'] = map['Ã'] = map['Â'] = map['Ä'] = 'A';
+            map['É'] = map['È'] = map['Ê'] = map['Ë'] = 'E';
+            map['Í'] = map['Ì'] = map['Î'] = map['Ï'] = 'I';
+            map['Ó'] = map['Ò'] = map['Õ'] = map['Ô'] = map['Ö'] = 'O';
+            map['Ú'] = map['Ù'] = map['Û'] = map['Ü'] = 'U';
+            map['Ç'] = 'C';
+
+            return map;
+        }
+
+        public static char MapChar(char c)
+            => c < 256 ? Map[c] : c;
+
+        public static string RemoverAcentos(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            return string.Create(input.Length, input, static (dest, src) =>
+            {
+                var span = src.AsSpan();
+
+                for (int i = 0; i < span.Length; i++)
+                    dest[i] = MapChar(span[i]);
+            });
         }
     }
 }
