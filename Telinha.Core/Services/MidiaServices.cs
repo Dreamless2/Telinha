@@ -142,14 +142,13 @@ namespace Telinha.Core.Services
             if (model != null)
             {
                 NormalizarModel(model, details);
-                if (_cache != null)
-                    await _cache.SetAsync(cacheKey, model, _cacheTtl);
+                if (_cache != null) await _cache.SetAsync(cacheKey, model, _cacheTtl);
             }
 
             return model;
         }
 
-        private bool IsValidMedia(JObject data, MidiaTipo tipo)
+        private static bool IsValidMedia(JObject data, MidiaTipo tipo)
         {
             if (data?["success"]?.ToObject<bool>() == false) return false;
             if (data?["status_code"]?.ToObject<int>() == 34) return false;
