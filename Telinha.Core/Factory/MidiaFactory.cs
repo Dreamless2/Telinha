@@ -11,10 +11,8 @@ namespace Telinha.Core.Factory
     {
         public static async Task<MidiaModel> ConstruirMidia(JObject json, JObject credits, JObject? alternative, MidiaTipo tipoBase, DEEPLContracts deepl)
         {
-            // 1. DETECÇÃO AUTOMÁTICA DE TIPO (Filme vs TV)
             MidiaTipo tipoDetectado = tipoBase;
 
-            // 2. REFINAMENTO (Série vs Anime)
             if (tipoDetectado == MidiaTipo.Serie)
             {
                 var generosIds = json["genres"]?.Select(g => (int)g["id"]!).ToList() ?? [];
@@ -31,13 +29,11 @@ namespace Telinha.Core.Factory
                 Tipo = tipoDetectado.ToString()
             };
 
-            // 3. MAPEAMENTO DE CAMPOS DINÂMICO
             bool isTV = tipoDetectado != MidiaTipo.Filme;
             string titleField = isTV ? "name" : "title";
             string dateField = isTV ? "first_air_date" : "release_date";
             string originalTitleField = isTV ? "original_name" : "original_title";
 
-            // 4. TRATAMENTO DE DATA E TAGS
             var releaseDateStr = json[dateField]?.ToString();
             bool hasValidDate = DateTime.TryParse(releaseDateStr, out DateTime releaseDate);
 
