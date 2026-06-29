@@ -128,16 +128,19 @@ namespace Telinha.Core.Factory
 
             await Task.WhenAll(taskPais!, taskIdioma);
 
+            LogServices.LogarInformacao(
+    "País traduzido: {pais} | Idioma traduzido: {idioma}",
+    taskPais.Result,
+    taskIdioma.Result
+);
+
             item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
 
             item.Idioma = TagEngine
                 .FormatarTitulo(taskIdioma.Result ?? "--")
                 .ToLower();
 
-            LogServices.LogarInformacao(
-                "País traduzido: {pais} | Idioma traduzido: {idioma}",
-                taskPais.Result,
-                taskIdioma.Result
+           
 );
 
             return item;
