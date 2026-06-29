@@ -232,7 +232,6 @@ namespace Telinha.Core.Services
             model.GenerosLista = data?["genres"]?.Select(g => g["name"]?.ToString()).OfType<string>().ToList() ?? [];
             model.ProdutorasLista = data?["production_companies"]?.Select(p => p["name"]?.ToString()).OfType<string>().ToList() ?? [];
 
-            // 🔥 Garante que não pega array vazio
             var titleToken = data?["title"] ?? data?["name"];
             model.Nome = titleToken?.Type != JTokenType.Array ? titleToken?.ToString() : "--";
 
