@@ -14,6 +14,11 @@ namespace Telinha.Views
         public Sobre()
         {
             InitializeComponent();
-        }       
+        }
+
+        private void LinkTMDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
