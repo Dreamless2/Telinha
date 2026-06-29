@@ -24,5 +24,10 @@
                 MessageBox.Show("Não foi possível abrir o link: " + ex.Message);
             }
         }
+
+        private void SobreButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+        }
     }
 }
