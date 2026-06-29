@@ -127,17 +127,11 @@ namespace Telinha.Core.Factory
 
             await Task.WhenAll(taskPais!, taskIdioma);
 
-            var paisRaw = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
-            var paisSemAcento = TagEngine.RemoverAcentos(paisRaw);
-            item.Local = paisSemAcento == paisRaw
-                ? paisRaw
-                : $"{paisRaw} {paisSemAcento}";
+            item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
 
-            var idiomaRaw = TagEngine.FormatarTitulo(taskIdioma.Result ?? "--").ToLower();
-            var idiomaSemAcento = TagEngine.RemoverAcentos(idiomaRaw);
-            item.Idioma = idiomaSemAcento == idiomaRaw
-                ? idiomaRaw
-                : $"{idiomaRaw} {idiomaSemAcento}";
+            item.Idioma = TagEngine
+                .FormatarTitulo(taskIdioma.Result ?? "--")
+                .ToLower();
 
             return item;
         }
