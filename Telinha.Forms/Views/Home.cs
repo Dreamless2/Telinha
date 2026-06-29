@@ -229,10 +229,8 @@ namespace Telinha
             AutoresLabel.Enabled = AutoresBox.Enabled = habilitarCamposGerais;
             ShowrunnersLabel.Enabled = ShowrunnersBox.Enabled = habilitarCamposGerais;
             MCUBox.Enabled = !isFilme && !isAnime;
-
             TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
             TipoBox.PlaceholderText = TipoLabel.Text;
-
             LocalBox.Text = item.Local;
             IdiomaBox.Text = item.Idioma;
             ReferenciaBox.Text = item.Referencia;
