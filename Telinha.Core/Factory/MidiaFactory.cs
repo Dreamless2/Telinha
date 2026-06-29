@@ -129,9 +129,6 @@ namespace Telinha.Core.Factory
 
             item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
 
-            File.AppendAllText("D:/temp/telinha_debug.txt",
-                $"Local: {taskPais.Result} | Idioma: {taskIdioma.Result}\n");
-
             item.Idioma = TagEngine
                 .FormatarTitulo(taskIdioma.Result ?? "--")
                 .ToLower();
