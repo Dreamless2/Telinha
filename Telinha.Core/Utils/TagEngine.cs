@@ -111,30 +111,61 @@ namespace Telinha.Core.Utils
             })[..^0].Normalize(NormalizationForm.FormC);
         }*/
 
-        public static string RemoverAcentos(string texto)
+        public static class FastAccentRemover
         {
-            if (string.IsNullOrEmpty(texto))
-                return texto;
+            // Tabela simples para Latin-1 estendido (0–255)
+            // Só cobre o que interessa na maioria dos sistemas PT-BR/ES
+            private static readonly char[] Map = CreateMap();
 
-            var normalized = texto.Normalize(NormalizationForm.FormD);
-
-            int count = 0;
-            foreach (char c in normalized)
+            private static char[] CreateMap()
             {
-                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
-                    count++;
+                var map = new char[256];
+
+                for (int i = 0; i < map.Length; i++)
+                    map[i] = (char)i;
+
+                // PT-BR / ES principais
+                map['á'] = 'a'; map['à'] = 'a'; map['ã'] = 'a'; map['â'] = 'a';
+                map['ä'] = 'a'; map['å'] = 'a';
+
+                map['é'] = 'e'; map['è'] = 'e'; map['ê'] = 'e'; map['ë'] = 'e';
+
+                map['í'] = 'i'; map['ì'] = 'i'; map['î'] = 'i'; map['ï'] = 'i';
+
+                map['ó'] = 'o'; map['ò'] = 'o'; map['õ'] = 'o'; map['ô'] = 'o'; map['ö'] = 'o';
+
+                map['ú'] = 'u'; map['ù'] = 'u'; map['û'] = 'u'; map['ü'] = 'u';
+
+                map['ç'] = 'c';
+
+                // maiúsculas
+                map['Á'] = 'A'; map['À'] = 'A'; map['Ã'] = 'A'; map['Â'] = 'A'; map['Ä'] = 'A';
+                map['É'] = 'E'; map['È'] = 'E'; map['Ê'] = 'E'; map['Ë'] = 'E';
+                map['Í'] = 'I'; map['Ì'] = 'I'; map['Î'] = 'I'; map['Ï'] = 'I';
+                map['Ó'] = 'O'; map['Ò'] = 'O'; map['Õ'] = 'O'; map['Ô'] = 'O'; map['Ö'] = 'O';
+                map['Ú'] = 'U'; map['Ù'] = 'U'; map['Û'] = 'U'; map['Ü'] = 'U';
+                map['Ç'] = 'C';
+
+                return map;
             }
 
-            return string.Create(count, normalized, static (dest, src) =>
+            public static string RemoverAcentos(string input)
             {
-                int idx = 0;
+                if (string.IsNullOrEmpty(input))
+                    return input;
 
-                foreach (char c in src)
+                return string.Create(input.Length, input, static (dest, src) =>
                 {
-                    if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
-                        dest[idx++] = c;
-                }
-            }).Normalize(NormalizationForm.FormC);
+                    ReadOnlySpan<char> span = src.AsSpan();
+
+                    for (int i = 0; i < span.Length; i++)
+                    {
+                        char c = span[i];
+
+                        dest[i] = c < 256 ? Map[c] : c;
+                    }
+                });
+            }
         }
 
         public static string FormatarTitulo(string titulo)
