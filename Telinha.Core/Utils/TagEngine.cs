@@ -90,27 +90,6 @@ namespace Telinha.Core.Utils
                 .Where(n => !string.IsNullOrWhiteSpace(n))
                 .Select(n => $"#{n}"));
         }
-        /*public static string RemoverAcentos(string texto)
-        {
-            if (string.IsNullOrEmpty(texto))
-                return texto;
-
-            var normalized = texto.Normalize(NormalizationForm.FormD);
-            var span = normalized.AsSpan();
-
-            if (span.IndexOfAny(NonSpacingMarks) == -1)
-                return texto;
-
-            return string.Create(normalized.Length, normalized, (dest, src) =>
-            {
-                var destIdx = 0;
-                foreach (var c in src)
-                {
-                    if (!NonSpacingMarks.Contains(c))
-                        dest[destIdx++] = c;
-                }
-            })[..^0].Normalize(NormalizationForm.FormC);
-        }*/
 
         public static class FastAccentRemover
         {
