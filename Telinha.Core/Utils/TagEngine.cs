@@ -130,6 +130,10 @@ namespace Telinha.Core.Utils
                 return $"#{semAcento}";
             }
 
+            var resultadoFinal = semAcento.Equals(comAcento, StringComparison.Ordinal)
+      ? $"#{semAcento}"
+      : $"#{semAcento} #{comAcento}";
+
             try
             {
                 var caminhoDesktop = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "log_tags.txt");
@@ -137,9 +141,7 @@ namespace Telinha.Core.Utils
             }
             catch { /* ignora se falhar */ }
 
-            var resultadoFinal = semAcento.Equals(comAcento, StringComparison.Ordinal)
-        ? $"#{semAcento}"
-        : $"#{semAcento} #{comAcento}";
+
         }
     }
 }
