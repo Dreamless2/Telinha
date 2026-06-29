@@ -99,6 +99,5 @@ namespace Telinha.Core.Controller
             => await DB.Select<T>()
                 .Where("id < @id", new { id })
                 .AnyAsync();
-
     }
 }
