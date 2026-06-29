@@ -9,17 +9,11 @@ namespace Telinha.Core.Services
     {
         private readonly IMemoryCache _memory;
         private readonly ConcurrentDictionary<string, CacheEntry> _disk = new();
-
         private readonly string _path;
         private readonly SemaphoreSlim _fileLock = new(1, 1);
-
         private readonly TimeSpan _memoryTtl = TimeSpan.FromMinutes(30);
-
         private readonly TimeSpan _diskFlushDelay = TimeSpan.FromSeconds(2);
-
         private int _dirtyFlag = 0;
-
-        // versão do schema (evita cache quebrado silencioso)
         private const int CACHE_VERSION = 1;
 
         public FileCacheServices(IMemoryCache memory)
