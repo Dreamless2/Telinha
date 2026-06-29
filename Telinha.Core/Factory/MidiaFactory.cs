@@ -33,7 +33,6 @@ namespace Telinha.Core.Factory
             string titleField = isTV ? "name" : "title";
             string dateField = isTV ? "first_air_date" : "release_date";
             string originalTitleField = isTV ? "original_name" : "original_title";
-
             var releaseDateStr = json[dateField]?.ToString();
             bool hasValidDate = DateTime.TryParse(releaseDateStr, out DateTime releaseDate);
 
