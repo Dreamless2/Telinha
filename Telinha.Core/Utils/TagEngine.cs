@@ -122,8 +122,8 @@ namespace Telinha.Core.Utils
                 if (span.IndexOfAny(NonSpacingMarks) == -1)
                     return texto;
             }
+
             var normalized = texto.Normalize(NormalizationForm.FormD);
-            var span = normalized.AsSpan();
 
             // Não há acentos para remover
             if (span.IndexOfAny(NonSpacingMarks) == -1)
