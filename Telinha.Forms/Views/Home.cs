@@ -349,7 +349,7 @@ namespace Telinha
 
             SetupBindings();
 
-            _cacheService.LimparExpirados();
+            _cacheService.CleanupExpired();
 
             try
             {
