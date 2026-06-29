@@ -133,9 +133,11 @@ namespace Telinha.Core.Factory
                 ? localFormatado
                 : $"{localFormatado} {localSemAcento}";
 
-            item.Idioma = TagEngine
-                .FormatarTitulo(taskIdioma.Result ?? "--")
-                .ToLower();
+            var idiomaFormatado = TagEngine.FormatarTitulo(taskIdioma.Result ?? "--").ToLower();
+            var idiomaSemAcento = TagEngine.RemoverAcentos(idiomaFormatado);
+            item.Idioma = idiomaSemAcento == idiomaFormatado
+                ? idiomaFormatado
+                : $"{idiomaFormatado} {idiomaSemAcento}";
 
             return item;
         }
