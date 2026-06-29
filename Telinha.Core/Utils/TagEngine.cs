@@ -89,7 +89,6 @@ namespace Telinha.Core.Utils
                 .Where(n => !string.IsNullOrWhiteSpace(n))
                 .Select(n => $"#{n}"));
         }
-        /*
         public static string RemoverAcentos(string texto)
         {
             if (string.IsNullOrEmpty(texto))
@@ -111,67 +110,6 @@ namespace Telinha.Core.Utils
                 }
             })[..^0].Normalize(NormalizationForm.FormC);
         }
-        */
-
-        public static string RemoverAcentos(string texto)
-        {
-            if (string.IsNullOrEmpty(texto))
-                return texto;
-
-            // Decompõe os acentos (ex: 'ã' vira 'a' + 'tilde')
-            var textoNormalizado = texto.Normalize(NormalizationForm.FormD);
-            var sb = new StringBuilder();
-
-            foreach (var caractere in textoNormalizado)
-            {
-                var categoriaUnicode = CharUnicodeInfo.GetUnicodeCategory(caractere);
-                // Só mantém o caractere se ele NÃO for um acento/marcação
-                if (categoriaUnicode != UnicodeCategory.NonSpacingMark)
-                {
-                    sb.Append(caractere);
-                }
-            }
-
-            // CRUCIAL: Retorna ao formato padrão do C# (FormC) para que o .Equals() funcione corretamente
-            return sb.ToString().Normalize(NormalizationForm.FormC);
-        }
-
-        public static string FormatarTitulo(string titulo)
-        {
-            if (string.IsNullOrWhiteSpace(titulo))
-                return string.Empty;
-
-            // 1. Remove espaços e caracteres especiais (pontuação, símbolos), MANTENDO as letras com acento.
-            // \p{L} pega qualquer letra (incluindo acentuadas). \p{N} pega números.
-            var comAcento = Regex.Replace(titulo, @"[^\p{L}\p{N}]", "");
-
-            if (string.IsNullOrEmpty(comAcento))
-                return string.Empty;
-
-            // Força a primeira letra a ser Maiúscula (Ex: "japão" vira "Japão")
-            comAcento = char.ToUpper(comAcento[0]) + (comAcento.Length > 1 ? comAcento[1..] : "");
-
-            // 2. Cria a versão sem acento a partir da versão limpa
-            var semAcento = RemoverAcentos(comAcento);
-
-            // 3. Compara de forma estrita (Ordinal). 
-            // Se forem diferentes (ex: "Japao" != "Japão"), retorna as duas tags.
-            if (!semAcento.Equals(comAcento, StringComparison.Ordinal))
-            {
-                return $"#{semAcento} #{comAcento}";
-            }
-
-            // Se forem iguais (ex: "Brasil" == "Brasil"), retorna apenas uma.
-            return $"#{semAcento}";
-        }
-
-
-
-
-
-        /*
-
-
 
         public static string FormatarTitulo(string titulo)
         {
@@ -193,6 +131,6 @@ namespace Telinha.Core.Utils
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
                 ? $"#{semAcento}"
                 : $"#{semAcento} #{comAcento}";
-        }*/
+        }
     }
 }
