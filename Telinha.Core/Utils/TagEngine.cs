@@ -111,7 +111,7 @@ namespace Telinha.Core.Utils
             })[..^0].Normalize(NormalizationForm.FormC);
         }
 
-        public static string FormatarTitulo(string titulo)
+        /*public static string FormatarTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
                 return string.Empty;
@@ -131,6 +131,8 @@ namespace Telinha.Core.Utils
             return semAcento.Equals(comAcento, StringComparison.Ordinal)
                 ? $"#{semAcento}"
                 : $"#{semAcento} #{comAcento}";
-        }
+        }*/
+
+        public static string FormatarTitulo(sytrin)
     }
 }
