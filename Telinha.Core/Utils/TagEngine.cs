@@ -117,10 +117,12 @@ namespace Telinha.Core.Utils
                 return string.Empty;
 
             var tituloNormalizado = titulo.Normalize(NormalizationForm.FormC);
+
             var apenasTexto = RegexNaoAlfaNumEspaco.Replace(tituloNormalizado, "");
             var semEspacos = apenasTexto.Replace(" ", "");
 
-            if (semEspacos.Length == 0) return string.Empty;
+            if (semEspacos.Length == 0)
+                return string.Empty;
 
             var comAcento = semEspacos.Length > 1
                ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
@@ -128,9 +130,15 @@ namespace Telinha.Core.Utils
 
             var semAcento = RemoverAcentos(comAcento);
 
-            return semAcento.Equals(comAcento, StringComparison.Ordinal)
-                ? $"#{semAcento}"
-                : $"#{semAcento} #{comAcento}";
+            // CORREÇÃO CRUCIAL AQUI: 
+            // Usamos 'StringComparison.InvariantCulture' para o C# entender que "ã" é linguisticamente diferente de "a",
+            // ignorando qualquer bagunça que o FormD/FormC tenham feito nos bytes secundários.
+            if (semAcento.Equals(comAcento, StringComparison.InvariantCulture))
+            {
+                return $"#{semAcento}";
+            }
+
+            return $"#{semAcento} #{comAcento}";
         }
     }
 }
