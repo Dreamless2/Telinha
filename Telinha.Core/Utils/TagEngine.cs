@@ -130,7 +130,7 @@ namespace Telinha.Core.Utils
                 return $"#{semAcento}";
             }
 
-            return $"#{semAcento} #{comAcento}";
+            return $"#{semAcento},#{comAcento}";
         }
     }
 }
