@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using Newtonsoft.Json;
 using System.Collections.Concurrent;
 using Telinha.Core.Models;
 
