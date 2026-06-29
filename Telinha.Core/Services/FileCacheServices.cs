@@ -22,7 +22,7 @@ namespace Telinha.Core.Services
         // versão do schema (evita cache quebrado silencioso)
         private const int CACHE_VERSION = 1;
 
-        public FileCacheV2Service(IMemoryCache memory)
+        public FileCacheServices(IMemoryCache memory)
         {
             _memory = memory;
             _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmdb_cache_v2.json");
