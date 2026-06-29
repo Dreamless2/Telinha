@@ -129,8 +129,6 @@ namespace Telinha.Core.Factory
 
             item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
 
-            System.Diagnostics.Debug.WriteLine(item.Local);
-
             item.Idioma = TagEngine
                 .FormatarTitulo(taskIdioma.Result ?? "--")
                 .ToLower();
