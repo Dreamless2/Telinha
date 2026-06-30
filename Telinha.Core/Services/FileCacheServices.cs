@@ -67,10 +67,6 @@ namespace Telinha.Core.Services
 
             await MarkDirty();
         }
-
-        // =========================
-        // DISK LOAD
-        // =========================
         private void LoadFromDisk()
         {
             if (!File.Exists(_path))
@@ -99,10 +95,6 @@ namespace Telinha.Core.Services
                 _disk.Clear();
             }
         }
-
-        // =========================
-        // WRITE BATCH (CORE FIX)
-        // =========================
         private async Task MarkDirty()
         {
             if (Interlocked.Exchange(ref _dirtyFlag, 1) == 1)
@@ -116,7 +108,6 @@ namespace Telinha.Core.Services
                 Interlocked.Exchange(ref _dirtyFlag, 0);
             });
         }
-
         private async Task FlushToDisk()
         {
             await _fileLock.WaitAsync();
