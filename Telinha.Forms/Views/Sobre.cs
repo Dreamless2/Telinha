@@ -20,6 +20,7 @@ namespace Telinha.Views
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
 
+        #region Mover Form
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
