@@ -76,6 +76,7 @@ namespace Telinha
             };
         }
 
+        #region Mover Form
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -620,4 +621,4 @@ namespace Telinha
     }
     #endregion
 }
-    #endregion
+        #endregion
