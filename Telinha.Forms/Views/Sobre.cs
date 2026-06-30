@@ -15,11 +15,14 @@ namespace Telinha.Views
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         #endregion
+
+        #region Constructor
         public Sobre()
         {
             InitializeComponent();
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
+        #endregion
 
         #region Mover Form
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
