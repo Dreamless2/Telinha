@@ -29,6 +29,7 @@ namespace Telinha.Views
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+        #endregion
 
         private void LinkTMDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
