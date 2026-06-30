@@ -35,13 +35,13 @@
             PanelTopTitle = new Panel();
             label1 = new Label();
             panel1 = new Panel();
+            label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             SobreButton = new Button();
-            label5 = new Label();
             PanelBottom.SuspendLayout();
             PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
@@ -56,19 +56,19 @@
             PanelBottom.Dock = DockStyle.Bottom;
             PanelBottom.Location = new Point(0, 424);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(565, 44);
+            PanelBottom.Size = new Size(537, 44);
             PanelBottom.TabIndex = 5;
             // 
             // LinkTMDB
             // 
             LinkTMDB.AutoSize = true;
             LinkTMDB.LinkColor = Color.White;
-            LinkTMDB.Location = new Point(225, 15);
+            LinkTMDB.Location = new Point(251, 15);
             LinkTMDB.Name = "LinkTMDB";
-            LinkTMDB.Size = new Size(114, 15);
+            LinkTMDB.Size = new Size(62, 15);
             LinkTMDB.TabIndex = 15;
             LinkTMDB.TabStop = true;
-            LinkTMDB.Text = "The Movie Database";
+            LinkTMDB.Text = "Site TMDB";
             LinkTMDB.LinkClicked += LinkTMDB_LinkClicked;
             // 
             // PanelTopBar
@@ -77,7 +77,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 0);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(565, 29);
+            PanelTopBar.Size = new Size(537, 29);
             PanelTopBar.TabIndex = 4;
             // 
             // PanelTopTitle
@@ -87,7 +87,7 @@
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 29);
             PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(565, 58);
+            PanelTopTitle.Size = new Size(537, 58);
             PanelTopTitle.TabIndex = 6;
             // 
             // label1
@@ -113,14 +113,24 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 87);
             panel1.Name = "panel1";
-            panel1.Size = new Size(565, 337);
+            panel1.Size = new Size(537, 337);
             panel1.TabIndex = 7;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(319, 113);
+            label5.Name = "label5";
+            label5.Size = new Size(205, 21);
+            label5.TabIndex = 15;
+            label5.Text = "Desenvolvido por Tiago.NET";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(313, 86);
+            label4.Location = new Point(319, 85);
             label4.Name = "label4";
             label4.Size = new Size(104, 21);
             label4.TabIndex = 14;
@@ -130,7 +140,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(313, 20);
+            label3.Location = new Point(307, 20);
             label3.Name = "label3";
             label3.Size = new Size(190, 65);
             label3.TabIndex = 13;
@@ -159,7 +169,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Forms.Properties.Resources.tmdb;
-            pictureBox1.Location = new Point(313, 136);
+            pictureBox1.Location = new Point(317, 136);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(205, 78);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -172,7 +182,7 @@
             SobreButton.FlatAppearance.BorderSize = 0;
             SobreButton.FlatStyle = FlatStyle.Flat;
             SobreButton.ForeColor = Color.White;
-            SobreButton.Location = new Point(192, 262);
+            SobreButton.Location = new Point(192, 274);
             SobreButton.Name = "SobreButton";
             SobreButton.Size = new Size(180, 41);
             SobreButton.TabIndex = 9;
@@ -180,21 +190,11 @@
             SobreButton.UseVisualStyleBackColor = false;
             SobreButton.Click += SobreButton_Click;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(313, 112);
-            label5.Name = "label5";
-            label5.Size = new Size(205, 21);
-            label5.TabIndex = 15;
-            label5.Text = "Desenvolvido por Tiago.NET";
-            // 
             // Sobre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 468);
+            ClientSize = new Size(537, 468);
             Controls.Add(panel1);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
