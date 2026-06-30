@@ -52,6 +52,7 @@ namespace Telinha
             AnteriorButton.Click += AnteriorButton_Click!;
             ProximoButton.Click += ProximoButton_Click!;
             SobreButton.Click += SobreButton_Click!;
+            
             ConectarEventos();
             _mapeamentoCampos = new Dictionary<string, TextBox>
             {
