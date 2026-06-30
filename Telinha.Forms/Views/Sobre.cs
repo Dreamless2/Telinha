@@ -32,6 +32,7 @@ namespace Telinha.Views
         }
         #endregion
 
+        #region Link
         private void LinkTMDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -49,6 +50,7 @@ namespace Telinha.Views
                 MessageBox.Show("Não foi possível abrir o link: " + ex.Message);
             }
         }
+        #endregion
 
         #region Sobre Button
 
