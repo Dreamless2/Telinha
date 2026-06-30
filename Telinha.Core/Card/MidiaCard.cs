@@ -56,19 +56,16 @@ namespace Telinha.Core.Card
 
             sb.AppendLine($"**Sinopse:** __{_sinopse}__" + Environment.NewLine);
 
-            // Bloco de Identidade
             sb.AppendLine($"**Nome Original:** __{_original}__");
             sb.AppendLine($"**Nome alternativo:** __{_alternativo}__");
             sb.AppendLine($"**Data de Estreia:** __{_lancamento}__");
 
-            // Bloco de Origem (Só para Séries e Animes)
             if (_tipo != MidiaTipo.Filme)
             {
                 sb.AppendLine($"**Local de Produção:** {_local}");
                 sb.AppendLine($"**Idioma:** {_idioma}");
             }
 
-            // Bloco Dinâmico
             string labelTipo = _tipo switch
             {
                 MidiaTipo.Filme => "Filme",
@@ -79,7 +76,6 @@ namespace Telinha.Core.Card
             sb.AppendLine($"**{labelTipo}:** __{_titulo}__");
             sb.AppendLine($"**Franquia:** {_franquia}");
 
-            // Bloco de Autoria (Só Séries e Animes)
             if (_tipo != MidiaTipo.Filme)
             {
                 sb.AppendLine($"**Autores:** {_autores}");
@@ -87,12 +83,10 @@ namespace Telinha.Core.Card
                 sb.AppendLine($"**Obra de Referência:** __{_referencia}__");
             }
 
-            // Bloco Final Comum
             sb.AppendLine($"**Gênero:** {_genero}");
             sb.AppendLine($"**Tags:** {_tags}");
             sb.AppendLine($"**Diretor:** {_diretor}");
 
-            // Bloco MCU (Filme e Série)
             if (_tipo != MidiaTipo.Anime)
             {
                 sb.AppendLine($"**Fase MCU:** {_mcu}");
