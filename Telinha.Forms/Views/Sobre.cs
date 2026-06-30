@@ -50,10 +50,13 @@ namespace Telinha.Views
             }
         }
 
+        #region Sobre Button
+
         private void SobreButton_Click(object sender, EventArgs e)
         {
             Hide();
         }
+        #endregion
     }
     #endregion
 }
