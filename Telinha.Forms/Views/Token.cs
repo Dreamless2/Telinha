@@ -39,6 +39,8 @@ namespace Telinha
             txt.SelectionStart = 0;
             txt.SelectionLength = 0;
         }
+
+        #region Salvar Button
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try
@@ -80,7 +82,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao salvar:\n{ex.Message}");
             }
         }
-#endregion
+        #endregion
 
         #region Sair Button
         private void SairButton_Click(object sender, EventArgs e)
