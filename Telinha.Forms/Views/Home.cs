@@ -28,9 +28,8 @@ namespace Telinha
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
 
-        [LibraryImport("user32.dll", EntryPoint = "ReleaseCaptureA")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static partial bool ReleaseCapture();
+        [DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
 
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
