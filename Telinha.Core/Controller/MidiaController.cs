@@ -32,10 +32,8 @@ namespace Telinha.Core.Controller
         public static async Task<(bool inserted, bool updated)> SaveAsync<T>(T item) where T : class
         {
             var type = typeof(T);
-
             var propCodigo = GetCodigoProp(type);
             var propId = GetIdProp(type);
-
             var codigoValue = propCodigo?.GetValue(item)?.ToString();
 
             if (string.IsNullOrWhiteSpace(codigoValue))
