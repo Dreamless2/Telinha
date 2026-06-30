@@ -1,7 +1,20 @@
-﻿namespace Telinha.Views
+﻿using System.Runtime.InteropServices;
+
+namespace Telinha.Views
 {
     public partial class Sobre : Form
     {
+
+        #region Low Level
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HT_CAPTION = 0x2;
+
+        [DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        #endregion
         public Sobre()
         {
             InitializeComponent();
