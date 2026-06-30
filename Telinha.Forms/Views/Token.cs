@@ -34,6 +34,8 @@ namespace Telinha
             UsuarioBox.TextChanged += (s, e) => Hidden(UsuarioBox);
             SenhaBox.TextChanged += (s, e) => Hidden(SenhaBox);
         }
+
+        #region Hidden
         private static void Hidden(TextBoxBase txt)
         {
             txt.SelectionStart = 0;
