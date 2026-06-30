@@ -89,7 +89,6 @@ namespace Telinha.Core.Controller
             => await DB.Select<T>()
                 .Where("id > @id", new { id })
                 .AnyAsync();
-
         public static async Task<bool> ExistsPrevious<T>(long id) where T : class
             => await DB.Select<T>()
                 .Where("id < @id", new { id })
