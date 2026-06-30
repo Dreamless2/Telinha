@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel;
+using System.Runtime.InteropServices;
 using Telinha.Core.Card;
 using Telinha.Core.Controller;
 using Telinha.Core.Enums;
 using Telinha.Core.Helpers;
 using Telinha.Core.Models;
 using Telinha.Core.Services;
-using Telinha.Views;
 using Telinha.Forms.Extras;
+using Telinha.Views;
 
 namespace Telinha
 {
@@ -24,7 +25,14 @@ namespace Telinha
         #endregion
 
 
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HT_CAPTION = 0x2;
 
+        [DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         #region Constructor
         public Home(FileCacheServices cacheServices, MidiaServices midiaService)
