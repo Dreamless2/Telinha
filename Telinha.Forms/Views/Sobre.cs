@@ -2,6 +2,7 @@
 
 namespace Telinha.Views
 {
+    #region Form
     public partial class Sobre : Form
     {
         #region Low Level
