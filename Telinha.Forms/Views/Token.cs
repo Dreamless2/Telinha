@@ -41,6 +41,7 @@ namespace Telinha
             txt.SelectionStart = 0;
             txt.SelectionLength = 0;
         }
+        #endregion
 
         #region Salvar Button
         private async void SalvarButton_Click(object sender, EventArgs e)
