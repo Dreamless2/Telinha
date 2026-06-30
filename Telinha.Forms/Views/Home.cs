@@ -608,7 +608,7 @@ namespace Telinha
         private void SobreButton_Click(object sender, EventArgs e)
         {
             var sobreForm = new Sobre();
-            sobreForm.ShowDialog();
+            sobreForm.Show();
         }
         #endregion
 
