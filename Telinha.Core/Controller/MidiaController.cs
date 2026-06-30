@@ -6,7 +6,6 @@ namespace Telinha.Core.Controller
     public static class MidiaController
     {
         private static IFreeSql DB => Database.DB;
-
         private static readonly Dictionary<Type, PropertyInfo?> _codigoCache = [];
         private static readonly Dictionary<Type, PropertyInfo?> _idCache = [];
 
