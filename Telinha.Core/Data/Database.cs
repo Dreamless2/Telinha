@@ -7,7 +7,6 @@ namespace Telinha.Core.Data
     {
         private static IFreeSql? _db;
         private static readonly Lock _lock = new();
-
         private static string? _connStr;
         private static readonly AppConfigServices _configService = new();
 
@@ -27,7 +26,6 @@ namespace Telinha.Core.Data
                 return _db!;
             }
         }
-
         private static string BuildConnectionString()
         {
             if (_connStr != null)
