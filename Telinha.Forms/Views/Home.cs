@@ -21,8 +21,10 @@ namespace Telinha
         private readonly BindingSource _bs = [];
         private bool _buscando;
         private readonly Dictionary<string, TextBox> _mapeamentoCampos;
-
         #endregion
+
+
+
 
         #region Constructor
         public Home(FileCacheServices cacheServices, MidiaServices midiaService)
