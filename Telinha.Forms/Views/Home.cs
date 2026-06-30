@@ -11,22 +11,6 @@ using Telinha.Views;
 
 namespace Telinha
 {
-    #region 
-    private const int WM_NCLBUTTONDOWN = 0xA1;
-    private const int HT_CAPTION = 0x2;
-
-    [DllImport("user32.dll")]
-    private static extern bool ReleaseCapture();
-
-    [DllImport("user32.dll")]
-    private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-    #endregion
-
-
-
-
-
     #region Form
     public partial class Home : Form
     {
@@ -38,6 +22,17 @@ namespace Telinha
         private readonly BindingSource _bs = [];
         private bool _buscando;
         private readonly Dictionary<string, TextBox> _mapeamentoCampos;
+        #endregion
+
+        #region Low Level
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HT_CAPTION = 0x2;
+
+        [DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         #endregion
 
 
