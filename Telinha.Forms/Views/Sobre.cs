@@ -55,5 +55,5 @@ namespace Telinha.Views
             Hide();
         }
     }
-#
+    #endregion
 }
