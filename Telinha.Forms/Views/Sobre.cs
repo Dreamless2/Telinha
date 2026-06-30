@@ -4,7 +4,6 @@ namespace Telinha.Views
 {
     public partial class Sobre : Form
     {
-
         #region Low Level
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
