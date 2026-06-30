@@ -121,10 +121,6 @@ namespace Telinha.Core.Services
                 _fileLock.Release();
             }
         }
-
-        // =========================
-        // CLEANUP
-        // =========================
         public void CleanupExpired()
         {
             var now = DateTime.UtcNow;
@@ -137,10 +133,6 @@ namespace Telinha.Core.Services
 
             _ = MarkDirty();
         }
-
-        // =========================
-        // ENTRY MODEL
-        // =========================
         private class CacheEntry
         {
             public MidiaModel Model { get; set; } = default!;
