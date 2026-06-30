@@ -52,7 +52,7 @@ namespace Telinha
             AnteriorButton.Click += AnteriorButton_Click!;
             ProximoButton.Click += ProximoButton_Click!;
             SobreButton.Click += SobreButton_Click!;
-            
+            PanelTopBar.MouseDown += PanelTopBar_MouseDown;
             ConectarEventos();
             _mapeamentoCampos = new Dictionary<string, TextBox>
             {
@@ -76,6 +76,11 @@ namespace Telinha
                 [nameof(MidiaModel.Artistas)] = ArtistasBox,
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
+        }
+
+        private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
