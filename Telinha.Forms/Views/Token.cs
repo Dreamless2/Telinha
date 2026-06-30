@@ -80,6 +80,8 @@ namespace Telinha
                 MessageBox.Show($"Erro ao salvar:\n{ex.Message}");
             }
         }
+#endregion
+
         #region Sair Button
         private void SairButton_Click(object sender, EventArgs e)
         {
