@@ -49,7 +49,6 @@ namespace Telinha.Core.Data
 
             return _connStr;
         }
-
         private static void Initialize()
         {
             var connStr = BuildConnectionString();
