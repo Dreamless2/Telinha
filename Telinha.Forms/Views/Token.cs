@@ -80,6 +80,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao salvar:\n{ex.Message}");
             }
         }
+        #region Sair Button
         private void SairButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -87,5 +88,6 @@ namespace Telinha
                 Application.Exit();
             }
         }
+        #endregion
     }
 }
