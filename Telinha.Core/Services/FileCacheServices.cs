@@ -24,9 +24,6 @@ namespace Telinha.Core.Services
             LoadFromDisk();
         }
 
-        // =========================
-        // GET (lock-free hot path)
-        // =========================
         public Task<MidiaModel?> GetAsync(string key)
         {
             if (_memory.TryGetValue(key, out MidiaModel? mem))
@@ -48,9 +45,6 @@ namespace Telinha.Core.Services
             return Task.FromResult<MidiaModel?>(null);
         }
 
-        // =========================
-        // SET
-        // =========================
         public async Task SetAsync(string key, MidiaModel model, TimeSpan diskTtl)
         {
             _memory.Set(key, model, _memoryTtl);
@@ -66,10 +60,6 @@ namespace Telinha.Core.Services
 
             await MarkDirty();
         }
-
-        // =========================
-        // REMOVE
-        // =========================
         public async Task RemoveAsync(string key)
         {
             _memory.Remove(key);
