@@ -80,7 +80,11 @@ namespace Telinha
 
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
         #endregion
 
