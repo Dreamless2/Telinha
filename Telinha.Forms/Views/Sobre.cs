@@ -18,7 +18,12 @@ namespace Telinha.Views
         public Sobre()
         {
             InitializeComponent();
-            PanelTopBar.MouseDown +=
+            PanelTopBar.MouseDown += PanelTopBar_MouseDown;
+        }
+
+        private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void LinkTMDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
