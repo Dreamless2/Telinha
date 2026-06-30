@@ -58,8 +58,6 @@ namespace Telinha.Core.Controller
 
             return (false, rows > 0);
         }
-
-        // --- CONSULTAS ---
         public static async Task<T?> GetByIdAsync<T>(long id) where T : class
             => await DB.Select<T>()
                 .WhereDynamic(new { Id = id })
