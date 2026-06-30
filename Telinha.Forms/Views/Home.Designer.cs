@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             PanelTopBar = new Panel();
             PanelTopTitle = new Panel();
             label1 = new Label();
             PanelBottom = new Panel();
             PanelButtons = new Panel();
+            SobreButton = new Button();
             SairButton = new Button();
             ProximoButton = new Button();
             AnteriorButton = new Button();
@@ -81,7 +83,6 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
-            SobreButton = new Button();
             PanelTopTitle.SuspendLayout();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
@@ -139,6 +140,19 @@
             PanelButtons.Name = "PanelButtons";
             PanelButtons.Size = new Size(1381, 85);
             PanelButtons.TabIndex = 6;
+            // 
+            // SobreButton
+            // 
+            SobreButton.BackColor = Color.FromArgb(4, 52, 72);
+            SobreButton.FlatAppearance.BorderSize = 0;
+            SobreButton.FlatStyle = FlatStyle.Flat;
+            SobreButton.ForeColor = Color.White;
+            SobreButton.Location = new Point(929, 22);
+            SobreButton.Name = "SobreButton";
+            SobreButton.Size = new Size(180, 41);
+            SobreButton.TabIndex = 8;
+            SobreButton.Text = "Sobre";
+            SobreButton.UseVisualStyleBackColor = false;
             // 
             // SairButton
             // 
@@ -615,19 +629,6 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
-            // SobreButton
-            // 
-            SobreButton.BackColor = Color.FromArgb(4, 52, 72);
-            SobreButton.FlatAppearance.BorderSize = 0;
-            SobreButton.FlatStyle = FlatStyle.Flat;
-            SobreButton.ForeColor = Color.White;
-            SobreButton.Location = new Point(929, 22);
-            SobreButton.Name = "SobreButton";
-            SobreButton.Size = new Size(180, 41);
-            SobreButton.TabIndex = 8;
-            SobreButton.Text = "Sobre";
-            SobreButton.UseVisualStyleBackColor = false;
-            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -640,6 +641,7 @@
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelTopBar);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(1, 2, 1, 2);
             MaximizeBox = false;
             MinimumSize = new Size(66, 39);
