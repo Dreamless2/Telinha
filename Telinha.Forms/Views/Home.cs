@@ -35,8 +35,6 @@ namespace Telinha
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         #endregion
 
-
-
         #region Constructor
         public Home(FileCacheServices cacheServices, MidiaServices midiaService)
         {
