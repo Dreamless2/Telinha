@@ -427,7 +427,7 @@ namespace Telinha
 
             var codigoDigitado = CodigoBox.Text.Trim();
 
-            LogServices.LogarInformacao("VIEW: Enter pressionado. Código: {codigo}, TipoLabel: {tipo}", codigoDigitado, TipoLabel.Text); // 🔥 LOG 1
+            LogServices.LogarInformacao("VIEW: Enter pressionado. Código: {codigo}, TipoLabel: {tipo}", codigoDigitado, TipoLabel.Text);
 
             if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
             {
@@ -437,7 +437,7 @@ namespace Telinha
 
             if (_buscando)
             {
-                LogServices.LogarInformacao("VIEW: Busca ignorada - já está buscando"); // 🔥 LOG 2
+                LogServices.LogarInformacao("VIEW: Busca ignorada - já está buscando");
                 return;
             }
 
