@@ -235,10 +235,10 @@ namespace Telinha
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
-            item.Local = isFilme ? "--" : (item.Local ?? "--");
-            item.Idioma = isFilme ? "--" : (item.Idioma ?? "--");
-            item.Referencia = isFilme ? "--" : (item.Referencia ?? "--");
-            item.Autores = isFilme ? "--" : (item.Autores ?? "--");
+            item.Local = isFilme ? "--" : (item.Local ?? "");
+            item.Idioma = isFilme ? "--" : (item.Idioma ?? "");
+            item.Referencia = isFilme ? "--" : (item.Referencia ?? "");
+            item.Autores = isFilme ? "--" : (item.Autores ?? "");
             item.Showrunners = isFilme ? "--" : (item.Showrunners ?? "");
             item.Franquia = isFilme ? "--" : (item.Franquia ?? "");
             item.MCU = isFilme || isAnime ? "--" : (item.MCU ?? "");
