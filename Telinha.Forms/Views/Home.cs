@@ -239,9 +239,9 @@ namespace Telinha
             item.Idioma = isFilme ? "--" : (item.Idioma ?? "--");
             item.Referencia = isFilme ? "--" : (item.Referencia ?? "--");
             item.Autores = isFilme ? "--" : (item.Autores ?? "--");
-            item.Showrunners = isFilme ? "--" : (item.Showrunners ?? "--");
-            item.Franquia = isFilme ? "--" : (item.Franquia ?? "--");
-            item.MCU = isFilme || isAnime ? "--" : (item.MCU ?? "--");
+            item.Showrunners = isFilme ? "--" : (item.Showrunners ?? "");
+            item.Franquia = isFilme ? "--" : (item.Franquia ?? "");
+            item.MCU = isFilme || isAnime ? "--" : (item.MCU ?? "");
 
             bool habilitarCamposGerais = !isFilme;
 
