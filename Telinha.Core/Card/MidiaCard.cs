@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Telinha.Core.Enums;
+using Telinha.Core.Utils;
 
 namespace Telinha.Core.Card
 {
@@ -73,7 +74,7 @@ namespace Telinha.Core.Card
                 _ => "Anime"
             };
 
-            sb.AppendLine($"**{labelTipo}:** #{_titulo}");
+            sb.AppendLine($"**{labelTipo}:** #{TagEngine.FormatarTitulo(_titulo)}");
             sb.AppendLine($"**Franquia:** {_franquia}");
 
             if (_tipo != MidiaTipo.Filme)
