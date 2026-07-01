@@ -258,6 +258,8 @@ namespace Telinha
             ReferenciaBox.Text = item.Referencia;
             AutoresBox.Text = item.Autores;
             ShowrunnersBox.Text = item.Showrunners;
+            FranquiaBox.Text = item.Franquia;
+            MCUBox.Text = item.MCU;
 
             if (isAnime)
             {
