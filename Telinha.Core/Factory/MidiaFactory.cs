@@ -71,7 +71,7 @@ namespace Telinha.Core.Factory
                 string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? []) ?? "--"
             );
 
-            var tituloFormatado = TagEngine.FormatarTitulo(item.Nome);
+            var tituloFormatado = TagEngine.FormatarTitulo(tag item.Nome);
 
             if (tipoDetectado == MidiaTipo.Anime)
             {
