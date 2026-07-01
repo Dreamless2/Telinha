@@ -74,7 +74,7 @@ namespace Telinha.Core.Card
                 _ => "Anime"
             };
 
-            sb.AppendLine($"**{labelTipo}:** #{TagEngine.FormatarTitulo(_titulo)}");
+            sb.AppendLine($"**{labelTipo}:** {TagEngine.FormatarTitulo(_titulo)}");
             sb.AppendLine($"**Franquia:** {_franquia}");
 
             if (_tipo != MidiaTipo.Filme)
