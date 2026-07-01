@@ -483,7 +483,7 @@ namespace Telinha
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao buscar a mídia:\n{ex.Message}", "Erro na Busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LogServices.LogarErroComException(ex, "VIEW: Erro ao buscar mídia ID {id}", id); // 🔥 LOG 6
+                LogServices.LogarErroComException(ex, "VIEW: Erro ao buscar mídia ID {id}", id);
             }
             finally
             {
