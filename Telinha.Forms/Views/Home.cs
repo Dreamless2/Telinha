@@ -459,6 +459,7 @@ namespace Telinha
 
                 var midia = await _midiaService.GetMidia(id);
 
+                if (string.IsNullOrWhiteSpace(midia.TituloFinal))
                 {
                     midia.TituloFinal = midia.NomeFormatado;
                 }
