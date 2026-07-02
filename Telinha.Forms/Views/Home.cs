@@ -159,10 +159,10 @@ namespace Telinha
         #endregion
 
         #region Preencher Máscara
-        private void PreencherMascara(MidiaTipo )
+        private void PreencherMascara(MidiaTipo midiaTipo)
         {
             var card = new MidiaCard(
-                tipo,
+                midiaTipo,
                 titulo: NomeBox.Text,
                 audio: AudioBox.Text,
                 sinopse: SinopseBox.Text,
