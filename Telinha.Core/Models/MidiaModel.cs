@@ -14,7 +14,6 @@ namespace Telinha.Core.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
         {
             if (EqualityComparer<T>.Default.Equals(field, value))
