@@ -195,10 +195,6 @@ namespace Telinha.Core.Models
             set => SetField(ref _tipoSolicitado, value);
         }
 
-        // =========================
-        // 🔥 CAMPOS INTELIGENTES
-        // =========================
-
         [Column(IsIgnore = true)]
         public List<string>? GenerosLista { get; set; }
 
