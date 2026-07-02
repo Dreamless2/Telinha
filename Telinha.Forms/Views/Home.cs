@@ -325,14 +325,14 @@ namespace Telinha
                        || tipoNormalizado?.Equals("Anime", StringComparison.OrdinalIgnoreCase) == true;
 
             var camposOpcionaisPorTipo = new HashSet<string>
-{
-nameof(midia.Referencia),
-nameof(midia.Autores),
-nameof(midia.Alternativo),
-nameof(midia.Franquia),
-nameof(midia.Showrunners),
-nameof(midia.MCU),
-};
+            {
+                nameof(midia.Referencia),
+                nameof(midia.Autores),
+                nameof(midia.Alternativo),
+                nameof(midia.Franquia),
+                nameof(midia.Showrunners),
+                nameof(midia.MCU),
+            };
 
             foreach (var kvp in _mapeamentoCampos)
             {
