@@ -216,10 +216,6 @@ namespace Telinha.Core.Models
         [Column(IsIgnore = true)]
         public int Votos { get; set; }
 
-        // =========================
-        // 🔥 PROPRIEDADES DERIVADAS
-        // =========================
-
         [Column(IsIgnore = true)]
         public bool EhAnimacao =>
             GenerosLista?.Any(g =>
