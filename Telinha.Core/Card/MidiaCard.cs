@@ -5,7 +5,7 @@ using Telinha.Core.Utils;
 namespace Telinha.Core.Card
 {
     public class MidiaCard(
-        MidiaTipo tipo,
+        MidiaTipo type,
         string titulo,
         string audio = "",
         string sinopse = "",
