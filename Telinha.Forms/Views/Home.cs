@@ -459,6 +459,10 @@ namespace Telinha
 
                 var midia = await _midiaService.GetMidia(id);
 
+                {
+                    midia.TituloFinal = midia.NomeFormatado;
+                }
+
                 LogServices.LogarInformacao("VIEW: Busca ignorada - já está buscando");
 
                 if (midia == null)
