@@ -211,7 +211,7 @@ namespace Telinha
         #endregion
 
         #region Qualquer Alteração
-        /*private void QualquerAlteracao(object sender, EventArgs e)
+        private void QualquerAlteracao(object sender, EventArgs e)
         {
             if (TipoLabel.Text == "Filme")
             {
@@ -222,24 +222,6 @@ namespace Telinha
                 PreencherMascara(MidiaTipo.Serie);
             }
             else if (TipoLabel.Text == "Anime")
-            {
-                PreencherMascara(MidiaTipo.Anime);
-            }
-        }*/
-        private void QualquerAlteracao(object sender, EventArgs e)
-        {
-            // Prioriza o texto que está no campo TipoBox; se estiver vazio, usa o TipoLabel
-            string tipoAtual = !string.IsNullOrWhiteSpace(TipoBox.Text) ? TipoBox.Text : TipoLabel.Text;
-
-            if (tipoAtual.Contains("Filme", StringComparison.OrdinalIgnoreCase))
-            {
-                PreencherMascara(MidiaTipo.Filme);
-            }
-            else if (tipoAtual.Contains("Série", StringComparison.OrdinalIgnoreCase) || tipoAtual.Contains("Serie", StringComparison.OrdinalIgnoreCase))
-            {
-                PreencherMascara(MidiaTipo.Serie);
-            }
-            else if (tipoAtual.Contains("Anime", StringComparison.OrdinalIgnoreCase))
             {
                 PreencherMascara(MidiaTipo.Anime);
             }
