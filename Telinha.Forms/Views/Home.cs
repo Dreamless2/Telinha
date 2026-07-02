@@ -163,7 +163,7 @@ namespace Telinha
         {
             var card = new MidiaCard(
                 midiaTipo,
-                titulo: TipoBox.Text,
+                titulo: NomeBox.Text,
                 audio: AudioBox.Text,
                 sinopse: SinopseBox.Text,
                 original: OriginalBox.Text,
