@@ -232,6 +232,8 @@ namespace Telinha.Core.Models
         public bool EhChines => IdiomaOriginal?.Equals("zh", StringComparison.OrdinalIgnoreCase) == true;
 
         private string? _tituloFinal;
+
+        [Column(IsIgnore = true)]
         public string? TituloFinal
         {
             get => _tituloFinal;
