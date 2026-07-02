@@ -159,7 +159,7 @@ namespace Telinha
         #endregion
 
         #region Preencher Máscara
-        private void PreencherMascara(MidiaTipo tipo)
+        private void PreencherMascara(MidiaTipo )
         {
             var card = new MidiaCard(
                 tipo,
