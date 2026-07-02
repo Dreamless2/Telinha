@@ -25,7 +25,7 @@ namespace Telinha.Core.Card
         string showrunners = "",
         string referencia = "")
     {
-        private readonly MidiaTipo _tipo = tipo;
+        private readonly MidiaTipo _tipo = midiaTipo;
         private readonly string _titulo = titulo ?? "";
         private readonly string _audio = audio ?? "";
         private readonly string _sinopse = sinopse ?? "";
