@@ -329,6 +329,7 @@ namespace Telinha
             var lista = new BindingList<MidiaModel>();
             _bs.DataSource = lista;
 
+            SetupBindings();
 
             try
             {
