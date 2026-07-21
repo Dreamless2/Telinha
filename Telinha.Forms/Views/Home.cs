@@ -635,8 +635,5 @@ namespace Telinha
         {
             Application.Exit();
         }
-        #endregion
     }
-        #endregion
 }
-#endregion
