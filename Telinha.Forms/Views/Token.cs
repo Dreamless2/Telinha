@@ -3,7 +3,6 @@ using Telinha.Core.Services;
 
 namespace Telinha
 {
-    #region Form
     public partial class Token : Form
     {
         #region Variáveis
@@ -102,5 +101,5 @@ namespace Telinha
         }
         #endregion
     }
-    #endregion
+#endregion
 }
