@@ -150,7 +150,7 @@ namespace Telinha
         {
             if (RadioFilmes.Checked) return MediaType.Filme;
             if (RadioAnimes.Checked) return MediaType.Anime;
-            return MediaType.Serie;
+            return MidiaTipo.Serie;
         }
 
         private void SetSelectedType(MediaType type)
