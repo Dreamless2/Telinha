@@ -78,30 +78,6 @@ namespace Telinha
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        private void SetupBindings()
-        {
-            _bs.DataSource = new MidiaModel();
-            CodigoBox.DataBindings.Add("Text", _bs, "Codigo", false, DataSourceUpdateMode.OnPropertyChanged);
-            NomeBox.DataBindings.Add("Text", _bs, "Nome", false, DataSourceUpdateMode.OnPropertyChanged);
-            AudioBox.DataBindings.Add("Text", _bs, "Audio", false, DataSourceUpdateMode.OnPropertyChanged);
-            SinopseBox.DataBindings.Add("Text", _bs, "Sinopse", false, DataSourceUpdateMode.OnPropertyChanged);
-            OriginalBox.DataBindings.Add("Text", _bs, "Original", false, DataSourceUpdateMode.OnPropertyChanged);
-            EstreiaBox.DataBindings.Add("Text", _bs, "Estreia", false, DataSourceUpdateMode.OnPropertyChanged);
-            AlternativoBox.DataBindings.Add("Text", _bs, "Alternativo", false, DataSourceUpdateMode.OnPropertyChanged);
-            TagsBox.DataBindings.Add("Text", _bs, "Tags", false, DataSourceUpdateMode.OnPropertyChanged);
-            TipoBox.DataBindings.Add("Text", _bs, "TituloFinal", false, DataSourceUpdateMode.OnPropertyChanged);
-            MCUBox.DataBindings.Add("Text", _bs, "MCU", false, DataSourceUpdateMode.OnPropertyChanged);
-            LocalBox.DataBindings.Add("Text", _bs, "Local", false, DataSourceUpdateMode.OnPropertyChanged);
-            IdiomaBox.DataBindings.Add("Text", _bs, "Idioma", false, DataSourceUpdateMode.OnPropertyChanged);
-            ReferenciaBox.DataBindings.Add("Text", _bs, "Referencia", false, DataSourceUpdateMode.OnPropertyChanged);
-            AutoresBox.DataBindings.Add("Text", _bs, "Autores", false, DataSourceUpdateMode.OnPropertyChanged);
-            FranquiaBox.DataBindings.Add("Text", _bs, "Franquia", false, DataSourceUpdateMode.OnPropertyChanged);
-            ShowrunnersBox.DataBindings.Add("Text", _bs, "Showrunners", false, DataSourceUpdateMode.OnPropertyChanged);
-            GeneroBox.DataBindings.Add("Text", _bs, "Genero", false, DataSourceUpdateMode.OnPropertyChanged);
-            DiretorBox.DataBindings.Add("Text", _bs, "Diretor", false, DataSourceUpdateMode.OnPropertyChanged);
-            ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
-            ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
-        }
         private void ClearSelectedType()
         {
             RadioFilmes.Checked = false;
