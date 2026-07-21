@@ -579,31 +579,8 @@ namespace Telinha
                 MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private async void AnteriorButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var item = await MidiaController.GetPrevious<MidiaModel>(currentId);
 
-                if (item == null)
-                {
-                    MessageBox.Show("Você chegou ao primeiro registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AnteriorButton.Enabled = false;
-                    return;
-                }
 
-                currentId = item.Id;
-                _bs.Position = _bs.IndexOf(item);
-                PreencherCampos(item);
-                var tipoEnum = ObterTipo(item.Tipo);
-                AtualizarUI(tipoEnum, item);
-                await AtualizarBotoesNavegacao();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao navegar: {ex.Message}");
-            }
-        }
 
         private void SobreButton_Click(object sender, EventArgs e)
         {
