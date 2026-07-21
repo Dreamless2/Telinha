@@ -84,9 +84,9 @@
             panel1 = new Panel();
             label2 = new Label();
             panel2 = new Panel();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
             radioButton3 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             panel1.SuspendLayout();
@@ -645,16 +645,16 @@
             panel2.Size = new Size(1382, 69);
             panel2.TabIndex = 8;
             // 
-            // radioButton1
+            // radioButton3
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(360, 25);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(94, 19);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "radioButton1";
-            radioButton1.UseVisualStyleBackColor = true;
+            radioButton3.AutoSize = true;
+            radioButton3.Location = new Point(928, 25);
+            radioButton3.Name = "radioButton3";
+            radioButton3.Size = new Size(94, 19);
+            radioButton3.TabIndex = 2;
+            radioButton3.TabStop = true;
+            radioButton3.Text = "radioButton3";
+            radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -667,16 +667,16 @@
             radioButton2.Text = "radioButton2";
             radioButton2.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButton1
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(928, 25);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(94, 19);
-            radioButton3.TabIndex = 2;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "radioButton3";
-            radioButton3.UseVisualStyleBackColor = true;
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(360, 25);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(59, 19);
+            radioButton1.TabIndex = 0;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Filmes";
+            radioButton1.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
