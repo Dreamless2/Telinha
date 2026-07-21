@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using Telinha.Core.Card;
 using Telinha.Core.Controller;
 using Telinha.Core.Enums;
@@ -250,69 +249,7 @@ namespace Telinha
                 _ => MidiaTipo.Serie
             };
         }
-        private void PreencherCampos(MidiaModel midia)
-        {
-            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
 
-            if (midia == null)
-            {
-                LimparCampos();
-                return;
-            }
-
-            currentId = midia.Id;
-
-            var tipoNormalizado = midia.Tipo?
-                .Replace("Série", "Serie")
-                .Replace("Animé", "Anime");
-
-            var ehSerie = tipoNormalizado?.Equals("Serie", StringComparison.OrdinalIgnoreCase) == true
-                       || tipoNormalizado?.Equals("Anime", StringComparison.OrdinalIgnoreCase) == true;
-
-            var camposOpcionaisPorTipo = new HashSet<string>
-            {
-                nameof(midia.Referencia),
-                nameof(midia.Autores),
-                nameof(midia.Alternativo),
-                nameof(midia.Franquia),
-                nameof(midia.Showrunners),
-                nameof(midia.MCU),
-            };
-
-            foreach (var kvp in _mapeamentoCampos)
-            {
-                var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
-
-                if (string.IsNullOrWhiteSpace(valor))
-                {
-                    if (camposOpcionaisPorTipo.Contains(kvp.Key) && ehSerie)
-                    {
-                        kvp.Value.Text = "--";
-                    }
-                }
-                else
-                {
-                    kvp.Value.Text = valor;
-                }
-            }
-
-            string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
-            if (!AudioBox.Items.Contains(audioValue))
-                AudioBox.Items.Add(audioValue);
-
-            AudioBox.SelectedItem = audioValue;
-
-            if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
-            {
-                PreencherMascara(tipoReal);
-                SetSelectedType(tipoReal);
-            }
-            else
-            {
-                ClearSelectedType();
-                ResumoBox.Clear();
-            }
-        }
         private void LimparCampos()
         {
             foreach (var tb in _mapeamentoCampos.Values)
