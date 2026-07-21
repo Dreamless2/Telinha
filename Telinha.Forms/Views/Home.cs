@@ -523,7 +523,6 @@ namespace Telinha
         }
         #endregion
 
-        #region Salvar Button
         private async void SalvarButton_Click(object? sender, EventArgs e)
         {
             try
@@ -624,7 +623,7 @@ namespace Telinha
             var sobreForm = new Sobre();
             sobreForm.Show();
         }
-        #endregion
+#endregion
 
         #region Form Closing
         private void SairButton_Click(object sender, EventArgs e)
