@@ -14,12 +14,6 @@ namespace Telinha
             _configService = configService;
             SalvarButton.Click += SalvarButton_Click!;
             SairButton.Click += SairButton_Click!;
-            TokenDEEPLBox.PasswordChar = '\u200B';
-            TokenTMDBBox.PasswordChar = '\u200B';
-            HostBox.PasswordChar = '\u200B';
-            PortaBox.PasswordChar = '\u200B';
-            UsuarioBox.PasswordChar = '\u200B';
-            SenhaBox.PasswordChar = '\u200B';
             TokenDEEPLBox.ShortcutsEnabled = true;
             TokenTMDBBox.ShortcutsEnabled = true;
             HostBox.ShortcutsEnabled = true;
