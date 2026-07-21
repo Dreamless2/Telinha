@@ -12,20 +12,16 @@ namespace Telinha.Forms.Container
         {
             var builder = new ContainerBuilder();
 
-            // Infra
             builder.Register(c => new MemoryCache(new MemoryCacheOptions()))
               .As<IMemoryCache>().SingleInstance();
             builder.RegisterType<AppConfigServices>().AsSelf().SingleInstance();
 
-            // 🔥 ApiClientFactory
             builder.RegisterType<ApiClientFactory>().AsSelf().SingleInstance();
 
-            // 🔥 TMDBServices
             builder.Register(c => c.Resolve<ApiClientFactory>().GetTMDB())
               .AsSelf()
               .SingleInstance();
 
-            // 🔥 DEEPLContracts
             builder.Register(c => c.Resolve<ApiClientFactory>().GetDeepL())
               .AsSelf()
               .InstancePerDependency();
