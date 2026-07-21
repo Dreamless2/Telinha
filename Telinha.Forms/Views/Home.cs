@@ -368,32 +368,6 @@ namespace Telinha
             PreencherMascara(tipo);
         }
 
-        private static bool TryResolverTipo(string? tipoBruto, out MidiaTipo tipo)
-        {
-            var normalizado = tipoBruto
-                ?.Replace("Série", "Serie")
-                .Replace("Animé", "Anime");
-
-            return Enum.TryParse(normalizado, true, out tipo);
-        }
-
-        private void PreencherTodosCampos(MidiaModel midia)
-        {
-            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
-
-            foreach (var kvp in _mapeamentoCampos)
-            {
-                var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
-                kvp.Value.Text = valor ?? string.Empty;
-            }
-
-            string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
-            if (!AudioBox.Items.Contains(audioValue))
-                AudioBox.Items.Add(audioValue);
-            AudioBox.SelectedItem = audioValue;
-        }
-
-
 
 
 
