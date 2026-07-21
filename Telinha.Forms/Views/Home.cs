@@ -69,7 +69,9 @@ namespace Telinha
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
 
-
+            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
         }
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
