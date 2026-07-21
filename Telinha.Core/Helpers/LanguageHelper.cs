@@ -15,13 +15,10 @@ namespace Telinha.Core.Helpers
             if (string.IsNullOrWhiteSpace(raw))
                 return "--";
 
-            if (TranslationCache.TryGet(raw, out var cached))
-                return cached;
 
             var mapped = LanguageMapper.TryMap(raw);
             if (mapped != null)
             {
-                TranslationCache.Set(raw, mapped);
                 return mapped;
             }
 
@@ -30,7 +27,6 @@ namespace Telinha.Core.Helpers
                 mapped = LanguageMapper.TryMap(englishName);
                 if (mapped != null)
                 {
-                    TranslationCache.Set(raw, mapped);
                     return mapped;
                 }
             }
@@ -41,7 +37,6 @@ namespace Telinha.Core.Helpers
 
                 if (!string.IsNullOrWhiteSpace(translated))
                 {
-                    TranslationCache.Set(raw, translated);
                     return translated;
                 }
             }
