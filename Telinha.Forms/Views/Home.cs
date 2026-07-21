@@ -144,8 +144,6 @@ namespace Telinha
                 LimparCampos();
             }
         }
-
-        #region Tipo para Display
         private static string TipoToDisplay(MidiaTipo tipo)
         {
             return tipo switch
@@ -156,7 +154,22 @@ namespace Telinha
                 _ => tipo.ToString()
             };
         }
-        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         #region Preencher Máscara
         private void PreencherMascara(MidiaTipo midiaTipo)
