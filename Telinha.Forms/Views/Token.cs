@@ -21,11 +21,6 @@ namespace Telinha
             UsuarioBox.ShortcutsEnabled = true;
             SenhaBox.ShortcutsEnabled = true;
         }
-        private static void Hidden(TextBoxBase txt)
-        {
-            txt.SelectionStart = 0;
-            txt.SelectionLength = 0;
-        }
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try
