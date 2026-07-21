@@ -36,10 +36,9 @@ namespace Telinha
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        public Home(FileCacheServices cacheServices, MidiaServices midiaService)
+        public Home(MidiaServices midiaService)
         {
             InitializeComponent();
-            _cacheService = cacheServices;
             _midiaService = midiaService;
 
             Load += Principal_Load!;
@@ -303,7 +302,6 @@ namespace Telinha
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
-            _cacheService.CleanupExpired();
 
             try
             {
