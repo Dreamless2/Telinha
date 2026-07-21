@@ -297,9 +297,6 @@ namespace Telinha
                 _ => MidiaTipo.Serie
             };
         }
-        #endregion
-
-        #region Preencher Campos
         private void PreencherCampos(MidiaModel midia)
         {
             LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
