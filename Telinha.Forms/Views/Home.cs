@@ -148,20 +148,20 @@ namespace Telinha
         #region Tipo para Display
         private MidiaTipo GetSelectedType()
         {
-            if (RadioFilmes.Checked) return MediaType.Filme;
-            if (RadioAnimes.Checked) return MediaType.Anime;
+            if (RadioFilmes.Checked) return MidiaTipo.Filme;
+            if (RadioAnimes.Checked) return MidiaTipo.Anime;
             return MidiaTipo.Serie;
         }
 
-        private void SetSelectedType(MediaType type)
+        private void SetSelectedType(MidiaTipo type)
         {
             RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged;
             RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged;
             RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged;
 
-            RadioFilmes.Checked = type == MediaType.Filme;
-            RadioSeries.Checked = type == MediaType.Serie;
-            RadioAnimes.Checked = type == MediaType.Anime;
+            RadioFilmes.Checked = type == MidiaTipo.Filme;
+            RadioSeries.Checked = type == MidiaTipo.Serie;
+            RadioAnimes.Checked = type == MidiaTipo.Anime;
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged;
