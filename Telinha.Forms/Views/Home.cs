@@ -52,7 +52,7 @@ namespace Telinha
                 [nameof(MidiaModel.Estreia)] = EstreiaBox,
                 [nameof(MidiaModel.Alternativo)] = AlternativoBox,
                 [nameof(MidiaModel.Tags)] = TagsBox,
-                [nameof(MidiaModel.TituloFinal)] = TipoBox,
+                [nameof(MidiaModel.t)] = TipoBox,
                 [nameof(MidiaModel.MCU)] = MCUBox,
                 [nameof(MidiaModel.Local)] = LocalBox,
                 [nameof(MidiaModel.Idioma)] = IdiomaBox,
@@ -64,7 +64,7 @@ namespace Telinha
                 [nameof(MidiaModel.Diretor)] = DiretorBox,
                 [nameof(MidiaModel.Artistas)] = ArtistasBox,
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
-            }
+            };
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
