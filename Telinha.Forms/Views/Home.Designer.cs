@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             PanelTopBar = new Panel();
-            PanelTopTitle = new Panel();
-            label1 = new Label();
             PanelBottom = new Panel();
             PanelButtons = new Panel();
             SobreButton = new Button();
@@ -83,9 +81,16 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
-            PanelTopTitle.SuspendLayout();
+            panel1 = new Panel();
+            label2 = new Label();
+            panel2 = new Panel();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton3 = new RadioButton();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // PanelTopBar
@@ -94,37 +99,16 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 0);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(1381, 29);
+            PanelTopBar.Size = new Size(1382, 29);
             PanelTopBar.TabIndex = 1;
-            // 
-            // PanelTopTitle
-            // 
-            PanelTopTitle.BackColor = Color.FromArgb(5, 74, 105);
-            PanelTopTitle.Controls.Add(label1);
-            PanelTopTitle.Dock = DockStyle.Top;
-            PanelTopTitle.Location = new Point(0, 29);
-            PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(1381, 58);
-            PanelTopTitle.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(10, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(105, 40);
-            label1.TabIndex = 0;
-            label1.Text = "Telinha";
             // 
             // PanelBottom
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 804);
+            PanelBottom.Location = new Point(0, 875);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(1381, 44);
+            PanelBottom.Size = new Size(1382, 44);
             PanelBottom.TabIndex = 3;
             // 
             // PanelButtons
@@ -136,9 +120,9 @@
             PanelButtons.Controls.Add(SalvarButton);
             PanelButtons.Controls.Add(CopiarButton);
             PanelButtons.Dock = DockStyle.Bottom;
-            PanelButtons.Location = new Point(0, 719);
+            PanelButtons.Location = new Point(0, 790);
             PanelButtons.Name = "PanelButtons";
-            PanelButtons.Size = new Size(1381, 85);
+            PanelButtons.Size = new Size(1382, 85);
             PanelButtons.TabIndex = 6;
             // 
             // SobreButton
@@ -264,9 +248,9 @@
             PanelForms.Controls.Add(CodigoBox);
             PanelForms.Controls.Add(CodigoLabel);
             PanelForms.Dock = DockStyle.Fill;
-            PanelForms.Location = new Point(0, 87);
+            PanelForms.Location = new Point(0, 156);
             PanelForms.Name = "PanelForms";
-            PanelForms.Size = new Size(1381, 632);
+            PanelForms.Size = new Size(1382, 634);
             PanelForms.TabIndex = 7;
             // 
             // ResumoBox
@@ -629,16 +613,82 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(5, 74, 105);
+            panel1.Controls.Add(label2);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 29);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1382, 58);
+            panel1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(10, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(105, 40);
+            label2.TabIndex = 0;
+            label2.Text = "Telinha";
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(radioButton3);
+            panel2.Controls.Add(radioButton2);
+            panel2.Controls.Add(radioButton1);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 87);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1382, 69);
+            panel2.TabIndex = 8;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(360, 25);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(94, 19);
+            radioButton1.TabIndex = 0;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "radioButton1";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(644, 25);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(94, 19);
+            radioButton2.TabIndex = 1;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "radioButton2";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            radioButton3.AutoSize = true;
+            radioButton3.Location = new Point(928, 25);
+            radioButton3.Name = "radioButton3";
+            radioButton3.Size = new Size(94, 19);
+            radioButton3.TabIndex = 2;
+            radioButton3.TabStop = true;
+            radioButton3.Text = "radioButton3";
+            radioButton3.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1381, 848);
+            ClientSize = new Size(1382, 919);
             Controls.Add(PanelForms);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(PanelButtons);
             Controls.Add(PanelBottom);
-            Controls.Add(PanelTopTitle);
             Controls.Add(PanelTopBar);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -648,17 +698,18 @@
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
-            PanelTopTitle.ResumeLayout(false);
-            PanelTopTitle.PerformLayout();
             PanelButtons.ResumeLayout(false);
             PanelForms.ResumeLayout(false);
             PanelForms.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion       
         private Panel PanelTopBar;
-        private Panel PanelTopTitle;
         private Panel PanelBottom;
         private Panel PanelButtons;
         private Panel PanelForms;
@@ -709,7 +760,12 @@
         private Button AnteriorButton;
         private Button SalvarButton;
         private Button CopiarButton;
-        private Label label1;
         private Button SobreButton;
+        private Panel panel1;
+        private Label label2;
+        private Panel panel2;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
+        private RadioButton radioButton3;
     }
 }
