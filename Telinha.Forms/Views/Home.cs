@@ -569,7 +569,6 @@ namespace Telinha
         }
         #endregion
 
-        #region Anterior/Próximo Buttons
         private async void AnteriorButton_Click(object sender, EventArgs e)
         {
             try
