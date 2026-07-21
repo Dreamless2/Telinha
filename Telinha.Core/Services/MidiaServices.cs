@@ -3,7 +3,6 @@ using Telinha.Core.Enums;
 using Telinha.Core.Factory;
 using Telinha.Core.Models;
 
-
 namespace Telinha.Core.Services
 {
     public class MidiaServices(TMDBServices tmdb)
