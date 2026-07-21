@@ -423,42 +423,11 @@ namespace Telinha
             return Enum.TryParse(normalizado, true, out tipo);
         }
 
-        private void PreencherTodosCampos(MidiaModel midia)
-        {
-            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
-
-            foreach (var kvp in _mapeamentoCampos)
-            {
-                var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
-                kvp.Value.Text = valor ?? string.Empty;
-            }
-
-            string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
-            if (!AudioBox.Items.Contains(audioValue))
-                AudioBox.Items.Add(audioValue);
-            AudioBox.SelectedItem = audioValue;
-        }
 
 
-        private async Task AtualizarBotoesNavegacao()
-        {
-            if (_bs.Current is MidiaModel item && item.Id == 0)
-            {
-                AnteriorButton.Enabled = await MidiaController.GetPrevious<MidiaModel>(0) != null;
-                ProximoButton.Enabled = false;
-                return;
-            }
 
-            if (currentId <= 0)
-            {
-                AnteriorButton.Enabled = false;
-                ProximoButton.Enabled = await MidiaController.GetNext<MidiaModel>(0) != null;
-                return;
-            }
 
-            AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
-            ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
-        }
+
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter)
