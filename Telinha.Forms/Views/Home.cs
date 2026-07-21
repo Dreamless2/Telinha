@@ -144,38 +144,17 @@ namespace Telinha
                 LimparCampos();
             }
         }
-        private void TypeRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            if (sender is RadioButton rb && !rb.Checked)
-                return;
-
-            var tipo = GetSelectedType();
-            TipoLabel.Text = TipoToDisplay(tipo);
-            AtualizarUI(tipo, (MidiaModel)_bs.Current!);
-            PreencherMascara(tipo);
-        }
 
         #region Tipo para Display
-        private MidiaTipo GetSelectedType()
+        private static string TipoToDisplay(MidiaTipo tipo)
         {
-            if (RadioFilmes.Checked) return MidiaTipo.Filme;
-            if (RadioAnimes.Checked) return MidiaTipo.Anime;
-            return MidiaTipo.Serie;
-        }
-
-        private void SetSelectedType(MidiaTipo type)
-        {
-            RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged;
-            RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged;
-            RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged;
-
-            RadioFilmes.Checked = type == MidiaTipo.Filme;
-            RadioSeries.Checked = type == MidiaTipo.Serie;
-            RadioAnimes.Checked = type == MidiaTipo.Anime;
-
-            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged;
-            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged;
-            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged;
+            return tipo switch
+            {
+                MidiaTipo.Filme => "Filme",
+                MidiaTipo.Serie => "Série",
+                MidiaTipo.Anime => "Anime",
+                _ => tipo.ToString()
+            };
         }
         #endregion
 
