@@ -661,10 +661,10 @@
             radioButton2.AutoSize = true;
             radioButton2.Location = new Point(644, 25);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(94, 19);
+            radioButton2.Size = new Size(55, 19);
             radioButton2.TabIndex = 1;
             radioButton2.TabStop = true;
-            radioButton2.Text = "radioButton2";
+            radioButton2.Text = "Séries";
             radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
