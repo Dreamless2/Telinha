@@ -12,6 +12,7 @@ namespace Telinha.Core.Card
         string original = "",
         string lancamento = "",
         string alternativo = "",
+        string midia = "",
         string local = "",
         string idioma = "",
         string franquia = "",
@@ -32,6 +33,7 @@ namespace Telinha.Core.Card
         private readonly string _original = original ?? "";
         private readonly string _lancamento = lancamento ?? "";
         private readonly string _alternativo = alternativo ?? "";
+        private readonly string _midia = midia ?? "";
         private readonly string _local = local ?? "";
         private readonly string _idioma = idioma ?? "";
         private readonly string _franquia = franquia ?? "";
@@ -74,7 +76,7 @@ namespace Telinha.Core.Card
                 _ => "Anime"
             };
 
-            sb.AppendLine($"**{labelTipo}:** {TagEngine.FormatarTitulo(_titulo)}");
+            sb.AppendLine($"**{labelTipo}:** {TagEngine.FormatarTitulo(_midia)}");
             sb.AppendLine($"**Franquia:** {_franquia}");
 
             if (_tipo != MidiaTipo.Filme)
