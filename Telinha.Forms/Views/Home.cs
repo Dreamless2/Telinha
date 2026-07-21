@@ -14,10 +14,8 @@ namespace Telinha
     #region Form
     public partial class Home : Form
     {
-        #region Variáveis
         private readonly MidiaServices? _midiaService;
         private readonly FileCacheServices _cacheService;
-
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
