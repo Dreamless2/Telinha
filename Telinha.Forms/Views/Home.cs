@@ -406,35 +406,6 @@ namespace Telinha
                 _buscando = false;
             }
         }
-
-
-
-        private Task AnteriorButton_ClickAsync() =>
-            NavegarAsync(id => MidiaController.GetPrevious<MidiaModel>(id), "Você chegou ao primeiro registro.", AnteriorButton);
-
-        private Task ProximoButton_ClickAsync() =>
-            NavegarAsync(id => MidiaController.GetNext<MidiaModel>(id), "Você chegou ao último registro.", ProximoButton);
-
-        private void CarregarNaTela(MidiaModel? midia)
-        {
-            _current = midia ?? new MidiaModel();
-            currentId = _current.Id;
-
-            MidiaTipo tipo = TryResolverTipo(_current.Tipo, out var tipoResolvido)
-                ? tipoResolvido
-                : MidiaTipo.Filme;
-
-            if (string.IsNullOrWhiteSpace(_current.TituloFinal))
-            {
-                _current.TituloFinal = _current.NomeFormatado;
-            }
-
-            PreencherTodosCampos(_current);
-            SetSelectedType(tipo);
-            AtualizarUI(tipo, _current);
-            PreencherMascara(tipo);
-        }
-
         private static bool TryResolverTipo(string? tipoBruto, out MidiaTipo tipo)
         {
             var normalizado = tipoBruto
