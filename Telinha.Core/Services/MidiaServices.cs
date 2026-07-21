@@ -6,7 +6,7 @@ using Telinha.Core.Models;
 
 namespace Telinha.Core.Services
 {
-    public class MidiaServices(TMDBServices tmdb, FileCacheServices? cache = null)
+    public class MidiaServices(TMDBServices tmdb)
     {
         private readonly TMDBServices _tmdb = tmdb;
         private readonly TimeSpan _cacheTtl = TimeSpan.FromSeconds(60);
