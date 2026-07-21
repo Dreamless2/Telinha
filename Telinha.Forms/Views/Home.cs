@@ -164,17 +164,17 @@ namespace Telinha
 
         private void SetSelectedType(MidiaTipo type)
         {
-            RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged;
-            RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged;
-            RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged;
+            RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged!;
+            RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged!;
+            RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged!;
 
             RadioFilmes.Checked = type == MidiaTipo.Filme;
             RadioSeries.Checked = type == MidiaTipo.Serie;
             RadioAnimes.Checked = type == MidiaTipo.Anime;
 
-            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged;
-            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged;
-            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged;
+            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
         }
 
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
