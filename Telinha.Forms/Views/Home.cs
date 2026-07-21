@@ -345,7 +345,7 @@ namespace Telinha
                 tb.Clear();
 
             AudioBox.SelectedIndex = -1;
-            TipoLabel.Text = "Tipo";
+            ClearSelectedType();
             currentId = 0;
         }
         private async void Principal_Load(object sender, EventArgs e)
