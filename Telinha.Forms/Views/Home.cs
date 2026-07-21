@@ -155,6 +155,28 @@ namespace Telinha
             };
         }
 
+        private MediaType GetSelectedType()
+        {
+            if (RadioFilmes.Checked) return MediaType.Filme;
+            if (RadioAnimes.Checked) return MediaType.Anime;
+            return MediaType.Serie;
+        }
+
+        private void SetSelectedType(MediaType type)
+        {
+            RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged;
+            RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged;
+            RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged;
+
+            RadioFilmes.Checked = type == MediaType.Filme;
+            RadioSeries.Checked = type == MediaType.Serie;
+            RadioAnimes.Checked = type == MediaType.Anime;
+
+            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged;
+            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged;
+            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged;
+        }
+
 
 
 
