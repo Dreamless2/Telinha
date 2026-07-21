@@ -52,7 +52,7 @@ namespace Telinha
                 [nameof(MidiaModel.Estreia)] = EstreiaBox,
                 [nameof(MidiaModel.Alternativo)] = AlternativoBox,
                 [nameof(MidiaModel.Tags)] = TagsBox,
-                //[nameof(MidiaModel.Tipo)] = TipoBox,
+                [nameof(MidiaModel.Tipo)] = TipoBox,
                 [nameof(MidiaModel.MCU)] = MCUBox,
                 [nameof(MidiaModel.Local)] = LocalBox,
                 [nameof(MidiaModel.Idioma)] = IdiomaBox,
