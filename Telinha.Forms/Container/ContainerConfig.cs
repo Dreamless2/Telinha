@@ -15,7 +15,6 @@ namespace Telinha.Forms.Container
             // Infra
             builder.Register(c => new MemoryCache(new MemoryCacheOptions()))
               .As<IMemoryCache>().SingleInstance();
-            builder.RegisterType<FileCacheServices>().AsSelf().SingleInstance();
             builder.RegisterType<AppConfigServices>().AsSelf().SingleInstance();
 
             // 🔥 ApiClientFactory
