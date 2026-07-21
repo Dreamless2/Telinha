@@ -80,9 +80,6 @@ namespace Telinha
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-#endregion
-
-        #region Setup Bindings
         private void SetupBindings()
         {
             _bs.DataSource = new MidiaModel();
@@ -107,7 +104,7 @@ namespace Telinha
             ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
             ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
         }
-        #endregion
+#endregion
 
         #region Carregar Dados
         private async Task Carregar()
