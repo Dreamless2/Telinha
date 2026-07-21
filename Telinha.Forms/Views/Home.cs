@@ -347,6 +347,57 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void CarregarNaTela(MidiaModel? midia)
+        {
+            _current = midia ?? new MidiaModel();
+            currentId = _current.Id;
+
+            MidiaTipo tipo = TryResolverTipo(_current.Tipo, out var tipoResolvido)
+                ? tipoResolvido
+                : MidiaTipo.Filme;
+
+            if (string.IsNullOrWhiteSpace(_current.TituloFinal))
+            {
+                _current.TituloFinal = _current.NomeFormatado;
+            }
+
+            PreencherTodosCampos(_current);
+            SetSelectedType(tipo);
+            AtualizarUI(tipo, _current);
+            PreencherMascara(tipo);
+        }
+
+        private static bool TryResolverTipo(string? tipoBruto, out MidiaTipo tipo)
+        {
+            var normalizado = tipoBruto
+                ?.Replace("Série", "Serie")
+                .Replace("Animé", "Anime");
+
+            return Enum.TryParse(normalizado, true, out tipo);
+        }
+
+        private void PreencherTodosCampos(MidiaModel midia)
+        {
+            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
+
+            foreach (var kvp in _mapeamentoCampos)
+            {
+                var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
+                kvp.Value.Text = valor ?? string.Empty;
+            }
+
+            string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
+            if (!AudioBox.Items.Contains(audioValue))
+                AudioBox.Items.Add(audioValue);
+            AudioBox.SelectedItem = audioValue;
+        }
+
+
+
+
+
+
         private async Task AtualizarBotoesNavegacao()
         {
             if (_bs.Current is MidiaModel item && item.Id == 0)
