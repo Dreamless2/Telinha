@@ -394,10 +394,6 @@ namespace Telinha
         }
 
 
-
-
-
-
         private async Task AtualizarBotoesNavegacao()
         {
             if (_bs.Current is MidiaModel item && item.Id == 0)
