@@ -636,6 +636,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(5, 74, 105);
             panel2.Controls.Add(RadioAnimes);
             panel2.Controls.Add(RadioSeries);
             panel2.Controls.Add(RadioFilmes);
