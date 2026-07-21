@@ -1,5 +1,4 @@
-﻿using Telinha.Core.Cache;
-using Telinha.Core.Mapper;
+﻿using Telinha.Core.Mapper;
 
 namespace Telinha.Core.Helpers
 {
