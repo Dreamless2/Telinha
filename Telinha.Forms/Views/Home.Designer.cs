@@ -86,7 +86,7 @@
             panel2 = new Panel();
             radioButton3 = new RadioButton();
             radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            RadioFilmes = new RadioButton();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
             panel1.SuspendLayout();
@@ -638,7 +638,7 @@
             // 
             panel2.Controls.Add(radioButton3);
             panel2.Controls.Add(radioButton2);
-            panel2.Controls.Add(radioButton1);
+            panel2.Controls.Add(RadioFilmes);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 87);
             panel2.Name = "panel2";
@@ -667,16 +667,16 @@
             radioButton2.Text = "Séries";
             radioButton2.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // RadioFilmes
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(360, 25);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(59, 19);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Filmes";
-            radioButton1.UseVisualStyleBackColor = true;
+            RadioFilmes.AutoSize = true;
+            RadioFilmes.Location = new Point(360, 25);
+            RadioFilmes.Name = "RadioFilmes";
+            RadioFilmes.Size = new Size(59, 19);
+            RadioFilmes.TabIndex = 0;
+            RadioFilmes.TabStop = true;
+            RadioFilmes.Text = "Filmes";
+            RadioFilmes.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -764,7 +764,7 @@
         private Panel panel1;
         private Label label2;
         private Panel panel2;
-        private RadioButton radioButton1;
+        private RadioButton RadioFilmes;
         private RadioButton radioButton2;
         private RadioButton radioButton3;
     }
