@@ -324,25 +324,22 @@ namespace Telinha
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
-            RadioFilmes.Checked = true;
-
-            var lista = new BindingList<MidiaModel>();
-            _bs.DataSource = lista;
-
-            SetupBindings();
 
             try
             {
                 if (await MidiaController.AnyAsync<MidiaModel>())
                 {
-                    await Carregar();
+                    var primeiro = await MidiaController.GetFirstAsync<MidiaModel>();
+                    CarregarNaTela(primeiro);
                 }
                 else
                 {
-                    currentId = 0;
+                    CarregarNaTela(null);
                     MessageBox.Show("Insira um novo registro para começar.", "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CodigoBox.Focus();
                 }
+
+                await AtualizarBotoesNavegacao();
             }
             catch (Exception ex)
             {
