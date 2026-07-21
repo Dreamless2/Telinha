@@ -348,6 +348,92 @@ namespace Telinha
             }
         }
 
+        private async void BuscarMidia(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter)
+                return;
+
+            e.SuppressKeyPress = true;
+
+            var codigoDigitado = CodigoBox.Text.Trim();
+
+            if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
+            {
+                MessageBox.Show("Informe o código do TMDB.", "Código Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (_buscando)
+                return;
+
+            _buscando = true;
+
+            try
+            {
+                if (_midiaService == null)
+                {
+                    MessageBox.Show("Serviço ainda não inicializado.");
+                    return;
+                }
+
+                var midia = await _midiaService.GetMidia(id);
+
+                if (midia == null)
+                {
+                    MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                if (!TryResolverTipo(midia.Tipo, out _))
+                {
+                    MessageBox.Show($"Tipo de mídia não reconhecido: {midia.Tipo}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                CarregarNaTela(midia);
+
+                CodigoBox.Text = codigoDigitado;
+                CodigoBox.SelectionStart = CodigoBox.Text.Length;
+                CodigoBox.SelectionLength = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao buscar a mídia:\n{ex.Message}", "Erro na Busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogServices.LogarErroComException(ex, "VIEW: Erro ao buscar mídia ID {id}", id);
+            }
+            finally
+            {
+                _buscando = false;
+            }
+        }
+
+        private async Task NavegarAsync(Func<long, Task<MidiaModel?>> buscar, string mensagemFim, Button botaoDesabilitar)
+        {
+            try
+            {
+                var item = await buscar(currentId);
+                if (item == null)
+                {
+                    MessageBox.Show(mensagemFim, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    botaoDesabilitar.Enabled = false;
+                    return;
+                }
+
+                CarregarNaTela(item);
+                await AtualizarBotoesNavegacao();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao navegar: {ex.Message}");
+            }
+        }
+
+        private Task AnteriorButton_ClickAsync() =>
+            NavegarAsync(id => MidiaController.GetPrevious<MidiaModel>(id), "Você chegou ao primeiro registro.", AnteriorButton);
+
+        private Task ProximoButton_ClickAsync() =>
+            NavegarAsync(id => MidiaController.GetNext<MidiaModel>(id), "Você chegou ao último registro.", ProximoButton);
+
         private void CarregarNaTela(MidiaModel? midia)
         {
             _current = midia ?? new MidiaModel();
