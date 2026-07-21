@@ -132,9 +132,7 @@ namespace Telinha.Core.Services
             var model = await MidiaFactory.ConstruirMidia(details, credits, alternative, tipo, deepl);
 
             if (model != null)
-            {
                 NormalizarModel(model, details);
-            }
 
             return model;
         }
