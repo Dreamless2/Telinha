@@ -360,9 +360,6 @@ namespace Telinha
                 ResumoBox.Clear();
             }
         }
-        #endregion
-
-        #region Limpar Campos
         private void LimparCampos()
         {
             foreach (var tb in _mapeamentoCampos.Values)
