@@ -402,7 +402,7 @@ namespace Telinha
 
             var codigoDigitado = CodigoBox.Text.Trim();
 
-            LogServices.LogarInformacao("VIEW: Enter pressionado. Código: {codigo}, TipoLabel: {tipo}", codigoDigitado, TipoLabel.Text);
+            LogServices.LogarInformacao("VIEW: Enter pressionado. Código: {codigo}, Tipo: {tipo}", codigoDigitado, GetSelectedType());
 
             if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
             {
@@ -420,11 +420,6 @@ namespace Telinha
 
             try
             {
-                MidiaTipo tipoSolicitado = TipoLabel.Text.Contains("Filme", StringComparison.OrdinalIgnoreCase)
-                    ? MidiaTipo.Filme
-                    : MidiaTipo.Serie;
-
-
                 if (_midiaService == null)
                 {
                     MessageBox.Show("Serviço ainda não inicializado.");
@@ -433,25 +428,31 @@ namespace Telinha
 
                 var midia = await _midiaService.GetMidia(id);
 
-                if (string.IsNullOrWhiteSpace(midia!.TituloFinal))
-                {
-                    midia.TituloFinal = midia.NomeFormatado;
-                }
-
-                LogServices.LogarInformacao("VIEW: Busca ignorada - já está buscando");
-
                 if (midia == null)
                 {
                     MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
+                if (string.IsNullOrWhiteSpace(midia.TituloFinal))
+                {
+                    midia.TituloFinal = midia.NomeFormatado;
+                }
 
-                if (Enum.TryParse(midia.Tipo, true, out MidiaTipo tipoRetornado))
+                var tipoNormalizado = midia.Tipo
+                    ?.Replace("Série", "Serie")
+                    .Replace("Animé", "Anime");
+
+                if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoRetornado))
                 {
                     LogServices.LogarInformacao("VIEW: Tipo parseado: {tipoRetornado}", tipoRetornado);
-                    TipoLabel.Text = GenericHelpers.GetDescription(tipoSolicitado);
+                    PreencherCampos(midia);
+                    AtualizarUI(tipoRetornado, midia);
+                }
+                else
+                {
+                    LogServices.LogarInformacao("VIEW: Tipo não reconhecido: {tipo}", midia.Tipo);
+                    MessageBox.Show($"Tipo de mídia não reconhecido: {midia.Tipo}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 CodigoBox.Text = codigoDigitado;
