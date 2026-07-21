@@ -104,6 +104,13 @@ namespace Telinha
             ArtistasBox.DataBindings.Add("Text", _bs, "Artistas", false, DataSourceUpdateMode.OnPropertyChanged);
             ProdutoraBox.DataBindings.Add("Text", _bs, "Produtora", false, DataSourceUpdateMode.OnPropertyChanged);
         }
+        private void ClearSelectedType()
+        {
+            RadioFilmes.Checked = false;
+            RadioSeries.Checked = false;
+            RadioAnimes.Checked = false;
+        }
+
         private async Task Carregar()
         {
             var item = await MidiaController.GetFirstAsync<MidiaModel>();
