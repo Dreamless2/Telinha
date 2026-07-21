@@ -14,7 +14,6 @@ namespace Telinha
     public partial class Home : Form
     {
         private readonly MidiaServices? _midiaService;
-        private readonly FileCacheServices _cacheService;
         private long currentId = 0;
         private readonly BindingSource _bs = [];
         private bool _buscando;
