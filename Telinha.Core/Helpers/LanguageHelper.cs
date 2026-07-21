@@ -34,9 +34,7 @@ namespace Telinha.Core.Helpers
                 var translated = await translateFunc(raw);
 
                 if (!string.IsNullOrWhiteSpace(translated))
-                {
                     return translated;
-                }
             }
             catch
             {
