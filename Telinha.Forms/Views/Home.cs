@@ -177,7 +177,16 @@ namespace Telinha
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged;
         }
 
+        private void TypeRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sender is RadioButton rb && !rb.Checked)
+                return;
 
+            var tipo = GetSelectedType();
+            TipoLabel.Text = TipoToDisplay(tipo);
+            AtualizarUI(tipo, (MidiaModel)_bs.Current!);
+            PreencherMascara(tipo);
+        }
 
 
 
