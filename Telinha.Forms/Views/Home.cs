@@ -345,6 +345,7 @@ namespace Telinha
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
+            RadioFilmes.Checked = true;
 
             var lista = new BindingList<MidiaModel>();
             _bs.DataSource = lista;
