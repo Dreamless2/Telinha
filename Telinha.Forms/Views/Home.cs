@@ -536,7 +536,7 @@ namespace Telinha
             }
         }
 
-        private async void SalvarButton_Click(object? sender, EventArgs e)
+        /*private async void SalvarButton_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -578,7 +578,7 @@ namespace Telinha
             {
                 MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
 
 
 
