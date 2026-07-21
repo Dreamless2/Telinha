@@ -11,7 +11,6 @@ using Telinha.Views;
 
 namespace Telinha
 {
-    #region Form
     public partial class Home : Form
     {
         private readonly MidiaServices? _midiaService;
@@ -81,7 +80,7 @@ namespace Telinha
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        #endregion
+#endregion
 
         #region Setup Bindings
         private void SetupBindings()
