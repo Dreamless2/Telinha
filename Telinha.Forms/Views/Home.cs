@@ -142,7 +142,6 @@ namespace Telinha
                 _ => tipo.ToString()
             };
         }
-
         private MidiaTipo GetSelectedType()
         {
             if (RadioFilmes.Checked) return MidiaTipo.Filme;
