@@ -200,8 +200,6 @@ namespace Telinha
             );
             ResumoBox.Text = card.GetFormattedText();
         }
-
-        #region Conectar Eventos
         private void ConectarEventos()
         {
             var controles = new Control[] {
@@ -598,7 +596,7 @@ namespace Telinha
             var sobreForm = new Sobre();
             sobreForm.Show();
         }
-        #endregion
+#endregion
 
         #region Form Closing
         private void SairButton_Click(object sender, EventArgs e)
