@@ -604,31 +604,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao navegar: {ex.Message}");
             }
         }
-        private async void ProximoButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var item = await MidiaController.GetNext<MidiaModel>(currentId);
 
-                if (item == null)
-                {
-                    MessageBox.Show("Você chegou ao último registro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ProximoButton.Enabled = false;
-                    return;
-                }
-
-                currentId = item.Id;
-                _bs.Position = _bs.IndexOf(item);
-                PreencherCampos(item);
-                var tipoEnum = ObterTipo(item.Tipo);
-                AtualizarUI(tipoEnum, item);
-                await AtualizarBotoesNavegacao();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao navegar: {ex.Message}");
-            }
-        }
         private void SobreButton_Click(object sender, EventArgs e)
         {
             var sobreForm = new Sobre();
