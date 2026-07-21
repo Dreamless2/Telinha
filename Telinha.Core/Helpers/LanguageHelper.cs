@@ -16,9 +16,7 @@ namespace Telinha.Core.Helpers
 
             var mapped = LanguageMapper.TryMap(raw);
             if (mapped != null)
-            {
                 return mapped;
-            }
 
             if (!string.IsNullOrWhiteSpace(englishName))
             {
