@@ -182,22 +182,6 @@ namespace Telinha
             AtualizarUI(tipo, (MidiaModel)_bs.Current!);
             PreencherMascara(tipo);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        #region Preencher Máscara
         private void PreencherMascara(MidiaTipo midiaTipo)
         {
             var card = new MidiaCard(
@@ -223,7 +207,6 @@ namespace Telinha
             );
             ResumoBox.Text = card.GetFormattedText();
         }
-        #endregion
 
         #region Conectar Eventos
         private void ConectarEventos()
