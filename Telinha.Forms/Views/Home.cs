@@ -407,26 +407,7 @@ namespace Telinha
             }
         }
 
-        private async Task NavegarAsync(Func<long, Task<MidiaModel?>> buscar, string mensagemFim, Button botaoDesabilitar)
-        {
-            try
-            {
-                var item = await buscar(currentId);
-                if (item == null)
-                {
-                    MessageBox.Show(mensagemFim, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    botaoDesabilitar.Enabled = false;
-                    return;
-                }
 
-                CarregarNaTela(item);
-                await AtualizarBotoesNavegacao();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao navegar: {ex.Message}");
-            }
-        }
 
         private Task AnteriorButton_ClickAsync() =>
             NavegarAsync(id => MidiaController.GetPrevious<MidiaModel>(id), "Você chegou ao primeiro registro.", AnteriorButton);
