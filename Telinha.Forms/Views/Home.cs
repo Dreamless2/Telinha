@@ -620,9 +620,6 @@ namespace Telinha
                 MessageBox.Show($"Erro ao navegar: {ex.Message}");
             }
         }
-        #endregion
-
-        #region Sobre Button
         private void SobreButton_Click(object sender, EventArgs e)
         {
             var sobreForm = new Sobre();
