@@ -122,7 +122,6 @@ namespace Telinha
 
                 if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
                 {
-                    TipoLabel.Text = TipoToDisplay(tipoReal);
                     AtualizarUI(tipoReal, midiaValida);
                 }
             }
