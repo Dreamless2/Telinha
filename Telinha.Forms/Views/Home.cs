@@ -331,11 +331,11 @@ namespace Telinha
             if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
             {
                 PreencherMascara(tipoReal);
-                TipoLabel.Text = TipoToDisplay(tipoReal);
+                SetSelectedType(tipoReal);
             }
             else
             {
-                TipoLabel.Text = "Tipo";
+                ClearSelectedType();
                 ResumoBox.Clear();
             }
         }
