@@ -20,12 +20,6 @@ namespace Telinha
             PortaBox.ShortcutsEnabled = true;
             UsuarioBox.ShortcutsEnabled = true;
             SenhaBox.ShortcutsEnabled = true;
-            TokenDEEPLBox.TextChanged += (s, e) => Hidden(TokenDEEPLBox);
-            TokenTMDBBox.TextChanged += (s, e) => Hidden(TokenTMDBBox);
-            HostBox.TextChanged += (s, e) => Hidden(HostBox);
-            PortaBox.TextChanged += (s, e) => Hidden(PortaBox);
-            UsuarioBox.TextChanged += (s, e) => Hidden(UsuarioBox);
-            SenhaBox.TextChanged += (s, e) => Hidden(SenhaBox);
         }
         private static void Hidden(TextBoxBase txt)
         {
