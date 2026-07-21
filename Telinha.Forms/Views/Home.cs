@@ -228,7 +228,6 @@ namespace Telinha
         private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
         {
             item ??= new MidiaModel();
-
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
 
@@ -241,15 +240,16 @@ namespace Telinha
             item.MCU = isFilme || isAnime ? "--" : (item.MCU ?? "--");
 
             bool habilitarCamposGerais = !isFilme;
-
             LocalLabel.Enabled = LocalBox.Enabled = habilitarCamposGerais;
             IdiomaLabel.Enabled = IdiomaBox.Enabled = habilitarCamposGerais;
             ReferenciaLabel.Enabled = ReferenciaBox.Enabled = habilitarCamposGerais;
             AutoresLabel.Enabled = AutoresBox.Enabled = habilitarCamposGerais;
             ShowrunnersLabel.Enabled = ShowrunnersBox.Enabled = habilitarCamposGerais;
             MCUBox.Enabled = !isFilme && !isAnime;
-            TipoLabel.Text = isFilme ? "Filme" : isAnime ? "Anime" : "Série";
-            TipoBox.PlaceholderText = TipoLabel.Text;
+
+            SetSelectedType(tipo);
+            TipoBox.PlaceholderText = TipoToDisplay(tipo);
+
             LocalBox.Text = item.Local;
             IdiomaBox.Text = item.Idioma;
             ReferenciaBox.Text = item.Referencia;
@@ -258,14 +258,7 @@ namespace Telinha
             FranquiaBox.Text = item.Franquia;
             MCUBox.Text = item.MCU;
 
-            if (isAnime)
-            {
-                MCUBox.Enabled = false;
-            }
-            else
-            {
-                MCUBox.Enabled = true;
-            }
+            MCUBox.Enabled = !isAnime;
         }
         private static MidiaTipo ObterTipo(string? descricao)
         {
