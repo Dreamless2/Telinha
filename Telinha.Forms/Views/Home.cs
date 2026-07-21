@@ -372,9 +372,6 @@ namespace Telinha
             TipoLabel.Text = "Tipo";
             currentId = 0;
         }
-        #endregion
-
-        #region Form Load
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
