@@ -142,7 +142,6 @@ namespace Telinha.Core.Services
             if (data?["success"]?.ToObject<bool>() == false) return false;
             if (data?["status_code"]?.ToObject<int>() == 34) return false;
 
-            // 🔥 FIX: TMDB pode retornar array vazio em vez de string
             if (tipo == MidiaTipo.Filme)
             {
                 var titleToken = data?["title"];
