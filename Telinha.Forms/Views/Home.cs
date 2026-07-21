@@ -175,6 +175,7 @@ namespace Telinha
             AtualizarUI(tipo, (MidiaModel)_bs.Current!);
             PreencherMascara(tipo);
         }
+
         private void PreencherMascara(MidiaTipo midiaTipo)
         {
             var card = new MidiaCard(
