@@ -24,9 +24,8 @@ namespace Telinha.Core.Helpers
             {
                 mapped = LanguageMapper.TryMap(englishName);
                 if (mapped != null)
-                {
                     return mapped;
-                }
+
             }
 
             try
