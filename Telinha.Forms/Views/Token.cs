@@ -33,15 +33,12 @@ namespace Telinha
             UsuarioBox.TextChanged += (s, e) => Hidden(UsuarioBox);
             SenhaBox.TextChanged += (s, e) => Hidden(SenhaBox);
         }
-#endregion
-
-        #region Hidden
         private static void Hidden(TextBoxBase txt)
         {
             txt.SelectionStart = 0;
             txt.SelectionLength = 0;
         }
-        #endregion
+#endregion
 
         #region Salvar Button
         private async void SalvarButton_Click(object sender, EventArgs e)
