@@ -93,13 +93,7 @@ namespace Telinha.Core.Services
         private async Task<MidiaModel?> ExecutarBusca(int id, MidiaTipo tipo, CancellationToken ct)
         {
             var cacheKey = $"tmdb_{tipo.ToString().ToLower()}_{id}";
-
-            if (_cache != null)
-            {
-                var cached = await _cache.GetAsync(cacheKey);
-                if (cached != null) return cached;
-            }
-
+            
             var baseRoute = tipo == MidiaTipo.Filme ? "movie" : "tv";
             var calls = new List<(string, Dictionary<string, string>?)>
             {
