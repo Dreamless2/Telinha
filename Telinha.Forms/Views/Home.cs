@@ -223,18 +223,7 @@ namespace Telinha
         }
         private void QualquerAlteracao(object sender, EventArgs e)
         {
-            if (TipoLabel.Text == "Filme")
-            {
-                PreencherMascara(MidiaTipo.Filme);
-            }
-            else if (TipoLabel.Text == "Série")
-            {
-                PreencherMascara(MidiaTipo.Serie);
-            }
-            else if (TipoLabel.Text == "Anime")
-            {
-                PreencherMascara(MidiaTipo.Anime);
-            }
+            PreencherMascara(GetSelectedType());
         }
         private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
         {
