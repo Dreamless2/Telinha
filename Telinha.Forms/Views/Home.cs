@@ -1,7 +1,9 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.ComponentModel;
+using System.Runtime.InteropServices;
 using Telinha.Core.Card;
 using Telinha.Core.Controller;
 using Telinha.Core.Enums;
+using Telinha.Core.Helpers;
 using Telinha.Core.Models;
 using Telinha.Core.Services;
 using Telinha.Forms.Extras;
@@ -12,46 +14,62 @@ namespace Telinha
     public partial class Home : Form
     {
         private readonly MidiaServices? _midiaService;
+        private readonly FileCacheServices _cacheService;
         private long currentId = 0;
-        private readonly BindingSource _bs = [];
+        private MidiaModel _current = new();
         private bool _buscando;
         private readonly Dictionary<string, TextBox> _mapeamentoCampos;
-        private MidiaModel _current = new();
+
+        private static readonly HashSet<string> CamposOpcionaisPorTipo = new()
+        {
+            nameof(MidiaModel.Referencia),
+            nameof(MidiaModel.Autores),
+            nameof(MidiaModel.Alternativo),
+            nameof(MidiaModel.Franquia),
+            nameof(MidiaModel.Showrunners),
+            nameof(MidiaModel.MCU),
+        };
 
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
-
         [DllImport("user32.dll")]
         private static extern bool ReleaseCapture();
-
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        public Home(MidiaServices midiaService)
+        public Home(FileCacheServices cacheServices, MidiaServices midiaService)
         {
             InitializeComponent();
+            _cacheService = cacheServices;
             _midiaService = midiaService;
+
             Load += Principal_Load!;
             SairButton.Click += SairButton_Click!;
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
-            SalvarButton.Click += SalvarButton_Click;
-            AnteriorButton.Click += AnteriorButton_Click!;
-            ProximoButton.Click += ProximoButton_Click!;
+            SalvarButton.Click += SalvarButton_Click!;
+            AnteriorButton.Click += async (s, e) => await AnteriorButton_ClickAsync();
+            ProximoButton.Click += async (s, e) => await ProximoButton_ClickAsync();
             SobreButton.Click += SobreButton_Click!;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
+
+            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
+
             ConectarEventos();
+
             _mapeamentoCampos = new Dictionary<string, TextBox>
             {
                 [nameof(MidiaModel.Codigo)] = CodigoBox,
                 [nameof(MidiaModel.Nome)] = NomeBox,
+                [nameof(MidiaModel.TituloFinal)] = TipoBox,
                 [nameof(MidiaModel.Sinopse)] = SinopseBox,
                 [nameof(MidiaModel.Original)] = OriginalBox,
                 [nameof(MidiaModel.Estreia)] = EstreiaBox,
                 [nameof(MidiaModel.Alternativo)] = AlternativoBox,
                 [nameof(MidiaModel.Tags)] = TagsBox,
-                [nameof(MidiaModel.Tipo)] = TipoBox,
                 [nameof(MidiaModel.MCU)] = MCUBox,
                 [nameof(MidiaModel.Local)] = LocalBox,
                 [nameof(MidiaModel.Idioma)] = IdiomaBox,
@@ -64,11 +82,8 @@ namespace Telinha
                 [nameof(MidiaModel.Artistas)] = ArtistasBox,
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
-
-            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
-            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
-            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
         }
+
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -77,50 +92,7 @@ namespace Telinha
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        private void ClearSelectedType()
-        {
-            RadioFilmes.Checked = false;
-            RadioSeries.Checked = false;
-            RadioAnimes.Checked = false;
-        }
 
-        private async Task Carregar()
-        {
-            var item = await MidiaController.GetFirstAsync<MidiaModel>();
-
-            LogServices.LogarInformacao("VIEW: Carregar inicial. Item null? {isNull}", item == null);
-
-            _bs.DataSource = item ?? new MidiaModel();
-
-            if (item is MidiaModel midiaValida)
-            {
-                PreencherCampos(midiaValida);
-
-                var tipoNormalizado = midiaValida.Tipo
-                    ?.Replace("Série", "Serie")
-                    .Replace("Animé", "Anime");
-
-                if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoReal))
-                {
-                    AtualizarUI(tipoReal, midiaValida);
-                }
-            }
-            else
-            {
-                TipoLabel.Text = "Tipo";
-                LimparCampos();
-            }
-        }
-        private static string TipoToDisplay(MidiaTipo tipo)
-        {
-            return tipo switch
-            {
-                MidiaTipo.Filme => "Filme",
-                MidiaTipo.Serie => "Série",
-                MidiaTipo.Anime => "Anime",
-                _ => tipo.ToString()
-            };
-        }
         private MidiaTipo GetSelectedType()
         {
             if (RadioFilmes.Checked) return MidiaTipo.Filme;
@@ -128,15 +100,30 @@ namespace Telinha
             return MidiaTipo.Serie;
         }
 
-        private void SetSelectedType(MidiaTipo type)
+        private void SetSelectedType(MidiaTipo tipo)
         {
             RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged!;
             RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged!;
 
-            RadioFilmes.Checked = type == MidiaTipo.Filme;
-            RadioSeries.Checked = type == MidiaTipo.Serie;
-            RadioAnimes.Checked = type == MidiaTipo.Anime;
+            RadioFilmes.Checked = tipo == MidiaTipo.Filme;
+            RadioSeries.Checked = tipo == MidiaTipo.Serie;
+            RadioAnimes.Checked = tipo == MidiaTipo.Anime;
+
+            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
+        }
+
+        private void ClearSelectedType()
+        {
+            RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged!;
+            RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged!;
+            RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged!;
+
+            RadioFilmes.Checked = false;
+            RadioSeries.Checked = false;
+            RadioAnimes.Checked = false;
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
@@ -149,9 +136,83 @@ namespace Telinha
                 return;
 
             var tipo = GetSelectedType();
-            TipoLabel.Text = TipoToDisplay(tipo);
-            AtualizarUI(tipo, (MidiaModel)_bs.Current!);
+            AtualizarUI(tipo, _current);
             PreencherMascara(tipo);
+        }
+
+        private static bool TryResolverTipo(string? tipoBruto, out MidiaTipo tipo)
+        {
+            var normalizado = tipoBruto
+                ?.Replace("Série", "Serie")
+                .Replace("Animé", "Anime");
+
+            return Enum.TryParse(normalizado, true, out tipo);
+        }
+
+        private static string TipoToDisplay(MidiaTipo tipo)
+        {
+            return tipo switch
+            {
+                MidiaTipo.Filme => "Filme",
+                MidiaTipo.Serie => "Série",
+                MidiaTipo.Anime => "Anime",
+                _ => tipo.ToString()
+            };
+        }
+
+        private void CarregarNaTela(MidiaModel? midia)
+        {
+            _current = midia ?? new MidiaModel();
+            currentId = _current.Id;
+
+            MidiaTipo tipo = TryResolverTipo(_current.Tipo, out var tipoResolvido)
+                ? tipoResolvido
+                : MidiaTipo.Filme;
+
+            if (string.IsNullOrWhiteSpace(_current.TituloFinal))
+            {
+                _current.TituloFinal = _current.NomeFormatado;
+            }
+
+            bool ehSerieOuAnime = tipo == MidiaTipo.Serie || tipo == MidiaTipo.Anime;
+            if (ehSerieOuAnime)
+            {
+                AplicarPadraoParaCamposOpcionaisVazios(_current);
+            }
+
+            PreencherTodosCampos(_current);
+            SetSelectedType(tipo);
+            AtualizarUI(tipo, _current);
+            PreencherMascara(tipo);
+        }
+
+        private static void AplicarPadraoParaCamposOpcionaisVazios(MidiaModel midia)
+        {
+            foreach (var nomeCampo in CamposOpcionaisPorTipo)
+            {
+                var prop = midia.GetType().GetProperty(nomeCampo);
+                var valorAtual = prop?.GetValue(midia) as string;
+                if (string.IsNullOrWhiteSpace(valorAtual))
+                {
+                    prop?.SetValue(midia, "--");
+                }
+            }
+        }
+
+        private void PreencherTodosCampos(MidiaModel midia)
+        {
+            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
+
+            foreach (var kvp in _mapeamentoCampos)
+            {
+                var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
+                kvp.Value.Text = valor ?? string.Empty;
+            }
+
+            string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
+            if (!AudioBox.Items.Contains(audioValue))
+                AudioBox.Items.Add(audioValue);
+            AudioBox.SelectedItem = audioValue;
         }
 
         private void PreencherMascara(MidiaTipo midiaTipo)
@@ -179,6 +240,7 @@ namespace Telinha
             );
             ResumoBox.Text = card.GetFormattedText();
         }
+
         private void ConectarEventos()
         {
             var controles = new Control[] {
@@ -187,7 +249,6 @@ namespace Telinha
                 TagsBox, DiretorBox, ArtistasBox, ProdutoraBox, MCUBox,
                 AutoresBox, ShowrunnersBox, ReferenciaBox
             };
-
             foreach (var ctrl in controles)
             {
                 if (ctrl is TextBoxBase txt)
@@ -200,10 +261,12 @@ namespace Telinha
                 }
             }
         }
+
         private void QualquerAlteracao(object sender, EventArgs e)
         {
             PreencherMascara(GetSelectedType());
         }
+
         private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
         {
             item ??= new MidiaModel();
@@ -236,32 +299,12 @@ namespace Telinha
             ShowrunnersBox.Text = item.Showrunners;
             FranquiaBox.Text = item.Franquia;
             MCUBox.Text = item.MCU;
-
-            MCUBox.Enabled = !isAnime;
-        }
-        private static MidiaTipo ObterTipo(string? descricao)
-        {
-            return descricao switch
-            {
-                "Filme" => MidiaTipo.Filme,
-                "Série" => MidiaTipo.Serie,
-                "Anime" => MidiaTipo.Anime,
-                _ => MidiaTipo.Serie
-            };
         }
 
-        private void LimparCampos()
-        {
-            foreach (var tb in _mapeamentoCampos.Values)
-                tb.Clear();
-
-            AudioBox.SelectedIndex = -1;
-            ClearSelectedType();
-            currentId = 0;
-        }
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
+            _cacheService.CleanupExpired();
 
             try
             {
@@ -285,32 +328,45 @@ namespace Telinha
             }
         }
 
-        private void CarregarNaTela(MidiaModel? midia)
+        private async Task AtualizarBotoesNavegacao()
         {
-            _current = midia ?? new MidiaModel();
-            currentId = _current.Id;
-
-            MidiaTipo tipo = TryResolverTipo(_current.Tipo, out var tipoResolvido)
-                ? tipoResolvido
-                : MidiaTipo.Filme;
-
-            if (string.IsNullOrWhiteSpace(_current.TituloFinal))
+            if (currentId <= 0)
             {
-                _current.TituloFinal = _current.NomeFormatado;
+                AnteriorButton.Enabled = false;
+                ProximoButton.Enabled = await MidiaController.GetNext<MidiaModel>(0) != null;
+                return;
             }
 
-            PreencherTodosCampos(_current);
-            SetSelectedType(tipo);
-            AtualizarUI(tipo, _current);
-            PreencherMascara(tipo);
+            AnteriorButton.Enabled = await MidiaController.ExistsPrevious<MidiaModel>(currentId);
+            ProximoButton.Enabled = await MidiaController.ExistsNext<MidiaModel>(currentId);
         }
 
+        private async Task NavegarAsync(Func<long, Task<MidiaModel?>> buscar, string mensagemFim, Button botaoDesabilitar)
+        {
+            try
+            {
+                var item = await buscar(currentId);
+                if (item == null)
+                {
+                    MessageBox.Show(mensagemFim, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    botaoDesabilitar.Enabled = false;
+                    return;
+                }
 
+                CarregarNaTela(item);
+                await AtualizarBotoesNavegacao();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao navegar: {ex.Message}");
+            }
+        }
 
+        private Task AnteriorButton_ClickAsync() =>
+            NavegarAsync(id => MidiaController.GetPrevious<MidiaModel>(id), "Você chegou ao primeiro registro.", AnteriorButton);
 
-
-
-
+        private Task ProximoButton_ClickAsync() =>
+            NavegarAsync(id => MidiaController.GetNext<MidiaModel>(id), "Você chegou ao último registro.", ProximoButton);
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
@@ -370,96 +426,7 @@ namespace Telinha
                 _buscando = false;
             }
         }
-        private static bool TryResolverTipo(string? tipoBruto, out MidiaTipo tipo)
-        {
-            var normalizado = tipoBruto
-                ?.Replace("Série", "Serie")
-                .Replace("Animé", "Anime");
 
-            return Enum.TryParse(normalizado, true, out tipo);
-        }
-
-
-
-
-
-
-        private async void BuscarMidia(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode != Keys.Enter)
-                return;
-
-            e.SuppressKeyPress = true;
-
-            var codigoDigitado = CodigoBox.Text.Trim();
-
-            LogServices.LogarInformacao("VIEW: Enter pressionado. Código: {codigo}, Tipo: {tipo}", codigoDigitado, GetSelectedType());
-
-            if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
-            {
-                MessageBox.Show("Informe o código do TMDB.", "Código Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (_buscando)
-            {
-                LogServices.LogarInformacao("VIEW: Busca ignorada - já está buscando");
-                return;
-            }
-
-            _buscando = true;
-
-            try
-            {
-                if (_midiaService == null)
-                {
-                    MessageBox.Show("Serviço ainda não inicializado.");
-                    return;
-                }
-
-                var midia = await _midiaService.GetMidia(id);
-
-                if (midia == null)
-                {
-                    MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(midia.TituloFinal))
-                {
-                    midia.TituloFinal = midia.NomeFormatado;
-                }
-
-                var tipoNormalizado = midia.Tipo
-                    ?.Replace("Série", "Serie")
-                    .Replace("Animé", "Anime");
-
-                if (Enum.TryParse(tipoNormalizado, true, out MidiaTipo tipoRetornado))
-                {
-                    LogServices.LogarInformacao("VIEW: Tipo parseado: {tipoRetornado}", tipoRetornado);
-                    PreencherCampos(midia);
-                    AtualizarUI(tipoRetornado, midia);
-                }
-                else
-                {
-                    LogServices.LogarInformacao("VIEW: Tipo não reconhecido: {tipo}", midia.Tipo);
-                    MessageBox.Show($"Tipo de mídia não reconhecido: {midia.Tipo}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-                CodigoBox.Text = codigoDigitado;
-                CodigoBox.SelectionStart = CodigoBox.Text.Length;
-                CodigoBox.SelectionLength = 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao buscar a mídia:\n{ex.Message}", "Erro na Busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LogServices.LogarErroComException(ex, "VIEW: Erro ao buscar mídia ID {id}", id);
-            }
-            finally
-            {
-                _buscando = false;
-            }
-        }
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
@@ -473,57 +440,52 @@ namespace Telinha
             }
         }
 
-        /*private async void SalvarButton_Click(object? sender, EventArgs e)
+        private async void SalvarButton_Click(object? sender, EventArgs e)
         {
             try
             {
-                _bs.EndEdit();
+                _current.Tipo = TipoToDisplay(GetSelectedType());
+                _current.TituloFinal = TipoBox.Text;
+                _current.Nome = NomeBox.Text;
+                _current.Sinopse = SinopseBox.Text;
+                _current.Original = OriginalBox.Text;
+                _current.Estreia = EstreiaBox.Text;
+                _current.Alternativo = AlternativoBox.Text;
+                _current.Tags = TagsBox.Text;
+                _current.MCU = MCUBox.Text;
+                _current.Local = LocalBox.Text;
+                _current.Idioma = IdiomaBox.Text;
+                _current.Referencia = ReferenciaBox.Text;
+                _current.Autores = AutoresBox.Text;
+                _current.Franquia = FranquiaBox.Text;
+                _current.Showrunners = ShowrunnersBox.Text;
+                _current.Genero = GeneroBox.Text;
+                _current.Diretor = DiretorBox.Text;
+                _current.Artistas = ArtistasBox.Text;
+                _current.Produtora = ProdutoraBox.Text;
+                _current.Audio = AudioBox.Text;
 
-                var tipo = (MidiaModel)_bs.Current!;
-
-                tipo.Tipo = TipoLabel.Text;
-
-                if (_bs.Current is not MidiaModel item)
-                {
-                    MessageBox.Show("Nenhum registro para salvar.", "Aviso");
-                    return;
-                }
-
-                var (inserted, updated) = await MidiaController.SaveAsync(item);
+                var (inserted, updated) = await MidiaController.SaveAsync(_current);
 
                 MessageBox.Show(inserted
-                    ? $"{item.Nome} inserido com sucesso!"
-                    : $"{item.Nome} atualizado com sucesso!");
+                    ? $"{_current.Nome} inserido com sucesso!"
+                    : $"{_current.Nome} atualizado com sucesso!");
 
-                if (inserted && item.Id != 0)
-                {
-                    currentId = item.Id;
-
-                    if (_bs.DataSource is BindingList<MidiaModel> lista && !lista.Contains(item))
-                        lista.Add(item);
-
-                    _bs.Position = _bs.IndexOf(item);
-                }
-                else
-                {
-                    _bs.ResetCurrentItem();
-                }
-
+                CarregarNaTela(_current);
                 await AtualizarBotoesNavegacao();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }*/
-
-
+        }
 
         private void SobreButton_Click(object sender, EventArgs e)
         {
             var sobreForm = new Sobre();
             sobreForm.Show();
         }
+
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
