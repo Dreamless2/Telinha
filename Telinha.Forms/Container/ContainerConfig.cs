@@ -3,7 +3,6 @@ using Microsoft.Extensions.Caching.Memory;
 using Telinha.Core.Factory;
 using Telinha.Core.Services;
 
-
 namespace Telinha.Forms.Container
 {
     public static class ContainerConfig
