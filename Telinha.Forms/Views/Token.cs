@@ -5,12 +5,8 @@ namespace Telinha
 {
     public partial class Token : Form
     {
-        #region Variáveis
         private readonly ILifetimeScope _scope;
         private readonly AppConfigServices _configService;
-        #endregion
-
-        #region Constructor
         public Token(ILifetimeScope scope, AppConfigServices configService)
         {
             InitializeComponent();
@@ -37,7 +33,7 @@ namespace Telinha
             UsuarioBox.TextChanged += (s, e) => Hidden(UsuarioBox);
             SenhaBox.TextChanged += (s, e) => Hidden(SenhaBox);
         }
-        #endregion
+#endregion
 
         #region Hidden
         private static void Hidden(TextBoxBase txt)
