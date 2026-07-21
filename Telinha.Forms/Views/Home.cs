@@ -146,7 +146,7 @@ namespace Telinha
         }
 
         #region Tipo para Display
-        private MediaType GetSelectedType()
+        private MidiaTipo GetSelectedType()
         {
             if (RadioFilmes.Checked) return MediaType.Filme;
             if (RadioAnimes.Checked) return MediaType.Anime;
