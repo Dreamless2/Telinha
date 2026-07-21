@@ -649,6 +649,7 @@
             // RadioAnimes
             // 
             RadioAnimes.AutoSize = true;
+            RadioAnimes.ForeColor = Color.White;
             RadioAnimes.Location = new Point(928, 25);
             RadioAnimes.Name = "RadioAnimes";
             RadioAnimes.Size = new Size(65, 19);
@@ -660,6 +661,7 @@
             // RadioSeries
             // 
             RadioSeries.AutoSize = true;
+            RadioSeries.ForeColor = Color.White;
             RadioSeries.Location = new Point(644, 25);
             RadioSeries.Name = "RadioSeries";
             RadioSeries.Size = new Size(55, 19);
@@ -671,6 +673,7 @@
             // RadioFilmes
             // 
             RadioFilmes.AutoSize = true;
+            RadioFilmes.ForeColor = Color.White;
             RadioFilmes.Location = new Point(360, 25);
             RadioFilmes.Name = "RadioFilmes";
             RadioFilmes.Size = new Size(59, 19);
