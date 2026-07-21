@@ -650,10 +650,10 @@
             radioButton3.AutoSize = true;
             radioButton3.Location = new Point(928, 25);
             radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(94, 19);
+            radioButton3.Size = new Size(65, 19);
             radioButton3.TabIndex = 2;
             radioButton3.TabStop = true;
-            radioButton3.Text = "radioButton3";
+            radioButton3.Text = "Animes";
             radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton2
