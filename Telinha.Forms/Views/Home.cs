@@ -20,9 +20,7 @@ namespace Telinha
         private readonly BindingSource _bs = [];
         private bool _buscando;
         private readonly Dictionary<string, TextBox> _mapeamentoCampos;
-        #endregion
 
-        #region Low Level
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
 
