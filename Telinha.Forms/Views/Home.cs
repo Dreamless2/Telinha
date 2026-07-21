@@ -69,9 +69,6 @@ namespace Telinha
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
         }
-        #endregion
-
-        #region Mover Form
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
