@@ -287,9 +287,6 @@ namespace Telinha
                 MCUBox.Enabled = true;
             }
         }
-        #endregion
-
-        #region Obter Tipo
         private static MidiaTipo ObterTipo(string? descricao)
         {
             return descricao switch
