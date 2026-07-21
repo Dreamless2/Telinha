@@ -356,8 +356,6 @@ namespace Telinha
 
             SetupBindings();
 
-            _cacheService.CleanupExpired();
-
             try
             {
                 if (await MidiaController.AnyAsync<MidiaModel>())
