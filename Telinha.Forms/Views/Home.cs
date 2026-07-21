@@ -68,6 +68,8 @@ namespace Telinha
                 [nameof(MidiaModel.Artistas)] = ArtistasBox,
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
+
+
         }
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
