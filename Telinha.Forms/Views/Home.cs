@@ -245,8 +245,8 @@ namespace Telinha
             {
                 if (c is TextBox txt)
                 {
-                    txt.Enter += TextBox_Enter;
-                    txt.Leave += TextBox_Leave;
+                    txt.Enter += TextBox_Enter!;
+                    txt.Leave += TextBox_Leave!;
 
                     if (string.IsNullOrWhiteSpace(txt.Text))
                     {
