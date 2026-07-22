@@ -52,7 +52,7 @@ namespace Telinha
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
-            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;           
+            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
 
             ConectarEventos();
 
@@ -88,14 +88,16 @@ namespace Telinha
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
         private MidiaTipo GetSelectedType()
         {
-            if (RadioFilmes.Checked) return MidiaTipo.Filme;
+            if (RadioFilmes.Checked)
+
+                return MidiaTipo.Filme;
+
+
             if (RadioAnimes.Checked) return MidiaTipo.Anime;
             return MidiaTipo.Serie;
         }
-
         private void SetSelectedType(MidiaTipo tipo)
         {
             RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged!;
@@ -110,14 +112,13 @@ namespace Telinha
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
         }
-
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (sender is RadioButton rb && !rb.Checked)
                 return;
 
             var tipo = GetSelectedType();
-            
+
             AtualizarUI(tipo, _current);
             PreencherMascara(tipo);
         }
