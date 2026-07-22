@@ -88,6 +88,7 @@ namespace Telinha.Core.Models
         }
 
         private string? _midia;
+        [Column(IsIgnore = true)]
         public string Midia
         {
             get => _midia;
