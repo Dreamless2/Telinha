@@ -100,6 +100,14 @@ namespace Telinha.Core.Models
             set => SetField(ref _idiomaOriginal, value);
         }
 
+        private string? _serie;
+        [Column(IsIgnore = true)]
+        public string? Serie
+        {
+            get => _serie;
+            set => SetField(ref _serie, value);
+        }
+
         private string? _franquia;
         public string? Franquia
         {
