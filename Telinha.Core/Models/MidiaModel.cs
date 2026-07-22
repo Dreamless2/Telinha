@@ -258,5 +258,11 @@ namespace Telinha.Core.Models
                 return TagEngine.FormatarTitulo(Nome);
             }
         }
+
+        public string TituloResolvido =>
+    string.IsNullOrWhiteSpace(TituloFinal) ? NomeFormatado : TituloFinal!;
+
+        public string MidiaResolvida =>
+            string.IsNullOrWhiteSpace(Midia) ? NomeFormatado : Midia!;
     }
 }
