@@ -111,12 +111,13 @@ namespace Telinha
             if (RadioSeries.Checked == true)
             {
                 TipoLabel.Text = "Série";
-                if (RadioAnimes.Checked == true) TipoLabel.Text = "Anime";
-
-                RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
-                RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
-                RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
             }
+            if (RadioAnimes.Checked == true) TipoLabel.Text = "Anime";
+
+            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
+            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
+        }
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (sender is RadioButton rb && !rb.Checked)
