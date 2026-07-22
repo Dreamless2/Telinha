@@ -1,7 +1,9 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.ComponentModel;
+using System.Runtime.InteropServices;
 using Telinha.Core.Card;
 using Telinha.Core.Controller;
 using Telinha.Core.Enums;
+using Telinha.Core.Helpers;
 using Telinha.Core.Models;
 using Telinha.Core.Services;
 using Telinha.Forms.Extras;
@@ -60,12 +62,11 @@ namespace Telinha
             {
                 [nameof(MidiaModel.Codigo)] = CodigoBox,
                 [nameof(MidiaModel.Nome)] = NomeBox,
-                //[nameof(MidiaModel.TituloFinal)] = TipoBox,
+                [nameof(MidiaModel.TituloResolvido)] = TipoBox,
                 [nameof(MidiaModel.Sinopse)] = SinopseBox,
                 [nameof(MidiaModel.Original)] = OriginalBox,
                 [nameof(MidiaModel.Estreia)] = EstreiaBox,
                 [nameof(MidiaModel.Alternativo)] = AlternativoBox,
-                [nameof(MidiaModel.Midia)] = TipoBox,
                 [nameof(MidiaModel.Tags)] = TagsBox,
                 [nameof(MidiaModel.MCU)] = MCUBox,
                 [nameof(MidiaModel.Local)] = LocalBox,
@@ -151,11 +152,6 @@ namespace Telinha
                 ? tipoResolvido
                 : MidiaTipo.Filme;
 
-            if (string.IsNullOrWhiteSpace(_current.TituloFinal))
-            {
-                _current.TituloFinal = _current.NomeFormatado;
-            }
-
             bool ehSerieOuAnime = tipo == MidiaTipo.Serie || tipo == MidiaTipo.Anime;
             if (ehSerieOuAnime)
             {
@@ -207,7 +203,7 @@ namespace Telinha
                 original: OriginalBox.Text,
                 lancamento: EstreiaBox.Text,
                 alternativo: AlternativoBox.Text,
-                midia: TipoBox.Text,
+                midia: _current.MidiaResolvida,
                 local: LocalBox.Text,
                 idioma: IdiomaBox.Text,
                 franquia: FranquiaBox.Text,
