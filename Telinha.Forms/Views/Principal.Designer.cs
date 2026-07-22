@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             SairButton = new Button();
-            SalvarButton = new Button();
+            HomeButton = new Button();
             PanelTopBar = new Panel();
             label7 = new Label();
             PanelTopTitle = new Panel();
@@ -47,14 +47,14 @@
             SairButton.Text = "Sobre";
             SairButton.UseVisualStyleBackColor = true;
             // 
-            // SalvarButton
+            // HomeButton
             // 
-            SalvarButton.Location = new Point(31, 263);
-            SalvarButton.Name = "SalvarButton";
-            SalvarButton.Size = new Size(246, 41);
-            SalvarButton.TabIndex = 18;
-            SalvarButton.Text = "Home";
-            SalvarButton.UseVisualStyleBackColor = true;
+            HomeButton.Location = new Point(31, 263);
+            HomeButton.Name = "HomeButton";
+            HomeButton.Size = new Size(246, 41);
+            HomeButton.TabIndex = 18;
+            HomeButton.Text = "Home";
+            HomeButton.UseVisualStyleBackColor = true;
             // 
             // PanelTopBar
             // 
@@ -111,7 +111,7 @@
             ClientSize = new Size(308, 738);
             Controls.Add(button1);
             Controls.Add(SairButton);
-            Controls.Add(SalvarButton);
+            Controls.Add(HomeButton);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
@@ -127,7 +127,7 @@
         #endregion
 
         private Button SairButton;
-        private Button SalvarButton;
+        private Button HomeButton;
         private Panel PanelTopBar;
         private Label label7;
         private Panel PanelTopTitle;
