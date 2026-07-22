@@ -223,6 +223,21 @@ namespace Telinha
             ResumoBox.Text = card.GetFormattedText();
         }
 
+        private void TextBox_Enter(object sender, EventArgs e)
+        {
+            if (sender is TextBox txt && txt.Text == "--")
+            {
+                txt.Text = string.Empty;
+            }
+        }
+
+        private void TextBox_Leave(object sender, EventArgs e)
+        {
+            if (sender is TextBox txt && string.IsNullOrWhiteSpace(txt.Text))
+            {
+                txt.Text = "--";
+            }
+        }
 
         private void ConfigurarTodosOsTextBoxes(Control container)
         {
@@ -230,11 +245,9 @@ namespace Telinha
             {
                 if (c is TextBox txt)
                 {
-                    // Vincula os eventos em lote
                     txt.Enter += TextBox_Enter;
                     txt.Leave += TextBox_Leave;
 
-                    // Inicializa todos os 20+ campos vazios com "--"
                     if (string.IsNullOrWhiteSpace(txt.Text))
                     {
                         txt.Text = "--";
