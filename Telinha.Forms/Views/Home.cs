@@ -106,17 +106,17 @@ namespace Telinha
 
             if (RadioFilmes.Checked == true)
             {
-                PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+                //PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
                 TipoLabel.Text = "Filme";
             }
             if (RadioSeries.Checked == true)
             {
-                PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+                //PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
                 TipoLabel.Text = "Série";
             }
             if (RadioAnimes.Checked == true)
             {
-                PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+                //PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
                 TipoLabel.Text = "Anime";
             }
 
