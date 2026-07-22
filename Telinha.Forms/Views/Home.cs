@@ -104,6 +104,8 @@ namespace Telinha
             RadioSeries.Checked = tipo == MidiaTipo.Serie;
             RadioAnimes.Checked = tipo == MidiaTipo.Anime;
 
+            if (RadioFilmes.Checked == true) TipoLabel.Text = "Filme";
+
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
