@@ -34,7 +34,7 @@
             label7 = new Label();
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
-            button1 = new Button();
+            SairButton = new Button();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
@@ -95,21 +95,21 @@
             PanelBottom.Size = new Size(308, 44);
             PanelBottom.TabIndex = 17;
             // 
-            // button1
+            // SairButton
             // 
-            button1.Location = new Point(31, 435);
-            button1.Name = "button1";
-            button1.Size = new Size(246, 41);
-            button1.TabIndex = 20;
-            button1.Text = "Sair";
-            button1.UseVisualStyleBackColor = true;
+            SairButton.Location = new Point(31, 435);
+            SairButton.Name = "SairButton";
+            SairButton.Size = new Size(246, 41);
+            SairButton.TabIndex = 20;
+            SairButton.Text = "Sair";
+            SairButton.UseVisualStyleBackColor = true;
             // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(308, 738);
-            Controls.Add(button1);
+            Controls.Add(SairButton);
             Controls.Add(SobreButton);
             Controls.Add(HomeButton);
             Controls.Add(PanelTopBar);
@@ -132,6 +132,6 @@
         private Label label7;
         private Panel PanelTopTitle;
         private Panel PanelBottom;
-        private Button button1;
+        private Button SairButton;
     }
 }
