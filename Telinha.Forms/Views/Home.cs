@@ -236,9 +236,7 @@ namespace Telinha
         private void TextBox_Leave(object sender, EventArgs e)
         {
             if (sender is TextBox txt && string.IsNullOrWhiteSpace(txt.Text))
-            {
                 txt.Text = "--";
-            }
         }
 
         private void ConfigurarTodosOsTextBoxes(Control container)
