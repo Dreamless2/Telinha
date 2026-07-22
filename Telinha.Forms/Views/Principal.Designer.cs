@@ -39,18 +39,18 @@
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(40, 361);
+            SairButton.Location = new Point(29, 365);
             SairButton.Name = "SairButton";
-            SairButton.Size = new Size(180, 41);
+            SairButton.Size = new Size(246, 41);
             SairButton.TabIndex = 19;
             SairButton.Text = "Sair";
             SairButton.UseVisualStyleBackColor = true;
             // 
             // SalvarButton
             // 
-            SalvarButton.Location = new Point(49, 246);
+            SalvarButton.Location = new Point(29, 273);
             SalvarButton.Name = "SalvarButton";
-            SalvarButton.Size = new Size(180, 41);
+            SalvarButton.Size = new Size(246, 41);
             SalvarButton.TabIndex = 18;
             SalvarButton.Text = "Salvar ";
             SalvarButton.UseVisualStyleBackColor = true;
