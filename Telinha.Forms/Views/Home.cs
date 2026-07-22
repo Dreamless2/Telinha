@@ -108,10 +108,11 @@ namespace Telinha
             {
                 PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t =>
                 {
-                    t
-                    TipoLabel.Text = "Filme";
-                }
-            if (RadioSeries.Checked == true)
+                    t.Clear();
+                };
+                TipoLabel.Text = "Filme";
+
+                if (RadioSeries.Checked == true)
                 {
                     TipoLabel.Text = "Série";
                 }
