@@ -54,6 +54,8 @@ namespace Telinha
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
 
+            RadioFilmes.Checked += 
+
             ConectarEventos();
 
             _mapeamentoCampos = new Dictionary<string, TextBox>
