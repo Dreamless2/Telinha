@@ -255,7 +255,6 @@ namespace Telinha
                 }
             }
         }
-
         private void ConectarEventos()
         {
             var controles = new Control[] {
