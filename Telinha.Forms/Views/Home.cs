@@ -417,7 +417,6 @@ namespace Telinha
                 _buscando = false;
             }
         }
-
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
@@ -430,7 +429,6 @@ namespace Telinha
                 MessageBox.Show("Nada para ser copiado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private async void SalvarButton_Click(object? sender, EventArgs e)
         {
             try
