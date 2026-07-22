@@ -79,7 +79,6 @@ namespace Telinha
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
         }
-
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -88,7 +87,6 @@ namespace Telinha
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
         private MidiaTipo GetSelectedType()
         {
             if (RadioFilmes.Checked) return MidiaTipo.Filme;
