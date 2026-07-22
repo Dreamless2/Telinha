@@ -204,17 +204,6 @@ namespace Telinha.Core.Models
         [Column(IsIgnore = true)]
         public List<string>? ProdutorasLista { get; set; }
 
-        [Column(IsIgnore = true)]
-        public int Episodios { get; set; }
-
-        [Column(IsIgnore = true)]
-        public int DuracaoMedia { get; set; }
-
-        [Column(IsIgnore = true)]
-        public double Popularidade { get; set; }
-
-        [Column(IsIgnore = true)]
-        public int Votos { get; set; }
 
         [Column(IsIgnore = true)]
         public bool EhAnimacao =>
