@@ -79,6 +79,7 @@ namespace Telinha
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
         }
+
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -87,6 +88,7 @@ namespace Telinha
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+
         private MidiaTipo GetSelectedType()
         {
             if (RadioFilmes.Checked) return MidiaTipo.Filme;
@@ -103,21 +105,6 @@ namespace Telinha
             RadioFilmes.Checked = tipo == MidiaTipo.Filme;
             RadioSeries.Checked = tipo == MidiaTipo.Serie;
             RadioAnimes.Checked = tipo == MidiaTipo.Anime;
-
-            RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
-            RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
-            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
-        }
-
-        private void ClearSelectedType()
-        {
-            RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged!;
-            RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged!;
-            RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged!;
-
-            RadioFilmes.Checked = false;
-            RadioSeries.Checked = false;
-            RadioAnimes.Checked = false;
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
@@ -294,6 +281,7 @@ namespace Telinha
             FranquiaBox.Text = item.Franquia;
             MCUBox.Text = item.MCU;
         }
+
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
@@ -319,6 +307,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private async Task AtualizarBotoesNavegacao()
         {
             if (currentId <= 0)
@@ -352,6 +341,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao navegar: {ex.Message}");
             }
         }
+
         private Task AnteriorButton_ClickAsync() =>
             NavegarAsync(id => MidiaController.GetPrevious<MidiaModel>(id), "Você chegou ao primeiro registro.", AnteriorButton);
 
@@ -416,6 +406,7 @@ namespace Telinha
                 _buscando = false;
             }
         }
+
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
@@ -428,6 +419,7 @@ namespace Telinha
                 MessageBox.Show("Nada para ser copiado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private async void SalvarButton_Click(object? sender, EventArgs e)
         {
             try
@@ -467,11 +459,13 @@ namespace Telinha
                 MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void SobreButton_Click(object sender, EventArgs e)
         {
             var sobreForm = new Sobre();
             sobreForm.Show();
         }
+
         private void SairButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
