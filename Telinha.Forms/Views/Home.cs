@@ -106,7 +106,7 @@ namespace Telinha
 
             if (RadioFilmes.Checked == true)
             {
-                PanelForms.Controls.OfType<TextBox>
+                PanelForms.Controls.OfType<TextBox
                 TipoLabel.Text = "Filme";
             }
             if (RadioSeries.Checked == true)
