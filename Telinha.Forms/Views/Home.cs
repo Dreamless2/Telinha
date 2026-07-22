@@ -120,7 +120,6 @@ namespace Telinha
                     TipoLabel.Text = "Anime";
                 }
 
-
                 RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
                 RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
                 RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
