@@ -223,20 +223,29 @@ namespace Telinha
             ResumoBox.Text = card.GetFormattedText();
         }
 
-        private void AssociarEventos(Control container)
+        private void ConfigurarTodosOsTextBoxes(Control container)
         {
             foreach (Control c in container.Controls)
             {
                 if (c is TextBox txt)
                 {
+                    // Vincula os eventos em lote
+                    txt.Enter += TextBox_Enter;
                     txt.Leave += TextBox_Leave;
+
+                    // Inicializa todos os 20+ campos vazios com "--"
+                    if (string.IsNullOrWhiteSpace(txt.Text))
+                    {
+                        txt.Text = "--";
+                    }
                 }
                 else if (c.HasChildren)
                 {
-                    // Busca também dentro de painéis ou groupboxes
-                    AssociarEventos(c);
+                    // Se os TextBoxes estiverem dentro de Painéis, GroupBoxes ou TabPages
+                    ConfigurarTodosOsTextBoxes(c);
                 }
             }
+        }
 
         private void ConectarEventos()
         {
