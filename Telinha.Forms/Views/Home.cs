@@ -104,26 +104,13 @@ namespace Telinha
             RadioSeries.Checked = tipo == MidiaTipo.Serie;
             RadioAnimes.Checked = tipo == MidiaTipo.Anime;
 
-            if (RadioFilmes.Checked == true)
-            {
-                //PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
-                TipoLabel.Text = "Filme";
-            }
-            if (RadioSeries.Checked == true)
-            {
-                //PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
-                TipoLabel.Text = "Série";
-            }
-            if (RadioAnimes.Checked == true)
-            {
-                //PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
-                TipoLabel.Text = "Anime";
-            }
+            if (RadioFilmes.Checked == true) TipoLabel.Text = "Filme";
+            if (RadioSeries.Checked == true) TipoLabel.Text = "Série";
+            if (RadioAnimes.Checked == true) TipoLabel.Text = "Anime";
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
-
         }
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
         {
