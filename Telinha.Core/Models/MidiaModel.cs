@@ -91,7 +91,7 @@ namespace Telinha.Core.Models
         public string Midia;
         {
             get => _midia;
-            set => SetField(ref _alternativo, value);
+            set => SetField(ref _midia, value);
         }
 
         private string? _local;
