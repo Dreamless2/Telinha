@@ -87,12 +87,11 @@ namespace Telinha.Core.Models
             set => SetField(ref _alternativo, value);
         }
 
-        private string? _midia;
-        [Column(IsIgnore = true)]
-        public string Midia
+        private string? _codigo;
+        public string? Codigo
         {
-            get => _midia!;
-            set => SetField(ref _midia, value);
+            get => _codigo;
+            set => SetField(ref _codigo, value);
         }
 
         private string? _local;
