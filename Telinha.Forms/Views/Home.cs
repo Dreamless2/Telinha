@@ -207,6 +207,7 @@ namespace Telinha
                 original: OriginalBox.Text,
                 lancamento: EstreiaBox.Text,
                 alternativo: AlternativoBox.Text,
+                midia: TipoBox.Text,
                 local: LocalBox.Text,
                 idioma: IdiomaBox.Text,
                 franquia: FranquiaBox.Text,
