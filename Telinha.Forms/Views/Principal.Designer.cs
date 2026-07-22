@@ -72,9 +72,9 @@
             label7.ForeColor = Color.White;
             label7.Location = new Point(14, 9);
             label7.Name = "label7";
-            label7.Size = new Size(105, 40);
+            label7.Size = new Size(125, 40);
             label7.TabIndex = 0;
-            label7.Text = "Acesso";
+            label7.Text = "Principal";
             // 
             // PanelTopTitle
             // 
