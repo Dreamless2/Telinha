@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SairButton = new Button();
+            SobreButton = new Button();
             HomeButton = new Button();
             PanelTopBar = new Panel();
             label7 = new Label();
@@ -38,14 +38,14 @@
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
-            // SairButton
+            // SobreButton
             // 
-            SairButton.Location = new Point(31, 349);
-            SairButton.Name = "SairButton";
-            SairButton.Size = new Size(246, 41);
-            SairButton.TabIndex = 19;
-            SairButton.Text = "Sobre";
-            SairButton.UseVisualStyleBackColor = true;
+            SobreButton.Location = new Point(31, 349);
+            SobreButton.Name = "SobreButton";
+            SobreButton.Size = new Size(246, 41);
+            SobreButton.TabIndex = 19;
+            SobreButton.Text = "Sobre";
+            SobreButton.UseVisualStyleBackColor = true;
             // 
             // HomeButton
             // 
@@ -110,7 +110,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(308, 738);
             Controls.Add(button1);
-            Controls.Add(SairButton);
+            Controls.Add(SobreButton);
             Controls.Add(HomeButton);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
@@ -126,7 +126,7 @@
 
         #endregion
 
-        private Button SairButton;
+        private Button SobreButton;
         private Button HomeButton;
         private Panel PanelTopBar;
         private Label label7;
