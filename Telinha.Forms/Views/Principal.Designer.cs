@@ -44,7 +44,7 @@
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(246, 41);
             SairButton.TabIndex = 19;
-            SairButton.Text = "Sair";
+            SairButton.Text = "Sobre";
             SairButton.UseVisualStyleBackColor = true;
             // 
             // SalvarButton
