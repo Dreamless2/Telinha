@@ -13,6 +13,12 @@ namespace Telinha.Forms.Views
         public Principal()
         {
             InitializeComponent();
+            HomeButton.Click += HomeButton_Click;
+        }
+
+        private void HomeButton_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
