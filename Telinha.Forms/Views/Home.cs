@@ -49,7 +49,6 @@ namespace Telinha
             SalvarButton.Click += SalvarButton_Click!;
             AnteriorButton.Click += async (s, e) => await AnteriorButton_ClickAsync();
             ProximoButton.Click += async (s, e) => await ProximoButton_ClickAsync();
-            SobreButton.Click += SobreButton_Click!;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
