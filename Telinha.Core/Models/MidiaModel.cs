@@ -91,7 +91,7 @@ namespace Telinha.Core.Models
         [Column(IsIgnore = true)]
         public string Midia
         {
-            get => _midia;
+            get => _midia!;
             set => SetField(ref _midia, value);
         }
 
