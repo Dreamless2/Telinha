@@ -255,7 +255,6 @@ namespace Telinha
                 }
                 else if (c.HasChildren)
                 {
-                    // Se os TextBoxes estiverem dentro de Painéis, GroupBoxes ou TabPages
                     ConfigurarTodosOsTextBoxes(c);
                 }
             }
