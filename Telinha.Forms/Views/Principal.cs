@@ -20,7 +20,7 @@ namespace Telinha.Forms.Views
 
         private void SairButton_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Application.Exit();
         }
 
         private void SobreButton_Click(object? sender, EventArgs e)
