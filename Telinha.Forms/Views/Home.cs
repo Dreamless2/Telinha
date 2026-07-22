@@ -118,7 +118,7 @@ namespace Telinha
         {
             if (sender is RadioButton rb && !rb.Checked)
             {
-                PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
+                ConfigurarTodosOsTextBoxes(this);
                 return;
             }
 
