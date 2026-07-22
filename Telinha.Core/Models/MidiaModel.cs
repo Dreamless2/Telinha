@@ -9,6 +9,7 @@ namespace Telinha.Core.Models
     public class MidiaModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
         {
             if (EqualityComparer<T>.Default.Equals(field, value))
@@ -48,6 +49,14 @@ namespace Telinha.Core.Models
         {
             get => _tipo;
             set => SetField(ref _tipo, value);
+        }
+
+        private string? _classificacao;
+        [Column(IsIgnore = true)]
+        public string? Classificacao
+        {
+            get => _classificacao;
+            set => SetField(ref _classificacao, value);
         }
 
         private string? _sinopse;
