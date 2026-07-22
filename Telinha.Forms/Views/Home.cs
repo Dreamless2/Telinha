@@ -116,6 +116,7 @@ namespace Telinha
                 }
                 if (RadioAnimes.Checked == true)
                 {
+                    PanelForms.Controls.OfType<TextBox>().ToList().ForEach(t => t.Clear());
                     TipoLabel.Text = "Anime";
                 }
 
