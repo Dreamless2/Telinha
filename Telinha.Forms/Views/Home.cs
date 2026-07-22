@@ -223,6 +223,7 @@ namespace Telinha
             ResumoBox.Text = card.GetFormattedText();
         }
 
+
         private void ConfigurarTodosOsTextBoxes(Control container)
         {
             foreach (Control c in container.Controls)
