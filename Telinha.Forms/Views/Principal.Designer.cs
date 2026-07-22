@@ -34,6 +34,7 @@
             label7 = new Label();
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
+            button1 = new Button();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             SalvarButton.Name = "SalvarButton";
             SalvarButton.Size = new Size(246, 41);
             SalvarButton.TabIndex = 18;
-            SalvarButton.Text = "Salvar ";
+            SalvarButton.Text = "Home";
             SalvarButton.UseVisualStyleBackColor = true;
             // 
             // PanelTopBar
@@ -94,11 +95,21 @@
             PanelBottom.Size = new Size(308, 44);
             PanelBottom.TabIndex = 17;
             // 
+            // button1
+            // 
+            button1.Location = new Point(31, 349);
+            button1.Name = "button1";
+            button1.Size = new Size(246, 41);
+            button1.TabIndex = 20;
+            button1.Text = "Sair";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(308, 738);
+            Controls.Add(button1);
             Controls.Add(SairButton);
             Controls.Add(SalvarButton);
             Controls.Add(PanelTopBar);
@@ -121,5 +132,6 @@
         private Label label7;
         private Panel PanelTopTitle;
         private Panel PanelBottom;
+        private Button button1;
     }
 }
