@@ -50,14 +50,6 @@ namespace Telinha.Core.Models
             set => SetField(ref _tipo, value);
         }
 
-        private string? _classificacao;
-        [Column(IsIgnore = true)]
-        public string? Classificacao
-        {
-            get => _classificacao;
-            set => SetField(ref _classificacao, value);
-        }
-
         private string? _sinopse;
         public string? Sinopse
         {
