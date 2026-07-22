@@ -106,13 +106,17 @@ namespace Telinha
 
             if (RadioFilmes.Checked == true)
             {
+               
                 TipoLabel.Text = "Filme";
             }
             if (RadioSeries.Checked == true)
             {
                 TipoLabel.Text = "Série";
             }
-            if (RadioAnimes.Checked == true) TipoLabel.Text = "Anime";
+            if (RadioAnimes.Checked == true)
+            {
+                TipoLabel.Text = "Anime";
+            }
 
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
