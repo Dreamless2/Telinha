@@ -60,11 +60,12 @@ namespace Telinha
             {
                 [nameof(MidiaModel.Codigo)] = CodigoBox,
                 [nameof(MidiaModel.Nome)] = NomeBox,
-                [nameof(MidiaModel.TituloFinal)] = TipoBox,
+                / [nameof(MidiaModel.TituloFinal)] = TipoBox,
                 [nameof(MidiaModel.Sinopse)] = SinopseBox,
                 [nameof(MidiaModel.Original)] = OriginalBox,
                 [nameof(MidiaModel.Estreia)] = EstreiaBox,
                 [nameof(MidiaModel.Alternativo)] = AlternativoBox,
+                [nameof(MidiaModel.Midia)] = TipoBox,
                 [nameof(MidiaModel.Tags)] = TagsBox,
                 [nameof(MidiaModel.MCU)] = MCUBox,
                 [nameof(MidiaModel.Local)] = LocalBox,
