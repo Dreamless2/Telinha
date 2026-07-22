@@ -249,10 +249,8 @@ namespace Telinha
                     txt.Leave += TextBox_Leave!;
                     if (string.IsNullOrWhiteSpace(txt.Text)) txt.Text = "--";
                 }
-                else if (c.HasChildren)
-                {
-                    ConfigurarTodosOsTextBoxes(c);
-                }
+                else if (c.HasChildren) ConfigurarTodosOsTextBoxes(c);
+
             }
         }
         private void ConectarEventos()
