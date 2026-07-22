@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Telinha.Views;
 
 namespace Telinha.Forms.Views
 {
@@ -25,12 +26,14 @@ namespace Telinha.Forms.Views
 
         private void SobreButton_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var sobre = new Sobre();
+            sobre.ShowDialog();
         }
 
         private void HomeButton_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var home = new Home();
+            home.ShowDialog();
         }
     }
 }
