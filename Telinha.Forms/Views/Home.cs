@@ -319,6 +319,7 @@ namespace Telinha
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
+            ConfigurarTodosOsTextBoxes(this);
 
             try
             {
