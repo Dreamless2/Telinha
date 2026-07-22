@@ -223,6 +223,21 @@ namespace Telinha
             ResumoBox.Text = card.GetFormattedText();
         }
 
+        private void AssociarEventos(Control container)
+        {
+            foreach (Control c in container.Controls)
+            {
+                if (c is TextBox txt)
+                {
+                    txt.Leave += TextBox_Leave;
+                }
+                else if (c.HasChildren)
+                {
+                    // Busca também dentro de painéis ou groupboxes
+                    AssociarEventos(c);
+                }
+            }
+
         private void ConectarEventos()
         {
             var controles = new Control[] {
