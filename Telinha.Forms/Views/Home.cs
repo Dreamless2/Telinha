@@ -250,7 +250,6 @@ namespace Telinha
                     if (string.IsNullOrWhiteSpace(txt.Text)) txt.Text = "--";
                 }
                 else if (c.HasChildren) ConfigurarTodosOsTextBoxes(c);
-
             }
         }
         private void ConectarEventos()
