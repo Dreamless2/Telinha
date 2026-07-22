@@ -14,6 +14,12 @@ namespace Telinha.Forms.Views
         {
             InitializeComponent();
             HomeButton.Click += HomeButton_Click;
+            SobreButton.Click += SobreButton_Click;
+        }
+
+        private void SobreButton_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void HomeButton_Click(object? sender, EventArgs e)
