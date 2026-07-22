@@ -52,9 +52,7 @@ namespace Telinha
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
-            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
-
-            RadioFilmes.Checked += Filmes
+            RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;           
 
             ConectarEventos();
 
