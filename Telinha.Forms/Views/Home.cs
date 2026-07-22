@@ -264,7 +264,7 @@ namespace Telinha
             ReferenciaLabel.Enabled = ReferenciaBox.Enabled = habilitarCamposGerais;
             AutoresLabel.Enabled = AutoresBox.Enabled = habilitarCamposGerais;
             ShowrunnersLabel.Enabled = ShowrunnersBox.Enabled = habilitarCamposGerais;
-            MCUBox.Enabled = !isFilme && !isAnime;
+            MCUBox.Enabled = isFilme && !isAnime;
 
             SetSelectedType(tipo);
             TipoBox.PlaceholderText = TipoToDisplay(tipo);
