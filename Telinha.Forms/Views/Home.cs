@@ -36,8 +36,6 @@ namespace Telinha
 
         [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
         private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-
         public Home(MidiaServices midiaService)
         {
             InitializeComponent();
