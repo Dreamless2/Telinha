@@ -40,7 +40,7 @@
             // 
             // SobreButton
             // 
-            SobreButton.Location = new Point(0, 290);
+            SobreButton.Location = new Point(0, 289);
             SobreButton.Name = "SobreButton";
             SobreButton.Size = new Size(365, 138);
             SobreButton.TabIndex = 19;
@@ -97,7 +97,7 @@
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(0, 429);
+            SairButton.Location = new Point(0, 427);
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(365, 138);
             SairButton.TabIndex = 20;
