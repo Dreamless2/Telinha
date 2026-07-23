@@ -33,7 +33,7 @@
             label7 = new Label();
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
-            label1 = new Label();
+            LabelData = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             label2 = new Label();
             PanelTopTitle.SuspendLayout();
@@ -78,14 +78,14 @@
             PanelBottom.Size = new Size(1245, 44);
             PanelBottom.TabIndex = 17;
             // 
-            // label1
+            // LabelData
             // 
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(368, 301);
-            label1.Name = "label1";
-            label1.Size = new Size(509, 84);
-            label1.TabIndex = 18;
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            LabelData.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LabelData.Location = new Point(368, 301);
+            LabelData.Name = "LabelData";
+            LabelData.Size = new Size(509, 84);
+            LabelData.TabIndex = 18;
+            LabelData.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // timer1
             // 
@@ -106,7 +106,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1245, 770);
             Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(LabelData);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
@@ -124,7 +124,7 @@
         private Label label7;
         private Panel PanelTopTitle;
         private Panel PanelBottom;
-        private Label label1;
+        private Label LabelData;
         private System.Windows.Forms.Timer timer1;
         private Label label2;
     }
