@@ -3,7 +3,6 @@ using Telinha.Views;
 
 namespace Telinha.Forms.Views
 {
-
     public partial class Principal : Form
     {
         private readonly ILifetimeScope _scope;
