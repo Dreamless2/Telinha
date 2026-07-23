@@ -21,9 +21,9 @@ namespace Telinha.Forms.Views
         {
             InitializeComponent();
             _scope = scope;
-            HomeButton.Click += HomeButton_Click;
+            /*HomeButton.Click += HomeButton_Click;
             SobreButton.Click += SobreButton_Click;
-            SairButton.Click += SairButton_Click;
+            SairButton.Click += SairButton_Click;*/
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
 

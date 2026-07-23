@@ -35,7 +35,7 @@
             PanelBottom = new Panel();
             LabelData = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
-            label2 = new Label();
+            LabelHora = new Label();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
@@ -91,21 +91,21 @@
             // 
             timer1.Interval = 1000;
             // 
-            // label2
+            // LabelHora
             // 
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(368, 385);
-            label2.Name = "label2";
-            label2.Size = new Size(509, 84);
-            label2.TabIndex = 19;
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            LabelHora.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LabelHora.Location = new Point(368, 385);
+            LabelHora.Name = "LabelHora";
+            LabelHora.Size = new Size(509, 84);
+            LabelHora.TabIndex = 19;
+            LabelHora.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1245, 770);
-            Controls.Add(label2);
+            Controls.Add(LabelHora);
             Controls.Add(LabelData);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
@@ -126,6 +126,6 @@
         private Panel PanelBottom;
         private Label LabelData;
         private System.Windows.Forms.Timer timer1;
-        private Label label2;
+        private Label LabelHora;
     }
 }
