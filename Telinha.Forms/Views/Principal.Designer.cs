@@ -80,6 +80,7 @@
             // 
             // label1
             // 
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(368, 343);
             label1.Name = "label1";
             label1.Size = new Size(509, 84);
