@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using System.Runtime.InteropServices;
 using Telinha.Views;
 
 namespace Telinha.Forms.Views
@@ -6,6 +7,17 @@ namespace Telinha.Forms.Views
     public partial class Principal : Form
     {
         private readonly ILifetimeScope _scope;
+
+
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HT_CAPTION = 0x2;
+
+        [LibraryImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static partial bool ReleaseCapture();
+
+        [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
+        private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         public Principal(ILifetimeScope scope)
         {
             InitializeComponent();
