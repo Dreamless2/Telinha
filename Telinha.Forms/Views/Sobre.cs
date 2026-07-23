@@ -2,7 +2,6 @@
 
 namespace Telinha.Views
 {
-    #region Form
     public partial class Sobre : Form
     {
         private const int WM_NCLBUTTONDOWN = 0xA1;
