@@ -440,6 +440,7 @@ namespace Telinha
         {
             try
             {
+                _current.Codigo = CodigoBox.Text;
                 _current.Tipo = TipoToDisplay(GetSelectedType());
                 _current.TituloFinal = TipoBox.Text;
                 _current.Nome = NomeBox.Text;
