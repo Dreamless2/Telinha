@@ -332,7 +332,6 @@ namespace Telinha
                 MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private async Task AtualizarBotoesNavegacao()
         {
             if (currentId <= 0)
