@@ -5,16 +5,15 @@ namespace Telinha.Views
     #region Form
     public partial class Sobre : Form
     {
-        #region Low Level
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
 
-        [DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
+        [LibraryImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static partial bool ReleaseCapture();
 
-        [DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        #endregion
+        [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
+        private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         #region Constructor
         public Sobre()
