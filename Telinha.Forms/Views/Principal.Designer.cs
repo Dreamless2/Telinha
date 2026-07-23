@@ -86,6 +86,10 @@
             label1.TabIndex = 18;
             label1.Text = "label1";
             // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
