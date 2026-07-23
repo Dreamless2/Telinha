@@ -127,7 +127,6 @@ namespace Telinha
             AtualizarUI(tipo, _current);
             PreencherMascara(tipo);
         }
-
         private static bool TryResolverTipo(string? tipoBruto, out MidiaTipo tipo)
         {
             var normalizado = tipoBruto
@@ -136,7 +135,6 @@ namespace Telinha
 
             return Enum.TryParse(normalizado, true, out tipo);
         }
-
         private static string TipoToDisplay(MidiaTipo tipo)
         {
             return tipo switch
@@ -147,7 +145,6 @@ namespace Telinha
                 _ => tipo.ToString()
             };
         }
-
         private void CarregarNaTela(MidiaModel? midia)
         {
             _current = midia ?? new MidiaModel();
