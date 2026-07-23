@@ -133,7 +133,7 @@
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(180, 41);
             SairButton.TabIndex = 7;
-            SairButton.Text = "Sair";
+            SairButton.Text = "Voltar";
             SairButton.UseVisualStyleBackColor = false;
             // 
             // ProximoButton
