@@ -25,7 +25,15 @@ namespace Telinha.Forms.Views
             SobreButton.Click += SobreButton_Click;
             SairButton.Click += SairButton_Click;*/
             TimerHora.Tick += TimerHora_Tick;
+            Load += Principal_Load;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
+        }
+
+        private void Principal_Load(object? sender, EventArgs e)
+        {
+            TIMERHO
+
+
         }
 
         private void TimerHora_Tick(object? sender, EventArgs e)
