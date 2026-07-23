@@ -49,7 +49,7 @@
             // 
             // HomeButton
             // 
-            HomeButton.Location = new Point(31, 263);
+            HomeButton.Location = new Point(31, 224);
             HomeButton.Name = "HomeButton";
             HomeButton.Size = new Size(246, 41);
             HomeButton.TabIndex = 18;
@@ -97,7 +97,7 @@
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(31, 435);
+            SairButton.Location = new Point(31, 474);
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(246, 41);
             SairButton.TabIndex = 20;
