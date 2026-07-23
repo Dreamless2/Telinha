@@ -191,7 +191,6 @@ namespace Telinha
 
             AudioBox.SelectedItem = audioValue;
         }
-
         private void PreencherMascara(MidiaTipo midiaTipo)
         {
             var card = new MidiaCard(
