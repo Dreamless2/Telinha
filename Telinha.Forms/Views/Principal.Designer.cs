@@ -97,9 +97,9 @@
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(14, 510);
+            SairButton.Location = new Point(0, 429);
             SairButton.Name = "SairButton";
-            SairButton.Size = new Size(246, 138);
+            SairButton.Size = new Size(365, 138);
             SairButton.TabIndex = 20;
             SairButton.Text = "Sair";
             SairButton.UseVisualStyleBackColor = true;
