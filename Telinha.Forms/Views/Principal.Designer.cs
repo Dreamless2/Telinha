@@ -62,7 +62,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 58);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(365, 96);
+            PanelTopBar.Size = new Size(361, 96);
             PanelTopBar.TabIndex = 15;
             // 
             // label7
@@ -83,16 +83,16 @@
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 0);
             PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(365, 58);
+            PanelTopTitle.Size = new Size(361, 58);
             PanelTopTitle.TabIndex = 16;
             // 
             // PanelBottom
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 761);
+            PanelBottom.Location = new Point(0, 568);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(365, 44);
+            PanelBottom.Size = new Size(361, 44);
             PanelBottom.TabIndex = 17;
             // 
             // SairButton
@@ -108,7 +108,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(365, 805);
+            ClientSize = new Size(361, 612);
             Controls.Add(SairButton);
             Controls.Add(SobreButton);
             Controls.Add(HomeButton);
