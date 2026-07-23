@@ -29,7 +29,11 @@ namespace Telinha.Forms.Views
 
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
 
         private void SairButton_Click(object? sender, EventArgs e)
