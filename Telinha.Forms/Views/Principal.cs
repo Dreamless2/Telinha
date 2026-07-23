@@ -10,9 +10,10 @@ using Telinha.Views;
 
 namespace Telinha.Forms.Views
 {
-    private readonly ILifetimeScope _scope;
+
     public partial class Principal : Form
     {
+        private readonly ILifetimeScope _scope;
         public Principal(ILifetimeScope scope)
         {
             InitializeComponent();
