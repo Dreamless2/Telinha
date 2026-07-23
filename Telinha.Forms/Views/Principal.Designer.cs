@@ -28,33 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SobreButton = new Button();
-            HomeButton = new Button();
             PanelTopBar = new Panel();
             label7 = new Label();
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
-            SairButton = new Button();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
-            // 
-            // SobreButton
-            // 
-            SobreButton.Location = new Point(0, 289);
-            SobreButton.Name = "SobreButton";
-            SobreButton.Size = new Size(365, 138);
-            SobreButton.TabIndex = 19;
-            SobreButton.Text = "Sobre";
-            SobreButton.UseVisualStyleBackColor = true;
-            // 
-            // HomeButton
-            // 
-            HomeButton.Location = new Point(0, 152);
-            HomeButton.Name = "HomeButton";
-            HomeButton.Size = new Size(361, 40);
-            HomeButton.TabIndex = 18;
-            HomeButton.Text = "Home";
-            HomeButton.UseVisualStyleBackColor = true;
             // 
             // PanelTopBar
             // 
@@ -62,7 +41,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 58);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(361, 96);
+            PanelTopBar.Size = new Size(1215, 96);
             PanelTopBar.TabIndex = 15;
             // 
             // label7
@@ -83,7 +62,7 @@
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 0);
             PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(361, 58);
+            PanelTopTitle.Size = new Size(1215, 58);
             PanelTopTitle.TabIndex = 16;
             // 
             // PanelBottom
@@ -92,26 +71,14 @@
             PanelBottom.Dock = DockStyle.Bottom;
             PanelBottom.Location = new Point(0, 568);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(361, 44);
+            PanelBottom.Size = new Size(1215, 44);
             PanelBottom.TabIndex = 17;
-            // 
-            // SairButton
-            // 
-            SairButton.Location = new Point(0, 427);
-            SairButton.Name = "SairButton";
-            SairButton.Size = new Size(365, 138);
-            SairButton.TabIndex = 20;
-            SairButton.Text = "Sair";
-            SairButton.UseVisualStyleBackColor = true;
             // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(361, 612);
-            Controls.Add(SairButton);
-            Controls.Add(SobreButton);
-            Controls.Add(HomeButton);
+            ClientSize = new Size(1215, 612);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
@@ -125,13 +92,9 @@
         }
 
         #endregion
-
-        private Button SobreButton;
-        private Button HomeButton;
         private Panel PanelTopBar;
         private Label label7;
         private Panel PanelTopTitle;
         private Panel PanelBottom;
-        private Button SairButton;
     }
 }
