@@ -40,18 +40,18 @@
             // 
             // SobreButton
             // 
-            SobreButton.Location = new Point(31, 218);
+            SobreButton.Location = new Point(0, 290);
             SobreButton.Name = "SobreButton";
-            SobreButton.Size = new Size(246, 41);
+            SobreButton.Size = new Size(365, 138);
             SobreButton.TabIndex = 19;
             SobreButton.Text = "Sobre";
             SobreButton.UseVisualStyleBackColor = true;
             // 
             // HomeButton
             // 
-            HomeButton.Location = new Point(31, 171);
+            HomeButton.Location = new Point(0, 151);
             HomeButton.Name = "HomeButton";
-            HomeButton.Size = new Size(246, 41);
+            HomeButton.Size = new Size(365, 138);
             HomeButton.TabIndex = 18;
             HomeButton.Text = "Home";
             HomeButton.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 58);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(314, 96);
+            PanelTopBar.Size = new Size(365, 96);
             PanelTopBar.TabIndex = 15;
             // 
             // label7
@@ -83,23 +83,23 @@
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 0);
             PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(314, 58);
+            PanelTopTitle.Size = new Size(365, 58);
             PanelTopTitle.TabIndex = 16;
             // 
             // PanelBottom
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 346);
+            PanelBottom.Location = new Point(0, 761);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(314, 44);
+            PanelBottom.Size = new Size(365, 44);
             PanelBottom.TabIndex = 17;
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(31, 265);
+            SairButton.Location = new Point(14, 510);
             SairButton.Name = "SairButton";
-            SairButton.Size = new Size(246, 41);
+            SairButton.Size = new Size(246, 138);
             SairButton.TabIndex = 20;
             SairButton.Text = "Sair";
             SairButton.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(314, 390);
+            ClientSize = new Size(365, 805);
             Controls.Add(SairButton);
             Controls.Add(SobreButton);
             Controls.Add(HomeButton);
