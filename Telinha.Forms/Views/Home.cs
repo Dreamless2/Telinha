@@ -174,12 +174,9 @@ namespace Telinha
                 var prop = midia.GetType().GetProperty(nomeCampo);
                 var valorAtual = prop?.GetValue(midia) as string;
                 if (string.IsNullOrWhiteSpace(valorAtual))
-                {
                     prop?.SetValue(midia, "--");
-                }
             }
         }
-
         private void PreencherTodosCampos(MidiaModel midia)
         {
             LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
