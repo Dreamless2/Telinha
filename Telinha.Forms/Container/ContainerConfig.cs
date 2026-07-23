@@ -29,7 +29,7 @@ namespace Telinha.Forms.Container
             builder.RegisterType<MidiaServices>().AsSelf();
             builder.RegisterType<Token>().AsSelf();
             builder.RegisterType<Home>().AsSelf();
-            builder.RegisterType<Principal>.AsSelf();
+            builder.RegisterType<Principal>().AsSelf();
 
             return builder.Build();
         }
