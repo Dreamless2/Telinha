@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using System.Runtime.InteropServices;
 using Telinha.Core.Services;
 using Telinha.Forms.Views;
 
@@ -8,6 +9,16 @@ namespace Telinha
     {
         private readonly ILifetimeScope _scope;
         private readonly AppConfigServices _configService;
+
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HT_CAPTION = 0x2;
+
+        [LibraryImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static partial bool ReleaseCapture();
+
+        [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
+        private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         public Token(ILifetimeScope scope, AppConfigServices configService)
         {
@@ -22,7 +33,14 @@ namespace Telinha
             PortaBox.ShortcutsEnabled = true;
             UsuarioBox.ShortcutsEnabled = true;
             SenhaBox.ShortcutsEnabled = true;
+            PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
+
+        private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private async void SalvarButton_Click(object sender, EventArgs e)
         {
             try
