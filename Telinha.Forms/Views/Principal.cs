@@ -13,7 +13,7 @@ namespace Telinha.Forms.Views
     private readonly ILifetimeScope _scope;
     public partial class Principal : Form
     {
-        public Principal()
+        public Principal(ILifetimeScope scope)
         {
             InitializeComponent();
             HomeButton.Click += HomeButton_Click;
@@ -35,7 +35,7 @@ namespace Telinha.Forms.Views
         private void HomeButton_Click(object? sender, EventArgs e)
         {
             var home = _scope.Resolve<Home>();
-            home.ShowDialog();            
+            home.ShowDialog();
         }
     }
 }
