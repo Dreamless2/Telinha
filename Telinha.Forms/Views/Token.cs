@@ -43,15 +43,13 @@ namespace Telinha
                     string.IsNullOrWhiteSpace(config.Usuario) &&
                     string.IsNullOrWhiteSpace(config.Senha))
                 {
-                    MessageBox.Show("Preencha os campos para continuar.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Preencha os campos para continuar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 _configService.Save(config);
 
-                MessageBox.Show("Dados salvos com sucesso!", "Sucesso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Dados salvos com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Hide();
 
