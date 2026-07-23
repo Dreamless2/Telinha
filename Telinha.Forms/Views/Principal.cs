@@ -24,8 +24,13 @@ namespace Telinha.Forms.Views
             /*HomeButton.Click += HomeButton_Click;
             SobreButton.Click += SobreButton_Click;
             SairButton.Click += SairButton_Click;*/
-            TimerHora.
+            TimerHora.Tick += TimerHora_Tick;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
+        }
+
+        private void TimerHora_Tick(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
