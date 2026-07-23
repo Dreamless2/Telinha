@@ -417,7 +417,6 @@ namespace Telinha
                 }
 
                 CarregarNaTela(midia);
-
                 CodigoBox.Text = codigoDigitado;
                 CodigoBox.SelectionStart = CodigoBox.Text.Length;
                 CodigoBox.SelectionLength = 0;
@@ -432,7 +431,6 @@ namespace Telinha
                 _buscando = false;
             }
         }
-
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
