@@ -5,6 +5,7 @@ using Telinha.Core.Enums;
 using Telinha.Core.Models;
 using Telinha.Core.Services;
 using Telinha.Forms.Extras;
+using Telinha.Forms.Views;
 using Telinha.Views;
 
 namespace Telinha
@@ -488,7 +489,8 @@ namespace Telinha
         private void SairButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var principal = new princ
+            var principal = new Principal();
+            principal.Show();
         }
     }
 }
