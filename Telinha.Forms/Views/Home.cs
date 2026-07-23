@@ -190,6 +190,7 @@ namespace Telinha
             string audioValue = string.IsNullOrWhiteSpace(midia.Audio) ? "Dublado" : midia.Audio;
             if (!AudioBox.Items.Contains(audioValue))
                 AudioBox.Items.Add(audioValue);
+
             AudioBox.SelectedItem = audioValue;
         }
 
