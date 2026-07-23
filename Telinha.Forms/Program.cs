@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Telinha.Core.Services;
 using Telinha.Forms.Container;
+using Telinha.Forms.Views;
 
 namespace Telinha.Forms
 {
@@ -32,7 +33,7 @@ namespace Telinha.Forms
                     return;
                 }
 
-                var home = scope.Resolve<Home>();
+                var home = scope.Resolve<Principal>();
                 Application.Run(home);
             }
             catch (Exception ex)
