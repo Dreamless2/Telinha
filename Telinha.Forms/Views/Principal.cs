@@ -8,7 +8,6 @@ namespace Telinha.Forms.Views
     {
         private readonly ILifetimeScope _scope;
 
-
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
 
