@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Caching.Memory;
 using Telinha.Core.Factory;
 using Telinha.Core.Services;
+using Telinha.Forms.Views;
 
 namespace Telinha.Forms.Container
 {
@@ -28,6 +29,7 @@ namespace Telinha.Forms.Container
             builder.RegisterType<MidiaServices>().AsSelf();
             builder.RegisterType<Token>().AsSelf();
             builder.RegisterType<Home>().AsSelf();
+            builder.RegisterType<Principal>.AsSelf();
 
             return builder.Build();
         }
