@@ -16,6 +16,7 @@ namespace Telinha.Forms.Views
         public Principal(ILifetimeScope scope)
         {
             InitializeComponent();
+            _scope = scope;
             HomeButton.Click += HomeButton_Click;
             SobreButton.Click += SobreButton_Click;
             SairButton.Click += SairButton_Click;
