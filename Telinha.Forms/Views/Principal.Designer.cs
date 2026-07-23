@@ -81,11 +81,10 @@
             // label1
             // 
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(368, 343);
+            label1.Location = new Point(368, 301);
             label1.Name = "label1";
             label1.Size = new Size(509, 84);
             label1.TabIndex = 18;
-            label1.Text = "Hoje são 23 de julho de 2026";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // timer1
@@ -95,7 +94,7 @@
             // label2
             // 
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(368, 427);
+            label2.Location = new Point(368, 385);
             label2.Name = "label2";
             label2.Size = new Size(509, 84);
             label2.TabIndex = 19;
