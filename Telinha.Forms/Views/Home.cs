@@ -461,11 +461,6 @@ namespace Telinha
                 MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void SobreButton_Click(object sender, EventArgs e)
-        {
-            var sobreForm = new Sobre();
-            sobreForm.Show();
-        }
 
         private void SairButton_Click(object sender, EventArgs e)
         {
