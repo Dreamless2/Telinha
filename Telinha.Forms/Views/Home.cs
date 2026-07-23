@@ -488,7 +488,7 @@ namespace Telinha
         private void SairButton_Click(object sender, EventArgs e)
         {
             Hide();
-
+            var principal = new princ
         }
     }
 }
