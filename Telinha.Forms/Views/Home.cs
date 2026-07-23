@@ -421,7 +421,6 @@ namespace Telinha
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text))
                 Clipboard.SetText(ResumoBox.Text);
         }
-
         private async void SalvarButton_Click(object? sender, EventArgs e)
         {
             try
