@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Telinha.Core.Services;
+using Telinha.Forms.Views;
 
 namespace Telinha
 {
@@ -54,7 +55,7 @@ namespace Telinha
 
                 Hide();
 
-                var home = _scope.Resolve<Home>();
+                var home = _scope.Resolve<Principal>();
                 home.ShowDialog();
             }
             catch (Exception ex)
