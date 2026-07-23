@@ -53,9 +53,6 @@ namespace Telinha.Views
                 MessageBox.Show("Não foi possível abrir o link: " + ex.Message);
             }
         }
-        #endregion
-
-        #region Sobre Button
 
         private void SobreButton_Click(object sender, EventArgs e)
         {
