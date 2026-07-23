@@ -295,7 +295,6 @@ namespace Telinha
             FranquiaBox.Text = item.Franquia;
             MCUBox.Text = item.MCU;
         }
-
         private async void Principal_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
