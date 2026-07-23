@@ -29,10 +29,13 @@ namespace Telinha
 
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
-        [DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-        [DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [LibraryImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static partial bool ReleaseCapture();
+
+        [LibraryImport("user32.dll")]
+        private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         public Home(MidiaServices midiaService)
         {
