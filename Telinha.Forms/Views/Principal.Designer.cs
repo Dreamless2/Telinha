@@ -35,6 +35,7 @@
             PanelBottom = new Panel();
             label1 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            label2 = new Label();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,22 +80,32 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(362, 293);
+            label1.Location = new Point(368, 343);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(509, 84);
             label1.TabIndex = 18;
-            label1.Text = "label1";
+            label1.Text = "Hoje são 23 de julho de 2026";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // timer1
             // 
             timer1.Interval = 1000;
+            // 
+            // label2
+            // 
+            label2.Location = new Point(368, 427);
+            label2.Name = "label2";
+            label2.Size = new Size(509, 84);
+            label2.TabIndex = 19;
+            label2.Text = "Hoje são 23 de julho de 2026";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1245, 770);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
@@ -106,7 +117,6 @@
             PanelTopTitle.ResumeLayout(false);
             PanelTopTitle.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -116,5 +126,6 @@
         private Panel PanelBottom;
         private Label label1;
         private System.Windows.Forms.Timer timer1;
+        private Label label2;
     }
 }
