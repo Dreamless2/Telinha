@@ -33,8 +33,7 @@ namespace Telinha.Forms.Views
         private void HomeButton_Click(object? sender, EventArgs e)
         {
             var home = _scope.Resolve<Home>();
-            home.ShowDialog();
-            home.ShowDialog();
+            home.ShowDialog();            
         }
     }
 }
