@@ -37,7 +37,7 @@ namespace Telinha.Forms.Views
 
         private void TimerHora_Tick(object? sender, EventArgs e)
         {
-
+            LabelHora.Text = "Hora: " + string.Format
         }
 
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
