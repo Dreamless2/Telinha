@@ -32,6 +32,7 @@
             label7 = new Label();
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
+            label1 = new Label();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 58);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(1215, 96);
+            PanelTopBar.Size = new Size(1245, 96);
             PanelTopBar.TabIndex = 15;
             // 
             // label7
@@ -62,23 +63,33 @@
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 0);
             PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(1215, 58);
+            PanelTopTitle.Size = new Size(1245, 58);
             PanelTopTitle.TabIndex = 16;
             // 
             // PanelBottom
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 568);
+            PanelBottom.Location = new Point(0, 726);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(1215, 44);
+            PanelBottom.Size = new Size(1245, 44);
             PanelBottom.TabIndex = 17;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(362, 293);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 18;
+            label1.Text = "label1";
             // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1215, 612);
+            ClientSize = new Size(1245, 770);
+            Controls.Add(label1);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
@@ -89,6 +100,7 @@
             PanelTopTitle.ResumeLayout(false);
             PanelTopTitle.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -96,5 +108,6 @@
         private Label label7;
         private Panel PanelTopTitle;
         private Panel PanelBottom;
+        private Label label1;
     }
 }
