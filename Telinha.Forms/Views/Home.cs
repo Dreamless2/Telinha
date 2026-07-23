@@ -34,7 +34,7 @@ namespace Telinha
         [return: MarshalAs(UnmanagedType.Bool)]
         private static partial bool ReleaseCapture();
 
-        [LibraryImport("user32.dll")]
+        [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
         private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
 
