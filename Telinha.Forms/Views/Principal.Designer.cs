@@ -40,7 +40,7 @@
             // 
             // SobreButton
             // 
-            SobreButton.Location = new Point(31, 349);
+            SobreButton.Location = new Point(31, 218);
             SobreButton.Name = "SobreButton";
             SobreButton.Size = new Size(246, 41);
             SobreButton.TabIndex = 19;
@@ -49,7 +49,7 @@
             // 
             // HomeButton
             // 
-            HomeButton.Location = new Point(31, 224);
+            HomeButton.Location = new Point(31, 171);
             HomeButton.Name = "HomeButton";
             HomeButton.Size = new Size(246, 41);
             HomeButton.TabIndex = 18;
@@ -62,7 +62,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 58);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(308, 96);
+            PanelTopBar.Size = new Size(314, 96);
             PanelTopBar.TabIndex = 15;
             // 
             // label7
@@ -83,21 +83,21 @@
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 0);
             PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(308, 58);
+            PanelTopTitle.Size = new Size(314, 58);
             PanelTopTitle.TabIndex = 16;
             // 
             // PanelBottom
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 694);
+            PanelBottom.Location = new Point(0, 346);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(308, 44);
+            PanelBottom.Size = new Size(314, 44);
             PanelBottom.TabIndex = 17;
             // 
             // SairButton
             // 
-            SairButton.Location = new Point(31, 474);
+            SairButton.Location = new Point(31, 265);
             SairButton.Name = "SairButton";
             SairButton.Size = new Size(246, 41);
             SairButton.TabIndex = 20;
@@ -108,7 +108,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(308, 738);
+            ClientSize = new Size(314, 390);
             Controls.Add(SairButton);
             Controls.Add(SobreButton);
             Controls.Add(HomeButton);
