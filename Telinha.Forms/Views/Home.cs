@@ -258,12 +258,10 @@ namespace Telinha
                     combo.SelectedIndexChanged += QualquerAlteracao!;
             }
         }
-
         private void QualquerAlteracao(object sender, EventArgs e)
         {
             PreencherMascara(GetSelectedType());
         }
-
         private void AtualizarUI(MidiaTipo tipo, MidiaModel item)
         {
             item ??= new MidiaModel();
