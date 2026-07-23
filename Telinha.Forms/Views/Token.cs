@@ -48,11 +48,8 @@ namespace Telinha
                 }
 
                 _configService.Save(config);
-
                 MessageBox.Show("Dados salvos com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 Hide();
-
                 var home = _scope.Resolve<Principal>();
                 home.ShowDialog();
             }
