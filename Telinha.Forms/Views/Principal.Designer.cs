@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             PanelTopBar = new Panel();
             label7 = new Label();
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
             label1 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
@@ -109,5 +111,6 @@
         private Panel PanelTopTitle;
         private Panel PanelBottom;
         private Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
