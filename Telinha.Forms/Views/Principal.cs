@@ -18,7 +18,8 @@ namespace Telinha.Forms.Views
 
         private void SairButton_Click(object? sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Application.Exit();
         }
 
         private void SobreButton_Click(object? sender, EventArgs e)
