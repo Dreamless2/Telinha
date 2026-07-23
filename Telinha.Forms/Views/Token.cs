@@ -35,7 +35,6 @@ namespace Telinha
             SenhaBox.ShortcutsEnabled = true;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
-
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
