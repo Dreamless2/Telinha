@@ -21,20 +21,14 @@ namespace Telinha.Views
             InitializeComponent();
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
-        #endregion
-
-        #region Mover Form
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        #endregion
-
-        #region Link
         private void LinkTMDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
