@@ -80,7 +80,6 @@ namespace Telinha
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
         }
-
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
