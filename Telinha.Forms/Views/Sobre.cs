@@ -14,7 +14,6 @@ namespace Telinha.Views
         [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
         private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        #region Constructor
         public Sobre()
         {
             InitializeComponent();
