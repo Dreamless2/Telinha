@@ -33,8 +33,8 @@ namespace Telinha.Forms
                     return;
                 }
 
-                var home = scope.Resolve<Principal>();
-                Application.Run(home);
+                var principal = scope.Resolve<Principal>();
+                Application.Run(principal);
             }
             catch (Exception ex)
             {
