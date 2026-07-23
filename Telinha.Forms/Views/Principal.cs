@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using Telinha.Views;
 
 namespace Telinha.Forms.Views
 {
+    private readonly ILifetimeScope _scope;
     public partial class Principal : Form
     {
         public Principal()
