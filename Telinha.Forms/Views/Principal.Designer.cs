@@ -49,9 +49,9 @@
             // 
             // HomeButton
             // 
-            HomeButton.Location = new Point(0, 151);
+            HomeButton.Location = new Point(0, 152);
             HomeButton.Name = "HomeButton";
-            HomeButton.Size = new Size(365, 138);
+            HomeButton.Size = new Size(361, 40);
             HomeButton.TabIndex = 18;
             HomeButton.Text = "Home";
             HomeButton.UseVisualStyleBackColor = true;
