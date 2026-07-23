@@ -24,6 +24,7 @@ namespace Telinha.Forms.Views
             /*HomeButton.Click += HomeButton_Click;
             SobreButton.Click += SobreButton_Click;
             SairButton.Click += SairButton_Click;*/
+            TimerHora.
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
 

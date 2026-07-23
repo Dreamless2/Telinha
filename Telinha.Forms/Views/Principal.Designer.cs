@@ -34,7 +34,7 @@
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
             LabelData = new Label();
-            timer1 = new System.Windows.Forms.Timer(components);
+            TimerHora = new System.Windows.Forms.Timer(components);
             LabelHora = new Label();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
@@ -87,9 +87,9 @@
             LabelData.TabIndex = 18;
             LabelData.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // timer1
+            // TimerHora
             // 
-            timer1.Interval = 1000;
+            TimerHora.Interval = 1000;
             // 
             // LabelHora
             // 
@@ -125,7 +125,7 @@
         private Panel PanelTopTitle;
         private Panel PanelBottom;
         private Label LabelData;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer TimerHora;
         private Label LabelHora;
     }
 }
