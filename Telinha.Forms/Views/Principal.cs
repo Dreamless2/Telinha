@@ -14,19 +14,16 @@ namespace Telinha.Forms.Views
             SobreButton.Click += SobreButton_Click;
             SairButton.Click += SairButton_Click;
         }
-
         private void SairButton_Click(object? sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 Application.Exit();
         }
-
         private void SobreButton_Click(object? sender, EventArgs e)
         {
             var sobre = new Sobre();
             sobre.ShowDialog();
         }
-
         private void HomeButton_Click(object? sender, EventArgs e)
         {
             var home = _scope.Resolve<Home>();
