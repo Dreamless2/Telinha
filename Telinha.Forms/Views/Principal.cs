@@ -30,7 +30,7 @@ namespace Telinha.Forms.Views
 
         private void TimerHora_Tick(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
