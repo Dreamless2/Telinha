@@ -165,7 +165,6 @@ namespace Telinha
             AtualizarUI(tipo, _current);
             PreencherMascara(tipo);
         }
-
         private static void AplicarPadraoParaCamposOpcionaisVazios(MidiaModel midia)
         {
             foreach (var nomeCampo in CamposOpcionaisPorTipo)
