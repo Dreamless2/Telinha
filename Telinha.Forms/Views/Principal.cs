@@ -24,7 +24,14 @@ namespace Telinha.Forms.Views
             HomeButton.Click += HomeButton_Click;
             SobreButton.Click += SobreButton_Click;
             SairButton.Click += SairButton_Click;
+            PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
+
+        private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void SairButton_Click(object? sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
