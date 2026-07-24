@@ -140,6 +140,7 @@
             // 
             // button3
             // 
+            button3.Dock = DockStyle.Bottom;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Location = new Point(3, 135);
