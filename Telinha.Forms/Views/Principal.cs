@@ -28,6 +28,7 @@ namespace Telinha.Forms.Views
             SobreButton.Click += SobreButton_Click;
             FecharButton.Click += FecharButton_Click;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
+
         }
 
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
