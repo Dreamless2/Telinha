@@ -43,9 +43,8 @@ namespace Telinha.Forms.Views
         private void OpenChildForm(Form childForm)
         {
             if (currentChildForm != null)
-            {
                 currentChildForm.Close();
-            }
+
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
