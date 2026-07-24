@@ -50,7 +50,9 @@ namespace Telinha.Forms.Views
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
             PanelDesktop.Controls.Add(childForm);
-            Paneldes
+            PanelDesktop.Tag = childForm;
+            childForm.BringToFront();
+
 
 
         }
