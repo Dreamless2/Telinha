@@ -37,7 +37,7 @@
             TimerHora = new System.Windows.Forms.Timer(components);
             LabelHora = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            button1 = new Button();
+            PrincipalButton = new Button();
             button2 = new Button();
             PanelTopTitle.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -106,7 +106,7 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(button1);
+            flowLayoutPanel1.Controls.Add(PrincipalButton);
             flowLayoutPanel1.Controls.Add(button2);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 123);
@@ -114,16 +114,16 @@
             flowLayoutPanel1.Size = new Size(173, 603);
             flowLayoutPanel1.TabIndex = 20;
             // 
-            // button1
+            // PrincipalButton
             // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(170, 60);
-            button1.TabIndex = 0;
-            button1.Text = "Principal";
-            button1.UseVisualStyleBackColor = true;
+            PrincipalButton.FlatAppearance.BorderSize = 0;
+            PrincipalButton.FlatStyle = FlatStyle.Flat;
+            PrincipalButton.Location = new Point(3, 3);
+            PrincipalButton.Name = "PrincipalButton";
+            PrincipalButton.Size = new Size(170, 60);
+            PrincipalButton.TabIndex = 0;
+            PrincipalButton.Text = "Principal";
+            PrincipalButton.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -166,7 +166,7 @@
         private System.Windows.Forms.Timer TimerHora;
         private Label LabelHora;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button button1;
+        private Button PrincipalButton;
         private Button button2;
     }
 }
