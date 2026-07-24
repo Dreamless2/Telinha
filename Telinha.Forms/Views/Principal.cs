@@ -21,7 +21,7 @@ namespace Telinha.Forms.Views
         {
             InitializeComponent();
             _scope = scope;
-            /*HomeButton.Click += HomeButton_Click;
+            /*PrincipalButton.Click += PrincipalButton_Click;
             SobreButton.Click += SobreButton_Click;
             FecharButton.Click += FecharButton_Click;*/
             TimerHora.Tick += TimerHora_Tick;
