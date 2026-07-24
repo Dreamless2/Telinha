@@ -103,9 +103,10 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Location = new Point(148, 205);
+            flowLayoutPanel1.Dock = DockStyle.Left;
+            flowLayoutPanel1.Location = new Point(0, 123);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(200, 100);
+            flowLayoutPanel1.Size = new Size(163, 603);
             flowLayoutPanel1.TabIndex = 20;
             // 
             // Principal
