@@ -144,7 +144,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(3, 135);
             button1.Name = "button1";
-            button1.Size = new Size(170, 287);
+            button1.Size = new Size(170, 60);
             button1.TabIndex = 2;
             button1.Text = "Sobre";
             button1.UseVisualStyleBackColor = true;
