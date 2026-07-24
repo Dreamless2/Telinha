@@ -4,29 +4,13 @@ namespace Telinha.Views
 {
     public partial class Sobre : Form
     {
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-
-        [LibraryImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static partial bool ReleaseCapture();
-
-        [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
-        private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         public Sobre()
         {
             InitializeComponent();
 
         }
-        private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
+
         private void LinkTMDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
