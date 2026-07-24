@@ -53,10 +53,6 @@ namespace Telinha.Forms.Views
             PanelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-
-
-
-
         }
 
 
