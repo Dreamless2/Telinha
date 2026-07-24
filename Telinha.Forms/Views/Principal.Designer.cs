@@ -122,7 +122,7 @@
             PrincipalButton.FlatStyle = FlatStyle.Flat;
             PrincipalButton.Location = new Point(3, 3);
             PrincipalButton.Name = "PrincipalButton";
-            PrincipalButton.Size = new Size(170, 60);
+            PrincipalButton.Size = new Size(168, 60);
             PrincipalButton.TabIndex = 0;
             PrincipalButton.Text = "Principal";
             PrincipalButton.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             SobreButton.FlatStyle = FlatStyle.Flat;
             SobreButton.Location = new Point(3, 69);
             SobreButton.Name = "SobreButton";
-            SobreButton.Size = new Size(170, 60);
+            SobreButton.Size = new Size(168, 60);
             SobreButton.TabIndex = 1;
             SobreButton.Text = "Sobre";
             SobreButton.UseVisualStyleBackColor = true;
