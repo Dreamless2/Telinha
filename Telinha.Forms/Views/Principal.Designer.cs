@@ -37,7 +37,9 @@
             TimerHora = new System.Windows.Forms.Timer(components);
             LabelHora = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            button1 = new Button();
             PanelTopTitle.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // PanelTopBar
@@ -103,11 +105,21 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.Controls.Add(button1);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 123);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(173, 603);
             flowLayoutPanel1.TabIndex = 20;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(3, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
             // Principal
             // 
@@ -126,6 +138,7 @@
             Text = "Principal";
             PanelTopTitle.ResumeLayout(false);
             PanelTopTitle.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -138,5 +151,6 @@
         private System.Windows.Forms.Timer TimerHora;
         private Label LabelHora;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Button button1;
     }
 }
