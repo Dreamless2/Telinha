@@ -44,6 +44,8 @@ namespace Telinha.Forms.Views
                 currentChildForm.Close();
             }
             currentChildForm = childForm();
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
 
         }
 
