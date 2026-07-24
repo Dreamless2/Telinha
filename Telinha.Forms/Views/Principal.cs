@@ -23,7 +23,7 @@ namespace Telinha.Forms.Views
             _scope = scope;
             /*HomeButton.Click += HomeButton_Click;
             SobreButton.Click += SobreButton_Click;
-            FecharButton.Click += SairButton_Click;*/
+            FecharButton.Click += FecharButton_Click;*/
             TimerHora.Tick += TimerHora_Tick;
             Load += Principal_Load;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
