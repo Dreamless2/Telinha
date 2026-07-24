@@ -49,6 +49,8 @@ namespace Telinha.Forms.Views
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
+            PanelDesktop.Controls.Add(childForm);
+
 
         }
 
