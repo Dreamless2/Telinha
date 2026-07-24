@@ -68,7 +68,6 @@ namespace Telinha.Forms.Views
         private void PrincipalButton_Click(object? sender, EventArgs e)
         {
             OpenChildForm(_scope.Resolve<Home>());
-            home.ShowDialog();
         }
     }
 }
