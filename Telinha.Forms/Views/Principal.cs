@@ -60,7 +60,7 @@ namespace Telinha.Forms.Views
             var sobre = new Sobre();
             sobre.ShowDialog();
         }
-        private void HomeButton_Click(object? sender, EventArgs e)
+        private void PrincipalButton_Click(object? sender, EventArgs e)
         {
             var home = _scope.Resolve<Home>();
             home.ShowDialog();
