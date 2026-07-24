@@ -39,7 +39,6 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             button1 = new Button();
             button2 = new Button();
-            button3 = new Button();
             PanelTopTitle.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -109,7 +108,6 @@
             // 
             flowLayoutPanel1.Controls.Add(button1);
             flowLayoutPanel1.Controls.Add(button2);
-            flowLayoutPanel1.Controls.Add(button3);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 123);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -137,18 +135,6 @@
             button2.TabIndex = 1;
             button2.Text = "Sobre";
             button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Dock = DockStyle.Bottom;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(3, 135);
-            button3.Name = "button3";
-            button3.Size = new Size(170, 60);
-            button3.TabIndex = 2;
-            button3.Text = "Principal";
-            button3.UseVisualStyleBackColor = true;
             // 
             // Principal
             // 
@@ -182,6 +168,5 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button button1;
         private Button button2;
-        private Button button3;
     }
 }
