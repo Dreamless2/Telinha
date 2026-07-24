@@ -30,8 +30,6 @@ namespace Telinha.Forms.Views
 
         private void Principal_Load(object? sender, EventArgs e)
         {
-            TimerHora.Enabled = true;
-            TimerHora.Start();
         }
 
         private void TimerHora_Tick(object? sender, EventArgs e)
