@@ -64,11 +64,10 @@ namespace Telinha.Forms.Views
         private void SobreButton_Click(object? sender, EventArgs e)
         {
             OpenChildForm(new Sobre());
-
         }
         private void PrincipalButton_Click(object? sender, EventArgs e)
         {
-            var home = _scope.Resolve<Home>();
+            OpenChildForm(_scope.Resolve<Home>());
             home.ShowDialog();
         }
     }
