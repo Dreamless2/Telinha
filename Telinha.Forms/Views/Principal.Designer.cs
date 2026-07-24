@@ -36,6 +36,7 @@
             LabelData = new Label();
             TimerHora = new System.Windows.Forms.Timer(components);
             LabelHora = new Label();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             PanelTopTitle.SuspendLayout();
             SuspendLayout();
             // 
@@ -100,11 +101,19 @@
             LabelHora.TabIndex = 19;
             LabelHora.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(148, 205);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(200, 100);
+            flowLayoutPanel1.TabIndex = 20;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1245, 770);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(LabelHora);
             Controls.Add(LabelData);
             Controls.Add(PanelTopBar);
@@ -127,5 +136,6 @@
         private Label LabelData;
         private System.Windows.Forms.Timer TimerHora;
         private Label LabelHora;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
