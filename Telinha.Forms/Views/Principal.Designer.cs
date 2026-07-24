@@ -50,7 +50,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 58);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(1245, 65);
+            PanelTopBar.Size = new Size(1483, 65);
             PanelTopBar.TabIndex = 15;
             // 
             // label7
@@ -71,16 +71,16 @@
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 0);
             PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(1245, 58);
+            PanelTopTitle.Size = new Size(1483, 58);
             PanelTopTitle.TabIndex = 16;
             // 
             // PanelBottom
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 726);
+            PanelBottom.Location = new Point(0, 911);
             PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(1245, 44);
+            PanelBottom.Size = new Size(1483, 44);
             PanelBottom.TabIndex = 17;
             // 
             // LabelData
@@ -113,7 +113,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 123);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(173, 603);
+            flowLayoutPanel1.Size = new Size(173, 788);
             flowLayoutPanel1.TabIndex = 20;
             // 
             // PrincipalButton
@@ -153,7 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1245, 770);
+            ClientSize = new Size(1483, 955);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(LabelHora);
             Controls.Add(LabelData);
