@@ -144,7 +144,7 @@
             FecharButton.FlatStyle = FlatStyle.Flat;
             FecharButton.Location = new Point(3, 135);
             FecharButton.Name = "FecharButton";
-            FecharButton.Size = new Size(170, 60);
+            FecharButton.Size = new Size(168, 60);
             FecharButton.TabIndex = 2;
             FecharButton.Text = "Fechar";
             FecharButton.UseVisualStyleBackColor = true;
