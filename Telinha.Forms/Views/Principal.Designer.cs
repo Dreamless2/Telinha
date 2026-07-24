@@ -38,7 +38,7 @@
             LabelHora = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             PrincipalButton = new Button();
-            button2 = new Button();
+            SobreButton = new Button();
             PanelTopTitle.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -107,7 +107,7 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(PrincipalButton);
-            flowLayoutPanel1.Controls.Add(button2);
+            flowLayoutPanel1.Controls.Add(SobreButton);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 123);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -125,16 +125,16 @@
             PrincipalButton.Text = "Principal";
             PrincipalButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // SobreButton
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(3, 69);
-            button2.Name = "button2";
-            button2.Size = new Size(170, 60);
-            button2.TabIndex = 1;
-            button2.Text = "Sobre";
-            button2.UseVisualStyleBackColor = true;
+            SobreButton.FlatAppearance.BorderSize = 0;
+            SobreButton.FlatStyle = FlatStyle.Flat;
+            SobreButton.Location = new Point(3, 69);
+            SobreButton.Name = "SobreButton";
+            SobreButton.Size = new Size(170, 60);
+            SobreButton.TabIndex = 1;
+            SobreButton.Text = "Sobre";
+            SobreButton.UseVisualStyleBackColor = true;
             // 
             // Principal
             // 
@@ -167,6 +167,6 @@
         private Label LabelHora;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button PrincipalButton;
-        private Button button2;
+        private Button SobreButton;
     }
 }
