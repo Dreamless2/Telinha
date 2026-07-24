@@ -7,8 +7,7 @@ namespace Telinha.Forms.Views
     public partial class Principal : Form
     {
         private readonly ILifetimeScope _scope;
-        private Form currentChildForm;
-
+        
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
 
@@ -18,6 +17,9 @@ namespace Telinha.Forms.Views
 
         [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
         private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        private Form? currentChildForm;
+
         public Principal(ILifetimeScope scope)
         {
             InitializeComponent();
