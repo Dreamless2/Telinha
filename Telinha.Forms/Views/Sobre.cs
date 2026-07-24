@@ -7,7 +7,6 @@ namespace Telinha.Views
         public Sobre()
         {
             InitializeComponent();
-        }     
-        
+        }             
     }
 }
