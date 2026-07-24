@@ -63,8 +63,8 @@ namespace Telinha.Forms.Views
         }
         private void SobreButton_Click(object? sender, EventArgs e)
         {
-            var sobre = new Sobre();
-            sobre.ShowDialog();
+            OpenChildForm(new Sobre());
+
         }
         private void PrincipalButton_Click(object? sender, EventArgs e)
         {
