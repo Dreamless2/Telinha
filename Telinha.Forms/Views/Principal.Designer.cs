@@ -36,6 +36,7 @@
             PrincipalButton = new Button();
             SobreButton = new Button();
             FecharButton = new Button();
+            panel1 = new Panel();
             PanelTopTitle.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -123,11 +124,19 @@
             FecharButton.Text = "Fechar";
             FecharButton.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            panel1.Location = new Point(191, 173);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 100);
+            panel1.TabIndex = 21;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1605, 1081);
+            Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
@@ -151,5 +160,6 @@
         private Button PrincipalButton;
         private Button SobreButton;
         private Button FecharButton;
+        private Panel panel1;
     }
 }
