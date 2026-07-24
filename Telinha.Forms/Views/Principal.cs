@@ -43,6 +43,9 @@ namespace Telinha.Forms.Views
             {
                 currentChildForm.Close();
             }
+            currentChildForm = childForm();
+
+        }
 
 
         private void FecharButton_Click(object? sender, EventArgs e)
