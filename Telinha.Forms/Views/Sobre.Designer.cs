@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sobre));
-            PanelBottom = new Panel();
-            LinkTMDB = new LinkLabel();
-            PanelTopBar = new Panel();
-            PanelTopTitle = new Panel();
-            label1 = new Label();
             panel1 = new Panel();
             label5 = new Label();
             label4 = new Label();
@@ -42,64 +37,10 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             SobreButton = new Button();
-            PanelBottom.SuspendLayout();
-            PanelTopTitle.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // PanelBottom
-            // 
-            PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
-            PanelBottom.Controls.Add(LinkTMDB);
-            PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 424);
-            PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(537, 44);
-            PanelBottom.TabIndex = 5;
-            // 
-            // LinkTMDB
-            // 
-            LinkTMDB.AutoSize = true;
-            LinkTMDB.LinkColor = Color.White;
-            LinkTMDB.Location = new Point(251, 15);
-            LinkTMDB.Name = "LinkTMDB";
-            LinkTMDB.Size = new Size(62, 15);
-            LinkTMDB.TabIndex = 15;
-            LinkTMDB.TabStop = true;
-            LinkTMDB.Text = "Site TMDB";
-            LinkTMDB.LinkClicked += LinkTMDB_LinkClicked;
-            // 
-            // PanelTopBar
-            // 
-            PanelTopBar.BackColor = Color.FromArgb(4, 52, 72);
-            PanelTopBar.Dock = DockStyle.Top;
-            PanelTopBar.Location = new Point(0, 0);
-            PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(537, 29);
-            PanelTopBar.TabIndex = 4;
-            // 
-            // PanelTopTitle
-            // 
-            PanelTopTitle.BackColor = Color.FromArgb(5, 74, 105);
-            PanelTopTitle.Controls.Add(label1);
-            PanelTopTitle.Dock = DockStyle.Top;
-            PanelTopTitle.Location = new Point(0, 29);
-            PanelTopTitle.Name = "PanelTopTitle";
-            PanelTopTitle.Size = new Size(537, 58);
-            PanelTopTitle.TabIndex = 6;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(10, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(91, 40);
-            label1.TabIndex = 0;
-            label1.Text = "Sobre";
             // 
             // panel1
             // 
@@ -111,9 +52,9 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(SobreButton);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 87);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(537, 337);
+            panel1.Size = new Size(537, 468);
             panel1.TabIndex = 7;
             // 
             // label5
@@ -196,17 +137,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(537, 468);
             Controls.Add(panel1);
-            Controls.Add(PanelTopTitle);
-            Controls.Add(PanelBottom);
-            Controls.Add(PanelTopBar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Sobre";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sobre";
-            PanelBottom.ResumeLayout(false);
-            PanelBottom.PerformLayout();
-            PanelTopTitle.ResumeLayout(false);
-            PanelTopTitle.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -215,11 +149,6 @@
         }
 
         #endregion
-
-        private Panel PanelBottom;
-        private Panel PanelTopBar;
-        private Panel PanelTopTitle;
-        private Label label1;
         private Panel panel1;
         private Button SobreButton;
         private PictureBox pictureBox1;
@@ -227,7 +156,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private LinkLabel LinkTMDB;
         private Label label5;
     }
 }
