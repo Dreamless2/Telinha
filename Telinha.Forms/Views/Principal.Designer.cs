@@ -45,7 +45,7 @@
             PanelTopBar.Dock = DockStyle.Top;
             PanelTopBar.Location = new Point(0, 58);
             PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(1245, 96);
+            PanelTopBar.Size = new Size(1245, 65);
             PanelTopBar.TabIndex = 15;
             // 
             // label7
