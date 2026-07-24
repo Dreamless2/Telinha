@@ -39,8 +39,11 @@ namespace Telinha.Forms.Views
 
         private void OpenChildForm(Form childForm)
         {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
 
-        }
 
         private void FecharButton_Click(object? sender, EventArgs e)
         {
