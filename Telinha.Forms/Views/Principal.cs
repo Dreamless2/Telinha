@@ -24,18 +24,7 @@ namespace Telinha.Forms.Views
             PrincipalButton.Click += PrincipalButton_Click;
             SobreButton.Click += SobreButton_Click;
             FecharButton.Click += FecharButton_Click;
-            Load += Principal_Load;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
-        }
-
-        private void Principal_Load(object? sender, EventArgs e)
-        {
-        }
-
-        private void TimerHora_Tick(object? sender, EventArgs e)
-        {
-            var time = DateTime.Now;
-            LabelHora.Text = "Hora: " + time.ToString("T");
         }
 
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
