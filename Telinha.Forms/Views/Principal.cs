@@ -52,6 +52,8 @@ namespace Telinha.Forms.Views
             PanelDesktop.Controls.Add(childForm);
             PanelDesktop.Tag = childForm;
             childForm.BringToFront();
+            childForm.Show();
+
 
 
 
