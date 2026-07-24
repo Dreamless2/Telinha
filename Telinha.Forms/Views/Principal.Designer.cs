@@ -38,6 +38,8 @@
             LabelHora = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             PanelTopTitle.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -106,6 +108,8 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(button1);
+            flowLayoutPanel1.Controls.Add(button2);
+            flowLayoutPanel1.Controls.Add(button3);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 123);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -114,12 +118,36 @@
             // 
             // button1
             // 
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(3, 3);
             button1.Name = "button1";
             button1.Size = new Size(170, 60);
             button1.TabIndex = 0;
             button1.Text = "Principal";
             button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(3, 69);
+            button2.Name = "button2";
+            button2.Size = new Size(170, 60);
+            button2.TabIndex = 1;
+            button2.Text = "Principal";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Location = new Point(3, 135);
+            button3.Name = "button3";
+            button3.Size = new Size(170, 60);
+            button3.TabIndex = 2;
+            button3.Text = "Principal";
+            button3.UseVisualStyleBackColor = true;
             // 
             // Principal
             // 
@@ -152,5 +180,7 @@
         private Label LabelHora;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }
