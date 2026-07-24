@@ -129,7 +129,6 @@
             SobreButton.TabIndex = 9;
             SobreButton.Text = "Fechar";
             SobreButton.UseVisualStyleBackColor = false;
-            SobreButton.Click += SobreButton_Click;
             // 
             // Sobre
             // 
