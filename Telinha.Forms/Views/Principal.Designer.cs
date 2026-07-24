@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             PanelTopBar = new Panel();
             label7 = new Label();
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
-            LabelData = new Label();
-            TimerHora = new System.Windows.Forms.Timer(components);
-            LabelHora = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             PrincipalButton = new Button();
             SobreButton = new Button();
@@ -82,28 +78,6 @@
             PanelBottom.Name = "PanelBottom";
             PanelBottom.Size = new Size(1483, 44);
             PanelBottom.TabIndex = 17;
-            // 
-            // LabelData
-            // 
-            LabelData.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LabelData.Location = new Point(368, 301);
-            LabelData.Name = "LabelData";
-            LabelData.Size = new Size(509, 84);
-            LabelData.TabIndex = 18;
-            LabelData.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // TimerHora
-            // 
-            TimerHora.Interval = 1000;
-            // 
-            // LabelHora
-            // 
-            LabelHora.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LabelHora.Location = new Point(368, 385);
-            LabelHora.Name = "LabelHora";
-            LabelHora.Size = new Size(509, 84);
-            LabelHora.TabIndex = 19;
-            LabelHora.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel1
             // 
@@ -155,8 +129,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1483, 955);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(LabelHora);
-            Controls.Add(LabelData);
             Controls.Add(PanelTopBar);
             Controls.Add(PanelTopTitle);
             Controls.Add(PanelBottom);
@@ -175,9 +147,6 @@
         private Label label7;
         private Panel PanelTopTitle;
         private Panel PanelBottom;
-        private Label LabelData;
-        private System.Windows.Forms.Timer TimerHora;
-        private Label LabelHora;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button PrincipalButton;
         private Button SobreButton;
