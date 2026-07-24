@@ -43,9 +43,10 @@ namespace Telinha.Forms.Views
             {
                 currentChildForm.Close();
             }
-            currentChildForm = childForm();
+            currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
 
         }
 
