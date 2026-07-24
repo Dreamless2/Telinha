@@ -135,7 +135,7 @@
             button2.Name = "button2";
             button2.Size = new Size(170, 60);
             button2.TabIndex = 1;
-            button2.Text = "Principal";
+            button2.Text = "Sobre";
             button2.UseVisualStyleBackColor = true;
             // 
             // button3
