@@ -116,9 +116,9 @@
             // 
             button1.Location = new Point(3, 3);
             button1.Name = "button1";
-            button1.Size = new Size(170, 79);
+            button1.Size = new Size(170, 60);
             button1.TabIndex = 0;
-            button1.Text = "\\u2630";
+            button1.Text = "Principal";
             button1.UseVisualStyleBackColor = true;
             // 
             // Principal
