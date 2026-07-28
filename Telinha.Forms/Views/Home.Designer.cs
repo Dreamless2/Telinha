@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            PanelTopBar = new Panel();
-            PanelBottom = new Panel();
             PanelButtons = new Panel();
             SairButton = new Button();
             ProximoButton = new Button();
@@ -89,24 +87,6 @@
             panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // PanelTopBar
-            // 
-            PanelTopBar.BackColor = Color.FromArgb(4, 52, 72);
-            PanelTopBar.Dock = DockStyle.Top;
-            PanelTopBar.Location = new Point(0, 0);
-            PanelTopBar.Name = "PanelTopBar";
-            PanelTopBar.Size = new Size(1382, 29);
-            PanelTopBar.TabIndex = 1;
-            // 
-            // PanelBottom
-            // 
-            PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
-            PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 875);
-            PanelBottom.Name = "PanelBottom";
-            PanelBottom.Size = new Size(1382, 44);
-            PanelBottom.TabIndex = 3;
-            // 
             // PanelButtons
             // 
             PanelButtons.Controls.Add(SairButton);
@@ -115,7 +95,7 @@
             PanelButtons.Controls.Add(SalvarButton);
             PanelButtons.Controls.Add(CopiarButton);
             PanelButtons.Dock = DockStyle.Bottom;
-            PanelButtons.Location = new Point(0, 790);
+            PanelButtons.Location = new Point(0, 834);
             PanelButtons.Name = "PanelButtons";
             PanelButtons.Size = new Size(1382, 85);
             PanelButtons.TabIndex = 6;
@@ -230,9 +210,9 @@
             PanelForms.Controls.Add(CodigoBox);
             PanelForms.Controls.Add(CodigoLabel);
             PanelForms.Dock = DockStyle.Fill;
-            PanelForms.Location = new Point(0, 98);
+            PanelForms.Location = new Point(0, 69);
             PanelForms.Name = "PanelForms";
-            PanelForms.Size = new Size(1382, 692);
+            PanelForms.Size = new Size(1382, 765);
             PanelForms.TabIndex = 7;
             // 
             // ResumoBox
@@ -602,7 +582,7 @@
             panel2.Controls.Add(RadioSeries);
             panel2.Controls.Add(RadioFilmes);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 29);
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(1382, 69);
             panel2.TabIndex = 8;
@@ -652,8 +632,6 @@
             Controls.Add(PanelForms);
             Controls.Add(panel2);
             Controls.Add(PanelButtons);
-            Controls.Add(PanelBottom);
-            Controls.Add(PanelTopBar);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(1, 2, 1, 2);
@@ -671,8 +649,6 @@
         }
 
         #endregion       
-        private Panel PanelTopBar;
-        private Panel PanelBottom;
         private Panel PanelButtons;
         private Panel PanelForms;
         private Label NomeLabel;
