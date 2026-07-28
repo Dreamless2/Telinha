@@ -80,15 +80,12 @@
             NomeBox = new TextBox();
             CodigoBox = new TextBox();
             CodigoLabel = new Label();
-            panel1 = new Panel();
-            label2 = new Label();
             panel2 = new Panel();
             RadioAnimes = new RadioButton();
             RadioSeries = new RadioButton();
             RadioFilmes = new RadioButton();
             PanelButtons.SuspendLayout();
             PanelForms.SuspendLayout();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -233,9 +230,9 @@
             PanelForms.Controls.Add(CodigoBox);
             PanelForms.Controls.Add(CodigoLabel);
             PanelForms.Dock = DockStyle.Fill;
-            PanelForms.Location = new Point(0, 156);
+            PanelForms.Location = new Point(0, 98);
             PanelForms.Name = "PanelForms";
-            PanelForms.Size = new Size(1382, 634);
+            PanelForms.Size = new Size(1382, 692);
             PanelForms.TabIndex = 7;
             // 
             // ResumoBox
@@ -598,27 +595,6 @@
             CodigoLabel.TabIndex = 0;
             CodigoLabel.Text = "Código TMDB";
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(5, 74, 105);
-            panel1.Controls.Add(label2);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 29);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1382, 58);
-            panel1.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(10, 9);
-            label2.Name = "label2";
-            label2.Size = new Size(105, 40);
-            label2.TabIndex = 0;
-            label2.Text = "Telinha";
-            // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(5, 74, 105);
@@ -626,7 +602,7 @@
             panel2.Controls.Add(RadioSeries);
             panel2.Controls.Add(RadioFilmes);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 87);
+            panel2.Location = new Point(0, 29);
             panel2.Name = "panel2";
             panel2.Size = new Size(1382, 69);
             panel2.TabIndex = 8;
@@ -675,7 +651,6 @@
             ClientSize = new Size(1382, 919);
             Controls.Add(PanelForms);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             Controls.Add(PanelButtons);
             Controls.Add(PanelBottom);
             Controls.Add(PanelTopBar);
@@ -690,8 +665,6 @@
             PanelButtons.ResumeLayout(false);
             PanelForms.ResumeLayout(false);
             PanelForms.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -749,8 +722,6 @@
         private Button AnteriorButton;
         private Button SalvarButton;
         private Button CopiarButton;
-        private Panel panel1;
-        private Label label2;
         private Panel panel2;
         private RadioButton RadioFilmes;
         private RadioButton RadioSeries;
