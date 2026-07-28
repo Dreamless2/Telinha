@@ -19,7 +19,6 @@ namespace Telinha.Forms.Views
         private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         private Form? currentChildForm;
-
         public Principal(ILifetimeScope scope)
         {
             InitializeComponent();
@@ -28,9 +27,7 @@ namespace Telinha.Forms.Views
             SobreButton.Click += SobreButton_Click;
             FecharButton.Click += FecharButton_Click;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
-
         }
-
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -39,7 +36,6 @@ namespace Telinha.Forms.Views
                 _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
         private void OpenChildForm(Form childForm)
         {
             currentChildForm?.Close();
@@ -53,8 +49,6 @@ namespace Telinha.Forms.Views
             childForm.BringToFront();
             childForm.Show();
         }
-
-
         private void FecharButton_Click(object? sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
