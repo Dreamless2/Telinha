@@ -95,9 +95,9 @@
             PanelButtons.Controls.Add(SalvarButton);
             PanelButtons.Controls.Add(CopiarButton);
             PanelButtons.Dock = DockStyle.Bottom;
-            PanelButtons.Location = new Point(0, 704);
+            PanelButtons.Location = new Point(0, 698);
             PanelButtons.Name = "PanelButtons";
-            PanelButtons.Size = new Size(1390, 85);
+            PanelButtons.Size = new Size(1380, 85);
             PanelButtons.TabIndex = 6;
             // 
             // SairButton
@@ -212,7 +212,7 @@
             PanelForms.Dock = DockStyle.Fill;
             PanelForms.Location = new Point(0, 69);
             PanelForms.Name = "PanelForms";
-            PanelForms.Size = new Size(1390, 635);
+            PanelForms.Size = new Size(1380, 629);
             PanelForms.TabIndex = 7;
             // 
             // ResumoBox
@@ -584,7 +584,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1390, 69);
+            panel2.Size = new Size(1380, 69);
             panel2.TabIndex = 8;
             // 
             // RadioAnimes
@@ -628,7 +628,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1390, 789);
+            ClientSize = new Size(1380, 783);
             Controls.Add(PanelForms);
             Controls.Add(panel2);
             Controls.Add(PanelButtons);
