@@ -58,10 +58,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(491, 190);
             label5.Name = "label5";
-            label5.Size = new Size(205, 21);
+            label5.Size = new Size(316, 32);
             label5.TabIndex = 15;
             label5.Text = "Desenvolvido por Tiago.NET";
             // 
