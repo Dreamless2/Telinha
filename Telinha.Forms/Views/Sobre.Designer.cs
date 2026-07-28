@@ -54,7 +54,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(539, 334);
+            panel1.Size = new Size(981, 671);
             panel1.TabIndex = 7;
             // 
             // label5
@@ -134,7 +134,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(539, 334);
+            ClientSize = new Size(981, 671);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Sobre";
