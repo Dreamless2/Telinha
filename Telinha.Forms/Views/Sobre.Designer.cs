@@ -88,10 +88,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(368, 462);
+            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(320, 479);
             label2.Name = "label2";
-            label2.Size = new Size(443, 17);
+            label2.Size = new Size(630, 25);
             label2.TabIndex = 12;
             label2.Text = "This product uses the TMDb API but is not endorsed or certified by TMDb.";
             // 
@@ -100,7 +100,7 @@
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(298, 671);
+            pictureBox2.Size = new Size(267, 671);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 11;
             pictureBox2.TabStop = false;
