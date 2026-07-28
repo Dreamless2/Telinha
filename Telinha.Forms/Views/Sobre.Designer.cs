@@ -58,7 +58,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(190, 199);
+            label5.Location = new Point(191, 199);
             label5.Name = "label5";
             label5.Size = new Size(316, 32);
             label5.TabIndex = 15;
@@ -88,7 +88,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(33, 509);
+            label2.Location = new Point(34, 509);
             label2.Name = "label2";
             label2.Size = new Size(630, 25);
             label2.TabIndex = 12;
@@ -97,7 +97,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Forms.Properties.Resources.tmdb;
-            pictureBox1.Location = new Point(127, 275);
+            pictureBox1.Location = new Point(128, 275);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(443, 195);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
