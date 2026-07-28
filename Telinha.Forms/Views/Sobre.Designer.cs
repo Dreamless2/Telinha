@@ -36,7 +36,6 @@
             label2 = new Label();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
-            SobreButton = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -50,7 +49,6 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(SobreButton);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -61,7 +59,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(319, 113);
+            label5.Location = new Point(491, 190);
             label5.Name = "label5";
             label5.Size = new Size(205, 21);
             label5.TabIndex = 15;
@@ -71,7 +69,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(319, 85);
+            label4.Location = new Point(414, 140);
             label4.Name = "label4";
             label4.Size = new Size(104, 21);
             label4.TabIndex = 14;
@@ -81,7 +79,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(307, 20);
+            label3.Location = new Point(414, 35);
             label3.Name = "label3";
             label3.Size = new Size(190, 65);
             label3.TabIndex = 13;
@@ -91,7 +89,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 226);
+            label2.Location = new Point(368, 462);
             label2.Name = "label2";
             label2.Size = new Size(443, 17);
             label2.TabIndex = 12;
@@ -100,9 +98,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(12, 20);
+            pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(261, 194);
+            pictureBox2.Size = new Size(298, 671);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 11;
             pictureBox2.TabStop = false;
@@ -110,25 +108,12 @@
             // pictureBox1
             // 
             pictureBox1.Image = Forms.Properties.Resources.tmdb;
-            pictureBox1.Location = new Point(317, 136);
+            pictureBox1.Location = new Point(368, 241);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(205, 78);
+            pictureBox1.Size = new Size(443, 195);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
-            // 
-            // SobreButton
-            // 
-            SobreButton.BackColor = Color.FromArgb(4, 52, 72);
-            SobreButton.FlatAppearance.BorderSize = 0;
-            SobreButton.FlatStyle = FlatStyle.Flat;
-            SobreButton.ForeColor = Color.White;
-            SobreButton.Location = new Point(192, 274);
-            SobreButton.Name = "SobreButton";
-            SobreButton.Size = new Size(180, 41);
-            SobreButton.TabIndex = 9;
-            SobreButton.Text = "Fechar";
-            SobreButton.UseVisualStyleBackColor = false;
             // 
             // Sobre
             // 
@@ -149,7 +134,6 @@
 
         #endregion
         private Panel panel1;
-        private Button SobreButton;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private Label label2;
