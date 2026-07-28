@@ -49,9 +49,9 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(287, 0);
+            panel1.Location = new Point(286, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(697, 574);
+            panel1.Size = new Size(698, 574);
             panel1.TabIndex = 7;
             // 
             // label5
@@ -68,7 +68,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(258, 149);
+            label4.Location = new Point(271, 149);
             label4.Name = "label4";
             label4.Size = new Size(155, 32);
             label4.TabIndex = 14;
