@@ -172,7 +172,7 @@ namespace Telinha.Core.Models
             set => SetField(ref _mcu, value);
         }
 
-        private string? _artistas;
+
         public string? Artistas
         {
             get => _artistas;
