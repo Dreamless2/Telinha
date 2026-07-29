@@ -32,7 +32,6 @@ namespace Telinha
             Load += Principal_Load!;
             ConfigurarTodosOsTextBoxes(this);
 
-            SairButton.Click += SairButton_Click!;
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
