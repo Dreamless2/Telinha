@@ -58,14 +58,12 @@ namespace Telinha.Core.Models
             set => SetField(ref _audio, value);
         }
 
-        private string? _tipo;
         public string? Tipo
         {
             get => _tipo;
             set => SetField(ref _tipo, value);
         }
 
-        private string? _classificacao;
         [Column(IsIgnore = true)]
         public string? Classificacao
         {
