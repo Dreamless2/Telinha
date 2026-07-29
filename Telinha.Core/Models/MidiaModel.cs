@@ -166,15 +166,11 @@ namespace Telinha.Core.Models
             get => _mcu;
             set => SetField(ref _mcu, value);
         }
-
-
         public string? Artistas
         {
             get => _artistas;
             set => SetField(ref _artistas, value);
         }
-
-
         public string? Produtora
         {
             get => _produtora;
