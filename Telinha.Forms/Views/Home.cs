@@ -116,10 +116,7 @@ namespace Telinha
         {
             if (sender is RadioButton rb && !rb.Checked)
             {
-                if (!TemAlgumTextBoxPreenchido(this))
-                {
-                    ConfigurarTodosOsTextBoxes(this);
-                }
+                if (!TemAlgumTextBoxPreenchido(this)) ConfigurarTodosOsTextBoxes(this);
                 return;
             }
 
