@@ -23,8 +23,7 @@ namespace Telinha.Core.Factory
         {
             if (_deepLClient == null)
             {
-                if (string.IsNullOrWhiteSpace(_config.DEEPL))
-                    throw new InvalidOperationException("Chave API do DeepL não configurada.");
+                if (string.IsNullOrWhiteSpace(_config.DEEPL)) throw new InvalidOperationException("Chave API do DeepL não configurada.");
 
                 _deepLClient = new DeepLClient(_config.DEEPL);
             }
