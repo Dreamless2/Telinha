@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Telinha.Forms.Extras
+﻿namespace Telinha.Forms.Extras
 {
     public class Functions
     {
