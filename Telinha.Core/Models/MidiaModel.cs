@@ -131,7 +131,6 @@ namespace Telinha.Core.Models
             set => SetField(ref _autores, value);
         }
 
-        private string? _showrunners;
         public string? Showrunners
         {
             get => _showrunners;
