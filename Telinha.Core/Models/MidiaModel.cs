@@ -158,7 +158,7 @@ namespace Telinha.Core.Models
             set => SetField(ref _tags, value);
         }
 
-        private string? _diretor;
+
         public string? Diretor
         {
             get => _diretor;
