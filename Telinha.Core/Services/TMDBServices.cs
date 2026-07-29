@@ -26,11 +26,7 @@ namespace Telinha.Core.Services
                     request.AddQueryParameter(p.Key, p.Value);
 
             var resp = await _client.ExecuteAsync(request, ct);
-
-            LogServices.LogarInformacao("TMDB TipoAuth: {tipo}", IsBearer ? "Bearer" : "ApiKey");
-            LogServices.LogarInformacao("TMDB Status: {status}", resp.StatusCode);
-            LogServices.LogarInformacao("TMDB Response: {resp}", resp.Content!);
-
+            
             if (resp.StatusCode == System.Net.HttpStatusCode.NotFound)
                 return new JObject { ["status_code"] = 34, ["success"] = false };
 
