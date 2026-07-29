@@ -110,10 +110,10 @@ namespace Telinha
                 return;
             }
 
+            if (sender is rad)
 
 
-
-            var tipo = GetSelectedType();
+                var tipo = GetSelectedType();
 
             AtualizarUI(tipo, _current);
             PreencherMascara(tipo);
