@@ -35,7 +35,6 @@ namespace Telinha.Core.Models
         private string? _tipoSolicitado;
         private string? _tituloFinal;
         public event PropertyChangedEventHandler? PropertyChanged;
-
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
         {
             if (EqualityComparer<T>.Default.Equals(field, value)) return false;
