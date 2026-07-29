@@ -79,7 +79,7 @@ namespace Telinha.Core.Services
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"ERROR: {ex.Message}, Tentativa: {tentativa}/{maxTentativas}, Id: {id}, Tipo: {tipo}");
+                    throw new Exception($"Erro de busca TMDB: {ex.Message}, Tentativa: {tentativa}/{maxTentativas}, Id: {id}, Tipo: {tipo}");
                 }
 
                 if (tentativa < maxTentativas) await Task.Delay(500, ct);
