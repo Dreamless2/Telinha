@@ -117,11 +117,7 @@ namespace Telinha.Core.Factory
 
             var taskPais = !string.IsNullOrWhiteSpace(countryRaw) ? deepl.Translate(countryRaw) : Task.FromResult<string?>("--");
 
-            var taskIdioma = LanguageHelper.ResolveAsync(
-                languageEnglish,
-                languageIso,
-                deepl.Translate
-            );
+            var taskIdioma = LanguageHelper.ResolveAsync(languageEnglish, languageIso, deepl.Translate);
 
             await Task.WhenAll(taskPais!, taskIdioma);
 
