@@ -311,21 +311,17 @@ namespace Telinha
                     MessageBox.Show("Serviço ainda não inicializado.");
                     return;
                 }
-
                 var midia = await _midiaService.GetMidia(id);
-
                 if (midia == null)
                 {
                     MessageBox.Show($"Nenhuma mídia encontrada com o ID {id}.", "Não Encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
                 if (!TryResolverTipo(midia.Tipo, out _))
                 {
                     MessageBox.Show($"Tipo de mídia não reconhecido: {midia.Tipo}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 CarregarNaTela(midia);
                 CodigoBox.Text = codigoDigitado;
                 CodigoBox.SelectionStart = CodigoBox.Text.Length;
