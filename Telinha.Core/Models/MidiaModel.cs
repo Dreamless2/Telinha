@@ -109,7 +109,6 @@ namespace Telinha.Core.Models
             set => SetField(ref _idiomaOriginal, value);
         }
 
-        private string? _serie;
         [Column(IsIgnore = true)]
         public string? Serie
         {
