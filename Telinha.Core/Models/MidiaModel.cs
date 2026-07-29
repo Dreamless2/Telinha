@@ -207,9 +207,7 @@ namespace Telinha.Core.Models
 
         [Column(IsIgnore = true)]
         public bool EhAnimacao =>
-            GenerosLista?.Any(g =>
-                g.Contains("Animation", StringComparison.OrdinalIgnoreCase) ||
-                g.Contains("Animação", StringComparison.OrdinalIgnoreCase)) == true;
+            GenerosLista?.Any(g => g.Contains("Animation", StringComparison.OrdinalIgnoreCase) || g.Contains("Animação", StringComparison.OrdinalIgnoreCase)) == true;
 
         [Column(IsIgnore = true)]
         public bool EhJapones => IdiomaOriginal?.Equals("ja", StringComparison.OrdinalIgnoreCase) == true;
