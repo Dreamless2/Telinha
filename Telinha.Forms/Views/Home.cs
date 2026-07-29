@@ -282,7 +282,6 @@ namespace Telinha
                     botaoDesabilitar.Enabled = false;
                     return;
                 }
-
                 CarregarNaTela(item);
                 await AtualizarBotoesNavegacao();
             }
@@ -296,11 +295,8 @@ namespace Telinha
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
-
             e.SuppressKeyPress = true;
-
             var codigoDigitado = CodigoBox.Text.Trim();
-
             if (!int.TryParse(codigoDigitado, out int id) || id <= 0)
             {
                 MessageBox.Show("Informe o código do TMDB.", "Código Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
