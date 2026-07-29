@@ -45,7 +45,6 @@ namespace Telinha.Core.Models
 
         [Column(IsPrimary = true, IsIdentity = true)]
         public long Id { get; set; }
-
         public string? Codigo
         {
             get => _codigo;
