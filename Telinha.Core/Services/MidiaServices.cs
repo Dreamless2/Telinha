@@ -150,21 +150,15 @@ namespace Telinha.Core.Services
         {
             if (filme == null) return serie;
             if (serie == null) return filme;
-
             if (serie.Classificacao is "Anime" or "AnimeLike") return serie;
-
             bool serieMaisForte = serie.Episodios > 0;
             bool filmeMaisForte = filme.Episodios == 0 && filme.DuracaoMedia > 60;
-
             if (serieMaisForte && !filmeMaisForte) return serie;
             if (filmeMaisForte && !serieMaisForte) return filme;
-
             double scoreFilme = CalcularScore(filme);
             double scoreSerie = CalcularScore(serie);
-
             return scoreSerie >= scoreFilme ? serie : filme;
         }
-
         private static double CalcularScore(MidiaModel m)
         {
             double score = 0;
@@ -172,17 +166,13 @@ namespace Telinha.Core.Services
             if (!string.IsNullOrWhiteSpace(m.Sinopse) && m.Sinopse.Length > 30) score += 2;
             if (m.Episodios > 0) score += 3;
             if (m.DuracaoMedia > 0) score += 2;
-
             if (m.Classificacao == "Anime") score += 4;
             else if (m.Classificacao == "AnimeLike") score += 2;
             else if (m.Classificacao == "LiveAction") score += 1;
-
             if (m.Popularidade > 0) score += Math.Min(m.Popularidade / 50.0, 2);
             if (m.Votos > 0) score += Math.Min(m.Votos / 1000.0, 2);
-
             bool pareceSerie = m.Episodios > 0 && m.DuracaoMedia <= 45;
             bool pareceFilme = m.Episodios == 0 && m.DuracaoMedia > 60;
-
             if (pareceSerie) score += 3;
             if (pareceFilme) score += 3;
             return score;
@@ -194,22 +184,17 @@ namespace Telinha.Core.Services
             model.Popularidade = data?["popularity"]?.ToObject<double>() ?? 0;
             model.Votos = data?["vote_count"]?.ToObject<int>() ?? 0;
             model.Episodios = data?["number_of_episodes"]?.ToObject<int>() ?? 0;
-
             model.DuracaoMedia = data?["runtime"]?.ToObject<int?>()
                   ?? (data?["episode_run_time"] is JArray arr && arr.Count > 0
                       ? arr[0].ToObject<int?>()
                        : 0) ?? 0;
-
             model.PaisesOrigem = data?["origin_country"]?.ToObject<List<string>>() ?? [];
             model.GenerosLista = data?["genres"]?.Select(g => g["name"]?.ToString()).OfType<string>().ToList() ?? [];
             model.ProdutorasLista = data?["production_companies"]?.Select(p => p["name"]?.ToString()).OfType<string>().ToList() ?? [];
-
             var titleToken = data?["title"] ?? data?["name"];
             model.Nome = titleToken?.Type != JTokenType.Array ? titleToken?.ToString() : "--";
-
             var originalToken = data?["original_title"] ?? data?["original_name"];
             model.Original = originalToken?.Type != JTokenType.Array ? originalToken?.ToString() : "--";
-
             model.Sinopse = data?["overview"]?.ToString();
         }
     }
