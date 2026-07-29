@@ -91,9 +91,7 @@ namespace Telinha
                 ConfigurarTodosOsTextBoxes(this);
                 return;
             }
-
             var tipo = GetSelectedType();
-
             AtualizarUI(tipo, _current);
             PreencherMascara(tipo);
         }
