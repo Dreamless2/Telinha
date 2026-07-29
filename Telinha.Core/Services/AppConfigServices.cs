@@ -22,34 +22,27 @@ namespace Telinha.Core.Services
             public string? DEEPL { get; set; }
         }
 
-        public void Save(AppConfig config)
+        public static void Save(AppConfig config)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(FilePath)!);
 
             string json = JsonConvert.SerializeObject(config);
 
-            byte[] protectedData = ProtectedData.Protect(
-                Encoding.UTF8.GetBytes(json),
-                Encoding.UTF8.GetBytes(Entropy),
-                DataProtectionScope.CurrentUser);
+            byte[] protectedData = ProtectedData.Protect(Encoding.UTF8.GetBytes(json), Encoding.UTF8.GetBytes(Entropy), DataProtectionScope.CurrentUser);
 
             File.WriteAllBytes(FilePath, protectedData);
             File.SetAttributes(FilePath, FileAttributes.Hidden);
         }
 
-        public AppConfig? Load()
+        public static AppConfig? Load()
         {
-            if (!File.Exists(FilePath))
-                return null;
+            if (!File.Exists(FilePath)) return null;
 
             try
             {
                 byte[] protectedData = File.ReadAllBytes(FilePath);
-
                 byte[] raw = ProtectedData.Unprotect(protectedData, Encoding.UTF8.GetBytes(Entropy), DataProtectionScope.CurrentUser);
-
                 string json = Encoding.UTF8.GetString(raw);
-
                 return JsonConvert.DeserializeObject<AppConfig>(json);
             }
             catch
