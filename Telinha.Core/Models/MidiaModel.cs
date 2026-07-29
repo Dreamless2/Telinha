@@ -25,6 +25,18 @@ namespace Telinha.Core.Models
         private string? _idiomaOriginal;
         private string? _serie;
         private string? _autores;
+        private string? _showrunners;
+        private string? _referencia;
+        private string? _genero;
+        private string? _tags;
+        private string? _diretor;
+        private string? _mcu;
+        private string? _artistas;
+        private string? _produtora;
+
+        private string? _tipoSolicitado;
+        private string? _tituloFinal;
+
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
 
