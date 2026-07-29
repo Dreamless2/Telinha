@@ -100,11 +100,8 @@ namespace Telinha
             {
                 if (controle is TextBox textBox) if (string.IsNullOrWhiteSpace(textBox.Text)) textBox.Clear();
                 if (controle.HasChildren) LimparApenasTextBoxesVazios(controle);
-
             }
         }
-
-
 
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
         {
