@@ -219,13 +219,12 @@ namespace Telinha
             item.Showrunners = isFilme ? "--" : (item.Showrunners ?? "--");
             item.Franquia = isFilme ? "--" : (item.Franquia ?? "--");
             item.MCU = isFilme || isAnime ? "--" : (item.MCU ?? "--");
-
             bool habilitarCamposGerais = !isFilme;
             LocalLabel.Enabled = LocalBox.Enabled = habilitarCamposGerais;
             IdiomaLabel.Enabled = IdiomaBox.Enabled = habilitarCamposGerais;
             ReferenciaLabel.Enabled = ReferenciaBox.Enabled = habilitarCamposGerais;
             AutoresLabel.Enabled = AutoresBox.Enabled = habilitarCamposGerais;
-            ShowrunnersLabel.Enabled = ShowrunnersBox.Enabled = habilitarCamposGerais;
+            ShowrunnersLabel.Enabled = ShowrunnersBox.Enabled = habiliarCamposGerais;
             MCUBox.Enabled = isFilme && !isAnime;
 
             SetSelectedType(tipo);
