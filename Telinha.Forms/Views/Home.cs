@@ -93,16 +93,6 @@ namespace Telinha
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
         }
 
-        private bool TemAlgumTextBoxPreenchido(Control container)
-        {
-            foreach (Control c in container.Controls)
-            {
-                if (c is TextBox txt && !string.IsNullOrWhiteSpace(txt.Text)) return true;
-                if (c.HasChildren && TemAlgumTextBoxPreenchido(c)) return true;
-            }
-            return false;
-        }
-
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (sender is RadioButton rb && !rb.Checked)
