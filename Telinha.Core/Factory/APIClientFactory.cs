@@ -14,8 +14,7 @@ namespace Telinha.Core.Factory
 
         public ApiClientFactory()
         {
-            var config = new AppConfigServices().Load()
-                ?? throw new InvalidOperationException("Configuração não encontrada.");
+            var config = new AppConfigServices().Load() ?? throw new InvalidOperationException("Configuração não encontrada.");
 
             _config = config;
         }
