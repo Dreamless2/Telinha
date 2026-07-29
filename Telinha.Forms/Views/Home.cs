@@ -94,6 +94,28 @@ namespace Telinha
         }
 
 
+        private void LimparApenasTextBoxesVazios(Control container)
+        {
+            foreach (Control controle in container.Controls)
+            {
+                // Identifica se o componente é um TextBox
+                if (controle is TextBox textBox)
+                {
+                    // Se o campo estiver vazio ou só com espaços, garante que fica limpo
+                    if (string.IsNullOrWhiteSpace(textBox.Text))
+                    {
+                        textBox.Clear();
+                    }
+                    // Se o campo já tiver dados digitados, o 'else' implícito não faz nada (mantém os dados)
+                }
+
+                // Se o TextBox estiver dentro de um Painel ou GroupBox, faz a busca interna
+                if (controle.HasChildren)
+                {
+                    LimparApenasTextBoxesVazios(controle);
+                }
+            }
+        }
 
 
 
