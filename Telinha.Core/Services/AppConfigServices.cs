@@ -22,7 +22,7 @@ namespace Telinha.Core.Services
             public string? DEEPL { get; set; }
         }
 
-        public static void Save(AppConfig config)
+        public void Save(AppConfig config)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(FilePath)!);
 
@@ -34,7 +34,7 @@ namespace Telinha.Core.Services
             File.SetAttributes(FilePath, FileAttributes.Hidden);
         }
 
-        public static AppConfig? Load()
+        public AppConfig? Load()
         {
             if (!File.Exists(FilePath)) return null;
 
