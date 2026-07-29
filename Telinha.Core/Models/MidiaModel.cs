@@ -43,21 +43,16 @@ namespace Telinha.Core.Models
             get => _codigo;
             set => SetField(ref _codigo, value);
         }
-
-
         public string? Nome
         {
             get => _nome;
             set => SetField(ref _nome, value);
         }
-
-
         public string? Audio
         {
             get => _audio;
             set => SetField(ref _audio, value);
         }
-
         public string? Tipo
         {
             get => _tipo;
