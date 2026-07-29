@@ -115,9 +115,7 @@ namespace Telinha.Core.Factory
             var languageEnglish = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString();
             var languageIso = json["spoken_languages"]?.FirstOrDefault()?["iso_639_1"]?.ToString();
 
-            var taskPais = !string.IsNullOrWhiteSpace(countryRaw)
-                ? deepl.Translate(countryRaw)
-                : Task.FromResult<string?>("--");
+            var taskPais = !string.IsNullOrWhiteSpace(countryRaw) ? deepl.Translate(countryRaw) : Task.FromResult<string?>("--");
 
             var taskIdioma = LanguageHelper.ResolveAsync(
                 languageEnglish,
