@@ -253,7 +253,6 @@ namespace Telinha
                     MessageBox.Show("Insira um novo registro para começar.", "Bem-vindo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CodigoBox.Focus();
                 }
-
                 await AtualizarBotoesNavegacao();
             }
             catch (Exception ex)
