@@ -161,7 +161,6 @@ namespace Telinha.Core.Services
             double scoreFilme = CalcularScore(filme);
             double scoreSerie = CalcularScore(serie);
 
-            LogServices.LogarInformacao("Score Filme: {filme}, Série: {serie}", scoreFilme, scoreSerie);
             return scoreSerie >= scoreFilme ? serie : filme;
         }
 
