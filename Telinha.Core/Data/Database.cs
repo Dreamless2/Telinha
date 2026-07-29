@@ -15,15 +15,14 @@ namespace Telinha.Core.Data
             get
             {
                 if (_db == null)
-                {
                     lock (_lock)
                     {
                         if (_db == null) Initialize();
                     }
-                }
+            }
 
                 return _db!;
-            }
+        }
         }
         private static string BuildConnectionString()
         {
