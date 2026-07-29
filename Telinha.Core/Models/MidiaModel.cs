@@ -125,7 +125,7 @@ namespace Telinha.Core.Models
             set => SetField(ref _serie, value);
         }
 
-        private string? _franquia;
+
         public string? Franquia
         {
             get => _franquia;
