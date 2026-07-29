@@ -12,6 +12,8 @@ namespace Telinha.Core.Models
 
         private string? _codigo;
         private string? _nome;
+        private string? _audio;
+
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
 
         {
