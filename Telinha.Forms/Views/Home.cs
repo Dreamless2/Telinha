@@ -216,10 +216,8 @@ namespace Telinha
             };
             foreach (var ctrl in controles)
             {
-                if (ctrl is TextBoxBase txt)
-                    txt.TextChanged += QualquerAlteracao!;
-                else if (ctrl is ComboBox combo)
-                    combo.SelectedIndexChanged += QualquerAlteracao!;
+                if (ctrl is TextBoxBase txt) txt.TextChanged += QualquerAlteracao!;
+                else if (ctrl is ComboBox combo) combo.SelectedIndexChanged += QualquerAlteracao!;
             }
         }
         private void QualquerAlteracao(object sender, EventArgs e)
