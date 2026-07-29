@@ -8,7 +8,6 @@ namespace Telinha.Core.Models
     [Table(Name = "midia")]
     public class MidiaModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
         private string? _codigo;
         private string? _nome;
         private string? _audio;
@@ -35,6 +34,7 @@ namespace Telinha.Core.Models
         private string? _produtora;
         private string? _tipoSolicitado;
         private string? _tituloFinal;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
         {
