@@ -34,7 +34,6 @@
             PanelBottom = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             PrincipalButton = new Button();
-            SobreButton = new Button();
             FecharButton = new Button();
             PanelDesktop = new Panel();
             PanelTopTitle.SuspendLayout();
@@ -83,7 +82,6 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(PrincipalButton);
-            flowLayoutPanel1.Controls.Add(SobreButton);
             flowLayoutPanel1.Controls.Add(FecharButton);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 123);
@@ -102,22 +100,11 @@
             PrincipalButton.Text = "Principal";
             PrincipalButton.UseVisualStyleBackColor = true;
             // 
-            // SobreButton
-            // 
-            SobreButton.FlatAppearance.BorderSize = 0;
-            SobreButton.FlatStyle = FlatStyle.Flat;
-            SobreButton.Location = new Point(3, 69);
-            SobreButton.Name = "SobreButton";
-            SobreButton.Size = new Size(168, 60);
-            SobreButton.TabIndex = 1;
-            SobreButton.Text = "Sobre";
-            SobreButton.UseVisualStyleBackColor = true;
-            // 
             // FecharButton
             // 
             FecharButton.FlatAppearance.BorderSize = 0;
             FecharButton.FlatStyle = FlatStyle.Flat;
-            FecharButton.Location = new Point(3, 135);
+            FecharButton.Location = new Point(3, 69);
             FecharButton.Name = "FecharButton";
             FecharButton.Size = new Size(168, 60);
             FecharButton.TabIndex = 2;
@@ -159,7 +146,6 @@
         private Panel PanelBottom;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button PrincipalButton;
-        private Button SobreButton;
         private Button FecharButton;
         private Panel PanelDesktop;
     }
