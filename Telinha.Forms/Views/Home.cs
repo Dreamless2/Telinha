@@ -320,8 +320,7 @@ namespace Telinha
 
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Enter)
-                return;
+            if (e.KeyCode != Keys.Enter) return;
 
             e.SuppressKeyPress = true;
 
@@ -333,8 +332,7 @@ namespace Telinha
                 return;
             }
 
-            if (_buscando)
-                return;
+            if (_buscando) return;
 
             _buscando = true;
 
