@@ -212,7 +212,6 @@ namespace Telinha
             item ??= new MidiaModel();
             bool isFilme = tipo == MidiaTipo.Filme;
             bool isAnime = tipo == MidiaTipo.Anime;
-
             item.Local = isFilme ? "--" : (item.Local ?? "--");
             item.Idioma = isFilme ? "--" : (item.Idioma ?? "--");
             item.Referencia = isFilme ? "--" : (item.Referencia ?? "--");
