@@ -8,7 +8,6 @@ namespace Telinha.Core.Controller
         private static IFreeSql DB => Database.DB;
         private static readonly Dictionary<Type, PropertyInfo?> _codigoCache = [];
         private static readonly Dictionary<Type, PropertyInfo?> _idCache = [];
-
         private static PropertyInfo? GetCodigoProp(Type t)
         {
             if (!_codigoCache.TryGetValue(t, out var prop))
@@ -34,7 +33,7 @@ namespace Telinha.Core.Controller
             var propId = GetIdProp(type);
             var codigoValue = propCodigo?.GetValue(item)?.ToString();
 
-            if (string.IsNullOrWhiteSpace(codigoValue))                 throw new ArgumentException("Código da mídia inválido.");
+            if (string.IsNullOrWhiteSpace(codigoValue)) throw new ArgumentException("Código da mídia inválido.");
 
             var existente = await DB.Select<T>()
                 .WhereDynamic(new { Codigo = codigoValue })
