@@ -161,8 +161,6 @@ namespace Telinha.Core.Models
             get => _diretor;
             set => SetField(ref _diretor, value);
         }
-
-
         public string? MCU
         {
             get => _mcu;
