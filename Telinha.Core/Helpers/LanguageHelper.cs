@@ -5,7 +5,7 @@ namespace Telinha.Core.Helpers
     public static class LanguageHelper
     {
         public static async Task<string> ResolveAsync(string? englishName, string? isoCode,
-        Func<string, Task<string?>> translateFunc)
+            Func<string, Task<string?>> translateFunc)
         {
             var raw = englishName ?? isoCode;
 
