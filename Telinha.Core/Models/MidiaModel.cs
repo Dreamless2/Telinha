@@ -232,7 +232,6 @@ namespace Telinha.Core.Models
             }
         }
         public string TituloResolvido => string.IsNullOrWhiteSpace(TituloFinal) ? NomeFormatado : TituloFinal!;
-
         public string MidiaResolvida => string.IsNullOrWhiteSpace(Midia) ? (Nome ?? "") : Midia!;
     }
 }
