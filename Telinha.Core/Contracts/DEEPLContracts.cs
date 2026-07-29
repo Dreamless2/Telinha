@@ -8,8 +8,7 @@ namespace Telinha.Core.Contracts
 
         public async Task<string?> Translate(string text)
         {
-            if (string.IsNullOrWhiteSpace(text) || text == "--")
-                return null;
+            if (string.IsNullOrWhiteSpace(text) || text == "--") return null;
 
             try
             {
