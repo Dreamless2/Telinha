@@ -85,6 +85,7 @@ namespace Telinha.Core.Models
             get => _alternativo;
             set => SetField(ref _alternativo, value);
         }
+
         [Column(IsIgnore = true)]
         public string? Midia
         {
