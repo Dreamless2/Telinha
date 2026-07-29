@@ -21,7 +21,6 @@ namespace Telinha.Core.Data
                         if (_db == null) Initialize();
                     }
                 }
-
                 return _db!;
             }
         }
