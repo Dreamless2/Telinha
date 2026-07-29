@@ -87,10 +87,8 @@ namespace Telinha.Core.Card
             sb.AppendLine($"**Tags:** {_tags}");
             sb.AppendLine($"**Diretor:** {_diretor}");
 
-            if (_tipo != MidiaTipo.Anime)
-            {
-                sb.AppendLine($"**Fase MCU:** {_mcu}");
-            }
+            if (_tipo != MidiaTipo.Anime) sb.AppendLine($"**Fase MCU:** {_mcu}");
+
 
             sb.AppendLine($"**Artistas:** {_artistas}");
             sb.AppendLine($"**Produtora:** {_produtora}");
