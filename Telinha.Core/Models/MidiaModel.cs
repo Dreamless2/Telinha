@@ -136,21 +136,16 @@ namespace Telinha.Core.Models
             get => _autores;
             set => SetField(ref _autores, value);
         }
-
         public string? Showrunners
         {
             get => _showrunners;
             set => SetField(ref _showrunners, value);
         }
-
-
         public string? Referencia
         {
             get => _referencia;
             set => SetField(ref _referencia, value);
         }
-
-
         public string? Genero
         {
             get => _genero;
