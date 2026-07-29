@@ -11,6 +11,7 @@ namespace Telinha.Core.Models
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private string? _codigo;
+        private string? _nome;
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
 
         {
@@ -31,14 +32,14 @@ namespace Telinha.Core.Models
             set => SetField(ref _codigo, value);
         }
 
-        private string? _nome;
+
         public string? Nome
         {
             get => _nome;
             set => SetField(ref _nome, value);
         }
 
-        private string? _audio;
+
         public string? Audio
         {
             get => _audio;
