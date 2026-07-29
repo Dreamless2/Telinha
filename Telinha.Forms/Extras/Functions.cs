@@ -1,5 +1,5 @@
 ﻿namespace Telinha.Forms.Extras
-
+{
     public class Functions
 
 
