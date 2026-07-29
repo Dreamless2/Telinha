@@ -100,17 +100,6 @@ namespace Telinha
                 if (controle is TextBox textBox) if (string.IsNullOrWhiteSpace(textBox.Text)) textBox.Clear();
                 if (controle.HasChildren) LimparApenasTextBoxesVazios(controle);
             }
-
-            foreach (Control c in container.Controls)
-            {
-                if (c is TextBox txt)
-                {
-                    txt.Enter += TextBox_Enter!;
-                    txt.Leave += TextBox_Leave!;
-                    if (string.IsNullOrWhiteSpace(txt.Text)) txt.Text = "--";
-                }
-                else if (c.HasChildren) ConfigurarTodosOsTextBoxes(c);
-            }
         }
 
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
