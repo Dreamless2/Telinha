@@ -57,6 +57,7 @@
             // 
             TokenTMDBBox.Location = new Point(77, 22);
             TokenTMDBBox.Name = "TokenTMDBBox";
+            TokenTMDBBox.PasswordChar = '*';
             TokenTMDBBox.PlaceholderText = "API TMDB";
             TokenTMDBBox.Size = new Size(754, 23);
             TokenTMDBBox.TabIndex = 0;
