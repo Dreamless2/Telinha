@@ -12,7 +12,6 @@ namespace Telinha.Forms
         {
             ApplicationConfiguration.Initialize();
 
-            LogServices.ConfigurarLog();
             try
             {
                 var configService = new AppConfigServices();
@@ -39,11 +38,6 @@ namespace Telinha.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("Erro crítico ao iniciar:\n" + ex.Message);
-                LogServices.LogarErroComException(ex, "Erro crítico ao iniciar a aplicação.");
-            }
-            finally
-            {
-                LogServices.EncerrarLog();
             }
         }
     }
