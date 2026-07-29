@@ -104,7 +104,7 @@
             ProximoButton.FlatAppearance.BorderSize = 0;
             ProximoButton.FlatStyle = FlatStyle.Flat;
             ProximoButton.ForeColor = Color.White;
-            ProximoButton.Location = new Point(947, 22);
+            ProximoButton.Location = new Point(966, 22);
             ProximoButton.Name = "ProximoButton";
             ProximoButton.Size = new Size(180, 41);
             ProximoButton.TabIndex = 6;
@@ -130,7 +130,7 @@
             SalvarButton.FlatAppearance.BorderSize = 0;
             SalvarButton.FlatStyle = FlatStyle.Flat;
             SalvarButton.ForeColor = Color.White;
-            SalvarButton.Location = new Point(485, 22);
+            SalvarButton.Location = new Point(476, 22);
             SalvarButton.Name = "SalvarButton";
             SalvarButton.Size = new Size(180, 41);
             SalvarButton.TabIndex = 4;
@@ -143,7 +143,7 @@
             CopiarButton.FlatAppearance.BorderSize = 0;
             CopiarButton.FlatStyle = FlatStyle.Flat;
             CopiarButton.ForeColor = Color.White;
-            CopiarButton.Location = new Point(254, 22);
+            CopiarButton.Location = new Point(223, 22);
             CopiarButton.Name = "CopiarButton";
             CopiarButton.Size = new Size(180, 41);
             CopiarButton.TabIndex = 3;
