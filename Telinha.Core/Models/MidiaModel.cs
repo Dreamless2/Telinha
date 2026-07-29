@@ -65,8 +65,6 @@ namespace Telinha.Core.Models
             get => _classificacao;
             set => SetField(ref _classificacao, value);
         }
-
-        private string? _sinopse;
         public string? Sinopse
         {
             get => _sinopse;
