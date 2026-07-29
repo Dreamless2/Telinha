@@ -110,7 +110,7 @@ namespace Telinha
                 return;
             }
 
-            if (sender is rad)
+            if (sender is RadioButton rb && rb.Checked)
 
 
                 var tipo = GetSelectedType();
