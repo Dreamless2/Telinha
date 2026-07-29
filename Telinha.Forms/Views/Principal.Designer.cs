@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             PanelTopBar = new Panel();
-            label7 = new Label();
+            PrincipalLabel = new Label();
             PanelTopTitle = new Panel();
             PanelBottom = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -50,21 +50,21 @@
             PanelTopBar.Size = new Size(1603, 65);
             PanelTopBar.TabIndex = 15;
             // 
-            // label7
+            // PrincipalLabel
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(14, 9);
-            label7.Name = "label7";
-            label7.Size = new Size(125, 40);
-            label7.TabIndex = 0;
-            label7.Text = "Principal";
+            PrincipalLabel.AutoSize = true;
+            PrincipalLabel.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PrincipalLabel.ForeColor = Color.White;
+            PrincipalLabel.Location = new Point(14, 9);
+            PrincipalLabel.Name = "PrincipalLabel";
+            PrincipalLabel.Size = new Size(125, 40);
+            PrincipalLabel.TabIndex = 0;
+            PrincipalLabel.Text = "Principal";
             // 
             // PanelTopTitle
             // 
             PanelTopTitle.BackColor = Color.FromArgb(5, 74, 105);
-            PanelTopTitle.Controls.Add(label7);
+            PanelTopTitle.Controls.Add(PrincipalLabel);
             PanelTopTitle.Dock = DockStyle.Top;
             PanelTopTitle.Location = new Point(0, 0);
             PanelTopTitle.Name = "PanelTopTitle";
@@ -154,7 +154,7 @@
 
         #endregion
         private Panel PanelTopBar;
-        private Label label7;
+        private Label PrincipalLabel;
         private Panel PanelTopTitle;
         private Panel PanelBottom;
         private FlowLayoutPanel flowLayoutPanel1;

@@ -56,10 +56,12 @@ namespace Telinha.Forms.Views
         private void SobreButton_Click(object? sender, EventArgs e)
         {
             OpenChildForm(new Sobre());
+            PrincipalLabel.Text = "Sobre";
         }
         private void PrincipalButton_Click(object? sender, EventArgs e)
         {
             OpenChildForm(_scope.Resolve<Home>());
+            PrincipalLabel.Text = "";
         }
     }
 }
