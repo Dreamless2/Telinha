@@ -107,6 +107,7 @@ namespace Telinha
             if (sender is RadioButton rb && !rb.Checked)
             {
                 ConfigurarTodosOsTextBoxes(this);
+
                 return;
             }
 
