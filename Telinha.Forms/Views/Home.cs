@@ -315,8 +315,7 @@ namespace Telinha
                 MessageBox.Show($"Erro ao navegar: {ex.Message}");
             }
         }
-        private Task AnteriorButton_ClickAsync() =>
-            NavegarAsync(id => MidiaController.GetPrevious<MidiaModel>(id), "Você chegou ao primeiro registro.", AnteriorButton);
+        private Task AnteriorButton_ClickAsync() => NavegarAsync(id => MidiaController.GetPrevious<MidiaModel>(id), "Você chegou ao primeiro registro.", AnteriorButton);
 
         private Task ProximoButton_ClickAsync() =>
             NavegarAsync(id => MidiaController.GetNext<MidiaModel>(id), "Você chegou ao último registro.", ProximoButton);
