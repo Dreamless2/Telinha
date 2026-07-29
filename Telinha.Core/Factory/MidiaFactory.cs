@@ -60,7 +60,6 @@ namespace Telinha.Core.Factory
             item.Original = json[originalTitleField]?.ToString() ?? "--";
             item.Genero = TagEngine.NormalizarGeneros(string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? []) ?? "--");
             item.Produtora = TagEngine.GerarTags(string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? []) ?? "--");
-
             var tituloFormatado = TagEngine.FormatarTitulo(item.Nome);
 
             if (tipoDetectado == MidiaTipo.Anime)
