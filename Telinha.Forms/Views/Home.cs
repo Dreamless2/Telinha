@@ -302,10 +302,8 @@ namespace Telinha
                 MessageBox.Show("Informe o código do TMDB.", "Código Inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             if (_buscando) return;
             _buscando = true;
-
             try
             {
                 if (_midiaService == null)
