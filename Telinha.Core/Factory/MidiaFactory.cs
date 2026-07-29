@@ -58,12 +58,8 @@ namespace Telinha.Core.Factory
             item.Nome = json[titleField]?.ToString() ?? "--";
             item.Sinopse = json["overview"]?.ToString() ?? "--";
             item.Original = json[originalTitleField]?.ToString() ?? "--";
-            item.Genero = TagEngine.NormalizarGeneros(
-                string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? []) ?? "--"
-            );
-            item.Produtora = TagEngine.GerarTags(
-                string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? []) ?? "--"
-            );
+            item.Genero = TagEngine.NormalizarGeneros(string.Join(", ", json["genres"]?.Select(g => g["name"]?.ToString()).Where(g => g != null) ?? []) ?? "--");
+            item.Produtora = TagEngine.GerarTags(string.Join(", ", json["production_companies"]?.Select(c => c["name"]?.ToString()).Where(c => c != null) ?? []) ?? "--");
 
             var tituloFormatado = TagEngine.FormatarTitulo(item.Nome);
 
