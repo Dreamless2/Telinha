@@ -75,22 +75,16 @@ namespace Telinha.Core.Models
             get => _original;
             set => SetField(ref _original, value);
         }
-
-        private string? _lancamento;
         public string? Estreia
         {
             get => _lancamento;
             set => SetField(ref _lancamento, value);
         }
-
-        private string? _alternativo;
         public string? Alternativo
         {
             get => _alternativo;
             set => SetField(ref _alternativo, value);
         }
-
-        private string? _midia;
         [Column(IsIgnore = true)]
         public string? Midia
         {
