@@ -333,7 +333,6 @@ namespace Telinha
             }
 
             if (_buscando) return;
-
             _buscando = true;
 
             try
