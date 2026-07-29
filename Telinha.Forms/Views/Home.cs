@@ -131,10 +131,8 @@ namespace Telinha
             MidiaTipo tipo = TryResolverTipo(_current.Tipo, out var tipoResolvido) ? tipoResolvido : MidiaTipo.Filme;
 
             bool ehSerieOuAnime = tipo == MidiaTipo.Serie || tipo == MidiaTipo.Anime;
-            if (ehSerieOuAnime)
-            {
-                AplicarPadraoParaCamposOpcionaisVazios(_current);
-            }
+            if (ehSerieOuAnime) AplicarPadraoParaCamposOpcionaisVazios(_current);
+
 
             PreencherTodosCampos(_current);
             SetSelectedType(tipo);
