@@ -74,15 +74,12 @@ namespace Telinha
             RadioFilmes.CheckedChanged -= TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged -= TypeRadio_CheckedChanged!;
             RadioAnimes.CheckedChanged -= TypeRadio_CheckedChanged!;
-
             RadioFilmes.Checked = tipo == MidiaTipo.Filme;
             RadioSeries.Checked = tipo == MidiaTipo.Serie;
             RadioAnimes.Checked = tipo == MidiaTipo.Anime;
-
             if (RadioFilmes.Checked == true) TipoLabel.Text = "Filme";
             if (RadioSeries.Checked == true) TipoLabel.Text = "Série";
             if (RadioAnimes.Checked == true) TipoLabel.Text = "Anime";
-
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
