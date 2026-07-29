@@ -104,10 +104,8 @@ namespace Telinha
                     {
                         textBox.Clear();
                     }
-                    // Se o campo já tiver dados digitados, o 'else' implícito não faz nada (mantém os dados)
                 }
 
-                // Se o TextBox estiver dentro de um Painel ou GroupBox, faz a busca interna
                 if (controle.HasChildren)
                 {
                     LimparApenasTextBoxesVazios(controle);
