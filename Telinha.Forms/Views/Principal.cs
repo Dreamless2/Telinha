@@ -48,8 +48,7 @@ namespace Telinha.Forms.Views
         }
         private void FecharButton_Click(object? sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                Application.Exit();
+            if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes) Application.Exit();
         }
         private void PrincipalButton_Click(object? sender, EventArgs e)
         {
