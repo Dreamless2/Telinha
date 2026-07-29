@@ -439,10 +439,5 @@ namespace Telinha
                 MessageBox.Show($"Erro ao salvar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void SairButton_Click(object sender, EventArgs e)
-        {
-            Hide();
-        }
     }
 }
