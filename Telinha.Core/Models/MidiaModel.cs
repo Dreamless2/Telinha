@@ -13,7 +13,17 @@ namespace Telinha.Core.Models
         private string? _codigo;
         private string? _nome;
         private string? _audio;
-
+        private string? _tipo;
+        private string? _classificacao;
+        private string? _sinopse;
+        private string? _original;
+        private string? _lancamento;
+        private string? _alternativo;
+        private string? _midia;
+        private string? _local;
+        private string? _idioma;
+        private string? _idiomaOriginal;
+        private string? _serie;
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
 
         {
