@@ -78,7 +78,7 @@ namespace Telinha.Core.Services
                 }
                 catch (Exception ex)
                 {
-                    return null;
+
                 }
 
                 if (tentativa < maxTentativas) await Task.Delay(500, ct);
@@ -106,7 +106,6 @@ namespace Telinha.Core.Services
             var details = results[0];
             var credits = results[1];
             var alternative = results.Length > 2 ? results[2] : null;
-
 
             if (details is not JObject validDetails) return null;
             if (validDetails["success"]?.ToObject<bool>() == false) return null;
