@@ -250,8 +250,7 @@ namespace Telinha.Core.Models
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(Nome))
-                    return string.Empty;
+                if (string.IsNullOrWhiteSpace(Nome)) return string.Empty;
 
                 return TagEngine.FormatarTitulo(Nome);
             }
