@@ -34,8 +34,7 @@ namespace Telinha.Core.Controller
             var propId = GetIdProp(type);
             var codigoValue = propCodigo?.GetValue(item)?.ToString();
 
-            if (string.IsNullOrWhiteSpace(codigoValue))
-                throw new ArgumentException("Código da mídia inválido.");
+            if (string.IsNullOrWhiteSpace(codigoValue))                 throw new ArgumentException("Código da mídia inválido.");
 
             var existente = await DB.Select<T>()
                 .WhereDynamic(new { Codigo = codigoValue })
