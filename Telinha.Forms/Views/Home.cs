@@ -240,7 +240,6 @@ namespace Telinha
         {
             CodigoBox.Focus();
             ConfigurarTodosOsTextBoxes(this);
-
             try
             {
                 if (await MidiaController.AnyAsync<MidiaModel>())
