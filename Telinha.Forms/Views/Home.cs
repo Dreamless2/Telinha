@@ -155,8 +155,6 @@ namespace Telinha
         }
         private void PreencherTodosCampos(MidiaModel midia)
         {
-            LogServices.LogarInformacao("VIEW: Preenchendo campos. ID: {id}, Nome: {nome}, Tipo: {tipo}", midia.Id, midia.Nome, midia.Tipo);
-
             foreach (var kvp in _mapeamentoCampos)
             {
                 var valor = midia.GetType().GetProperty(kvp.Key)?.GetValue(midia) as string;
