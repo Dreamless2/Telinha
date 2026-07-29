@@ -316,7 +316,6 @@ namespace Telinha
         }
         private Task AnteriorButton_ClickAsync() => NavegarAsync(id => MidiaController.GetPrevious<MidiaModel>(id), "Você chegou ao primeiro registro.", AnteriorButton);
         private Task ProximoButton_ClickAsync() => NavegarAsync(id => MidiaController.GetNext<MidiaModel>(id), "Você chegou ao último registro.", ProximoButton);
-
         private async void BuscarMidia(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
