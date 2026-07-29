@@ -27,7 +27,6 @@ namespace Telinha.Core.Controller
             }
             return prop;
         }
-
         public static async Task<(bool inserted, bool updated)> SaveAsync<T>(T item) where T : class
         {
             var type = typeof(T);
