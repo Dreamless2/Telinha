@@ -107,9 +107,9 @@ namespace Telinha
             if (sender is RadioButton rb && !rb.Checked)
             {
                 ConfigurarTodosOsTextBoxes(this);
-                LimparApenasTextBoxesVazios(this);
                 return;
             }
+
 
 
             var tipo = GetSelectedType();
