@@ -179,7 +179,7 @@ namespace Telinha.Core.Models
             set => SetField(ref _artistas, value);
         }
 
-        private string? _produtora;
+
         public string? Produtora
         {
             get => _produtora;
