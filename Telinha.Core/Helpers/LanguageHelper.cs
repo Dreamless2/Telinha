@@ -11,19 +11,15 @@ namespace Telinha.Core.Helpers
         {
             var raw = englishName ?? isoCode;
 
-            if (string.IsNullOrWhiteSpace(raw))
-                return "--";
+            if (string.IsNullOrWhiteSpace(raw)) return "--";
 
             var mapped = LanguageMapper.TryMap(raw);
-            if (mapped != null)
-                return mapped;
+            if (mapped != null) return mapped;
 
             if (!string.IsNullOrWhiteSpace(englishName))
             {
                 mapped = LanguageMapper.TryMap(englishName);
-                if (mapped != null)
-                    return mapped;
-
+                if (mapped != null) return mapped;
             }
 
             try
