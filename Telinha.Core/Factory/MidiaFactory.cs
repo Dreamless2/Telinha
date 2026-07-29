@@ -44,17 +44,13 @@ namespace Telinha.Core.Factory
                 $"#{tagBase}"
             };
 
-            if (hasValidDate)
-                tags.Add($"#{tagBase}{releaseDate.Year}");
+            if (hasValidDate) tags.Add($"#{tagBase}{releaseDate.Year}");
 
             if (tipoDetectado == MidiaTipo.Serie)
             {
                 string tagAcento = "Série";
-
                 tags.Add($"#{tagAcento}");
-
-                if (hasValidDate)
-                    tags.Add($"#{tagAcento}{releaseDate.Year}");
+                if (hasValidDate) tags.Add($"#{tagAcento}{releaseDate.Year}");
             }
 
             item.Tags = string.Join(" ", tags);
