@@ -93,7 +93,6 @@ namespace Telinha
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
         }
 
-
         private void LimparApenasTextBoxesVazios(Control container)
         {
             foreach (Control controle in container.Controls)
