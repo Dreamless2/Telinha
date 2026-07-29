@@ -132,8 +132,6 @@ namespace Telinha
 
             bool ehSerieOuAnime = tipo == MidiaTipo.Serie || tipo == MidiaTipo.Anime;
             if (ehSerieOuAnime) AplicarPadraoParaCamposOpcionaisVazios(_current);
-
-
             PreencherTodosCampos(_current);
             SetSelectedType(tipo);
             AtualizarUI(tipo, _current);
