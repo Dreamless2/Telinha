@@ -81,8 +81,7 @@ namespace Telinha
         }
         private void SairButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                Application.Exit();
+            if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes) Application.Exit();
         }
     }
 }
