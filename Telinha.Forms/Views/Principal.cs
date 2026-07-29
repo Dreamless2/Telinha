@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using System.Runtime.InteropServices;
-using Telinha.Views;
 
 namespace Telinha.Forms.Views
 {
@@ -24,7 +23,6 @@ namespace Telinha.Forms.Views
             InitializeComponent();
             _scope = scope;
             PrincipalButton.Click += PrincipalButton_Click;
-            SobreButton.Click += SobreButton_Click;
             FecharButton.Click += FecharButton_Click;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
         }
@@ -52,11 +50,6 @@ namespace Telinha.Forms.Views
         {
             if (MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 Application.Exit();
-        }
-        private void SobreButton_Click(object? sender, EventArgs e)
-        {
-            OpenChildForm(new Sobre());
-            PrincipalLabel.Text = "Sobre";
         }
         private void PrincipalButton_Click(object? sender, EventArgs e)
         {
