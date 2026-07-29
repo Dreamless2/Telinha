@@ -151,15 +151,11 @@ namespace Telinha.Core.Models
             get => _genero;
             set => SetField(ref _genero, value);
         }
-
-
         public string? Tags
         {
             get => _tags;
             set => SetField(ref _tags, value);
         }
-
-
         public string? Diretor
         {
             get => _diretor;
