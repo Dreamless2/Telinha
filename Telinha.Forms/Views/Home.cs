@@ -96,11 +96,7 @@ namespace Telinha
         {
             if (sender is RadioButton rb && !rb.Checked)
             {
-                if (string.IsNullOrWhiteSpace(txtDados.Text))
-                {
-                    // Código para apagar outros dados ou resetar variáveis
-                    LimparDadosFiltro();
-                }
+
                 ConfigurarTodosOsTextBoxes(this);
                 return;
 
