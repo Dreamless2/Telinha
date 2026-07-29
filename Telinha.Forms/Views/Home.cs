@@ -110,9 +110,6 @@ namespace Telinha
                 return;
             }
 
-            if (sender is RadioButton rb && rb.Checked)
-                LimparApenasTextBoxesVazios(this);
-
 
             var tipo = GetSelectedType();
 
