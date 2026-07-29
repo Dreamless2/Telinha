@@ -107,9 +107,7 @@ namespace Telinha
         }
         private static bool TryResolverTipo(string? tipoBruto, out MidiaTipo tipo)
         {
-            var normalizado = tipoBruto?.Replace("Série", "Serie")
-                .Replace("Animé", "Anime");
-
+            var normalizado = tipoBruto?.Replace("Série", "Serie").Replace("Animé", "Anime");
             return Enum.TryParse(normalizado, true, out tipo);
         }
         private static string TipoToDisplay(MidiaTipo tipo)
