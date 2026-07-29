@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Net;
 using Telinha.Core.Enums;
 using Telinha.Core.Factory;
 using Telinha.Core.Models;
@@ -78,7 +79,7 @@ namespace Telinha.Core.Services
                 }
                 catch (Exception ex)
                 {
-
+                    throw new Exception($"ERROR: {ex.Message}, Tentativa: {tentativa}/{maxTentativas}, Id: {id}, Tipo: {tipo}");
                 }
 
                 if (tentativa < maxTentativas) await Task.Delay(500, ct);
