@@ -246,7 +246,6 @@ namespace Telinha.Core.Models
             get => _tituloFinal;
             set => SetField(ref _tituloFinal, value);
         }
-
         public string NomeFormatado
         {
             get
@@ -257,7 +256,6 @@ namespace Telinha.Core.Models
                 return TagEngine.FormatarTitulo(Nome);
             }
         }
-
         public string TituloResolvido =>
             string.IsNullOrWhiteSpace(TituloFinal) ? NomeFormatado : TituloFinal!;
 
