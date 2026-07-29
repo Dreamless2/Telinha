@@ -98,10 +98,8 @@ namespace Telinha
         {
             foreach (Control controle in container.Controls)
             {
-                // Identifica se o componente é um TextBox
                 if (controle is TextBox textBox)
                 {
-                    // Se o campo estiver vazio ou só com espaços, garante que fica limpo
                     if (string.IsNullOrWhiteSpace(textBox.Text))
                     {
                         textBox.Clear();
