@@ -9,6 +9,8 @@ namespace Telinha.Core.Models
     public class MidiaModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        private string? _codigo;
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
 
         {
@@ -22,7 +24,6 @@ namespace Telinha.Core.Models
 
         [Column(IsPrimary = true, IsIdentity = true)]
         public long Id { get; set; }
-
 
         public string? Codigo
         {
