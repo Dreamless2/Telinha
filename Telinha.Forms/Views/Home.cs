@@ -339,6 +339,7 @@ namespace Telinha
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text)) Clipboard.SetText(ResumoBox.Text);
+
         }
         private async void SalvarButton_Click(object? sender, EventArgs e)
         {
