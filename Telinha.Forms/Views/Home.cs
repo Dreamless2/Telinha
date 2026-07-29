@@ -102,6 +102,7 @@ namespace Telinha
 
 
 
+
             var tipo = GetSelectedType();
 
             AtualizarUI(tipo, _current);
