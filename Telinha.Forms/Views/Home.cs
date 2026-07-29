@@ -204,9 +204,6 @@ namespace Telinha
                 }
                 else if (c.HasChildren)
                 {
-
-
-
                     ConfigurarTodosOsTextBoxes(c);
                 }
             }
