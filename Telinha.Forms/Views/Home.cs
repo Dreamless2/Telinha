@@ -106,11 +106,8 @@ namespace Telinha
         {
             foreach (Control c in container.Controls)
             {
-                // Se for um TextBox e não estiver vazio, retorna verdadeiro imediatamente
-                if (c is TextBox txt && !string.IsNullOrWhiteSpace(txt.Text))
-                    return true;
+                if (c is TextBox txt && !string.IsNullOrWhiteSpace(txt.Text)) return true;
 
-                // Se o controle tiver sub-controles (ex: Panel, GroupBox), busca dentro dele também
                 if (c.HasChildren && TemAlgumTextBoxPreenchido(c))
                     return true;
             }
