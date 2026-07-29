@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Telinha.Core.Card;
+﻿using Telinha.Core.Card;
 using Telinha.Core.Controller;
 using Telinha.Core.Enums;
 using Telinha.Core.Models;
@@ -25,16 +24,6 @@ namespace Telinha
             nameof(MidiaModel.Showrunners),
             nameof(MidiaModel.MCU),
         };
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-
-        [LibraryImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static partial bool ReleaseCapture();
-
-        [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
-        private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         public Home(MidiaServices midiaService)
         {
             InitializeComponent();
@@ -50,7 +39,6 @@ namespace Telinha
             SalvarButton.Click += SalvarButton_Click!;
             AnteriorButton.Click += async (s, e) => await AnteriorButton_ClickAsync();
             ProximoButton.Click += async (s, e) => await ProximoButton_ClickAsync();
-            PanelTopBar.MouseDown += PanelTopBar_MouseDown;
 
             RadioFilmes.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
@@ -80,14 +68,6 @@ namespace Telinha
                 [nameof(MidiaModel.Artistas)] = ArtistasBox,
                 [nameof(MidiaModel.Produtora)] = ProdutoraBox,
             };
-        }
-        private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
         }
         private MidiaTipo GetSelectedType()
         {
