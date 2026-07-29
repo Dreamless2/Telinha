@@ -97,15 +97,11 @@ namespace Telinha.Core.Models
             get => _local;
             set => SetField(ref _local, value);
         }
-
-        private string? _idioma;
         public string? Idioma
         {
             get => _idioma;
             set => SetField(ref _idioma, value);
         }
-
-        private string? _idiomaOriginal;
         [Column(IsIgnore = true)]
         public string? IdiomaOriginal
         {
