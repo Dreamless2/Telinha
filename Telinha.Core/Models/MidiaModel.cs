@@ -112,6 +112,7 @@ namespace Telinha.Core.Models
             get => _idioma;
             set => SetField(ref _idioma, value);
         }
+
         [Column(IsIgnore = true)]
         public string? IdiomaOriginal
         {
