@@ -30,13 +30,9 @@ namespace Telinha.Core.Helpers
             }
 
             byte[] masterKey = RandomNumberGenerator.GetBytes(32);
-
             byte[] protectedKey = ProtectedData.Protect(masterKey, Encoding.UTF8.GetBytes(Entropy), DataProtectionScope.CurrentUser);
-
             File.WriteAllBytes(KeyFilePath, protectedKey);
-
             File.SetAttributes(KeyFilePath, FileAttributes.Hidden);
-
             return masterKey;
         }
         public static void ZeroMemory(byte[] key)
