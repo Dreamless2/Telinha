@@ -107,9 +107,7 @@ namespace Telinha
             foreach (Control c in container.Controls)
             {
                 if (c is TextBox txt && !string.IsNullOrWhiteSpace(txt.Text)) return true;
-
-                if (c.HasChildren && TemAlgumTextBoxPreenchido(c))
-                    return true;
+                if (c.HasChildren && TemAlgumTextBoxPreenchido(c)) return true;
             }
             return false;
         }
