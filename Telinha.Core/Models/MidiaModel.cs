@@ -22,7 +22,7 @@ namespace Telinha.Core.Models
         [Column(IsPrimary = true, IsIdentity = true)]
         public long Id { get; set; }
 
-        private string? _codigo;
+
         public string? Codigo
         {
             get => _codigo;
