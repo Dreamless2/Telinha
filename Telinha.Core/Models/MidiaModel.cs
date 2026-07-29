@@ -70,8 +70,6 @@ namespace Telinha.Core.Models
             get => _sinopse;
             set => SetField(ref _sinopse, value);
         }
-
-        private string? _original;
         public string? Original
         {
             get => _original;
