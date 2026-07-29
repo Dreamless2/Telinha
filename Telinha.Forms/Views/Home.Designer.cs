@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             PanelButtons = new Panel();
-            SairButton = new Button();
             ProximoButton = new Button();
             AnteriorButton = new Button();
             SalvarButton = new Button();
@@ -89,7 +88,6 @@
             // 
             // PanelButtons
             // 
-            PanelButtons.Controls.Add(SairButton);
             PanelButtons.Controls.Add(ProximoButton);
             PanelButtons.Controls.Add(AnteriorButton);
             PanelButtons.Controls.Add(SalvarButton);
@@ -100,26 +98,13 @@
             PanelButtons.Size = new Size(1380, 85);
             PanelButtons.TabIndex = 6;
             // 
-            // SairButton
-            // 
-            SairButton.BackColor = Color.FromArgb(4, 52, 72);
-            SairButton.FlatAppearance.BorderSize = 0;
-            SairButton.FlatStyle = FlatStyle.Flat;
-            SairButton.ForeColor = Color.White;
-            SairButton.Location = new Point(1063, 22);
-            SairButton.Name = "SairButton";
-            SairButton.Size = new Size(180, 41);
-            SairButton.TabIndex = 7;
-            SairButton.Text = "Voltar";
-            SairButton.UseVisualStyleBackColor = false;
-            // 
             // ProximoButton
             // 
             ProximoButton.BackColor = Color.FromArgb(4, 52, 72);
             ProximoButton.FlatAppearance.BorderSize = 0;
             ProximoButton.FlatStyle = FlatStyle.Flat;
             ProximoButton.ForeColor = Color.White;
-            ProximoButton.Location = new Point(832, 22);
+            ProximoButton.Location = new Point(947, 22);
             ProximoButton.Name = "ProximoButton";
             ProximoButton.Size = new Size(180, 41);
             ProximoButton.TabIndex = 6;
@@ -132,7 +117,7 @@
             AnteriorButton.FlatAppearance.BorderSize = 0;
             AnteriorButton.FlatStyle = FlatStyle.Flat;
             AnteriorButton.ForeColor = Color.White;
-            AnteriorButton.Location = new Point(601, 22);
+            AnteriorButton.Location = new Point(716, 22);
             AnteriorButton.Name = "AnteriorButton";
             AnteriorButton.Size = new Size(180, 41);
             AnteriorButton.TabIndex = 5;
@@ -145,7 +130,7 @@
             SalvarButton.FlatAppearance.BorderSize = 0;
             SalvarButton.FlatStyle = FlatStyle.Flat;
             SalvarButton.ForeColor = Color.White;
-            SalvarButton.Location = new Point(370, 22);
+            SalvarButton.Location = new Point(485, 22);
             SalvarButton.Name = "SalvarButton";
             SalvarButton.Size = new Size(180, 41);
             SalvarButton.TabIndex = 4;
@@ -158,7 +143,7 @@
             CopiarButton.FlatAppearance.BorderSize = 0;
             CopiarButton.FlatStyle = FlatStyle.Flat;
             CopiarButton.ForeColor = Color.White;
-            CopiarButton.Location = new Point(139, 22);
+            CopiarButton.Location = new Point(254, 22);
             CopiarButton.Name = "CopiarButton";
             CopiarButton.Size = new Size(180, 41);
             CopiarButton.TabIndex = 3;
@@ -693,7 +678,6 @@
         private TextBox DiretorBox;
         private TextBox GeneroBox;
         private TextBox ArtistasBox;
-        private Button SairButton;
         private Button ProximoButton;
         private Button AnteriorButton;
         private Button SalvarButton;
