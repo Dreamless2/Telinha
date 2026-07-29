@@ -186,7 +186,6 @@ namespace Telinha.Core.Models
             set => SetField(ref _produtora, value);
         }
 
-        private string? _tipoSolicitado;
         [Column(IsIgnore = true)]
         public string? TipoSolicitado
         {
