@@ -9,7 +9,6 @@ namespace Telinha.Core.Models
     public class MidiaModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-
         private string? _codigo;
         private string? _nome;
         private string? _audio;
