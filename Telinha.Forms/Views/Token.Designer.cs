@@ -66,6 +66,7 @@
             // 
             TokenDEEPLBox.Location = new Point(77, 60);
             TokenDEEPLBox.Name = "TokenDEEPLBox";
+            TokenDEEPLBox.PasswordChar = '*';
             TokenDEEPLBox.PlaceholderText = "API DEEPL";
             TokenDEEPLBox.Size = new Size(754, 23);
             TokenDEEPLBox.TabIndex = 1;
