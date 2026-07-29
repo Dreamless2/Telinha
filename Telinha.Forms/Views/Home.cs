@@ -404,7 +404,6 @@ namespace Telinha
 
                 var (inserted, updated) = await MidiaController.SaveAsync(_current);
                 MessageBox.Show(inserted ? $"{_current.Nome} inserido com sucesso!" : $"{_current.Nome} atualizado com sucesso!");
-
                 CarregarNaTela(_current);
                 await AtualizarBotoesNavegacao();
             }
