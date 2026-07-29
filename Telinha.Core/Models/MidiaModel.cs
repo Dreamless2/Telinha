@@ -24,6 +24,8 @@ namespace Telinha.Core.Models
         private string? _idioma;
         private string? _idiomaOriginal;
         private string? _serie;
+        private string? _autores;
+
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
 
         {
