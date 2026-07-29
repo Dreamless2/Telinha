@@ -36,7 +36,6 @@ namespace Telinha.Core.Mapper
             ["Russian"] = "Russo",
             ["ru"] = "Russo"
         };
-
         public static string? TryMap(string input)
         {
             return Map.TryGetValue(input, out var pt) ? pt : null;
