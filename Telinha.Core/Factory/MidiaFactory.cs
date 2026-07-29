@@ -104,7 +104,6 @@ namespace Telinha.Core.Factory
             var countryRaw = json["production_countries"]?.FirstOrDefault()?["name"]?.ToString();
             var languageEnglish = json["spoken_languages"]?.FirstOrDefault()?["english_name"]?.ToString();
             var languageIso = json["spoken_languages"]?.FirstOrDefault()?["iso_639_1"]?.ToString();
-
             var taskPais = !string.IsNullOrWhiteSpace(countryRaw) ? deepl.Translate(countryRaw) : Task.FromResult<string?>("--");
             var taskIdioma = LanguageHelper.ResolveAsync(languageEnglish, languageIso, deepl.Translate);
 
