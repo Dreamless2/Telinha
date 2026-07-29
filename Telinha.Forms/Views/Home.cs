@@ -102,6 +102,21 @@ namespace Telinha
             }
         }
 
+        private bool TemAlgumTextBoxPreenchido(Control container)
+        {
+            foreach (Control c in container.Controls)
+            {
+                // Se for um TextBox e não estiver vazio, retorna verdadeiro imediatamente
+                if (c is TextBox txt && !string.IsNullOrWhiteSpace(txt.Text))
+                    return true;
+
+                // Se o controle tiver sub-controles (ex: Panel, GroupBox), busca dentro dele também
+                if (c.HasChildren && TemAlgumTextBoxPreenchido(c))
+                    return true;
+            }
+            return false;
+        }
+
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (sender is RadioButton rb && !rb.Checked)
