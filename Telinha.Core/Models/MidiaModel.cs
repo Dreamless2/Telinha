@@ -126,14 +126,11 @@ namespace Telinha.Core.Models
             get => _serie;
             set => SetField(ref _serie, value);
         }
-
-
         public string? Franquia
         {
             get => _franquia;
             set => SetField(ref _franquia, value);
         }
-
         public string? Autores
         {
             get => _autores;
