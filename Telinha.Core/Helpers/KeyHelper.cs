@@ -7,7 +7,6 @@ namespace Telinha.Core.Helpers
     public class KeyHelper
     {
         private static readonly string KeyFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Assembly.GetExecutingAssembly().GetName().Name!, $"{Assembly.GetExecutingAssembly().GetName().Name!}.key");
-
         private const string Entropy = "telinha-app-v1";
         public static byte[] GetOrCreateMasterKey()
         {
