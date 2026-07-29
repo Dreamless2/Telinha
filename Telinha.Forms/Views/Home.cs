@@ -127,9 +127,7 @@ namespace Telinha
         {
             _current = midia ?? new MidiaModel();
             currentId = _current.Id;
-
             MidiaTipo tipo = TryResolverTipo(_current.Tipo, out var tipoResolvido) ? tipoResolvido : MidiaTipo.Filme;
-
             bool ehSerieOuAnime = tipo == MidiaTipo.Serie || tipo == MidiaTipo.Anime;
             if (ehSerieOuAnime) AplicarPadraoParaCamposOpcionaisVazios(_current);
             PreencherTodosCampos(_current);
