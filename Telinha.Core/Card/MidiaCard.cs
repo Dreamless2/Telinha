@@ -54,7 +54,7 @@ namespace Telinha.Core.Card
             sb.AppendLine($"**{_titulo} - {_audio}**" + Environment.NewLine);
             sb.AppendLine("**HD** - __720p__");
             sb.AppendLine("**SD** - __480p__");
-            sb.AppendLine("(__Os vídeos estão em ordem decrescente, ou seja, de cima para baixo, como na descrição das resoluções.__)" + Environment.NewLine);
+            sb.AppendLine("(__Os vídeos estão em ordem decrescente, ou seja, de cima para baixo, tal como na descrição das resoluções.__)" + Environment.NewLine);
             sb.AppendLine($"**Sinopse:** __{_sinopse}__" + Environment.NewLine);
             sb.AppendLine($"**Nome Original:** __{_original}__");
             sb.AppendLine($"**Nome alternativo:** __{_alternativo}__");
