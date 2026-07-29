@@ -23,6 +23,7 @@ namespace Telinha.Core.Models
         private string? _local;
         private string? _idioma;
         private string? _idiomaOriginal;
+        private string? _franquia;
         private string? _serie;
         private string? _autores;
         private string? _showrunners;
