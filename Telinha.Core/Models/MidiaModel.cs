@@ -33,10 +33,8 @@ namespace Telinha.Core.Models
         private string? _mcu;
         private string? _artistas;
         private string? _produtora;
-
         private string? _tipoSolicitado;
         private string? _tituloFinal;
-
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? name = null)
 
