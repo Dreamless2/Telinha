@@ -28,10 +28,8 @@ namespace Telinha
         {
             InitializeComponent();
             _midiaService = midiaService;
-
             Load += Principal_Load!;
             ConfigurarTodosOsTextBoxes(this);
-
             CopiarButton.Click += CopiarButton_Click!;
             CodigoBox.KeyPress += (s, e) => Functions.OnlyNumbers(s!, e);
             CodigoBox.KeyDown += BuscarMidia!;
