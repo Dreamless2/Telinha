@@ -35,7 +35,6 @@ namespace Telinha.Core.Factory
             string originalTitleField = isTV ? "original_name" : "original_title";
             var releaseDateStr = json[dateField]?.ToString();
             bool hasValidDate = DateTime.TryParse(releaseDateStr, out DateTime releaseDate);
-
             item.Estreia = hasValidDate ? releaseDate.ToString("dd/MM/yyyy") : "--";
 
             string tagBase = tipoDetectado.ToString();
