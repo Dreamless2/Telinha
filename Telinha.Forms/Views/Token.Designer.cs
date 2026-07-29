@@ -216,6 +216,7 @@
             // 
             SenhaBox.Location = new Point(77, 131);
             SenhaBox.Name = "SenhaBox";
+            SenhaBox.PasswordChar = '*';
             SenhaBox.PlaceholderText = "Senha";
             SenhaBox.Size = new Size(754, 23);
             SenhaBox.TabIndex = 16;
