@@ -11,7 +11,6 @@ namespace Telinha.Forms.Container
         public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
-
             builder.Register(c => new MemoryCache(new MemoryCacheOptions()))
               .As<IMemoryCache>().SingleInstance();
             builder.RegisterType<AppConfigServices>().AsSelf().SingleInstance();
