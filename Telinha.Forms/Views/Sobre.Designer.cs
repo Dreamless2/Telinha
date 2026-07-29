@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sobre));
-            panel1 = new Panel();
+            PanelComponents = new Panel();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
-            panel1.SuspendLayout();
+            PanelComponents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // PanelComponents
             // 
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(243, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(741, 574);
-            panel1.TabIndex = 7;
+            PanelComponents.Controls.Add(label5);
+            PanelComponents.Controls.Add(label4);
+            PanelComponents.Controls.Add(label3);
+            PanelComponents.Controls.Add(label2);
+            PanelComponents.Controls.Add(pictureBox1);
+            PanelComponents.Dock = DockStyle.Right;
+            PanelComponents.Location = new Point(153, 0);
+            PanelComponents.Name = "PanelComponents";
+            PanelComponents.Size = new Size(741, 563);
+            PanelComponents.TabIndex = 7;
             // 
             // label5
             // 
@@ -88,7 +88,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(34, 509);
+            label2.Location = new Point(55, 509);
             label2.Name = "label2";
             label2.Size = new Size(630, 25);
             label2.TabIndex = 12;
@@ -110,7 +110,7 @@
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(252, 574);
+            pictureBox2.Size = new Size(252, 563);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 12;
             pictureBox2.TabStop = false;
@@ -119,22 +119,22 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 574);
+            ClientSize = new Size(894, 563);
             Controls.Add(pictureBox2);
-            Controls.Add(panel1);
+            Controls.Add(PanelComponents);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Sobre";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sobre";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            PanelComponents.ResumeLayout(false);
+            PanelComponents.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Panel panel1;
+        private Panel PanelComponents;
         private PictureBox pictureBox1;
         private Label label2;
         private Label label3;
