@@ -16,9 +16,9 @@ namespace Telinha.Core.Data
             {
                 if (_db == null)
                     lock (_lock)
-                    {
+
                         if (_db == null) Initialize();
-                    }
+
             }
 
                 return _db!;
