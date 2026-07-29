@@ -144,7 +144,7 @@ namespace Telinha.Core.Models
             set => SetField(ref _referencia, value);
         }
 
-        private string? _genero;
+
         public string? Genero
         {
             get => _genero;
