@@ -61,27 +61,22 @@ namespace Telinha.Core.Controller
             => await DB.Select<T>()
                 .WhereDynamic(new { Id = id })
                 .FirstAsync();
-
         public static async Task<T?> GetFirstAsync<T>() where T : class
             => await DB.Select<T>()
                 .OrderBy("id")
                 .FirstAsync();
-
         public async static Task<T?> GetNext<T>(long id) where T : class
             => await DB.Select<T>()
                 .Where("id > @id", new { id })
                 .OrderBy("id")
                 .FirstAsync();
-
         public async static Task<T?> GetPrevious<T>(long id) where T : class
             => await DB.Select<T>()
                 .Where("id < @id", new { id })
                 .OrderBy("id DESC")
                 .FirstAsync();
-
         public static bool Any<T>() where T : class
             => DB.Select<T>().Any();
-
         public static async Task<bool> AnyAsync<T>() where T : class
            => await DB.Select<T>().AnyAsync();
         public static async Task<bool> ExistsNext<T>(long id) where T : class
