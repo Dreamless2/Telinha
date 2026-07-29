@@ -516,6 +516,7 @@
             AudioBox.Name = "AudioBox";
             AudioBox.Size = new Size(121, 23);
             AudioBox.TabIndex = 5;
+            AudioBox.Text = "Dublado";
             // 
             // SinopseBox
             // 
