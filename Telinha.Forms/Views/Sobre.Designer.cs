@@ -49,9 +49,9 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(286, 0);
+            panel1.Location = new Point(243, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(698, 574);
+            panel1.Size = new Size(741, 574);
             panel1.TabIndex = 7;
             // 
             // label5
@@ -110,7 +110,7 @@
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(290, 574);
+            pictureBox2.Size = new Size(252, 574);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 12;
             pictureBox2.TabStop = false;
