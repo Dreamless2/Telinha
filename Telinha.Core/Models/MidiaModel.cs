@@ -151,7 +151,7 @@ namespace Telinha.Core.Models
             set => SetField(ref _genero, value);
         }
 
-        private string? _tags;
+
         public string? Tags
         {
             get => _tags;
