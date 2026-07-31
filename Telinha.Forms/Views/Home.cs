@@ -266,8 +266,7 @@ namespace Telinha
         private async void Home_Load(object sender, EventArgs e)
         {
             CodigoBox.Focus();
-            RadioFilmes.Checked
-
+            RadioFilmes.Checked = true;
             ConfigurarTodosOsTextBoxes(this);
             try
             {
