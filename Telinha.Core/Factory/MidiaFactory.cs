@@ -81,7 +81,6 @@ namespace Telinha.Core.Factory
             if (credits["cast"] is JArray castArray)
             {
                 var top3 = castArray.Take(3).Select(a => TagEngine.GerarTags(a["name"]?.ToString()!)).Where(s => !string.IsNullOrEmpty(s));
-
                 item.Artistas = string.Join(" ", top3) ?? "--";
             }
 
