@@ -32,12 +32,7 @@ namespace Telinha.Core.Data
             var config = _configService.Load() ?? throw new InvalidOperationException("Configuração não encontrada.");
             if (string.IsNullOrWhiteSpace(config.Host) || string.IsNullOrWhiteSpace(config.Porta) || string.IsNullOrWhiteSpace(config.Usuario) || string.IsNullOrWhiteSpace(config.Senha)) throw new InvalidOperationException("Configuração inválida.");
 
-            _connStr =
-               $"Data Source={config.Host};" +
-                $"Port={config.Porta};" +
-                $"User ID={config.Usuario};" +
-                $"Password={config.Senha};" +
-                $"Initial Catalog=telinha;";
+            _connStr = $"Data Source={config.Host};" + $"Port={config.Porta};" + $"User ID={config.Usuario};" + $"Password={config.Senha};" + $"Initial Catalog=telinha;";
 
             return _connStr;
         }
