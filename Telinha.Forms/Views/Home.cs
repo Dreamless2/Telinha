@@ -85,7 +85,9 @@ namespace Telinha
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
         }
 
-        private void Limpar
+        private void LimparTudo()
+        {
+        }
 
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
         {
