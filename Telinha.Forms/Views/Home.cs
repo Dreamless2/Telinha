@@ -87,6 +87,7 @@ namespace Telinha
 
         private void LimparTudo()
         {
+
         }
 
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
