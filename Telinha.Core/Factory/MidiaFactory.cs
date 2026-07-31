@@ -17,9 +17,7 @@ namespace Telinha.Core.Factory
             {
                 var generosIds = json["genres"]?.Select(g => (int)g["id"]!).ToList() ?? [];
                 string lingua = json["original_language"]?.ToString() ?? "";
-
-                if (generosIds.Contains(16) && (lingua == "ja" || lingua == "zh" || lingua == "ko"))
-                    tipoDetectado = MidiaTipo.Anime;
+                if (generosIds.Contains(16) && (lingua == "ja" || lingua == "zh" || lingua == "ko")) tipoDetectado = MidiaTipo.Anime;
 
             }
 
