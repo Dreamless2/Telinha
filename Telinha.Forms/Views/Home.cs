@@ -110,6 +110,7 @@ namespace Telinha
             }
 
             ClearTextBoxes(this);
+            CodigoBox.Focus();
             var tipo = GetSelectedType();
             AtualizarUI(tipo, _current);
             PreencherMascara(tipo);
