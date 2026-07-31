@@ -184,7 +184,8 @@ namespace Telinha
                 {
                     txt.Enter += TextBox_Enter!;
                     txt.Leave += TextBox_Leave!;
-                    if (string.IsNullOrWhiteSpace(txt.Text)) { txt.Text = "--"; }
+                    if (string.IsNullOrWhiteSpace(txt.Text))
+                    { txt.Text = "--"; }
                 }
                 else if (c.HasChildren)
                 {
