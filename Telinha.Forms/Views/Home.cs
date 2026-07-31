@@ -109,8 +109,8 @@ namespace Telinha
                 return;
             }
 
-            LimparTudo();
-            var tipo = GetSelectedType();
+            ClearTextBoxes()
+             var tipo = GetSelectedType();
             AtualizarUI(tipo, _current);
             PreencherMascara(tipo);
         }
