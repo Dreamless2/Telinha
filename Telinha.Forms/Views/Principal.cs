@@ -25,7 +25,6 @@ namespace Telinha.Forms.Views
             PrincipalButton.Click += PrincipalButton_Click;
             FecharButton.Click += FecharButton_Click;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
-            =
         }
 
         private void Principal_Load(object? sender, EventArgs e)
