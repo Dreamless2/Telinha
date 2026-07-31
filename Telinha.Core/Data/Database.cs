@@ -31,9 +31,8 @@ namespace Telinha.Core.Data
 
             var config = _configService.Load() ?? throw new InvalidOperationException("Configuração não encontrada.");
             if (string.IsNullOrWhiteSpace(config.Host) || string.IsNullOrWhiteSpace(config.Porta) || string.IsNullOrWhiteSpace(config.Usuario) || string.IsNullOrWhiteSpace(config.Senha))
-            {
                 throw new InvalidOperationException("Configuração inválida.");
-            }
+
 
             _connStr =
                 $"Data Source={config.Host};" +
