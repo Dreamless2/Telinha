@@ -95,7 +95,6 @@ namespace Telinha
                 }
                 else if (ctrl.HasChildren)
                 {
-                    // Recursively search sub-containers
                     ClearTextBoxes(ctrl);
                 }
             }
