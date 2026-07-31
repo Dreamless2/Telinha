@@ -61,7 +61,6 @@ namespace Telinha.Forms.Views
         {
             OpenChildForm(_scope.Resolve<Home>());
             PrincipalLabel.Text = "Home";
-
         }
     }
 }
