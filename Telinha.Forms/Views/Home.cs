@@ -15,15 +15,15 @@ namespace Telinha
         private bool _buscando;
         private readonly Dictionary<string, TextBox> _mapeamentoCampos;
 
-        private static readonly HashSet<string> CamposOpcionaisPorTipo = new()
-        {
+        private static readonly HashSet<string> CamposOpcionaisPorTipo =
+        [
             nameof(MidiaModel.Referencia),
             nameof(MidiaModel.Autores),
             nameof(MidiaModel.Alternativo),
             nameof(MidiaModel.Franquia),
             nameof(MidiaModel.Showrunners),
             nameof(MidiaModel.MCU),
-        };
+        ];
         public Home(MidiaServices midiaService)
         {
             InitializeComponent();
