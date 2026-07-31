@@ -25,7 +25,14 @@ namespace Telinha.Forms.Views
             PrincipalButton.Click += PrincipalButton_Click;
             FecharButton.Click += FecharButton_Click;
             PanelTopBar.MouseDown += PanelTopBar_MouseDown;
+            Load += Principal_Load;
         }
+
+        private void Principal_Load(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void PanelTopBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
