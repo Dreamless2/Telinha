@@ -87,9 +87,8 @@ namespace Telinha.Core.Factory
             if (credits["crew"] is JArray crewArray)
             {
                 var directors = crewArray
-                    .Where(c => string.Equals(c["job"]?.ToString(), "Director", StringComparison.OrdinalIgnoreCase))
-                    .Select(c => TagEngine.GerarTags(c["name"]?.ToString()!))
-                    .Where(s => !string.IsNullOrEmpty(s));
+                    .Where(c => string.Equals(c["job"]?.ToString(), "Director, StringComparison.OrdinalIgnoreCase))
+                    .Select(c => TagEngine.GerarTags(c["name"]?.ToString()!)).Where(s => !string.IsNullOrEmpty(s));
 
                 item.Diretor = string.Join(" ", directors) ?? "--";
             }
