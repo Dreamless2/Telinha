@@ -104,9 +104,7 @@ namespace Telinha.Core.Factory
             var taskIdioma = LanguageHelper.ResolveAsync(languageEnglish, languageIso, deepl.Translate);
             await Task.WhenAll(taskPais!, taskIdioma);
             item.Local = TagEngine.FormatarTitulo(taskPais.Result ?? "--");
-            item.Idioma = TagEngine
-                .FormatarTitulo(taskIdioma.Result ?? "--")
-                .ToLower();
+            item.Idioma = TagEngine.FormatarTitulo(taskIdioma.Result ?? "--").ToLower();
 
             return item;
         }
