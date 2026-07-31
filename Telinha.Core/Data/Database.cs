@@ -33,7 +33,7 @@ namespace Telinha.Core.Data
             if (string.IsNullOrWhiteSpace(config.Host) || string.IsNullOrWhiteSpace(config.Porta) || string.IsNullOrWhiteSpace(config.Usuario) || string.IsNullOrWhiteSpace(config.Senha)) throw new InvalidOperationException("Configuração inválida.");
 
             _connStr =
-                $"Data Source={config.Host};" +
+               $"Data Source={config.Host};" +
                 $"Port={config.Porta};" +
                 $"User ID={config.Usuario};" +
                 $"Password={config.Senha};" +
