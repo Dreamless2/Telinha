@@ -87,7 +87,18 @@ namespace Telinha
 
         private void LimparTudo()
         {
-
+            foreach (Control ctrl in container.Controls)
+            {
+                if (ctrl is TextBox textBox)
+                {
+                    textBox.Clear();
+                }
+                else if (ctrl.HasChildren)
+                {
+                    // Recursively search sub-containers
+                    ClearTextBoxes(ctrl);
+                }
+            }
         }
 
         private void TypeRadio_CheckedChanged(object sender, EventArgs e)
