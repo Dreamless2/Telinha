@@ -84,7 +84,6 @@ namespace Telinha
             RadioSeries.CheckedChanged += TypeRadio_CheckedChanged!;
             RadioAnimes.CheckedChanged += TypeRadio_CheckedChanged!;
         }
-
         private static void ClearTextBoxes(Control container)
         {
             foreach (Control ctrl in container.Controls)
