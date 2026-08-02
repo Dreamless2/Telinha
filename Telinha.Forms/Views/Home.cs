@@ -365,7 +365,7 @@ namespace Telinha
         private void CopiarButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ResumoBox.Text)) Clipboard.SetText(ResumoBox.Text);
-            MessageBox.Show("Dados copiados para área de transferência.", "Resumo Copiado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Dados copiados para área de transferência.", "Dados Copiados", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private async void SalvarButton_Click(object? sender, EventArgs e)
         {
