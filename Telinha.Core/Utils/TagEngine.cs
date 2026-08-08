@@ -60,8 +60,7 @@ namespace Telinha.Core.Utils
 
                 if (GeneroMapeado.TryGetValue(chave, out var formas))
                 {
-                    foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries))
-                        hashTags.Add($"#{forma}");
+                    foreach (var forma in formas.Split(' ', StringSplitOptions.RemoveEmptyEntries)) hashTags.Add($"#{forma}");
                 }
                 else
                 {
