@@ -122,8 +122,7 @@ namespace Telinha.Core.Utils
             var apenasTexto = RegexNaoAlfaNumEspaco.Replace(titulo, "");
             var semEspacos = apenasTexto.Replace(" ", "");
 
-            if (semEspacos.Length == 0)
-                return string.Empty;
+            if (semEspacos.Length == 0) return string.Empty;
 
             var comAcento = semEspacos.Length > 1
                ? char.ToUpper(semEspacos[0]) + semEspacos[1..]
