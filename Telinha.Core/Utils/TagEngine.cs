@@ -116,8 +116,7 @@ namespace Telinha.Core.Utils
 
         public static string FormatarTitulo(string titulo)
         {
-            if (string.IsNullOrWhiteSpace(titulo))
-                return string.Empty;
+            if (string.IsNullOrWhiteSpace(titulo)) return string.Empty;
 
             var apenasTexto = RegexNaoAlfaNumEspaco.Replace(titulo, "");
             var semEspacos = apenasTexto.Replace(" ", "");
