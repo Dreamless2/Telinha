@@ -50,8 +50,7 @@ namespace Telinha.Core.Utils
 
         public static string NormalizarGeneros(string entrada)
         {
-            if (string.IsNullOrWhiteSpace(entrada))
-                return string.Empty;
+            if (string.IsNullOrWhiteSpace(entrada)) return string.Empty;
 
             var hashTags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
