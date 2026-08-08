@@ -75,8 +75,7 @@ namespace Telinha.Core.Utils
 
         public static string GerarTags(string texto)
         {
-            if (string.IsNullOrWhiteSpace(texto))
-                return string.Empty;
+            if (string.IsNullOrWhiteSpace(texto)) return string.Empty;
 
             return string.Join(' ', texto
                 .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
