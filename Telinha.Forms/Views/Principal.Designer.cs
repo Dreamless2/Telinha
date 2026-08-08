@@ -74,7 +74,7 @@
             // 
             PanelBottom.BackColor = Color.FromArgb(4, 52, 72);
             PanelBottom.Dock = DockStyle.Bottom;
-            PanelBottom.Location = new Point(0, 872);
+            PanelBottom.Location = new Point(0, 914);
             PanelBottom.Name = "PanelBottom";
             PanelBottom.Size = new Size(1554, 44);
             PanelBottom.TabIndex = 17;
@@ -86,7 +86,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 123);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(173, 749);
+            flowLayoutPanel1.Size = new Size(173, 791);
             flowLayoutPanel1.TabIndex = 20;
             // 
             // PrincipalButton
@@ -116,14 +116,14 @@
             PanelDesktop.Dock = DockStyle.Fill;
             PanelDesktop.Location = new Point(173, 123);
             PanelDesktop.Name = "PanelDesktop";
-            PanelDesktop.Size = new Size(1381, 749);
+            PanelDesktop.Size = new Size(1381, 791);
             PanelDesktop.TabIndex = 21;
             // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1554, 916);
+            ClientSize = new Size(1554, 958);
             Controls.Add(PanelDesktop);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(PanelTopBar);
