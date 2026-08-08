@@ -68,7 +68,8 @@ namespace Telinha.Core.Utils
                     var chaveNormalizada = chave.ToLowerInvariant();
                     var semAcento = RemoverAcentos(chave);
                     hashTags.Add($"#{semAcento}");
-                    if (!semAcento.Equals(chave, StringComparison.OrdinalIgnoreCase)) hashTags.Add($"#{chave}");
+                    if (!semAcento.Equals(chave, StringComparison.OrdinalIgnoreCase))
+                        hashTags.Add($"#{chave}");
                 }
             }
 
