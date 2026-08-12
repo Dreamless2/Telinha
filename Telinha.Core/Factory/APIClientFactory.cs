@@ -25,10 +25,8 @@ namespace Telinha.Core.Factory
                 if (string.IsNullOrWhiteSpace(_config.DEEPL)) throw new InvalidOperationException("Chave API do DeepL não configurada.");
                 _deepLClient = new DeepLClient(_config.DEEPL);
             }
-
             return new DEEPLContracts(_deepLClient);
         }
-
         public TMDBServices GetTMDB()
         {
             if (_tmdbClient == null)
