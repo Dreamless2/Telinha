@@ -8,7 +8,6 @@ namespace Telinha.Core.Factory
     public class ApiClientFactory
     {
         private readonly AppConfigServices.AppConfig _config;
-
         private DeepLClient? _deepLClient;
         private RestClient? _tmdbClient;
 
@@ -17,7 +16,6 @@ namespace Telinha.Core.Factory
             var config = new AppConfigServices().Load() ?? throw new InvalidOperationException("Configuração não encontrada.");
             _config = config;
         }
-
         public DEEPLContracts GetDeepL()
         {
             if (_deepLClient == null)
