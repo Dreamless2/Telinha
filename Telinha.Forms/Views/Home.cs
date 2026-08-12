@@ -14,7 +14,6 @@ namespace Telinha
         private MidiaModel _current = new();
         private bool _buscando;
         private readonly Dictionary<string, TextBox> _mapeamentoCampos;
-
         private static readonly HashSet<string> CamposOpcionaisPorTipo =
         [
             nameof(MidiaModel.Referencia),
