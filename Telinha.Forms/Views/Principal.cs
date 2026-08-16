@@ -15,7 +15,6 @@ namespace Telinha.Forms.Views
 
         [LibraryImport("user32.dll", EntryPoint = "SendMessageW")]
         private static partial int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
         private Form? currentChildForm;
         public Principal(ILifetimeScope scope)
         {
